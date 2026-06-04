@@ -64,7 +64,8 @@ body.page-internal #drawer-trigger:hover { background: #f4f6fb; border-color: #c
 .dr-nav::-webkit-scrollbar { width: 6px; }
 .dr-nav::-webkit-scrollbar-track { background: rgba(255,255,255,.05); border-radius: 10px; margin: 8px 0; }
 .dr-nav::-webkit-scrollbar-thumb { background: rgba(255,255,255,.2); border-radius: 10px; }
-.dr-section-label { font-size: 9px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,.28); padding: 8px 10px 6px; }
+.dr-section-label { font-size: 10px; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(255,255,255,.75); padding: 10px 12px 6px; display: flex; align-items: center; gap: 8px; }
+.dr-section-label::after { content: ''; flex: 1; height: 1px; background: rgba(255,255,255,.18); }
 .dr-item { display: flex; align-items: center; gap: 10px; padding: 10px 12px; border-radius: 10px; cursor: pointer; border: 1.5px solid transparent; transition: all .18s; }
 .dr-item:hover { background: rgba(255,255,255,.08); }
 .dr-item.active-blue   { background: rgba(52,152,219,.25); border-color: #3498db; }
