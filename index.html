@@ -97,16 +97,39 @@ body.page-internal #drawer-trigger:hover { background: #f4f6fb; border-color: #c
 .page { display: none; min-height: 100vh; }
 .page.active { display: block; }
 
-#cover { min-height: 100vh; background: linear-gradient(135deg, #060f2e 0%, #0d3a8a 55%, #1255b0 100%); align-items: center; justify-content: center; position: relative; overflow: hidden; }
-#cover.active { display: flex; }
-#cover::before, #cover::after { content:''; position:absolute; border-radius:50%; opacity:.06; }
-#cover::before { width:700px; height:700px; background:#fff; top:-220px; right:-200px; }
-#cover::after  { width:450px; height:450px; background:#fff; bottom:-160px; left:-130px; }
-.cover-grid { position:absolute; inset:0; background-image: linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px); background-size: 60px 60px; }
-.cover-content { position:relative; z-index:2; text-align:center; }
-.cover-eyebrow { font-size:12px; font-weight:600; letter-spacing:4px; text-transform:uppercase; color:rgba(255,255,255,.4); margin-bottom:16px; }
-.cover-period  { font-size:clamp(52px,7vw,84px); font-weight:800; color:#fff; letter-spacing:-3px; line-height:1; margin-bottom:8px; }
-.cover-desc { font-size:clamp(14px,2vw,18px); font-weight:400; color:rgba(255,255,255,.5); line-height:1.6; margin:18px 0 24px; letter-spacing:.2px; }
+#cover { min-height:100vh; background: linear-gradient(160deg,#020b1e 0%,#041535 40%,#062060 70%,#0a2d7a 100%); align-items:center; justify-content:center; position:relative; overflow:hidden; }
+#cover.active { display:flex; }
+/* Grid de fundo idêntico ao binario.cloud */
+.cover-grid { position:absolute; inset:0; background-image: linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px), linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px); background-size:72px 72px; }
+/* Blob azul brilhante canto superior direito */
+#cover::before { content:''; position:absolute; width:600px; height:600px; border-radius:50%; background:radial-gradient(circle,rgba(0,122,255,.22) 0%,transparent 70%); top:-150px; right:-150px; pointer-events:none; }
+/* Blob azul canto inferior esquerdo */
+#cover::after  { content:''; position:absolute; width:500px; height:500px; border-radius:50%; background:radial-gradient(circle,rgba(0,80,200,.18) 0%,transparent 70%); bottom:-120px; left:-120px; pointer-events:none; }
+/* Linha de brilho horizontal */
+.cover-beam { position:absolute; top:38%; left:0; right:0; height:1px; background:linear-gradient(90deg,transparent 0%,rgba(0,150,255,.25) 30%,rgba(100,200,255,.5) 50%,rgba(0,150,255,.25) 70%,transparent 100%); pointer-events:none; }
+.cover-content { position:relative; z-index:2; text-align:center; padding:0 24px; max-width:700px; }
+/* Logo Binario.cloud */
+.cover-logo { margin-bottom:32px; display:flex; justify-content:center; }
+.cover-logo svg { width:200px; height:auto; filter:drop-shadow(0 0 20px rgba(0,122,255,.4)); }
+/* Badge topo */
+.cover-badge { display:inline-flex; align-items:center; gap:8px; background:rgba(0,122,255,.15); border:1px solid rgba(0,122,255,.35); border-radius:99px; padding:6px 16px; font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,.7); margin-bottom:24px; }
+.cover-badge-dot { width:6px; height:6px; border-radius:50%; background:#3b9eff; box-shadow:0 0 8px #3b9eff; animation:pulse-dot 2s ease-in-out infinite; }
+@keyframes pulse-dot { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.5;transform:scale(.7)} }
+.cover-period  { font-size:clamp(38px,5.5vw,68px); font-weight:800; color:#fff; letter-spacing:-2px; line-height:1.05; margin-bottom:16px; }
+.cover-period span { background:linear-gradient(90deg,#3b9eff,#60c2ff); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+.cover-desc { font-size:clamp(14px,1.8vw,17px); font-weight:400; color:rgba(255,255,255,.5); line-height:1.7; margin:0 0 36px; letter-spacing:.2px; }
+/* Stats na capa */
+.cover-stats { display:flex; gap:40px; justify-content:center; flex-wrap:wrap; }
+.cover-stat { text-align:center; }
+.cover-stat-val { font-size:28px; font-weight:800; color:#fff; letter-spacing:-1px; line-height:1; }
+.cover-stat-lbl { font-size:11px; color:rgba(255,255,255,.4); font-weight:600; letter-spacing:1px; text-transform:uppercase; margin-top:4px; }
+.cover-divider { width:1px; height:40px; background:rgba(255,255,255,.12); align-self:center; }
+/* Botão entrar */
+.cover-btn { display:inline-flex; align-items:center; gap:10px; background:linear-gradient(135deg,#0066ff,#0088ff); border:none; border-radius:12px; padding:14px 32px; font-family:'Sora',sans-serif; font-size:14px; font-weight:700; color:#fff; cursor:pointer; transition:all .2s; box-shadow:0 8px 32px rgba(0,102,255,.35); margin-bottom:40px; }
+.cover-btn:hover { transform:translateY(-2px); box-shadow:0 12px 40px rgba(0,102,255,.5); }
+.cover-btn svg { transition:transform .2s; }
+.cover-btn:hover svg { transform:translateX(4px); }
+.cover-eyebrow { display:none; }
 
 .topbar { background: linear-gradient(180deg, #fff 0%, #f8fafb 100%); box-shadow: 0 2px 12px rgba(0,0,0,.08); padding: 0 32px 0 100px; height: 64px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; border-bottom: 1px solid rgba(0,0,0,.04); }
 .tb-heading { font-size: 17px; font-weight: 900; color: #1a1a2e; letter-spacing: -0.5px; }
@@ -441,10 +464,48 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--blue); outline-
 <!-- CAPA -->
 <div id="cover" class="page active">
   <div class="cover-grid"></div>
+  <div class="cover-beam"></div>
   <div class="cover-content">
-    <div class="cover-eyebrow">Binario Cloud</div>
-    <div class="cover-period">Escritório de Projetos</div>
-    <p class="cover-desc">Visão executiva do portfólio de projetos,<br>entregas e iniciativas estratégicas.</p>
+    <!-- Logo Binario.cloud -->
+    <div class="cover-logo">
+      <svg viewBox="0 0 220 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Ícone B estilizado -->
+        <rect x="0" y="4" width="40" height="40" rx="10" fill="url(#bc-grad)"/>
+        <text x="8" y="32" font-family="Sora,sans-serif" font-weight="800" font-size="26" fill="#fff">B</text>
+        <!-- Texto Binario.cloud -->
+        <text x="52" y="22" font-family="Sora,sans-serif" font-weight="800" font-size="16" fill="#fff" letter-spacing="-0.3">Binario</text>
+        <text x="52" y="40" font-family="Sora,sans-serif" font-weight="400" font-size="14" fill="rgba(255,255,255,.6)" letter-spacing="0.5">.cloud</text>
+        <defs>
+          <linearGradient id="bc-grad" x1="0" y1="0" x2="40" y2="44" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#1a6fff"/>
+            <stop offset="100%" stop-color="#0044cc"/>
+          </linearGradient>
+        </defs>
+      </svg>
+    </div>
+    <!-- Badge -->
+    <div class="cover-badge">
+      <span class="cover-badge-dot"></span>
+      Painel Interno · Uso Exclusivo
+    </div>
+    <!-- Título -->
+    <div class="cover-period">Escritório de <span>Projetos</span></div>
+    <p class="cover-desc">Visão executiva do portfólio de projetos,<br>entregas e iniciativas estratégicas da Binario Cloud.</p>
+    <!-- Botão -->
+    <button class="cover-btn" onclick="navTo('clientes','active-blue')">
+      Acessar Painel
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </button>
+    <!-- Stats -->
+    <div class="cover-stats">
+      <div class="cover-stat"><div class="cover-stat-val">8</div><div class="cover-stat-lbl">Estruturantes</div></div>
+      <div class="cover-divider"></div>
+      <div class="cover-stat"><div class="cover-stat-val">5</div><div class="cover-stat-lbl">Clientes</div></div>
+      <div class="cover-divider"></div>
+      <div class="cover-stat"><div class="cover-stat-val">77.6%</div><div class="cover-stat-lbl">Migração</div></div>
+      <div class="cover-divider"></div>
+      <div class="cover-stat"><div class="cover-stat-val">552</div><div class="cover-stat-lbl">VMs</div></div>
+    </div>
   </div>
 </div>
 
