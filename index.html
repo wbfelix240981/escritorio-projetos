@@ -2418,11 +2418,71 @@ async function mgSalvarDados() {
   } catch(e){const t=document.getElementById('mg-saveText');if(t){t.textContent='Erro ao salvar';t.style.color='#ef4444';}}
 }
 
+// Seed de referência — usado para sincronizar dados atualizados
+const MG_SEED = [
+  { id:1,  nome:"PRUMO ENGENHARIA EIRELI",         qtdMaquinas:5,   status:"Em Progresso", progresso:30, dataPrevista:"2026-06-12", dataMigracao:null,         historico:[{data:"2026-06-03",acao:"Progresso: 30% — Aguardando retorno do acesso para criação das cópias no ambiente 3.0"},{data:"2026-06-03",acao:"Data prevista de conclusão: 12/06/2026"}] },
+  { id:2,  nome:"QoS (Projeto 1)",                 qtdMaquinas:8,   status:"Em Progresso", progresso:85, dataPrevista:"2026-05-30", dataMigracao:"2026-06-07", historico:[{data:"2024-01-01",acao:"DECISÃO: Recriação do zero na BCOS 3.0 - Não haverá migração"},{data:"2024-01-01",acao:"Responsável: Alan (desenvolvedor) | Motivo: Mais rápido, mais limpo, evita compatibilidade"},{data:"2024-01-01",acao:"JANELA 1 - 05/05/2026 14h | RPA_Faturas_Dasa | PoC-Captive Portal-Ubiquiti"},{data:"2024-01-01",acao:"JANELA 2 - 12/05/2026 00h01 | APPInfra-ClaroFust | APPInfra-Media"},{data:"2026-05-30",acao:"Virada prevista para hoje, contemplando o total de 8 máquinas."},{data:"2026-06-03",acao:"Progresso: 85% — Aguardando teste e validação na 3.0. Data prevista: 30/05. Data de migração: 07/06/2026"}] },
+  { id:3,  nome:"QoS (Projeto 2)",                 qtdMaquinas:10,  status:"Em Progresso", progresso:85, dataPrevista:"2026-05-30", dataMigracao:"2026-06-07", historico:[{data:"2026-05-30",acao:"Virada prevista para o dia 12, contemplando o total de 10 máquinas."},{data:"2026-06-03",acao:"Progresso: 85% — Aguardando teste e validação na 3.0. Data prevista: 30/05. Data de migração: 07/06/2026"}] },
+  { id:4,  nome:"SOPREMA - INDUSTRIA E COMERCIO",  qtdMaquinas:8,   status:"Em Progresso", progresso:75, dataPrevista:"2026-05-30", dataMigracao:"2026-05-30", historico:[{data:"2026-05-26",acao:"Reunião de alinhamento para virada realizada em 26/05."},{data:"2026-05-30",acao:"Aguardando devolutiva do Bruno Queiroz para alinhamento com o cliente."}] },
+  { id:5,  nome:"ZANTHUS - COMERCIO E SERVICOS",   qtdMaquinas:24,  status:"Em Progresso", progresso:50, dataPrevista:"2026-05-30", dataMigracao:"2026-05-30", historico:[{data:"2026-05-30",acao:"Criado - Status: Em Progresso, aguardando definição do histórico."}] },
+  { id:6,  nome:"MAGAZINE LUIZA S/A",              qtdMaquinas:11,  status:"Planejamento", progresso:0,  dataPrevista:"2026-06-13", dataMigracao:null,         historico:[] },
+  { id:7,  nome:"NETZA - PROMOCOES E EVENTOS",     qtdMaquinas:3,   status:"Planejamento", progresso:0,  dataPrevista:"2026-06-13", dataMigracao:null,         historico:[] },
+  { id:8,  nome:"PIRAMIDAL - THERMOPLASTICS S.A.", qtdMaquinas:10,  status:"Planejamento", progresso:0,  dataPrevista:"2026-06-13", dataMigracao:null,         historico:[] },
+  { id:9,  nome:"RADIO MONTE DA GAVEA LTDA",       qtdMaquinas:6,   status:"Planejamento", progresso:0,  dataPrevista:"2026-06-13", dataMigracao:null,         historico:[] },
+  { id:10, nome:"ENESA ENGENHARIA S.A.",            qtdMaquinas:14,  status:"Planejamento", progresso:0,  dataPrevista:"2026-06-28", dataMigracao:null,         historico:[] },
+  { id:11, nome:"GIMBA - SUPRICORP SUPRIMENTOS",   qtdMaquinas:102, status:"Planejamento", progresso:0,  dataPrevista:"2026-06-28", dataMigracao:null,         historico:[] },
+  { id:12, nome:"BMC MAQUINAS E EQUIP PESADOS",    qtdMaquinas:23,  status:"Planejamento", progresso:0,  dataPrevista:null,         dataMigracao:null,         historico:[] },
+  { id:13, nome:"GEOFIX ENGENHARIA FUNDACOES",     qtdMaquinas:2,   status:"Planejamento", progresso:0,  dataPrevista:null,         dataMigracao:null,         historico:[] },
+  { id:14, nome:"REFRIO ARMAZENS GERAIS LTDA",     qtdMaquinas:26,  status:"Planejamento", progresso:0,  dataPrevista:null,         dataMigracao:null,         historico:[] },
+  { id:15, nome:"1TEAMCLOUD SOLUCOES",             qtdMaquinas:1,   status:"Planejamento", progresso:0,  dataPrevista:null,         dataMigracao:null,         historico:[] },
+  { id:16, nome:"GRUPO RAIZES",                    qtdMaquinas:13,  status:"Planejamento", progresso:0,  dataPrevista:null,         dataMigracao:null,         historico:[] },
+  { id:17, nome:"SAT CONSULTORIA",                 qtdMaquinas:3,   status:"Planejamento", progresso:0,  dataPrevista:null,         dataMigracao:null,         historico:[] },
+];
+const MG_SEED_VERSION = "2026-06-03-v2"; // incrementar ao alterar o seed
+
 async function mgCarregarDados() {
   try {
-    const res=await window.storage.get('mg_clientes');
-    if(res?.value){const d=JSON.parse(res.value);mgClientes=d.mgClientes;mgNextId=d.mgNextId;}
-  } catch(e){}
+    const res = await window.storage.get('mg_clientes');
+    let savedVersion = null;
+    try { const rv = await window.storage.get('mg_seed_version'); savedVersion = rv?.value; } catch(e){}
+
+    if (res?.value && savedVersion === MG_SEED_VERSION) {
+      // Storage está na versão atual — carrega normalmente
+      const d = JSON.parse(res.value);
+      mgClientes = d.mgClientes;
+      mgNextId   = d.mgNextId;
+    } else {
+      // Versão desatualizada ou primeiro acesso — mescla seed com storage
+      let stored = [];
+      if (res?.value) {
+        try { stored = JSON.parse(res.value).mgClientes || []; } catch(e){}
+      }
+      // Para cada entrada do seed, preserva histórico extra do storage se existir
+      mgClientes = MG_SEED.map(seedItem => {
+        const saved = stored.find(s => s.id === seedItem.id);
+        if (!saved) return { ...seedItem };
+        // Mescla: seed define progresso/datas/status, storage contribui com histórico extra
+        const extraHistory = saved.historico.filter(sh =>
+          !seedItem.historico.some(si => si.data === sh.data && si.acao === sh.acao)
+        );
+        return {
+          ...seedItem,
+          historico: [...seedItem.historico, ...extraHistory]
+        };
+      });
+      // Preserva clientes criados manualmente que não estão no seed
+      stored.forEach(s => {
+        if (!MG_SEED.some(si => si.id === s.id)) mgClientes.push(s);
+      });
+      mgNextId = Math.max(18, ...mgClientes.map(c => c.id)) + 1;
+      // Salva versão atualizada
+      await window.storage.set('mg_seed_version', MG_SEED_VERSION);
+      await window.storage.set('mg_clientes', JSON.stringify({mgClientes, mgNextId}));
+    }
+  } catch(e) {
+    mgClientes = MG_SEED.map(r => ({...r}));
+    mgNextId   = MG_SEED.length + 1;
+  }
 }
 
 // Fechar modais ao clicar fora
