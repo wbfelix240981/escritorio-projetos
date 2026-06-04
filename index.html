@@ -2550,7 +2550,7 @@ document.addEventListener('page-changed', function(e) {
 </div>
 
 <!-- SheetJS para exportação Excel -->
-<script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+<script src="https://unpkg.com/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
 
 <script>
 // ── Sanitização 2.0 — VM List Modal ───────────────────────────────────────────
@@ -2622,21 +2622,24 @@ function san20GetExportData() {
 }
 
 function san20ExportCSV() {
-  var data   = san20GetExportData();
+  var data = san20GetExportData();
   if (!data.length) return;
-  var cols   = Object.keys(data[0]);
-  var lines  = [cols.join(';')];
+  var cols  = Object.keys(data[0]);
+  var lines = [cols.join(';')];
   data.forEach(function(row) {
     lines.push(cols.map(function(c) { return '"' + (row[c] + '').replace(/"/g, '""') + '"'; }).join(';'));
   });
-  var blob = new Blob(['\uFEFF' + lines.join('\r\n')], { type: 'text/csv;charset=utf-8;' });
-  var url  = URL.createObjectURL(blob);
-  var a    = document.createElement('a');
+  var blob  = new Blob(['\uFEFF' + lines.join('\r\n')], { type: 'text/csv;charset=utf-8;' });
+  var url   = URL.createObjectURL(blob);
+  var a     = document.createElement('a');
   var label = _san20VMLFiltro === 'SHUTOFF' ? 'desligadas' : _san20VMLFiltro === 'ACTIVE' ? 'ligadas' : 'todas';
   a.href     = url;
   a.download = 'vms_' + label + '_' + _san20VMLDominio.replace(/\./g, '_') + '.csv';
+  a.style.display = 'none';
+  document.body.appendChild(a);
   a.click();
-  URL.revokeObjectURL(url);
+  document.body.removeChild(a);
+  setTimeout(function(){ URL.revokeObjectURL(url); }, 1000);
 }
 
 function san20ExportXLSX() {
