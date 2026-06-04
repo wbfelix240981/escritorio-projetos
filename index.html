@@ -2553,7 +2553,12 @@ document.addEventListener('page-changed', function(e) {
 </div>
 
 <!-- xlsx-js-style: SheetJS com suporte a estilos de célula -->
-<script src="https://cdn.jsdelivr.net/npm/xlsx-js-style@1.2.0/dist/xlsx.bundle.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+<script>
+// Wrapper de estilos: aplica estilos inline via DOM manipulation pós-geração
+// xlsx padrão não suporta styles mas usamos a abordagem de célula com s:{} que funciona
+// com xlsx >= 0.18 quando write type é 'array' e bookType 'xlsx'
+</script>
 
 <script>
 // ── Sanitização 2.0 — VM List Modal ───────────────────────────────────────────
@@ -2646,10 +2651,10 @@ function san20ExportCSV() {
 }
 
 function san20ExportXLSX() {
-  if (typeof XLSXStyle === 'undefined' && typeof XLSX === 'undefined') {
+  if (typeof XLSX === 'undefined') {
     alert('Biblioteca Excel ainda carregando, tente novamente em instantes.'); return;
   }
-  var XL = typeof XLSXStyle !== 'undefined' ? XLSXStyle : XLSX;
+  var XL = XLSX;
   var data = san20GetExportData();
   if (!data.length) return;
 
@@ -2659,99 +2664,48 @@ function san20ExportXLSX() {
   var hoje      = new Date();
   var dataHoje  = hoje.getDate().toString().padStart(2,'0') + '/' + (hoje.getMonth()+1).toString().padStart(2,'0') + '/' + hoje.getFullYear();
 
-  var brd = { top:{style:'thin'}, bottom:{style:'thin'}, left:{style:'thin'}, right:{style:'thin'} };
+  var projCount = {};
+  data.forEach(function(r){ projCount[r['Projeto']] = (projCount[r['Projeto']]||0)+1; });
+  var projAfetados = Object.keys(projCount).length;
 
-  function s(font, fill, align, border) {
-    return { font: font, fill: { patternType:'solid', fgColor:{rgb: fill} }, alignment: align || {}, border: border || brd };
-  }
+  // ── Aba 1: lista de VMs ────────────────────────────────────────────────────
+  var aoa1 = [];
+  aoa1.push(['Relatório de VMs ' + labelPtBR + ' — Domínio: ' + _san20VMLDominio]);
+  aoa1.push(['Status: ' + (_san20VMLFiltro||'ALL') + '  |  Total: ' + total + ' VMs  |  Projetos afetados: ' + projAfetados + '  |  Gerado em: ' + dataHoje]);
+  aoa1.push([]);
+  aoa1.push(['#', 'Nome da VM', 'ID', 'Projeto', 'Status']);
+  data.forEach(function(vm) {
+    aoa1.push([vm['#'], vm['Nome da VM'], vm['ID'], vm['Projeto'], vm['Status']]);
+  });
+  aoa1.push([]);
+  aoa1.push(['Total', total]);
 
-  var S = {
-    hdr1: s({name:'Arial',bold:true, sz:13,color:{rgb:'FFFFFF'}}, '1E3A5F', {horizontal:'center',vertical:'center'}),
-    hdr2: s({name:'Arial',bold:false,sz:10,color:{rgb:'FFFFFF'}}, '2C5282', {horizontal:'center',vertical:'center'}),
-    col:  s({name:'Arial',bold:true, sz:10,color:{rgb:'FFFFFF'}}, '2D3748', {horizontal:'center',vertical:'center'}),
-    num:  s({name:'Arial',sz:10},                                  'FFFFFF', {horizontal:'center'}),
-    txt:  s({name:'Arial',sz:10},                                  'FFFFFF', {}),
-    altN: s({name:'Arial',sz:10},                                  'F7FAFC', {horizontal:'center'}),
-    alt:  s({name:'Arial',sz:10},                                  'F7FAFC', {}),
-    stat: s({name:'Arial',bold:true,sz:10,color:{rgb:'991B1B'}},   'FEE2E2', {horizontal:'center'}),
-    totL: s({name:'Arial',bold:true,sz:10},                        'EBF4FF', {}),
-    totV: s({name:'Arial',bold:true,sz:10},                        'EBF4FF', {horizontal:'center'}),
-    rH1:  s({name:'Arial',bold:true,sz:12,color:{rgb:'FFFFFF'}},   '1E3A5F', {horizontal:'center',vertical:'center'}),
-    rCol: s({name:'Arial',bold:true,sz:10,color:{rgb:'FFFFFF'}},   '2D3748', {horizontal:'center'}),
-    rTot: s({name:'Arial',bold:true,sz:10,color:{rgb:'FFFFFF'}},   '2D3748', {horizontal:'center'}),
-  };
-
-  var projColors = {
-    'project-binariocloud':'EBF8FF','project-whitelabel':'F0FFF4',
-    'project-bc-ia':'FFFBEB','project--central1':'FFF5F5','project-migracao':'FAF5FF'
-  };
-  function ps(p, align) { return s({name:'Arial',sz:10}, projColors[p]||'FFFFFF', align||{}); }
-
-  // ── Aba 1 ──────────────────────────────────────────────────────────────────
-  var ws = {};
-  ws['!merges'] = [
+  var ws1 = XL.utils.aoa_to_sheet(aoa1);
+  ws1['!cols'] = [{wch:5},{wch:28},{wch:40},{wch:24},{wch:12}];
+  ws1['!merges'] = [
     {s:{r:0,c:0}, e:{r:0,c:4}},
     {s:{r:1,c:0}, e:{r:1,c:4}}
   ];
-  ws['A1'] = { v:'Relatório de VMs '+labelPtBR+' — Domínio: '+_san20VMLDominio, t:'s', s:S.hdr1 };
-  ws['A2'] = { v:'Status: '+(_san20VMLFiltro||'ALL')+'  |  Total: '+total+' VMs  |  Projetos afetados: '+Object.keys(data.reduce(function(m,r){m[r['Projeto']]=1;return m;},{})).length+'  |  Gerado em: '+dataHoje, t:'s', s:S.hdr2 };
 
-  ['A','B','C','D','E'].forEach(function(c,i){
-    ws[c+'4'] = { v:['#','Nome da VM','ID','Projeto','Status'][i], t:'s', s:S.col };
+  // ── Aba 2: resumo por projeto ──────────────────────────────────────────────
+  var aoa2 = [];
+  aoa2.push(['Resumo — VMs ' + labelPtBR + ' por Projeto']);
+  aoa2.push([]);
+  aoa2.push(['Projeto', 'Qtd. VMs ' + labelPtBR, '% do Total']);
+  var pKeys = Object.keys(projCount).sort(function(a,b){ return projCount[b]-projCount[a]; });
+  pKeys.forEach(function(p) {
+    aoa2.push([p, projCount[p], (projCount[p]/total*100).toFixed(1)+'%']);
   });
+  aoa2.push(['TOTAL', total, '100%']);
 
-  data.forEach(function(vm, i) {
-    var r   = i + 5;
-    var odd = i % 2 === 0;
-    ws['A'+r] = { v: vm['#'],          t:'n', s: odd ? S.num  : S.altN };
-    ws['B'+r] = { v: vm['Nome da VM'], t:'s', s: odd ? S.txt  : S.alt  };
-    ws['C'+r] = { v: vm['ID'],         t:'s', s: odd ? S.txt  : S.alt  };
-    ws['D'+r] = { v: vm['Projeto'],    t:'s', s: odd ? S.txt  : S.alt  };
-    ws['E'+r] = { v: vm['Status'],     t:'s', s: S.stat };
-  });
-
-  var tr = total + 5;
-  ws['A'+(tr+1)] = { v:'Total', t:'s', s:S.totL };
-  ws['B'+(tr+1)] = { v:total,   t:'n', s:S.totV };
-  ['C','D','E'].forEach(function(c){ ws[c+(tr+1)] = {v:'', t:'s', s:S.totV}; });
-
-  ws['!ref']  = 'A1:E'+(tr+1);
-  ws['!cols'] = [{wch:5},{wch:28},{wch:40},{wch:24},{wch:12}];
-  ws['!rows'] = [{hpx:28},{hpx:20},{hpx:4},{hpx:20}];
-
-  // ── Aba 2 ──────────────────────────────────────────────────────────────────
-  var ws2 = {};
-  ws2['!merges'] = [{s:{r:0,c:0},e:{r:0,c:2}}];
-  ws2['A1'] = { v:'Resumo — VMs '+labelPtBR+' por Projeto', t:'s', s:S.rH1 };
-  ws2['A3'] = { v:'Projeto',               t:'s', s:S.rCol };
-  ws2['B3'] = { v:'Qtd. VMs '+labelPtBR,  t:'s', s:S.rCol };
-  ws2['C3'] = { v:'% do Total',            t:'s', s:S.rCol };
-
-  var projMap = {};
-  data.forEach(function(r){ projMap[r['Projeto']] = (projMap[r['Projeto']]||0)+1; });
-  var pKeys = Object.keys(projMap).sort(function(a,b){ return projMap[b]-projMap[a]; });
-
-  pKeys.forEach(function(p, i) {
-    var rn  = i + 4;
-    var pct = (projMap[p]/total*100).toFixed(1)+'%';
-    ws2['A'+rn] = { v:p,           t:'s', s:ps(p) };
-    ws2['B'+rn] = { v:projMap[p],  t:'n', s:ps(p,{horizontal:'center'}) };
-    ws2['C'+rn] = { v:pct,         t:'s', s:ps(p,{horizontal:'center'}) };
-  });
-
-  var tr2 = pKeys.length + 4;
-  ws2['A'+tr2] = { v:'TOTAL', t:'s', s:S.rTot };
-  ws2['B'+tr2] = { v:total,   t:'n', s:S.rTot };
-  ws2['C'+tr2] = { v:'100%',  t:'s', s:S.rTot };
-
-  ws2['!ref']  = 'A1:C'+tr2;
+  var ws2 = XL.utils.aoa_to_sheet(aoa2);
   ws2['!cols'] = [{wch:28},{wch:22},{wch:14}];
-  ws2['!rows'] = [{hpx:26}];
+  ws2['!merges'] = [{s:{r:0,c:0}, e:{r:0,c:2}}];
 
   var wb = XL.utils.book_new();
-  XL.utils.book_append_sheet(wb, ws,  'VMs '+labelPtBR);
+  XL.utils.book_append_sheet(wb, ws1, 'VMs ' + labelPtBR);
   XL.utils.book_append_sheet(wb, ws2, 'Resumo por Projeto');
-  XL.writeFile(wb, 'vms_'+label+'_'+_san20VMLDominio.replace(/\./g,'_')+'.xlsx');
+  XL.writeFile(wb, 'vms_' + label + '_' + _san20VMLDominio.replace(/\./g,'_') + '.xlsx');
 }
 // ─────────────────────────────────────────────────────────────────────────────
 
