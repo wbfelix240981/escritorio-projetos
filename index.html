@@ -473,7 +473,7 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--blue); outline-
         </div>
         <div class="card-title">Igreja Pentecostal Deus e Amor</div>
         <div class="card-footer">
-          <span class="prog-note">Upgrade Licenças Backup – 15 VMs</span>
+          <span class="prog-note">14/15 máq. · TEP encaminhado · Aguard. assinatura</span>
           <div class="bar-track"><div class="bar-fill fill-green" data-pct="100"></div></div>
           <button class="btn-det" onclick="openModal('ipda')">Ver detalhes <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 6.5h9M7 2l4.5 4.5L7 11" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
         </div>
@@ -488,7 +488,7 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--blue); outline-
         </div>
         <div class="card-title">Automa</div>
         <div class="card-footer">
-          <span class="prog-note">Jobs de backup pendentes de configuração</span>
+          <span class="prog-note">17/17 lic. Veeam · TEP encaminhado · Aguard. assinatura</span>
           <div class="bar-track"><div class="bar-fill fill-green" data-pct="100"></div></div>
           <button class="btn-det" onclick="openModal('automa')">Ver detalhes <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 6.5h9M7 2l4.5 4.5L7 11" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
         </div>
@@ -503,7 +503,7 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--blue); outline-
         </div>
         <div class="card-title">Guardião</div>
         <div class="card-footer">
-          <span class="prog-note">Ajuste de domínio pendente</span>
+          <span class="prog-note">TEP encaminhado · Aguardando assinatura do cliente</span>
           <div class="bar-track"><div class="bar-fill fill-green" data-pct="100"></div></div>
           <button class="btn-det" onclick="openModal('guardiao')">Ver detalhes <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 6.5h9M7 2l4.5 4.5L7 11" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
         </div>
@@ -528,13 +528,13 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--blue); outline-
       <div class="card anim">
         <div class="card-accent accent-green"></div>
         <div class="card-header">
-          <span class="pill pill-wait">⏳ Não iniciado</span>
-          <span class="card-pct">0%</span>
+          <span class="pill pill-prog">● Em progresso</span>
+          <span class="card-pct">10%</span>
         </div>
         <div class="card-title">Pedreira Vale Mix</div>
         <div class="card-footer">
-          <span class="prog-note">Projeto não iniciado</span>
-          <div class="bar-track"><div class="bar-fill fill-green" data-pct="0"></div></div>
+          <span class="prog-note">Iniciando implantação</span>
+          <div class="bar-track"><div class="bar-fill fill-green" data-pct="10"></div></div>
           <button class="btn-det" onclick="openModal('pedreira')">Ver detalhes <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 6.5h9M7 2l4.5 4.5L7 11" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
         </div>
       </div>
@@ -1990,43 +1990,44 @@ const P = {
   ipda:{
     eye:'Projeto de Cliente', title:'Igreja Pentecostal Deus e Amor', pct:100,
     fc:'fill-green', grad:'linear-gradient(90deg,#2e7d32,#43a047)',
-    pill:'<span class="pill pill-done">✓ Entregue — Maio/2026</span>',
-    tags:[['Entregue','green'],['Mai/2026','green'],['Backup','green'],['Licenciamento','green']],
+    pill:'<span class="pill pill-done">✓ Finalizado — Maio/2026</span>',
+    tags:[['Finalizado','green'],['Mai/2026','green'],['14/15 máquinas','green'],['TEP enviado','orange']],
     completed:'2026-05-31',
     secs:[
       {t:'Escopo', rows:[['🖥️','Upgrade de licenças de backup para 15 VMs — instalação e upgrade do Veeam']]},
       {t:'Status atual', rows:[
-        ['✅','14 de 15 VMs liberadas com instalação e upgrade do Veeam realizados'],
-        ['📝','Solicitada assinatura do TEP (Termo de Entrega do Projeto)'],
-        ['💳','Aguardando assinatura do TEP para seguir com o faturamento']
+        ['✅','Instalação finalizada em 14 de 15 máquinas enviadas'],
+        ['📄','TEP (Termo de Entrega do Projeto) encaminhado ao cliente para assinatura'],
+        ['⏳','Aguardando devolutiva e assinatura do cliente'],
+        ['💳','Faturamento será liberado após assinatura do TEP']
       ]},
       {t:'Próximos passos', rows:[
         ['✍️','Obter assinatura do TEP pelo cliente'],
-        ['💰','Liberar faturamento após assinatura do TEP']
+        ['💰','Liberar faturamento após confirmação da assinatura']
       ]}
     ]
   },
   automa:{
     eye:'Projeto de Cliente', title:'Automa', pct:100,
     fc:'fill-green', grad:'linear-gradient(90deg,#2e7d32,#43a047)',
-    pill:'<span class="pill pill-done">✓ Entregue — Maio/2026</span>',
-    tags:[['Entregue','green'],['Mai/2026','green'],['Veeam','green'],['Backup','green']],
+    pill:'<span class="pill pill-done">✓ Finalizado — Maio/2026</span>',
+    tags:[['Finalizado','green'],['Mai/2026','green'],['17/17 licenças','green'],['TEP enviado','orange']],
     completed:'2026-05-31',
     secs:[
       {t:'Escopo', rows:[
         ['💾','Upgrade do ambiente de backup com adição de 17 licenças Veeam (VIN Enterprise Plus)'],
         ['📦','Ampliação de capacidade de armazenamento'],
-        ['🔀','Definição técnica sobre expansão do tenant existente ou criação de novo tenant'],
-        ['📐','Dimensionamento adequado do repositório de backup']
+        ['🔀','Expansão do tenant existente com dimensionamento do repositório de backup']
       ]},
       {t:'Status atual', rows:[
-        ['✅','Reunião técnica realizada para configuração dos Jobs de backup'],
-        ['📝','Solicitada assinatura do TEP (Termo de Entrega do Projeto)'],
-        ['💳','Aguardando assinatura do TEP para seguir com o faturamento']
+        ['✅','17 de 17 licenças Veeam instaladas e finalizadas'],
+        ['📄','TEP (Termo de Entrega do Projeto) encaminhado ao cliente para assinatura'],
+        ['⏳','Aguardando devolutiva e assinatura do cliente'],
+        ['💳','Faturamento será liberado após assinatura do TEP']
       ]},
       {t:'Próximos passos', rows:[
         ['✍️','Obter assinatura do TEP pelo cliente'],
-        ['💰','Liberar faturamento após assinatura do TEP']
+        ['💰','Liberar faturamento após confirmação da assinatura']
       ]}
     ]
   },
@@ -2049,8 +2050,8 @@ const P = {
   guardiao:{
     eye:'Projeto de Cliente', title:'Guardião', pct:100,
     fc:'fill-green', grad:'linear-gradient(90deg,#2e7d32,#43a047)',
-    pill:'<span class="pill pill-done">✓ Entregue — Maio/2026</span>',
-    tags:[['Entregue','green'],['Mai/2026','green'],['Cliente','green']],
+    pill:'<span class="pill pill-done">✓ Finalizado — Maio/2026</span>',
+    tags:[['Finalizado','green'],['Mai/2026','green'],['TEP enviado','orange']],
     completed:'2026-05-31',
     secs:[
       {t:'Escopo', rows:[
@@ -2059,13 +2060,14 @@ const P = {
         ['🧹','Limpeza, renomeação ou criação de novo domínio sem impacto operacional']
       ]},
       {t:'Status atual', rows:[
-        ['✅','Reunião técnica realizada para configuração do ambiente'],
-        ['📝','Solicitada assinatura do TEP (Termo de Entrega do Projeto)'],
-        ['💳','Aguardando assinatura do TEP para seguir com o faturamento']
+        ['✅','Projeto finalizado e entregue ao cliente'],
+        ['📄','TEP (Termo de Entrega do Projeto) encaminhado ao cliente para assinatura'],
+        ['⏳','Aguardando devolutiva e assinatura do cliente'],
+        ['💳','Faturamento será liberado após assinatura do TEP']
       ]},
       {t:'Próximos passos', rows:[
         ['✍️','Obter assinatura do TEP pelo cliente'],
-        ['💰','Liberar faturamento após assinatura do TEP']
+        ['💰','Liberar faturamento após confirmação da assinatura']
       ]}
     ]
   },
@@ -2076,15 +2078,15 @@ const P = {
   san:{eye:'Projeto Estruturante',title:'Sanitização 2.0 / 3.0',pct:80,fc:'fill-blue',grad:'linear-gradient(90deg,#1565c0,#2979ff)',pill:'<span class="pill pill-prog">● Em progresso</span>',completed:null,tags:[['Sanitização','blue'],['Segurança','blue']],secs:[{t:'Escopo',rows:[[' ',' ']]},{t:'Status atual',rows:[[' ',' ']]},{t:'Próximos passos',rows:[[' ',' ']]}]},
   storware:{eye:'Projeto Estruturante',title:'Implementação – Storware',pct:90,fc:'fill-blue',grad:'linear-gradient(90deg,#1565c0,#2979ff)',pill:'<span class="pill pill-prog">● Em progresso</span>',completed:null,tags:[['Backup','blue'],['Storware','blue'],['90%','blue']],secs:[{t:'Status atual',rows:[['🔄','Implantação das 5 licenças em execução'],['💾','Backups iniciais sendo realizados']]},{t:'Próximo marco',rows:[['🧪','Início dos testes de restore em 08/06/2026'],['✅','Conclusão dos testes prevista para 09/06/2026']]}]},
   pedreira:{
-    eye:'Projeto de Cliente', title:'Pedreira Vale Mix', pct:0,
+    eye:'Projeto de Cliente', title:'Pedreira Vale Mix', pct:10,
     fc:'fill-green', grad:'linear-gradient(90deg,#2e7d32,#43a047)',
-    pill:'<span class="pill pill-wait">⏳ Não iniciado</span>',
-    tags:[['Não iniciado','orange'],['Cliente','green']],
+    pill:'<span class="pill pill-prog">● Em progresso</span>',
+    tags:[['Cliente','green'],['Em andamento','green'],['10%','green']],
     completed:null,
     secs:[
-      {t:'Escopo', rows:[['📋','A definir']]},
-      {t:'Status atual', rows:[['⏳','Projeto ainda não iniciado']]},
-      {t:'Próximos passos', rows:[['📌','Definir escopo e cronograma do projeto']]}
+      {t:'Escopo', rows:[['🖥️','Implantação do ambiente Pedreira Vale Mix']]},
+      {t:'Status atual', rows:[['🔄','Projeto em fase inicial de implantação — 10% concluído']]},
+      {t:'Próximos passos', rows:[['📋','Definir cronograma e próximas entregas do projeto']]}
     ]
   },
   magalu:{
