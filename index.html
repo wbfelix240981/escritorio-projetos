@@ -2646,32 +2646,114 @@ function san20ExportXLSX() {
   if (typeof XLSX === 'undefined') { alert('Biblioteca Excel ainda carregando, tente novamente em instantes.'); return; }
   var data  = san20GetExportData();
   if (!data.length) return;
-  var label = _san20VMLFiltro === 'SHUTOFF' ? 'desligadas' : _san20VMLFiltro === 'ACTIVE' ? 'ligadas' : 'todas';
-  var titulo = 'VMs ' + (_san20VMLFiltro === 'SHUTOFF' ? 'Desligadas' : _san20VMLFiltro === 'ACTIVE' ? 'Ligadas' : 'Todas') + ' — ' + _san20VMLDominio;
 
-  var wb = XLSX.utils.book_new();
+  var label     = _san20VMLFiltro === 'SHUTOFF' ? 'desligadas' : _san20VMLFiltro === 'ACTIVE' ? 'ligadas' : 'todas';
+  var labelPtBR = _san20VMLFiltro === 'SHUTOFF' ? 'Desligadas' : _san20VMLFiltro === 'ACTIVE' ? 'Ligadas' : 'Todas';
+  var total     = data.length;
+  var hoje      = new Date();
+  var dataHoje  = hoje.getDate().toString().padStart(2,'0') + '/' + (hoje.getMonth()+1).toString().padStart(2,'0') + '/' + hoje.getFullYear();
 
-  // Aba 1 — lista
-  var ws = XLSX.utils.json_to_sheet(data);
-  ws['!cols'] = [{ wch: 4 }, { wch: 28 }, { wch: 38 }, { wch: 26 }, { wch: 12 }, { wch: 18 }];
-  XLSX.utils.book_append_sheet(wb, ws, 'Lista de VMs');
+  // ── estilos reutilizáveis ──────────────────────────────────────────────────
+  var S = {
+    hdr1:  { font:{name:'Arial',bold:true,sz:13,color:{rgb:'FFFFFF'}},  fill:{fgColor:{rgb:'1E3A5F'}}, alignment:{horizontal:'center',vertical:'center'} },
+    hdr2:  { font:{name:'Arial',bold:false,sz:10,color:{rgb:'FFFFFF'}}, fill:{fgColor:{rgb:'2C5282'}}, alignment:{horizontal:'center',vertical:'center'} },
+    col:   { font:{name:'Arial',bold:true,sz:10,color:{rgb:'FFFFFF'}},  fill:{fgColor:{rgb:'2D3748'}}, alignment:{horizontal:'center',vertical:'center'} },
+    num:   { font:{name:'Arial',sz:10}, fill:{fgColor:{rgb:'FFFFFF'}}, alignment:{horizontal:'center'} },
+    txt:   { font:{name:'Arial',sz:10}, fill:{fgColor:{rgb:'FFFFFF'}} },
+    alt:   { font:{name:'Arial',sz:10}, fill:{fgColor:{rgb:'F7FAFC'}} },
+    altN:  { font:{name:'Arial',sz:10}, fill:{fgColor:{rgb:'F7FAFC'}}, alignment:{horizontal:'center'} },
+    stat:  { font:{name:'Arial',bold:true,sz:10,color:{rgb:'991B1B'}}, fill:{fgColor:{rgb:'FEE2E2'}}, alignment:{horizontal:'center'} },
+    totL:  { font:{name:'Arial',bold:true,sz:10}, fill:{fgColor:{rgb:'EBF4FF'}} },
+    totV:  { font:{name:'Arial',bold:true,sz:10}, fill:{fgColor:{rgb:'EBF4FF'}}, alignment:{horizontal:'center'} },
+    // resumo
+    rHdr1: { font:{name:'Arial',bold:true,sz:12,color:{rgb:'FFFFFF'}},  fill:{fgColor:{rgb:'1E3A5F'}}, alignment:{horizontal:'center',vertical:'center'} },
+    rCol:  { font:{name:'Arial',bold:true,sz:10,color:{rgb:'FFFFFF'}},  fill:{fgColor:{rgb:'2D3748'}}, alignment:{horizontal:'center'} },
+    rTot:  { font:{name:'Arial',bold:true,sz:10,color:{rgb:'FFFFFF'}},  fill:{fgColor:{rgb:'2D3748'}}, alignment:{horizontal:'center'} },
+  };
+  var projColors = {
+    'project-binariocloud':'EBF8FF','project-whitelabel':'F0FFF4',
+    'project-bc-ia':'FFFBEB','project--central1':'FFF5F5','project-migracao':'FAF5FF'
+  };
+  function pFill(p) { return { fgColor:{ rgb: projColors[p] || 'FFFFFF' } }; }
 
-  // Aba 2 — resumo por projeto
+  // ── Aba 1: VMs ─────────────────────────────────────────────────────────────
+  var ws = {};
+  var R  = 0; // row index (0-based)
+
+  // linha 1 — título
+  ws['A1'] = { v:'Relatório de VMs ' + labelPtBR + ' — Domínio: ' + _san20VMLDominio, s: S.hdr1 };
+  ws['!merges'] = ws['!merges'] || [];
+  ws['!merges'].push({s:{r:0,c:0}, e:{r:0,c:5}});
+
+  // linha 2 — subtítulo
+  ws['A2'] = { v:'Status: ' + (_san20VMLFiltro||'ALL') + '  |  Total: ' + total + ' VMs  |  Gerado em: ' + dataHoje, s: S.hdr2 };
+  ws['!merges'].push({s:{r:1,c:0}, e:{r:1,c:5}});
+
+  // linha 3 — vazia
+  // linha 4 — cabeçalhos
+  var cols4 = ['#','Nome da VM','ID','Projeto','Status','Domínio'];
+  ['A','B','C','D','E','F'].forEach(function(c,i){ ws[c+'4'] = { v: cols4[i], s: S.col }; });
+
+  // linhas de dados a partir da 5
+  data.forEach(function(vm, i) {
+    var rowNum = i + 5;
+    var isAlt  = i % 2 !== 0;
+    ws['A'+rowNum] = { v: vm['#'],         s: isAlt ? S.altN : S.num };
+    ws['B'+rowNum] = { v: vm['Nome da VM'],s: isAlt ? S.alt  : S.txt };
+    ws['C'+rowNum] = { v: vm['ID'],        s: isAlt ? S.alt  : S.txt };
+    ws['D'+rowNum] = { v: vm['Projeto'],   s: isAlt ? S.alt  : S.txt };
+    ws['E'+rowNum] = { v: vm['Status'],    s: S.stat };
+    ws['F'+rowNum] = { v: vm['Domínio'],   s: isAlt ? S.alt  : S.txt };
+  });
+
+  // linha total
+  var totRow = data.length + 6;
+  ws['A'+totRow] = { v: 'Total', s: S.totL };
+  ws['B'+totRow] = { v: total,   s: S.totV };
+  ['C','D','E','F'].forEach(function(c){ ws[c+totRow] = { v:'', s: S.totV }; });
+
+  ws['!ref']  = 'A1:F' + totRow;
+  ws['!cols'] = [{wch:5},{wch:28},{wch:38},{wch:26},{wch:12},{wch:18}];
+  ws['!rows'] = [{hpt:21},{hpt:15}];
+
+  // ── Aba 2: Resumo ──────────────────────────────────────────────────────────
+  var ws2 = {};
+  ws2['!merges'] = [];
+
+  ws2['A1'] = { v:'Resumo — VMs ' + labelPtBR + ' por Projeto', s: S.rHdr1 };
+  ws2['!merges'].push({s:{r:0,c:0}, e:{r:0,c:2}});
+
+  ws2['A3'] = { v:'Projeto',            s: S.rCol };
+  ws2['B3'] = { v:'Qtd. VMs ' + labelPtBR, s: S.rCol };
+  ws2['C3'] = { v:'% do Total',         s: S.rCol };
+
   var projMap = {};
-  data.forEach(function(r) {
-    projMap[r['Projeto']] = (projMap[r['Projeto']] || 0) + 1;
+  data.forEach(function(r){ projMap[r['Projeto']] = (projMap[r['Projeto']]||0)+1; });
+  var pKeys = Object.keys(projMap).sort(function(a,b){ return projMap[b]-projMap[a]; });
+
+  pKeys.forEach(function(p, i) {
+    var rn  = i + 4;
+    var pct = (projMap[p]/total*100).toFixed(1) + '%';
+    var fs  = { fill: pFill(p) };
+    ws2['A'+rn] = { v: p,          s: { font:{name:'Arial',sz:10}, fill:pFill(p) } };
+    ws2['B'+rn] = { v: projMap[p], s: { font:{name:'Arial',sz:10}, fill:pFill(p), alignment:{horizontal:'center'} } };
+    ws2['C'+rn] = { v: pct,        s: { font:{name:'Arial',sz:10}, fill:pFill(p), alignment:{horizontal:'center'} } };
   });
-  var resumo = [{ 'Projeto': 'RESUMO — ' + titulo, 'Qtd. VMs': '', '% do Total': '' }];
-  var total  = data.length;
-  Object.keys(projMap).sort(function(a,b){ return projMap[b]-projMap[a]; }).forEach(function(p) {
-    resumo.push({ 'Projeto': p, 'Qtd. VMs': projMap[p], '% do Total': (projMap[p]/total*100).toFixed(1) + '%' });
-  });
-  resumo.push({ 'Projeto': 'TOTAL', 'Qtd. VMs': total, '% do Total': '100%' });
-  var ws2 = XLSX.utils.json_to_sheet(resumo);
-  ws2['!cols'] = [{ wch: 30 }, { wch: 14 }, { wch: 12 }];
+
+  var totR2 = pKeys.length + 4;
+  ws2['A'+totR2] = { v:'TOTAL', s: S.rTot };
+  ws2['B'+totR2] = { v: total,  s: { font:{name:'Arial',bold:true,sz:10,color:{rgb:'FFFFFF'}}, fill:{fgColor:{rgb:'2D3748'}}, alignment:{horizontal:'center'} } };
+  ws2['C'+totR2] = { v:'100%',  s: { font:{name:'Arial',bold:true,sz:10,color:{rgb:'FFFFFF'}}, fill:{fgColor:{rgb:'2D3748'}}, alignment:{horizontal:'center'} } };
+
+  ws2['!ref']  = 'A1:C' + totR2;
+  ws2['!cols'] = [{wch:30},{wch:22},{wch:14}];
+
+  // ── Montar workbook ────────────────────────────────────────────────────────
+  var wb = XLSX.utils.book_new();
+  XLSX.utils.book_append_sheet(wb, ws,  'VMs ' + labelPtBR);
   XLSX.utils.book_append_sheet(wb, ws2, 'Resumo por Projeto');
 
-  var fname = 'vms_' + label + '_' + _san20VMLDominio.replace(/\./g, '_') + '.xlsx';
+  var fname = 'vms_' + label + '_' + _san20VMLDominio.replace(/\./g,'_') + '.xlsx';
   XLSX.writeFile(wb, fname);
 }
 // ─────────────────────────────────────────────────────────────────────────────
