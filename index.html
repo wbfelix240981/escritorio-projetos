@@ -456,8 +456,9 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--blue); outline-
         <div class="hero-sub">Acompanhamento de implantações e faturamento</div>
       </div>
       <div class="hero-stats">
-        <div class="hero-stat"><div class="sv">6</div><div class="sl">Ativos</div></div>
-        <div class="hero-stat"><div class="sv">3</div><div class="sl">Entregues</div></div>
+        <div class="hero-stat"><div class="sv">3</div><div class="sl">Ativos</div></div>
+        <div class="hero-stat"><div class="sv">5%</div><div class="sl">Média ativos</div></div>
+        <div class="hero-stat"><div class="sv">5</div><div class="sl">Entregues</div></div>
       </div>
     </div>
     <div class="sec-label">Clientes</div>
@@ -538,50 +539,8 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--blue); outline-
         </div>
       </div>
 
-      <!-- Prumo Engenharia -->
-      <div class="card anim">
-        <div class="card-accent accent-green"></div>
-        <div class="card-header">
-          <span class="pill pill-prog">● Em progresso</span>
-          <span class="card-pct">30%</span>
-        </div>
-        <div class="card-title">Prumo Engenharia EIRELI</div>
-        <div class="card-footer">
-          <span class="prog-note">Aguard. acesso · Prev. 12/06</span>
-          <div class="bar-track"><div class="bar-fill fill-green" data-pct="30"></div></div>
-          <button class="btn-det" onclick="openModal('prumo')">Ver detalhes <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 6.5h9M7 2l4.5 4.5L7 11" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-        </div>
-      </div>
 
-      <!-- QoS Projeto 1 -->
-      <div class="card anim">
-        <div class="card-accent accent-green"></div>
-        <div class="card-header">
-          <span class="pill pill-prog">● Em progresso</span>
-          <span class="card-pct">85%</span>
-        </div>
-        <div class="card-title">QoS — Projeto 1</div>
-        <div class="card-footer">
-          <span class="prog-note">Teste e validação 3.0 · Migração 07/06</span>
-          <div class="bar-track"><div class="bar-fill fill-green" data-pct="85"></div></div>
-          <button class="btn-det" onclick="openModal('qos1')">Ver detalhes <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 6.5h9M7 2l4.5 4.5L7 11" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-        </div>
-      </div>
 
-      <!-- QoS Projeto 2 -->
-      <div class="card anim">
-        <div class="card-accent accent-green"></div>
-        <div class="card-header">
-          <span class="pill pill-prog">● Em progresso</span>
-          <span class="card-pct">85%</span>
-        </div>
-        <div class="card-title">QoS — Projeto 2</div>
-        <div class="card-footer">
-          <span class="prog-note">Teste e validação 3.0 · Migração 07/06</span>
-          <div class="bar-track"><div class="bar-fill fill-green" data-pct="85"></div></div>
-          <button class="btn-det" onclick="openModal('qos2')">Ver detalhes <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 6.5h9M7 2l4.5 4.5L7 11" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-        </div>
-      </div>
 
 
     </div>
@@ -2119,65 +2078,6 @@ const P = {
       {t:'Próximos passos', rows:[['📋','Definir cronograma e próximas entregas do projeto']]}
     ]
   },
-  prumo:{
-    eye:'Projeto de Cliente', title:'Prumo Engenharia EIRELI', pct:30,
-    fc:'fill-green', grad:'linear-gradient(90deg,#2e7d32,#43a047)',
-    pill:'<span class="pill pill-prog">● Em progresso</span>',
-    tags:[['Em andamento','green'],['30%','green'],['Migração 3.0','blue']],
-    completed:null,
-    secs:[
-      {t:'Escopo', rows:[['🖥️','Criação de cópias das VMs no ambiente 3.0']]},
-      {t:'Status atual', rows:[
-        ['🔄','Projeto em progresso — 30% concluído'],
-        ['🔑','Aguardando retorno do acesso para criação das cópias no ambiente 3.0'],
-        ['📅','Data prevista de conclusão: 12/06/2026']
-      ]},
-      {t:'Próximos passos', rows:[
-        ['🔐','Receber acesso para prosseguir com a criação das cópias na 3.0'],
-        ['⚙️','Executar migração das VMs para o ambiente 3.0']
-      ]}
-    ]
-  },
-  qos1:{
-    eye:'Projeto de Cliente', title:'QoS — Projeto 1', pct:85,
-    fc:'fill-green', grad:'linear-gradient(90deg,#2e7d32,#43a047)',
-    pill:'<span class="pill pill-prog">● Em progresso</span>',
-    tags:[['Em andamento','green'],['85%','green'],['Migração 3.0','blue'],['Teste e validação','orange']],
-    completed:null,
-    secs:[
-      {t:'Escopo', rows:[['🌐','Migração do ambiente QoS para a plataforma 3.0']]},
-      {t:'Status atual', rows:[
-        ['🔄','Projeto em progresso — 85% concluído'],
-        ['🧪','Aguardando teste e validação no ambiente 3.0'],
-        ['📅','Data prevista: 30/05/2026'],
-        ['🚀','Data de migração: 07/06/2026']
-      ]},
-      {t:'Próximos passos', rows:[
-        ['✅','Concluir testes e validação na plataforma 3.0'],
-        ['🏁','Executar migração definitiva em 07/06/2026']
-      ]}
-    ]
-  },
-  qos2:{
-    eye:'Projeto de Cliente', title:'QoS — Projeto 2', pct:85,
-    fc:'fill-green', grad:'linear-gradient(90deg,#2e7d32,#43a047)',
-    pill:'<span class="pill pill-prog">● Em progresso</span>',
-    tags:[['Em andamento','green'],['85%','green'],['Migração 3.0','blue'],['Teste e validação','orange']],
-    completed:null,
-    secs:[
-      {t:'Escopo', rows:[['🌐','Migração do ambiente QoS para a plataforma 3.0']]},
-      {t:'Status atual', rows:[
-        ['🔄','Projeto em progresso — 85% concluído'],
-        ['🧪','Aguardando teste e validação no ambiente 3.0'],
-        ['📅','Data prevista: 30/05/2026'],
-        ['🚀','Data de migração: 07/06/2026']
-      ]},
-      {t:'Próximos passos', rows:[
-        ['✅','Concluir testes e validação na plataforma 3.0'],
-        ['🏁','Executar migração definitiva em 07/06/2026']
-      ]}
-    ]
-  },
   spsp:{
     eye:'Projeto de Cliente', title:'SPSP – Sistema de Prestação de Serviços', pct:15,
     fc:'fill-green', grad:'linear-gradient(90deg,#2e7d32,#43a047)',
@@ -2346,15 +2246,16 @@ renderFinalizados();
    CONTROLE DE MIGRAÇÃO
 ═══════════════════════════════════════ */
 let mgClientes = [
-  { id:1,  nome:"PRUMO ENGENHARIA EIRELI",            qtdMaquinas:5,   status:"Planejamento", progresso:0,  dataPrevista:"2026-05-30", dataMigracao:null,         historico:[] },
-  { id:2,  nome:"QoS (Projeto 1)",                    qtdMaquinas:8,   status:"Em Progresso", progresso:90, dataPrevista:"2026-05-30", dataMigracao:"2026-05-30", historico:[
+  { id:1,  nome:"PRUMO ENGENHARIA EIRELI",            qtdMaquinas:5,   status:"Em Progresso", progresso:30, dataPrevista:"2026-06-12", dataMigracao:null,         historico:[{data:"2026-06-03",acao:"Progresso: 30% — Aguardando retorno do acesso para criação das cópias no ambiente 3.0"},{data:"2026-06-03",acao:"Data prevista de conclusão: 12/06/2026"}] },
+  { id:2,  nome:"QoS (Projeto 1)",                    qtdMaquinas:8,   status:"Em Progresso", progresso:85, dataPrevista:"2026-05-30", dataMigracao:"2026-06-07", historico:[
     {data:"2024-01-01",acao:"DECISÃO: Recriação do zero na BCOS 3.0 - Não haverá migração"},
     {data:"2024-01-01",acao:"Responsável: Alan (desenvolvedor) | Motivo: Mais rápido, mais limpo, evita compatibilidade"},
     {data:"2024-01-01",acao:"JANELA 1 - 05/05/2026 14h | RPA_Faturas_Dasa | PoC-Captive Portal-Ubiquiti"},
     {data:"2024-01-01",acao:"JANELA 2 - 12/05/2026 00h01 | APPInfra-ClaroFust | APPInfra-Media"},
-    {data:"2026-05-30",acao:"Virada prevista para hoje, contemplando o total de 8 máquinas."}
+    {data:"2026-05-30",acao:"Virada prevista para hoje, contemplando o total de 8 máquinas."},
+    {data:"2026-06-03",acao:"Progresso: 85% — Aguardando teste e validação na 3.0. Data prevista: 30/05. Data de migração: 07/06/2026"}
   ]},
-  { id:3,  nome:"QoS (Projeto 2)",                    qtdMaquinas:10,  status:"Em Progresso", progresso:80, dataPrevista:"2026-05-30", dataMigracao:"2026-05-30", historico:[{data:"2026-05-30",acao:"Virada prevista para o dia 12, contemplando o total de 10 máquinas."}] },
+  { id:3,  nome:"QoS (Projeto 2)",                    qtdMaquinas:10,  status:"Em Progresso", progresso:85, dataPrevista:"2026-05-30", dataMigracao:"2026-06-07", historico:[{data:"2026-05-30",acao:"Virada prevista para o dia 12, contemplando o total de 10 máquinas."},{data:"2026-06-03",acao:"Progresso: 85% — Aguardando teste e validação na 3.0. Data prevista: 30/05. Data de migração: 07/06/2026"}] },
   { id:4,  nome:"SOPREMA - INDUSTRIA E COMERCIO",     qtdMaquinas:8,   status:"Em Progresso", progresso:75, dataPrevista:"2026-05-30", dataMigracao:"2026-05-30", historico:[{data:"2026-05-26",acao:"Reunião de alinhamento para virada realizada em 26/05."},{data:"2026-05-30",acao:"Aguardando devolutiva do Bruno Queiroz para alinhamento com o cliente."}] },
   { id:5,  nome:"ZANTHUS - COMERCIO E SERVICOS",      qtdMaquinas:24,  status:"Em Progresso", progresso:50, dataPrevista:"2026-05-30", dataMigracao:"2026-05-30", historico:[{data:"2026-05-30",acao:"Criado - Status: Em Progresso, aguardando definição do histórico."}] },
   { id:6,  nome:"MAGAZINE LUIZA S/A",                 qtdMaquinas:11,  status:"Planejamento", progresso:0,  dataPrevista:"2026-06-13", dataMigracao:null,         historico:[] },
