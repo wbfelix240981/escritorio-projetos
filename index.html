@@ -457,57 +457,12 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--blue); outline-
       </div>
       <div class="hero-stats">
         <div class="hero-stat"><div class="sv">3</div><div class="sl">Ativos</div></div>
-        <div class="hero-stat"><div class="sv">5%</div><div class="sl">Média ativos</div></div>
-        <div class="hero-stat"><div class="sv">5</div><div class="sl">Entregues</div></div>
+        <div class="hero-stat"><div class="sv">10%</div><div class="sl">Média ativos</div></div>
+        <div class="hero-stat"><div class="sv">3</div><div class="sl">Entregues</div></div>
       </div>
     </div>
     <div class="sec-label">Clientes</div>
     <div class="grid grid-2">
-
-      <!-- Igreja Pentecostal -->
-      <div class="card anim">
-        <div class="card-accent accent-green"></div>
-        <div class="card-header">
-          <span class="pill pill-done">✓ Entregue — Maio/2026</span>
-          <span class="card-pct">100%</span>
-        </div>
-        <div class="card-title">Igreja Pentecostal Deus e Amor</div>
-        <div class="card-footer">
-          <span class="prog-note">14/15 máq. · TEP encaminhado · Aguard. assinatura</span>
-          <div class="bar-track"><div class="bar-fill fill-green" data-pct="100"></div></div>
-          <button class="btn-det" onclick="openModal('ipda')">Ver detalhes <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 6.5h9M7 2l4.5 4.5L7 11" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-        </div>
-      </div>
-
-      <!-- Automa -->
-      <div class="card anim">
-        <div class="card-accent accent-green"></div>
-        <div class="card-header">
-          <span class="pill pill-done">✓ Entregue — Maio/2026</span>
-          <span class="card-pct">100%</span>
-        </div>
-        <div class="card-title">Automa</div>
-        <div class="card-footer">
-          <span class="prog-note">17/17 lic. Veeam · TEP encaminhado · Aguard. assinatura</span>
-          <div class="bar-track"><div class="bar-fill fill-green" data-pct="100"></div></div>
-          <button class="btn-det" onclick="openModal('automa')">Ver detalhes <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 6.5h9M7 2l4.5 4.5L7 11" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-        </div>
-      </div>
-
-      <!-- Guardião -->
-      <div class="card anim">
-        <div class="card-accent accent-green"></div>
-        <div class="card-header">
-          <span class="pill pill-done">✓ Entregue — Maio/2026</span>
-          <span class="card-pct">100%</span>
-        </div>
-        <div class="card-title">Guardião</div>
-        <div class="card-footer">
-          <span class="prog-note">TEP encaminhado · Aguardando assinatura do cliente</span>
-          <div class="bar-track"><div class="bar-fill fill-green" data-pct="100"></div></div>
-          <button class="btn-det" onclick="openModal('guardiao')">Ver detalhes <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 6.5h9M7 2l4.5 4.5L7 11" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-        </div>
-      </div>
 
       <!-- SPSP -->
       <div class="card anim">
@@ -539,9 +494,65 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--blue); outline-
         </div>
       </div>
 
+      <!-- UOL -->
+      <div class="card anim">
+        <div class="card-accent accent-blue"></div>
+        <div class="card-header">
+          <span class="pill pill-prog">● Em progresso</span>
+          <span class="card-pct">5%</span>
+        </div>
+        <div class="card-title">UOL – Modernização de Nuvem Privada</div>
+        <div class="card-footer">
+          <span class="prog-note">Iniciando projeto</span>
+          <div class="bar-track"><div class="bar-fill fill-blue" data-pct="5"></div></div>
+          <button class="btn-det" onclick="openModal('uol')">Ver detalhes <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 6.5h9M7 2l4.5 4.5L7 11" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        </div>
+      </div>
 
+      <!-- Guardião Familiar -->
+      <div class="card anim">
+        <div class="card-accent accent-green"></div>
+        <div class="card-header">
+          <span class="pill pill-done">✓ Entregue — Maio/2026</span>
+          <span class="card-pct">100%</span>
+        </div>
+        <div class="card-title">Guardião Familiar</div>
+        <div class="card-footer">
+          <span class="prog-note">TEP recebido · Submetido para faturamento</span>
+          <div class="bar-track"><div class="bar-fill fill-green" data-pct="100"></div></div>
+          <button class="btn-det" onclick="openModal('guardiao')">Ver detalhes <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 6.5h9M7 2l4.5 4.5L7 11" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        </div>
+      </div>
 
+      <!-- Igreja Pentecostal -->
+      <div class="card anim">
+        <div class="card-accent accent-green"></div>
+        <div class="card-header">
+          <span class="pill pill-done">✓ Entregue — Maio/2026</span>
+          <span class="card-pct">100%</span>
+        </div>
+        <div class="card-title">Igreja Pentecostal Deus e Amor</div>
+        <div class="card-footer">
+          <span class="prog-note">14/15 máq. · TEP encaminhado · Aguard. assinatura</span>
+          <div class="bar-track"><div class="bar-fill fill-green" data-pct="100"></div></div>
+          <button class="btn-det" onclick="openModal('ipda')">Ver detalhes <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 6.5h9M7 2l4.5 4.5L7 11" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        </div>
+      </div>
 
+      <!-- Automa -->
+      <div class="card anim">
+        <div class="card-accent accent-green"></div>
+        <div class="card-header">
+          <span class="pill pill-done">✓ Entregue — Maio/2026</span>
+          <span class="card-pct">100%</span>
+        </div>
+        <div class="card-title">Automa</div>
+        <div class="card-footer">
+          <span class="prog-note">17/17 lic. Veeam · TEP encaminhado · Aguard. assinatura</span>
+          <div class="bar-track"><div class="bar-fill fill-green" data-pct="100"></div></div>
+          <button class="btn-det" onclick="openModal('automa')">Ver detalhes <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 6.5h9M7 2l4.5 4.5L7 11" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        </div>
+      </div>
 
     </div>
 
@@ -2037,10 +2048,10 @@ const P = {
     secs:[{t:'Escopo',rows:[[' ',' ']]},{t:'Status atual',rows:[[' ',' ']]},{t:'Próximos passos',rows:[[' ',' ']]}]
   },
   guardiao:{
-    eye:'Projeto de Cliente', title:'Guardião', pct:100,
+    eye:'Projeto de Cliente', title:'Guardião Familiar', pct:100,
     fc:'fill-green', grad:'linear-gradient(90deg,#2e7d32,#43a047)',
     pill:'<span class="pill pill-done">✓ Finalizado — Maio/2026</span>',
-    tags:[['Finalizado','green'],['Mai/2026','green'],['TEP enviado','orange']],
+    tags:[['Finalizado','green'],['Mai/2026','green'],['TEP recebido','green'],['Faturamento submetido','orange']],
     completed:'2026-05-31',
     secs:[
       {t:'Escopo', rows:[
@@ -2050,13 +2061,12 @@ const P = {
       ]},
       {t:'Status atual', rows:[
         ['✅','Projeto finalizado e entregue ao cliente'],
-        ['📄','TEP (Termo de Entrega do Projeto) encaminhado ao cliente para assinatura'],
-        ['⏳','Aguardando devolutiva e assinatura do cliente'],
-        ['💳','Faturamento será liberado após assinatura do TEP']
+        ['📄','TEP (Termo de Entrega do Projeto) recebido e assinado pelo cliente'],
+        ['💳','Projeto submetido para faturamento']
       ]},
       {t:'Próximos passos', rows:[
-        ['✍️','Obter assinatura do TEP pelo cliente'],
-        ['💰','Liberar faturamento após confirmação da assinatura']
+        ['💰','Aguardando processamento do faturamento'],
+        ['📊','Acompanhar confirmação do pagamento']
       ]}
     ]
   },
@@ -2066,6 +2076,28 @@ const P = {
   claudia:{eye:'Projeto Estruturante',title:'ClaudIA',pct:90,fc:'fill-blue',grad:'linear-gradient(90deg,#1565c0,#2979ff)',pill:'<span class="pill pill-prog">● Em progresso</span>',completed:null,tags:[['IA','blue'],['Automação','blue'],['90%','blue']],secs:[{t:'Status atual',rows:[['🤖','Projeto em andamento — 90% concluído']]},{t:'Próximos marcos',rows:[['🚀','08/06/2026 — Entrada em produção assistida/automatizada'],['⚙️','01/07/2026 — Operação 100% automatizada'],['🏁','31/07/2026 — Encerramento e conclusão do projeto']]}]},
   san:{eye:'Projeto Estruturante',title:'Sanitização 2.0 / 3.0',pct:80,fc:'fill-blue',grad:'linear-gradient(90deg,#1565c0,#2979ff)',pill:'<span class="pill pill-prog">● Em progresso</span>',completed:null,tags:[['Sanitização','blue'],['Segurança','blue']],secs:[{t:'Escopo',rows:[[' ',' ']]},{t:'Status atual',rows:[[' ',' ']]},{t:'Próximos passos',rows:[[' ',' ']]}]},
   storware:{eye:'Projeto Estruturante',title:'Implementação – Storware',pct:90,fc:'fill-blue',grad:'linear-gradient(90deg,#1565c0,#2979ff)',pill:'<span class="pill pill-prog">● Em progresso</span>',completed:null,tags:[['Backup','blue'],['Storware','blue'],['90%','blue']],secs:[{t:'Status atual',rows:[['🔄','Implantação das 5 licenças em execução'],['💾','Backups iniciais sendo realizados']]},{t:'Próximo marco',rows:[['🧪','Início dos testes de restore em 08/06/2026'],['✅','Conclusão dos testes prevista para 09/06/2026']]}]},
+  uol:{
+    eye:'Projeto de Cliente', title:'UOL – Modernização de Nuvem Privada', pct:5,
+    fc:'fill-blue', grad:'linear-gradient(90deg,#1565c0,#2979ff)',
+    pill:'<span class="pill pill-prog">● Em progresso</span>',
+    tags:[['Cliente','blue'],['Modernização','blue'],['Nuvem Privada','blue'],['5%','blue']],
+    completed:null,
+    secs:[
+      {t:'Escopo', rows:[
+        ['☁️','Modernização da infraestrutura de nuvem privada'],
+        ['🔄','Atualização e otimização de ambientes existentes'],
+        ['🏗️','Implementação de novas soluções de infraestrutura']
+      ]},
+      {t:'Status atual', rows:[
+        ['🚀','Projeto iniciado — 5% concluído'],
+        ['📋','Levantamento de requisitos em andamento']
+      ]},
+      {t:'Próximos passos', rows:[
+        ['📐','Definição de arquitetura e escopo detalhado'],
+        ['⚙️','Início das atividades de implantação']
+      ]}
+    ]
+  },
   pedreira:{
     eye:'Projeto de Cliente', title:'Pedreira Vale Mix', pct:10,
     fc:'fill-green', grad:'linear-gradient(90deg,#2e7d32,#43a047)',
