@@ -461,7 +461,10 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--blue); outline-
         <div class="hero-stat"><div class="sv">3</div><div class="sl">Entregues</div></div>
       </div>
     </div>
-    <div class="sec-label">Clientes</div>
+    <div class="sec-label" style="display:flex;align-items:center;gap:10px;">
+      <span>Em andamento</span>
+      <span style="font-size:10px;font-weight:600;color:#3498db;background:#dceefb;padding:3px 10px;border-radius:99px;letter-spacing:.5px;">● 3 projetos</span>
+    </div>
     <div class="grid grid-2">
 
       <!-- UOL -->
@@ -509,48 +512,51 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--blue); outline-
         </div>
       </div>
 
+    </div>
+
+    <!-- ENTREGUES -->
+    <div class="sec-label" style="margin-top:28px;display:flex;align-items:center;gap:10px;">
+      <span>Entregues</span>
+      <span style="font-size:10px;font-weight:600;color:#27ae60;background:#d4f0dd;padding:3px 10px;border-radius:99px;letter-spacing:.5px;">● 3 projetos</span>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:10px;">
+
       <!-- Guardião Familiar -->
-      <div class="card anim">
-        <div class="card-accent accent-green"></div>
-        <div class="card-header">
-          <span class="pill pill-done">✓ Entregue — Maio/2026</span>
-          <span class="card-pct">100%</span>
+      <div class="card anim" style="display:flex;align-items:center;gap:14px;padding:14px 16px;">
+        <div style="width:4px;min-height:48px;border-radius:4px;background:linear-gradient(180deg,#2e7d32,#43a047);flex-shrink:0;"></div>
+        <div style="flex:1;min-width:0;">
+          <div style="font-size:11.5px;font-weight:800;color:var(--text-dark);margin-bottom:4px;">Guardião Familiar</div>
+          <div style="font-size:10px;color:#64748b;">TEP recebido · Submetido para faturamento</div>
         </div>
-        <div class="card-title">Guardião Familiar</div>
-        <div class="card-footer">
-          <span class="prog-note">TEP recebido · Submetido para faturamento</span>
-          <div class="bar-track"><div class="bar-fill fill-green" data-pct="100"></div></div>
-          <button class="btn-det" onclick="openModal('guardiao')">Ver detalhes <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 6.5h9M7 2l4.5 4.5L7 11" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <div style="display:flex;flex-direction:column;align-items:flex-end;gap:6px;flex-shrink:0;">
+          <span class="pill pill-done" style="font-size:9.5px;">● Entregue — Mai/2026</span>
+          <button class="btn-det" style="width:auto;padding:5px 12px;margin-top:0;font-size:9.5px;" onclick="openModal('guardiao')">Ver detalhes <svg width="11" height="11" viewBox="0 0 13 13" fill="none"><path d="M2 6.5h9M7 2l4.5 4.5L7 11" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
         </div>
       </div>
 
       <!-- Igreja Pentecostal -->
-      <div class="card anim">
-        <div class="card-accent accent-green"></div>
-        <div class="card-header">
-          <span class="pill pill-done">✓ Entregue — Maio/2026</span>
-          <span class="card-pct">100%</span>
+      <div class="card anim" style="display:flex;align-items:center;gap:14px;padding:14px 16px;">
+        <div style="width:4px;min-height:48px;border-radius:4px;background:linear-gradient(180deg,#2e7d32,#43a047);flex-shrink:0;"></div>
+        <div style="flex:1;min-width:0;">
+          <div style="font-size:11.5px;font-weight:800;color:var(--text-dark);margin-bottom:4px;">Igreja Pentecostal Deus e Amor</div>
+          <div style="font-size:10px;color:#64748b;">14/15 máq. · TEP encaminhado · Aguard. assinatura</div>
         </div>
-        <div class="card-title">Igreja Pentecostal Deus e Amor</div>
-        <div class="card-footer">
-          <span class="prog-note">14/15 máq. · TEP encaminhado · Aguard. assinatura</span>
-          <div class="bar-track"><div class="bar-fill fill-green" data-pct="100"></div></div>
-          <button class="btn-det" onclick="openModal('ipda')">Ver detalhes <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 6.5h9M7 2l4.5 4.5L7 11" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <div style="display:flex;flex-direction:column;align-items:flex-end;gap:6px;flex-shrink:0;">
+          <span class="pill pill-done" style="font-size:9.5px;">● Entregue — Mai/2026</span>
+          <button class="btn-det" style="width:auto;padding:5px 12px;margin-top:0;font-size:9.5px;" onclick="openModal('ipda')">Ver detalhes <svg width="11" height="11" viewBox="0 0 13 13" fill="none"><path d="M2 6.5h9M7 2l4.5 4.5L7 11" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
         </div>
       </div>
 
       <!-- Automa -->
-      <div class="card anim">
-        <div class="card-accent accent-green"></div>
-        <div class="card-header">
-          <span class="pill pill-done">✓ Entregue — Maio/2026</span>
-          <span class="card-pct">100%</span>
+      <div class="card anim" style="display:flex;align-items:center;gap:14px;padding:14px 16px;">
+        <div style="width:4px;min-height:48px;border-radius:4px;background:linear-gradient(180deg,#2e7d32,#43a047);flex-shrink:0;"></div>
+        <div style="flex:1;min-width:0;">
+          <div style="font-size:11.5px;font-weight:800;color:var(--text-dark);margin-bottom:4px;">Automa</div>
+          <div style="font-size:10px;color:#64748b;">17/17 lic. Veeam · TEP encaminhado · Aguard. assinatura</div>
         </div>
-        <div class="card-title">Automa</div>
-        <div class="card-footer">
-          <span class="prog-note">17/17 lic. Veeam · TEP encaminhado · Aguard. assinatura</span>
-          <div class="bar-track"><div class="bar-fill fill-green" data-pct="100"></div></div>
-          <button class="btn-det" onclick="openModal('automa')">Ver detalhes <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 6.5h9M7 2l4.5 4.5L7 11" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <div style="display:flex;flex-direction:column;align-items:flex-end;gap:6px;flex-shrink:0;">
+          <span class="pill pill-done" style="font-size:9.5px;">● Entregue — Mai/2026</span>
+          <button class="btn-det" style="width:auto;padding:5px 12px;margin-top:0;font-size:9.5px;" onclick="openModal('automa')">Ver detalhes <svg width="11" height="11" viewBox="0 0 13 13" fill="none"><path d="M2 6.5h9M7 2l4.5 4.5L7 11" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
         </div>
       </div>
 
@@ -1808,69 +1814,57 @@ document.addEventListener('page-changed', function(e) {
 <!-- CONTROLE DE MIGRAÇÃO -->
 <div id="controle-migracao" class="page">
   <div class="topbar" role="banner"><div class="tb-heading">Controle de Migração <span>| Binario Cloud</span></div></div>
-  <div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:linear-gradient(135deg,#0f172a 0%,#1e293b 100%);min-height:calc(100vh - 64px);color:#e2e8f0;line-height:1.6;">
-  <div style="max-width:1600px;margin:0 auto;padding:2.5rem 2rem;">
+  <div class="page-content">
 
-    <div style="margin-bottom:2rem;">
-      <h1 style="font-size:28px;font-weight:700;background:linear-gradient(135deg,#60a5fa,#3b82f6);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:.35rem;">Migração Cloud 2.0 → 3.0</h1>
-      <p style="font-size:14px;color:#94a3b8;">Acompanhamento em tempo real de clientes</p>
-    </div>
-
-    <!-- Metrics -->
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.25rem;margin-bottom:2.5rem;">
-      <div style="background:rgba(30,41,59,.8);border:1px solid rgba(148,163,184,.1);padding:1.75rem;border-radius:12px;">
-        <div style="font-size:11px;font-weight:600;color:#94a3b8;text-transform:uppercase;letter-spacing:1px;margin-bottom:.6rem;">Total de clientes</div>
-        <div style="font-size:38px;font-weight:700;color:#f1f5f9;" id="mg-metTotal">0</div>
+    <!-- Hero -->
+    <div class="page-hero anim" style="background:linear-gradient(135deg,#1a237e 0%,#283593 60%,#3949ab 100%);">
+      <div>
+        <div class="hero-title">Migração Cloud 2.0 → 3.0</div>
+        <div class="hero-sub">Acompanhamento de clientes em migração</div>
       </div>
-      <div style="background:rgba(30,41,59,.8);border:1px solid rgba(148,163,184,.1);padding:1.75rem;border-radius:12px;">
-        <div style="font-size:11px;font-weight:600;color:#94a3b8;text-transform:uppercase;letter-spacing:1px;margin-bottom:.6rem;">Migrados</div>
-        <div style="font-size:38px;font-weight:700;color:#10b981;" id="mg-metMigrados">0</div>
-      </div>
-      <div style="background:rgba(30,41,59,.8);border:1px solid rgba(148,163,184,.1);padding:1.75rem;border-radius:12px;">
-        <div style="font-size:11px;font-weight:600;color:#94a3b8;text-transform:uppercase;letter-spacing:1px;margin-bottom:.6rem;">Em progresso</div>
-        <div style="font-size:38px;font-weight:700;color:#f59e0b;" id="mg-metProgresso">0</div>
-      </div>
-      <div style="background:rgba(30,41,59,.8);border:1px solid rgba(148,163,184,.1);padding:1.75rem;border-radius:12px;">
-        <div style="font-size:11px;font-weight:600;color:#94a3b8;text-transform:uppercase;letter-spacing:1px;margin-bottom:.6rem;">Progresso geral</div>
-        <div style="font-size:38px;font-weight:700;color:#f1f5f9;" id="mg-metPct">0%</div>
+      <div class="hero-stats">
+        <div class="hero-stat"><div class="sv" id="mg-metTotal">0</div><div class="sl">Total</div></div>
+        <div class="hero-stat"><div class="sv" id="mg-metMigrados" style="color:#a5d6a7;">0</div><div class="sl">Migrados</div></div>
+        <div class="hero-stat"><div class="sv" id="mg-metProgresso" style="color:#fff176;">0</div><div class="sl">Em progresso</div></div>
+        <div class="hero-stat"><div class="sv" id="mg-metPct">0%</div><div class="sl">Progresso geral</div></div>
       </div>
     </div>
 
     <!-- Controls -->
-    <div style="display:flex;gap:1rem;margin-bottom:1.5rem;flex-wrap:wrap;align-items:center;">
-      <select id="mg-filtroStatus" onchange="mgRender()" style="padding:10px 14px;background:rgba(30,41,59,.8);border:1px solid rgba(148,163,184,.2);border-radius:8px;color:#e2e8f0;font-size:14px;">
+    <div style="display:flex;gap:10px;margin-bottom:20px;flex-wrap:wrap;align-items:center;">
+      <select id="mg-filtroStatus" onchange="mgRender()" style="padding:9px 14px;background:var(--card-bg);border:1.5px solid #d0d7e8;border-radius:10px;color:var(--text-dark);font-size:12px;font-family:'Sora',sans-serif;font-weight:600;cursor:pointer;">
         <option value="">Todos os status</option>
         <option value="Migrado">✓ Migrado</option>
         <option value="Em Progresso">⏳ Em Progresso</option>
         <option value="Planejamento">📋 Planejamento</option>
       </select>
-      <input type="text" id="mg-filtroNome" placeholder="Buscar cliente..." oninput="mgRender()" style="padding:10px 14px;background:rgba(30,41,59,.8);border:1px solid rgba(148,163,184,.2);border-radius:8px;color:#e2e8f0;font-size:14px;min-width:240px;flex:1;">
-      <button onclick="mgOpenModalNovo()" style="padding:10px 18px;background:linear-gradient(135deg,#60a5fa,#3b82f6);color:#fff;border:none;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:6px;">+ Novo cliente</button>
-      <span id="mg-saveStatus" style="font-size:12px;color:#64748b;display:flex;align-items:center;gap:5px;" aria-live="polite"><span id="mg-saveText"></span></span>
+      <input type="text" id="mg-filtroNome" placeholder="🔍  Buscar cliente..." oninput="mgRender()" style="padding:9px 14px;background:var(--card-bg);border:1.5px solid #d0d7e8;border-radius:10px;color:var(--text-dark);font-size:12px;font-family:'Sora',sans-serif;flex:1;min-width:200px;outline:none;">
+      <button onclick="mgOpenModalNovo()" style="padding:9px 18px;background:linear-gradient(135deg,var(--blue),var(--blue-light));color:#fff;border:none;border-radius:10px;font-size:11px;font-weight:700;font-family:'Sora',sans-serif;letter-spacing:.5px;text-transform:uppercase;cursor:pointer;display:flex;align-items:center;gap:6px;white-space:nowrap;">+ Novo cliente</button>
+      <span id="mg-saveStatus" style="font-size:11px;color:var(--text-light);display:flex;align-items:center;gap:5px;" aria-live="polite"><span id="mg-saveText"></span></span>
     </div>
 
     <!-- Table -->
-    <div style="background:rgba(30,41,59,.8);border:1px solid rgba(148,163,184,.1);border-radius:12px;overflow:hidden;">
-      <table style="width:100%;border-collapse:collapse;font-size:13px;">
-        <thead style="background:rgba(15,23,42,.5);border-bottom:1px solid rgba(148,163,184,.1);">
-          <tr>
-            <th style="padding:1rem;text-align:left;font-weight:600;color:#cbd5e1;text-transform:uppercase;font-size:11px;letter-spacing:.5px;">Cliente</th>
-            <th style="padding:1rem;text-align:center;font-weight:600;color:#cbd5e1;text-transform:uppercase;font-size:11px;letter-spacing:.5px;">Máquinas</th>
-            <th style="padding:1rem;text-align:center;font-weight:600;color:#cbd5e1;text-transform:uppercase;font-size:11px;letter-spacing:.5px;">Status</th>
-            <th style="padding:1rem;text-align:center;font-weight:600;color:#cbd5e1;text-transform:uppercase;font-size:11px;letter-spacing:.5px;">Progresso</th>
-            <th style="padding:1rem;text-align:center;font-weight:600;color:#cbd5e1;text-transform:uppercase;font-size:11px;letter-spacing:.5px;">Data prevista</th>
-            <th style="padding:1rem;text-align:center;font-weight:600;color:#cbd5e1;text-transform:uppercase;font-size:11px;letter-spacing:.5px;">Data migração</th>
-            <th style="padding:1rem;text-align:center;font-weight:600;color:#cbd5e1;text-transform:uppercase;font-size:11px;letter-spacing:.5px;">Histórico</th>
+    <div class="sec-label">Clientes em migração</div>
+    <div style="background:var(--card-bg);border-radius:var(--radius);border:1px solid rgba(0,0,0,.05);box-shadow:var(--shadow);overflow:hidden;">
+      <table style="width:100%;border-collapse:collapse;font-size:12px;font-family:'Sora',sans-serif;">
+        <thead>
+          <tr style="background:linear-gradient(135deg,#f5f7fa,#eef1f7);border-bottom:2px solid #d0d7e8;">
+            <th style="padding:12px 16px;text-align:left;font-weight:800;color:var(--text-dark);text-transform:uppercase;font-size:10px;letter-spacing:1.5px;">Cliente</th>
+            <th style="padding:12px 16px;text-align:center;font-weight:800;color:var(--text-dark);text-transform:uppercase;font-size:10px;letter-spacing:1.5px;">Máqs.</th>
+            <th style="padding:12px 16px;text-align:center;font-weight:800;color:var(--text-dark);text-transform:uppercase;font-size:10px;letter-spacing:1.5px;">Status</th>
+            <th style="padding:12px 16px;text-align:left;font-weight:800;color:var(--text-dark);text-transform:uppercase;font-size:10px;letter-spacing:1.5px;">Progresso</th>
+            <th style="padding:12px 16px;text-align:center;font-weight:800;color:var(--text-dark);text-transform:uppercase;font-size:10px;letter-spacing:1.5px;">Prevista</th>
+            <th style="padding:12px 16px;text-align:center;font-weight:800;color:var(--text-dark);text-transform:uppercase;font-size:10px;letter-spacing:1.5px;">Migrado em</th>
+            <th style="padding:12px 16px;text-align:center;font-weight:800;color:var(--text-dark);text-transform:uppercase;font-size:10px;letter-spacing:1.5px;">Histórico</th>
           </tr>
         </thead>
         <tbody id="mg-tbody"></tbody>
       </table>
-      <div id="mg-emptyState" style="display:none;text-align:center;padding:3rem 2rem;color:#64748b;">
-        <p>Nenhum cliente encontrado</p>
+      <div id="mg-emptyState" style="display:none;text-align:center;padding:3rem 2rem;color:var(--text-light);">
+        <p style="font-size:13px;font-weight:600;">Nenhum cliente encontrado</p>
       </div>
     </div>
 
-  </div>
   </div>
 </div>
 
@@ -2315,7 +2309,7 @@ function mgFmtData(iso) { if(!iso) return '—'; const [y,m,d]=iso.split('-'); r
 function mgRender() {
   const fStatus = document.getElementById('mg-filtroStatus')?.value || '';
   const fNome   = (document.getElementById('mg-filtroNome')?.value || '').toLowerCase();
-  const lista   = mgClientes.filter(c => (!fStatus || c.status===fStatus) && c.nome.toLowerCase().includes(fNome));
+  const lista   = mgClientes.filter(c => (!fStatus || c.status===fStatus) && c.nome.toLowerCase().includes(fNome)).sort((a,b) => b.progresso - a.progresso);
   const tbody   = document.getElementById('mg-tbody');
   const empty   = document.getElementById('mg-emptyState');
   if (!tbody) return;
@@ -2324,32 +2318,70 @@ function mgRender() {
     empty.style.display='none';
     tbody.innerHTML = lista.map(c => {
       const done = c.progresso===100;
-      const dateColor = !c.dataPrevista ? '#e2e8f0' : c.dataPrevista<='2026-05-30' ? '#10b981' : '#f59e0b';
+      const hoje = mgHoje();
+      const atrasado = c.dataPrevista && c.dataPrevista < hoje && c.status !== 'Migrado';
+      const semContato = c.historico.some(h => h.acao.toLowerCase().includes('sem retorno') || h.acao.toLowerCase().includes('sem contato'));
+      const trocaIp = c.historico.some(h => h.acao.toLowerCase().includes('troca de ip'));
+
+      // Cor da linha
+      const rowAccent = done ? '#27ae60'
+        : atrasado ? '#e67e22'
+        : semContato ? '#e74c3c'
+        : trocaIp ? '#95a5a6'
+        : c.status === 'Em Progresso' ? '#3498db'
+        : '#8e44ad';
+
+      const rowBg = done ? 'background:linear-gradient(135deg,#f0fdf4,#f8fafb)'
+        : atrasado ? 'background:linear-gradient(135deg,#fff8f0,#fff5eb)'
+        : semContato ? 'background:linear-gradient(135deg,#fff5f5,#fef2f2)'
+        : trocaIp ? 'background:linear-gradient(135deg,#f8f9fa,#f1f3f5)'
+        : '';
+
+      const dateColor = !c.dataPrevista ? 'var(--text-light)'
+        : atrasado ? '#e67e22'
+        : '#27ae60';
+
       const statusHtml = c.status==='Migrado'
-        ? `<span style="display:inline-flex;align-items:center;gap:6px;padding:6px 12px;border-radius:6px;font-size:12px;font-weight:600;background:rgba(16,185,129,.15);color:#10b981;">✓ Migrado</span>`
+        ? `<span class="pill" style="background:#e8f5e9;color:#27ae60;border:1.5px solid #c8e6c9;">🟢 Migrado</span>`
+        : c.status==='Em Progresso' && atrasado
+        ? `<span class="pill" style="background:#fff3e0;color:#e67e22;border:1.5px solid #ffe0b2;">🟠 Atrasado</span>`
         : c.status==='Em Progresso'
-        ? `<span style="display:inline-flex;align-items:center;gap:6px;padding:6px 12px;border-radius:6px;font-size:12px;font-weight:600;background:rgba(245,158,11,.15);color:#f59e0b;">⏳ Em Progresso</span>`
-        : `<button onclick="mgIniciar(${c.id})" style="padding:6px 12px;background:rgba(59,130,246,.1);color:#60a5fa;border:1px solid rgba(59,130,246,.3);border-radius:6px;cursor:pointer;font-weight:600;font-size:12px;">▶ Iniciar</button>`;
-      return `<tr style="border-bottom:1px solid rgba(148,163,184,.05);">
-        <td style="padding:1rem;color:#cbd5e1;"><strong>${c.nome}</strong></td>
-        <td style="padding:1rem;text-align:center;"><strong style="color:#60a5fa;">${c.qtdMaquinas||0}</strong></td>
-        <td style="padding:1rem;text-align:center;">${statusHtml}</td>
-        <td style="padding:1rem;text-align:center;">
+        ? `<span class="pill" style="background:#dceefb;color:#3498db;border:1.5px solid #b8d8f5;">🔵 Em Progresso</span>`
+        : trocaIp
+        ? `<span class="pill" style="background:#f0f0f0;color:#7f8c8d;border:1.5px solid #ddd;">⚫ Troca de IP</span>`
+        : `<span class="pill" style="background:#f3e5f5;color:#8e44ad;border:1.5px solid #e1bee7;">🟣 Planejamento</span>`;
+
+      // Última nota do histórico
+      const ultimaNota = c.historico.length ? c.historico[c.historico.length-1].acao : '';
+      const notaColor = done ? '#27ae60'
+        : semContato ? '#e74c3c'
+        : trocaIp ? '#95a5a6'
+        : atrasado ? '#e67e22'
+        : '#64748b';
+
+      return `<tr style="border-bottom:1px solid #eef0f6;${rowBg};transition:background .15s;border-left:3px solid ${rowAccent};" onmouseover="this.style.background='#f5f7fb'" onmouseout="this.style.background='${done?'linear-gradient(135deg,#f0fdf4,#f8fafb)':atrasado?'linear-gradient(135deg,#fff8f0,#fff5eb)':semContato?'linear-gradient(135deg,#fff5f5,#fef2f2)':trocaIp?'linear-gradient(135deg,#f8f9fa,#f1f3f5)':''}'">
+        <td style="padding:12px 16px;">
+          <strong style="font-size:12px;color:var(--text-dark);">${c.nome}</strong>
+          ${ultimaNota ? `<div style="font-size:10px;color:${notaColor};margin-top:3px;font-weight:600;max-width:260px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">↳ ${ultimaNota}</div>` : ''}
+        </td>
+        <td style="padding:12px 16px;text-align:center;"><span style="font-size:13px;font-weight:800;color:var(--blue);">${c.qtdMaquinas||0}</span></td>
+        <td style="padding:12px 16px;text-align:center;">${statusHtml}</td>
+        <td style="padding:12px 16px;">
           <div style="display:flex;align-items:center;gap:10px;">
-            <div style="flex:1;height:6px;background:rgba(148,163,184,.1);border-radius:3px;overflow:hidden;min-width:80px;">
-              <div style="height:100%;background:${done?'linear-gradient(90deg,#10b981,#059669)':'linear-gradient(90deg,#f59e0b,#d97706)'};border-radius:3px;width:${c.progresso}%;"></div>
+            <div class="bar-track" style="flex:1;min-width:80px;">
+              <div class="bar-fill ${done?'fill-green':atrasado?'fill-dark':'fill-blue'}" style="width:${c.progresso}%;"></div>
             </div>
-            <span style="font-size:12px;font-weight:600;color:#cbd5e1;min-width:35px;text-align:right;">${c.progresso}%</span>
+            <span style="font-size:12px;font-weight:800;color:${rowAccent};min-width:32px;text-align:right;">${c.progresso}%</span>
           </div>
         </td>
-        <td style="padding:1rem;text-align:center;">
-          <input type="date" value="${c.dataPrevista||''}" style="padding:6px 10px;background:rgba(30,41,59,.8);color:${dateColor};border:1px solid rgba(96,165,250,.2);border-radius:6px;font-size:12px;" onchange="mgSetDataPrevista(${c.id},this.value)">
+        <td style="padding:12px 16px;text-align:center;">
+          <input type="date" value="${c.dataPrevista||''}" style="padding:5px 9px;background:var(--bg);color:${dateColor};border:1.5px solid ${atrasado?'#f0a070':'#d0d7e8'};border-radius:8px;font-size:11px;font-family:'Sora',sans-serif;font-weight:600;cursor:pointer;" onchange="mgSetDataPrevista(${c.id},this.value)">
         </td>
-        <td style="padding:1rem;text-align:center;">
-          <input type="date" value="${c.dataMigracao||''}" style="padding:6px 10px;background:rgba(30,41,59,.8);color:#e2e8f0;border:1px solid rgba(96,165,250,.2);border-radius:6px;font-size:12px;" onchange="mgSetDataMigracao(${c.id},this.value)">
+        <td style="padding:12px 16px;text-align:center;">
+          <input type="date" value="${c.dataMigracao||''}" style="padding:5px 9px;background:var(--bg);color:var(--text-dark);border:1.5px solid #d0d7e8;border-radius:8px;font-size:11px;font-family:'Sora',sans-serif;font-weight:600;cursor:pointer;" onchange="mgSetDataMigracao(${c.id},this.value)">
         </td>
-        <td style="padding:1rem;text-align:center;">
-          <button onclick="mgOpenHistorico(${c.id})" style="padding:6px 12px;background:rgba(59,130,246,.1);color:#60a5fa;border:1px solid rgba(59,130,246,.3);border-radius:6px;cursor:pointer;font-weight:600;font-size:12px;">🕐 Histórico</button>
+        <td style="padding:12px 16px;text-align:center;">
+          <button onclick="mgOpenHistorico(${c.id})" class="btn-det" style="width:auto;margin-top:0;padding:6px 14px;font-size:10px;">🕐 Ver</button>
         </td>
       </tr>`;
     }).join('');
@@ -2424,13 +2456,19 @@ function mgRenderHistorico() {
   const items=mgClienteAtivo.historico;
   if(!items.length){document.getElementById('mg-histConteudo').innerHTML='<p style="color:#64748b;padding:1rem 0;">Nenhum histórico registrado.</p>';return;}
   document.getElementById('mg-histConteudo').innerHTML='<div style="padding:.5rem 0;">'+items.map((item,i)=>{
-    const done=item.acao.toLowerCase().includes('concluí')||item.acao.toLowerCase().includes('migrado');
-    const col=done?'16,185,129':'59,130,246';const colText=done?'#10b981':'#60a5fa';
-    return `<div style="display:flex;gap:12px;margin-bottom:1.25rem;">
-      <div style="width:32px;height:32px;border-radius:50%;background:rgba(${col},.1);border:2px solid rgba(${col},.4);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:11px;color:${colText};font-weight:700;">${i+1}</div>
-      <div style="flex:1;padding-top:4px;">
-        <p style="margin:0 0 3px;font-size:13px;font-weight:500;color:#cbd5e1;">${item.acao}</p>
-        <small style="color:#64748b;font-size:12px;">${mgFmtData(item.data)}</small>
+    const txt = item.acao.toLowerCase();
+    const isDone     = txt.includes('concluí') || txt.includes('migrado') || txt.includes('finalizado') || txt.includes('faturamento') || txt.includes('tep recebido');
+    const isWarning  = txt.includes('aguardando') || txt.includes('pendente') || txt.includes('sem retorno') || txt.includes('sem contato');
+    const isAlert    = txt.includes('sem retorno') || txt.includes('sem contato');
+    const isInfo     = txt.includes('reunião') || txt.includes('janela') || txt.includes('agendad') || txt.includes('confirmad');
+    const col   = isDone ? '#27ae60' : isAlert ? '#e74c3c' : isWarning ? '#e67e22' : isInfo ? '#3498db' : '#8e44ad';
+    const bg    = isDone ? 'rgba(39,174,96,.08)' : isAlert ? 'rgba(231,76,60,.08)' : isWarning ? 'rgba(230,126,34,.08)' : isInfo ? 'rgba(52,152,219,.08)' : 'rgba(142,68,173,.08)';
+    const icon  = isDone ? '✅' : isAlert ? '🔴' : isWarning ? '⏳' : isInfo ? '📅' : '📝';
+    return `<div style="display:flex;gap:12px;margin-bottom:10px;padding:10px 12px;border-radius:10px;background:${bg};border-left:3px solid ${col};">
+      <span style="font-size:14px;flex-shrink:0;margin-top:1px;">${icon}</span>
+      <div style="flex:1;">
+        <p style="margin:0 0 3px;font-size:12px;font-weight:600;color:var(--text-dark);">${item.acao}</p>
+        <small style="color:var(--text-light);font-size:10px;font-weight:600;letter-spacing:.3px;">${mgFmtData(item.data)}</small>
       </div>
     </div>`;
   }).join('')+'</div>';
@@ -2454,25 +2492,25 @@ async function mgSalvarDados() {
 
 // Seed de referência — usado para sincronizar dados atualizados
 const MG_SEED = [
-  { id:1,  nome:"PRUMO ENGENHARIA EIRELI",         qtdMaquinas:5,   status:"Em Progresso", progresso:30, dataPrevista:"2026-06-12", dataMigracao:null,         historico:[{data:"2026-06-03",acao:"Progresso: 30% — Aguardando retorno do acesso para criação das cópias no ambiente 3.0"},{data:"2026-06-03",acao:"Data prevista de conclusão: 12/06/2026"}] },
-  { id:2,  nome:"QoS (Projeto 1)",                 qtdMaquinas:8,   status:"Em Progresso", progresso:85, dataPrevista:"2026-05-30", dataMigracao:"2026-06-07", historico:[{data:"2024-01-01",acao:"DECISÃO: Recriação do zero na BCOS 3.0 - Não haverá migração"},{data:"2024-01-01",acao:"Responsável: Alan (desenvolvedor) | Motivo: Mais rápido, mais limpo, evita compatibilidade"},{data:"2024-01-01",acao:"JANELA 1 - 05/05/2026 14h | RPA_Faturas_Dasa | PoC-Captive Portal-Ubiquiti"},{data:"2024-01-01",acao:"JANELA 2 - 12/05/2026 00h01 | APPInfra-ClaroFust | APPInfra-Media"},{data:"2026-05-30",acao:"Virada prevista para hoje, contemplando o total de 8 máquinas."},{data:"2026-06-03",acao:"Progresso: 85% — Aguardando teste e validação na 3.0. Data prevista: 30/05. Data de migração: 07/06/2026"}] },
-  { id:3,  nome:"QoS (Projeto 2)",                 qtdMaquinas:10,  status:"Em Progresso", progresso:85, dataPrevista:"2026-05-30", dataMigracao:"2026-06-07", historico:[{data:"2026-05-30",acao:"Virada prevista para o dia 12, contemplando o total de 10 máquinas."},{data:"2026-06-03",acao:"Progresso: 85% — Aguardando teste e validação na 3.0. Data prevista: 30/05. Data de migração: 07/06/2026"}] },
-  { id:4,  nome:"SOPREMA - INDUSTRIA E COMERCIO",  qtdMaquinas:8,   status:"Em Progresso", progresso:75, dataPrevista:"2026-05-30", dataMigracao:"2026-05-30", historico:[{data:"2026-05-26",acao:"Reunião de alinhamento para virada realizada em 26/05."},{data:"2026-05-30",acao:"Aguardando devolutiva do Bruno Queiroz para alinhamento com o cliente."}] },
-  { id:5,  nome:"ZANTHUS - COMERCIO E SERVICOS",   qtdMaquinas:24,  status:"Em Progresso", progresso:50, dataPrevista:"2026-05-30", dataMigracao:"2026-05-30", historico:[{data:"2026-05-30",acao:"Criado - Status: Em Progresso, aguardando definição do histórico."}] },
-  { id:6,  nome:"MAGAZINE LUIZA S/A",              qtdMaquinas:11,  status:"Planejamento", progresso:0,  dataPrevista:"2026-06-13", dataMigracao:null,         historico:[] },
-  { id:7,  nome:"NETZA - PROMOCOES E EVENTOS",     qtdMaquinas:3,   status:"Planejamento", progresso:0,  dataPrevista:"2026-06-13", dataMigracao:null,         historico:[] },
-  { id:8,  nome:"PIRAMIDAL - THERMOPLASTICS S.A.", qtdMaquinas:10,  status:"Planejamento", progresso:0,  dataPrevista:"2026-06-13", dataMigracao:null,         historico:[] },
-  { id:9,  nome:"RADIO MONTE DA GAVEA LTDA",       qtdMaquinas:6,   status:"Planejamento", progresso:0,  dataPrevista:"2026-06-13", dataMigracao:null,         historico:[] },
-  { id:10, nome:"ENESA ENGENHARIA S.A.",            qtdMaquinas:14,  status:"Planejamento", progresso:0,  dataPrevista:"2026-06-28", dataMigracao:null,         historico:[] },
-  { id:11, nome:"GIMBA - SUPRICORP SUPRIMENTOS",   qtdMaquinas:102, status:"Planejamento", progresso:0,  dataPrevista:"2026-06-28", dataMigracao:null,         historico:[] },
-  { id:12, nome:"BMC MAQUINAS E EQUIP PESADOS",    qtdMaquinas:23,  status:"Planejamento", progresso:0,  dataPrevista:null,         dataMigracao:null,         historico:[] },
-  { id:13, nome:"GEOFIX ENGENHARIA FUNDACOES",     qtdMaquinas:2,   status:"Planejamento", progresso:0,  dataPrevista:null,         dataMigracao:null,         historico:[] },
-  { id:14, nome:"REFRIO ARMAZENS GERAIS LTDA",     qtdMaquinas:26,  status:"Planejamento", progresso:0,  dataPrevista:null,         dataMigracao:null,         historico:[] },
-  { id:15, nome:"1TEAMCLOUD SOLUCOES",             qtdMaquinas:1,   status:"Planejamento", progresso:0,  dataPrevista:null,         dataMigracao:null,         historico:[] },
-  { id:16, nome:"GRUPO RAIZES",                    qtdMaquinas:13,  status:"Planejamento", progresso:0,  dataPrevista:null,         dataMigracao:null,         historico:[] },
-  { id:17, nome:"SAT CONSULTORIA",                 qtdMaquinas:3,   status:"Planejamento", progresso:0,  dataPrevista:null,         dataMigracao:null,         historico:[] },
+  { id:2,  nome:"QoS (Projeto 1)",                 qtdMaquinas:8,   status:"Em Progresso", progresso:85, dataPrevista:"2026-05-30", dataMigracao:"2026-06-07", historico:[{data:"2024-01-01",acao:"DECISÃO: Recriação do zero na BCOS 3.0 - Não haverá migração"},{data:"2024-01-01",acao:"Responsável: Alan (desenvolvedor) | Motivo: Mais rápido, mais limpo, evita compatibilidade"},{data:"2024-01-01",acao:"JANELA 1 - 05/05/2026 14h | RPA_Faturas_Dasa | PoC-Captive Portal-Ubiquiti"},{data:"2024-01-01",acao:"JANELA 2 - 12/05/2026 00h01 | APPInfra-ClaroFust | APPInfra-Media"},{data:"2026-05-30",acao:"Virada prevista para hoje, contemplando o total de 8 máquinas."},{data:"2026-06-03",acao:"Progresso: 85% — Aguardando teste e validação na 3.0. Data prevista: 30/05. Data de migração: 07/06/2026"},{data:"2026-06-07",acao:"Necessário obter status junto ao Augusto (CSE)"}] },
+  { id:3,  nome:"QoS (Projeto 2)",                 qtdMaquinas:10,  status:"Em Progresso", progresso:85, dataPrevista:"2026-05-30", dataMigracao:"2026-06-07", historico:[{data:"2026-05-30",acao:"Virada prevista para o dia 12, contemplando o total de 10 máquinas."},{data:"2026-06-03",acao:"Progresso: 85% — Aguardando teste e validação na 3.0. Data prevista: 30/05. Data de migração: 07/06/2026"},{data:"2026-06-07",acao:"Necessário obter status junto ao Augusto (CSE)"}] },
+  { id:4,  nome:"SOPREMA - INDUSTRIA E COMERCIO",  qtdMaquinas:8,   status:"Em Progresso", progresso:75, dataPrevista:"2026-06-12", dataMigracao:null,         historico:[{data:"2026-05-26",acao:"Reunião de alinhamento para virada realizada em 26/05."},{data:"2026-05-30",acao:"Aguardando devolutiva do Bruno Queiroz para alinhamento com o cliente."},{data:"2026-06-07",acao:"Janela confirmada para sexta-feira (12/06), após configuração de firewall"}] },
+  { id:5,  nome:"ZANTHUS - COMERCIO E SERVICOS",   qtdMaquinas:24,  status:"Em Progresso", progresso:50, dataPrevista:"2026-06-12", dataMigracao:null,         historico:[{data:"2026-05-30",acao:"Criado - Status: Em Progresso, aguardando definição do histórico."},{data:"2026-06-07",acao:"Necessário definição e confirmação da janela para 12/06"}] },
+  { id:1,  nome:"PRUMO ENGENHARIA EIRELI",         qtdMaquinas:5,   status:"Em Progresso", progresso:30, dataPrevista:"2026-06-12", dataMigracao:null,         historico:[{data:"2026-06-03",acao:"Progresso: 30% — Aguardando retorno do acesso para criação das cópias no ambiente 3.0"},{data:"2026-06-03",acao:"Data prevista de conclusão: 12/06/2026"},{data:"2026-06-07",acao:"Aguardando liberação de acesso para que o time de Delivery realize as cópias e disponibilize para validação na versão 3.0"},{data:"2026-06-07",acao:"Em andamento com parceiro responsável pela sustentação do Zimbra para obtenção dos dados de acesso"}] },
+  { id:11, nome:"GIMBA - SUPRICORP SUPRIMENTOS",   qtdMaquinas:102, status:"Em Progresso", progresso:15, dataPrevista:"2026-06-19", dataMigracao:null,         historico:[{data:"2026-06-07",acao:"Migração confirmada para 19/06"}] },
+  { id:6,  nome:"MAGAZINE LUIZA S/A",              qtdMaquinas:11,  status:"Em Progresso", progresso:10, dataPrevista:"2026-06-15", dataMigracao:null,         historico:[{data:"2026-06-07",acao:"Reunião realizada com a cliente (Manuella), com apresentação do plano"},{data:"2026-06-07",acao:"Pendente definição da janela de cópia até 15/06"}] },
+  { id:7,  nome:"NETZA - PROMOCOES E EVENTOS",     qtdMaquinas:3,   status:"Planejamento", progresso:0,  dataPrevista:"2026-06-12", dataMigracao:null,         historico:[{data:"2026-06-07",acao:"Necessário realizar reunião para definição da janela em 12/06 e confirmação do término do backup"}] },
+  { id:8,  nome:"PIRAMIDAL - THERMOPLASTICS S.A.", qtdMaquinas:10,  status:"Planejamento", progresso:0,  dataPrevista:"2026-06-10", dataMigracao:null,         historico:[{data:"2026-06-07",acao:"Reunião com fornecedores agendada para 10/06"}] },
+  { id:9,  nome:"RADIO MONTE DA GAVEA LTDA",       qtdMaquinas:6,   status:"Planejamento", progresso:0,  dataPrevista:null,         dataMigracao:null,         historico:[{data:"2026-06-07",acao:"Sem retorno de contato — ligações e mensagens sem resposta"}] },
+  { id:10, nome:"ENESA ENGENHARIA S.A.",            qtdMaquinas:14,  status:"Planejamento", progresso:0,  dataPrevista:"2026-12-08", dataMigracao:null,         historico:[{data:"2026-06-07",acao:"Tema será tratado em reunião no dia 08/12"}] },
+  { id:12, nome:"BMC MAQUINAS E EQUIP PESADOS",    qtdMaquinas:23,  status:"Planejamento", progresso:0,  dataPrevista:null,         dataMigracao:null,         historico:[{data:"2026-06-07",acao:"Não haverá migração neste momento — será realizada apenas troca de IP"}] },
+  { id:13, nome:"GEOFIX ENGENHARIA FUNDACOES",     qtdMaquinas:2,   status:"Planejamento", progresso:0,  dataPrevista:null,         dataMigracao:null,         historico:[{data:"2026-06-07",acao:"Sem contato ou retorno até o momento"}] },
+  { id:14, nome:"REFRIO ARMAZENS GERAIS LTDA",     qtdMaquinas:26,  status:"Planejamento", progresso:0,  dataPrevista:null,         dataMigracao:null,         historico:[{data:"2026-06-07",acao:"Sem contato ou retorno até o momento"}] },
+  { id:15, nome:"1TEAMCLOUD SOLUCOES",             qtdMaquinas:1,   status:"Planejamento", progresso:0,  dataPrevista:null,         dataMigracao:null,         historico:[{data:"2026-06-07",acao:"Sem contato ou retorno até o momento"}] },
+  { id:16, nome:"GRUPO RAIZES",                    qtdMaquinas:13,  status:"Planejamento", progresso:0,  dataPrevista:null,         dataMigracao:null,         historico:[{data:"2026-06-07",acao:"Sem contato ou retorno até o momento"}] },
+  { id:17, nome:"SAT CONSULTORIA",                 qtdMaquinas:3,   status:"Planejamento", progresso:0,  dataPrevista:null,         dataMigracao:null,         historico:[{data:"2026-06-07",acao:"Sem contato ou retorno até o momento"}] },
 ];
-const MG_SEED_VERSION = "2026-06-03-v2"; // incrementar ao alterar o seed
+const MG_SEED_VERSION = "2026-06-07-v3"; // incrementar ao alterar o seed
 
 async function mgCarregarDados() {
   try {
@@ -2486,23 +2524,22 @@ async function mgCarregarDados() {
       mgClientes = d.mgClientes;
       mgNextId   = d.mgNextId;
     } else {
-      // Versão desatualizada ou primeiro acesso — mescla seed com storage
+      // Versão desatualizada ou primeiro acesso — seed substitui tudo, preserva apenas notas manuais extras
       let stored = [];
       if (res?.value) {
         try { stored = JSON.parse(res.value).mgClientes || []; } catch(e){}
       }
-      // Para cada entrada do seed, preserva histórico extra do storage se existir
+      // Seed é fonte da verdade: status, progresso, datas e histórico base vêm do seed
       mgClientes = MG_SEED.map(seedItem => {
         const saved = stored.find(s => s.id === seedItem.id);
         if (!saved) return { ...seedItem };
-        // Mescla: seed define progresso/datas/status, storage contribui com histórico extra
+        // Preserva apenas notas adicionadas manualmente DEPOIS da última data do seed
+        const lastSeedDate = seedItem.historico.length ? seedItem.historico[seedItem.historico.length-1].data : '2000-01-01';
         const extraHistory = saved.historico.filter(sh =>
+          sh.data > lastSeedDate &&
           !seedItem.historico.some(si => si.data === sh.data && si.acao === sh.acao)
         );
-        return {
-          ...seedItem,
-          historico: [...seedItem.historico, ...extraHistory]
-        };
+        return { ...seedItem, historico: [...seedItem.historico, ...extraHistory] };
       });
       // Preserva clientes criados manualmente que não estão no seed
       stored.forEach(s => {
