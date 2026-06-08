@@ -353,6 +353,7 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--blue); outline-
   <nav class="dr-nav">
     <div class="dr-section-label">Escritório de Projetos</div>
 
+    <!-- Projetos -->
     <div class="dr-submenu-container">
       <div class="dr-item dr-submenu-toggle" onclick="toggleSubmenu('projetos-menu')">
         <div style="display:flex;align-items:center;gap:10px;flex:1;">
@@ -373,6 +374,7 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--blue); outline-
       </div>
     </div>
 
+    <!-- Entregas -->
     <div class="dr-submenu-container">
       <div class="dr-item dr-submenu-toggle" onclick="toggleSubmenu('entregas-menu')">
         <div style="display:flex;align-items:center;gap:10px;flex:1;">
@@ -389,6 +391,7 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--blue); outline-
       </div>
     </div>
 
+    <!-- Status da Migração -->
     <div class="dr-submenu-container">
       <div class="dr-item dr-submenu-toggle" onclick="toggleSubmenu('status-menu')">
         <div style="display:flex;align-items:center;gap:10px;flex:1;">
@@ -411,15 +414,16 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--blue); outline-
 
     <div class="dr-divider"></div>
 
+    <!-- Governança -->
     <div class="dr-submenu-container">
-      <div class="dr-item dr-submenu-toggle" onclick="toggleSubmenu('sanitizacao-menu')">
+      <div class="dr-item dr-submenu-toggle" onclick="toggleSubmenu('governanca-menu')">
         <div style="display:flex;align-items:center;gap:10px;flex:1;">
           <div class="dr-item-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div>
-          <div><div class="dr-item-label">Sanitização</div><div class="dr-item-sub">2 itens</div></div>
+          <div><div class="dr-item-label">Governança</div><div class="dr-item-sub">2 itens</div></div>
         </div>
         <span class="toggle-icon">▼</span>
       </div>
-      <div class="dr-submenu" id="sanitizacao-menu">
+      <div class="dr-submenu" id="governanca-menu">
         <div class="dr-submenu-item" id="nav-capacity-20" onclick="navTo('capacity-20','active-purple')">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.66 4.03 3 9 3s9-1.34 9-3V5"/><path d="M3 12c0 1.66 4.03 3 9 3s9-1.34 9-3"/></svg>
           Sanitização 2.0
@@ -667,10 +671,9 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--blue); outline-
     <!-- Header -->
     <div style="margin-bottom:28px;">
       <div style="display:flex;align-items:center;gap:12px;margin-bottom:6px;">
-        <div style="width:42px;height:42px;background:linear-gradient(135deg,#7c3aed,#a855f7);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:20px;box-shadow:0 4px 16px rgba(124,58,237,.4);">🛡️</div>
         <div>
           <h1 style="font-size:22px;font-weight:800;color:#fff;letter-spacing:-.5px;margin:0;">Governança de Domínios</h1>
-          <p style="font-size:12px;color:#94a3b8;margin:2px 0 0;">Ambiente 2.0 — Inventário OpenStack · 552 VMs · 33 Domínios · Atualizado em <span id="san20-timestamp"></span></p>
+          <p style="font-size:12px;color:#94a3b8;margin:2px 0 0;">Ambiente 2.0 — Inventário OpenStack · 541 VMs · 32 Domínios · 384 ligadas · 157 desligadas · Atualizado em <span id="san20-timestamp"></span></p>
         </div>
       </div>
     </div>
@@ -727,36 +730,26 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--blue); outline-
     </div>
 
     <!-- Controles -->
-    <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:18px;">
+    <div style="display:flex;flex-direction:column;gap:12px;margin-bottom:18px;">
+      <!-- Botão Governança -->
+      <div style="display:flex;justify-content:flex-end;align-items:center;gap:10px;">
+        <span id="san20-save-txt" style="font-size:11px;color:#64748b;"></span>
+        <button onclick="san20OpenRelatorio()" style="display:flex;align-items:center;gap:7px;padding:9px 18px;background:linear-gradient(135deg,#1e3a5f,#2563eb);color:#fff;border:none;border-radius:10px;font-size:13px;font-weight:700;font-family:'Sora',sans-serif;cursor:pointer;box-shadow:0 4px 14px rgba(37,99,235,.35);transition:opacity .2s;" onmouseover="this.style.opacity='.85'" onmouseout="this.style.opacity='1'">
+          📊 Governança
+        </button>
+      </div>
+      <!-- Busca e Filtros -->
       <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
-        <!-- Busca -->
         <div style="position:relative;">
           <input id="san20-search" type="text" placeholder="Buscar domínio ou cliente..." style="background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:10px;padding:9px 14px 9px 36px;color:#f1f5f9;font-size:13px;font-family:'Sora',sans-serif;width:260px;outline:none;" oninput="san20Render()">
           <span style="position:absolute;left:12px;top:50%;transform:translateY(-50%);font-size:14px;opacity:.5;">🔍</span>
         </div>
-        <!-- Filtros pill -->
         <div style="display:flex;gap:6px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:4px;">
-          <button id="san20-btn-all" onclick="san20SetFilter('all')"
-            style="padding:7px 16px;border-radius:8px;border:none;font-size:12px;font-weight:700;font-family:'Sora',sans-serif;cursor:pointer;transition:all .18s;background:rgba(168,85,247,.9);color:#fff;box-shadow:0 2px 8px rgba(168,85,247,.4);">
-            Todos
-          </button>
-          <button id="san20-btn-ok" onclick="san20SetFilter('ok')"
-            style="padding:7px 16px;border-radius:8px;border:none;font-size:12px;font-weight:700;font-family:'Sora',sans-serif;cursor:pointer;transition:all .18s;background:transparent;color:#64748b;">
-            ✓ Conformes
-          </button>
-          <button id="san20-btn-nok" onclick="san20SetFilter('nok')"
-            style="padding:7px 16px;border-radius:8px;border:none;font-size:12px;font-weight:700;font-family:'Sora',sans-serif;cursor:pointer;transition:all .18s;background:transparent;color:#64748b;">
-            ✗ Não Conformes
-          </button>
+          <button id="san20-btn-all" onclick="san20SetFilter('all')" style="padding:7px 16px;border-radius:8px;border:none;font-size:12px;font-weight:700;font-family:'Sora',sans-serif;cursor:pointer;transition:all .18s;background:rgba(168,85,247,.9);color:#fff;box-shadow:0 2px 8px rgba(168,85,247,.4);">Todos</button>
+          <button id="san20-btn-ok" onclick="san20SetFilter('ok')" style="padding:7px 16px;border-radius:8px;border:none;font-size:12px;font-weight:700;font-family:'Sora',sans-serif;cursor:pointer;transition:all .18s;background:transparent;color:#64748b;">✓ Conformes</button>
+          <button id="san20-btn-nok" onclick="san20SetFilter('nok')" style="padding:7px 16px;border-radius:8px;border:none;font-size:12px;font-weight:700;font-family:'Sora',sans-serif;cursor:pointer;transition:all .18s;background:transparent;color:#64748b;">✗ Não Conformes</button>
         </div>
-        <!-- Contador de resultados -->
         <span id="san20-count-label" style="font-size:11px;color:#475569;font-weight:600;"></span>
-      </div>
-      <div style="display:flex;gap:10px;align-items:center;">
-        <span id="san20-save-txt" style="font-size:11px;color:#64748b;"></span>
-        <button onclick="san20OpenModal()" style="display:flex;align-items:center;gap:7px;padding:9px 18px;background:linear-gradient(135deg,#7c3aed,#a855f7);color:#fff;border:none;border-radius:10px;font-size:13px;font-weight:700;font-family:'Sora',sans-serif;cursor:pointer;box-shadow:0 4px 14px rgba(124,58,237,.35);transition:opacity .2s;" onmouseover="this.style.opacity='.85'" onmouseout="this.style.opacity='1'">
-          <span style="font-size:16px;">+</span> Adicionar Domínio
-        </button>
       </div>
     </div>
     <!-- input hidden para manter compatibilidade com san20Render -->
@@ -913,6 +906,13 @@ function san20Render() {
     const conforme = san20IsConforme(r.dominio);
     const matchF = filter === 'all' || (filter === 'ok' && conforme) || (filter === 'nok' && !conforme);
     return matchQ && matchF;
+  });
+
+  rows = rows.sort((a, b) => {
+    const aConf = san20IsConforme(a.dominio) ? 1 : 0;
+    const bConf = san20IsConforme(b.dominio) ? 1 : 0;
+    if (aConf !== bConf) return aConf - bConf; // não conformes primeiro
+    return (b.vms || 0) - (a.vms || 0); // maior nº de VMs primeiro
   });
 
   const tbody = document.getElementById('san20-tbody');
@@ -1104,6 +1104,204 @@ async function san20SaveStorage() {
     const t = document.getElementById('san20-save-txt');
     if (t) { t.textContent = '✓ Salvo'; t.style.color = '#4ade80'; setTimeout(()=>{ t.textContent=''; }, 2000); }
   } catch(e) {}
+}
+
+// ── Governança: Snapshot & Relatório ─────────────────────────────────────────
+// ── Inventário de VMs por domínio (09/06/2026) ───────────────────────────────
+const SAN20_VM_INVENTORY = {"1team.cloud": {"ligadas": ["UNICOBA_NEW"], "desligadas": []}, "automalogica.com.br": {"ligadas": [], "desligadas": ["BC-ATMLAD-01", "BC-ATMLOGFTG", "BC-ATMLOGVBR", "BC-ATMLZABBIX"]}, "binario.cloud": {"ligadas": ["bc-assistet-new", "bc-data-v3", "bc-mvp-cadastro", "bc-scheduler-api", "bc-skyline", "bc-telegram-ai", "dev-bc-mvp-cadastro", "49ers", "Browns", "Chiefs", "_cirros", "dev-apicloud", "dev-idp-mfa", "Eagles", "old-grafana", "Redskins", "Saints", "Seahawks", "shibboleth2-MFA", "Texans", "Titans", "VM-PowerBI-OTRS", "WashingtonFT", "Dev-central", "openstack-cli", "recovery-linux-openstack-cliente", "SRV-AD01", "SRV-AD02", "SRV-EXPORT", "VM-Teste-pFsense", "Dev-Horizon", "PROD-Central-Totvs", "PROD-Horizon", "Prod-Horizon-LDC", "Prod-Horizon-SuaNuvem", "PROD-Horizon-Totvs", "PROD-IDP-LDC", "PROD-IDP-SuaNuvem", "PROD-IDP-Totvs", "PROD-WHITELABEL-Central", "webproxy-1"], "desligadas": ["bc-Assistent", "bc-AssistenteBC", "cloudmind-dev", "Broncos", "Cardinals", "Celtics", "Colts", "etherpad", "Giants", "grafana", "Jaguars", "Jaguars2", "Jenkins", "Jenkins-2", "Lakers", "Lions", "Nets", "Patriots", "teste-pfsense", "Vikings", "Warriors", "custommer_horizon", "keplin", "teste-key", "Teste-HyperV", "Prod-Horizon-EDGE.UOL", "Prod-Horizon-L2X.tech", "PROD-IDP-Dstelitti", "PROD-IDP-EDGE.UOL", "PROD-IDP-L2X.tech", "Satelitti-DEV"]}, "bmchyundai.com.br": {"ligadas": ["BMCAPP01", "BMCCRIVO01", "BMCCRIVO-HMLG", "BMCDBSINC", "BMCDBSQL01", "BMCDBSQL02", "BMCDC01", "BMCDC02", "BMC-ECOMMERCE-01", "BMCEMS01", "BMCERP002", "BMCFS01", "BMCHUBSPOT", "BMCHUBSPOT2", "BMCINTEGRACAO", "BMCSINC01", "BMCWEB01_", "FWBMCFGT01", "prx-bmchyundai", "SRV-VBR"], "desligadas": ["BMC-ECOMMERCE-01-OLD", "BMCHUBSPOT-OLD", "hubspottemp"]}, "Default": {"ligadas": ["alma-teste", "Linux-BLADE-test", "teste-02", "teste-hyperv", "teste-vlwc-luiz", "vm-attach-teste", "vm-test-network-port-again", "windows-temporary-coriolis", "01c9fa73-8ab4-4745-ae2f-100704bb9e47", "11137414-b68e-4f1b-9931-ebf0b20f467d", "330da416-861e-4d5c-9e60-4bcc1bd7c202", "4b9fb4c0-4bc7-4c9e-bad1-11a5196c4256", "5915afc7-4c91-4309-952d-c6cd0a384e4b", "5d8e4dcf-18a2-4f8e-912c-80e724cba119", "6c7117a8-4c9b-449e-9098-20357f7887e2", "70fc7ddc-7bb8-43d2-a868-ad153973fb50", "91832dcb-020e-4f1f-9d49-a6e2c2fda759", "a00YO48ZAS", "a01fe7c3-564a-4e86-97ba-1cb100c88ac0", "a15YHU2NQU", "a1TRHR9GOD", "a643CYBW7Y", "a70WXMGW6X", "aA46FCAUXY", "aAF6MUD2TM", "aCCUS6B1X1", "aCJ1ZY0IZ1", "aDPBP2IWFT", "aDPJ39QYH4", "afdd5cf9-c72b-4ea9-9626-bc9819e2848e", "aFPGOHBDZJ", "aHIUH4DIJ0", "aIAI9ZZP0F", "aIXLHUPQBN", "aJSE6RFHEP", "aL9MSBTZMG", "aM5HDURG09", "aN9W4FW7H2", "aO7JAV5LKF", "aPIPU59AIJ", "aPXSSKL4N4", "aRVY07LHEX", "aUTYW6TRUC", "aV656QKONF", "aVBDH35K80", "aWVO0YF70C", "aXFQ266YX0", "aZ0610P8GU", "bastion-BD", "BD-01", "cdcaf14b-0df0-476f-9629-edf12f39c422", "cluster-dba-member-1657817189", "cluster-mariadb-member-1618771444", "cluster-mariadb-member-1618771445", "cluster-mariadb-member-1618771446", "DB01", "e090f9de-c6ca-443f-b239-4e9e829298df", "eaeb898d-e69a-4de1-bdd5-c18186cef3bc", "f3856329-5961-43ed-8dfc-72f13f3cd624", "MARIADB", "MARIADB-01", "Orbium", "teste", "teste-maria1", "vm-bcdata-dev", "vm_db01"], "desligadas": ["Linux-BLADE-test2", "test-linux", "vmbc2-TesteMyOpenvpn", "bc2vm-fortios", "bc2vm-fortios-ale", "bc2vm-ubun-0", "bc2vm-win-ipfer3", "vm-gbwebsql01-ver-logs"]}, "dismac.com.bo": {"ligadas": [], "desligadas": ["FW-PFDISMAC"]}, "domain-cloud2": {"ligadas": ["src-host-kvm"], "desligadas": ["ubuntu-cloud2", "windows-cloud2", "windows-cloud2-22"]}, "enesa.com.br": {"ligadas": ["ENSP-000SEVMBKP", "ENSP-000SEVMPRI", "ENSP-00FWPF", "ENSP-SEVMBD", "SVAPP03", "SVDB02", "SVDC01", "SVFASTVUE", "SVFS01", "SVHOMOLOG", "SVRDP", "SVRPA", "SVRS01", "SVWEB01", "VBR-MIGRACA"], "desligadas": []}, "geofix.com.br": {"ligadas": ["CLOUD-BOXFWGFX", "CLOUD-SRVADGFX"], "desligadas": []}, "gimba2.com.br": {"ligadas": ["adabasdev", "DR-ORACLEERP", "GBAPIBD", "GBAPIG", "GBAPIGTP", "GBAPIPORTAL", "GBBARRAMENTO", "gbecommerce-01", "gbecommerce-02", "gbecommerce-03", "GBGOVMON", "GBNGINX-01-DEV-HML", "GBNGINX-02-DEV-HML", "gbredis-01", "gbredis-02", "gbredis-03", "GBSRVINDEX-01", "GBWEB01", "GBWEB02", "GBWEB05", "GBWEB06", "GBWEB07", "GBWEB08", "GIMBASQL", "GIMBASQLOLD", "ORACLEERP", "ORADESENV", "SolrDev", "SolrMaster", "SolrSlave-01", "SolrSlave-02", "Veeam", "vm-bacula", "vm-pfsense"], "desligadas": ["devsolr-01", "GBWEB08-OLD", "openstack", "Solr-01", "Solr-02", "Solr-03", "vm-opnsense", "vm-repositorio-temp"]}, "gimba.com.br": {"ligadas": ["ADABASLINUX_CLONE", "ADABASLINUX-RECOVERY", "BC-DEVOPS", "BC-DMZ-AD-03", "BCGBACESSO", "BCGBAPREIIS02", "BCGBAPREIIS03", "BCGBDEVIIS02", "BCGBDEVIIS03", "BCGBHMLIIS02", "BCGBHMLIIS03", "BCGBHMLIIS03-N", "BCGBOPERADOR", "BCGBSADIG", "BC-GMA-AD-01", "BC-GMA-AD-02", "BCGMAWEB05", "BCGMAWEB07", "BC-GMB-KSEC", "BC-REPLICATOR", "BC-TEST", "DR_ADABASLINUX_CLONE", "GBAGENTES_IA", "GBAPREIIS1", "GBAPRESQL1", "GBAPRESQL2", "GBAPRESQL3", "GBARQUIVOS", "GBDEVIIS01", "GBDEVIIS03-PERF", "GBDEVJITTERBIT", "GBDEVSQL01", "GBDEVSQL02", "GBDEVSQL03", "GBDEVSQLDW01", "GBGLPI", "GBHMLIIS01", "GBHMLJITTERBIT", "GBHMLSQL01", "GBHMLSQL02", "GBHMLSQL03", "GBIIS1", "GBIIS6", "GBJITTERBIT", "GBJITTERBIT-Old", "GBSFTP", "GBSQUADVIRTUAL", "GBSRVNFS01", "GBSRVTOTALL", "GBSRVTOTALL2", "GBSRVTOTALL3", "GBSRVTOTALL-TESTE", "GBWEBSQL01", "GBWEBSQL02", "GBWEBSQL04", "GBWEBSQL11", "GBWEBSQL12", "GBWEBSQLDW01", "GMA-EC-01", "LINUX-MANOBRA-VEEAM", "NGINX-ORACLE", "oracle-ksek", "ORACLEPRD03", "ORACLEPRD1", "ORACLEPRD4", "ORACLEPROD01", "ORACLEPROD02", "PRX-GIMBA", "SRVBACKUP", "TESTE-SISTEMAS", "VEEAM-GIMBA", "VM-FORTIGATE"], "desligadas": []}, "gruporaizes.com": {"ligadas": ["BC-GRRAIZESAD", "BC-GRRAIZESAD02", "BC-GRRAIZESBD", "BC-GRRAIZES-FS", "BC-GRRAIZESFW", "BC-GRRAIZESOD", "BC-GRRAIZES-RPA-01", "BC-GRRAIZES-RPA-02", "BC-GRRAIZES-RPA-03", "BC-GRRAIZES-RPA-04", "BC-GRRAIZESTK", "BC-GRRAIZESVBR", "prx-gpraizes"], "desligadas": []}, "mahlerededepostos.com.br": {"ligadas": [], "desligadas": ["FPFSSRV01", "SRVWS2K22PRN01"]}, "mbmsolutions.com.br": {"ligadas": [], "desligadas": ["Base-Oficial", "Cloud01-MBM", "CLOUD02-MBM", "Linux-MBM", "Proxy"]}, "netza.com.br": {"ligadas": ["NETZA-FW01", "prx-netza", "VBR-Migracao-Netza", "vm-netza"], "desligadas": []}, "prumoengenharia.com.br": {"ligadas": ["Bluepex_UTM_Atualizado", "SRVAD-BC01", "SRV-Zimbra"], "desligadas": ["test-windows", "SistemaS4"]}, "qos.com.br": {"ligadas": ["APPInfra-ClaroFust", "APPInfra-Media", "bkp-1.qos.srv.br", "captiveportal.grupobinario.net-aplicação", "captiveportal.grupobinario.net-database", "captiveportal.grupobinario.net-database2", "ciena-tim-win-1.qos.srv.br", "Claro - Ferramenta de Testes BB", "cloud-vsrx-1.qos.srv.br", "diretorio-2", "diretorio.qos.srv.br", "fortinet-algar-1.qos.srv.br", "jump-dasa-win-1.qos.srv.br", "jump-tim-lnx-1.qos.srv.br", "otrs-1.qos.srv.br", "PoC-Captive Portal-Ubiquiti", "qos-ftp-win", "radius-1.qos.srv.br", "SRV-VBR-QOS", "VBR-Migracao-QoS", "vpn-1.qos.srv.br", "www.qos.srv.br", "zbx-dasa.qos.srv.br"], "desligadas": ["Airwave-Dasa", "DASA_WIFI-ZABBIX", "DASA_WIFI-ZABBIX-DB", "DASA-WIFI-ZABBIX-PROXY", "ntb-dasa.qos.srv.br"]}, "radiojb.fm": {"ligadas": ["GRUPOJB-DB", "JBFM-FWPF01", "JBFM-WEB-2023", "RADIOCIDADE-2023", "RTMP/n8n Server", "TOTVS"], "desligadas": []}, "refrio.com.br": {"ligadas": ["Check-ip", "Fortigate-BACKBONE", "MGMT", "pfSense-BACKBONE", "prx-refrio", "binario-pfSense", "DCITAPECERICA", "FSITAPECERICA", "ABNET", "AD", "FILE-SERVER", "ORACLE-DB - New", "ORACLE-WMS", "ServerCSM", "SERVER-ERP", "Servererpnewhom", "ServerMID", "servermid01", "ServerSVS", "ServerSVShomol", "srvbierphml", "VPN-PFSENSE", "WMS-RECOVERY", "ZABBIX-SERVER"], "desligadas": ["prx-refrio1", "COLETOR-WMS"]}, "sagaengenharia.com.br": {"ligadas": ["SRV-MIGRACAO"], "desligadas": ["MAILSERVER", "MAILSERVERBKP"]}, "sattelecom.com": {"ligadas": ["satc4cloud"], "desligadas": ["SatC5Cloud"]}, "sattelecomip.com": {"ligadas": ["satc4_NEW", "SatC5Cloud"], "desligadas": ["satc4cloud"]}, "selbetti.com": {"ligadas": [], "desligadas": ["teste", "VM1"]}, "(Sem Domínio)": {"ligadas": [], "desligadas": ["alerj", "broker-linux", "BS Connector", "BS Database", "BS Server", "CSM teste", "db-srv-1", "db-srv-2", "Desktop01", "Desktop02", "Desktop03", "IIS2", "kid", "Linux", "linux1", "linux2", "maclaude", "maquina teste", "Odoo", "pfSense", "pfsense-bluespace", "RabbitMQ", "RabbitMQ", "RabbitMQ", "teste01", "teste01", "teste02", "teste02", "vm-01", "vm-01", "vm-01", "vm-01", "vm-01", "vm-01", "vm-01", "vm-01", "vm-01", "vm-01", "vm-01", "vm-01", "vm-01", "vm-01", "vm-01", "vm-02", "vm-02", "vm-02", "vm-02", "vm-02", "vm-02", "vm-02", "vm-02", "vm-02", "vm-02", "vm-02", "vm-02", "vm-02", "vm-02", "vm-02", "web-srv-1", "web-srv-2", "win1", "win2"]}, "sistecweb.com.br": {"ligadas": ["BC-SISTECWFW"], "desligadas": ["BC-FRIGBBAD", "VBR-Veeam"]}, "smarapd.com.br": {"ligadas": ["smarapdPF", "smarapdPMRibeiraoApp", "smarapdPMRibEntesapp", "smarapdSAEItuiutabaApp", "smarapdSAEItuiutabaProxy", "smarapdSQL01", "smarapd_SRV_APPTB", "smarapd_SRV_BDTB"], "desligadas": []}, "soprema.com.br": {"ligadas": ["BRSUZ-SW0100", "FTGSPRCLD", "SRV-DOCKER", "SRV-EMS", "SRV-FAZ", "SRV-MIGRACAO", "SWSPR001_NEW", "SWSPR007"], "desligadas": ["SWSPR001"]}, "spheraeducacional.com.br": {"ligadas": ["WEB01"], "desligadas": []}, "sre.binario.cloud": {"ligadas": ["coriolis-clientes", "EdgeConnect", "fw-ish", "fw-pfcoriolis", "zabbixproxy-5"], "desligadas": ["ceph-cs-1", "ceph-cs-2", "ceph-cs-3", "cs-cmp-1", "cs-cmp-2", "jump-cs", "managment-cs", "repository-amg", "VBR", "windows-teste", "zabbixproxy-4"]}, "suporte.binario.cloud": {"ligadas": ["PNET-LAB"], "desligadas": []}, "waits.com.br": {"ligadas": ["PIRA-BC-APP01", "PIRA-BC-APP02", "PIRA-BC-BFW01", "PIRA-BC-BKP01", "PIRA-BC-DC01", "PIRA-BC-SAP01", "PIRA-BC-SAP02", "PIRA-BC-SAP03", "PIRA-BC-TS", "PIRA-BC-VPN01"], "desligadas": []}, "zanthus.com.br": {"ligadas": ["BC-QA-EXEC-2", "BC-QA-EXECUTOR-1", "BC-QA-FIREWALL", "BC-QA-SERVIDOR-1", "BC-QA-SERVIDOR-2", "BC-QA-SERVIDOR-3", "VBR-MIGRACAO", "BC-ADMIN", "BC-CLAZ", "BC-DOCKER", "BC-DOCKER-RESTORE", "BC-ECOMM", "BC-GITLAB", "BC-IT-FIREWALL", "BC-MSSQL", "BC-PGSQL", "BC-PINCODE", "BC-PROTHEUS", "BC-SCAVENGER", "srvmig-tishare02", "SRV-ZANT025"], "desligadas": ["BC-POC-ZRETAIL"]}} ;
+
+// ── Snapshot base automático (03/06/2026) ────────────────────────────────────
+const SAN20_BASE_SNAPSHOT = {
+  data: '03/06/2026 00:00',
+  dominios: [
+    { dominio:'Default',                  cliente:'Admin / Service (OpenStack interno)',       vms:74,  ligadas:66, desligadas:8  },
+    { dominio:'binario.cloud',            cliente:'Binario Cloud — Ambiente Principal',        vms:72,  ligadas:41, desligadas:31 },
+    { dominio:'gimba.com.br',             cliente:'Gimba',                                     vms:72,  ligadas:66, desligadas:6  },
+    { dominio:'(Sem Domínio)',            cliente:'VMs sem domínio configurado',               vms:62,  ligadas:37, desligadas:24 },
+    { dominio:'gimba2.com.br',            cliente:'Gimba 2',                                   vms:42,  ligadas:34, desligadas:8  },
+    { dominio:'qos.com.br',               cliente:'QOS',                                       vms:28,  ligadas:23, desligadas:5  },
+    { dominio:'refrio.com.br',            cliente:'Refrio',                                    vms:26,  ligadas:24, desligadas:2  },
+    { dominio:'bmchyundai.com.br',        cliente:'BMC Hyundai',                               vms:23,  ligadas:20, desligadas:3  },
+    { dominio:'zanthus.com.br',           cliente:'Zanthus',                                   vms:22,  ligadas:21, desligadas:1  },
+    { dominio:'sre.binario.cloud',        cliente:'Binario Cloud — SRE / Infraestrutura',      vms:16,  ligadas:5,  desligadas:11 },
+    { dominio:'enesa.com.br',             cliente:'Enesa',                                     vms:15,  ligadas:15, desligadas:0  },
+    { dominio:'gruporaizes.com',          cliente:'Grupo Raízes',                              vms:13,  ligadas:13, desligadas:0  },
+    { dominio:'luizalabs.com',            cliente:'Luiza Labs',                                vms:11,  ligadas:10, desligadas:1  },
+    { dominio:'waits.com.br',             cliente:'Waits',                                     vms:10,  ligadas:10, desligadas:0  },
+    { dominio:'soprema.com.br',           cliente:'Soprema',                                   vms:9,   ligadas:8,  desligadas:1  },
+    { dominio:'smarapd.com.br',           cliente:'Smarapd',                                   vms:8,   ligadas:8,  desligadas:0  },
+    { dominio:'radiojb.fm',               cliente:'Rádio JB',                                  vms:6,   ligadas:6,  desligadas:0  },
+    { dominio:'mbmsolutions.com.br',      cliente:'MBM Solutions',                             vms:5,   ligadas:0,  desligadas:5  },
+    { dominio:'prumoengenharia.com.br',   cliente:'Prumo Engenharia',                          vms:5,   ligadas:3,  desligadas:2  },
+    { dominio:'netza.com.br',             cliente:'Netza',                                     vms:4,   ligadas:4,  desligadas:0  },
+    { dominio:'domain-cloud2',            cliente:'Cloud2 (domínio interno não qualificado)',  vms:4,   ligadas:1,  desligadas:3  },
+    { dominio:'automalogica.com.br',      cliente:'Automalogica',                              vms:4,   ligadas:1,  desligadas:3  },
+    { dominio:'sistecweb.com.br',         cliente:'Sistecweb',                                 vms:3,   ligadas:1,  desligadas:2  },
+    { dominio:'sagaengenharia.com.br',    cliente:'Saga Engenharia',                           vms:3,   ligadas:1,  desligadas:2  },
+    { dominio:'sattelecomip.com',         cliente:'Sat Telecom IP',                            vms:3,   ligadas:2,  desligadas:1  },
+    { dominio:'selbetti.com',             cliente:'Selbetti',                                  vms:2,   ligadas:0,  desligadas:2  },
+    { dominio:'mahlerededepostos.com.br', cliente:'Mahle Rede de Postos',                      vms:2,   ligadas:0,  desligadas:2  },
+    { dominio:'geofix.com.br',            cliente:'Geofix',                                    vms:2,   ligadas:2,  desligadas:0  },
+    { dominio:'sattelecom.com',           cliente:'Sat Telecom',                               vms:2,   ligadas:1,  desligadas:1  },
+    { dominio:'suporte.binario.cloud',    cliente:'Binario Cloud — Suporte',                   vms:1,   ligadas:1,  desligadas:0  },
+    { dominio:'dismac.com.bo',            cliente:'Dismac',                                    vms:1,   ligadas:0,  desligadas:1  },
+    { dominio:'1team.cloud',              cliente:'1Team Cloud',                               vms:1,   ligadas:1,  desligadas:0  },
+    { dominio:'spheraeducacional.com.br', cliente:'Sphera Educacional',                        vms:1,   ligadas:1,  desligadas:0  },
+  ]
+};
+
+async function san20GetSnapshot() {
+  try {
+    const res = await window.storage.get('san20_snapshot');
+    return res ? JSON.parse(res.value) : SAN20_BASE_SNAPSHOT;
+  } catch(e) { return SAN20_BASE_SNAPSHOT; }
+}
+
+async function san20SalvarSnapshot() {
+  const snap = {
+    data: new Date().toLocaleDateString('pt-BR', {day:'2-digit',month:'2-digit',year:'numeric',hour:'2-digit',minute:'2-digit'}),
+    dominios: san20Data.map(r => ({ id: r.id, dominio: r.dominio, cliente: r.cliente, tipo: r.tipo, vms: r.vms||0, conforme: san20IsConforme(r.dominio) }))
+  };
+  try {
+    await window.storage.set('san20_snapshot', JSON.stringify(snap));
+    const t = document.getElementById('san20-save-txt');
+    if (t) { t.textContent = '✓ Snapshot salvo!'; t.style.color = '#4ade80'; setTimeout(()=>{ t.textContent=''; }, 2500); }
+    san20CloseRelatorio();
+  } catch(e) {}
+}
+
+async function san20OpenRelatorio() {
+  const overlay = document.getElementById('san20-rel-overlay');
+  overlay.style.display = 'flex';
+  const body = document.getElementById('san20-rel-body');
+  body.innerHTML = '<p style="color:#64748b;font-size:13px;padding:20px;">Carregando...</p>';
+
+  const snap = await san20GetSnapshot();
+  const agora = new Date().toLocaleDateString('pt-BR',{day:'2-digit',month:'2-digit',year:'numeric',hour:'2-digit',minute:'2-digit'});
+  document.getElementById('san20-rel-subtitle').textContent = `Última atualização: ${snap.data} · Agora: ${agora}`;
+
+  const inv  = SAN20_VM_INVENTORY || {};
+  const agr  = san20Data.map(r=>({dominio:r.dominio,cliente:r.cliente,vms:r.vms||0,ligadas:r.ligadas||0,desligadas:r.desligadas||0}));
+  const ant  = snap.dominios;
+
+  // Calcular mudanças
+  const mudancas = [];
+
+  // Domínios novos
+  agr.filter(a=>!ant.some(s=>s.dominio===a.dominio)).forEach(a=>{
+    mudancas.push({tipo:'novo_dominio', dominio:a.dominio, cliente:a.cliente, vms:a.vms, ligadas:a.ligadas, desligadas:a.desligadas});
+  });
+
+  // Domínios que sumiram
+  ant.filter(s=>!agr.some(a=>a.dominio===s.dominio)).forEach(s=>{
+    mudancas.push({tipo:'sumiu_dominio', dominio:s.dominio, cliente:s.cliente, vms:s.vms, ligadas:s.ligadas||0, desligadas:s.desligadas||0});
+  });
+
+  // Domínios que mudaram internamente
+  agr.forEach(a=>{
+    const s = ant.find(x=>x.dominio===a.dominio);
+    if(!s) return;
+    const subs = [];
+    const invD = inv[a.dominio] || {ligadas:[],desligadas:[]};
+
+    // VMs que ligaram
+    const qtdLigou = a.ligadas - (s.ligadas||0);
+    if(qtdLigou > 0) subs.push({tipo:'ligou', qtd:qtdLigou, vms:invD.ligadas});
+
+    // VMs que desligaram
+    const qtdDesligou = a.desligadas - (s.desligadas||0);
+    if(qtdDesligou > 0) subs.push({tipo:'desligou', qtd:qtdDesligou, vms:invD.desligadas});
+
+    // VMs novas no total
+    const qtdNovas = a.vms - s.vms;
+    if(qtdNovas > 0 && qtdLigou === 0 && qtdDesligou === 0) subs.push({tipo:'vms_novas', qtd:qtdNovas, vms:[...invD.ligadas,...invD.desligadas]});
+
+    if(subs.length) mudancas.push({tipo:'mudanca', dominio:a.dominio, cliente:a.cliente, subs});
+  });
+
+  if(!mudancas.length){
+    body.innerHTML=`<div style="text-align:center;padding:48px 0;">
+      <div style="font-size:48px;margin-bottom:16px;">✅</div>
+      <div style="font-size:15px;font-weight:800;color:#4ade80;">Nenhuma alteração</div>
+      <div style="font-size:12px;color:#64748b;margin-top:6px;">Inventário idêntico ao snapshot de ${snap.data}</div>
+    </div>`;
+    return;
+  }
+
+  const chips = (vms,cor)=> vms.length
+    ? `<div style="display:flex;flex-wrap:wrap;gap:4px;margin-top:6px;">${vms.map(v=>`<span style="font-size:10px;padding:3px 9px;border-radius:6px;font-weight:700;font-family:'Sora',sans-serif;background:rgba(${cor},.13);color:rgba(${cor},1);border:1px solid rgba(${cor},.25);">${v}</span>`).join('')}</div>`
+    : '';
+
+  const subIcons = {ligou:'🟢',desligou:'🔴',vms_novas:'➕'};
+  const subLabels = {ligou:'Ligou',desligou:'Desligou',vms_novas:'VMs Novas'};
+  const subColors = {ligou:'34,197,94',desligou:'239,68,68',vms_novas:'251,191,36'};
+
+  const totalStr = `${mudancas.length} mudança${mudancas.length>1?'s':''} identificada${mudancas.length>1?'s':''}`;
+
+  body.innerHTML = `
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:20px;padding:12px 16px;background:rgba(37,99,235,.12);border:1px solid rgba(37,99,235,.3);border-radius:12px;">
+      <span style="font-size:20px;">📋</span>
+      <span style="font-size:13px;font-weight:700;color:#93c5fd;">${totalStr} desde ${snap.data}</span>
+    </div>
+
+    ${mudancas.map(m => {
+      if(m.tipo==='novo_dominio') return `
+        <div style="margin-bottom:12px;border-radius:14px;overflow:hidden;border:1px solid rgba(34,197,94,.3);">
+          <div style="display:flex;align-items:center;gap:10px;padding:12px 16px;background:rgba(34,197,94,.12);">
+            <span style="font-size:18px;">🌐</span>
+            <div style="flex:1;">
+              <div style="font-size:13px;font-weight:800;color:#e2e8f0;">${m.dominio}</div>
+              <div style="font-size:10px;color:#86efac;margin-top:2px;">${m.cliente}</div>
+            </div>
+            <span style="font-size:10px;font-weight:800;background:rgba(34,197,94,.2);color:#4ade80;padding:4px 12px;border-radius:99px;text-transform:uppercase;letter-spacing:.5px;">Novo Domínio</span>
+          </div>
+          <div style="padding:10px 16px;background:rgba(34,197,94,.05);">
+            <span style="font-size:11px;color:#86efac;">🔵 ${m.vms} VMs &nbsp;·&nbsp; 🟢 ${m.ligadas} ligadas &nbsp;·&nbsp; 🔴 ${m.desligadas} desligadas</span>
+          </div>
+        </div>`;
+
+      if(m.tipo==='sumiu_dominio') return `
+        <div style="margin-bottom:12px;border-radius:14px;overflow:hidden;border:1px solid rgba(239,68,68,.3);">
+          <div style="display:flex;align-items:center;gap:10px;padding:12px 16px;background:rgba(239,68,68,.12);">
+            <span style="font-size:18px;">💨</span>
+            <div style="flex:1;">
+              <div style="font-size:13px;font-weight:800;color:#e2e8f0;">${m.dominio}</div>
+              <div style="font-size:10px;color:#fca5a5;margin-top:2px;">${m.cliente}</div>
+            </div>
+            <span style="font-size:10px;font-weight:800;background:rgba(239,68,68,.2);color:#f87171;padding:4px 12px;border-radius:99px;text-transform:uppercase;letter-spacing:.5px;">Domínio Sumiu</span>
+          </div>
+          <div style="padding:10px 16px;background:rgba(239,68,68,.05);">
+            <span style="font-size:11px;color:#fca5a5;">tinha ${m.vms} VMs &nbsp;·&nbsp; ${m.ligadas} ligadas &nbsp;·&nbsp; ${m.desligadas} desligadas</span>
+          </div>
+        </div>`;
+
+      // mudanca interna
+      return `
+        <div style="margin-bottom:12px;border-radius:14px;overflow:hidden;border:1px solid rgba(148,163,184,.15);">
+          <div style="display:flex;align-items:center;gap:10px;padding:12px 16px;background:rgba(148,163,184,.08);">
+            <span style="font-size:18px;">📦</span>
+            <div style="flex:1;">
+              <div style="font-size:13px;font-weight:800;color:#e2e8f0;">${m.dominio}</div>
+              <div style="font-size:10px;color:#94a3b8;margin-top:2px;">${m.cliente}</div>
+            </div>
+            <span style="font-size:10px;font-weight:800;background:rgba(148,163,184,.15);color:#cbd5e1;padding:4px 12px;border-radius:99px;text-transform:uppercase;letter-spacing:.5px;">${m.subs.length} alteração${m.subs.length>1?'ões':''}</span>
+          </div>
+          ${m.subs.map(sub=>`
+            <div style="padding:10px 16px;border-top:1px solid rgba(255,255,255,.05);background:rgba(${subColors[sub.tipo]},.04);">
+              <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px;">
+                <span style="font-size:14px;">${subIcons[sub.tipo]}</span>
+                <span style="font-size:11px;font-weight:800;color:rgba(${subColors[sub.tipo]},1);text-transform:uppercase;letter-spacing:.8px;">${subLabels[sub.tipo]}</span>
+                <span style="font-size:11px;font-weight:700;background:rgba(${subColors[sub.tipo]},.15);color:rgba(${subColors[sub.tipo]},1);padding:2px 10px;border-radius:99px;">${sub.qtd} VM${sub.qtd>1?'s':''}</span>
+              </div>
+              ${chips(sub.vms, subColors[sub.tipo])}
+            </div>`).join('')}
+        </div>`;
+    }).join('')}
+  `;
+}
+
+function san20CloseRelatorio() {
+  document.getElementById('san20-rel-overlay').style.display = 'none';
 }
 
 
@@ -1730,40 +1928,39 @@ const SAN20_VMS = {
 };
 
 const SAN20_SEED = [
-  // ── Inventário OpenStack — 03/06/2026 | 552 VMs | 33 Domínios | 426 ligadas | 125 desligadas | 1 erro ──
-  { id: 1, dominio:'Default',                  cliente:'Admin / Service (OpenStack interno)',       tipo:'Serviço Interno',   vms:74,  ligadas:66, desligadas:8,  pctDeslig:10.8 },
-  { id: 2, dominio:'binario.cloud',            cliente:'Binario Cloud — Ambiente Principal',        tipo:'Aplicação Web',     vms:72,  ligadas:41, desligadas:31, pctDeslig:43.1 },
-  { id: 3, dominio:'gimba.com.br',             cliente:'Gimba',                                     tipo:'Aplicação Web',     vms:72,  ligadas:66, desligadas:6,  pctDeslig:8.3 },
-  { id: 4, dominio:'(Sem Domínio)',            cliente:'VMs sem domínio configurado',               tipo:'Outro',             vms:62,  ligadas:37, desligadas:24, pctDeslig:38.7 },
-  { id: 5, dominio:'gimba2.com.br',            cliente:'Gimba 2',                                   tipo:'Aplicação Web',     vms:42,  ligadas:34, desligadas:8,  pctDeslig:19.0 },
-  { id: 6, dominio:'qos.com.br',               cliente:'QOS',                                       tipo:'Aplicação Web',     vms:28,  ligadas:23, desligadas:5,  pctDeslig:17.9 },
-  { id: 7, dominio:'refrio.com.br',            cliente:'Refrio',                                    tipo:'Aplicação Web',     vms:26,  ligadas:24, desligadas:2,  pctDeslig:7.7 },
-  { id: 8, dominio:'bmchyundai.com.br',        cliente:'BMC Hyundai',                               tipo:'Aplicação Web',     vms:23,  ligadas:20, desligadas:3,  pctDeslig:13.0 },
-  { id: 9, dominio:'zanthus.com.br',           cliente:'Zanthus',                                   tipo:'Aplicação Web',     vms:22,  ligadas:21, desligadas:1,  pctDeslig:4.5 },
-  { id:10, dominio:'sre.binario.cloud',        cliente:'Binario Cloud — SRE / Infraestrutura',      tipo:'Serviço Interno',   vms:16,  ligadas:5,  desligadas:11, pctDeslig:68.8 },
-  { id:11, dominio:'enesa.com.br',             cliente:'Enesa',                                     tipo:'Aplicação Web',     vms:15,  ligadas:15, desligadas:0,  pctDeslig:0.0 },
-  { id:12, dominio:'gruporaizes.com',          cliente:'Grupo Raízes',                              tipo:'Aplicação Web',     vms:13,  ligadas:13, desligadas:0,  pctDeslig:0.0 },
-  { id:13, dominio:'luizalabs.com',            cliente:'Luiza Labs',                                tipo:'Aplicação Web',     vms:11,  ligadas:10, desligadas:1,  pctDeslig:9.1 },
-  { id:14, dominio:'waits.com.br',             cliente:'Waits',                                     tipo:'Aplicação Web',     vms:10,  ligadas:10, desligadas:0,  pctDeslig:0.0 },
-  { id:15, dominio:'soprema.com.br',           cliente:'Soprema',                                   tipo:'Aplicação Web',     vms:9,   ligadas:8,  desligadas:1,  pctDeslig:11.1 },
-  { id:16, dominio:'smarapd.com.br',           cliente:'Smarapd',                                   tipo:'Aplicação Web',     vms:8,   ligadas:8,  desligadas:0,  pctDeslig:0.0, obs:'migrando' },
-  { id:17, dominio:'radiojb.fm',               cliente:'Rádio JB',                                  tipo:'Aplicação Web',     vms:6,   ligadas:6,  desligadas:0,  pctDeslig:0.0 },
-  { id:18, dominio:'mbmsolutions.com.br',      cliente:'MBM Solutions',                             tipo:'Aplicação Web',     vms:5,   ligadas:0,  desligadas:5,  pctDeslig:100.0 },
-  { id:19, dominio:'prumoengenharia.com.br',   cliente:'Prumo Engenharia',                          tipo:'Aplicação Web',     vms:5,   ligadas:3,  desligadas:2,  pctDeslig:40.0 },
-  { id:20, dominio:'netza.com.br',             cliente:'Netza',                                     tipo:'Aplicação Web',     vms:4,   ligadas:4,  desligadas:0,  pctDeslig:0.0 },
-  { id:21, dominio:'domain-cloud2',            cliente:'Cloud2 (domínio interno não qualificado)',  tipo:'Serviço Interno',   vms:4,   ligadas:1,  desligadas:3,  pctDeslig:75.0 },
-  { id:22, dominio:'automalogica.com.br',      cliente:'Automalogica',                              tipo:'Aplicação Web',     vms:4,   ligadas:1,  desligadas:3,  pctDeslig:75.0 },
-  { id:23, dominio:'sistecweb.com.br',         cliente:'Sistecweb',                                 tipo:'Aplicação Web',     vms:3,   ligadas:1,  desligadas:2,  pctDeslig:66.7 },
-  { id:24, dominio:'sagaengenharia.com.br',    cliente:'Saga Engenharia',                           tipo:'Aplicação Web',     vms:3,   ligadas:1,  desligadas:2,  pctDeslig:66.7 },
-  { id:25, dominio:'sattelecomip.com',         cliente:'Sat Telecom IP',                            tipo:'Aplicação Web',     vms:3,   ligadas:2,  desligadas:1,  pctDeslig:33.3 },
-  { id:26, dominio:'selbetti.com',             cliente:'Selbetti',                                  tipo:'Aplicação Web',     vms:2,   ligadas:0,  desligadas:2,  pctDeslig:100.0 },
-  { id:27, dominio:'mahlerededepostos.com.br', cliente:'Mahle Rede de Postos',                      tipo:'Aplicação Web',     vms:2,   ligadas:0,  desligadas:2,  pctDeslig:100.0 },
-  { id:28, dominio:'geofix.com.br',            cliente:'Geofix',                                    tipo:'Aplicação Web',     vms:2,   ligadas:2,  desligadas:0,  pctDeslig:0.0 },
-  { id:29, dominio:'sattelecom.com',           cliente:'Sat Telecom',                               tipo:'Aplicação Web',     vms:2,   ligadas:1,  desligadas:1,  pctDeslig:50.0 },
-  { id:30, dominio:'suporte.binario.cloud',    cliente:'Binario Cloud — Suporte',                   tipo:'Portal do Cliente', vms:1,   ligadas:1,  desligadas:0,  pctDeslig:0.0 },
-  { id:31, dominio:'dismac.com.bo',            cliente:'Dismac',                                    tipo:'Aplicação Web',     vms:1,   ligadas:0,  desligadas:1,  pctDeslig:100.0 },
-  { id:32, dominio:'1team.cloud',              cliente:'1Team Cloud',                               tipo:'Aplicação Web',     vms:1,   ligadas:1,  desligadas:0,  pctDeslig:0.0 },
-  { id:33, dominio:'spheraeducacional.com.br', cliente:'Sphera Educacional',                        tipo:'Portal do Cliente', vms:1,   ligadas:1,  desligadas:0,  pctDeslig:0.0 },
+  // ── Inventário OpenStack — 09/06/2026 | 541 VMs | 32 Domínios | 384 ligadas | 157 desligadas ──
+  { id: 1,  dominio:'Default',                  cliente:'Admin / Service (OpenStack interno)',       tipo:'Serviço Interno',   vms:74,  ligadas:66, desligadas:8,  pctDeslig:10.8 },
+  { id: 2,  dominio:'binario.cloud',            cliente:'Binario Cloud — Ambiente Principal',        tipo:'Aplicação Web',     vms:72,  ligadas:41, desligadas:31, pctDeslig:43.1 },
+  { id: 3,  dominio:'gimba.com.br',             cliente:'Gimba',                                     tipo:'Aplicação Web',     vms:72,  ligadas:72, desligadas:0,  pctDeslig:0.0  },
+  { id: 4,  dominio:'(Sem Domínio)',            cliente:'VMs sem domínio configurado',               tipo:'Outro',             vms:62,  ligadas:0,  desligadas:62, pctDeslig:100.0 },
+  { id: 5,  dominio:'gimba2.com.br',            cliente:'Gimba 2',                                   tipo:'Aplicação Web',     vms:42,  ligadas:34, desligadas:8,  pctDeslig:19.0 },
+  { id: 6,  dominio:'qos.com.br',               cliente:'QOS',                                       tipo:'Aplicação Web',     vms:28,  ligadas:23, desligadas:5,  pctDeslig:17.9 },
+  { id: 7,  dominio:'refrio.com.br',            cliente:'Refrio',                                    tipo:'Aplicação Web',     vms:26,  ligadas:24, desligadas:2,  pctDeslig:7.7  },
+  { id: 8,  dominio:'bmchyundai.com.br',        cliente:'BMC Hyundai',                               tipo:'Aplicação Web',     vms:23,  ligadas:20, desligadas:3,  pctDeslig:13.0 },
+  { id: 9,  dominio:'zanthus.com.br',           cliente:'Zanthus',                                   tipo:'Aplicação Web',     vms:22,  ligadas:21, desligadas:1,  pctDeslig:4.5  },
+  { id:10,  dominio:'sre.binario.cloud',        cliente:'Binario Cloud — SRE / Infraestrutura',      tipo:'Serviço Interno',   vms:16,  ligadas:5,  desligadas:11, pctDeslig:68.8 },
+  { id:11,  dominio:'enesa.com.br',             cliente:'Enesa',                                     tipo:'Aplicação Web',     vms:15,  ligadas:15, desligadas:0,  pctDeslig:0.0  },
+  { id:12,  dominio:'gruporaizes.com',          cliente:'Grupo Raízes',                              tipo:'Aplicação Web',     vms:13,  ligadas:13, desligadas:0,  pctDeslig:0.0  },
+  { id:13,  dominio:'waits.com.br',             cliente:'Waits',                                     tipo:'Aplicação Web',     vms:10,  ligadas:10, desligadas:0,  pctDeslig:0.0  },
+  { id:14,  dominio:'soprema.com.br',           cliente:'Soprema',                                   tipo:'Aplicação Web',     vms:9,   ligadas:8,  desligadas:1,  pctDeslig:11.1 },
+  { id:15,  dominio:'smarapd.com.br',           cliente:'Smarapd',                                   tipo:'Aplicação Web',     vms:8,   ligadas:8,  desligadas:0,  pctDeslig:0.0, obs:'migrando' },
+  { id:16,  dominio:'radiojb.fm',               cliente:'Rádio JB',                                  tipo:'Aplicação Web',     vms:6,   ligadas:6,  desligadas:0,  pctDeslig:0.0  },
+  { id:17,  dominio:'mbmsolutions.com.br',      cliente:'MBM Solutions',                             tipo:'Aplicação Web',     vms:5,   ligadas:0,  desligadas:5,  pctDeslig:100.0 },
+  { id:18,  dominio:'prumoengenharia.com.br',   cliente:'Prumo Engenharia',                          tipo:'Aplicação Web',     vms:5,   ligadas:3,  desligadas:2,  pctDeslig:40.0 },
+  { id:19,  dominio:'automalogica.com.br',      cliente:'Automalogica',                              tipo:'Aplicação Web',     vms:4,   ligadas:0,  desligadas:4,  pctDeslig:100.0 },
+  { id:20,  dominio:'domain-cloud2',            cliente:'Cloud2 (domínio interno não qualificado)',  tipo:'Serviço Interno',   vms:4,   ligadas:1,  desligadas:3,  pctDeslig:75.0 },
+  { id:21,  dominio:'netza.com.br',             cliente:'Netza',                                     tipo:'Aplicação Web',     vms:4,   ligadas:4,  desligadas:0,  pctDeslig:0.0  },
+  { id:22,  dominio:'sagaengenharia.com.br',    cliente:'Saga Engenharia',                           tipo:'Aplicação Web',     vms:3,   ligadas:1,  desligadas:2,  pctDeslig:66.7 },
+  { id:23,  dominio:'sattelecomip.com',         cliente:'Sat Telecom IP',                            tipo:'Aplicação Web',     vms:3,   ligadas:2,  desligadas:1,  pctDeslig:33.3 },
+  { id:24,  dominio:'sistecweb.com.br',         cliente:'Sistecweb',                                 tipo:'Aplicação Web',     vms:3,   ligadas:1,  desligadas:2,  pctDeslig:66.7 },
+  { id:25,  dominio:'geofix.com.br',            cliente:'Geofix',                                    tipo:'Aplicação Web',     vms:2,   ligadas:2,  desligadas:0,  pctDeslig:0.0  },
+  { id:26,  dominio:'mahlerededepostos.com.br', cliente:'Mahle Rede de Postos',                      tipo:'Aplicação Web',     vms:2,   ligadas:0,  desligadas:2,  pctDeslig:100.0 },
+  { id:27,  dominio:'sattelecom.com',           cliente:'Sat Telecom',                               tipo:'Aplicação Web',     vms:2,   ligadas:1,  desligadas:1,  pctDeslig:50.0 },
+  { id:28,  dominio:'selbetti.com',             cliente:'Selbetti',                                  tipo:'Aplicação Web',     vms:2,   ligadas:0,  desligadas:2,  pctDeslig:100.0 },
+  { id:29,  dominio:'1team.cloud',              cliente:'1Team Cloud',                               tipo:'Aplicação Web',     vms:1,   ligadas:1,  desligadas:0,  pctDeslig:0.0  },
+  { id:30,  dominio:'dismac.com.bo',            cliente:'Dismac',                                    tipo:'Aplicação Web',     vms:1,   ligadas:0,  desligadas:1,  pctDeslig:100.0 },
+  { id:31,  dominio:'spheraeducacional.com.br', cliente:'Sphera Educacional',                        tipo:'Portal do Cliente', vms:1,   ligadas:1,  desligadas:0,  pctDeslig:0.0  },
+  { id:32,  dominio:'suporte.binario.cloud',    cliente:'Binario Cloud — Suporte',                   tipo:'Portal do Cliente', vms:1,   ligadas:1,  desligadas:0,  pctDeslig:0.0  },
 ];
 
 async function san20LoadStorage() {
@@ -1776,7 +1973,7 @@ async function san20LoadStorage() {
     } else {
       // Sem dados salvos — carrega seed da planilha
       san20Data   = SAN20_SEED.map(r => ({ ...r }));
-      san20NextId = 34;
+      san20NextId = 33;
     }
   } catch(e) {
     san20Data   = SAN20_SEED.map(r => ({ ...r }));
@@ -1909,8 +2106,25 @@ document.addEventListener('page-changed', function(e) {
   </div>
 </div>
 
-<!-- MODAL -->
-<div class="overlay" id="overlay" onclick="closeOuter(event)">
+<!-- MODAL: Relatório de Governança -->
+<div id="san20-rel-overlay" onclick="if(event.target===this)san20CloseRelatorio()" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.75);backdrop-filter:blur(8px);z-index:800;align-items:flex-start;justify-content:center;padding:5vh 16px 40px;overflow-y:auto;">
+  <div style="background:linear-gradient(160deg,#0f172a 0%,#1e293b 100%);border:1px solid rgba(37,99,235,.3);border-radius:20px;width:680px;max-width:100%;box-shadow:0 40px 100px rgba(0,0,0,.7);">
+    <div style="display:flex;justify-content:space-between;align-items:center;padding:22px 28px 18px;border-bottom:1px solid rgba(255,255,255,.07);">
+      <div>
+        <div style="font-size:17px;font-weight:800;color:#f1f5f9;letter-spacing:-.3px;">📊 Relatório de Governança</div>
+        <div id="san20-rel-subtitle" style="font-size:12px;color:#64748b;margin-top:3px;"></div>
+      </div>
+      <button onclick="san20CloseRelatorio()" style="background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);color:#94a3b8;width:32px;height:32px;border-radius:50%;cursor:pointer;font-size:15px;display:flex;align-items:center;justify-content:center;" onmouseover="this.style.background='rgba(255,255,255,.15)'" onmouseout="this.style.background='rgba(255,255,255,.07)'">✕</button>
+    </div>
+    <div id="san20-rel-body" style="padding:24px 28px 28px;"></div>
+    <div style="padding:0 28px 24px;display:flex;gap:10px;">
+      <button onclick="san20SalvarSnapshot()" style="flex:1;padding:11px;background:linear-gradient(135deg,#1e3a5f,#2563eb);color:#fff;border:none;border-radius:10px;font-weight:700;font-size:13px;font-family:'Sora',sans-serif;cursor:pointer;">💾 Salvar como novo snapshot</button>
+      <button onclick="san20CloseRelatorio()" style="padding:11px 20px;background:rgba(148,163,184,.1);color:#cbd5e1;border:1px solid rgba(148,163,184,.2);border-radius:10px;font-weight:600;font-size:13px;font-family:'Sora',sans-serif;cursor:pointer;">Fechar</button>
+    </div>
+  </div>
+</div>
+
+
   <div class="modal" id="modal">
     <div class="modal-hd">
       <div class="modal-header-content">
