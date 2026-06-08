@@ -625,7 +625,7 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--blue); outline-
       <div style="display:flex;align-items:center;gap:12px;margin-bottom:6px;">
         <div>
           <h1 style="font-size:22px;font-weight:800;color:#fff;letter-spacing:-.5px;margin:0;">Governança de Domínios</h1>
-          <p style="font-size:12px;color:#94a3b8;margin:2px 0 0;">Ambiente 2.0 — Inventário OpenStack · 510 VMs · 33 Domínios · 426 ligadas · 84 desligadas · 1 erro · Atualizado em <span id="san20-timestamp"></span></p>
+          <p style="font-size:12px;color:#94a3b8;margin:2px 0 0;">Ambiente 2.0 — Inventário OpenStack · 478 VMs · 33 Domínios · 426 ligadas · 52 desligadas<span id="san20-timestamp"></span></p>
         </div>
       </div>
     </div>
@@ -1063,633 +1063,559 @@ async function san20SaveStorage() {
 
 
 const SAN20_VMS = {
-  '(Sem Domínio)': [
-    {n:'alerj',id:'333a5df8-d631-4dfe-a7a8-f5cb484af0f9',s:'SHUTOFF',p:'(Sem Projeto)'},
-    {n:'broker-linux',id:'93d175f0-d614-48b5-a249-9239d1a453a8',s:'SHUTOFF',p:'(Sem Projeto)'},
-    {n:'BS Connector',id:'28439651-dca0-4715-afe0-c2bb82659874',s:'SHUTOFF',p:'(Sem Projeto)'},
-    {n:'BS Database',id:'7289d54c-8652-460e-8efe-106be3835cee',s:'SHUTOFF',p:'(Sem Projeto)'},
-    {n:'BS Server',id:'3ec83b9a-3dbb-48e0-9ec1-b70f1d1cdebf',s:'SHUTOFF',p:'(Sem Projeto)'},
-    {n:'CSM teste',id:'90e8f185-8d81-4e27-be61-3338d6cf6dcf',s:'ACTIVE',p:'(Sem Projeto)'},
-    {n:'db-srv-1',id:'6ecfc681-b417-427d-bd39-6cc6bf9ec933',s:'ACTIVE',p:'(Sem Projeto)'},
-    {n:'db-srv-2',id:'8a4b810f-b8a3-4bd6-8738-60c4252bfcf2',s:'ACTIVE',p:'(Sem Projeto)'},
-    {n:'Desktop01',id:'78d65276-b916-4cd5-934e-1eed3e8f7e6c',s:'SHUTOFF',p:'(Sem Projeto)'},
-    {n:'Desktop02',id:'22bf0c5a-413d-4745-a3ef-8f404c44f4d9',s:'SHUTOFF',p:'(Sem Projeto)'},
-    {n:'Desktop03',id:'1e567dea-06ef-41a9-87b3-36ac69e02924',s:'SHUTOFF',p:'(Sem Projeto)'},
-    {n:'IIS2',id:'dd522131-b8f2-44aa-b1d0-98cef6a6367a',s:'ERROR',p:'(Sem Projeto)'},
-    {n:'kid',id:'da0471e8-f29e-4e58-b6fa-41b4138a2e94',s:'ACTIVE',p:'(Sem Projeto)'},
-    {n:'Linux',id:'e6d11eac-db36-4c36-a6ee-9b4daeed791e',s:'ACTIVE',p:'(Sem Projeto)'},
-    {n:'linux1',id:'20e31aaa-e9b6-4c43-b554-d3e80a6ba4b2',s:'SHUTOFF',p:'(Sem Projeto)'},
-    {n:'linux2',id:'f55b2e7f-0061-49b6-9840-792a0ac9b395',s:'SHUTOFF',p:'(Sem Projeto)'},
-    {n:'maclaude',id:'d4ff1a2f-96b5-412d-b662-0d09cee16815',s:'SHUTOFF',p:'(Sem Projeto)'},
-    {n:'maquina teste',id:'2ea27949-746a-4d0c-a6a6-64e620995183',s:'ACTIVE',p:'(Sem Projeto)'},
-    {n:'Odoo',id:'fe95fec0-6e1d-4489-8bbd-dedac6b3ef09',s:'ACTIVE',p:'(Sem Projeto)'},
-    {n:'pfSense',id:'ffda6b8a-b489-4d03-bc7d-8cd436330744',s:'SHUTOFF',p:'(Sem Projeto)'},
-    {n:'pfsense-bluespace',id:'320cc3e5-6e25-490f-ad19-02f9b38a7483',s:'SHUTOFF',p:'(Sem Projeto)'},
-    {n:'RabbitMQ',id:'d68534ff-1f3f-49d6-bc26-6c3903687242',s:'ACTIVE',p:'(Sem Projeto)'},
-    {n:'RabbitMQ',id:'0c132558-06fb-46ba-b66a-51ac83256693',s:'ACTIVE',p:'(Sem Projeto)'},
-    {n:'RabbitMQ',id:'f508d7ff-4aa0-4814-b67c-c9ab7fcb9571',s:'ACTIVE',p:'(Sem Projeto)'},
-    {n:'teste01',id:'fb592ba6-18b7-4376-8b65-ddf329fbbd59',s:'SHUTOFF',p:'(Sem Projeto)'},
-    {n:'teste01',id:'ee201e64-944e-4b44-bf3e-4672fe0039f0',s:'SHUTOFF',p:'(Sem Projeto)'},
-    {n:'teste02',id:'9913e2d5-e458-4398-b1ad-6b7c2f077945',s:'SHUTOFF',p:'(Sem Projeto)'},
-    {n:'teste02',id:'75ea3f89-76ea-49bb-9a9f-ee65963951cb',s:'SHUTOFF',p:'(Sem Projeto)'},
-    {n:'vm-01',id:'9e4c0902-195b-4657-8a30-29bfa7587a2e',s:'ACTIVE',p:'(Sem Projeto)'},
-    {n:'vm-01',id:'95db8d91-a5ec-43d3-839f-276a21d3e29d',s:'ACTIVE',p:'(Sem Projeto)'},
-    {n:'vm-01',id:'ca3f114b-fe56-4e83-a24b-3de594289bdb',s:'ACTIVE',p:'(Sem Projeto)'},
-    {n:'vm-01',id:'90528302-c1be-449c-a8ba-061b1e44e2e1',s:'ACTIVE',p:'(Sem Projeto)'},
-    {n:'vm-01',id:'796a4dc4-de9c-41d0-881a-f965b06fb8d0',s:'ACTIVE',p:'(Sem Projeto)'},
-    {n:'vm-01',id:'b2a07acc-4d7c-4777-8aa3-e3d23257c515',s:'ACTIVE',p:'(Sem Projeto)'},
-    {n:'vm-01',id:'1b745779-4c54-4594-bc2a-eca92ee8e22e',s:'ACTIVE',p:'(Sem Projeto)'},
-    {n:'vm-01',id:'b7ab77cf-8242-45fe-a0c8-f6a49d6723e3',s:'ACTIVE',p:'(Sem Projeto)'},
-    {n:'vm-01',id:'1d94b9a0-b98c-4ac7-9ae8-0141140f997e',s:'ACTIVE',p:'(Sem Projeto)'},
-    {n:'vm-01',id:'3b8572a7-2294-493a-8b8c-9b31cc7f65cc',s:'ACTIVE',p:'(Sem Projeto)'},
-    {n:'vm-01',id:'7bcdfada-8c57-4e9e-a89d-18e9a2d1aaab',s:'ACTIVE',p:'(Sem Projeto)'},
-    {n:'vm-01',id:'792e4c5e-3f57-450a-8388-a42b78127041',s:'ACTIVE',p:'(Sem Projeto)'},
-    {n:'vm-01',id:'84e4d316-df69-4f40-af2e-b127cc72a6c5',s:'ACTIVE',p:'(Sem Projeto)'},
-    {n:'vm-01',id:'b8403459-a347-48eb-9076-15ab94835cc2',s:'ACTIVE',p:'(Sem Projeto)'},
-    {n:'vm-01',id:'fb926900-b552-410b-a290-6e0e3379cd74',s:'ACTIVE',p:'(Sem Projeto)'},
-    {n:'vm-02',id:'828b8922-ebf3-42a2-b150-94c229afda7e',s:'ACTIVE',p:'(Sem Projeto)'},
-    {n:'vm-02',id:'6a348238-690e-4ca0-9609-55e209182011',s:'SHUTOFF',p:'(Sem Projeto)'},
-    {n:'vm-02',id:'4eb9e571-5f69-4819-b212-4f4642831755',s:'SHUTOFF',p:'(Sem Projeto)'},
-    {n:'vm-02',id:'83ebead2-d8df-4bf8-a2fc-dc2b8e8b4b8f',s:'SHUTOFF',p:'(Sem Projeto)'},
-    {n:'vm-02',id:'08404869-f92f-4b90-bc40-692316647962',s:'SHUTOFF',p:'(Sem Projeto)'},
-    {n:'vm-02',id:'fb275987-2057-458d-9a44-fb06d3caa58c',s:'SHUTOFF',p:'(Sem Projeto)'},
-    {n:'vm-02',id:'ccce790c-c812-430f-9db1-75c50bb192f9',s:'ACTIVE',p:'(Sem Projeto)'},
-    {n:'vm-02',id:'b8a8a2c8-0cea-4fdb-97cb-f5e687e6ec5a',s:'ACTIVE',p:'(Sem Projeto)'},
-    {n:'vm-02',id:'438ef19b-b687-4779-90e9-16bb2ea6217f',s:'ACTIVE',p:'(Sem Projeto)'},
-    {n:'vm-02',id:'546c6419-b257-472d-ac76-a6d863d73408',s:'ACTIVE',p:'(Sem Projeto)'},
-    {n:'vm-02',id:'19d6fe87-dc9e-4c4a-906a-c754b33e5f40',s:'ACTIVE',p:'(Sem Projeto)'},
-    {n:'vm-02',id:'e7891c6d-9071-4308-b93c-c817e45ebbde',s:'ACTIVE',p:'(Sem Projeto)'},
-    {n:'vm-02',id:'56eea53a-3598-4227-805c-419ef3c98e09',s:'ACTIVE',p:'(Sem Projeto)'},
-    {n:'vm-02',id:'05cfd076-bf9e-47c0-a800-c490aa8bf083',s:'ACTIVE',p:'(Sem Projeto)'},
-    {n:'vm-02',id:'e65875ed-f004-4c66-891a-d6ef45237ced',s:'ACTIVE',p:'(Sem Projeto)'},
-    {n:'web-srv-1',id:'ba9b8019-a8b7-417f-a497-146942fa70a6',s:'ACTIVE',p:'(Sem Projeto)'},
-    {n:'web-srv-2',id:'e4d67c4e-2f51-48b4-bc2b-601e789c2e14',s:'ACTIVE',p:'(Sem Projeto)'},
-    {n:'win1',id:'2a5cbba1-772e-463d-b536-4ef15cd2c532',s:'SHUTOFF',p:'(Sem Projeto)'},
-    {n:'win2',id:'57507bb9-b207-43ee-b24f-2c6b5648551a',s:'SHUTOFF',p:'(Sem Projeto)'},
+  "gimba.com.br": [
+    {n:"ADABASLINUX_CLONE",id:"a563cc1066934c879bceb5c46f4f1177",s:"ACTIVE",p:"project-gimba-iaas"},
+    {n:"ADABASLINUX-RECOVERY",id:"a563cc1066934c879bceb5c46f4f1177",s:"SHUTOFF",p:"project-gimba-iaas"},
+    {n:"BC-DEVOPS",id:"a563cc1066934c879bceb5c46f4f1177",s:"ACTIVE",p:"project-gimba-iaas"},
+    {n:"BC-DMZ-AD-03",id:"a563cc1066934c879bceb5c46f4f1177",s:"ACTIVE",p:"project-gimba-iaas"},
+    {n:"BCGBACESSO",id:"a563cc1066934c879bceb5c46f4f1177",s:"ACTIVE",p:"project-gimba-iaas"},
+    {n:"BCGBAPREIIS02",id:"a563cc1066934c879bceb5c46f4f1177",s:"ACTIVE",p:"project-gimba-iaas"},
+    {n:"BCGBAPREIIS03",id:"a563cc1066934c879bceb5c46f4f1177",s:"ACTIVE",p:"project-gimba-iaas"},
+    {n:"BCGBDEVIIS02",id:"a563cc1066934c879bceb5c46f4f1177",s:"ACTIVE",p:"project-gimba-iaas"},
+    {n:"BCGBDEVIIS03",id:"a563cc1066934c879bceb5c46f4f1177",s:"ACTIVE",p:"project-gimba-iaas"},
+    {n:"BCGBHMLIIS02",id:"a563cc1066934c879bceb5c46f4f1177",s:"ACTIVE",p:"project-gimba-iaas"},
+    {n:"BCGBHMLIIS03",id:"a563cc1066934c879bceb5c46f4f1177",s:"ACTIVE",p:"project-gimba-iaas"},
+    {n:"BCGBHMLIIS03-N",id:"a563cc1066934c879bceb5c46f4f1177",s:"ACTIVE",p:"project-gimba-iaas"},
+    {n:"BCGBOPERADOR",id:"a563cc1066934c879bceb5c46f4f1177",s:"ACTIVE",p:"project-gimba-iaas"},
+    {n:"BCGBSADIG",id:"a563cc1066934c879bceb5c46f4f1177",s:"ACTIVE",p:"project-gimba-iaas"},
+    {n:"BC-GMA-AD-01",id:"a563cc1066934c879bceb5c46f4f1177",s:"ACTIVE",p:"project-gimba-iaas"},
+    {n:"BC-GMA-AD-02",id:"a563cc1066934c879bceb5c46f4f1177",s:"ACTIVE",p:"project-gimba-iaas"},
+    {n:"BCGMAWEB05",id:"a563cc1066934c879bceb5c46f4f1177",s:"ACTIVE",p:"project-gimba-iaas"},
+    {n:"BCGMAWEB07",id:"a563cc1066934c879bceb5c46f4f1177",s:"ACTIVE",p:"project-gimba-iaas"},
+    {n:"BC-GMB-KSEC",id:"a563cc1066934c879bceb5c46f4f1177",s:"ACTIVE",p:"project-gimba-iaas"},
+    {n:"BC-REPLICATOR",id:"a563cc1066934c879bceb5c46f4f1177",s:"ACTIVE",p:"project-gimba-iaas"},
+    {n:"BC-TEST",id:"a563cc1066934c879bceb5c46f4f1177",s:"SHUTOFF",p:"project-gimba-iaas"},
+    {n:"DR_ADABASLINUX_CLONE",id:"a563cc1066934c879bceb5c46f4f1177",s:"ACTIVE",p:"project-gimba-iaas"},
+    {n:"GBAGENTES_IA",id:"a563cc1066934c879bceb5c46f4f1177",s:"ACTIVE",p:"project-gimba-iaas"},
+    {n:"GBAPREIIS1",id:"a563cc1066934c879bceb5c46f4f1177",s:"ACTIVE",p:"project-gimba-iaas"},
+    {n:"GBAPRESQL1",id:"a563cc1066934c879bceb5c46f4f1177",s:"ACTIVE",p:"project-gimba-iaas"},
+    {n:"GBAPRESQL2",id:"a563cc1066934c879bceb5c46f4f1177",s:"ACTIVE",p:"project-gimba-iaas"},
+    {n:"GBAPRESQL3",id:"a563cc1066934c879bceb5c46f4f1177",s:"ACTIVE",p:"project-gimba-iaas"},
+    {n:"GBARQUIVOS",id:"a563cc1066934c879bceb5c46f4f1177",s:"ACTIVE",p:"project-gimba-iaas"},
+    {n:"GBDEVIIS01",id:"a563cc1066934c879bceb5c46f4f1177",s:"ACTIVE",p:"project-gimba-iaas"},
+    {n:"GBDEVIIS03-PERF",id:"a563cc1066934c879bceb5c46f4f1177",s:"ACTIVE",p:"project-gimba-iaas"},
+    {n:"GBDEVJITTERBIT",id:"a563cc1066934c879bceb5c46f4f1177",s:"ACTIVE",p:"project-gimba-iaas"},
+    {n:"GBDEVSQL01",id:"a563cc1066934c879bceb5c46f4f1177",s:"ACTIVE",p:"project-gimba-iaas"},
+    {n:"GBDEVSQL02",id:"a563cc1066934c879bceb5c46f4f1177",s:"ACTIVE",p:"project-gimba-iaas"},
+    {n:"GBDEVSQL03",id:"a563cc1066934c879bceb5c46f4f1177",s:"ACTIVE",p:"project-gimba-iaas"},
+    {n:"GBDEVSQLDW01",id:"a563cc1066934c879bceb5c46f4f1177",s:"ACTIVE",p:"project-gimba-iaas"},
+    {n:"GBGLPI",id:"a563cc1066934c879bceb5c46f4f1177",s:"ACTIVE",p:"project-gimba-iaas"},
+    {n:"GBHMLIIS01",id:"a563cc1066934c879bceb5c46f4f1177",s:"ACTIVE",p:"project-gimba-iaas"},
+    {n:"GBHMLJITTERBIT",id:"a563cc1066934c879bceb5c46f4f1177",s:"ACTIVE",p:"project-gimba-iaas"},
+    {n:"GBHMLSQL01",id:"a563cc1066934c879bceb5c46f4f1177",s:"ACTIVE",p:"project-gimba-iaas"},
+    {n:"GBHMLSQL02",id:"a563cc1066934c879bceb5c46f4f1177",s:"ACTIVE",p:"project-gimba-iaas"},
+    {n:"GBHMLSQL03",id:"a563cc1066934c879bceb5c46f4f1177",s:"ACTIVE",p:"project-gimba-iaas"},
+    {n:"GBIIS1",id:"a563cc1066934c879bceb5c46f4f1177",s:"ACTIVE",p:"project-gimba-iaas"},
+    {n:"GBIIS6",id:"a563cc1066934c879bceb5c46f4f1177",s:"ACTIVE",p:"project-gimba-iaas"},
+    {n:"GBJITTERBIT",id:"a563cc1066934c879bceb5c46f4f1177",s:"ACTIVE",p:"project-gimba-iaas"},
+    {n:"GBJITTERBIT-Old",id:"a563cc1066934c879bceb5c46f4f1177",s:"SHUTOFF",p:"project-gimba-iaas"},
+    {n:"GBSFTP",id:"a563cc1066934c879bceb5c46f4f1177",s:"ACTIVE",p:"project-gimba-iaas"},
+    {n:"GBSQUADVIRTUAL",id:"a563cc1066934c879bceb5c46f4f1177",s:"ACTIVE",p:"project-gimba-iaas"},
+    {n:"GBSRVNFS01",id:"a563cc1066934c879bceb5c46f4f1177",s:"ACTIVE",p:"project-gimba-iaas"},
+    {n:"GBSRVTOTALL",id:"a563cc1066934c879bceb5c46f4f1177",s:"ACTIVE",p:"project-gimba-iaas"},
+    {n:"GBSRVTOTALL2",id:"a563cc1066934c879bceb5c46f4f1177",s:"ACTIVE",p:"project-gimba-iaas"},
+    {n:"GBSRVTOTALL3",id:"a563cc1066934c879bceb5c46f4f1177",s:"ACTIVE",p:"project-gimba-iaas"},
+    {n:"GBSRVTOTALL-TESTE",id:"a563cc1066934c879bceb5c46f4f1177",s:"SHUTOFF",p:"project-gimba-iaas"},
+    {n:"GBWEBSQL01",id:"a563cc1066934c879bceb5c46f4f1177",s:"ACTIVE",p:"project-gimba-iaas"},
+    {n:"GBWEBSQL02",id:"a563cc1066934c879bceb5c46f4f1177",s:"ACTIVE",p:"project-gimba-iaas"},
+    {n:"GBWEBSQL04",id:"a563cc1066934c879bceb5c46f4f1177",s:"ACTIVE",p:"project-gimba-iaas"},
+    {n:"GBWEBSQL11",id:"a563cc1066934c879bceb5c46f4f1177",s:"ACTIVE",p:"project-gimba-iaas"},
+    {n:"GBWEBSQL12",id:"a563cc1066934c879bceb5c46f4f1177",s:"ACTIVE",p:"project-gimba-iaas"},
+    {n:"GBWEBSQLDW01",id:"a563cc1066934c879bceb5c46f4f1177",s:"ACTIVE",p:"project-gimba-iaas"},
+    {n:"GMA-EC-01",id:"a563cc1066934c879bceb5c46f4f1177",s:"ACTIVE",p:"project-gimba-iaas"},
+    {n:"LINUX-MANOBRA-VEEAM",id:"a563cc1066934c879bceb5c46f4f1177",s:"ACTIVE",p:"project-gimba-iaas"},
+    {n:"NGINX-ORACLE",id:"a563cc1066934c879bceb5c46f4f1177",s:"ACTIVE",p:"project-gimba-iaas"},
+    {n:"oracle-ksek",id:"a563cc1066934c879bceb5c46f4f1177",s:"ACTIVE",p:"project-gimba-iaas"},
+    {n:"ORACLEPRD03",id:"a563cc1066934c879bceb5c46f4f1177",s:"ACTIVE",p:"project-gimba-iaas"},
+    {n:"ORACLEPRD1",id:"a563cc1066934c879bceb5c46f4f1177",s:"ACTIVE",p:"project-gimba-iaas"},
+    {n:"ORACLEPRD4",id:"a563cc1066934c879bceb5c46f4f1177",s:"ACTIVE",p:"project-gimba-iaas"},
+    {n:"ORACLEPROD01",id:"a563cc1066934c879bceb5c46f4f1177",s:"SHUTOFF",p:"project-gimba-iaas"},
+    {n:"ORACLEPROD02",id:"a563cc1066934c879bceb5c46f4f1177",s:"SHUTOFF",p:"project-gimba-iaas"},
+    {n:"PRX-GIMBA",id:"a563cc1066934c879bceb5c46f4f1177",s:"ACTIVE",p:"project-gimba-iaas"},
+    {n:"SRVBACKUP",id:"a563cc1066934c879bceb5c46f4f1177",s:"ACTIVE",p:"project-gimba-iaas"},
+    {n:"TESTE-SISTEMAS",id:"a563cc1066934c879bceb5c46f4f1177",s:"ACTIVE",p:"project-gimba-iaas"},
+    {n:"VEEAM-GIMBA",id:"a563cc1066934c879bceb5c46f4f1177",s:"ACTIVE",p:"project-gimba-iaas"},
+    {n:"VM-FORTIGATE",id:"a563cc1066934c879bceb5c46f4f1177",s:"ACTIVE",p:"project-gimba-iaas"},
   ],
-  '1team.cloud': [
-    {n:'UNICOBA_NEW',id:'30f77518-6fd1-4ab2-965a-c88abe74007b',s:'ACTIVE',p:'project-1teamcloud'},
+  "Default": [
+    {n:"alma-teste",id:"bc456e64a3ff46f79aca6dac9016f07b",s:"ACTIVE",p:"admin"},
+    {n:"Linux-BLADE-test",id:"bc456e64a3ff46f79aca6dac9016f07b",s:"ACTIVE",p:"admin"},
+    {n:"teste-02",id:"bc456e64a3ff46f79aca6dac9016f07b",s:"ACTIVE",p:"admin"},
+    {n:"teste-hyperv",id:"bc456e64a3ff46f79aca6dac9016f07b",s:"ACTIVE",p:"admin"},
+    {n:"teste-vlwc-luiz",id:"bc456e64a3ff46f79aca6dac9016f07b",s:"ACTIVE",p:"admin"},
+    {n:"vm-attach-teste",id:"bc456e64a3ff46f79aca6dac9016f07b",s:"ACTIVE",p:"admin"},
+    {n:"vm-test-network-port-again",id:"bc456e64a3ff46f79aca6dac9016f07b",s:"ACTIVE",p:"admin"},
+    {n:"windows-temporary-coriolis",id:"bc456e64a3ff46f79aca6dac9016f07b",s:"ACTIVE",p:"admin"},
+    {n:"01c9fa73-8ab4-4745-ae2f-100704bb9e47",id:"798d029731cf47779549467e79ff6c0e",s:"ACTIVE",p:"service"},
+    {n:"11137414-b68e-4f1b-9931-ebf0b20f467d",id:"798d029731cf47779549467e79ff6c0e",s:"ACTIVE",p:"service"},
+    {n:"330da416-861e-4d5c-9e60-4bcc1bd7c202",id:"798d029731cf47779549467e79ff6c0e",s:"ACTIVE",p:"service"},
+    {n:"4b9fb4c0-4bc7-4c9e-bad1-11a5196c4256",id:"798d029731cf47779549467e79ff6c0e",s:"ACTIVE",p:"service"},
+    {n:"5915afc7-4c91-4309-952d-c6cd0a384e4b",id:"798d029731cf47779549467e79ff6c0e",s:"ACTIVE",p:"service"},
+    {n:"5d8e4dcf-18a2-4f8e-912c-80e724cba119",id:"798d029731cf47779549467e79ff6c0e",s:"ACTIVE",p:"service"},
+    {n:"6c7117a8-4c9b-449e-9098-20357f7887e2",id:"798d029731cf47779549467e79ff6c0e",s:"ACTIVE",p:"service"},
+    {n:"70fc7ddc-7bb8-43d2-a868-ad153973fb50",id:"798d029731cf47779549467e79ff6c0e",s:"ACTIVE",p:"service"},
+    {n:"91832dcb-020e-4f1f-9d49-a6e2c2fda759",id:"798d029731cf47779549467e79ff6c0e",s:"ACTIVE",p:"service"},
+    {n:"a00YO48ZAS",id:"798d029731cf47779549467e79ff6c0e",s:"ACTIVE",p:"service"},
+    {n:"a01fe7c3-564a-4e86-97ba-1cb100c88ac0",id:"798d029731cf47779549467e79ff6c0e",s:"ACTIVE",p:"service"},
+    {n:"a15YHU2NQU",id:"798d029731cf47779549467e79ff6c0e",s:"ACTIVE",p:"service"},
+    {n:"a1TRHR9GOD",id:"798d029731cf47779549467e79ff6c0e",s:"ACTIVE",p:"service"},
+    {n:"a643CYBW7Y",id:"798d029731cf47779549467e79ff6c0e",s:"ACTIVE",p:"service"},
+    {n:"a70WXMGW6X",id:"798d029731cf47779549467e79ff6c0e",s:"ACTIVE",p:"service"},
+    {n:"aA46FCAUXY",id:"798d029731cf47779549467e79ff6c0e",s:"ACTIVE",p:"service"},
+    {n:"aAF6MUD2TM",id:"798d029731cf47779549467e79ff6c0e",s:"ACTIVE",p:"service"},
+    {n:"aCCUS6B1X1",id:"798d029731cf47779549467e79ff6c0e",s:"ACTIVE",p:"service"},
+    {n:"aCJ1ZY0IZ1",id:"798d029731cf47779549467e79ff6c0e",s:"ACTIVE",p:"service"},
+    {n:"aDPBP2IWFT",id:"798d029731cf47779549467e79ff6c0e",s:"ACTIVE",p:"service"},
+    {n:"aDPJ39QYH4",id:"798d029731cf47779549467e79ff6c0e",s:"ACTIVE",p:"service"},
+    {n:"afdd5cf9-c72b-4ea9-9626-bc9819e2848e",id:"798d029731cf47779549467e79ff6c0e",s:"ACTIVE",p:"service"},
+    {n:"aFPGOHBDZJ",id:"798d029731cf47779549467e79ff6c0e",s:"ACTIVE",p:"service"},
+    {n:"aHIUH4DIJ0",id:"798d029731cf47779549467e79ff6c0e",s:"ACTIVE",p:"service"},
+    {n:"aIAI9ZZP0F",id:"798d029731cf47779549467e79ff6c0e",s:"ACTIVE",p:"service"},
+    {n:"aIXLHUPQBN",id:"798d029731cf47779549467e79ff6c0e",s:"ACTIVE",p:"service"},
+    {n:"aJSE6RFHEP",id:"798d029731cf47779549467e79ff6c0e",s:"ACTIVE",p:"service"},
+    {n:"aL9MSBTZMG",id:"798d029731cf47779549467e79ff6c0e",s:"ACTIVE",p:"service"},
+    {n:"aM5HDURG09",id:"798d029731cf47779549467e79ff6c0e",s:"ACTIVE",p:"service"},
+    {n:"aN9W4FW7H2",id:"798d029731cf47779549467e79ff6c0e",s:"ACTIVE",p:"service"},
+    {n:"aO7JAV5LKF",id:"798d029731cf47779549467e79ff6c0e",s:"ACTIVE",p:"service"},
+    {n:"aPIPU59AIJ",id:"798d029731cf47779549467e79ff6c0e",s:"ACTIVE",p:"service"},
+    {n:"aPXSSKL4N4",id:"798d029731cf47779549467e79ff6c0e",s:"ACTIVE",p:"service"},
+    {n:"aRVY07LHEX",id:"798d029731cf47779549467e79ff6c0e",s:"ACTIVE",p:"service"},
+    {n:"aUTYW6TRUC",id:"798d029731cf47779549467e79ff6c0e",s:"ACTIVE",p:"service"},
+    {n:"aV656QKONF",id:"798d029731cf47779549467e79ff6c0e",s:"ACTIVE",p:"service"},
+    {n:"aVBDH35K80",id:"798d029731cf47779549467e79ff6c0e",s:"ACTIVE",p:"service"},
+    {n:"aWVO0YF70C",id:"798d029731cf47779549467e79ff6c0e",s:"ACTIVE",p:"service"},
+    {n:"aXFQ266YX0",id:"798d029731cf47779549467e79ff6c0e",s:"ACTIVE",p:"service"},
+    {n:"aZ0610P8GU",id:"798d029731cf47779549467e79ff6c0e",s:"ACTIVE",p:"service"},
+    {n:"bastion-BD",id:"798d029731cf47779549467e79ff6c0e",s:"ACTIVE",p:"service"},
+    {n:"BD-01",id:"798d029731cf47779549467e79ff6c0e",s:"ACTIVE",p:"service"},
+    {n:"cdcaf14b-0df0-476f-9629-edf12f39c422",id:"798d029731cf47779549467e79ff6c0e",s:"ACTIVE",p:"service"},
+    {n:"cluster-dba-member-1657817189",id:"798d029731cf47779549467e79ff6c0e",s:"ACTIVE",p:"service"},
+    {n:"cluster-mariadb-member-1618771444",id:"798d029731cf47779549467e79ff6c0e",s:"ACTIVE",p:"service"},
+    {n:"cluster-mariadb-member-1618771445",id:"798d029731cf47779549467e79ff6c0e",s:"ACTIVE",p:"service"},
+    {n:"cluster-mariadb-member-1618771446",id:"798d029731cf47779549467e79ff6c0e",s:"ACTIVE",p:"service"},
+    {n:"DB01",id:"798d029731cf47779549467e79ff6c0e",s:"ACTIVE",p:"service"},
+    {n:"e090f9de-c6ca-443f-b239-4e9e829298df",id:"798d029731cf47779549467e79ff6c0e",s:"ACTIVE",p:"service"},
+    {n:"eaeb898d-e69a-4de1-bdd5-c18186cef3bc",id:"798d029731cf47779549467e79ff6c0e",s:"ACTIVE",p:"service"},
+    {n:"f3856329-5961-43ed-8dfc-72f13f3cd624",id:"798d029731cf47779549467e79ff6c0e",s:"ACTIVE",p:"service"},
+    {n:"MARIADB",id:"798d029731cf47779549467e79ff6c0e",s:"ACTIVE",p:"service"},
+    {n:"MARIADB-01",id:"798d029731cf47779549467e79ff6c0e",s:"ACTIVE",p:"service"},
+    {n:"Orbium",id:"798d029731cf47779549467e79ff6c0e",s:"ACTIVE",p:"service"},
+    {n:"teste",id:"798d029731cf47779549467e79ff6c0e",s:"ACTIVE",p:"service"},
+    {n:"teste-maria1",id:"798d029731cf47779549467e79ff6c0e",s:"ACTIVE",p:"service"},
+    {n:"vm-bcdata-dev",id:"798d029731cf47779549467e79ff6c0e",s:"ACTIVE",p:"service"},
+    {n:"vm_db01",id:"798d029731cf47779549467e79ff6c0e",s:"ACTIVE",p:"service"},
   ],
-  'Default': [
-    {n:'alma-teste',id:'8b5fc6a7-d4e8-4f10-9cc3-f571b9c85be6',s:'ACTIVE',p:'admin'},
-    {n:'Linux-BLADE-test',id:'cae0d4a7-53e4-4743-9a98-70d4db935055',s:'ACTIVE',p:'admin'},
-    {n:'Linux-BLADE-test2',id:'3a3138cc-f0f9-4ae0-91d8-11db1b0f0212',s:'SHUTOFF',p:'admin'},
-    {n:'teste-02',id:'0398fd5e-d46e-4ed9-8435-708800aaab0d',s:'ACTIVE',p:'admin'},
-    {n:'teste-hyperv',id:'f0330800-afee-4a83-8328-9ae62fd030df',s:'ACTIVE',p:'admin'},
-    {n:'teste-vlwc-luiz',id:'1405a462-e251-42bb-9504-7e46b45e9904',s:'ACTIVE',p:'admin'},
-    {n:'test-linux',id:'90276ef7-f3bf-4317-9251-5d2936742037',s:'SHUTOFF',p:'admin'},
-    {n:'vm-attach-teste',id:'af03f75c-7e30-4f50-b105-bb37ba9c2c18',s:'ACTIVE',p:'admin'},
-    {n:'vmbc2-TesteMyOpenvpn',id:'276864c9-5d7d-4ddd-8014-d86e61b3cff5',s:'SHUTOFF',p:'admin'},
-    {n:'vm-test-network-port-again',id:'d86b4074-b8ad-44b3-a167-bc63fe31536d',s:'ACTIVE',p:'admin'},
-    {n:'windows-temporary-coriolis',id:'865e8018-636d-4976-89e1-e2aa4a6b3635',s:'ACTIVE',p:'admin'},
-    {n:'bc2vm-fortios',id:'5f38fb5e-6122-4078-aea5-069ac7a7d32d',s:'SHUTOFF',p:'projeto-homolog-bc2'},
-    {n:'bc2vm-fortios-ale',id:'52cfc0ac-b953-45f5-b32f-82f22d53e9bb',s:'SHUTOFF',p:'projeto-homolog-bc2'},
-    {n:'bc2vm-ubun-0',id:'378a0c5c-22cb-467f-b158-077fde66a1fb',s:'SHUTOFF',p:'projeto-homolog-bc2'},
-    {n:'bc2vm-win-ipfer3',id:'31c9a11d-2f9b-4471-b396-b56d3c0715fe',s:'SHUTOFF',p:'projeto-homolog-bc2'},
-    {n:'01c9fa73-8ab4-4745-ae2f-100704bb9e47',id:'28c58fdc-b143-4d74-a21c-3f87e8edeb5d',s:'ACTIVE',p:'service'},
-    {n:'11137414-b68e-4f1b-9931-ebf0b20f467d',id:'2184d17c-4e90-4950-ac35-b2a2c0545764',s:'ACTIVE',p:'service'},
-    {n:'330da416-861e-4d5c-9e60-4bcc1bd7c202',id:'4435e156-d4f7-4dcc-8475-402c01f868c6',s:'ACTIVE',p:'service'},
-    {n:'4b9fb4c0-4bc7-4c9e-bad1-11a5196c4256',id:'b127555e-c0ce-4fbb-a0ab-5df3369fd057',s:'ACTIVE',p:'service'},
-    {n:'5915afc7-4c91-4309-952d-c6cd0a384e4b',id:'a600cdce-8de3-4710-aa08-304c6e077753',s:'ACTIVE',p:'service'},
-    {n:'5d8e4dcf-18a2-4f8e-912c-80e724cba119',id:'57d5c988-5c7e-4c6e-ae69-86265ae53576',s:'ACTIVE',p:'service'},
-    {n:'6c7117a8-4c9b-449e-9098-20357f7887e2',id:'35cbbc61-ebb9-4178-a07b-828496883d56',s:'ACTIVE',p:'service'},
-    {n:'70fc7ddc-7bb8-43d2-a868-ad153973fb50',id:'539ca76d-2898-46c9-8c49-c2e069cc1edf',s:'ACTIVE',p:'service'},
-    {n:'91832dcb-020e-4f1f-9d49-a6e2c2fda759',id:'d5aa020d-0392-4aeb-9602-3ff99e5849a2',s:'ACTIVE',p:'service'},
-    {n:'a00YO48ZAS',id:'e64fe08e-2636-4545-966d-6bc43f94f74c',s:'ACTIVE',p:'service'},
-    {n:'a01fe7c3-564a-4e86-97ba-1cb100c88ac0',id:'7056c43b-66a3-4905-9963-9b77b40a60e4',s:'ACTIVE',p:'service'},
-    {n:'a15YHU2NQU',id:'146bf9d9-5756-443b-8598-341b296109b4',s:'ACTIVE',p:'service'},
-    {n:'a1TRHR9GOD',id:'508041a0-da6e-4dba-81ff-a0f5d17e355a',s:'ACTIVE',p:'service'},
-    {n:'a643CYBW7Y',id:'ff1a0b96-adbe-4f69-8950-3561bd5afa9a',s:'ACTIVE',p:'service'},
-    {n:'a70WXMGW6X',id:'580a4aee-cc0d-4204-b8c0-7bd1571c196b',s:'ACTIVE',p:'service'},
-    {n:'aA46FCAUXY',id:'b15d435f-0975-4aa7-8036-361408a46047',s:'ACTIVE',p:'service'},
-    {n:'aAF6MUD2TM',id:'a926f572-4ccc-4ca6-a80c-1e291005fff1',s:'ACTIVE',p:'service'},
-    {n:'aCCUS6B1X1',id:'62bda246-98b6-4019-bca8-6a1c0980cc99',s:'ACTIVE',p:'service'},
-    {n:'aCJ1ZY0IZ1',id:'db7127ca-4701-43f6-bc63-77c46fabed5e',s:'ACTIVE',p:'service'},
-    {n:'aDPBP2IWFT',id:'79429920-f9c9-406c-bbd9-ec1ad052ac1b',s:'ACTIVE',p:'service'},
-    {n:'aDPJ39QYH4',id:'a8cbe707-0c94-4b50-86c9-1736986814c6',s:'ACTIVE',p:'service'},
-    {n:'afdd5cf9-c72b-4ea9-9626-bc9819e2848e',id:'de332a8b-9f30-442e-8948-c084f1c4918f',s:'ACTIVE',p:'service'},
-    {n:'aFPGOHBDZJ',id:'2597f46f-257e-41d0-a334-3cd3cdc7d541',s:'ACTIVE',p:'service'},
-    {n:'aHIUH4DIJ0',id:'e68b38a5-248e-4407-aef9-65eb55db100b',s:'ACTIVE',p:'service'},
-    {n:'aIAI9ZZP0F',id:'f1992c20-18e9-40f6-8041-dd90981eb130',s:'ACTIVE',p:'service'},
-    {n:'aIXLHUPQBN',id:'f5fc92a6-e540-4f1b-b3aa-8b37f3c1a925',s:'ACTIVE',p:'service'},
-    {n:'aJSE6RFHEP',id:'066b6f89-d12a-4603-9da6-882523ff648d',s:'ACTIVE',p:'service'},
-    {n:'aL9MSBTZMG',id:'49b73f54-9b94-4aa3-943c-b057c0aebe4a',s:'ACTIVE',p:'service'},
-    {n:'aM5HDURG09',id:'4df13fa2-981f-4c04-9d4e-08824cd1535f',s:'ACTIVE',p:'service'},
-    {n:'aN9W4FW7H2',id:'fd699d63-f061-48fa-b284-c1cfe57f5015',s:'ACTIVE',p:'service'},
-    {n:'aO7JAV5LKF',id:'f3958164-1a1c-4663-87b9-63d97dee5722',s:'ACTIVE',p:'service'},
-    {n:'aPIPU59AIJ',id:'fc959a12-ab93-49af-8eb1-ec4181e7a531',s:'ACTIVE',p:'service'},
-    {n:'aPXSSKL4N4',id:'bece753d-5307-4937-bd95-c5d42a17cba3',s:'ACTIVE',p:'service'},
-    {n:'aRVY07LHEX',id:'9217e6e3-5881-4921-883a-86b311130ff4',s:'ACTIVE',p:'service'},
-    {n:'aUTYW6TRUC',id:'a1aee06f-e4d3-48a2-b8b3-eec3d6f5530b',s:'ACTIVE',p:'service'},
-    {n:'aV656QKONF',id:'b21114bf-cb4f-491f-be3c-4a2c937758a5',s:'ACTIVE',p:'service'},
-    {n:'aVBDH35K80',id:'66ae52e4-8571-49ef-9ccc-b4d1d1cddf75',s:'ACTIVE',p:'service'},
-    {n:'aWVO0YF70C',id:'617518a7-8457-4609-b0ba-691dfc192458',s:'ACTIVE',p:'service'},
-    {n:'aXFQ266YX0',id:'ac0c2cb8-b922-48bc-8f00-7020356421a1',s:'ACTIVE',p:'service'},
-    {n:'aZ0610P8GU',id:'ba4d8ec2-017b-4448-b92e-80aa12655f31',s:'ACTIVE',p:'service'},
-    {n:'bastion-BD',id:'697d590e-4115-4a73-89dc-91ac8775f5e7',s:'ACTIVE',p:'service'},
-    {n:'BD-01',id:'20d8aca5-03c7-4b13-b442-3b5ca726e033',s:'ACTIVE',p:'service'},
-    {n:'cdcaf14b-0df0-476f-9629-edf12f39c422',id:'90b8cf7a-bb84-40a0-87b0-1d400ec2372f',s:'ACTIVE',p:'service'},
-    {n:'cluster-dba-member-1657817189',id:'9ee62897-304e-4895-a89b-62aa28c076fd',s:'ACTIVE',p:'service'},
-    {n:'cluster-mariadb-member-1618771444',id:'8c8c7af9-ceb7-4074-8ec3-3dfc35029cb7',s:'ACTIVE',p:'service'},
-    {n:'cluster-mariadb-member-1618771445',id:'10ab69a7-ec4a-49a8-8906-edba3730b1ed',s:'ACTIVE',p:'service'},
-    {n:'cluster-mariadb-member-1618771446',id:'266bb753-6f9e-45c2-ae97-70943383e341',s:'ACTIVE',p:'service'},
-    {n:'DB01',id:'d00d62e7-8e83-4300-90f4-717227751d90',s:'ACTIVE',p:'service'},
-    {n:'e090f9de-c6ca-443f-b239-4e9e829298df',id:'d48cd215-bf2d-4034-afd8-beb1fc90d7b7',s:'ACTIVE',p:'service'},
-    {n:'eaeb898d-e69a-4de1-bdd5-c18186cef3bc',id:'519fab72-ed43-44ee-9826-8a91c8d49b57',s:'ACTIVE',p:'service'},
-    {n:'f3856329-5961-43ed-8dfc-72f13f3cd624',id:'b977a525-7bd8-4881-9694-c1edae682a73',s:'ACTIVE',p:'service'},
-    {n:'MARIADB',id:'cd43f8c4-b648-4c32-9e46-e21db59075b4',s:'ACTIVE',p:'service'},
-    {n:'MARIADB-01',id:'74c50560-969f-4876-b19f-676d4393f242',s:'ACTIVE',p:'service'},
-    {n:'Orbium',id:'957e8ffb-ef4f-4396-9253-cf10a4a808c4',s:'ACTIVE',p:'service'},
-    {n:'teste',id:'4ac19a17-baa9-4062-af96-e61e9f4a6926',s:'ACTIVE',p:'service'},
-    {n:'teste-maria1',id:'13de95a8-d503-4990-825c-6bc6be8c15c7',s:'ACTIVE',p:'service'},
-    {n:'vm-bcdata-dev',id:'f91c56b5-02b7-4ed0-bd31-e4fcca6b344f',s:'ACTIVE',p:'service'},
-    {n:'vm_db01',id:'a67fb6b2-03b0-4c0d-93fc-c6b1489f5aa6',s:'ACTIVE',p:'service'},
-    {n:'vm-gbwebsql01-ver-logs',id:'9e12fc13-7ebd-4927-94df-93b89405a119',s:'SHUTOFF',p:'service'},
+  "gimba2.com.br": [
+    {n:"adabasdev",id:"e981a02bbeb748389bc937713a50bf91",s:"ACTIVE",p:"Project-Gimba"},
+    {n:"devsolr-01",id:"e981a02bbeb748389bc937713a50bf91",s:"SHUTOFF",p:"Project-Gimba"},
+    {n:"DR-ORACLEERP",id:"e981a02bbeb748389bc937713a50bf91",s:"ACTIVE",p:"Project-Gimba"},
+    {n:"GBAPIBD",id:"e981a02bbeb748389bc937713a50bf91",s:"ACTIVE",p:"Project-Gimba"},
+    {n:"GBAPIG",id:"e981a02bbeb748389bc937713a50bf91",s:"ACTIVE",p:"Project-Gimba"},
+    {n:"GBAPIGTP",id:"e981a02bbeb748389bc937713a50bf91",s:"ACTIVE",p:"Project-Gimba"},
+    {n:"GBAPIPORTAL",id:"e981a02bbeb748389bc937713a50bf91",s:"ACTIVE",p:"Project-Gimba"},
+    {n:"GBBARRAMENTO",id:"e981a02bbeb748389bc937713a50bf91",s:"ACTIVE",p:"Project-Gimba"},
+    {n:"gbecommerce-01",id:"e981a02bbeb748389bc937713a50bf91",s:"ACTIVE",p:"Project-Gimba"},
+    {n:"gbecommerce-02",id:"e981a02bbeb748389bc937713a50bf91",s:"ACTIVE",p:"Project-Gimba"},
+    {n:"gbecommerce-03",id:"e981a02bbeb748389bc937713a50bf91",s:"ACTIVE",p:"Project-Gimba"},
+    {n:"GBGOVMON",id:"e981a02bbeb748389bc937713a50bf91",s:"ACTIVE",p:"Project-Gimba"},
+    {n:"GBNGINX-01-DEV-HML",id:"e981a02bbeb748389bc937713a50bf91",s:"ACTIVE",p:"Project-Gimba"},
+    {n:"GBNGINX-02-DEV-HML",id:"e981a02bbeb748389bc937713a50bf91",s:"ACTIVE",p:"Project-Gimba"},
+    {n:"gbredis-01",id:"e981a02bbeb748389bc937713a50bf91",s:"ACTIVE",p:"Project-Gimba"},
+    {n:"gbredis-02",id:"e981a02bbeb748389bc937713a50bf91",s:"ACTIVE",p:"Project-Gimba"},
+    {n:"gbredis-03",id:"e981a02bbeb748389bc937713a50bf91",s:"ACTIVE",p:"Project-Gimba"},
+    {n:"GBSRVINDEX-01",id:"e981a02bbeb748389bc937713a50bf91",s:"ACTIVE",p:"Project-Gimba"},
+    {n:"GBWEB01",id:"e981a02bbeb748389bc937713a50bf91",s:"ACTIVE",p:"Project-Gimba"},
+    {n:"GBWEB02",id:"e981a02bbeb748389bc937713a50bf91",s:"ACTIVE",p:"Project-Gimba"},
+    {n:"GBWEB05",id:"e981a02bbeb748389bc937713a50bf91",s:"ACTIVE",p:"Project-Gimba"},
+    {n:"GBWEB06",id:"e981a02bbeb748389bc937713a50bf91",s:"ACTIVE",p:"Project-Gimba"},
+    {n:"GBWEB07",id:"e981a02bbeb748389bc937713a50bf91",s:"ACTIVE",p:"Project-Gimba"},
+    {n:"GBWEB08",id:"e981a02bbeb748389bc937713a50bf91",s:"ACTIVE",p:"Project-Gimba"},
+    {n:"GBWEB08-OLD",id:"e981a02bbeb748389bc937713a50bf91",s:"SHUTOFF",p:"Project-Gimba"},
+    {n:"GIMBASQL",id:"e981a02bbeb748389bc937713a50bf91",s:"ACTIVE",p:"Project-Gimba"},
+    {n:"GIMBASQLOLD",id:"e981a02bbeb748389bc937713a50bf91",s:"ACTIVE",p:"Project-Gimba"},
+    {n:"openstack",id:"e981a02bbeb748389bc937713a50bf91",s:"SHUTOFF",p:"Project-Gimba"},
+    {n:"ORACLEERP",id:"e981a02bbeb748389bc937713a50bf91",s:"ACTIVE",p:"Project-Gimba"},
+    {n:"ORADESENV",id:"e981a02bbeb748389bc937713a50bf91",s:"ACTIVE",p:"Project-Gimba"},
+    {n:"Solr-01",id:"e981a02bbeb748389bc937713a50bf91",s:"SHUTOFF",p:"Project-Gimba"},
+    {n:"Solr-02",id:"e981a02bbeb748389bc937713a50bf91",s:"SHUTOFF",p:"Project-Gimba"},
+    {n:"Solr-03",id:"e981a02bbeb748389bc937713a50bf91",s:"SHUTOFF",p:"Project-Gimba"},
+    {n:"SolrDev",id:"e981a02bbeb748389bc937713a50bf91",s:"ACTIVE",p:"Project-Gimba"},
+    {n:"SolrMaster",id:"e981a02bbeb748389bc937713a50bf91",s:"ACTIVE",p:"Project-Gimba"},
+    {n:"SolrSlave-01",id:"e981a02bbeb748389bc937713a50bf91",s:"ACTIVE",p:"Project-Gimba"},
+    {n:"SolrSlave-02",id:"e981a02bbeb748389bc937713a50bf91",s:"ACTIVE",p:"Project-Gimba"},
+    {n:"Veeam",id:"e981a02bbeb748389bc937713a50bf91",s:"ACTIVE",p:"Project-Gimba"},
+    {n:"vm-bacula",id:"e981a02bbeb748389bc937713a50bf91",s:"ACTIVE",p:"Project-Gimba"},
+    {n:"vm-opnsense",id:"e981a02bbeb748389bc937713a50bf91",s:"SHUTOFF",p:"Project-Gimba"},
+    {n:"vm-pfsense",id:"e981a02bbeb748389bc937713a50bf91",s:"ACTIVE",p:"Project-Gimba"},
+    {n:"vm-repositorio-temp",id:"e981a02bbeb748389bc937713a50bf91",s:"SHUTOFF",p:"Project-Gimba"},
   ],
-  'automalogica.com.br': [
-    {n:'BC-ATMLAD-01',id:'18617a91-de24-4e7f-b741-d97aa37fa728',s:'SHUTOFF',p:'project-automalogica'},
-    {n:'BC-ATMLOGFTG',id:'1553f0e8-750e-47cd-980c-70c92dde2e1d',s:'ACTIVE',p:'project-automalogica'},
-    {n:'BC-ATMLOGVBR',id:'94d8cc14-7e38-4085-8f6e-62f25f982ed9',s:'SHUTOFF',p:'project-automalogica'},
-    {n:'BC-ATMLZABBIX',id:'98f41d7f-08a3-4a28-b686-82ca1779e27c',s:'SHUTOFF',p:'project-automalogica'},
+  "binario.cloud": [
+    {n:"bc-assistet-new",id:"3265e0dfd7844f74911ea243c7d21413",s:"ACTIVE",p:"project-bc-ia"},
+    {n:"bc-data-v3",id:"3265e0dfd7844f74911ea243c7d21413",s:"ACTIVE",p:"project-bc-ia"},
+    {n:"bc-mvp-cadastro",id:"3265e0dfd7844f74911ea243c7d21413",s:"ACTIVE",p:"project-bc-ia"},
+    {n:"bc-scheduler-api",id:"3265e0dfd7844f74911ea243c7d21413",s:"ACTIVE",p:"project-bc-ia"},
+    {n:"bc-skyline",id:"3265e0dfd7844f74911ea243c7d21413",s:"ACTIVE",p:"project-bc-ia"},
+    {n:"bc-telegram-ai",id:"3265e0dfd7844f74911ea243c7d21413",s:"ACTIVE",p:"project-bc-ia"},
+    {n:"dev-bc-mvp-cadastro",id:"3265e0dfd7844f74911ea243c7d21413",s:"ACTIVE",p:"project-bc-ia"},
+    {n:"49ers",id:"e82b2d3daaa8436683608d40cff8070e",s:"ACTIVE",p:"project-binariocloud"},
+    {n:"Browns",id:"e82b2d3daaa8436683608d40cff8070e",s:"ACTIVE",p:"project-binariocloud"},
+    {n:"Chiefs",id:"e82b2d3daaa8436683608d40cff8070e",s:"ACTIVE",p:"project-binariocloud"},
+    {n:"_cirros",id:"e82b2d3daaa8436683608d40cff8070e",s:"ACTIVE",p:"project-binariocloud"},
+    {n:"dev-apicloud",id:"e82b2d3daaa8436683608d40cff8070e",s:"ACTIVE",p:"project-binariocloud"},
+    {n:"dev-idp-mfa",id:"e82b2d3daaa8436683608d40cff8070e",s:"ACTIVE",p:"project-binariocloud"},
+    {n:"Eagles",id:"e82b2d3daaa8436683608d40cff8070e",s:"ACTIVE",p:"project-binariocloud"},
+    {n:"old-grafana",id:"e82b2d3daaa8436683608d40cff8070e",s:"ACTIVE",p:"project-binariocloud"},
+    {n:"Redskins",id:"e82b2d3daaa8436683608d40cff8070e",s:"ACTIVE",p:"project-binariocloud"},
+    {n:"Saints",id:"e82b2d3daaa8436683608d40cff8070e",s:"ACTIVE",p:"project-binariocloud"},
+    {n:"Seahawks",id:"e82b2d3daaa8436683608d40cff8070e",s:"ACTIVE",p:"project-binariocloud"},
+    {n:"shibboleth2-MFA",id:"e82b2d3daaa8436683608d40cff8070e",s:"ACTIVE",p:"project-binariocloud"},
+    {n:"Texans",id:"e82b2d3daaa8436683608d40cff8070e",s:"ACTIVE",p:"project-binariocloud"},
+    {n:"Titans",id:"e82b2d3daaa8436683608d40cff8070e",s:"ACTIVE",p:"project-binariocloud"},
+    {n:"VM-PowerBI-OTRS",id:"e82b2d3daaa8436683608d40cff8070e",s:"ACTIVE",p:"project-binariocloud"},
+    {n:"WashingtonFT",id:"e82b2d3daaa8436683608d40cff8070e",s:"ACTIVE",p:"project-binariocloud"},
+    {n:"Dev-central",id:"83896cb6fc6949989d548f2f292748fd",s:"ACTIVE",p:"project--central1"},
+    {n:"openstack-cli",id:"f5e15d8fdf8a4487bc1522a7372c32b4",s:"ACTIVE",p:"project-migracao"},
+    {n:"recovery-linux-openstack-cliente",id:"f5e15d8fdf8a4487bc1522a7372c32b4",s:"ACTIVE",p:"project-migracao"},
+    {n:"SRV-AD01",id:"f5e15d8fdf8a4487bc1522a7372c32b4",s:"ACTIVE",p:"project-migracao"},
+    {n:"SRV-AD02",id:"f5e15d8fdf8a4487bc1522a7372c32b4",s:"ACTIVE",p:"project-migracao"},
+    {n:"SRV-EXPORT",id:"f5e15d8fdf8a4487bc1522a7372c32b4",s:"ACTIVE",p:"project-migracao"},
+    {n:"VM-Teste-pFsense",id:"f5e15d8fdf8a4487bc1522a7372c32b4",s:"ACTIVE",p:"project-migracao"},
+    {n:"Dev-Horizon",id:"c5484fb437014bbb859aaeb62fbf3067",s:"ACTIVE",p:"project-whitelabel"},
+    {n:"PROD-Central-Totvs",id:"c5484fb437014bbb859aaeb62fbf3067",s:"ACTIVE",p:"project-whitelabel"},
+    {n:"PROD-Horizon",id:"c5484fb437014bbb859aaeb62fbf3067",s:"ACTIVE",p:"project-whitelabel"},
+    {n:"Prod-Horizon-LDC",id:"c5484fb437014bbb859aaeb62fbf3067",s:"ACTIVE",p:"project-whitelabel"},
+    {n:"Prod-Horizon-SuaNuvem",id:"c5484fb437014bbb859aaeb62fbf3067",s:"ACTIVE",p:"project-whitelabel"},
+    {n:"PROD-Horizon-Totvs",id:"c5484fb437014bbb859aaeb62fbf3067",s:"ACTIVE",p:"project-whitelabel"},
+    {n:"PROD-IDP-LDC",id:"c5484fb437014bbb859aaeb62fbf3067",s:"ACTIVE",p:"project-whitelabel"},
+    {n:"PROD-IDP-SuaNuvem",id:"c5484fb437014bbb859aaeb62fbf3067",s:"ACTIVE",p:"project-whitelabel"},
+    {n:"PROD-IDP-Totvs",id:"c5484fb437014bbb859aaeb62fbf3067",s:"ACTIVE",p:"project-whitelabel"},
+    {n:"PROD-WHITELABEL-Central",id:"c5484fb437014bbb859aaeb62fbf3067",s:"ACTIVE",p:"project-whitelabel"},
+    {n:"webproxy-1",id:"c5484fb437014bbb859aaeb62fbf3067",s:"ACTIVE",p:"project-whitelabel"},
   ],
-  'binario.cloud': [
-    {n:'bc-Assistent',id:'2b907390-9c84-4c20-85c9-0167b480e7bc',s:'SHUTOFF',p:'project-bc-ia'},
-    {n:'bc-AssistenteBC',id:'ef9c9fff-042b-4055-beb9-d4672277f9af',s:'SHUTOFF',p:'project-bc-ia'},
-    {n:'bc-assistet-new',id:'2e66b116-2ae0-4388-a466-828762c19e76',s:'ACTIVE',p:'project-bc-ia'},
-    {n:'bc-data-v3',id:'94198dbf-0fac-4a50-8852-589311fdaa3d',s:'ACTIVE',p:'project-bc-ia'},
-    {n:'bc-mvp-cadastro',id:'a23dd39a-74df-4f9f-bf50-e51c7cecfee6',s:'ACTIVE',p:'project-bc-ia'},
-    {n:'bc-scheduler-api',id:'b9d643c7-ff65-4eab-b0da-89e0c8705ecb',s:'ACTIVE',p:'project-bc-ia'},
-    {n:'bc-skyline',id:'fd372fc8-8876-4187-8d68-1151c2ab1c72',s:'ACTIVE',p:'project-bc-ia'},
-    {n:'bc-telegram-ai',id:'f347aa18-3332-4900-b592-7f6e4d232af2',s:'ACTIVE',p:'project-bc-ia'},
-    {n:'cloudmind-dev',id:'1036df90-b1a9-4735-8af6-080907d2d96f',s:'SHUTOFF',p:'project-bc-ia'},
-    {n:'dev-bc-mvp-cadastro',id:'000b806b-7e3f-4375-881d-fca464d7f37c',s:'ACTIVE',p:'project-bc-ia'},
-    {n:'49ers',id:'b118b5ed-59c8-498d-ad6b-5a097846c3a1',s:'ACTIVE',p:'project-binariocloud'},
-    {n:'Broncos',id:'a8a6cb09-b22b-4581-83d5-83c52c9a2971',s:'SHUTOFF',p:'project-binariocloud'},
-    {n:'Browns',id:'6b86bbdf-0d3c-46cd-8f78-0cbfd1764340',s:'ACTIVE',p:'project-binariocloud'},
-    {n:'Cardinals',id:'e2b842b2-2c1e-4ccb-a4b1-6ec5d2e1e5b1',s:'SHUTOFF',p:'project-binariocloud'},
-    {n:'Celtics',id:'2b04aaf7-3298-42a6-bcfa-ea5684f00775',s:'SHUTOFF',p:'project-binariocloud'},
-    {n:'Chiefs',id:'a2afcd04-363c-4b91-97a8-b14ba1eb5a4e',s:'ACTIVE',p:'project-binariocloud'},
-    {n:'_cirros',id:'530d96aa-1dee-49ab-b6f5-c39ef00459de',s:'ACTIVE',p:'project-binariocloud'},
-    {n:'Colts',id:'1676b01c-c615-4d20-967e-9d91bf795fe2',s:'SHUTOFF',p:'project-binariocloud'},
-    {n:'dev-apicloud',id:'d074fa85-9f91-4e4e-b081-c3a3f0692a0a',s:'ACTIVE',p:'project-binariocloud'},
-    {n:'dev-idp-mfa',id:'388e6552-d66b-414b-8454-8263d55c58ec',s:'ACTIVE',p:'project-binariocloud'},
-    {n:'Eagles',id:'af1bff1b-407f-41ec-81bc-e9f20c1b7044',s:'ACTIVE',p:'project-binariocloud'},
-    {n:'etherpad',id:'d551e6d0-d2dc-4090-84d0-f3d6532881ae',s:'SHUTOFF',p:'project-binariocloud'},
-    {n:'Giants',id:'bb1f0a93-a4dc-4c0e-a035-1431edbf7bf4',s:'SHUTOFF',p:'project-binariocloud'},
-    {n:'grafana',id:'93def44a-6800-4161-a14d-34cd3bff683c',s:'SHUTOFF',p:'project-binariocloud'},
-    {n:'Jaguars',id:'106cc22a-db84-4891-bfe3-cb34ddeedb0d',s:'SHUTOFF',p:'project-binariocloud'},
-    {n:'Jaguars2',id:'d6725bf3-9ecc-481f-aec1-457b39186293',s:'SHUTOFF',p:'project-binariocloud'},
-    {n:'Jenkins',id:'5db275b1-10fa-4c31-8f68-94b691ddf52f',s:'SHUTOFF',p:'project-binariocloud'},
-    {n:'Jenkins-2',id:'c96dcf8c-46b8-4f87-b8a1-a67301fbd024',s:'SHUTOFF',p:'project-binariocloud'},
-    {n:'Lakers',id:'0c721239-f983-4347-9c49-60db62a87cbe',s:'SHUTOFF',p:'project-binariocloud'},
-    {n:'Lions',id:'6d043aca-32e1-4030-b37e-3e67d65e9074',s:'SHUTOFF',p:'project-binariocloud'},
-    {n:'Nets',id:'6e87c5f6-7ced-42e0-9326-2fa402c0da74',s:'SHUTOFF',p:'project-binariocloud'},
-    {n:'old-grafana',id:'876ad1f8-62fe-4ca2-99ef-2d7ae9d34e22',s:'ACTIVE',p:'project-binariocloud'},
-    {n:'Patriots',id:'6eed2ddb-d35e-4492-b48e-aee0499eb981',s:'SHUTOFF',p:'project-binariocloud'},
-    {n:'Redskins',id:'4e7ffa56-79d4-4a4f-908d-1ac082f7da58',s:'ACTIVE',p:'project-binariocloud'},
-    {n:'Saints',id:'747d6ea2-e971-4b35-8aa3-ea31dfc14935',s:'ACTIVE',p:'project-binariocloud'},
-    {n:'Seahawks',id:'8c022579-c89c-4aa9-b3ca-b33fcf8a8450',s:'ACTIVE',p:'project-binariocloud'},
-    {n:'shibboleth2-MFA',id:'fb110d28-4cf1-4cf0-accd-ab863cd78780',s:'ACTIVE',p:'project-binariocloud'},
-    {n:'teste-pfsense',id:'5970c018-4ec0-49b2-af0e-b01b20d0f29d',s:'SHUTOFF',p:'project-binariocloud'},
-    {n:'Texans',id:'34e031e1-9103-4c4f-948c-93319948db5f',s:'ACTIVE',p:'project-binariocloud'},
-    {n:'Titans',id:'50ac0e83-19ef-457a-b97a-d2e00f8dab8e',s:'ACTIVE',p:'project-binariocloud'},
-    {n:'Vikings',id:'d06acae2-84d5-469a-83b7-afc6db8ce358',s:'SHUTOFF',p:'project-binariocloud'},
-    {n:'VM-PowerBI-OTRS',id:'bdf4556b-c19a-4da8-98f5-f06e69886865',s:'ACTIVE',p:'project-binariocloud'},
-    {n:'Warriors',id:'136a9d29-8961-4c2d-8542-26ff19418cd4',s:'SHUTOFF',p:'project-binariocloud'},
-    {n:'WashingtonFT',id:'c99f8042-624c-420c-99d6-5c7dc4fa2a63',s:'ACTIVE',p:'project-binariocloud'},
-    {n:'custommer_horizon',id:'ddc2482e-d1b1-46ce-b67b-7cc63388da9b',s:'SHUTOFF',p:'project--central1'},
-    {n:'Dev-central',id:'45e2ad0f-4fb4-4f29-810d-3fadbb2d6c76',s:'ACTIVE',p:'project--central1'},
-    {n:'keplin',id:'eced86bc-2320-45d4-b014-e97d11ae9989',s:'SHUTOFF',p:'project--central1'},
-    {n:'teste-key',id:'f1b3a79b-087b-4e29-a013-bf984683a15a',s:'SHUTOFF',p:'project--central1'},
-    {n:'openstack-cli',id:'cfcd0050-1ba3-4ccf-be65-0bb9a36c01e4',s:'ACTIVE',p:'project-migracao'},
-    {n:'recovery-linux-openstack-cliente',id:'9ca706b1-2a11-45d0-97fd-e8d9fb0bdf69',s:'ACTIVE',p:'project-migracao'},
-    {n:'SRV-AD01',id:'b6a9282c-4d8a-4ca2-a4aa-fd59ada7a1be',s:'ACTIVE',p:'project-migracao'},
-    {n:'SRV-AD02',id:'f0485966-dd9c-428c-9cfa-d1071f5b4c6b',s:'ACTIVE',p:'project-migracao'},
-    {n:'SRV-EXPORT',id:'e6d01898-aba1-4294-8a60-bb65120587f4',s:'ACTIVE',p:'project-migracao'},
-    {n:'Teste-HyperV',id:'8092b155-1ddf-4bf7-810a-b7ff0a78288e',s:'SHUTOFF',p:'project-migracao'},
-    {n:'VM-Teste-pFsense',id:'d10c739d-cd14-4dfe-94de-eeeeb92a6fbc',s:'ACTIVE',p:'project-migracao'},
-    {n:'Dev-Horizon',id:'310d6a5e-23f0-4a7f-98e8-ea5831b7c38d',s:'ACTIVE',p:'project-whitelabel'},
-    {n:'PROD-Central-Totvs',id:'ce983d80-ad8f-4df5-934b-ea0f1e29fcce',s:'ACTIVE',p:'project-whitelabel'},
-    {n:'PROD-Horizon',id:'1e95c4a0-7fd0-4f28-9021-f14bdd8e37de',s:'ACTIVE',p:'project-whitelabel'},
-    {n:'Prod-Horizon-EDGE.UOL',id:'1e746e15-c7f0-4361-a74d-24e5df43e248',s:'SHUTOFF',p:'project-whitelabel'},
-    {n:'Prod-Horizon-L2X.tech',id:'51e99144-79de-4a75-bb7e-3adbdd5083d5',s:'SHUTOFF',p:'project-whitelabel'},
-    {n:'Prod-Horizon-LDC',id:'52b37209-ad67-4641-980c-fffbaeaeac5b',s:'ACTIVE',p:'project-whitelabel'},
-    {n:'Prod-Horizon-SuaNuvem',id:'4ac235cb-c13a-4a30-a831-4cd07932d4af',s:'ACTIVE',p:'project-whitelabel'},
-    {n:'PROD-Horizon-Totvs',id:'ddae9dce-5629-4892-a0b9-9f9a1c6bd02b',s:'ACTIVE',p:'project-whitelabel'},
-    {n:'PROD-IDP-Dstelitti',id:'e529f9cd-3aac-45eb-8c9b-f1398cf88e99',s:'SHUTOFF',p:'project-whitelabel'},
-    {n:'PROD-IDP-EDGE.UOL',id:'10fd692d-e753-4777-a5f1-d7ca8f548f20',s:'SHUTOFF',p:'project-whitelabel'},
-    {n:'PROD-IDP-L2X.tech',id:'c28ee636-cb96-4547-bf58-a4563cd217c6',s:'SHUTOFF',p:'project-whitelabel'},
-    {n:'PROD-IDP-LDC',id:'4425ada6-bcbf-4060-bee8-9f41d7a78237',s:'ACTIVE',p:'project-whitelabel'},
-    {n:'PROD-IDP-SuaNuvem',id:'829bf995-e171-422f-a846-ea20ee02f61a',s:'ACTIVE',p:'project-whitelabel'},
-    {n:'PROD-IDP-Totvs',id:'7323a576-e946-42fe-9b24-e2a5a3bc3b2b',s:'ACTIVE',p:'project-whitelabel'},
-    {n:'PROD-WHITELABEL-Central',id:'c77dc6a6-be5c-445c-be2c-658d43bdd4f8',s:'ACTIVE',p:'project-whitelabel'},
-    {n:'Satelitti-DEV',id:'f0cc34be-4447-4919-bbba-1dd042aa1348',s:'SHUTOFF',p:'project-whitelabel'},
-    {n:'webproxy-1',id:'5ecb24d0-30ac-4c7e-b884-bee7e63a6915',s:'ACTIVE',p:'project-whitelabel'},
+  "(Sem Dom\u00ednio)": [
+    {n:"CSM teste",id:"d0ec559323984adda6dda7f20fe471fe",s:"ACTIVE",p:"(Sem Projeto)"},
+    {n:"db-srv-1",id:"27f90735b2834f41bf043858a247f54b",s:"ACTIVE",p:"(Sem Projeto)"},
+    {n:"db-srv-2",id:"27f90735b2834f41bf043858a247f54b",s:"ACTIVE",p:"(Sem Projeto)"},
+    {n:"IIS2",id:"5a2ed3d7e48c4ad0acb3c00558cf2f33",s:"ERROR",p:"(Sem Projeto)"},
+    {n:"kid",id:"cf9e53611f1b4464a7e026064449f05d",s:"ACTIVE",p:"(Sem Projeto)"},
+    {n:"Linux",id:"732a3511acbf4ccd8549a7d316b7705c",s:"ACTIVE",p:"(Sem Projeto)"},
+    {n:"maquina teste",id:"732a3511acbf4ccd8549a7d316b7705c",s:"ACTIVE",p:"(Sem Projeto)"},
+    {n:"Odoo",id:"732a3511acbf4ccd8549a7d316b7705c",s:"ACTIVE",p:"(Sem Projeto)"},
+    {n:"RabbitMQ",id:"2ca1dd1462e4493e8be9910162c00e5c",s:"ACTIVE",p:"(Sem Projeto)"},
+    {n:"RabbitMQ",id:"18f76409985e46a7aed69e3e1a98c389",s:"ACTIVE",p:"(Sem Projeto)"},
+    {n:"RabbitMQ",id:"d01ff08e995746bf8b5dc2c21cfc013a",s:"ACTIVE",p:"(Sem Projeto)"},
+    {n:"vm-01",id:"9ae83ba345fc4a7c93e7e647e4f978c6",s:"ACTIVE",p:"(Sem Projeto)"},
+    {n:"vm-01",id:"60ff8c562d3a467f87f8b8e495b40876",s:"ACTIVE",p:"(Sem Projeto)"},
+    {n:"vm-01",id:"58708934217c40249c4695aad12a2e4b",s:"ACTIVE",p:"(Sem Projeto)"},
+    {n:"vm-01",id:"ea58a642531b4d7893ed099eee5dd34f",s:"ACTIVE",p:"(Sem Projeto)"},
+    {n:"vm-01",id:"300e58146fbc4ef1885b737beb185c31",s:"ACTIVE",p:"(Sem Projeto)"},
+    {n:"vm-01",id:"73a3d2a88b914d1aaee693f9d55e4029",s:"ACTIVE",p:"(Sem Projeto)"},
+    {n:"vm-01",id:"c901458f8ef0467d9ca75d1a9171133a",s:"ACTIVE",p:"(Sem Projeto)"},
+    {n:"vm-01",id:"d576343748304653848644b865f2ecb4",s:"ACTIVE",p:"(Sem Projeto)"},
+    {n:"vm-01",id:"0e6e0126005f40e8ae0cb0ee031cbcdf",s:"ACTIVE",p:"(Sem Projeto)"},
+    {n:"vm-01",id:"9a91eebc49b549ce986773aebde7a308",s:"ACTIVE",p:"(Sem Projeto)"},
+    {n:"vm-01",id:"b5b0d8dd0c8d41b98f514cc470f71838",s:"ACTIVE",p:"(Sem Projeto)"},
+    {n:"vm-01",id:"41ec3bfa5a9b458fb217a5fb7232c5eb",s:"ACTIVE",p:"(Sem Projeto)"},
+    {n:"vm-01",id:"a5723c49da14499db19339d0a07e8b4d",s:"ACTIVE",p:"(Sem Projeto)"},
+    {n:"vm-01",id:"f5e06b43d0c14681867a9f1b7c3fa44c",s:"ACTIVE",p:"(Sem Projeto)"},
+    {n:"vm-01",id:"17206627bdd143b79838dea99885d07f",s:"ACTIVE",p:"(Sem Projeto)"},
+    {n:"vm-02",id:"41ec3bfa5a9b458fb217a5fb7232c5eb",s:"ACTIVE",p:"(Sem Projeto)"},
+    {n:"vm-02",id:"300e58146fbc4ef1885b737beb185c31",s:"ACTIVE",p:"(Sem Projeto)"},
+    {n:"vm-02",id:"ea58a642531b4d7893ed099eee5dd34f",s:"ACTIVE",p:"(Sem Projeto)"},
+    {n:"vm-02",id:"d576343748304653848644b865f2ecb4",s:"ACTIVE",p:"(Sem Projeto)"},
+    {n:"vm-02",id:"c901458f8ef0467d9ca75d1a9171133a",s:"ACTIVE",p:"(Sem Projeto)"},
+    {n:"vm-02",id:"9ae83ba345fc4a7c93e7e647e4f978c6",s:"ACTIVE",p:"(Sem Projeto)"},
+    {n:"vm-02",id:"0e6e0126005f40e8ae0cb0ee031cbcdf",s:"ACTIVE",p:"(Sem Projeto)"},
+    {n:"vm-02",id:"60ff8c562d3a467f87f8b8e495b40876",s:"ACTIVE",p:"(Sem Projeto)"},
+    {n:"vm-02",id:"58708934217c40249c4695aad12a2e4b",s:"ACTIVE",p:"(Sem Projeto)"},
+    {n:"vm-02",id:"b5b0d8dd0c8d41b98f514cc470f71838",s:"ACTIVE",p:"(Sem Projeto)"},
+    {n:"web-srv-1",id:"27f90735b2834f41bf043858a247f54b",s:"ACTIVE",p:"(Sem Projeto)"},
+    {n:"web-srv-2",id:"27f90735b2834f41bf043858a247f54b",s:"ACTIVE",p:"(Sem Projeto)"},
   ],
-  'bmchyundai.com.br': [
-    {n:'BMCAPP01',id:'7e71bcc0-2597-47f5-a103-fef02427923e',s:'ACTIVE',p:'project-bmc'},
-    {n:'BMCCRIVO01',id:'0898fd9a-900e-4745-ba96-41e9c9b30610',s:'ACTIVE',p:'project-bmc'},
-    {n:'BMCCRIVO-HMLG',id:'ca2e9f29-d927-4042-bfa2-6832ae853508',s:'ACTIVE',p:'project-bmc'},
-    {n:'BMCDBSINC',id:'c2bfc081-0750-4872-956a-7114c0fe2396',s:'ACTIVE',p:'project-bmc'},
-    {n:'BMCDBSQL01',id:'0d53da4a-6775-41c5-a392-d14fd8319ee3',s:'ACTIVE',p:'project-bmc'},
-    {n:'BMCDBSQL02',id:'0fd14b62-d1b9-4b8c-9f29-d5029de7ef43',s:'ACTIVE',p:'project-bmc'},
-    {n:'BMCDC01',id:'b1025e03-e8da-4d3d-9480-f6c8e0864ddc',s:'ACTIVE',p:'project-bmc'},
-    {n:'BMCDC02',id:'2e599dd0-9f4c-47dd-babe-8a169830c284',s:'ACTIVE',p:'project-bmc'},
-    {n:'BMC-ECOMMERCE-01',id:'7cfc77b4-0b17-4bd8-9ab0-a2e031ac5a85',s:'ACTIVE',p:'project-bmc'},
-    {n:'BMC-ECOMMERCE-01-OLD',id:'6f5518c7-90c2-49fb-bab5-812ef2650460',s:'SHUTOFF',p:'project-bmc'},
-    {n:'BMCEMS01',id:'0f3e9052-595f-4115-b781-5b73fd691ac5',s:'ACTIVE',p:'project-bmc'},
-    {n:'BMCERP002',id:'14a44cf3-e75b-4892-8d14-27c62f504a7d',s:'ACTIVE',p:'project-bmc'},
-    {n:'BMCFS01',id:'33cdf980-0cc6-42e8-b7d1-5f50df9434db',s:'ACTIVE',p:'project-bmc'},
-    {n:'BMCHUBSPOT',id:'2948c904-7d2d-4faf-98db-074837a0c499',s:'ACTIVE',p:'project-bmc'},
-    {n:'BMCHUBSPOT2',id:'ed7c7f92-9145-43af-8a0d-8750686348fb',s:'ACTIVE',p:'project-bmc'},
-    {n:'BMCHUBSPOT-OLD',id:'c6653ad5-981b-472b-b4dc-939084a88dc5',s:'SHUTOFF',p:'project-bmc'},
-    {n:'BMCINTEGRACAO',id:'c161a6d6-66e6-457a-88d5-7542215a14c9',s:'ACTIVE',p:'project-bmc'},
-    {n:'BMCSINC01',id:'552c2eaa-b669-4f75-ad51-60a12e5dfd8e',s:'ACTIVE',p:'project-bmc'},
-    {n:'BMCWEB01_',id:'777ee1aa-8183-4330-b5dd-cb18676df8b0',s:'ACTIVE',p:'project-bmc'},
-    {n:'FWBMCFGT01',id:'32b8f736-418f-437b-bca7-f792dfd2cf9b',s:'ACTIVE',p:'project-bmc'},
-    {n:'hubspottemp',id:'e922fbfd-6567-469e-b083-98db479d386f',s:'SHUTOFF',p:'project-bmc'},
-    {n:'prx-bmchyundai',id:'4c6aa053-00c9-4e09-864c-90a3144e2455',s:'ACTIVE',p:'project-bmc'},
-    {n:'SRV-VBR',id:'8b63f814-99f7-4c69-8f08-0b09b04968e9',s:'ACTIVE',p:'project-bmc'},
+  "qos.com.br": [
+    {n:"Airwave-Dasa",id:"815a444c440a427988e282e15d0ce852",s:"SHUTOFF",p:"project-qos"},
+    {n:"APPInfra-ClaroFust",id:"815a444c440a427988e282e15d0ce852",s:"ACTIVE",p:"project-qos"},
+    {n:"APPInfra-Media",id:"815a444c440a427988e282e15d0ce852",s:"ACTIVE",p:"project-qos"},
+    {n:"bkp-1.qos.srv.br",id:"815a444c440a427988e282e15d0ce852",s:"ACTIVE",p:"project-qos"},
+    {n:"captiveportal.grupobinario.net-aplica\u00e7\u00e3o",id:"815a444c440a427988e282e15d0ce852",s:"ACTIVE",p:"project-qos"},
+    {n:"captiveportal.grupobinario.net-database",id:"815a444c440a427988e282e15d0ce852",s:"ACTIVE",p:"project-qos"},
+    {n:"captiveportal.grupobinario.net-database2",id:"815a444c440a427988e282e15d0ce852",s:"ACTIVE",p:"project-qos"},
+    {n:"ciena-tim-win-1.qos.srv.br",id:"815a444c440a427988e282e15d0ce852",s:"ACTIVE",p:"project-qos"},
+    {n:"Claro - Ferramenta de Testes BB",id:"815a444c440a427988e282e15d0ce852",s:"ACTIVE",p:"project-qos"},
+    {n:"cloud-vsrx-1.qos.srv.br",id:"815a444c440a427988e282e15d0ce852",s:"ACTIVE",p:"project-qos"},
+    {n:"DASA_WIFI-ZABBIX",id:"815a444c440a427988e282e15d0ce852",s:"SHUTOFF",p:"project-qos"},
+    {n:"DASA_WIFI-ZABBIX-DB",id:"815a444c440a427988e282e15d0ce852",s:"SHUTOFF",p:"project-qos"},
+    {n:"DASA-WIFI-ZABBIX-PROXY",id:"815a444c440a427988e282e15d0ce852",s:"SHUTOFF",p:"project-qos"},
+    {n:"diretorio-2",id:"815a444c440a427988e282e15d0ce852",s:"ACTIVE",p:"project-qos"},
+    {n:"diretorio.qos.srv.br",id:"815a444c440a427988e282e15d0ce852",s:"ACTIVE",p:"project-qos"},
+    {n:"fortinet-algar-1.qos.srv.br",id:"815a444c440a427988e282e15d0ce852",s:"ACTIVE",p:"project-qos"},
+    {n:"jump-dasa-win-1.qos.srv.br",id:"815a444c440a427988e282e15d0ce852",s:"ACTIVE",p:"project-qos"},
+    {n:"jump-tim-lnx-1.qos.srv.br",id:"815a444c440a427988e282e15d0ce852",s:"ACTIVE",p:"project-qos"},
+    {n:"ntb-dasa.qos.srv.br",id:"815a444c440a427988e282e15d0ce852",s:"SHUTOFF",p:"project-qos"},
+    {n:"otrs-1.qos.srv.br",id:"815a444c440a427988e282e15d0ce852",s:"ACTIVE",p:"project-qos"},
+    {n:"PoC-Captive Portal-Ubiquiti",id:"815a444c440a427988e282e15d0ce852",s:"ACTIVE",p:"project-qos"},
+    {n:"qos-ftp-win",id:"815a444c440a427988e282e15d0ce852",s:"ACTIVE",p:"project-qos"},
+    {n:"radius-1.qos.srv.br",id:"815a444c440a427988e282e15d0ce852",s:"ACTIVE",p:"project-qos"},
+    {n:"SRV-VBR-QOS",id:"815a444c440a427988e282e15d0ce852",s:"ACTIVE",p:"project-qos"},
+    {n:"VBR-Migracao-QoS",id:"815a444c440a427988e282e15d0ce852",s:"ACTIVE",p:"project-qos"},
+    {n:"vpn-1.qos.srv.br",id:"815a444c440a427988e282e15d0ce852",s:"ACTIVE",p:"project-qos"},
+    {n:"www.qos.srv.br",id:"815a444c440a427988e282e15d0ce852",s:"ACTIVE",p:"project-qos"},
+    {n:"zbx-dasa.qos.srv.br",id:"815a444c440a427988e282e15d0ce852",s:"ACTIVE",p:"project-qos"},
   ],
-  'dismac.com.bo': [
-    {n:'FW-PFDISMAC',id:'6559a7a4-7208-4759-ae16-c0e3ad447499',s:'SHUTOFF',p:'project-dr-dismac'},
+  "refrio.com.br": [
+    {n:"Check-ip",id:"01692b59595242cb91d722cf83c5ddc0",s:"ACTIVE",p:"project-backbone"},
+    {n:"Fortigate-BACKBONE",id:"01692b59595242cb91d722cf83c5ddc0",s:"ACTIVE",p:"project-backbone"},
+    {n:"MGMT",id:"01692b59595242cb91d722cf83c5ddc0",s:"ACTIVE",p:"project-backbone"},
+    {n:"pfSense-BACKBONE",id:"01692b59595242cb91d722cf83c5ddc0",s:"ACTIVE",p:"project-backbone"},
+    {n:"prx-refrio",id:"01692b59595242cb91d722cf83c5ddc0",s:"ACTIVE",p:"project-backbone"},
+    {n:"prx-refrio1",id:"01692b59595242cb91d722cf83c5ddc0",s:"SHUTOFF",p:"project-backbone"},
+    {n:"binario-pfSense",id:"66e5631cb40f4e29aedbfa16eb4a74a8",s:"ACTIVE",p:"project-itapecerica"},
+    {n:"DCITAPECERICA",id:"66e5631cb40f4e29aedbfa16eb4a74a8",s:"ACTIVE",p:"project-itapecerica"},
+    {n:"FSITAPECERICA",id:"66e5631cb40f4e29aedbfa16eb4a74a8",s:"ACTIVE",p:"project-itapecerica"},
+    {n:"ABNET",id:"d21b4398a1e14ec68ae73fdec69cfb47",s:"ACTIVE",p:"project-refrio-taboao"},
+    {n:"AD",id:"d21b4398a1e14ec68ae73fdec69cfb47",s:"ACTIVE",p:"project-refrio-taboao"},
+    {n:"COLETOR-WMS",id:"d21b4398a1e14ec68ae73fdec69cfb47",s:"SHUTOFF",p:"project-refrio-taboao"},
+    {n:"FILE-SERVER",id:"d21b4398a1e14ec68ae73fdec69cfb47",s:"ACTIVE",p:"project-refrio-taboao"},
+    {n:"ORACLE-DB - New",id:"d21b4398a1e14ec68ae73fdec69cfb47",s:"ACTIVE",p:"project-refrio-taboao"},
+    {n:"ORACLE-WMS",id:"d21b4398a1e14ec68ae73fdec69cfb47",s:"ACTIVE",p:"project-refrio-taboao"},
+    {n:"ServerCSM",id:"d21b4398a1e14ec68ae73fdec69cfb47",s:"ACTIVE",p:"project-refrio-taboao"},
+    {n:"SERVER-ERP",id:"d21b4398a1e14ec68ae73fdec69cfb47",s:"ACTIVE",p:"project-refrio-taboao"},
+    {n:"Servererpnewhom",id:"d21b4398a1e14ec68ae73fdec69cfb47",s:"ACTIVE",p:"project-refrio-taboao"},
+    {n:"ServerMID",id:"d21b4398a1e14ec68ae73fdec69cfb47",s:"ACTIVE",p:"project-refrio-taboao"},
+    {n:"servermid01",id:"d21b4398a1e14ec68ae73fdec69cfb47",s:"ACTIVE",p:"project-refrio-taboao"},
+    {n:"ServerSVS",id:"d21b4398a1e14ec68ae73fdec69cfb47",s:"ACTIVE",p:"project-refrio-taboao"},
+    {n:"ServerSVShomol",id:"d21b4398a1e14ec68ae73fdec69cfb47",s:"ACTIVE",p:"project-refrio-taboao"},
+    {n:"srvbierphml",id:"d21b4398a1e14ec68ae73fdec69cfb47",s:"ACTIVE",p:"project-refrio-taboao"},
+    {n:"VPN-PFSENSE",id:"d21b4398a1e14ec68ae73fdec69cfb47",s:"ACTIVE",p:"project-refrio-taboao"},
+    {n:"WMS-RECOVERY",id:"d21b4398a1e14ec68ae73fdec69cfb47",s:"ACTIVE",p:"project-refrio-taboao"},
+    {n:"ZABBIX-SERVER",id:"d21b4398a1e14ec68ae73fdec69cfb47",s:"ACTIVE",p:"project-refrio-taboao"},
   ],
-  'domain-cloud2': [
-    {n:'src-host-kvm',id:'84e647fe-46dd-4cca-8ded-37932715573e',s:'ACTIVE',p:'project-cloud2'},
-    {n:'ubuntu-cloud2',id:'669944dc-be8f-44d0-978e-eccd73c74aa4',s:'SHUTOFF',p:'project-cloud2'},
-    {n:'windows-cloud2',id:'586e2f7a-847b-41e2-93ea-5386634421d1',s:'SHUTOFF',p:'project-cloud2'},
-    {n:'windows-cloud2-22',id:'c70c7faa-b9c0-4e23-bc2f-76f0762b8faf',s:'SHUTOFF',p:'project-cloud2'},
+  "bmchyundai.com.br": [
+    {n:"BMCAPP01",id:"704f5dd0fa754789a5bea1623c476748",s:"ACTIVE",p:"project-bmc"},
+    {n:"BMCCRIVO01",id:"704f5dd0fa754789a5bea1623c476748",s:"ACTIVE",p:"project-bmc"},
+    {n:"BMCCRIVO-HMLG",id:"704f5dd0fa754789a5bea1623c476748",s:"ACTIVE",p:"project-bmc"},
+    {n:"BMCDBSINC",id:"704f5dd0fa754789a5bea1623c476748",s:"ACTIVE",p:"project-bmc"},
+    {n:"BMCDBSQL01",id:"704f5dd0fa754789a5bea1623c476748",s:"ACTIVE",p:"project-bmc"},
+    {n:"BMCDBSQL02",id:"704f5dd0fa754789a5bea1623c476748",s:"ACTIVE",p:"project-bmc"},
+    {n:"BMCDC01",id:"704f5dd0fa754789a5bea1623c476748",s:"ACTIVE",p:"project-bmc"},
+    {n:"BMCDC02",id:"704f5dd0fa754789a5bea1623c476748",s:"ACTIVE",p:"project-bmc"},
+    {n:"BMC-ECOMMERCE-01",id:"704f5dd0fa754789a5bea1623c476748",s:"ACTIVE",p:"project-bmc"},
+    {n:"BMC-ECOMMERCE-01-OLD",id:"704f5dd0fa754789a5bea1623c476748",s:"SHUTOFF",p:"project-bmc"},
+    {n:"BMCEMS01",id:"704f5dd0fa754789a5bea1623c476748",s:"ACTIVE",p:"project-bmc"},
+    {n:"BMCERP002",id:"704f5dd0fa754789a5bea1623c476748",s:"ACTIVE",p:"project-bmc"},
+    {n:"BMCFS01",id:"704f5dd0fa754789a5bea1623c476748",s:"ACTIVE",p:"project-bmc"},
+    {n:"BMCHUBSPOT",id:"704f5dd0fa754789a5bea1623c476748",s:"ACTIVE",p:"project-bmc"},
+    {n:"BMCHUBSPOT2",id:"704f5dd0fa754789a5bea1623c476748",s:"ACTIVE",p:"project-bmc"},
+    {n:"BMCHUBSPOT-OLD",id:"704f5dd0fa754789a5bea1623c476748",s:"SHUTOFF",p:"project-bmc"},
+    {n:"BMCINTEGRACAO",id:"704f5dd0fa754789a5bea1623c476748",s:"ACTIVE",p:"project-bmc"},
+    {n:"BMCSINC01",id:"704f5dd0fa754789a5bea1623c476748",s:"ACTIVE",p:"project-bmc"},
+    {n:"BMCWEB01_",id:"704f5dd0fa754789a5bea1623c476748",s:"ACTIVE",p:"project-bmc"},
+    {n:"FWBMCFGT01",id:"704f5dd0fa754789a5bea1623c476748",s:"ACTIVE",p:"project-bmc"},
+    {n:"hubspottemp",id:"704f5dd0fa754789a5bea1623c476748",s:"SHUTOFF",p:"project-bmc"},
+    {n:"prx-bmchyundai",id:"704f5dd0fa754789a5bea1623c476748",s:"ACTIVE",p:"project-bmc"},
+    {n:"SRV-VBR",id:"704f5dd0fa754789a5bea1623c476748",s:"ACTIVE",p:"project-bmc"},
   ],
-  'enesa.com.br': [
-    {n:'ENSP-000SEVMBKP',id:'7cfb65f2-37a4-4e04-adae-9320001561f8',s:'ACTIVE',p:'project-backup-enesa'},
-    {n:'ENSP-000SEVMPRI',id:'f6d0dcb4-2681-4d9c-a089-fe1777053be9',s:'ACTIVE',p:'project-backup-enesa'},
-    {n:'ENSP-00FWPF',id:'62e681f7-cada-42e4-a5b0-60f0617b6e04',s:'ACTIVE',p:'project-backup-enesa'},
-    {n:'ENSP-SEVMBD',id:'77dc63cf-7496-4f1f-9806-5ed59dbae5fc',s:'ACTIVE',p:'project-backup-enesa'},
-    {n:'SVAPP03',id:'2b38a14b-8c75-422a-bfcc-de41fb38c9ca',s:'ACTIVE',p:'project-backup-enesa'},
-    {n:'SVDB02',id:'4aa994c8-8022-4c2f-8962-66d264b7e781',s:'ACTIVE',p:'project-backup-enesa'},
-    {n:'SVDC01',id:'93f191b1-276f-4da4-8c0f-50bf785273b3',s:'ACTIVE',p:'project-backup-enesa'},
-    {n:'SVFASTVUE',id:'5f3f42b8-8707-46da-b4ff-97394a18c995',s:'ACTIVE',p:'project-backup-enesa'},
-    {n:'SVFS01',id:'cd679b6e-589b-445d-810b-9a9d32a15223',s:'ACTIVE',p:'project-backup-enesa'},
-    {n:'SVHOMOLOG',id:'adbc6aea-bd58-4459-b747-681e6541a297',s:'ACTIVE',p:'project-backup-enesa'},
-    {n:'SVRDP',id:'45f8bf43-ee51-4d59-aed5-4c5d2fea999d',s:'ACTIVE',p:'project-backup-enesa'},
-    {n:'SVRPA',id:'83af6ff0-e8dc-4175-964a-4aa224ac2550',s:'ACTIVE',p:'project-backup-enesa'},
-    {n:'SVRS01',id:'e12fd6de-63e5-4ff2-9718-c1c5002eda3e',s:'ACTIVE',p:'project-backup-enesa'},
-    {n:'SVWEB01',id:'bd71073e-8498-43f2-aff4-5b6d04b4fc4a',s:'ACTIVE',p:'project-backup-enesa'},
-    {n:'VBR-MIGRACA',id:'efd1c729-b7fb-47ee-8871-5081e5a6f720',s:'ACTIVE',p:'project-backup-enesa'},
+  "zanthus.com.br": [
+    {n:"BC-QA-EXEC-2",id:"de4ff95007ff4f98a3eae5df8f4387d9",s:"ACTIVE",p:"ZCLOUD-ZANTHUS-QA-BC"},
+    {n:"BC-QA-EXECUTOR-1",id:"de4ff95007ff4f98a3eae5df8f4387d9",s:"ACTIVE",p:"ZCLOUD-ZANTHUS-QA-BC"},
+    {n:"BC-QA-FIREWALL",id:"de4ff95007ff4f98a3eae5df8f4387d9",s:"ACTIVE",p:"ZCLOUD-ZANTHUS-QA-BC"},
+    {n:"BC-QA-SERVIDOR-1",id:"de4ff95007ff4f98a3eae5df8f4387d9",s:"ACTIVE",p:"ZCLOUD-ZANTHUS-QA-BC"},
+    {n:"BC-QA-SERVIDOR-2",id:"de4ff95007ff4f98a3eae5df8f4387d9",s:"ACTIVE",p:"ZCLOUD-ZANTHUS-QA-BC"},
+    {n:"BC-QA-SERVIDOR-3",id:"de4ff95007ff4f98a3eae5df8f4387d9",s:"ACTIVE",p:"ZCLOUD-ZANTHUS-QA-BC"},
+    {n:"VBR-MIGRACAO",id:"de4ff95007ff4f98a3eae5df8f4387d9",s:"ACTIVE",p:"ZCLOUD-ZANTHUS-QA-BC"},
+    {n:"BC-ADMIN",id:"a74e1b339de544e79b9ca202805bd16c",s:"ACTIVE",p:"ZCLOUD-ZANTHUS-TI-BC"},
+    {n:"BC-CLAZ",id:"a74e1b339de544e79b9ca202805bd16c",s:"ACTIVE",p:"ZCLOUD-ZANTHUS-TI-BC"},
+    {n:"BC-DOCKER",id:"a74e1b339de544e79b9ca202805bd16c",s:"ACTIVE",p:"ZCLOUD-ZANTHUS-TI-BC"},
+    {n:"BC-DOCKER-RESTORE",id:"a74e1b339de544e79b9ca202805bd16c",s:"ACTIVE",p:"ZCLOUD-ZANTHUS-TI-BC"},
+    {n:"BC-ECOMM",id:"a74e1b339de544e79b9ca202805bd16c",s:"ACTIVE",p:"ZCLOUD-ZANTHUS-TI-BC"},
+    {n:"BC-GITLAB",id:"a74e1b339de544e79b9ca202805bd16c",s:"ACTIVE",p:"ZCLOUD-ZANTHUS-TI-BC"},
+    {n:"BC-IT-FIREWALL",id:"a74e1b339de544e79b9ca202805bd16c",s:"ACTIVE",p:"ZCLOUD-ZANTHUS-TI-BC"},
+    {n:"BC-MSSQL",id:"a74e1b339de544e79b9ca202805bd16c",s:"ACTIVE",p:"ZCLOUD-ZANTHUS-TI-BC"},
+    {n:"BC-PGSQL",id:"a74e1b339de544e79b9ca202805bd16c",s:"ACTIVE",p:"ZCLOUD-ZANTHUS-TI-BC"},
+    {n:"BC-PINCODE",id:"a74e1b339de544e79b9ca202805bd16c",s:"ACTIVE",p:"ZCLOUD-ZANTHUS-TI-BC"},
+    {n:"BC-POC-ZRETAIL",id:"a74e1b339de544e79b9ca202805bd16c",s:"SHUTOFF",p:"ZCLOUD-ZANTHUS-TI-BC"},
+    {n:"BC-PROTHEUS",id:"a74e1b339de544e79b9ca202805bd16c",s:"ACTIVE",p:"ZCLOUD-ZANTHUS-TI-BC"},
+    {n:"BC-SCAVENGER",id:"a74e1b339de544e79b9ca202805bd16c",s:"ACTIVE",p:"ZCLOUD-ZANTHUS-TI-BC"},
+    {n:"srvmig-tishare02",id:"a74e1b339de544e79b9ca202805bd16c",s:"ACTIVE",p:"ZCLOUD-ZANTHUS-TI-BC"},
+    {n:"SRV-ZANT025",id:"a74e1b339de544e79b9ca202805bd16c",s:"ACTIVE",p:"ZCLOUD-ZANTHUS-TI-BC"},
   ],
-  'geofix.com.br': [
-    {n:'CLOUD-BOXFWGFX',id:'c9d9c201-db4d-43dd-91df-66408b9500f8',s:'ACTIVE',p:'GEOFIX FUNDACOES LTDA'},
-    {n:'CLOUD-SRVADGFX',id:'87266230-d405-4a49-b3f2-39dda9eaea24',s:'ACTIVE',p:'GEOFIX FUNDACOES LTDA'},
+  "enesa.com.br": [
+    {n:"ENSP-000SEVMBKP",id:"da35d2f76e3d43f4ac237f02c92a9765",s:"ACTIVE",p:"project-backup-enesa"},
+    {n:"ENSP-000SEVMPRI",id:"da35d2f76e3d43f4ac237f02c92a9765",s:"ACTIVE",p:"project-backup-enesa"},
+    {n:"ENSP-00FWPF",id:"da35d2f76e3d43f4ac237f02c92a9765",s:"ACTIVE",p:"project-backup-enesa"},
+    {n:"ENSP-SEVMBD",id:"da35d2f76e3d43f4ac237f02c92a9765",s:"ACTIVE",p:"project-backup-enesa"},
+    {n:"SVAPP03",id:"da35d2f76e3d43f4ac237f02c92a9765",s:"ACTIVE",p:"project-backup-enesa"},
+    {n:"SVDB02",id:"da35d2f76e3d43f4ac237f02c92a9765",s:"ACTIVE",p:"project-backup-enesa"},
+    {n:"SVDC01",id:"da35d2f76e3d43f4ac237f02c92a9765",s:"ACTIVE",p:"project-backup-enesa"},
+    {n:"SVFASTVUE",id:"da35d2f76e3d43f4ac237f02c92a9765",s:"ACTIVE",p:"project-backup-enesa"},
+    {n:"SVFS01",id:"da35d2f76e3d43f4ac237f02c92a9765",s:"ACTIVE",p:"project-backup-enesa"},
+    {n:"SVHOMOLOG",id:"da35d2f76e3d43f4ac237f02c92a9765",s:"ACTIVE",p:"project-backup-enesa"},
+    {n:"SVRDP",id:"da35d2f76e3d43f4ac237f02c92a9765",s:"ACTIVE",p:"project-backup-enesa"},
+    {n:"SVRPA",id:"da35d2f76e3d43f4ac237f02c92a9765",s:"ACTIVE",p:"project-backup-enesa"},
+    {n:"SVRS01",id:"da35d2f76e3d43f4ac237f02c92a9765",s:"ACTIVE",p:"project-backup-enesa"},
+    {n:"SVWEB01",id:"da35d2f76e3d43f4ac237f02c92a9765",s:"ACTIVE",p:"project-backup-enesa"},
+    {n:"VBR-MIGRACA",id:"da35d2f76e3d43f4ac237f02c92a9765",s:"ACTIVE",p:"project-backup-enesa"},
   ],
-  'gimba.com.br': [
-    {n:'ADABASLINUX_CLONE',id:'ab70d73f-b0c2-4d33-a613-7b2d8c5a6784',s:'ACTIVE',p:'project-gimba-iaas'},
-    {n:'ADABASLINUX-RECOVERY',id:'55f7eedc-033b-43a6-a206-f7506f61ec4f',s:'SHUTOFF',p:'project-gimba-iaas'},
-    {n:'BC-DEVOPS',id:'4d80b941-99c5-4997-b63e-0d1588853ebd',s:'ACTIVE',p:'project-gimba-iaas'},
-    {n:'BC-DMZ-AD-03',id:'1170165a-dd66-43c5-8920-b5dc61f1aae8',s:'ACTIVE',p:'project-gimba-iaas'},
-    {n:'BCGBACESSO',id:'2436084f-bf3f-40ea-a8a0-f74888485a5c',s:'ACTIVE',p:'project-gimba-iaas'},
-    {n:'BCGBAPREIIS02',id:'8bd42ecf-9097-4ca0-b74b-98e9af60379b',s:'ACTIVE',p:'project-gimba-iaas'},
-    {n:'BCGBAPREIIS03',id:'e3242fc6-302f-47f7-884c-d20a5f984f47',s:'ACTIVE',p:'project-gimba-iaas'},
-    {n:'BCGBDEVIIS02',id:'374d4bec-7fe2-422f-9d57-4ab97e8dcdaf',s:'ACTIVE',p:'project-gimba-iaas'},
-    {n:'BCGBDEVIIS03',id:'4d9598d8-704c-4e94-9a16-ff4d3aeefb9f',s:'ACTIVE',p:'project-gimba-iaas'},
-    {n:'BCGBHMLIIS02',id:'5d474884-4c95-4215-aee6-edb5cbfd894f',s:'ACTIVE',p:'project-gimba-iaas'},
-    {n:'BCGBHMLIIS03',id:'c9ffca42-4be7-4853-ac8b-5bb5a9ecb694',s:'ACTIVE',p:'project-gimba-iaas'},
-    {n:'BCGBHMLIIS03-N',id:'17ee53b3-b4dd-4ec9-959b-d869b42a2de8',s:'ACTIVE',p:'project-gimba-iaas'},
-    {n:'BCGBOPERADOR',id:'f7d3c34f-3768-4ca7-94d7-15eae7cbe32b',s:'ACTIVE',p:'project-gimba-iaas'},
-    {n:'BCGBSADIG',id:'d0c11135-9abb-4382-83f7-232c381124dd',s:'ACTIVE',p:'project-gimba-iaas'},
-    {n:'BC-GMA-AD-01',id:'153685da-761f-47da-906c-216115b06b72',s:'ACTIVE',p:'project-gimba-iaas'},
-    {n:'BC-GMA-AD-02',id:'38ed5754-a223-4fe6-9b74-e3d5cdf90261',s:'ACTIVE',p:'project-gimba-iaas'},
-    {n:'BCGMAWEB05',id:'2d007066-ddaa-4b5b-929a-24db86c6e5f7',s:'ACTIVE',p:'project-gimba-iaas'},
-    {n:'BCGMAWEB07',id:'b7cb4c64-bacc-4209-bcb2-451f5c2046e7',s:'ACTIVE',p:'project-gimba-iaas'},
-    {n:'BC-GMB-KSEC',id:'30d75fa6-d715-4954-9719-6773b2d80a5b',s:'ACTIVE',p:'project-gimba-iaas'},
-    {n:'BC-REPLICATOR',id:'1f544a19-52a2-4dd2-b4c7-992e49f05eb8',s:'ACTIVE',p:'project-gimba-iaas'},
-    {n:'BC-TEST',id:'dfc9bb43-87e1-4ca3-ae88-dae5aa4d1ac4',s:'SHUTOFF',p:'project-gimba-iaas'},
-    {n:'DR_ADABASLINUX_CLONE',id:'b9628465-5040-4130-9af5-f9aaf44448f1',s:'ACTIVE',p:'project-gimba-iaas'},
-    {n:'GBAGENTES_IA',id:'a04c6540-f488-489b-afbf-f20fd4dd66ad',s:'ACTIVE',p:'project-gimba-iaas'},
-    {n:'GBAPREIIS1',id:'87ae8302-c6fc-4690-af65-3e120bea4844',s:'ACTIVE',p:'project-gimba-iaas'},
-    {n:'GBAPRESQL1',id:'931ee343-ce48-4133-821a-dc1a1b2f976e',s:'ACTIVE',p:'project-gimba-iaas'},
-    {n:'GBAPRESQL2',id:'2fd724af-40b7-4d59-b6ef-91f3edc02aa9',s:'ACTIVE',p:'project-gimba-iaas'},
-    {n:'GBAPRESQL3',id:'0fe1b62a-ab07-4db4-82d2-990f83433ecf',s:'ACTIVE',p:'project-gimba-iaas'},
-    {n:'GBARQUIVOS',id:'1e050f31-acdf-45e4-8fef-2827e647bf4d',s:'ACTIVE',p:'project-gimba-iaas'},
-    {n:'GBDEVIIS01',id:'342e25d8-16b6-46f8-b403-adc826ae0acc',s:'ACTIVE',p:'project-gimba-iaas'},
-    {n:'GBDEVIIS03-PERF',id:'fbb3c980-aaaf-4fb8-83d4-f1ed76646f60',s:'ACTIVE',p:'project-gimba-iaas'},
-    {n:'GBDEVJITTERBIT',id:'4d8a8644-c086-4b27-9541-ed88838f6a84',s:'ACTIVE',p:'project-gimba-iaas'},
-    {n:'GBDEVSQL01',id:'53108fe5-b3ba-41d1-92f4-3c10630319dc',s:'ACTIVE',p:'project-gimba-iaas'},
-    {n:'GBDEVSQL02',id:'3c51b0f7-07fb-425f-8ab6-04d20f9f27c6',s:'ACTIVE',p:'project-gimba-iaas'},
-    {n:'GBDEVSQL03',id:'f4d992ca-00e3-4fe4-b582-2620039797e0',s:'ACTIVE',p:'project-gimba-iaas'},
-    {n:'GBDEVSQLDW01',id:'8db8c9e9-9a0a-417f-a2d8-c8c511852d04',s:'ACTIVE',p:'project-gimba-iaas'},
-    {n:'GBGLPI',id:'c016fc3a-19b4-45d0-8cf0-f6853842420d',s:'ACTIVE',p:'project-gimba-iaas'},
-    {n:'GBHMLIIS01',id:'abbefc5e-de11-4016-a8fe-0dd1d49ef646',s:'ACTIVE',p:'project-gimba-iaas'},
-    {n:'GBHMLJITTERBIT',id:'47426c90-40f2-4fea-ab65-9de4a30e4d1f',s:'ACTIVE',p:'project-gimba-iaas'},
-    {n:'GBHMLSQL01',id:'9ec9e2b4-e628-4662-a4e8-bafea65cba60',s:'ACTIVE',p:'project-gimba-iaas'},
-    {n:'GBHMLSQL02',id:'28158020-5035-425f-b50e-03548331d806',s:'ACTIVE',p:'project-gimba-iaas'},
-    {n:'GBHMLSQL03',id:'3691b7bb-36de-484f-a597-7e177b1cb7c0',s:'ACTIVE',p:'project-gimba-iaas'},
-    {n:'GBIIS1',id:'a754793f-5f1f-47e6-98f6-b9811ba9301a',s:'ACTIVE',p:'project-gimba-iaas'},
-    {n:'GBIIS6',id:'25a4a0ac-029e-4c51-912e-8667a1fb594b',s:'ACTIVE',p:'project-gimba-iaas'},
-    {n:'GBJITTERBIT',id:'7f33c93b-b95b-43ae-9f68-e87df81c5828',s:'ACTIVE',p:'project-gimba-iaas'},
-    {n:'GBJITTERBIT-Old',id:'791d7c5e-8125-48a3-bbf0-48c181e5d297',s:'SHUTOFF',p:'project-gimba-iaas'},
-    {n:'GBSFTP',id:'963a98b6-e6dc-45ce-83bb-d764fca59277',s:'ACTIVE',p:'project-gimba-iaas'},
-    {n:'GBSQUADVIRTUAL',id:'74a42694-fb15-4057-b781-7fab75dbc3ea',s:'ACTIVE',p:'project-gimba-iaas'},
-    {n:'GBSRVNFS01',id:'822dd067-7bdd-42b8-a186-5e0bb52a81fd',s:'ACTIVE',p:'project-gimba-iaas'},
-    {n:'GBSRVTOTALL',id:'c98bf855-0805-4aea-b2eb-844dea815a32',s:'ACTIVE',p:'project-gimba-iaas'},
-    {n:'GBSRVTOTALL2',id:'6bff0a79-ca34-4a6f-98f5-d80e6273ac4e',s:'ACTIVE',p:'project-gimba-iaas'},
-    {n:'GBSRVTOTALL3',id:'f7788ba4-916a-4532-b23b-fbdc31f7581a',s:'ACTIVE',p:'project-gimba-iaas'},
-    {n:'GBSRVTOTALL-TESTE',id:'87446e9d-bb8a-4f16-af57-9835f8ae34ce',s:'SHUTOFF',p:'project-gimba-iaas'},
-    {n:'GBWEBSQL01',id:'3c747b64-bf26-4a3a-aca4-e1e203c2986e',s:'ACTIVE',p:'project-gimba-iaas'},
-    {n:'GBWEBSQL02',id:'f848ef0c-8732-4f74-86be-40a1c018aed0',s:'ACTIVE',p:'project-gimba-iaas'},
-    {n:'GBWEBSQL04',id:'ea6c93c8-80e6-4d45-8de4-2203c6480577',s:'ACTIVE',p:'project-gimba-iaas'},
-    {n:'GBWEBSQL11',id:'fab1e76a-1c13-4991-8a0b-e6549195cc1b',s:'ACTIVE',p:'project-gimba-iaas'},
-    {n:'GBWEBSQL12',id:'98046db2-9b6b-4724-87af-6448d51ae8b4',s:'ACTIVE',p:'project-gimba-iaas'},
-    {n:'GBWEBSQLDW01',id:'0aa22fc4-328e-42ef-a41a-02e7dadd52e1',s:'ACTIVE',p:'project-gimba-iaas'},
-    {n:'GMA-EC-01',id:'b4934f1b-ab39-4628-bc50-decb6c7daf52',s:'ACTIVE',p:'project-gimba-iaas'},
-    {n:'LINUX-MANOBRA-VEEAM',id:'55b8b3dc-3c67-4258-b05a-e32b7180d36c',s:'ACTIVE',p:'project-gimba-iaas'},
-    {n:'NGINX-ORACLE',id:'5eebe9e2-c704-4e24-afb7-bacb1c8a111e',s:'ACTIVE',p:'project-gimba-iaas'},
-    {n:'oracle-ksek',id:'74d3b551-7f8e-480f-ba44-6190c7d898dc',s:'ACTIVE',p:'project-gimba-iaas'},
-    {n:'ORACLEPRD03',id:'0e19dd24-917b-44d5-a19b-d22cbcc802b8',s:'ACTIVE',p:'project-gimba-iaas'},
-    {n:'ORACLEPRD1',id:'e9cb3215-508c-4711-a416-957670805ba6',s:'ACTIVE',p:'project-gimba-iaas'},
-    {n:'ORACLEPRD4',id:'006b4a57-ce86-4169-b20c-efbc9b861308',s:'ACTIVE',p:'project-gimba-iaas'},
-    {n:'ORACLEPROD01',id:'5960ea75-5309-4797-897a-8d26f4242b74',s:'SHUTOFF',p:'project-gimba-iaas'},
-    {n:'ORACLEPROD02',id:'a82307fe-3e94-4017-85f8-a137732e7297',s:'SHUTOFF',p:'project-gimba-iaas'},
-    {n:'PRX-GIMBA',id:'804ac2a8-bae1-47f9-b312-9908f2bc5169',s:'ACTIVE',p:'project-gimba-iaas'},
-    {n:'SRVBACKUP',id:'f098139f-fb1a-4943-b200-1aa6fd2d7161',s:'ACTIVE',p:'project-gimba-iaas'},
-    {n:'TESTE-SISTEMAS',id:'8b1f419e-c7e9-489b-a522-ecf44930d59d',s:'ACTIVE',p:'project-gimba-iaas'},
-    {n:'VEEAM-GIMBA',id:'55adc846-332b-4f1d-86a7-4d7ab41c0da1',s:'ACTIVE',p:'project-gimba-iaas'},
-    {n:'VM-FORTIGATE',id:'b61281ab-88ec-466e-ba36-a169d7707095',s:'ACTIVE',p:'project-gimba-iaas'},
+  "gruporaizes.com": [
+    {n:"BC-GRRAIZESAD",id:"44c245cd1ace4dfea935b451ccea7699",s:"ACTIVE",p:"project-grupo-raizes"},
+    {n:"BC-GRRAIZESAD02",id:"44c245cd1ace4dfea935b451ccea7699",s:"ACTIVE",p:"project-grupo-raizes"},
+    {n:"BC-GRRAIZESBD",id:"44c245cd1ace4dfea935b451ccea7699",s:"ACTIVE",p:"project-grupo-raizes"},
+    {n:"BC-GRRAIZES-FS",id:"44c245cd1ace4dfea935b451ccea7699",s:"ACTIVE",p:"project-grupo-raizes"},
+    {n:"BC-GRRAIZESFW",id:"44c245cd1ace4dfea935b451ccea7699",s:"ACTIVE",p:"project-grupo-raizes"},
+    {n:"BC-GRRAIZESOD",id:"44c245cd1ace4dfea935b451ccea7699",s:"ACTIVE",p:"project-grupo-raizes"},
+    {n:"BC-GRRAIZES-RPA-01",id:"44c245cd1ace4dfea935b451ccea7699",s:"ACTIVE",p:"project-grupo-raizes"},
+    {n:"BC-GRRAIZES-RPA-02",id:"44c245cd1ace4dfea935b451ccea7699",s:"ACTIVE",p:"project-grupo-raizes"},
+    {n:"BC-GRRAIZES-RPA-03",id:"44c245cd1ace4dfea935b451ccea7699",s:"ACTIVE",p:"project-grupo-raizes"},
+    {n:"BC-GRRAIZES-RPA-04",id:"44c245cd1ace4dfea935b451ccea7699",s:"ACTIVE",p:"project-grupo-raizes"},
+    {n:"BC-GRRAIZESTK",id:"44c245cd1ace4dfea935b451ccea7699",s:"ACTIVE",p:"project-grupo-raizes"},
+    {n:"BC-GRRAIZESVBR",id:"44c245cd1ace4dfea935b451ccea7699",s:"ACTIVE",p:"project-grupo-raizes"},
+    {n:"prx-gpraizes",id:"44c245cd1ace4dfea935b451ccea7699",s:"ACTIVE",p:"project-grupo-raizes"},
   ],
-  'gimba2.com.br': [
-    {n:'adabasdev',id:'b36fd4ae-b5a7-4402-b0f9-6a2a9b43d7f1',s:'ACTIVE',p:'Project-Gimba'},
-    {n:'devsolr-01',id:'d6dd6e0a-2052-4e1e-8518-a34242498239',s:'SHUTOFF',p:'Project-Gimba'},
-    {n:'DR-ORACLEERP',id:'a7729128-a68b-47ed-b490-8847d0aa14a6',s:'ACTIVE',p:'Project-Gimba'},
-    {n:'GBAPIBD',id:'dd02a0ed-ff66-4adb-9ff9-ce96d5d76c04',s:'ACTIVE',p:'Project-Gimba'},
-    {n:'GBAPIG',id:'c9cc771f-2a72-459d-93d7-8ae5b288882f',s:'ACTIVE',p:'Project-Gimba'},
-    {n:'GBAPIGTP',id:'1c213d6a-1a5e-4257-9944-f6694b7a4eca',s:'ACTIVE',p:'Project-Gimba'},
-    {n:'GBAPIPORTAL',id:'72c9a1af-40c3-4e41-9b60-a56fb8627974',s:'ACTIVE',p:'Project-Gimba'},
-    {n:'GBBARRAMENTO',id:'5adc55c7-8a58-44b0-8b6f-68adc05bd66b',s:'ACTIVE',p:'Project-Gimba'},
-    {n:'gbecommerce-01',id:'9564647f-fd19-463d-ad1f-f50091845344',s:'ACTIVE',p:'Project-Gimba'},
-    {n:'gbecommerce-02',id:'ff74a9cf-9f53-41e0-b240-710d2dbb4f4c',s:'ACTIVE',p:'Project-Gimba'},
-    {n:'gbecommerce-03',id:'ce2dec2b-b94c-4367-9976-f37664285cec',s:'ACTIVE',p:'Project-Gimba'},
-    {n:'GBGOVMON',id:'31479372-f60c-479a-9a79-b821046f54ca',s:'ACTIVE',p:'Project-Gimba'},
-    {n:'GBNGINX-01-DEV-HML',id:'14ec655a-cf1d-4646-9bc7-243b3f3c7a60',s:'ACTIVE',p:'Project-Gimba'},
-    {n:'GBNGINX-02-DEV-HML',id:'0208cc5b-3415-4378-a41b-6cd605c32107',s:'ACTIVE',p:'Project-Gimba'},
-    {n:'gbredis-01',id:'cc089d9e-4e28-4131-919e-b292cdae90a5',s:'ACTIVE',p:'Project-Gimba'},
-    {n:'gbredis-02',id:'871a5103-0f15-4ad5-a25c-1bef5417620b',s:'ACTIVE',p:'Project-Gimba'},
-    {n:'gbredis-03',id:'47c4ff7f-726f-43de-be0f-647bb8cbabc1',s:'ACTIVE',p:'Project-Gimba'},
-    {n:'GBSRVINDEX-01',id:'07c6e512-a3e7-4414-85dc-b17165aa6498',s:'ACTIVE',p:'Project-Gimba'},
-    {n:'GBWEB01',id:'cdfedbb1-f1c7-4cc6-80be-e86ed55d8978',s:'ACTIVE',p:'Project-Gimba'},
-    {n:'GBWEB02',id:'6e462f12-99ac-4561-a8c4-779324f42ad6',s:'ACTIVE',p:'Project-Gimba'},
-    {n:'GBWEB05',id:'d376b9c8-06f3-4983-a638-9afb09bacb33',s:'ACTIVE',p:'Project-Gimba'},
-    {n:'GBWEB06',id:'20d51fb0-9fb3-4f78-9426-8296ec354bb0',s:'ACTIVE',p:'Project-Gimba'},
-    {n:'GBWEB07',id:'e6a14082-429c-41df-b22d-0f7130f4b081',s:'ACTIVE',p:'Project-Gimba'},
-    {n:'GBWEB08',id:'9f78360c-2a11-4341-bdff-92ef97b9ef82',s:'ACTIVE',p:'Project-Gimba'},
-    {n:'GBWEB08-OLD',id:'390d127c-da55-4500-b34c-610556ce9099',s:'SHUTOFF',p:'Project-Gimba'},
-    {n:'GIMBASQL',id:'d726b866-aca0-4749-b5ce-012beb8bd9cb',s:'ACTIVE',p:'Project-Gimba'},
-    {n:'GIMBASQLOLD',id:'d370c5d5-ca00-4b26-a948-535a273cddcd',s:'ACTIVE',p:'Project-Gimba'},
-    {n:'openstack',id:'30c33986-4bcb-4a08-a41e-b3f65b21aadd',s:'SHUTOFF',p:'Project-Gimba'},
-    {n:'ORACLEERP',id:'68059f0f-69cf-4dc1-a777-ef3e02f64960',s:'ACTIVE',p:'Project-Gimba'},
-    {n:'ORADESENV',id:'c180d4a3-2f2e-4545-90cc-fdc50c293347',s:'ACTIVE',p:'Project-Gimba'},
-    {n:'Solr-01',id:'46bdca4e-3711-4696-b4fc-45c1fe795c52',s:'SHUTOFF',p:'Project-Gimba'},
-    {n:'Solr-02',id:'1b89789b-e1dc-4736-b7a4-c3d70d3e9cd1',s:'SHUTOFF',p:'Project-Gimba'},
-    {n:'Solr-03',id:'8a729e7b-1a01-4cb3-b6a7-4ab23776eba9',s:'SHUTOFF',p:'Project-Gimba'},
-    {n:'SolrDev',id:'4cf6c4e3-429b-4b6a-a121-83ab278fda61',s:'ACTIVE',p:'Project-Gimba'},
-    {n:'SolrMaster',id:'ad2cec3f-1904-4afc-9789-15f570a5a669',s:'ACTIVE',p:'Project-Gimba'},
-    {n:'SolrSlave-01',id:'b60b1348-ca82-4d50-9b82-f962f6970a02',s:'ACTIVE',p:'Project-Gimba'},
-    {n:'SolrSlave-02',id:'36cbd51c-078e-48a7-bf5b-305a7a26436f',s:'ACTIVE',p:'Project-Gimba'},
-    {n:'Veeam',id:'742ed022-52af-4baf-bb4c-c9faf2326171',s:'ACTIVE',p:'Project-Gimba'},
-    {n:'vm-bacula',id:'44df867b-0555-4270-b81f-9f765cdbcb8b',s:'ACTIVE',p:'Project-Gimba'},
-    {n:'vm-opnsense',id:'153b8fea-153a-4a88-b2ab-1643b3a9dd09',s:'SHUTOFF',p:'Project-Gimba'},
-    {n:'vm-pfsense',id:'f6111da9-17f4-4f39-a8a7-8c3157ba07de',s:'ACTIVE',p:'Project-Gimba'},
-    {n:'vm-repositorio-temp',id:'b0ff3445-a585-4bee-b1f8-4abf3def1c0a',s:'SHUTOFF',p:'Project-Gimba'},
+  "luizalabs.com": [
+    {n:"DB01",id:"e269325929414b1392975f1750905c8a",s:"ACTIVE",p:"project-brainlaw"},
+    {n:"magalu-bacula",id:"e269325929414b1392975f1750905c8a",s:"SHUTOFF",p:"project-brainlaw"},
+    {n:"magalu-opnsense",id:"e269325929414b1392975f1750905c8a",s:"ACTIVE",p:"project-brainlaw"},
+    {n:"magalu-veeam",id:"e269325929414b1392975f1750905c8a",s:"ACTIVE",p:"project-brainlaw"},
+    {n:"prx-magalu",id:"e269325929414b1392975f1750905c8a",s:"ACTIVE",p:"project-brainlaw"},
+    {n:"WEB02",id:"e269325929414b1392975f1750905c8a",s:"ACTIVE",p:"project-brainlaw"},
+    {n:"bastion",id:"f461f142d06846b69a8177060514d4eb",s:"ACTIVE",p:"project-mgc"},
+    {n:"linux-teste",id:"f461f142d06846b69a8177060514d4eb",s:"ACTIVE",p:"project-mgc"},
+    {n:"pfsense-firewall",id:"f461f142d06846b69a8177060514d4eb",s:"ACTIVE",p:"project-mgc"},
+    {n:"vm01_labs",id:"f461f142d06846b69a8177060514d4eb",s:"ACTIVE",p:"project-mgc"},
+    {n:"vm03_labs",id:"f461f142d06846b69a8177060514d4eb",s:"ACTIVE",p:"project-mgc"},
   ],
-  'gruporaizes.com': [
-    {n:'BC-GRRAIZESAD',id:'15f1547a-26ca-4aeb-a51a-70d151f7e30a',s:'ACTIVE',p:'project-grupo-raizes'},
-    {n:'BC-GRRAIZESAD02',id:'b1f136c9-fd35-411c-bde1-a80494adb2f0',s:'ACTIVE',p:'project-grupo-raizes'},
-    {n:'BC-GRRAIZESBD',id:'d04aad2b-1c17-437d-9dcf-da09fa83cb13',s:'ACTIVE',p:'project-grupo-raizes'},
-    {n:'BC-GRRAIZES-FS',id:'63f81c11-9ad5-48f8-897a-b9315ea10fc1',s:'ACTIVE',p:'project-grupo-raizes'},
-    {n:'BC-GRRAIZESFW',id:'38a7640a-50dd-4adb-9c91-8111e865ee06',s:'ACTIVE',p:'project-grupo-raizes'},
-    {n:'BC-GRRAIZESOD',id:'8c6c1a34-2090-418c-a534-d0a1483799c7',s:'ACTIVE',p:'project-grupo-raizes'},
-    {n:'BC-GRRAIZES-RPA-01',id:'1ad282b3-270d-4f12-94ae-211ed5e169ec',s:'ACTIVE',p:'project-grupo-raizes'},
-    {n:'BC-GRRAIZES-RPA-02',id:'24d97b13-95f7-41aa-a6e8-bd83defd6c13',s:'ACTIVE',p:'project-grupo-raizes'},
-    {n:'BC-GRRAIZES-RPA-03',id:'d7ed68ea-969b-4f47-bd65-6f1a820c5840',s:'ACTIVE',p:'project-grupo-raizes'},
-    {n:'BC-GRRAIZES-RPA-04',id:'c056b064-47b4-435e-8293-9d1a245700b6',s:'ACTIVE',p:'project-grupo-raizes'},
-    {n:'BC-GRRAIZESTK',id:'34748863-5134-4027-af05-0962fd7f73f6',s:'ACTIVE',p:'project-grupo-raizes'},
-    {n:'BC-GRRAIZESVBR',id:'7937d4af-5c7c-47c4-a3bd-30ea2d52ea1d',s:'ACTIVE',p:'project-grupo-raizes'},
-    {n:'prx-gpraizes',id:'ed55a962-5f61-4064-b6f0-2ccf1470a8a6',s:'ACTIVE',p:'project-grupo-raizes'},
+  "waits.com.br": [
+    {n:"PIRA-BC-APP01",id:"7318a9bcacaf4dffb707aa108d0d41aa",s:"ACTIVE",p:"project-piramidal"},
+    {n:"PIRA-BC-APP02",id:"7318a9bcacaf4dffb707aa108d0d41aa",s:"ACTIVE",p:"project-piramidal"},
+    {n:"PIRA-BC-BFW01",id:"7318a9bcacaf4dffb707aa108d0d41aa",s:"ACTIVE",p:"project-piramidal"},
+    {n:"PIRA-BC-BKP01",id:"7318a9bcacaf4dffb707aa108d0d41aa",s:"ACTIVE",p:"project-piramidal"},
+    {n:"PIRA-BC-DC01",id:"7318a9bcacaf4dffb707aa108d0d41aa",s:"ACTIVE",p:"project-piramidal"},
+    {n:"PIRA-BC-SAP01",id:"7318a9bcacaf4dffb707aa108d0d41aa",s:"ACTIVE",p:"project-piramidal"},
+    {n:"PIRA-BC-SAP02",id:"7318a9bcacaf4dffb707aa108d0d41aa",s:"ACTIVE",p:"project-piramidal"},
+    {n:"PIRA-BC-SAP03",id:"7318a9bcacaf4dffb707aa108d0d41aa",s:"ACTIVE",p:"project-piramidal"},
+    {n:"PIRA-BC-TS",id:"7318a9bcacaf4dffb707aa108d0d41aa",s:"ACTIVE",p:"project-piramidal"},
+    {n:"PIRA-BC-VPN01",id:"7318a9bcacaf4dffb707aa108d0d41aa",s:"ACTIVE",p:"project-piramidal"},
   ],
-  'luizalabs.com': [
-    {n:'DB01',id:'0f0f04f7-4781-4c19-aa85-91dcf91faf3f',s:'ACTIVE',p:'project-brainlaw'},
-    {n:'magalu-bacula',id:'696a4499-585f-40e6-bf62-713db0e67478',s:'SHUTOFF',p:'project-brainlaw'},
-    {n:'magalu-opnsense',id:'e7118f64-807a-4699-94df-ff9c2f562872',s:'ACTIVE',p:'project-brainlaw'},
-    {n:'magalu-veeam',id:'efa59e57-f563-46b8-b913-c0c75b0313cf',s:'ACTIVE',p:'project-brainlaw'},
-    {n:'prx-magalu',id:'270ed9d4-595d-4c78-8353-5400e4103287',s:'ACTIVE',p:'project-brainlaw'},
-    {n:'WEB02',id:'fbd77d3f-2ace-4b98-96ba-670eaba0330a',s:'ACTIVE',p:'project-brainlaw'},
-    {n:'bastion',id:'8cad2dd4-8db3-4590-9bb8-33a10547cffa',s:'ACTIVE',p:'project-mgc'},
-    {n:'linux-teste',id:'d918752b-8cea-4828-8dc7-9da4fc75691b',s:'ACTIVE',p:'project-mgc'},
-    {n:'pfsense-firewall',id:'3123d4f3-0858-4cb7-a68e-ac5dc0d9df70',s:'ACTIVE',p:'project-mgc'},
-    {n:'vm01_labs',id:'8f8f643a-bdc3-43d0-8ca8-4baa36fbdda0',s:'ACTIVE',p:'project-mgc'},
-    {n:'vm03_labs',id:'04d66569-0cd9-4ba5-8c95-749cf167bc59',s:'ACTIVE',p:'project-mgc'},
+  "soprema.com.br": [
+    {n:"BRSUZ-SW0100",id:"690502c4b47d472daa4eff4e11a30c42",s:"ACTIVE",p:"project-soprema-brasil"},
+    {n:"FTGSPRCLD",id:"690502c4b47d472daa4eff4e11a30c42",s:"ACTIVE",p:"project-soprema-brasil"},
+    {n:"SRV-DOCKER",id:"690502c4b47d472daa4eff4e11a30c42",s:"ACTIVE",p:"project-soprema-brasil"},
+    {n:"SRV-EMS",id:"690502c4b47d472daa4eff4e11a30c42",s:"ACTIVE",p:"project-soprema-brasil"},
+    {n:"SRV-FAZ",id:"690502c4b47d472daa4eff4e11a30c42",s:"ACTIVE",p:"project-soprema-brasil"},
+    {n:"SRV-MIGRACAO",id:"690502c4b47d472daa4eff4e11a30c42",s:"ACTIVE",p:"project-soprema-brasil"},
+    {n:"SWSPR001",id:"690502c4b47d472daa4eff4e11a30c42",s:"SHUTOFF",p:"project-soprema-brasil"},
+    {n:"SWSPR001_NEW",id:"690502c4b47d472daa4eff4e11a30c42",s:"ACTIVE",p:"project-soprema-brasil"},
+    {n:"SWSPR007",id:"690502c4b47d472daa4eff4e11a30c42",s:"ACTIVE",p:"project-soprema-brasil"},
   ],
-  'mahlerededepostos.com.br': [
-    {n:'FPFSSRV01',id:'f7351ab6-bb38-41f0-bcd7-1809215ae70d',s:'SHUTOFF',p:'project-projeto-mahle'},
-    {n:'SRVWS2K22PRN01',id:'bbaed915-ed73-48c9-a228-2153c0834760',s:'SHUTOFF',p:'project-projeto-mahle'},
+  "smarapd.com.br": [
+    {n:"smarapdPF",id:"7420239444f34a53b884e7409cfd9198",s:"ACTIVE",p:"project-smarapdsaeituiutaba"},
+    {n:"smarapdPMRibeiraoApp",id:"7420239444f34a53b884e7409cfd9198",s:"ACTIVE",p:"project-smarapdsaeituiutaba"},
+    {n:"smarapdPMRibEntesapp",id:"7420239444f34a53b884e7409cfd9198",s:"ACTIVE",p:"project-smarapdsaeituiutaba"},
+    {n:"smarapdSAEItuiutabaApp",id:"7420239444f34a53b884e7409cfd9198",s:"ACTIVE",p:"project-smarapdsaeituiutaba"},
+    {n:"smarapdSAEItuiutabaProxy",id:"7420239444f34a53b884e7409cfd9198",s:"ACTIVE",p:"project-smarapdsaeituiutaba"},
+    {n:"smarapdSQL01",id:"7420239444f34a53b884e7409cfd9198",s:"ACTIVE",p:"project-smarapdsaeituiutaba"},
+    {n:"smarapd_SRV_APPTB",id:"7420239444f34a53b884e7409cfd9198",s:"ACTIVE",p:"project-smarapdsaeituiutaba"},
+    {n:"smarapd_SRV_BDTB",id:"7420239444f34a53b884e7409cfd9198",s:"ACTIVE",p:"project-smarapdsaeituiutaba"},
   ],
-  'mbmsolutions.com.br': [
-    {n:'Base-Oficial',id:'cf3fada2-93cf-485c-b2f1-2a1aa2a2f05c',s:'SHUTOFF',p:'project--mbm'},
-    {n:'Cloud01-MBM',id:'008456e5-4f28-47b3-9240-b333b084b4d1',s:'SHUTOFF',p:'project--mbm'},
-    {n:'CLOUD02-MBM',id:'03b425a9-1cb7-4d80-9c5e-c21918d253c4',s:'SHUTOFF',p:'project--mbm'},
-    {n:'Linux-MBM',id:'5c76c9cb-459a-4bd1-8d6d-6aa91010027e',s:'SHUTOFF',p:'project--mbm'},
-    {n:'Proxy',id:'92b1d07c-923f-49ab-ae65-53c2f38b6f35',s:'SHUTOFF',p:'project--mbm'},
+  "radiojb.fm": [
+    {n:"GRUPOJB-DB",id:"832241eee849490e9c889872c3a6ba53",s:"ACTIVE",p:"project-grupo-jbfm"},
+    {n:"JBFM-FWPF01",id:"832241eee849490e9c889872c3a6ba53",s:"ACTIVE",p:"project-grupo-jbfm"},
+    {n:"JBFM-WEB-2023",id:"832241eee849490e9c889872c3a6ba53",s:"ACTIVE",p:"project-grupo-jbfm"},
+    {n:"RADIOCIDADE-2023",id:"832241eee849490e9c889872c3a6ba53",s:"ACTIVE",p:"project-grupo-jbfm"},
+    {n:"RTMP/n8n Server",id:"832241eee849490e9c889872c3a6ba53",s:"ACTIVE",p:"project-grupo-jbfm"},
+    {n:"TOTVS",id:"832241eee849490e9c889872c3a6ba53",s:"ACTIVE",p:"project-grupo-jbfm"},
   ],
-  'netza.com.br': [
-    {n:'NETZA-FW01',id:'ca30a4f2-2661-44b5-90e0-48edd3f61e5f',s:'ACTIVE',p:'NETZA'},
-    {n:'prx-netza',id:'447a9f8e-2a8b-4a08-912e-dc43e64a69c4',s:'ACTIVE',p:'NETZA'},
-    {n:'VBR-Migracao-Netza',id:'7fe277ec-8e6e-4832-b5b2-4668e078de0a',s:'ACTIVE',p:'NETZA'},
-    {n:'vm-netza',id:'c6606820-804a-4b6c-a3ec-860c6f3f2079',s:'ACTIVE',p:'NETZA'},
+  "mbmsolutions.com.br": [
+    {n:"Base-Oficial",id:"39de802c884a40b5a7cfedd73d97346c",s:"SHUTOFF",p:"project--mbm"},
+    {n:"Cloud01-MBM",id:"39de802c884a40b5a7cfedd73d97346c",s:"SHUTOFF",p:"project--mbm"},
+    {n:"CLOUD02-MBM",id:"39de802c884a40b5a7cfedd73d97346c",s:"SHUTOFF",p:"project--mbm"},
+    {n:"Linux-MBM",id:"39de802c884a40b5a7cfedd73d97346c",s:"SHUTOFF",p:"project--mbm"},
+    {n:"Proxy",id:"39de802c884a40b5a7cfedd73d97346c",s:"SHUTOFF",p:"project--mbm"},
   ],
-  'prumoengenharia.com.br': [
-    {n:'Bluepex_UTM_Atualizado',id:'169f28fa-94a7-4961-a65f-230856b836d2',s:'ACTIVE',p:'project-provedor-de-email-zimbra'},
-    {n:'SRVAD-BC01',id:'b638659f-a08d-4418-b37a-6d1c10513b25',s:'ACTIVE',p:'project-provedor-de-email-zimbra'},
-    {n:'SRV-Zimbra',id:'f16a87b7-4b6d-4968-8e4d-8b5f33bb15fc',s:'ACTIVE',p:'project-provedor-de-email-zimbra'},
-    {n:'test-windows',id:'2255394e-66eb-408c-9a7f-3198d57e4e9e',s:'SHUTOFF',p:'project-provedor-de-email-zimbra'},
-    {n:'SistemaS4',id:'e60b3320-4407-43a4-a5a6-72c8811f1f78',s:'SHUTOFF',p:'Projeto - Prumo Engenharia'},
+  "prumoengenharia.com.br": [
+    {n:"Bluepex_UTM_Atualizado",id:"a545170c94ad471086c7ffc494365b6f",s:"ACTIVE",p:"project-provedor-de-email-zimbra"},
+    {n:"SRVAD-BC01",id:"a545170c94ad471086c7ffc494365b6f",s:"ACTIVE",p:"project-provedor-de-email-zimbra"},
+    {n:"SRV-Zimbra",id:"a545170c94ad471086c7ffc494365b6f",s:"ACTIVE",p:"project-provedor-de-email-zimbra"},
+    {n:"test-windows",id:"a545170c94ad471086c7ffc494365b6f",s:"SHUTOFF",p:"project-provedor-de-email-zimbra"},
+    {n:"SistemaS4",id:"bed4b203773c44f89dd443908fa36e94",s:"SHUTOFF",p:"Projeto - Prumo Engenharia"},
   ],
-  'qos.com.br': [
-    {n:'Airwave-Dasa',id:'98885301-bd76-4b75-b694-3113f3ec9c26',s:'SHUTOFF',p:'project-qos'},
-    {n:'APPInfra-ClaroFust',id:'d5c6d7bc-9bff-4a58-8817-e95f692fdfca',s:'ACTIVE',p:'project-qos'},
-    {n:'APPInfra-Media',id:'c8eeed6f-d1ed-4e93-b037-4190cc82149a',s:'ACTIVE',p:'project-qos'},
-    {n:'bkp-1.qos.srv.br',id:'0fa6a887-776c-4699-a039-ebb2a9d56d09',s:'ACTIVE',p:'project-qos'},
-    {n:'captiveportal.grupobinario.net-aplicação',id:'d31a3396-6d0b-467d-afd6-31269d494cc3',s:'ACTIVE',p:'project-qos'},
-    {n:'captiveportal.grupobinario.net-database',id:'7fbb3d6e-784e-4fe3-a368-32d3673b96eb',s:'ACTIVE',p:'project-qos'},
-    {n:'captiveportal.grupobinario.net-database2',id:'a79ba2c8-75ca-46f0-837f-c1a9a56cfae2',s:'ACTIVE',p:'project-qos'},
-    {n:'ciena-tim-win-1.qos.srv.br',id:'7f8c2f93-6208-452f-9295-714b7810d513',s:'ACTIVE',p:'project-qos'},
-    {n:'Claro - Ferramenta de Testes BB',id:'dcc282e6-dc86-4034-a38b-d73c2554fec4',s:'ACTIVE',p:'project-qos'},
-    {n:'cloud-vsrx-1.qos.srv.br',id:'c2aef94e-55ea-470c-9427-d7def72fe53f',s:'ACTIVE',p:'project-qos'},
-    {n:'DASA_WIFI-ZABBIX',id:'8e330916-bc0b-4cb8-9b1d-27100e04a30b',s:'SHUTOFF',p:'project-qos'},
-    {n:'DASA_WIFI-ZABBIX-DB',id:'6605b809-6bee-4815-914f-443bde475821',s:'SHUTOFF',p:'project-qos'},
-    {n:'DASA-WIFI-ZABBIX-PROXY',id:'d2a5cdec-89d1-48be-bc3f-1da3af38ca4c',s:'SHUTOFF',p:'project-qos'},
-    {n:'diretorio-2',id:'577ade8c-eea5-409d-b038-e836030a0348',s:'ACTIVE',p:'project-qos'},
-    {n:'diretorio.qos.srv.br',id:'1f6d350f-572f-4240-9956-57e43dc22069',s:'ACTIVE',p:'project-qos'},
-    {n:'fortinet-algar-1.qos.srv.br',id:'c969ea06-dbf8-4c71-9571-7a3bf858be56',s:'ACTIVE',p:'project-qos'},
-    {n:'jump-dasa-win-1.qos.srv.br',id:'ded76fa1-bc9a-4fed-8f50-a8a41934711e',s:'ACTIVE',p:'project-qos'},
-    {n:'jump-tim-lnx-1.qos.srv.br',id:'0800a869-3de7-45be-92aa-c69ce81d3130',s:'ACTIVE',p:'project-qos'},
-    {n:'ntb-dasa.qos.srv.br',id:'7f67ad39-63b2-47b2-a3ae-9c4312ccaf36',s:'SHUTOFF',p:'project-qos'},
-    {n:'otrs-1.qos.srv.br',id:'f893219d-2a01-40eb-b405-f1ab3cdcd6dc',s:'ACTIVE',p:'project-qos'},
-    {n:'PoC-Captive Portal-Ubiquiti',id:'9938011e-ea81-4377-8052-9ed75fc359a9',s:'ACTIVE',p:'project-qos'},
-    {n:'qos-ftp-win',id:'8e6d78cf-453b-42e2-a7c8-387c14a71ff8',s:'ACTIVE',p:'project-qos'},
-    {n:'radius-1.qos.srv.br',id:'8e19fb02-ebee-4442-a5f8-694e4aaf5f38',s:'ACTIVE',p:'project-qos'},
-    {n:'SRV-VBR-QOS',id:'80438ece-5a3c-45c7-9c07-109f805352e4',s:'ACTIVE',p:'project-qos'},
-    {n:'VBR-Migracao-QoS',id:'33169294-05c6-4b43-8ecd-bd468b9e2aa3',s:'ACTIVE',p:'project-qos'},
-    {n:'vpn-1.qos.srv.br',id:'776fd9ac-1c43-4e57-85e9-7222c5bbd63e',s:'ACTIVE',p:'project-qos'},
-    {n:'www.qos.srv.br',id:'d993f2d7-360e-46ec-9c3d-622f2dd3e56c',s:'ACTIVE',p:'project-qos'},
-    {n:'zbx-dasa.qos.srv.br',id:'2ceb25c8-00ca-4158-971c-6ae39e61f1f6',s:'ACTIVE',p:'project-qos'},
+  "sre.binario.cloud": [
+    {n:"coriolis-clientes",id:"f54ca7db48244d07a1e637e588f40bb0",s:"ACTIVE",p:"coriolis-projects"},
+    {n:"EdgeConnect",id:"f54ca7db48244d07a1e637e588f40bb0",s:"ACTIVE",p:"coriolis-projects"},
+    {n:"fw-ish",id:"f54ca7db48244d07a1e637e588f40bb0",s:"ACTIVE",p:"coriolis-projects"},
+    {n:"fw-pfcoriolis",id:"f54ca7db48244d07a1e637e588f40bb0",s:"ACTIVE",p:"coriolis-projects"},
+    {n:"zabbixproxy-5",id:"f54ca7db48244d07a1e637e588f40bb0",s:"ACTIVE",p:"coriolis-projects"},
   ],
-  'radiojb.fm': [
-    {n:'GRUPOJB-DB',id:'aea7062f-5e38-4f1a-8e7d-916bf0a071a8',s:'ACTIVE',p:'project-grupo-jbfm'},
-    {n:'JBFM-FWPF01',id:'da7562b6-3704-46d7-a84c-cd4cd014dfbf',s:'ACTIVE',p:'project-grupo-jbfm'},
-    {n:'JBFM-WEB-2023',id:'3ba1a23d-cfcf-4177-9d95-d48ef18eb836',s:'ACTIVE',p:'project-grupo-jbfm'},
-    {n:'RADIOCIDADE-2023',id:'87ba8362-45ad-4db2-86e8-36254d58b7dc',s:'ACTIVE',p:'project-grupo-jbfm'},
-    {n:'RTMP/n8n Server',id:'19fc3f18-b2b4-4cb1-857f-b84cca97e0bb',s:'ACTIVE',p:'project-grupo-jbfm'},
-    {n:'TOTVS',id:'af784b5b-64eb-4342-b435-6acd92d830f7',s:'ACTIVE',p:'project-grupo-jbfm'},
+  "automalogica.com.br": [
+    {n:"BC-ATMLAD-01",id:"69b201e574204d7cba0966841eb11d64",s:"SHUTOFF",p:"project-automalogica"},
+    {n:"BC-ATMLOGFTG",id:"69b201e574204d7cba0966841eb11d64",s:"ACTIVE",p:"project-automalogica"},
+    {n:"BC-ATMLOGVBR",id:"69b201e574204d7cba0966841eb11d64",s:"SHUTOFF",p:"project-automalogica"},
+    {n:"BC-ATMLZABBIX",id:"69b201e574204d7cba0966841eb11d64",s:"SHUTOFF",p:"project-automalogica"},
   ],
-  'refrio.com.br': [
-    {n:'Check-ip',id:'b4e5f160-4423-41d7-a3ec-c86481ac2153',s:'ACTIVE',p:'project-backbone'},
-    {n:'Fortigate-BACKBONE',id:'ae6f3b29-e53d-4f9d-ae7d-f97985357f78',s:'ACTIVE',p:'project-backbone'},
-    {n:'MGMT',id:'db5b47f6-7d3c-4edc-8f1a-31d1f4131974',s:'ACTIVE',p:'project-backbone'},
-    {n:'pfSense-BACKBONE',id:'b0023474-aa79-4f8d-927a-1051f333570a',s:'ACTIVE',p:'project-backbone'},
-    {n:'prx-refrio',id:'db761c8a-5c3e-44d9-8a4d-56a140094d24',s:'ACTIVE',p:'project-backbone'},
-    {n:'prx-refrio1',id:'e7838bae-21f6-495e-ad86-2e653f9724b4',s:'SHUTOFF',p:'project-backbone'},
-    {n:'binario-pfSense',id:'34a599b9-b956-407b-b92a-ca9d15f9fa9b',s:'ACTIVE',p:'project-itapecerica'},
-    {n:'DCITAPECERICA',id:'5a5bc974-642d-4d2b-a486-53c27a4f80d4',s:'ACTIVE',p:'project-itapecerica'},
-    {n:'FSITAPECERICA',id:'25f2682f-8086-47be-9da9-b7ac78dc502f',s:'ACTIVE',p:'project-itapecerica'},
-    {n:'ABNET',id:'251ddae6-4eee-4230-9774-2dd2e757326f',s:'ACTIVE',p:'project-refrio-taboao'},
-    {n:'AD',id:'1e9b7fb8-5c9f-4678-b9e1-06277cf0ce91',s:'ACTIVE',p:'project-refrio-taboao'},
-    {n:'COLETOR-WMS',id:'2bef76b3-5a9c-4986-8724-641dc2f8cee5',s:'SHUTOFF',p:'project-refrio-taboao'},
-    {n:'FILE-SERVER',id:'f48c22c3-1074-4f78-9d06-9803db680fe0',s:'ACTIVE',p:'project-refrio-taboao'},
-    {n:'ORACLE-DB - New',id:'5022bc28-7fea-457b-87f3-84a4fe69113b',s:'ACTIVE',p:'project-refrio-taboao'},
-    {n:'ORACLE-WMS',id:'e273bb60-99c0-408c-a226-da55f10edc30',s:'ACTIVE',p:'project-refrio-taboao'},
-    {n:'ServerCSM',id:'5664767b-6114-4cd1-98ef-e00d40f1b687',s:'ACTIVE',p:'project-refrio-taboao'},
-    {n:'SERVER-ERP',id:'ae120e2f-e97e-4202-baf9-f58581d4fe74',s:'ACTIVE',p:'project-refrio-taboao'},
-    {n:'Servererpnewhom',id:'b5090d02-c4dd-4ec0-ad7c-e56e23f4b9a4',s:'ACTIVE',p:'project-refrio-taboao'},
-    {n:'ServerMID',id:'e5f9e32d-497c-45b3-a794-4a24e9d392ff',s:'ACTIVE',p:'project-refrio-taboao'},
-    {n:'servermid01',id:'9c8770b7-4518-43de-9f87-bde6c871d33d',s:'ACTIVE',p:'project-refrio-taboao'},
-    {n:'ServerSVS',id:'4e528611-e797-461a-93ae-360388a4fcef',s:'ACTIVE',p:'project-refrio-taboao'},
-    {n:'ServerSVShomol',id:'d39d4478-a557-4446-a1c3-f8a711dd793c',s:'ACTIVE',p:'project-refrio-taboao'},
-    {n:'srvbierphml',id:'79e3cd2e-3a0f-4668-9e2b-e409f5a42d0b',s:'ACTIVE',p:'project-refrio-taboao'},
-    {n:'VPN-PFSENSE',id:'49a985fd-dc14-4a76-8a0c-85b530f9f816',s:'ACTIVE',p:'project-refrio-taboao'},
-    {n:'WMS-RECOVERY',id:'94c89d73-f071-4265-b3a9-5a781412079d',s:'ACTIVE',p:'project-refrio-taboao'},
-    {n:'ZABBIX-SERVER',id:'dc9d8ff1-09e4-4e55-baea-047e2586a38e',s:'ACTIVE',p:'project-refrio-taboao'},
+  "domain-cloud2": [
+    {n:"src-host-kvm",id:"a5d6da2a803f4c8186ce84e38f6c76d0",s:"ACTIVE",p:"project-cloud2"},
+    {n:"ubuntu-cloud2",id:"a5d6da2a803f4c8186ce84e38f6c76d0",s:"SHUTOFF",p:"project-cloud2"},
+    {n:"windows-cloud2",id:"a5d6da2a803f4c8186ce84e38f6c76d0",s:"SHUTOFF",p:"project-cloud2"},
+    {n:"windows-cloud2-22",id:"a5d6da2a803f4c8186ce84e38f6c76d0",s:"SHUTOFF",p:"project-cloud2"},
   ],
-  'sagaengenharia.com.br': [
-    {n:'MAILSERVER',id:'dae2253e-6b90-4178-9f7a-6a82fa02592a',s:'SHUTOFF',p:'project-sagamail'},
-    {n:'MAILSERVERBKP',id:'915f62a7-f0ba-4114-bb4a-66c9ffd51e1a',s:'SHUTOFF',p:'project-sagamail'},
-    {n:'SRV-MIGRACAO',id:'829fd693-5aa5-4ab3-90a5-a02e330d8113',s:'ACTIVE',p:'project-sagamail'},
+  "netza.com.br": [
+    {n:"NETZA-FW01",id:"88e39ab425be42c2864d36c8e199c10f",s:"ACTIVE",p:"NETZA"},
+    {n:"prx-netza",id:"88e39ab425be42c2864d36c8e199c10f",s:"ACTIVE",p:"NETZA"},
+    {n:"VBR-Migracao-Netza",id:"88e39ab425be42c2864d36c8e199c10f",s:"ACTIVE",p:"NETZA"},
+    {n:"vm-netza",id:"88e39ab425be42c2864d36c8e199c10f",s:"ACTIVE",p:"NETZA"},
   ],
-  'sattelecom.com': [
-    {n:'satc4cloud',id:'448a2754-0a1c-44cf-a5dd-b6784d9ebdd1',s:'ACTIVE',p:'Project-Sat-Telecom'},
-    {n:'SatC5Cloud',id:'f62d26d4-3d7b-4102-9180-a0aa614c7986',s:'SHUTOFF',p:'Project-Sat-Telecom'},
+  "sagaengenharia.com.br": [
+    {n:"MAILSERVER",id:"d22063a28b38464f8cfe206fa885e85f",s:"SHUTOFF",p:"project-sagamail"},
+    {n:"MAILSERVERBKP",id:"d22063a28b38464f8cfe206fa885e85f",s:"SHUTOFF",p:"project-sagamail"},
+    {n:"SRV-MIGRACAO",id:"d22063a28b38464f8cfe206fa885e85f",s:"ACTIVE",p:"project-sagamail"},
   ],
-  'sattelecomip.com': [
-    {n:'satc4cloud',id:'c37bb58c-fe6c-49f7-8c9a-8033289c3e4d',s:'SHUTOFF',p:'Project-Sat-TelecomIP'},
-    {n:'satc4_NEW',id:'fb1397cb-9923-42b4-82e4-eea646ba7b2f',s:'ACTIVE',p:'Project-Sat-TelecomIP'},
-    {n:'SatC5Cloud',id:'32d2f459-89cd-4eab-94ea-a3f9723ff769',s:'ACTIVE',p:'Project-Sat-TelecomIP'},
+  "sattelecomip.com": [
+    {n:"satc4cloud",id:"a57b07d4a197411cb55ac44d8bc8602a",s:"SHUTOFF",p:"Project-Sat-TelecomIP"},
+    {n:"satc4_NEW",id:"a57b07d4a197411cb55ac44d8bc8602a",s:"ACTIVE",p:"Project-Sat-TelecomIP"},
+    {n:"SatC5Cloud",id:"a57b07d4a197411cb55ac44d8bc8602a",s:"ACTIVE",p:"Project-Sat-TelecomIP"},
   ],
-  'selbetti.com': [
-    {n:'teste',id:'8a84b098-3e11-4ef2-8533-f02e785cb169',s:'SHUTOFF',p:'project-projetct-ambiente-teste'},
-    {n:'VM1',id:'5681c771-32e3-4c49-a9bb-76fbced2e722',s:'SHUTOFF',p:'selbetti-sso'},
+  "sistecweb.com.br": [
+    {n:"BC-FRIGBBAD",id:"07ffe707f90942388c200db65c6666d0",s:"SHUTOFF",p:"project-frigorifico_bb"},
+    {n:"BC-SISTECWFW",id:"07ffe707f90942388c200db65c6666d0",s:"ACTIVE",p:"project-frigorifico_bb"},
+    {n:"VBR-Veeam",id:"07ffe707f90942388c200db65c6666d0",s:"SHUTOFF",p:"project-frigorifico_bb"},
   ],
-  'sistecweb.com.br': [
-    {n:'BC-FRIGBBAD',id:'ba7548c7-b51d-4799-a2cf-b4181d99933d',s:'SHUTOFF',p:'project-frigorifico_bb'},
-    {n:'BC-SISTECWFW',id:'49d3d985-6d27-4413-8224-7d722b7fa59b',s:'ACTIVE',p:'project-frigorifico_bb'},
-    {n:'VBR-Veeam',id:'4b4b4d22-661c-44bc-8357-ae98f3e77b9f',s:'SHUTOFF',p:'project-frigorifico_bb'},
+  "geofix.com.br": [
+    {n:"CLOUD-BOXFWGFX",id:"d517dc981849497f9347f283c30e8a81",s:"ACTIVE",p:"GEOFIX FUNDACOES LTDA"},
+    {n:"CLOUD-SRVADGFX",id:"d517dc981849497f9347f283c30e8a81",s:"ACTIVE",p:"GEOFIX FUNDACOES LTDA"},
   ],
-  'smarapd.com.br': [
-    {n:'smarapdPF',id:'582b846e-a598-4e4b-803d-96e8972650cf',s:'ACTIVE',p:'project-smarapdsaeituiutaba'},
-    {n:'smarapdPMRibeiraoApp',id:'767cad09-0978-4036-8e0b-eabebe55f5f5',s:'ACTIVE',p:'project-smarapdsaeituiutaba'},
-    {n:'smarapdPMRibEntesapp',id:'9113012f-a79e-47c4-a82f-e2fad7529726',s:'ACTIVE',p:'project-smarapdsaeituiutaba'},
-    {n:'smarapdSAEItuiutabaApp',id:'ff9a5027-0c8d-4061-8e21-55a41f48cee6',s:'ACTIVE',p:'project-smarapdsaeituiutaba'},
-    {n:'smarapdSAEItuiutabaProxy',id:'2e760195-464e-4c39-8782-63d5c4856e84',s:'ACTIVE',p:'project-smarapdsaeituiutaba'},
-    {n:'smarapdSQL01',id:'358241c8-410d-4540-b541-e3c3469e660e',s:'ACTIVE',p:'project-smarapdsaeituiutaba'},
-    {n:'smarapd_SRV_APPTB',id:'2405a3c5-a50d-47d8-aff1-ff4cc550750a',s:'ACTIVE',p:'project-smarapdsaeituiutaba'},
-    {n:'smarapd_SRV_BDTB',id:'bc5aa2bf-6d49-4662-b17e-99d26ed36bb5',s:'ACTIVE',p:'project-smarapdsaeituiutaba'},
+  "mahlerededepostos.com.br": [
+    {n:"FPFSSRV01",id:"873493791d56455da308b10b53c90343",s:"SHUTOFF",p:"project-projeto-mahle"},
+    {n:"SRVWS2K22PRN01",id:"873493791d56455da308b10b53c90343",s:"SHUTOFF",p:"project-projeto-mahle"},
   ],
-  'soprema.com.br': [
-    {n:'BRSUZ-SW0100',id:'a7389969-2866-4d4b-9593-70c02a3e38a0',s:'ACTIVE',p:'project-soprema-brasil'},
-    {n:'FTGSPRCLD',id:'5cb39bef-e000-4022-b027-179794c03d36',s:'ACTIVE',p:'project-soprema-brasil'},
-    {n:'SRV-DOCKER',id:'f70eaa30-126e-42e6-87b5-39db78334bba',s:'ACTIVE',p:'project-soprema-brasil'},
-    {n:'SRV-EMS',id:'7994396e-28c9-4b3f-95d9-e596bf9e54cc',s:'ACTIVE',p:'project-soprema-brasil'},
-    {n:'SRV-FAZ',id:'806f5518-fd9c-4767-bd59-39715824231c',s:'ACTIVE',p:'project-soprema-brasil'},
-    {n:'SRV-MIGRACAO',id:'e859cb55-4ff1-4b07-9d9f-d697e1f7874c',s:'ACTIVE',p:'project-soprema-brasil'},
-    {n:'SWSPR001',id:'6fa68578-da7c-4aef-8f71-5ce43d53fa95',s:'SHUTOFF',p:'project-soprema-brasil'},
-    {n:'SWSPR001_NEW',id:'e71e7395-9139-4eb8-912d-717b42c28eab',s:'ACTIVE',p:'project-soprema-brasil'},
-    {n:'SWSPR007',id:'8e0241ae-2497-46a4-8edc-c55feac95fec',s:'ACTIVE',p:'project-soprema-brasil'},
+  "sattelecom.com": [
+    {n:"satc4cloud",id:"638aac27d55648b4bf6c7f636d7d9b62",s:"ACTIVE",p:"Project-Sat-Telecom"},
+    {n:"SatC5Cloud",id:"638aac27d55648b4bf6c7f636d7d9b62",s:"SHUTOFF",p:"Project-Sat-Telecom"},
   ],
-  'spheraeducacional.com.br': [
-    {n:'WEB01',id:'22f45d68-1240-4606-a3cd-7c99b3ba3deb',s:'ACTIVE',p:'project-esa'},
+  "selbetti.com": [
+    {n:"teste",id:"0065051e24334b679739fad7ceb6cbbe",s:"SHUTOFF",p:"project-projetct-ambiente-teste"},
+    {n:"VM1",id:"ae039d3dae4448e2a26a2c6ecbb4c3d9",s:"SHUTOFF",p:"selbetti-sso"},
   ],
-  'sre.binario.cloud': [
-    {n:'coriolis-clientes',id:'15ebc448-023c-43fe-887b-c78fc6580430',s:'ACTIVE',p:'coriolis-projects'},
-    {n:'EdgeConnect',id:'fb62c2ec-12ae-488f-9bf7-1bb167e185b7',s:'ACTIVE',p:'coriolis-projects'},
-    {n:'fw-ish',id:'430729f9-2b02-4324-9ad6-5a59fe2951aa',s:'ACTIVE',p:'coriolis-projects'},
-    {n:'fw-pfcoriolis',id:'570ada4a-5dd9-4d93-98a9-066e62ae6c63',s:'ACTIVE',p:'coriolis-projects'},
-    {n:'zabbixproxy-5',id:'9bdaafba-b32e-4a19-a07d-a52efcec77ca',s:'ACTIVE',p:'coriolis-projects'},
-    {n:'ceph-cs-1',id:'51576ef9-6df5-495c-8f48-483e7950e3fa',s:'SHUTOFF',p:'project-veeam'},
-    {n:'ceph-cs-2',id:'39764de9-b726-4e1c-ab22-d00b991792a6',s:'SHUTOFF',p:'project-veeam'},
-    {n:'ceph-cs-3',id:'ea3746de-4bd8-4330-85a5-587cddd81e63',s:'SHUTOFF',p:'project-veeam'},
-    {n:'cs-cmp-1',id:'0c8cf08d-1b11-4e97-8058-ecb7b95d1d9f',s:'SHUTOFF',p:'project-veeam'},
-    {n:'cs-cmp-2',id:'e3cc4289-280d-4a10-8026-bc1ad271a31b',s:'SHUTOFF',p:'project-veeam'},
-    {n:'jump-cs',id:'11f9b4ee-e091-4bb6-b797-5cc995e5fd90',s:'SHUTOFF',p:'project-veeam'},
-    {n:'managment-cs',id:'41cf3bee-7058-49a2-b091-92e0756f43e0',s:'SHUTOFF',p:'project-veeam'},
-    {n:'repository-amg',id:'0f811766-e6b9-4f0f-b730-bd32e6e3deec',s:'SHUTOFF',p:'project-veeam'},
-    {n:'VBR',id:'eb310fe7-5e3b-4196-8556-0ff83cac8326',s:'SHUTOFF',p:'project-veeam'},
-    {n:'windows-teste',id:'4131a93d-1d2c-42b5-990b-6fc9bf06570f',s:'SHUTOFF',p:'project-veeam'},
-    {n:'zabbixproxy-4',id:'7fd75ac7-6a92-4a5f-a271-e000ebb723be',s:'SHUTOFF',p:'project-veeam'},
+  "1team.cloud": [
+    {n:"UNICOBA_NEW",id:"0493aacd6302490aa6cd599e7ecb3b65",s:"ACTIVE",p:"project-1teamcloud"},
   ],
-  'suporte.binario.cloud': [
-    {n:'PNET-LAB',id:'4be887b9-5f77-487f-ae62-29b0240ece4c',s:'ACTIVE',p:'gimba-lab'},
+  "dismac.com.bo": [
+    {n:"FW-PFDISMAC",id:"7eee390e168a416f9bc662b1669b7ae3",s:"SHUTOFF",p:"project-dr-dismac"},
   ],
-  'waits.com.br': [
-    {n:'PIRA-BC-APP01',id:'b932a81c-0590-4c3a-aca0-594290b14e63',s:'ACTIVE',p:'project-piramidal'},
-    {n:'PIRA-BC-APP02',id:'feccf9d4-058f-41a3-a2ba-cf3dac3d5f95',s:'ACTIVE',p:'project-piramidal'},
-    {n:'PIRA-BC-BFW01',id:'c83f8f9d-9af2-4dab-aa7f-3f36dfa0c069',s:'ACTIVE',p:'project-piramidal'},
-    {n:'PIRA-BC-BKP01',id:'da419780-1e87-403b-80a7-b3490e2e5b0d',s:'ACTIVE',p:'project-piramidal'},
-    {n:'PIRA-BC-DC01',id:'97f76f53-265f-432c-8f2c-73b2cb2d0e4a',s:'ACTIVE',p:'project-piramidal'},
-    {n:'PIRA-BC-SAP01',id:'864d0ac1-340b-4034-bf84-02556e3aa07d',s:'ACTIVE',p:'project-piramidal'},
-    {n:'PIRA-BC-SAP02',id:'dd93198e-ef81-4459-960c-e5979204fbc5',s:'ACTIVE',p:'project-piramidal'},
-    {n:'PIRA-BC-SAP03',id:'4576c999-b4d1-4a2f-b1cc-ceca4255ee12',s:'ACTIVE',p:'project-piramidal'},
-    {n:'PIRA-BC-TS',id:'779b40a9-899e-47fe-bf16-771daa6e549f',s:'ACTIVE',p:'project-piramidal'},
-    {n:'PIRA-BC-VPN01',id:'fd377c83-f30c-47ed-9d03-d21299dda1d2',s:'ACTIVE',p:'project-piramidal'},
+  "spheraeducacional.com.br": [
+    {n:"WEB01",id:"5c06425158424d5d87bd6c6f2b644450",s:"ACTIVE",p:"project-esa"},
   ],
-  'zanthus.com.br': [
-    {n:'BC-QA-EXEC-2',id:'a5cb0a36-9223-49ad-8ca0-7f798220e136',s:'ACTIVE',p:'ZCLOUD-ZANTHUS-QA-BC'},
-    {n:'BC-QA-EXECUTOR-1',id:'95e43ced-b66d-46e1-86a8-e5389664bed2',s:'ACTIVE',p:'ZCLOUD-ZANTHUS-QA-BC'},
-    {n:'BC-QA-FIREWALL',id:'e6bb3dc8-401d-41db-a4b6-73c59b824a0c',s:'ACTIVE',p:'ZCLOUD-ZANTHUS-QA-BC'},
-    {n:'BC-QA-SERVIDOR-1',id:'496e3aab-1b9f-4cef-91ca-e16948f5a6fb',s:'ACTIVE',p:'ZCLOUD-ZANTHUS-QA-BC'},
-    {n:'BC-QA-SERVIDOR-2',id:'a0955aa5-bf52-4a65-9c88-7cb009454ab1',s:'ACTIVE',p:'ZCLOUD-ZANTHUS-QA-BC'},
-    {n:'BC-QA-SERVIDOR-3',id:'16db73c0-2bc6-46bb-b963-60c29a0ec638',s:'ACTIVE',p:'ZCLOUD-ZANTHUS-QA-BC'},
-    {n:'VBR-MIGRACAO',id:'22399ba3-ee20-43c4-a5a0-51bf03e7dcc8',s:'ACTIVE',p:'ZCLOUD-ZANTHUS-QA-BC'},
-    {n:'BC-ADMIN',id:'92ba45d1-21c3-4027-86aa-fa3b17c3ce80',s:'ACTIVE',p:'ZCLOUD-ZANTHUS-TI-BC'},
-    {n:'BC-CLAZ',id:'ccba83f0-b91d-4449-9754-3036972cab96',s:'ACTIVE',p:'ZCLOUD-ZANTHUS-TI-BC'},
-    {n:'BC-DOCKER',id:'97951bc4-3463-48da-b6ba-92d7ac087e9f',s:'ACTIVE',p:'ZCLOUD-ZANTHUS-TI-BC'},
-    {n:'BC-DOCKER-RESTORE',id:'9da60652-0a71-4a85-8429-1217845a3c0d',s:'ACTIVE',p:'ZCLOUD-ZANTHUS-TI-BC'},
-    {n:'BC-ECOMM',id:'d02a6999-7428-43f5-9471-d35523689bbe',s:'ACTIVE',p:'ZCLOUD-ZANTHUS-TI-BC'},
-    {n:'BC-GITLAB',id:'9607c8e9-6ef8-4197-978a-1a3b884afa0c',s:'ACTIVE',p:'ZCLOUD-ZANTHUS-TI-BC'},
-    {n:'BC-IT-FIREWALL',id:'581eb013-f21a-46ec-9121-6f1868efd865',s:'ACTIVE',p:'ZCLOUD-ZANTHUS-TI-BC'},
-    {n:'BC-MSSQL',id:'286efaa8-37af-428c-90e7-5b3ce90ef3d9',s:'ACTIVE',p:'ZCLOUD-ZANTHUS-TI-BC'},
-    {n:'BC-PGSQL',id:'9592a510-0591-4810-9222-00331b0b59b5',s:'ACTIVE',p:'ZCLOUD-ZANTHUS-TI-BC'},
-    {n:'BC-PINCODE',id:'d57584d8-f517-4c6e-88e0-0829dfb7b6c2',s:'ACTIVE',p:'ZCLOUD-ZANTHUS-TI-BC'},
-    {n:'BC-POC-ZRETAIL',id:'00fdda9d-7607-4f49-a8fe-afdc21707285',s:'SHUTOFF',p:'ZCLOUD-ZANTHUS-TI-BC'},
-    {n:'BC-PROTHEUS',id:'e13b4724-041e-4297-8f4d-02ec108a7881',s:'ACTIVE',p:'ZCLOUD-ZANTHUS-TI-BC'},
-    {n:'BC-SCAVENGER',id:'8f33188b-fd13-4c9f-a0e8-b041b0ab3f58',s:'ACTIVE',p:'ZCLOUD-ZANTHUS-TI-BC'},
-    {n:'srvmig-tishare02',id:'6dc1d91e-e9a1-47fe-bc1c-4111ccefd9a3',s:'ACTIVE',p:'ZCLOUD-ZANTHUS-TI-BC'},
-    {n:'SRV-ZANT025',id:'af72f4a3-f3d4-4733-a916-136e9f0e84c4',s:'ACTIVE',p:'ZCLOUD-ZANTHUS-TI-BC'},
+  "suporte.binario.cloud": [
+    {n:"PNET-LAB",id:"1352546f2f1b4ab6925193e2f4653749",s:"ACTIVE",p:"gimba-lab"},
   ],
 };
 
 const SAN20_SEED = [
-  // ── Inventário OpenStack — 08/06/2026 v2 | 510 VMs | 33 Domínios | 426 ligadas | 84 desligadas ──
-  { id: 1, dominio:'Default', cliente:'Admin / Service (OpenStack interno)', tipo:'Serviço Interno', vms:74, ligadas:66, desligadas:8, pctDeslig:10.8 },
-  { id: 2, dominio:'gimba.com.br', cliente:'Gimba', tipo:'Aplicação Web', vms:72, ligadas:66, desligadas:6, pctDeslig:8.3 },
-  { id: 3, dominio:'(Sem Domínio)', cliente:'VMs sem domínio configurado', tipo:'Outro', vms:62, ligadas:37, desligadas:25, pctDeslig:40.3 },
-  { id: 4, dominio:'gimba2.com.br', cliente:'Gimba 2', tipo:'Aplicação Web', vms:42, ligadas:34, desligadas:8, pctDeslig:19.0 },
-  { id: 5, dominio:'binario.cloud', cliente:'Binario Cloud — Ambiente Principal', tipo:'Aplicação Web', vms:41, ligadas:41, desligadas:0, pctDeslig:0.0 },
+  // ── Inventário OpenStack — 08/06/2026 | 478 VMs | 33 Domínios | 426 ligadas | 52 desligadas ──
+  { id: 1, dominio:'gimba.com.br', cliente:'Gimba', tipo:'Aplicação Web', vms:72, ligadas:66, desligadas:6, pctDeslig:8.3 },
+  { id: 2, dominio:'Default', cliente:'Admin / Service (OpenStack interno)', tipo:'Serviço Interno', vms:66, ligadas:66, desligadas:0, pctDeslig:0.0 },
+  { id: 3, dominio:'gimba2.com.br', cliente:'Gimba 2', tipo:'Aplicação Web', vms:42, ligadas:34, desligadas:8, pctDeslig:19.0 },
+  { id: 4, dominio:'binario.cloud', cliente:'Binario Cloud — Ambiente Principal', tipo:'Aplicação Web', vms:41, ligadas:41, desligadas:0, pctDeslig:0.0 },
+  { id: 5, dominio:'(Sem Domínio)', cliente:'VMs sem domínio configurado', tipo:'Outro', vms:38, ligadas:37, desligadas:1, pctDeslig:2.6 },
   { id: 6, dominio:'qos.com.br', cliente:'QOS', tipo:'Aplicação Web', vms:28, ligadas:23, desligadas:5, pctDeslig:17.9 },
   { id: 7, dominio:'refrio.com.br', cliente:'Refrio', tipo:'Aplicação Web', vms:26, ligadas:24, desligadas:2, pctDeslig:7.7 },
   { id: 8, dominio:'bmchyundai.com.br', cliente:'BMC Hyundai', tipo:'Aplicação Web', vms:23, ligadas:20, desligadas:3, pctDeslig:13.0 },
@@ -2558,34 +2484,152 @@ document.addEventListener('page-changed', function(e) {
 <script>
 // ── Sanitização 2.0 — VM List Modal ───────────────────────────────────────────
 function san20VMLExportCSV() {
-  const title = document.getElementById('san20vml-title').innerText.replace(/[^\w\s-]/g,'').trim().replace(/\s+/g,'-');
-  const header = 'Nome da VM,ID,Projeto,Status';
-  const body = _san20VMLAll.map(v =>
-    [v.n, v.id, v.p||'(Sem Projeto)', v.s]
-      .map(x => `"${String(x||'').replace(/"/g,'""')}"`)
-      .join(',')
-  ).join('\n');
-  const blob = new Blob(['\uFEFF' + header + '\n' + body], {type:'text/csv;charset=utf-8'});
+  const rawTitle = document.getElementById('san20vml-title') ? document.getElementById('san20vml-title').innerText : 'VMs';
+  const dominio  = rawTitle.replace(/[🟢⚫📋]/g,'').replace(/Ligadas|Desligadas|Todas as VMs/g,'').replace(/—/g,'').trim();
+  const status   = _san20VMLAll.length && _san20VMLAll[0].s ? _san20VMLAll[0].s : 'ALL';
+  const tipoLabel = status === 'ACTIVE' ? 'Ligadas' : status === 'SHUTOFF' ? 'Desligadas' : 'Todas as VMs';
+  const projetos  = [...new Set(_san20VMLAll.map(v => v.p || '(Sem Projeto)'))].length;
+  const dataHoje  = new Date().toLocaleDateString('pt-BR', {day:'2-digit',month:'2-digit',year:'numeric'});
+
+  const lines = [
+    `"Relatório de VMs ${tipoLabel} — Domínio: ${dominio}"`,
+    `"Status: ${status}  |  Total: ${_san20VMLAll.length} VMs  |  Projetos afetados: ${projetos}  |  Gerado em: ${dataHoje}"`,
+    '',
+    '#,Nome da VM,ID,Projeto,Status',
+    ..._san20VMLAll.map((v, i) =>
+      [i+1, v.n, v.id||'', v.p||'(Sem Projeto)', v.s]
+        .map(x => `"${String(x).replace(/"/g,'""')}"`)
+        .join(',')
+    )
+  ];
+  const blob = new Blob(['\uFEFF' + lines.join('\n')], {type:'text/csv;charset=utf-8'});
   const a = document.createElement('a');
   a.href = URL.createObjectURL(blob);
-  a.download = `vms-${title}-${new Date().toISOString().slice(0,10)}.csv`;
+  a.download = `vms_${status.toLowerCase()}_${dominio.replace(/\./g,'_')}.csv`;
   a.click();
 }
 
 function san20VMLExportXLS() {
-  const title = document.getElementById('san20vml-title').innerText.replace(/[^\w\s-]/g,'').trim().replace(/\s+/g,'-');
-  let xml = `<?xml version="1.0" encoding="UTF-8"?><Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet" xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"><Worksheet ss:Name="VMs"><Table>`;
-  xml += `<Row><Cell><Data ss:Type="String">Nome da VM</Data></Cell><Cell><Data ss:Type="String">ID</Data></Cell><Cell><Data ss:Type="String">Projeto</Data></Cell><Cell><Data ss:Type="String">Status</Data></Cell></Row>`;
-  _san20VMLAll.forEach(v => {
-    const esc = s => String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
-    xml += `<Row><Cell><Data ss:Type="String">${esc(v.n)}</Data></Cell><Cell><Data ss:Type="String">${esc(v.id)}</Data></Cell><Cell><Data ss:Type="String">${esc(v.p||'(Sem Projeto)')}</Data></Cell><Cell><Data ss:Type="String">${esc(v.s)}</Data></Cell></Row>`;
-  });
-  xml += `</Table></Worksheet></Workbook>`;
-  const blob = new Blob([xml], {type:'application/vnd.ms-excel;charset=utf-8'});
-  const a = document.createElement('a');
-  a.href = URL.createObjectURL(blob);
-  a.download = `vms-${title}-${new Date().toISOString().slice(0,10)}.xls`;
-  a.click();
+  const rawTitle  = document.getElementById('san20vml-title') ? document.getElementById('san20vml-title').innerText : 'VMs';
+  const dominio   = rawTitle.replace(/[🟢⚫📋]/g,'').replace(/Ligadas|Desligadas|Todas as VMs/g,'').replace(/—/g,'').trim();
+  const status    = _san20VMLAll.length && _san20VMLAll[0].s ? _san20VMLAll[0].s : 'ALL';
+  const tipoLabel = status === 'ACTIVE' ? 'Ligadas' : status === 'SHUTOFF' ? 'Desligadas' : 'Todas as VMs';
+  const projetos  = [...new Set(_san20VMLAll.map(v => v.p || '(Sem Projeto)'))].length;
+  const dataHoje  = new Date().toLocaleDateString('pt-BR', {day:'2-digit',month:'2-digit',year:'numeric'});
+  const fname     = `vms_${status.toLowerCase()}_${dominio.replace(/\./g,'_')}.xlsx`;
+
+  function doExport() {
+    const XLSX = window.XLSX;
+    const wb   = XLSX.utils.book_new();
+
+    // Monta array de arrays
+    const aoa = [
+      [`Relatório de VMs ${tipoLabel} — Domínio: ${dominio}`, '', '', '', ''],
+      [`Status: ${status}  |  Total: ${_san20VMLAll.length} VMs  |  Projetos afetados: ${projetos}  |  Gerado em: ${dataHoje}`, '', '', '', ''],
+      ['', '', '', '', ''],
+      ['#', 'Nome da VM', 'ID', 'Projeto', 'Status'],
+      ..._san20VMLAll.map((v, i) => [i+1, v.n||'', v.id||'', v.p||'(Sem Projeto)', v.s||'']),
+      ['', '', '', '', ''],
+      ['Total', _san20VMLAll.length, '', '', '']
+    ];
+
+    const ws = XLSX.utils.aoa_to_sheet(aoa);
+
+    // Larguras das colunas
+    ws['!cols'] = [{wch:5},{wch:30},{wch:38},{wch:25},{wch:10}];
+
+    // Merges para título e subtítulo
+    ws['!merges'] = [
+      {s:{r:0,c:0}, e:{r:0,c:4}},
+      {s:{r:1,c:0}, e:{r:1,c:4}}
+    ];
+
+    // Altura das linhas
+    ws['!rows'] = [{hpt:28},{hpt:20}];
+
+    // Função helper para aplicar estilo
+    const S = (cell, style) => {
+      if(!ws[cell]) ws[cell] = {t:'s', v:''};
+      ws[cell].s = style;
+    };
+
+    // Estilo título (A1) — fundo azul escuro, texto branco, bold 13
+    const styleTitulo = {
+      font:{bold:true, sz:13, color:{rgb:'FFFFFF'}},
+      fill:{patternType:'solid', fgColor:{rgb:'1E3A5F'}},
+      alignment:{horizontal:'center', vertical:'center'}
+    };
+    // Estilo subtítulo (A2) — fundo azul médio
+    const styleSub = {
+      font:{bold:false, sz:10, color:{rgb:'FFFFFF'}},
+      fill:{patternType:'solid', fgColor:{rgb:'2C5282'}},
+      alignment:{horizontal:'center', vertical:'center'}
+    };
+    // Estilo header tabela — fundo cinza escuro
+    const styleHeader = {
+      font:{bold:true, sz:10, color:{rgb:'FFFFFF'}},
+      fill:{patternType:'solid', fgColor:{rgb:'2D3748'}},
+      alignment:{horizontal:'center', vertical:'center'}
+    };
+    // Status SHUTOFF — fundo vermelho claro
+    const styleShutoff = {
+      font:{bold:true, sz:10, color:{rgb:'991B1B'}},
+      fill:{patternType:'solid', fgColor:{rgb:'FEE2E2'}},
+      alignment:{horizontal:'center'}
+    };
+    // Status ACTIVE — fundo verde claro
+    const styleActive = {
+      font:{bold:true, sz:10, color:{rgb:'065F46'}},
+      fill:{patternType:'solid', fgColor:{rgb:'D1FAE5'}},
+      alignment:{horizontal:'center'}
+    };
+    // Linha ímpar branca
+    const styleWhite = {fill:{patternType:'solid', fgColor:{rgb:'FFFFFF'}}, font:{sz:10}};
+    // Linha par cinza clarinho
+    const styleGray  = {fill:{patternType:'solid', fgColor:{rgb:'F7FAFC'}}, font:{sz:10}};
+    // Número centrado
+    const styleNum   = (bg) => ({fill:{patternType:'solid', fgColor:{rgb:bg}}, font:{sz:10}, alignment:{horizontal:'center'}});
+    // Total footer
+    const styleTotal = {
+      font:{bold:true, sz:10},
+      fill:{patternType:'solid', fgColor:{rgb:'EBF4FF'}},
+      alignment:{horizontal:'center'}
+    };
+
+    // Aplica estilos
+    ['A1','B1','C1','D1','E1'].forEach(c => S(c, styleTitulo));
+    ['A2','B2','C2','D2','E2'].forEach(c => S(c, styleSub));
+    ['A4','B4','C4','D4','E4'].forEach(c => S(c, styleHeader));
+
+    const dataStart = 5; // linha 5 (índice 4)
+    _san20VMLAll.forEach((v, i) => {
+      const row = dataStart + i;
+      const bg  = i % 2 === 0 ? 'FFFFFF' : 'F7FAFC';
+      const sty = i % 2 === 0 ? styleWhite : styleGray;
+      S(`A${row}`, styleNum(bg));
+      S(`B${row}`, {...sty});
+      S(`C${row}`, {...sty});
+      S(`D${row}`, {...sty});
+      S(`E${row}`, v.s === 'ACTIVE' ? styleActive : styleShutoff);
+    });
+
+    // Total row
+    const totalRow = dataStart + _san20VMLAll.length + 1;
+    ['A','B','C','D','E'].forEach(c => S(`${c}${totalRow}`, styleTotal));
+
+    const sheetName = `VMs ${tipoLabel}`.slice(0,31);
+    XLSX.utils.book_append_sheet(wb, ws, sheetName);
+    XLSX.writeFile(wb, fname);
+  }
+
+  if(window.XLSX) {
+    doExport();
+  } else {
+    const s = document.createElement('script');
+    s.src = 'https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js';
+    s.onload = doExport;
+    document.head.appendChild(s);
+  }
 }
 
 let _san20VMLAll = [];
@@ -2977,4 +3021,455 @@ function san20GovExport() {
 
 </body>
 </html>
-<!-- updated: Sun Jun  7 11:36:43 UTC 2026 -->
+<!-- updated: Sun Jun  7 11:36:43 UTC 2026 -->const SAN20_VM_INVENTORY = {"1team.cloud": {"ligadas": ["UNICOBA_NEW"], "desligadas": []}, "automalogica.com.br": {"ligadas": ["BC-ATMLOGFTG"], "desligadas": ["BC-ATMLAD-01", "BC-ATMLOGVBR", "BC-ATMLZABBIX"]}, "binario.cloud": {"ligadas": ["bc-assistet-new", "bc-data-v3", "bc-mvp-cadastro", "bc-scheduler-api", "bc-skyline", "bc-telegram-ai", "dev-bc-mvp-cadastro", "49ers", "Browns", "Chiefs", "_cirros", "dev-apicloud", "dev-idp-mfa", "Eagles", "old-grafana", "Redskins", "Saints", "Seahawks", "shibboleth2-MFA", "Texans", "Titans", "VM-PowerBI-OTRS", "WashingtonFT", "Dev-central", "openstack-cli", "recovery-linux-openstack-cliente", "SRV-AD01", "SRV-AD02", "SRV-EXPORT", "VM-Teste-pFsense", "Dev-Horizon", "PROD-Central-Totvs", "PROD-Horizon", "Prod-Horizon-LDC", "Prod-Horizon-SuaNuvem", "PROD-Horizon-Totvs", "PROD-IDP-LDC", "PROD-IDP-SuaNuvem", "PROD-IDP-Totvs", "PROD-WHITELABEL-Central", "webproxy-1"], "desligadas": []}, "bmchyundai.com.br": {"ligadas": ["BMCAPP01", "BMCCRIVO01", "BMCCRIVO-HMLG", "BMCDBSINC", "BMCDBSQL01", "BMCDBSQL02", "BMCDC01", "BMCDC02", "BMC-ECOMMERCE-01", "BMCEMS01", "BMCERP002", "BMCFS01", "BMCHUBSPOT", "BMCHUBSPOT2", "BMCINTEGRACAO", "BMCSINC01", "BMCWEB01_", "FWBMCFGT01", "prx-bmchyundai", "SRV-VBR"], "desligadas": ["BMC-ECOMMERCE-01-OLD", "BMCHUBSPOT-OLD", "hubspottemp"]}, "Default": {"ligadas": ["alma-teste", "Linux-BLADE-test", "teste-02", "teste-hyperv", "teste-vlwc-luiz", "vm-attach-teste", "vm-test-network-port-again", "windows-temporary-coriolis", "01c9fa73-8ab4-4745-ae2f-100704bb9e47", "11137414-b68e-4f1b-9931-ebf0b20f467d", "330da416-861e-4d5c-9e60-4bcc1bd7c202", "4b9fb4c0-4bc7-4c9e-bad1-11a5196c4256", "5915afc7-4c91-4309-952d-c6cd0a384e4b", "5d8e4dcf-18a2-4f8e-912c-80e724cba119", "6c7117a8-4c9b-449e-9098-20357f7887e2", "70fc7ddc-7bb8-43d2-a868-ad153973fb50", "91832dcb-020e-4f1f-9d49-a6e2c2fda759", "a00YO48ZAS", "a01fe7c3-564a-4e86-97ba-1cb100c88ac0", "a15YHU2NQU", "a1TRHR9GOD", "a643CYBW7Y", "a70WXMGW6X", "aA46FCAUXY", "aAF6MUD2TM", "aCCUS6B1X1", "aCJ1ZY0IZ1", "aDPBP2IWFT", "aDPJ39QYH4", "afdd5cf9-c72b-4ea9-9626-bc9819e2848e", "aFPGOHBDZJ", "aHIUH4DIJ0", "aIAI9ZZP0F", "aIXLHUPQBN", "aJSE6RFHEP", "aL9MSBTZMG", "aM5HDURG09", "aN9W4FW7H2", "aO7JAV5LKF", "aPIPU59AIJ", "aPXSSKL4N4", "aRVY07LHEX", "aUTYW6TRUC", "aV656QKONF", "aVBDH35K80", "aWVO0YF70C", "aXFQ266YX0", "aZ0610P8GU", "bastion-BD", "BD-01", "cdcaf14b-0df0-476f-9629-edf12f39c422", "cluster-dba-member-1657817189", "cluster-mariadb-member-1618771444", "cluster-mariadb-member-1618771445", "cluster-mariadb-member-1618771446", "DB01", "e090f9de-c6ca-443f-b239-4e9e829298df", "eaeb898d-e69a-4de1-bdd5-c18186cef3bc", "f3856329-5961-43ed-8dfc-72f13f3cd624", "MARIADB", "MARIADB-01", "Orbium", "teste", "teste-maria1", "vm-bcdata-dev", "vm_db01"], "desligadas": []}, "dismac.com.bo": {"ligadas": [], "desligadas": ["FW-PFDISMAC"]}, "domain-cloud2": {"ligadas": ["src-host-kvm"], "desligadas": ["ubuntu-cloud2", "windows-cloud2", "windows-cloud2-22"]}, "enesa.com.br": {"ligadas": ["ENSP-000SEVMBKP", "ENSP-000SEVMPRI", "ENSP-00FWPF", "ENSP-SEVMBD", "SVAPP03", "SVDB02", "SVDC01", "SVFASTVUE", "SVFS01", "SVHOMOLOG", "SVRDP", "SVRPA", "SVRS01", "SVWEB01", "VBR-MIGRACA"], "desligadas": []}, "geofix.com.br": {"ligadas": ["CLOUD-BOXFWGFX", "CLOUD-SRVADGFX"], "desligadas": []}, "gimba2.com.br": {"ligadas": ["adabasdev", "DR-ORACLEERP", "GBAPIBD", "GBAPIG", "GBAPIGTP", "GBAPIPORTAL", "GBBARRAMENTO", "gbecommerce-01", "gbecommerce-02", "gbecommerce-03", "GBGOVMON", "GBNGINX-01-DEV-HML", "GBNGINX-02-DEV-HML", "gbredis-01", "gbredis-02", "gbredis-03", "GBSRVINDEX-01", "GBWEB01", "GBWEB02", "GBWEB05", "GBWEB06", "GBWEB07", "GBWEB08", "GIMBASQL", "GIMBASQLOLD", "ORACLEERP", "ORADESENV", "SolrDev", "SolrMaster", "SolrSlave-01", "SolrSlave-02", "Veeam", "vm-bacula", "vm-pfsense"], "desligadas": ["devsolr-01", "GBWEB08-OLD", "openstack", "Solr-01", "Solr-02", "Solr-03", "vm-opnsense", "vm-repositorio-temp"]}, "gimba.com.br": {"ligadas": ["ADABASLINUX_CLONE", "BC-DEVOPS", "BC-DMZ-AD-03", "BCGBACESSO", "BCGBAPREIIS02", "BCGBAPREIIS03", "BCGBDEVIIS02", "BCGBDEVIIS03", "BCGBHMLIIS02", "BCGBHMLIIS03", "BCGBHMLIIS03-N", "BCGBOPERADOR", "BCGBSADIG", "BC-GMA-AD-01", "BC-GMA-AD-02", "BCGMAWEB05", "BCGMAWEB07", "BC-GMB-KSEC", "BC-REPLICATOR", "DR_ADABASLINUX_CLONE", "GBAGENTES_IA", "GBAPREIIS1", "GBAPRESQL1", "GBAPRESQL2", "GBAPRESQL3", "GBARQUIVOS", "GBDEVIIS01", "GBDEVIIS03-PERF", "GBDEVJITTERBIT", "GBDEVSQL01", "GBDEVSQL02", "GBDEVSQL03", "GBDEVSQLDW01", "GBGLPI", "GBHMLIIS01", "GBHMLJITTERBIT", "GBHMLSQL01", "GBHMLSQL02", "GBHMLSQL03", "GBIIS1", "GBIIS6", "GBJITTERBIT", "GBSFTP", "GBSQUADVIRTUAL", "GBSRVNFS01", "GBSRVTOTALL", "GBSRVTOTALL2", "GBSRVTOTALL3", "GBWEBSQL01", "GBWEBSQL02", "GBWEBSQL04", "GBWEBSQL11", "GBWEBSQL12", "GBWEBSQLDW01", "GMA-EC-01", "LINUX-MANOBRA-VEEAM", "NGINX-ORACLE", "oracle-ksek", "ORACLEPRD03", "ORACLEPRD1", "ORACLEPRD4", "PRX-GIMBA", "SRVBACKUP", "TESTE-SISTEMAS", "VEEAM-GIMBA", "VM-FORTIGATE"], "desligadas": ["ADABASLINUX-RECOVERY", "BC-TEST", "GBJITTERBIT-Old", "GBSRVTOTALL-TESTE", "ORACLEPROD01", "ORACLEPROD02"]}, "gruporaizes.com": {"ligadas": ["BC-GRRAIZESAD", "BC-GRRAIZESAD02", "BC-GRRAIZESBD", "BC-GRRAIZES-FS", "BC-GRRAIZESFW", "BC-GRRAIZESOD", "BC-GRRAIZES-RPA-01", "BC-GRRAIZES-RPA-02", "BC-GRRAIZES-RPA-03", "BC-GRRAIZES-RPA-04", "BC-GRRAIZESTK", "BC-GRRAIZESVBR", "prx-gpraizes"], "desligadas": []}, "luizalabs.com": {"ligadas": ["DB01", "magalu-opnsense", "magalu-veeam", "prx-magalu", "WEB02", "bastion", "linux-teste", "pfsense-firewall", "vm01_labs", "vm03_labs"], "desligadas": ["magalu-bacula"]}, "mahlerededepostos.com.br": {"ligadas": [], "desligadas": ["FPFSSRV01", "SRVWS2K22PRN01"]}, "mbmsolutions.com.br": {"ligadas": [], "desligadas": ["Base-Oficial", "Cloud01-MBM", "CLOUD02-MBM", "Linux-MBM", "Proxy"]}, "netza.com.br": {"ligadas": ["NETZA-FW01", "prx-netza", "VBR-Migracao-Netza", "vm-netza"], "desligadas": []}, "prumoengenharia.com.br": {"ligadas": ["Bluepex_UTM_Atualizado", "SRVAD-BC01", "SRV-Zimbra"], "desligadas": ["test-windows", "SistemaS4"]}, "qos.com.br": {"ligadas": ["APPInfra-ClaroFust", "APPInfra-Media", "bkp-1.qos.srv.br", "captiveportal.grupobinario.net-aplicação", "captiveportal.grupobinario.net-database", "captiveportal.grupobinario.net-database2", "ciena-tim-win-1.qos.srv.br", "Claro - Ferramenta de Testes BB", "cloud-vsrx-1.qos.srv.br", "diretorio-2", "diretorio.qos.srv.br", "fortinet-algar-1.qos.srv.br", "jump-dasa-win-1.qos.srv.br", "jump-tim-lnx-1.qos.srv.br", "otrs-1.qos.srv.br", "PoC-Captive Portal-Ubiquiti", "qos-ftp-win", "radius-1.qos.srv.br", "SRV-VBR-QOS", "VBR-Migracao-QoS", "vpn-1.qos.srv.br", "www.qos.srv.br", "zbx-dasa.qos.srv.br"], "desligadas": ["Airwave-Dasa", "DASA_WIFI-ZABBIX", "DASA_WIFI-ZABBIX-DB", "DASA-WIFI-ZABBIX-PROXY", "ntb-dasa.qos.srv.br"]}, "radiojb.fm": {"ligadas": ["GRUPOJB-DB", "JBFM-FWPF01", "JBFM-WEB-2023", "RADIOCIDADE-2023", "RTMP/n8n Server", "TOTVS"], "desligadas": []}, "refrio.com.br": {"ligadas": ["Check-ip", "Fortigate-BACKBONE", "MGMT", "pfSense-BACKBONE", "prx-refrio", "binario-pfSense", "DCITAPECERICA", "FSITAPECERICA", "ABNET", "AD", "FILE-SERVER", "ORACLE-DB - New", "ORACLE-WMS", "ServerCSM", "SERVER-ERP", "Servererpnewhom", "ServerMID", "servermid01", "ServerSVS", "ServerSVShomol", "srvbierphml", "VPN-PFSENSE", "WMS-RECOVERY", "ZABBIX-SERVER"], "desligadas": ["prx-refrio1", "COLETOR-WMS"]}, "sagaengenharia.com.br": {"ligadas": ["SRV-MIGRACAO"], "desligadas": ["MAILSERVER", "MAILSERVERBKP"]}, "sattelecom.com": {"ligadas": ["satc4cloud"], "desligadas": ["SatC5Cloud"]}, "sattelecomip.com": {"ligadas": ["satc4_NEW", "SatC5Cloud"], "desligadas": ["satc4cloud"]}, "selbetti.com": {"ligadas": [], "desligadas": ["teste", "VM1"]}, "(Sem Domínio)": {"ligadas": ["CSM teste", "db-srv-1", "db-srv-2", "kid", "Linux", "maquina teste", "Odoo", "RabbitMQ", "RabbitMQ", "RabbitMQ", "vm-01", "vm-01", "vm-01", "vm-01", "vm-01", "vm-01", "vm-01", "vm-01", "vm-01", "vm-01", "vm-01", "vm-01", "vm-01", "vm-01", "vm-01", "vm-02", "vm-02", "vm-02", "vm-02", "vm-02", "vm-02", "vm-02", "vm-02", "vm-02", "vm-02", "web-srv-1", "web-srv-2"], "desligadas": ["IIS2"]}, "sistecweb.com.br": {"ligadas": ["BC-SISTECWFW"], "desligadas": ["BC-FRIGBBAD", "VBR-Veeam"]}, "smarapd.com.br": {"ligadas": ["smarapdPF", "smarapdPMRibeiraoApp", "smarapdPMRibEntesapp", "smarapdSAEItuiutabaApp", "smarapdSAEItuiutabaProxy", "smarapdSQL01", "smarapd_SRV_APPTB", "smarapd_SRV_BDTB"], "desligadas": []}, "soprema.com.br": {"ligadas": ["BRSUZ-SW0100", "FTGSPRCLD", "SRV-DOCKER", "SRV-EMS", "SRV-FAZ", "SRV-MIGRACAO", "SWSPR001_NEW", "SWSPR007"], "desligadas": ["SWSPR001"]}, "spheraeducacional.com.br": {"ligadas": ["WEB01"], "desligadas": []}, "sre.binario.cloud": {"ligadas": ["coriolis-clientes", "EdgeConnect", "fw-ish", "fw-pfcoriolis", "zabbixproxy-5"], "desligadas": []}, "suporte.binario.cloud": {"ligadas": ["PNET-LAB"], "desligadas": []}, "waits.com.br": {"ligadas": ["PIRA-BC-APP01", "PIRA-BC-APP02", "PIRA-BC-BFW01", "PIRA-BC-BKP01", "PIRA-BC-DC01", "PIRA-BC-SAP01", "PIRA-BC-SAP02", "PIRA-BC-SAP03", "PIRA-BC-TS", "PIRA-BC-VPN01"], "desligadas": []}, "zanthus.com.br": {"ligadas": ["BC-QA-EXEC-2", "BC-QA-EXECUTOR-1", "BC-QA-FIREWALL", "BC-QA-SERVIDOR-1", "BC-QA-SERVIDOR-2", "BC-QA-SERVIDOR-3", "VBR-MIGRACAO", "BC-ADMIN", "BC-CLAZ", "BC-DOCKER", "BC-DOCKER-RESTORE", "BC-ECOMM", "BC-GITLAB", "BC-IT-FIREWALL", "BC-MSSQL", "BC-PGSQL", "BC-PINCODE", "BC-PROTHEUS", "BC-SCAVENGER", "srvmig-tishare02", "SRV-ZANT025"], "desligadas": ["BC-POC-ZRETAIL"]}};<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="description" content="Escritório de Projetos Binario Cloud — painel executivo de portfólio, entregas e iniciativas estratégicas.">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Escritório de Projetos – Binario Cloud</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #f5f7fa;
+  --card-bg: #fff;
+  --blue: #3498db;
+  --blue-light: #5dade2;
+  --green: #27ae60;
+  --green-bar: #2ecc71;
+  --dark-bar: #2c3e50;
+  --text-dark: #1a1a2e;
+  --text-mid: #555;
+  --text-light: #888;
+  --accent-red: #e74c3c;
+  --bar-track: #ecf0f1;
+  --radius: 14px;
+  --shadow: 0 2px 12px rgba(0,0,0,.08);
+  --shadow-hover: 0 12px 32px rgba(0,0,0,.15);
+  --card-h: 160px;
+  --drawer-w: 260px;
+}
+
+body { font-family:'Sora',sans-serif; background:var(--bg); min-height:100vh; color:var(--text-dark); overflow-x:hidden; }
+
+#drawer-trigger {
+  position: fixed; top: 24px; left: 24px; z-index: 300;
+  display: flex; align-items: center;
+  padding: 10px 16px;
+  background: rgba(255,255,255,.15);
+  border: 1.5px solid rgba(255,255,255,.28);
+  backdrop-filter: blur(12px); border-radius: 50px;
+  cursor: pointer; transition: background .2s, border-color .2s, transform .18s, box-shadow .2s;
+  color: #fff;
+}
+#drawer-trigger:hover { background: rgba(255,255,255,.25); border-color: rgba(255,255,255,.5); transform: translateY(-1px); box-shadow: 0 8px 24px rgba(0,0,0,.18); }
+body.page-internal #drawer-trigger { background: #fff; border-color: #e2e5f0; color: #192552; box-shadow: 0 2px 12px rgba(0,0,0,.08); }
+body.page-internal #drawer-trigger:hover { background: #f4f6fb; border-color: #c8cde8; box-shadow: 0 6px 20px rgba(0,0,0,.12); }
+.trig-svg { transition: opacity .2s; }
+
+#drawer-backdrop { position: fixed; inset: 0; z-index: 400; background: rgba(6,15,46,.45); backdrop-filter: blur(4px); opacity: 0; pointer-events: none; transition: opacity .28s; }
+#drawer-backdrop.open { opacity: 1; pointer-events: all; }
+
+#drawer { position: fixed; top: 0; left: 0; bottom: 0; width: var(--drawer-w); background: linear-gradient(180deg, #2c3e50 0%, #34495e 100%); z-index: 500; display: flex; flex-direction: column; box-shadow: 6px 0 32px rgba(0,0,0,.2); transform: translateX(calc(-1 * var(--drawer-w) - 20px)); transition: transform .32s cubic-bezier(.4,0,.2,1); }
+#drawer.open { transform: translateX(0); }
+
+.dr-logo { padding: 28px 22px 22px; border-bottom: 1px solid rgba(255,255,255,.08); display: flex; align-items: center; justify-content: space-between; }
+.dr-logo-left { display: flex; align-items: center; gap: 11px; }
+.dr-logo-icon { width: 38px; height: 38px; background: rgba(255,255,255,.11); border: 1.5px solid rgba(255,255,255,.2); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 20px; font-weight: 800; color: #fff; }
+.dr-logo-text .brand { font-size: 17px; font-weight: 800; color: #fff; display: block; line-height: 1.1; }
+.dr-logo-text .sub   { font-size: 9px; color: rgba(255,255,255,.4); font-weight: 600; letter-spacing: 2.5px; text-transform: uppercase; }
+.dr-close { width: 30px; height: 30px; border-radius: 50%; border: 1px solid rgba(255,255,255,.15); background: transparent; cursor: pointer; display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,.5); font-size: 14px; transition: all .16s; }
+.dr-close:hover { background: rgba(255,255,255,.1); color: #fff; border-color: rgba(255,255,255,.3); }
+
+.dr-nav { padding: 20px 12px; flex: 1; display: flex; flex-direction: column; gap: 4px; overflow-y: auto; overflow-x: hidden; }
+.dr-nav::-webkit-scrollbar { width: 6px; }
+.dr-nav::-webkit-scrollbar-track { background: rgba(255,255,255,.05); border-radius: 10px; margin: 8px 0; }
+.dr-nav::-webkit-scrollbar-thumb { background: rgba(255,255,255,.2); border-radius: 10px; }
+.dr-section-label { font-size: 9px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,.28); padding: 8px 10px 6px; }
+.dr-item { display: flex; align-items: center; gap: 10px; padding: 10px 12px; border-radius: 10px; cursor: pointer; border: 1.5px solid transparent; transition: all .18s; }
+.dr-item:hover { background: rgba(255,255,255,.08); }
+.dr-item.active-blue   { background: rgba(52,152,219,.25); border-color: #3498db; }
+.dr-item.active-green  { background: rgba(39,174,96,.25);  border-color: #27ae60; }
+.dr-item.active-purple { background: rgba(155,89,182,.25); border-color: #9b59b6; }
+.dr-item-icon { width: 32px; height: 32px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 15px; flex-shrink: 0; background: rgba(255,255,255,.07); }
+.dr-item.active-blue  .dr-item-icon { background: rgba(52,152,219,.35); }
+.dr-item.active-green .dr-item-icon { background: rgba(39,174,96,.35); }
+.dr-item.active-purple .dr-item-icon { background: rgba(155,89,182,.35); }
+.dr-item-label { font-size: 13px; font-weight: 700; color: rgba(255,255,255,.65); line-height: 1.2; }
+.dr-item-sub   { font-size: 10px; color: rgba(255,255,255,.32); font-weight: 500; }
+.dr-item.active-blue .dr-item-label, .dr-item.active-green .dr-item-label { color: #fff; }
+.dr-item.active-blue .dr-item-sub,   .dr-item.active-green .dr-item-sub   { color: rgba(255,255,255,.55); }
+.dr-divider { height: 1px; background: rgba(255,255,255,.07); margin: 6px 12px; }
+
+.dr-submenu-container { position: relative; }
+.dr-submenu-toggle { display: flex; align-items: center; justify-content: space-between; }
+.dr-submenu-toggle .toggle-icon { transition: transform .2s; font-size: 12px; }
+.dr-submenu-toggle.open .toggle-icon { transform: rotate(180deg); }
+.dr-submenu { display: none; flex-direction: column; gap: 0; padding-left: 8px; margin-top: 4px; }
+.dr-submenu.open { display: flex; }
+.dr-submenu-item { display: flex; align-items: center; gap: 10px; padding: 8px 12px; border-radius: 8px; cursor: pointer; border: 1.5px solid transparent; transition: all .18s; font-size: 12px; color: rgba(255,255,255,.55); font-weight: 600; margin-left: 8px; border-left: 3px solid transparent; }
+.dr-submenu-item:hover { background: rgba(255,255,255,.06); color: rgba(255,255,255,.75); }
+.dr-submenu-item.active { color: #fff; border-left-color: #3498db; background: rgba(52,152,219,.15); }
+
+.dr-footer { padding: 16px 22px; border-top: 1px solid rgba(255,255,255,.07); font-size: 10px; color: rgba(255,255,255,.28); line-height: 1.7; }
+
+/* PÁGINAS */
+.page { display: none; min-height: 100vh; }
+.page.active { display: block; }
+
+#cover { min-height: 100vh; background: linear-gradient(135deg, #060f2e 0%, #0d3a8a 55%, #1255b0 100%); align-items: center; justify-content: center; position: relative; overflow: hidden; }
+#cover.active { display: flex; }
+#cover::before, #cover::after { content:''; position:absolute; border-radius:50%; opacity:.06; }
+#cover::before { width:700px; height:700px; background:#fff; top:-220px; right:-200px; }
+#cover::after  { width:450px; height:450px; background:#fff; bottom:-160px; left:-130px; }
+.cover-grid { position:absolute; inset:0; background-image: linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px); background-size: 60px 60px; }
+.cover-content { position:relative; z-index:2; text-align:center; }
+.cover-eyebrow { font-size:12px; font-weight:600; letter-spacing:4px; text-transform:uppercase; color:rgba(255,255,255,.4); margin-bottom:16px; }
+.cover-period  { font-size:clamp(52px,7vw,84px); font-weight:800; color:#fff; letter-spacing:-3px; line-height:1; margin-bottom:8px; }
+.cover-desc { font-size:clamp(14px,2vw,18px); font-weight:400; color:rgba(255,255,255,.5); line-height:1.6; margin:18px 0 24px; letter-spacing:.2px; }
+
+.topbar { background: linear-gradient(180deg, #fff 0%, #f8fafb 100%); box-shadow: 0 2px 12px rgba(0,0,0,.08); padding: 0 32px 0 100px; height: 64px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; border-bottom: 1px solid rgba(0,0,0,.04); }
+.tb-heading { font-size: 17px; font-weight: 900; color: #1a1a2e; letter-spacing: -0.5px; }
+.tb-heading span { font-weight: 500; color: #aaa; margin-left: 8px; }
+
+.page-body { padding: 36px 40px 56px; }
+
+.page-hero { border-radius:18px; padding:28px 36px; margin-bottom:32px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:16px; }
+.hero-cli { background: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%); box-shadow: 0 8px 32px rgba(39,174,96,.25); }
+.hero-est { background: linear-gradient(135deg, #3498db 0%, #5dade2 100%); box-shadow: 0 8px 32px rgba(52,152,219,.25); }
+.hero-title { font-size:24px; font-weight:800; color:#fff; letter-spacing:-.5px; }
+.hero-sub   { font-size:13px; color:rgba(255,255,255,.6); margin-top:4px; }
+.hero-stats { display:flex; gap:32px; }
+.hero-stat  { text-align:center; }
+.hero-stat .sv { font-size:32px; font-weight:900; color:#fff; line-height:1; letter-spacing:-1px; }
+.hero-stat .sl { font-size:11px; color:rgba(255,255,255,.7); font-weight:600; letter-spacing:1.2px; text-transform:uppercase; margin-top:6px; }
+
+.sec-label { font-size:12px; font-weight:800; color:#2c3e50; margin-bottom:20px; letter-spacing:2px; text-transform:uppercase; display:flex; align-items:center; gap:12px; }
+.sec-label::after { content:''; flex:1; height:2px; background:linear-gradient(90deg,#d0d7e8 0%,transparent 100%); }
+
+.grid { display:grid; gap:20px; margin-bottom:28px; }
+.grid-2 { grid-template-columns:repeat(2,1fr); }
+.grid-3 { grid-template-columns:repeat(3,1fr); }
+.grid-4 { grid-template-columns:repeat(4,1fr); }
+
+.card { background:linear-gradient(135deg,var(--card-bg) 0%,#f8fafb 100%); border-radius:var(--radius); border:1px solid rgba(0,0,0,.04); box-shadow:var(--shadow); display:flex; flex-direction:column; height:var(--card-h); padding:14px 14px 10px; position:relative; overflow:hidden; transition:all .3s ease; }
+.card:hover { transform:translateY(-4px); box-shadow:var(--shadow-hover); }
+.card-accent { position:absolute; top:0; left:0; right:0; height:4px; }
+.accent-blue  { background:linear-gradient(90deg,var(--blue),var(--blue-light)); }
+.accent-green { background:linear-gradient(90deg,var(--green),var(--green-bar)); }
+.accent-dark  { background:linear-gradient(90deg,var(--dark-bar),#3949ab); }
+.card-header  { display:flex; align-items:flex-start; justify-content:space-between; margin-top:8px; margin-bottom:8px; flex-shrink:0; }
+.pill { display:inline-flex; align-items:center; gap:5px; font-size:10px; font-weight:700; letter-spacing:.5px; text-transform:uppercase; padding:4px 10px; border-radius:99px; white-space:nowrap; }
+.pill-prog  { background:#dceefb; color:#3498db; }
+.pill-done  { background:#d4f0dd; color:#27ae60; }
+.pill-delay { background:#ffe8d1; color:#e67e22; }
+.pill-wait  { background:#fff3e0; color:#e67e22; }
+.card-pct   { font-size:30px; font-weight:800; color:var(--text-dark); line-height:1; letter-spacing:-1px; flex-shrink:0; }
+.card-title { font-size:10.5px; font-weight:700; color:var(--text-dark); line-height:1.3; flex:1; }
+.card-title.blue { color:var(--blue-light); }
+.card-footer { margin-top:auto; flex-shrink:0; }
+.prog-note  { font-size:11px; color:var(--text-light); font-weight:500; line-height:1.4; margin-bottom:7px; display:block; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.prog-note .delay { color:#f57c00; font-weight:700; }
+.bar-track  { width:100%; height:6px; background:var(--bar-track); border-radius:99px; overflow:hidden; }
+.bar-fill   { height:100%; border-radius:99px; width:0%; transition:width .9s cubic-bezier(.4,0,.2,1); }
+.fill-blue  { background:linear-gradient(90deg,var(--blue),var(--blue-light)); }
+.fill-green { background:linear-gradient(90deg,var(--green),var(--green-bar)); }
+.fill-dark  { background:linear-gradient(90deg,var(--dark-bar),#3949ab); }
+.btn-det { margin-top:10px; width:100%; padding:9px 0; border-radius:10px; border:1.5px solid #d0d7e8; background:linear-gradient(135deg,#f5f7fa 0%,#eef1f7 100%); font-family:'Sora',sans-serif; font-size:10.5px; font-weight:700; color:#666; letter-spacing:.5px; text-transform:uppercase; cursor:pointer; transition:all .2s; display:flex; align-items:center; justify-content:center; gap:6px; flex-shrink:0; }
+.btn-det:hover { background:linear-gradient(135deg,#dceefb 0%,#c5e4f5 100%); border-color:#3498db; color:#3498db; }
+.btn-det svg { transition:transform .18s; }
+.btn-det:hover svg { transform:translateX(3px); }
+
+/* MODAL */
+.overlay { position:fixed; inset:0; background:rgba(10,18,50,.5); backdrop-filter:blur(5px); z-index:600; display:flex; align-items:center; justify-content:center; opacity:0; pointer-events:none; transition:opacity .22s; }
+.overlay.open { opacity:1; pointer-events:all; }
+.modal { background:#fff; border-radius:22px; width:580px; max-width:calc(100vw - 40px); max-height:88vh; overflow-y:auto; box-shadow:0 30px 90px rgba(0,0,0,.25); transform:translateY(28px) scale(.96); transition:transform .3s cubic-bezier(.34,1.3,.64,1),opacity .22s; opacity:0; scrollbar-width:thin; scrollbar-color:#dde0ea transparent; }
+.overlay.open .modal { transform:translateY(0) scale(1); opacity:1; }
+.modal-hd { padding:24px 26px 18px; border-bottom:1px solid #f0f1f7; display:flex; justify-content:space-between; align-items:flex-start; }
+.modal-header-content { flex:1; }
+.modal-accent { height:5px; border-radius:99px; margin-bottom:16px; }
+.modal-eye    { font-size:10px; font-weight:700; letter-spacing:2.5px; text-transform:uppercase; color:var(--text-light); margin-bottom:4px; }
+.modal-ttl    { font-size:18px; font-weight:800; color:var(--text-dark); letter-spacing:-.4px; line-height:1.3; padding-right:44px; }
+.modal-x      { position:absolute; top:20px; right:20px; width:34px; height:34px; border-radius:50%; border:1.5px solid #e6e8f2; background:transparent; cursor:pointer; display:flex; align-items:center; justify-content:center; font-size:15px; color:var(--text-light); transition:all .16s; }
+.modal-x:hover { background:#f2f3fa; color:var(--text-dark); border-color:#c8cbe0; }
+.modal-bd { padding:20px 26px 26px; }
+.m-summary { display:flex; align-items:center; gap:18px; padding:14px 18px; border-radius:14px; background:var(--bg); margin-bottom:20px; }
+.m-big-pct { font-size:50px; font-weight:800; color:var(--text-dark); letter-spacing:-2px; line-height:1; flex-shrink:0; }
+.m-pct-right { flex:1; }
+.m-pct-label { font-size:10px; font-weight:700; color:var(--text-light); text-transform:uppercase; letter-spacing:1.5px; margin-bottom:7px; }
+.m-bar-track { width:100%; height:10px; background:#dde0ea; border-radius:99px; overflow:hidden; margin-bottom:9px; }
+.m-bar-fill  { height:100%; border-radius:99px; width:0%; transition:width 1s cubic-bezier(.4,0,.2,1); }
+.m-tags { display:flex; flex-wrap:wrap; gap:7px; margin-bottom:20px; }
+.m-tag { padding:4px 13px; border-radius:99px; font-size:11px; font-weight:700; border:1px solid; }
+.m-tag.blue   { background:#e8f0fe; color:var(--blue);     border-color:#c5d8fc; }
+.m-tag.green  { background:#e8f5e9; color:var(--green);    border-color:#c8e6c9; }
+.m-tag.orange { background:#fff3e0; color:#e65100;         border-color:#ffe0b2; }
+.m-tag.dark   { background:#e8eaf6; color:var(--dark-bar); border-color:#c5cae9; }
+.m-sec   { margin-bottom:18px; }
+.m-sec-t { font-size:10px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--text-light); margin-bottom:9px; display:flex; align-items:center; gap:8px; }
+.m-sec-t::after { content:''; flex:1; height:1px; background:#ecedf5; }
+.m-rows  { display:flex; flex-direction:column; gap:7px; }
+.m-row   { display:flex; align-items:flex-start; gap:11px; padding:10px 14px; border-radius:10px; background:#fafbfd; border:1px solid #eef0f6; font-size:12.5px; color:var(--text-mid); line-height:1.5; }
+.m-icon  { font-size:14px; flex-shrink:0; margin-top:1px; }
+.m-row strong { color:var(--text-dark); font-weight:700; }
+
+.btn-edit-modal { padding:8px 16px; background:var(--blue); color:white; border:none; border-radius:8px; font-size:12px; font-weight:700; cursor:pointer; transition:all .2s; height:34px; display:flex; align-items:center; gap:6px; }
+.btn-edit-modal:hover { background:var(--blue-light); }
+.btn-edit-modal.save { background:var(--green); }
+.btn-edit-modal.save:hover { background:#229954; }
+.btn-edit-modal.cancel { background:#999; }
+.btn-edit-modal.cancel:hover { background:#666; }
+.modal.edit-mode .m-row { border:1px solid #c5d8fc; background:#f0f6ff; }
+.modal.edit-mode .m-row span:last-child { outline:none; background:white; border:1px solid #ddd; border-radius:6px; padding:6px 10px; cursor:text; flex:1; font-size:12.5px; display:block; min-height:24px; }
+
+/* BOTÃO HISTÓRICO */
+.btn-historico { display:flex; align-items:center; gap:14px; width:100%; padding:18px 22px; margin-top:28px; background:linear-gradient(135deg,#fff 0%,#f0f9f0 100%); border:2px solid #2e7d32; border-radius:16px; cursor:pointer; font-family:'Sora',sans-serif; transition:all .22s; box-shadow:0 6px 24px rgba(46,125,50,.18); }
+.btn-historico:hover { background:linear-gradient(135deg,#f8fdf8 0%,#e8f9e8 100%); border-color:#1b5e20; box-shadow:0 8px 32px rgba(46,125,50,.25); transform:translateY(-2px); }
+.btn-historico.open { border-color:#1b5e20; background:linear-gradient(135deg,#e8f5e9 0%,#c8e6c9 100%); border-bottom-left-radius:0; border-bottom-right-radius:0; border-bottom-color:transparent; }
+.btn-hist-icon { width:48px; height:48px; background:linear-gradient(135deg,#c8e6c9 0%,#a5d6a7 100%); border-radius:12px; display:flex; align-items:center; justify-content:center; font-size:22px; flex-shrink:0; transition:background .22s; box-shadow:0 2px 8px rgba(46,125,50,.15); }
+.btn-historico:hover .btn-hist-icon, .btn-historico.open .btn-hist-icon { background:linear-gradient(135deg,#81c784 0%,#66bb6a 100%); }
+.btn-hist-text { flex:1; text-align:left; }
+.btn-hist-title { display:block; font-size:14px; font-weight:900; color:#1b5e20; letter-spacing:-.2px; }
+.btn-hist-sub   { display:block; font-size:12px; color:#2e7d32; font-weight:700; margin-top:3px; }
+.btn-hist-arrow { color:#2e7d32; flex-shrink:0; transition:transform .3s cubic-bezier(.4,0,.2,1),color .2s; font-weight:bold; }
+.btn-historico.open .btn-hist-arrow { transform:rotate(180deg); color:#1b5e20; }
+.historico-panel { max-height:0; overflow:hidden; opacity:0; border:1.5px solid transparent; border-top:none; border-radius:0 0 14px 14px; background:#f6faf6; padding:0 20px; transition:max-height .4s cubic-bezier(.4,0,.2,1),opacity .3s,padding .3s,border-color .22s; }
+.historico-panel.open { max-height:500px; opacity:1; padding:20px; border-color:#2e7d32; }
+
+/* PROJETOS FINALIZADOS */
+.fin-wrapper { display:flex; flex-direction:column; gap:0; }
+.fin-year-block { margin-bottom:36px; }
+.fin-year-label {
+  display: flex; align-items: center; gap: 14px;
+  margin-bottom: 20px;
+}
+.fin-year-pill {
+  background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+  color: #fff; font-size: 18px; font-weight: 900;
+  padding: 6px 20px; border-radius: 50px;
+  letter-spacing: -0.5px; box-shadow: 0 4px 14px rgba(44,62,80,.25);
+}
+.fin-year-line { flex:1; height:2px; background:linear-gradient(90deg,#d0d7e8,transparent); }
+.fin-year-count { font-size:11px; font-weight:700; color:var(--text-light); letter-spacing:1px; }
+
+.fin-timeline { display:flex; flex-direction:column; gap:0; position:relative; padding-left:32px; }
+.fin-timeline::before { content:''; position:absolute; left:10px; top:8px; bottom:8px; width:2px; background:linear-gradient(180deg,#27ae60,#2ecc71,rgba(39,174,96,.1)); border-radius:2px; }
+
+.fin-month-row { position:relative; margin-bottom:20px; }
+.fin-month-dot {
+  position:absolute; left:-28px; top:14px;
+  width:16px; height:16px; border-radius:50%;
+  background:linear-gradient(135deg,#27ae60,#2ecc71);
+  border:3px solid #fff; box-shadow:0 0 0 2px #27ae60;
+  z-index:1;
+}
+.fin-month-card {
+  background:#fff; border-radius:14px;
+  box-shadow:var(--shadow); overflow:hidden;
+  transition:box-shadow .2s, transform .2s;
+}
+.fin-month-card:hover { box-shadow:var(--shadow-hover); transform:translateY(-2px); }
+
+.fin-month-header {
+  display:flex; align-items:center; justify-content:space-between;
+  padding:14px 18px; cursor:pointer; user-select:none;
+  background:linear-gradient(90deg,#f0faf0 0%,#f8fbff 100%);
+  border-bottom:1px solid #eef2f7;
+  transition:background .18s;
+}
+.fin-month-header:hover { background:linear-gradient(90deg,#e0f5e0 0%,#eef6ff 100%); }
+.fin-month-left { display:flex; align-items:center; gap:12px; }
+.fin-month-icon { width:36px; height:36px; border-radius:10px; background:linear-gradient(135deg,#c8e6c9,#a5d6a7); display:flex; align-items:center; justify-content:center; font-size:16px; }
+.fin-month-name { font-size:14px; font-weight:800; color:var(--text-dark); }
+.fin-month-sub  { font-size:11px; color:var(--text-light); font-weight:500; margin-top:1px; }
+.fin-month-right { display:flex; align-items:center; gap:10px; }
+.fin-count-badge { background:var(--green); color:#fff; font-size:11px; font-weight:800; padding:3px 10px; border-radius:50px; }
+.fin-chevron { color:var(--text-light); font-size:12px; transition:transform .25s; }
+.fin-chevron.open { transform:rotate(180deg); }
+
+.fin-month-body { max-height:0; overflow:hidden; transition:max-height .35s cubic-bezier(.4,0,.2,1); }
+.fin-month-body.open { max-height:600px; }
+
+.fin-proj-list { padding:12px 16px 14px; display:flex; flex-direction:column; gap:8px; }
+.fin-proj-item {
+  display:flex; align-items:center; gap:12px;
+  padding:12px 14px; border-radius:10px;
+  background:var(--bg); border:1px solid #eef0f6;
+  cursor:pointer; transition:all .18s;
+}
+.fin-proj-item:hover { background:#f0f7ff; border-color:#c5d8fc; transform:translateX(3px); }
+.fin-proj-check {
+  width:34px; height:34px; border-radius:8px; flex-shrink:0;
+  background:linear-gradient(135deg,#e8f5e9,#c8e6c9);
+  display:flex; align-items:center; justify-content:center;
+  font-size:14px; color:var(--green);
+}
+.fin-proj-info { flex:1; min-width:0; }
+.fin-proj-name { font-size:12.5px; font-weight:700; color:var(--text-dark); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.fin-proj-eye  { font-size:10px; color:var(--text-light); margin-top:2px; }
+.fin-proj-date { font-size:10px; font-weight:700; color:var(--green); background:#e8f5e9; padding:3px 9px; border-radius:6px; white-space:nowrap; flex-shrink:0; }
+
+/* Sumário topo */
+.fin-summary-bar {
+  display:flex; gap:16px; margin-bottom:28px; flex-wrap:wrap;
+}
+.fin-sum-card {
+  flex:1; min-width:120px; padding:16px 20px; border-radius:14px;
+  display:flex; align-items:center; gap:12px;
+  background:#fff; box-shadow:var(--shadow);
+  border-left:4px solid;
+}
+.fin-sum-card.green { border-color:var(--green); }
+.fin-sum-card.blue  { border-color:var(--blue); }
+.fin-sum-card.dark  { border-color:#2c3e50; }
+.fin-sum-icon { font-size:22px; }
+.fin-sum-val  { font-size:26px; font-weight:900; color:var(--text-dark); line-height:1; }
+.fin-sum-lbl  { font-size:10px; color:var(--text-light); font-weight:600; letter-spacing:.8px; text-transform:uppercase; margin-top:3px; }
+
+@keyframes fadeUp { from { opacity:0; transform:translateY(20px); } to { opacity:1; transform:translateY(0); } }
+.anim { animation:fadeUp .4s cubic-bezier(.34,1.56,.64,1) both; }
+.anim:nth-child(1){animation-delay:.04s}.anim:nth-child(2){animation-delay:.09s}
+.anim:nth-child(3){animation-delay:.14s}.anim:nth-child(4){animation-delay:.19s}
+.anim:nth-child(5){animation-delay:.24s}.anim:nth-child(6){animation-delay:.29s}
+.anim:nth-child(7){animation-delay:.34s}.anim:nth-child(8){animation-delay:.39s}
+
+/* RESPONSIVO */
+@media (max-width: 900px) {
+  .grid-3 { grid-template-columns: repeat(2,1fr); }
+  .grid-4 { grid-template-columns: repeat(2,1fr); }
+}
+@media (max-width: 600px) {
+  .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+  .page-body { padding: 20px 16px 40px; }
+  .topbar { padding: 0 16px 0 72px; }
+  .hero-stats { gap: 16px; }
+  .page-hero { padding: 20px 20px; }
+}
+
+/* SCROLLBAR GLOBAL */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #ccd0e0; border-radius: 10px; }
+
+/* FOCUS VISÍVEL PARA ACESSIBILIDADE */
+button:focus-visible, a:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
+
+</style>
+</head>
+<body>
+
+<button id="drawer-trigger" onclick="handleTriggerClick()">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 513 190" style="height:28px;width:auto;display:block;" class="trig-svg"><path fill="currentColor" d="M148.949 43.28c2.524.303 16.612.24 19.178-.025-.173 3.18-.043 7.54-.04 10.795l-.019 19.49c3.047-2.703 6.511-4.246 10.502-4.958 16.944-3.023 29.188 7.185 32.179 23.475a37.25 37.25 0 0 1-6.016 28.371c-10.556 13.294-27.911 13.822-43.289 11.223-4.188-.708-8.228-2.012-12.372-2.869-.307-9.076-.123-19.067-.122-28.213zm19.161 72.637c4.567.812 6.931 1.182 11.679.691 7.786-1.796 11.493-7.319 12.078-15.13.604-8.066-2.491-16.624-11.734-16.999-3.588.145-6.268.53-8.852 3.283-2.825 3.01-3.169 7.177-3.201 11.102-.044 5.685.001 11.369.03 17.053"/><path fill="currentColor" d="M339.028 67.204c34.559.139 27.71 29.154 28.369 53.832.087 3.278-.096 6.648.032 9.933-3.796-.371-14.342-.251-18.23-.041.02-1.705-.211-3.837-.352-5.568-8.015 8.565-22.845 9.745-32.415 2.96-2.207-1.564-3.537-3.56-4.909-5.848a21.87 21.87 0 0 1-1.784-11.05c2.113-19.824 23.797-21.474 39.405-19.77-1.844-9.891-8.252-10.201-17.299-9.128-4.507.534-8.13 2.601-12.074 4.682-1.532-1.84-6.263-9.412-7.833-11.796 8.661-6.352 16.692-7.786 27.09-8.206m-.7 51.659c9.476-1.307 10.415-6.843 10.691-15.059-2.812-.29-6.909-.752-9.684-.326-3.532.337-6.98.689-9.446 3.641a7.58 7.58 0 0 0-1.694 5.596c.517 5.352 5.76 6.353 10.133 6.148"/><path fill="currentColor" d="M281.51 67.95c5.636-.253 12.089 1.314 16.456 5.032 8.057 6.857 7.445 16.92 7.438 26.504l-.036 19.897c-.008 3.437-.152 8.334.115 11.633-3.247-.352-16.106-.341-19.379-.003.477-11.819-.142-24.053.008-35.905.146-11.519-11.871-13.816-18.828-6.05-1.199 1.731-2.202 3.848-2.37 5.982-.718 9.09-.152 18.347-.307 27.474-.046 2.737-.048 5.789.138 8.497-3.016-.357-16.313-.325-19.422-.011.084-2.985.117-6.14.068-9.125-.287-17.424.426-35.116-.089-52.512 5.342.296 13.009.046 18.569.043l.458 6.05c4.849-5.082 10.37-7.014 17.181-7.507"/><path fill="currentColor" d="M409.8 68.206c3.732-.102 5.737.193 9.359.762-.364 3.83-2.315 13.51-3.127 17.374-8.494-2.729-19.111-.225-20.987 9.682-1.116 5.887-.553 13.2-.626 19.266-.062 5.077-.198 10.65.04 15.687-3.92-.383-11.788-.175-15.984-.185-1.078.021-2.299.138-3.387.218.2-4.039.086-8.832.086-12.914l.005-22.316.003-16.264c.002-3.079.118-7.151-.161-10.157 5.747.272 12.999-.002 18.933.09-.201 2.397.071 4.913.255 7.319q.187-.234.382-.462c4.629-5.423 8.213-7.521 15.209-8.1"/><path fill="#129ad7" d="m440.442 69.23.489-.02c.363.56-.031 55.325.221 61.815-4.141-.407-15.509-.272-19.717-.027.077-20.494.198-41.319-.016-61.795 5.196.338 13.807.261 19.023.026"/><path fill="currentColor" d="M217.366 69.358c4.837.316 14.294.087 19.266-.002-.026 6.326.301 60.697-.232 61.579-2.912-.292-16.1-.224-19.063.063.279-20.337.069-41.266.029-61.64"/><path fill="#129ad7" d="M504.222 146.024q3.108-.015 6.214.065c.307 3.681.083 10.416.084 14.376l.008 28.31c-2.121-.146-4.547.469-6.006-.821-.517-.764-.404-1.7-.402-2.637-4.307 3.882-8.107 4.979-13.706 3.251q-.452-.194-.897-.401c-3.42-1.594-5.44-4.075-6.746-7.575-5.211-13.968 7.254-27.517 21.476-20.69-.126-1.449-.331-12.774-.025-13.878m-8.247 38.042c10.14-1.772 7.998-9.764 8.143-17.753.047-2.6-6.146-2.811-7.84-2.74-10.787 1.839-11.619 18.958-.303 20.493"/><path fill="#129ad7" d="M430.482 158.038c22.915-1.324 23.06 28.158 4.805 31.123l-.194.035c-3.887.664-8.298-.367-11.508-2.654a15.55 15.55 0 0 1-6.226-9.938c-1.566-9.373 3.675-17.075 13.123-18.566m4.074 25.697c13.177-4.61 7.231-22.134-3.065-20.482-2.828.616-4.86 1.805-6.467 4.302a11.22 11.22 0 0 0-1.502 8.463c1.187 5.268 5.603 8.636 11.034 7.717"/><path fill="#129ad7" d="M385.39 145.275c8.666-1.144 13.848 2.254 19.367 8.314-1.676 1.547-3.022 2.829-4.88 4.164-2.013-2.788-5.459-5.808-8.886-6.43-19.583-3.559-23.986 27.091-6.076 31.712 3.535.912 7.581-.095 10.613-2.039 1.791-1.331 2.919-2.492 4.495-4.056 1.667 1.244 5.532 3.253 3.381 5.625-7.24 7.984-19.594 9.244-28.313 2.876-9.837-7.185-10.844-22.941-3.815-32.365 3.609-4.86 8.3-6.973 14.114-7.801"/><path fill="#129ad7" d="M474.471 158.817c1.047-.043 2.899.13 4.005.203.227 3.061.033 7.915.021 11.139l.004 18.513c-1.967.069-4.232-.067-6.221-.139-.011-1.144.129-2.727.2-3.903q-.253.268-.515.528c-4.455 4.41-12.41 5.696-17.268 1.068-3.459-3.295-3.251-9.787-3.213-14.312a373 373 0 0 0-.122-12.914c2.432-.196 4.08-.127 6.493.001-.009 4.944-2.375 23.796 4.111 24.536 14.692 1.677 8.521-17.403 10.294-24.336.53-.375 1.522-.344 2.211-.384"/><path fill="currentColor" d="M216.934 43.42c6.131.18 14.267.069 20.408-.091.177 4.618-.303 13.634.165 17.593-5.849-.136-15.324-.362-20.889.04-.003-2.388-.345-16.364.316-17.543"/><path fill="#129ad7" d="M421.338 43.273c6.585.172 13.685-.156 20.152.178.473 4.07.248 12.791.237 17.26-.774.219-1.759.16-2.578.169-8.676.084-18.505 1.18-18.043-10.792.078-1.997-.33-4.82.232-6.815"/><path fill="#129ad7" d="m407.435 146.036 6.414.05c-.096 4.555.192 41.066-.385 42.556a182 182 0 0 0-6.099.105c-.156-3.556-.318-41.76.07-42.711"/><path fill="currentColor" d="M0 37.47c5.314 5.586 6.785 7.105 14.737 7.637 3.218.215 16.1-.545 18.023.483.895 1.426.656 6.237.654 8.106l-.026 19.726c-.011 10.5-1.348 19.524 7.078 27.314a21.56 21.56 0 0 0 9.912 5.287c5.098 1.183 10.288.454 14.745-2.347A19.3 19.3 0 0 0 73.8 91.617c.92-4.133.866-25.833.063-30.153a21.7 21.7 0 0 0-3.134-7.94 21 21 0 0 0-13.398-9.396c-4.348-.95-9.98-.492-14.51-.495-5.003-.004-8.4-2.914-6.89-8.173C40.68 18.9 56.355 15.934 71.232 19.6a48.13 48.13 0 0 1 29.83 21.853c7.318 12.108 6.957 22.173 6.816 35.729-.069 6.663.301 11.558-1.35 18.209a47.93 47.93 0 0 1-21.823 29.555c-10.73 6.452-19.823 7.126-32.003 6.883-6.391-.128-10.244.152-16.695-1.466a48 48 0 0 1-29.466-21.914A47.6 47.6 0 0 1 .744 93.397c-.15-.748-.34-1.967-.744-2.58z"/><path fill="#129ad7" d="M513 104.305c-1.703 5.332-1.065 6.722-4.389 12.699a31.08 31.08 0 0 1-18.706 14.614c-8.44 2.39-18.897 1.495-26.592-2.807a31.43 31.43 0 0 1-15.105-19.348c-4.814-17.353 4.005-36.276 22.035-41.003 17.436-4.572 36.047 3.327 41.311 21.443.601 2.07.898 4.057 1.446 6.095zm-31.667 11.815c18.625-2.753 16.556-32.967-2.305-32.224l-.136.025c-18.982 3.005-17.304 32.792 2.441 32.199"/><path fill="#129ad7" d="M0 0h32.326c.69.96.868 1.792.996 2.935.766 6.866.231 15.977.215 23.02-.01 4.492.49 10.799-.2 15.113-.118.74-.2 1.44-.841 1.897-2.135 1.52-18.215.88-21.235.306-3.833-.728-6.59-2.068-8.82-5.36C1.41 36.393.896 34.75 0 33.237z"/></svg>
+</button>
+
+<div id="drawer-backdrop" onclick="closeDrawer()"></div>
+
+<div id="drawer">
+  <div class="dr-logo">
+    <div class="dr-logo-left">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 513 190" style="height:32px;width:auto;" ><path fill="#fff" d="M148.949 43.28c2.524.303 16.612.24 19.178-.025-.173 3.18-.043 7.54-.04 10.795l-.019 19.49c3.047-2.703 6.511-4.246 10.502-4.958 16.944-3.023 29.188 7.185 32.179 23.475a37.25 37.25 0 0 1-6.016 28.371c-10.556 13.294-27.911 13.822-43.289 11.223-4.188-.708-8.228-2.012-12.372-2.869-.307-9.076-.123-19.067-.122-28.213zm19.161 72.637c4.567.812 6.931 1.182 11.679.691 7.786-1.796 11.493-7.319 12.078-15.13.604-8.066-2.491-16.624-11.734-16.999-3.588.145-6.268.53-8.852 3.283-2.825 3.01-3.169 7.177-3.201 11.102-.044 5.685.001 11.369.03 17.053"/><path fill="#fff" d="M339.028 67.204c34.559.139 27.71 29.154 28.369 53.832.087 3.278-.096 6.648.032 9.933-3.796-.371-14.342-.251-18.23-.041.02-1.705-.211-3.837-.352-5.568-8.015 8.565-22.845 9.745-32.415 2.96-2.207-1.564-3.537-3.56-4.909-5.848a21.87 21.87 0 0 1-1.784-11.05c2.113-19.824 23.797-21.474 39.405-19.77-1.844-9.891-8.252-10.201-17.299-9.128-4.507.534-8.13 2.601-12.074 4.682-1.532-1.84-6.263-9.412-7.833-11.796 8.661-6.352 16.692-7.786 27.09-8.206m-.7 51.659c9.476-1.307 10.415-6.843 10.691-15.059-2.812-.29-6.909-.752-9.684-.326-3.532.337-6.98.689-9.446 3.641a7.58 7.58 0 0 0-1.694 5.596c.517 5.352 5.76 6.353 10.133 6.148"/><path fill="#fff" d="M281.51 67.95c5.636-.253 12.089 1.314 16.456 5.032 8.057 6.857 7.445 16.92 7.438 26.504l-.036 19.897c-.008 3.437-.152 8.334.115 11.633-3.247-.352-16.106-.341-19.379-.003.477-11.819-.142-24.053.008-35.905.146-11.519-11.871-13.816-18.828-6.05-1.199 1.731-2.202 3.848-2.37 5.982-.718 9.09-.152 18.347-.307 27.474-.046 2.737-.048 5.789.138 8.497-3.016-.357-16.313-.325-19.422-.011.084-2.985.117-6.14.068-9.125-.287-17.424.426-35.116-.089-52.512 5.342.296 13.009.046 18.569.043l.458 6.05c4.849-5.082 10.37-7.014 17.181-7.507"/><path fill="#fff" d="M409.8 68.206c3.732-.102 5.737.193 9.359.762-.364 3.83-2.315 13.51-3.127 17.374-8.494-2.729-19.111-.225-20.987 9.682-1.116 5.887-.553 13.2-.626 19.266-.062 5.077-.198 10.65.04 15.687-3.92-.383-11.788-.175-15.984-.185-1.078.021-2.299.138-3.387.218.2-4.039.086-8.832.086-12.914l.005-22.316.003-16.264c.002-3.079.118-7.151-.161-10.157 5.747.272 12.999-.002 18.933.09-.201 2.397.071 4.913.255 7.319q.187-.234.382-.462c4.629-5.423 8.213-7.521 15.209-8.1"/><path fill="#129ad7" d="m440.442 69.23.489-.02c.363.56-.031 55.325.221 61.815-4.141-.407-15.509-.272-19.717-.027.077-20.494.198-41.319-.016-61.795 5.196.338 13.807.261 19.023.026"/><path fill="#fff" d="M217.366 69.358c4.837.316 14.294.087 19.266-.002-.026 6.326.301 60.697-.232 61.579-2.912-.292-16.1-.224-19.063.063.279-20.337.069-41.266.029-61.64"/><path fill="#129ad7" d="M504.222 146.024q3.108-.015 6.214.065c.307 3.681.083 10.416.084 14.376l.008 28.31c-2.121-.146-4.547.469-6.006-.821-.517-.764-.404-1.7-.402-2.637-4.307 3.882-8.107 4.979-13.706 3.251q-.452-.194-.897-.401c-3.42-1.594-5.44-4.075-6.746-7.575-5.211-13.968 7.254-27.517 21.476-20.69-.126-1.449-.331-12.774-.025-13.878m-8.247 38.042c10.14-1.772 7.998-9.764 8.143-17.753.047-2.6-6.146-2.811-7.84-2.74-10.787 1.839-11.619 18.958-.303 20.493"/><path fill="#129ad7" d="M430.482 158.038c22.915-1.324 23.06 28.158 4.805 31.123l-.194.035c-3.887.664-8.298-.367-11.508-2.654a15.55 15.55 0 0 1-6.226-9.938c-1.566-9.373 3.675-17.075 13.123-18.566m4.074 25.697c13.177-4.61 7.231-22.134-3.065-20.482-2.828.616-4.86 1.805-6.467 4.302a11.22 11.22 0 0 0-1.502 8.463c1.187 5.268 5.603 8.636 11.034 7.717"/><path fill="#129ad7" d="M385.39 145.275c8.666-1.144 13.848 2.254 19.367 8.314-1.676 1.547-3.022 2.829-4.88 4.164-2.013-2.788-5.459-5.808-8.886-6.43-19.583-3.559-23.986 27.091-6.076 31.712 3.535.912 7.581-.095 10.613-2.039 1.791-1.331 2.919-2.492 4.495-4.056 1.667 1.244 5.532 3.253 3.381 5.625-7.24 7.984-19.594 9.244-28.313 2.876-9.837-7.185-10.844-22.941-3.815-32.365 3.609-4.86 8.3-6.973 14.114-7.801"/><path fill="#129ad7" d="M474.471 158.817c1.047-.043 2.899.13 4.005.203.227 3.061.033 7.915.021 11.139l.004 18.513c-1.967.069-4.232-.067-6.221-.139-.011-1.144.129-2.727.2-3.903q-.253.268-.515.528c-4.455 4.41-12.41 5.696-17.268 1.068-3.459-3.295-3.251-9.787-3.213-14.312a373 373 0 0 0-.122-12.914c2.432-.196 4.08-.127 6.493.001-.009 4.944-2.375 23.796 4.111 24.536 14.692 1.677 8.521-17.403 10.294-24.336.53-.375 1.522-.344 2.211-.384"/><path fill="#fff" d="M216.934 43.42c6.131.18 14.267.069 20.408-.091.177 4.618-.303 13.634.165 17.593-5.849-.136-15.324-.362-20.889.04-.003-2.388-.345-16.364.316-17.543"/><path fill="#129ad7" d="M421.338 43.273c6.585.172 13.685-.156 20.152.178.473 4.07.248 12.791.237 17.26-.774.219-1.759.16-2.578.169-8.676.084-18.505 1.18-18.043-10.792.078-1.997-.33-4.82.232-6.815"/><path fill="#129ad7" d="m407.435 146.036 6.414.05c-.096 4.555.192 41.066-.385 42.556a182 182 0 0 0-6.099.105c-.156-3.556-.318-41.76.07-42.711"/><path fill="#fff" d="M0 37.47c5.314 5.586 6.785 7.105 14.737 7.637 3.218.215 16.1-.545 18.023.483.895 1.426.656 6.237.654 8.106l-.026 19.726c-.011 10.5-1.348 19.524 7.078 27.314a21.56 21.56 0 0 0 9.912 5.287c5.098 1.183 10.288.454 14.745-2.347A19.3 19.3 0 0 0 73.8 91.617c.92-4.133.866-25.833.063-30.153a21.7 21.7 0 0 0-3.134-7.94 21 21 0 0 0-13.398-9.396c-4.348-.95-9.98-.492-14.51-.495-5.003-.004-8.4-2.914-6.89-8.173C40.68 18.9 56.355 15.934 71.232 19.6a48.13 48.13 0 0 1 29.83 21.853c7.318 12.108 6.957 22.173 6.816 35.729-.069 6.663.301 11.558-1.35 18.209a47.93 47.93 0 0 1-21.823 29.555c-10.73 6.452-19.823 7.126-32.003 6.883-6.391-.128-10.244.152-16.695-1.466a48 48 0 0 1-29.466-21.914A47.6 47.6 0 0 1 .744 93.397c-.15-.748-.34-1.967-.744-2.58z"/><path fill="#129ad7" d="M513 104.305c-1.703 5.332-1.065 6.722-4.389 12.699a31.08 31.08 0 0 1-18.706 14.614c-8.44 2.39-18.897 1.495-26.592-2.807a31.43 31.43 0 0 1-15.105-19.348c-4.814-17.353 4.005-36.276 22.035-41.003 17.436-4.572 36.047 3.327 41.311 21.443.601 2.07.898 4.057 1.446 6.095zm-31.667 11.815c18.625-2.753 16.556-32.967-2.305-32.224l-.136.025c-18.982 3.005-17.304 32.792 2.441 32.199"/><path fill="#129ad7" d="M0 0h32.326c.69.96.868 1.792.996 2.935.766 6.866.231 15.977.215 23.02-.01 4.492.49 10.799-.2 15.113-.118.74-.2 1.44-.841 1.897-2.135 1.52-18.215.88-21.235.306-3.833-.728-6.59-2.068-8.82-5.36C1.41 36.393.896 34.75 0 33.237z"/></svg>
+    </div>
+    <button class="dr-close" onclick="closeDrawer()">✕</button>
+  </div>
+  <nav class="dr-nav">
+    <div class="dr-section-label">Escritório de Projetos</div>
+
+    <!-- Projetos -->
+    <div class="dr-submenu-container">
+      <div class="dr-item dr-submenu-toggle" onclick="toggleSubmenu('projetos-menu')">
+        <div style="display:flex;align-items:center;gap:10px;flex:1;">
+          <div class="dr-item-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+          <div><div class="dr-item-label">Projetos</div><div class="dr-item-sub">2 categorias</div></div>
+        </div>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="dr-submenu" id="projetos-menu">
+        <div class="dr-submenu-item" id="nav-clientes" onclick="navTo('clientes','active-blue')">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          Clientes
+        </div>
+        <div class="dr-submenu-item" id="nav-estruturantes" onclick="navTo('estruturantes','active-green')">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M12 12h.01"/><path d="M17 12h.01"/><path d="M7 12h.01"/></svg>
+          Estruturantes
+        </div>
+      </div>
+    </div>
+
+    <!-- Entregas -->
+    <div class="dr-submenu-container">
+      <div class="dr-item dr-submenu-toggle" onclick="toggleSubmenu('entregas-menu')">
+        <div style="display:flex;align-items:center;gap:10px;flex:1;">
+          <div class="dr-item-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 21 6 12 2 12"/><path d="M6 12L4.3 4.3A1 1 0 0 1 5.1 3h13.8a1 1 0 0 1 .9 1.3L18 12"/></svg></div>
+          <div><div class="dr-item-label">Entregas</div><div class="dr-item-sub">1 item</div></div>
+        </div>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="dr-submenu" id="entregas-menu">
+        <div class="dr-submenu-item" id="nav-finalizados" onclick="navTo('finalizados','active-green')">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          Projetos Finalizados
+        </div>
+      </div>
+    </div>
+
+    <!-- Status da Migração -->
+    <div class="dr-submenu-container">
+      <div class="dr-item dr-submenu-toggle" onclick="toggleSubmenu('status-menu')">
+        <div style="display:flex;align-items:center;gap:10px;flex:1;">
+          <div class="dr-item-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 1l4 4-4 4"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><path d="M7 23l-4-4 4-4"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg></div>
+          <div><div class="dr-item-label">Status da Migração</div><div class="dr-item-sub">2 itens</div></div>
+        </div>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="dr-submenu" id="status-menu">
+        <div class="dr-submenu-item" id="nav-status-migracao" onclick="navTo('status-migracao','active-purple')">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 1l4 4-4 4"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><path d="M7 23l-4-4 4-4"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>
+          Status migração 2>3
+        </div>
+        <div class="dr-submenu-item" id="nav-controle-migracao" onclick="navTo('controle-migracao','active-purple')">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+          Controle de Migração
+        </div>
+      </div>
+    </div>
+
+    <div class="dr-divider"></div>
+
+    <!-- Governança -->
+    <div class="dr-submenu-container">
+      <div class="dr-item dr-submenu-toggle" onclick="toggleSubmenu('governanca-menu')">
+        <div style="display:flex;align-items:center;gap:10px;flex:1;">
+          <div class="dr-item-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div>
+          <div><div class="dr-item-label">Governança</div><div class="dr-item-sub">2 itens</div></div>
+        </div>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="dr-submenu" id="governanca-menu">
+        <div class="dr-submenu-item" id="nav-capacity-20" onclick="navTo('capacity-20','active-purple')">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.66 4.03 3 9 3s9-1.34 9-3V5"/><path d="M3 12c0 1.66 4.03 3 9 3s9-1.34 9-3"/></svg>
+          Sanitização 2.0
+        </div>
+        <div class="dr-submenu-item" id="nav-capacity-30" onclick="navTo('capacity-30','active-purple')">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.66 4.03 3 9 3s9-1.34 9-3V5"/><path d="M3 12c0 1.66 4.03 3 9 3s9-1.34 9-3"/></svg>
+          Sanitização 3.0
+        </div>
+      </div>
+    </div>
+  </nav>
+  <div class="dr-footer">Binario Cloud · Escritório de Projetos</div>
+</div>
+
+<!-- CAPA -->
+<div id="cover" class="page active">
+  <div class="cover-grid"></div>
+  <div class="cover-content">
+    <div class="cover-eyebrow">Binario Cloud</div>
+    <div class="cover-period">Escritório de Projetos</div>
+    <p class="cover-desc">Visão executiva do portfólio de projetos,<br>entregas e iniciativas estratégicas.</p>
+  </div>
+</div>
+
+</body>
+</html>
