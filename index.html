@@ -486,21 +486,6 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--blue); outline-
         </div>
       </div>
 
-      <!-- Pedreira Vale Mix -->
-      <div class="card anim">
-        <div class="card-accent accent-green"></div>
-        <div class="card-header">
-          <span class="pill pill-prog">● Em progresso</span>
-          <span class="card-pct">10%</span>
-        </div>
-        <div class="card-title">Pedreira Vale Mix</div>
-        <div class="card-footer">
-          <span class="prog-note">Iniciando implantação</span>
-          <div class="bar-track"><div class="bar-fill fill-green" data-pct="10"></div></div>
-          <button class="btn-det" onclick="openModal('pedreira')">Ver detalhes <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 6.5h9M7 2l4.5 4.5L7 11" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-        </div>
-      </div>
-
       <!-- SPSP -->
       <div class="card anim">
         <div class="card-accent accent-green"></div>
@@ -605,7 +590,7 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--blue); outline-
     <div class="page-hero anim" style="background:linear-gradient(120deg,#27ae60 0%,#2ecc71 100%);">
       <div><div class="hero-title">Projetos Finalizados</div><div class="hero-sub">Histórico de entregas por período</div></div>
       <div class="hero-stats">
-        <div class="hero-stat"><div class="sv">5</div><div class="sl">Concluídos</div></div>
+        <div class="hero-stat"><div class="sv">6</div><div class="sl">Concluídos</div></div>
         <div class="hero-stat"><div class="sv">2026</div><div class="sl">Período</div></div>
       </div>
     </div>
@@ -1061,6 +1046,45 @@ async function san20SaveStorage() {
 
 
 
+
+
+
+const SAN20_SEED = [
+  // ── Inventário OpenStack — 08/06/2026 | 478 VMs | 33 Domínios | 426 ligadas | 52 desligadas ──
+  { id: 1, dominio:'gimba.com.br', cliente:'Gimba', tipo:'Aplicação Web', vms:72, ligadas:66, desligadas:6, pctDeslig:8.3 },
+  { id: 2, dominio:'Default', cliente:'Admin / Service (OpenStack interno)', tipo:'Serviço Interno', vms:66, ligadas:66, desligadas:0, pctDeslig:0.0 },
+  { id: 3, dominio:'gimba2.com.br', cliente:'Gimba 2', tipo:'Aplicação Web', vms:42, ligadas:34, desligadas:8, pctDeslig:19.0 },
+  { id: 4, dominio:'binario.cloud', cliente:'Binario Cloud — Ambiente Principal', tipo:'Aplicação Web', vms:41, ligadas:41, desligadas:0, pctDeslig:0.0 },
+  { id: 5, dominio:'(Sem Domínio)', cliente:'VMs sem domínio configurado', tipo:'Outro', vms:38, ligadas:37, desligadas:1, pctDeslig:2.6 },
+  { id: 6, dominio:'qos.com.br', cliente:'QOS', tipo:'Aplicação Web', vms:28, ligadas:23, desligadas:5, pctDeslig:17.9 },
+  { id: 7, dominio:'refrio.com.br', cliente:'Refrio', tipo:'Aplicação Web', vms:26, ligadas:24, desligadas:2, pctDeslig:7.7 },
+  { id: 8, dominio:'bmchyundai.com.br', cliente:'BMC Hyundai', tipo:'Aplicação Web', vms:23, ligadas:20, desligadas:3, pctDeslig:13.0 },
+  { id: 9, dominio:'zanthus.com.br', cliente:'Zanthus', tipo:'Aplicação Web', vms:22, ligadas:21, desligadas:1, pctDeslig:4.5 },
+  { id:10, dominio:'enesa.com.br', cliente:'Enesa', tipo:'Aplicação Web', vms:15, ligadas:15, desligadas:0, pctDeslig:0.0 },
+  { id:11, dominio:'gruporaizes.com', cliente:'Grupo Raízes', tipo:'Aplicação Web', vms:13, ligadas:13, desligadas:0, pctDeslig:0.0 },
+  { id:12, dominio:'luizalabs.com', cliente:'Luiza Labs', tipo:'Aplicação Web', vms:11, ligadas:10, desligadas:1, pctDeslig:9.1 },
+  { id:13, dominio:'waits.com.br', cliente:'Waits', tipo:'Aplicação Web', vms:10, ligadas:10, desligadas:0, pctDeslig:0.0 },
+  { id:14, dominio:'soprema.com.br', cliente:'Soprema', tipo:'Aplicação Web', vms:9, ligadas:8, desligadas:1, pctDeslig:11.1 },
+  { id:15, dominio:'smarapd.com.br', cliente:'Smarapd', tipo:'Aplicação Web', vms:8, ligadas:8, desligadas:0, pctDeslig:0.0, obs:'migrando' },
+  { id:16, dominio:'radiojb.fm', cliente:'Rádio JB', tipo:'Aplicação Web', vms:6, ligadas:6, desligadas:0, pctDeslig:0.0 },
+  { id:17, dominio:'mbmsolutions.com.br', cliente:'MBM Solutions', tipo:'Aplicação Web', vms:5, ligadas:0, desligadas:5, pctDeslig:100.0 },
+  { id:18, dominio:'prumoengenharia.com.br', cliente:'Prumo Engenharia', tipo:'Aplicação Web', vms:5, ligadas:3, desligadas:2, pctDeslig:40.0 },
+  { id:19, dominio:'sre.binario.cloud', cliente:'Binario Cloud — SRE / Infraestrutura', tipo:'Serviço Interno', vms:5, ligadas:5, desligadas:0, pctDeslig:0.0 },
+  { id:20, dominio:'automalogica.com.br', cliente:'Automalogica', tipo:'Aplicação Web', vms:4, ligadas:1, desligadas:3, pctDeslig:75.0 },
+  { id:21, dominio:'domain-cloud2', cliente:'Cloud2 (domínio interno não qualificado)', tipo:'Serviço Interno', vms:4, ligadas:1, desligadas:3, pctDeslig:75.0 },
+  { id:22, dominio:'netza.com.br', cliente:'Netza', tipo:'Aplicação Web', vms:4, ligadas:4, desligadas:0, pctDeslig:0.0 },
+  { id:23, dominio:'sagaengenharia.com.br', cliente:'Saga Engenharia', tipo:'Aplicação Web', vms:3, ligadas:1, desligadas:2, pctDeslig:66.7 },
+  { id:24, dominio:'sattelecomip.com', cliente:'Sat Telecom IP', tipo:'Aplicação Web', vms:3, ligadas:2, desligadas:1, pctDeslig:33.3 },
+  { id:25, dominio:'sistecweb.com.br', cliente:'Sistecweb', tipo:'Aplicação Web', vms:3, ligadas:1, desligadas:2, pctDeslig:66.7 },
+  { id:26, dominio:'geofix.com.br', cliente:'Geofix', tipo:'Aplicação Web', vms:2, ligadas:2, desligadas:0, pctDeslig:0.0 },
+  { id:27, dominio:'mahlerededepostos.com.br', cliente:'Mahle Rede de Postos', tipo:'Aplicação Web', vms:2, ligadas:0, desligadas:2, pctDeslig:100.0 },
+  { id:28, dominio:'sattelecom.com', cliente:'Sat Telecom', tipo:'Aplicação Web', vms:2, ligadas:1, desligadas:1, pctDeslig:50.0 },
+  { id:29, dominio:'selbetti.com', cliente:'Selbetti', tipo:'Aplicação Web', vms:2, ligadas:0, desligadas:2, pctDeslig:100.0 },
+  { id:30, dominio:'1team.cloud', cliente:'1Team Cloud', tipo:'Aplicação Web', vms:1, ligadas:1, desligadas:0, pctDeslig:0.0 },
+  { id:31, dominio:'dismac.com.bo', cliente:'Dismac', tipo:'Aplicação Web', vms:1, ligadas:0, desligadas:1, pctDeslig:100.0 },
+  { id:32, dominio:'spheraeducacional.com.br', cliente:'Sphera Educacional', tipo:'Portal do Cliente', vms:1, ligadas:1, desligadas:0, pctDeslig:0.0 },
+  { id:33, dominio:'suporte.binario.cloud', cliente:'Binario Cloud — Suporte', tipo:'Portal do Cliente', vms:1, ligadas:1, desligadas:0, pctDeslig:0.0 },
+];
 
 const SAN20_VMS = {
   "gimba.com.br": [
@@ -1609,43 +1633,6 @@ const SAN20_VMS = {
   ],
 };
 
-const SAN20_SEED = [
-  // ── Inventário OpenStack — 08/06/2026 | 478 VMs | 33 Domínios | 426 ligadas | 52 desligadas ──
-  { id: 1, dominio:'gimba.com.br', cliente:'Gimba', tipo:'Aplicação Web', vms:72, ligadas:66, desligadas:6, pctDeslig:8.3 },
-  { id: 2, dominio:'Default', cliente:'Admin / Service (OpenStack interno)', tipo:'Serviço Interno', vms:66, ligadas:66, desligadas:0, pctDeslig:0.0 },
-  { id: 3, dominio:'gimba2.com.br', cliente:'Gimba 2', tipo:'Aplicação Web', vms:42, ligadas:34, desligadas:8, pctDeslig:19.0 },
-  { id: 4, dominio:'binario.cloud', cliente:'Binario Cloud — Ambiente Principal', tipo:'Aplicação Web', vms:41, ligadas:41, desligadas:0, pctDeslig:0.0 },
-  { id: 5, dominio:'(Sem Domínio)', cliente:'VMs sem domínio configurado', tipo:'Outro', vms:38, ligadas:37, desligadas:1, pctDeslig:2.6 },
-  { id: 6, dominio:'qos.com.br', cliente:'QOS', tipo:'Aplicação Web', vms:28, ligadas:23, desligadas:5, pctDeslig:17.9 },
-  { id: 7, dominio:'refrio.com.br', cliente:'Refrio', tipo:'Aplicação Web', vms:26, ligadas:24, desligadas:2, pctDeslig:7.7 },
-  { id: 8, dominio:'bmchyundai.com.br', cliente:'BMC Hyundai', tipo:'Aplicação Web', vms:23, ligadas:20, desligadas:3, pctDeslig:13.0 },
-  { id: 9, dominio:'zanthus.com.br', cliente:'Zanthus', tipo:'Aplicação Web', vms:22, ligadas:21, desligadas:1, pctDeslig:4.5 },
-  { id:10, dominio:'enesa.com.br', cliente:'Enesa', tipo:'Aplicação Web', vms:15, ligadas:15, desligadas:0, pctDeslig:0.0 },
-  { id:11, dominio:'gruporaizes.com', cliente:'Grupo Raízes', tipo:'Aplicação Web', vms:13, ligadas:13, desligadas:0, pctDeslig:0.0 },
-  { id:12, dominio:'luizalabs.com', cliente:'Luiza Labs', tipo:'Aplicação Web', vms:11, ligadas:10, desligadas:1, pctDeslig:9.1 },
-  { id:13, dominio:'waits.com.br', cliente:'Waits', tipo:'Aplicação Web', vms:10, ligadas:10, desligadas:0, pctDeslig:0.0 },
-  { id:14, dominio:'soprema.com.br', cliente:'Soprema', tipo:'Aplicação Web', vms:9, ligadas:8, desligadas:1, pctDeslig:11.1 },
-  { id:15, dominio:'smarapd.com.br', cliente:'Smarapd', tipo:'Aplicação Web', vms:8, ligadas:8, desligadas:0, pctDeslig:0.0, obs:'migrando' },
-  { id:16, dominio:'radiojb.fm', cliente:'Rádio JB', tipo:'Aplicação Web', vms:6, ligadas:6, desligadas:0, pctDeslig:0.0 },
-  { id:17, dominio:'mbmsolutions.com.br', cliente:'MBM Solutions', tipo:'Aplicação Web', vms:5, ligadas:0, desligadas:5, pctDeslig:100.0 },
-  { id:18, dominio:'prumoengenharia.com.br', cliente:'Prumo Engenharia', tipo:'Aplicação Web', vms:5, ligadas:3, desligadas:2, pctDeslig:40.0 },
-  { id:19, dominio:'sre.binario.cloud', cliente:'Binario Cloud — SRE / Infraestrutura', tipo:'Serviço Interno', vms:5, ligadas:5, desligadas:0, pctDeslig:0.0 },
-  { id:20, dominio:'automalogica.com.br', cliente:'Automalogica', tipo:'Aplicação Web', vms:4, ligadas:1, desligadas:3, pctDeslig:75.0 },
-  { id:21, dominio:'domain-cloud2', cliente:'Cloud2 (domínio interno não qualificado)', tipo:'Serviço Interno', vms:4, ligadas:1, desligadas:3, pctDeslig:75.0 },
-  { id:22, dominio:'netza.com.br', cliente:'Netza', tipo:'Aplicação Web', vms:4, ligadas:4, desligadas:0, pctDeslig:0.0 },
-  { id:23, dominio:'sagaengenharia.com.br', cliente:'Saga Engenharia', tipo:'Aplicação Web', vms:3, ligadas:1, desligadas:2, pctDeslig:66.7 },
-  { id:24, dominio:'sattelecomip.com', cliente:'Sat Telecom IP', tipo:'Aplicação Web', vms:3, ligadas:2, desligadas:1, pctDeslig:33.3 },
-  { id:25, dominio:'sistecweb.com.br', cliente:'Sistecweb', tipo:'Aplicação Web', vms:3, ligadas:1, desligadas:2, pctDeslig:66.7 },
-  { id:26, dominio:'geofix.com.br', cliente:'Geofix', tipo:'Aplicação Web', vms:2, ligadas:2, desligadas:0, pctDeslig:0.0 },
-  { id:27, dominio:'mahlerededepostos.com.br', cliente:'Mahle Rede de Postos', tipo:'Aplicação Web', vms:2, ligadas:0, desligadas:2, pctDeslig:100.0 },
-  { id:28, dominio:'sattelecom.com', cliente:'Sat Telecom', tipo:'Aplicação Web', vms:2, ligadas:1, desligadas:1, pctDeslig:50.0 },
-  { id:29, dominio:'selbetti.com', cliente:'Selbetti', tipo:'Aplicação Web', vms:2, ligadas:0, desligadas:2, pctDeslig:100.0 },
-  { id:30, dominio:'1team.cloud', cliente:'1Team Cloud', tipo:'Aplicação Web', vms:1, ligadas:1, desligadas:0, pctDeslig:0.0 },
-  { id:31, dominio:'dismac.com.bo', cliente:'Dismac', tipo:'Aplicação Web', vms:1, ligadas:0, desligadas:1, pctDeslig:100.0 },
-  { id:32, dominio:'spheraeducacional.com.br', cliente:'Sphera Educacional', tipo:'Portal do Cliente', vms:1, ligadas:1, desligadas:0, pctDeslig:0.0 },
-  { id:33, dominio:'suporte.binario.cloud', cliente:'Binario Cloud — Suporte', tipo:'Portal do Cliente', vms:1, ligadas:1, desligadas:0, pctDeslig:0.0 },
-];
-
 async function san20LoadStorage() {
   try {
     const res = await window.storage.get('san20_data');
@@ -1732,8 +1719,8 @@ document.addEventListener('page-changed', function(e) {
             <th style="padding:12px 16px;text-align:left;font-weight:800;color:var(--text-dark);text-transform:uppercase;font-size:10px;letter-spacing:1.5px;">Cliente</th>
             <th style="padding:12px 16px;text-align:center;font-weight:800;color:var(--text-dark);text-transform:uppercase;font-size:10px;letter-spacing:1.5px;">Máqs.</th>
             <th style="padding:12px 16px;text-align:center;font-weight:800;color:var(--text-dark);text-transform:uppercase;font-size:10px;letter-spacing:1.5px;">Status</th>
-            <th style="padding:12px 16px;text-align:left;font-weight:800;color:var(--text-dark);text-transform:uppercase;font-size:10px;letter-spacing:1.5px;">Progresso</th>
-            <th style="padding:12px 16px;text-align:center;font-weight:800;color:var(--text-dark);text-transform:uppercase;font-size:10px;letter-spacing:1.5px;">Prevista</th>
+            <th style="padding:12px 16px;text-align:center;font-weight:800;color:var(--text-dark);text-transform:uppercase;font-size:10px;letter-spacing:1.5px;">Confirmação</th>
+            <th style="padding:12px 16px;text-align:center;font-weight:800;color:var(--text-dark);text-transform:uppercase;font-size:10px;letter-spacing:1.5px;">Data de Migração</th>
             <th style="padding:12px 16px;text-align:center;font-weight:800;color:var(--text-dark);text-transform:uppercase;font-size:10px;letter-spacing:1.5px;">Migrado em</th>
             <th style="padding:12px 16px;text-align:center;font-weight:800;color:var(--text-dark);text-transform:uppercase;font-size:10px;letter-spacing:1.5px;">Histórico</th>
           </tr>
@@ -1790,7 +1777,7 @@ document.addEventListener('page-changed', function(e) {
 </div>
 
 
-
+<div class="overlay" id="overlay" onclick="closeOuter(event)">
   <div class="modal" id="modal">
     <div class="modal-hd">
       <div class="modal-header-content">
@@ -1804,8 +1791,19 @@ document.addEventListener('page-changed', function(e) {
       </div>
     </div>
     <div class="modal-bd" id="mBody"></div>
+    <button class="btn-historico" id="btn-historico" onclick="toggleHistorico()">
+      <div class="btn-hist-icon">📋</div>
+      <div style="flex:1;text-align:left;">
+        <div style="font-size:13px;font-weight:700;color:#1b5e20;">Histórico do projeto</div>
+        <div style="font-size:11px;color:#388e3c;margin-top:2px;">Ver linha do tempo e atualizações</div>
+      </div>
+      <svg class="btn-hist-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2e7d32" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+    </button>
+    <div class="historico-panel" id="historico-panel"></div>
   </div>
 </div>
+
+
 
 <script>
 /* DRAWER */
@@ -1865,19 +1863,17 @@ const P = {
     eye:'Projeto de Cliente', title:'Igreja Pentecostal Deus e Amor', pct:100,
     fc:'fill-green', grad:'linear-gradient(90deg,#2e7d32,#43a047)',
     pill:'<span class="pill pill-done">✓ Finalizado — Maio/2026</span>',
-    tags:[['Finalizado','green'],['Mai/2026','green'],['14/15 máquinas','green'],['TEP enviado','orange']],
+    tags:[['Finalizado','green'],['Mai/2026','green'],['14/15 máquinas','green'],['TEP assinado','green'],['Faturamento','orange']],
     completed:'2026-05-31',
     secs:[
       {t:'Escopo', rows:[['🖥️','Upgrade de licenças de backup para 15 VMs — instalação e upgrade do Veeam']]},
       {t:'Status atual', rows:[
-        ['✅','Instalação finalizada em 14 de 15 máquinas enviadas'],
-        ['📄','TEP (Termo de Entrega do Projeto) encaminhado ao cliente para assinatura'],
-        ['⏳','Aguardando devolutiva e assinatura do cliente'],
-        ['💳','Faturamento será liberado após assinatura do TEP']
+        ['✅','Instalação finalizada em 14 de 15 máquinas entregues'],
+        ['✍️','TEP (Termo de Entrega do Projeto) assinado pelo cliente'],
+        ['💳','Projeto encaminhado para faturamento']
       ]},
       {t:'Próximos passos', rows:[
-        ['✍️','Obter assinatura do TEP pelo cliente'],
-        ['💰','Liberar faturamento após confirmação da assinatura']
+        ['📊','Aguardando processamento e confirmação do faturamento']
       ]}
     ]
   },
@@ -1974,15 +1970,23 @@ const P = {
     ]
   },
   pedreira:{
-    eye:'Projeto de Cliente', title:'Pedreira Vale Mix', pct:10,
+    eye:'Projeto de Cliente', title:'Pedreira Vale Mix', pct:100,
     fc:'fill-green', grad:'linear-gradient(90deg,#2e7d32,#43a047)',
-    pill:'<span class="pill pill-prog">● Em progresso</span>',
-    tags:[['Cliente','green'],['Em andamento','green'],['10%','green']],
-    completed:null,
+    pill:'<span class="pill pill-done">✓ Finalizado — Jun/2026</span>',
+    tags:[['Finalizado','green'],['Jun/2026','green'],['TEP enviado','orange']],
+    completed:'2026-06-09',
     secs:[
       {t:'Escopo', rows:[['🖥️','Implantação do ambiente Pedreira Vale Mix']]},
-      {t:'Status atual', rows:[['🔄','Projeto em fase inicial de implantação — 10% concluído']]},
-      {t:'Próximos passos', rows:[['📋','Definir cronograma e próximas entregas do projeto']]}
+      {t:'Status atual', rows:[
+        ['✅','Projeto 100% concluído'],
+        ['📄','TEP (Termo de Entrega do Projeto) enviado ao cliente para assinatura'],
+        ['⏳','Aguardando devolutiva e assinatura do cliente'],
+        ['💳','Faturamento será liberado após assinatura do TEP']
+      ]},
+      {t:'Próximos passos', rows:[
+        ['✍️','Obter assinatura do TEP pelo cliente'],
+        ['💰','Liberar faturamento após confirmação da assinatura']
+      ]}
     ]
   },
   spsp:{
@@ -1998,6 +2002,7 @@ const P = {
     ]
   }
 };
+
 
 /* MODAL */
 let currentModalId = null, editMode = false;
@@ -2154,8 +2159,8 @@ renderFinalizados();
    CONTROLE DE MIGRAÇÃO
 ═══════════════════════════════════════ */
 let mgClientes = [
-  { id:1,  nome:"PRUMO ENGENHARIA EIRELI",            qtdMaquinas:5,   status:"Em Progresso", progresso:30, dataPrevista:"2026-06-12", dataMigracao:null,         historico:[{data:"2026-06-03",acao:"Progresso: 30% — Aguardando retorno do acesso para criação das cópias no ambiente 3.0"},{data:"2026-06-03",acao:"Data prevista de conclusão: 12/06/2026"}] },
-  { id:2,  nome:"QoS (Projeto 1)",                    qtdMaquinas:8,   status:"Em Progresso", progresso:85, dataPrevista:"2026-05-30", dataMigracao:"2026-06-07", historico:[
+  { id:1,  nome:"PRUMO ENGENHARIA EIRELI",            qtdMaquinas:5,   status:"Em Progresso", progresso:30, confirmado:false, dataPrevista:"2026-06-12", dataMigracao:null,         historico:[{data:"2026-06-03",acao:"Progresso: 30% — Aguardando retorno do acesso para criação das cópias no ambiente 3.0"},{data:"2026-06-03",acao:"Data prevista de conclusão: 12/06/2026"}] },
+  { id:2,  nome:"QoS (Projeto 1)",                    qtdMaquinas:8,   status:"Em Progresso", progresso:85, confirmado:true,  dataPrevista:"2026-05-30", dataMigracao:"2026-06-07", historico:[
     {data:"2024-01-01",acao:"DECISÃO: Recriação do zero na BCOS 3.0 - Não haverá migração"},
     {data:"2024-01-01",acao:"Responsável: Alan (desenvolvedor) | Motivo: Mais rápido, mais limpo, evita compatibilidade"},
     {data:"2024-01-01",acao:"JANELA 1 - 05/05/2026 14h | RPA_Faturas_Dasa | PoC-Captive Portal-Ubiquiti"},
@@ -2163,21 +2168,21 @@ let mgClientes = [
     {data:"2026-05-30",acao:"Virada prevista para hoje, contemplando o total de 8 máquinas."},
     {data:"2026-06-03",acao:"Progresso: 85% — Aguardando teste e validação na 3.0. Data prevista: 30/05. Data de migração: 07/06/2026"}
   ]},
-  { id:3,  nome:"QoS (Projeto 2)",                    qtdMaquinas:10,  status:"Em Progresso", progresso:85, dataPrevista:"2026-05-30", dataMigracao:"2026-06-07", historico:[{data:"2026-05-30",acao:"Virada prevista para o dia 12, contemplando o total de 10 máquinas."},{data:"2026-06-03",acao:"Progresso: 85% — Aguardando teste e validação na 3.0. Data prevista: 30/05. Data de migração: 07/06/2026"}] },
-  { id:4,  nome:"SOPREMA - INDUSTRIA E COMERCIO",     qtdMaquinas:8,   status:"Em Progresso", progresso:75, dataPrevista:"2026-05-30", dataMigracao:"2026-05-30", historico:[{data:"2026-05-26",acao:"Reunião de alinhamento para virada realizada em 26/05."},{data:"2026-05-30",acao:"Aguardando devolutiva do Bruno Queiroz para alinhamento com o cliente."}] },
-  { id:5,  nome:"ZANTHUS - COMERCIO E SERVICOS",      qtdMaquinas:24,  status:"Em Progresso", progresso:50, dataPrevista:"2026-05-30", dataMigracao:"2026-05-30", historico:[{data:"2026-05-30",acao:"Criado - Status: Em Progresso, aguardando definição do histórico."}] },
-  { id:6,  nome:"MAGAZINE LUIZA S/A",                 qtdMaquinas:11,  status:"Planejamento", progresso:0,  dataPrevista:"2026-06-13", dataMigracao:null,         historico:[] },
-  { id:7,  nome:"NETZA - PROMOCOES E EVENTOS",        qtdMaquinas:3,   status:"Planejamento", progresso:0,  dataPrevista:"2026-06-13", dataMigracao:null,         historico:[] },
-  { id:8,  nome:"PIRAMIDAL - THERMOPLASTICS S.A.",    qtdMaquinas:10,  status:"Planejamento", progresso:0,  dataPrevista:"2026-06-13", dataMigracao:null,         historico:[] },
-  { id:9,  nome:"RADIO MONTE DA GAVEA LTDA",          qtdMaquinas:6,   status:"Planejamento", progresso:0,  dataPrevista:"2026-06-13", dataMigracao:null,         historico:[] },
-  { id:10, nome:"ENESA ENGENHARIA S.A.",              qtdMaquinas:14,  status:"Planejamento", progresso:0,  dataPrevista:"2026-06-28", dataMigracao:null,         historico:[] },
-  { id:11, nome:"GIMBA - SUPRICORP SUPRIMENTOS",      qtdMaquinas:102, status:"Planejamento", progresso:0,  dataPrevista:"2026-06-28", dataMigracao:null,         historico:[] },
-  { id:12, nome:"BMC MAQUINAS E EQUIP PESADOS",       qtdMaquinas:23,  status:"Planejamento", progresso:0,  dataPrevista:null,         dataMigracao:null,         historico:[] },
-  { id:13, nome:"GEOFIX ENGENHARIA FUNDACOES",        qtdMaquinas:2,   status:"Planejamento", progresso:0,  dataPrevista:null,         dataMigracao:null,         historico:[] },
-  { id:14, nome:"REFRIO ARMAZENS GERAIS LTDA",        qtdMaquinas:26,  status:"Planejamento", progresso:0,  dataPrevista:null,         dataMigracao:null,         historico:[] },
-  { id:15, nome:"1TEAMCLOUD SOLUCOES",                qtdMaquinas:1,   status:"Planejamento", progresso:0,  dataPrevista:null,         dataMigracao:null,         historico:[] },
-  { id:16, nome:"GRUPO RAIZES",                       qtdMaquinas:13,  status:"Planejamento", progresso:0,  dataPrevista:null,         dataMigracao:null,         historico:[] },
-  { id:17, nome:"SAT CONSULTORIA",                    qtdMaquinas:3,   status:"Planejamento", progresso:0,  dataPrevista:null,         dataMigracao:null,         historico:[] },
+  { id:3,  nome:"QoS (Projeto 2)",                    qtdMaquinas:10,  status:"Em Progresso", progresso:85, confirmado:true,  dataPrevista:"2026-05-30", dataMigracao:"2026-06-07", historico:[{data:"2026-05-30",acao:"Virada prevista para o dia 12, contemplando o total de 10 máquinas."},{data:"2026-06-03",acao:"Progresso: 85% — Aguardando teste e validação na 3.0. Data prevista: 30/05. Data de migração: 07/06/2026"}] },
+  { id:4,  nome:"SOPREMA - INDUSTRIA E COMERCIO",     qtdMaquinas:8,   status:"Em Progresso", progresso:75, confirmado:false, dataPrevista:"2026-05-30", dataMigracao:"2026-05-30", historico:[{data:"2026-05-26",acao:"Reunião de alinhamento para virada realizada em 26/05."},{data:"2026-05-30",acao:"Aguardando devolutiva do Bruno Queiroz para alinhamento com o cliente."}] },
+  { id:5,  nome:"ZANTHUS - COMERCIO E SERVICOS",      qtdMaquinas:24,  status:"Em Progresso", progresso:50, confirmado:false, dataPrevista:"2026-05-30", dataMigracao:"2026-05-30", historico:[{data:"2026-05-30",acao:"Criado - Status: Em Progresso, aguardando definição do histórico."}] },
+  { id:6,  nome:"MAGAZINE LUIZA S/A",                 qtdMaquinas:11,  status:"Planejamento", progresso:0,  confirmado:false, dataPrevista:"2026-06-13", dataMigracao:null,         historico:[] },
+  { id:7,  nome:"NETZA - PROMOCOES E EVENTOS",        qtdMaquinas:3,   status:"Planejamento", progresso:0,  confirmado:false, dataPrevista:"2026-06-13", dataMigracao:null,         historico:[] },
+  { id:8,  nome:"PIRAMIDAL - THERMOPLASTICS S.A.",    qtdMaquinas:10,  status:"Planejamento", progresso:0,  confirmado:false, dataPrevista:"2026-06-13", dataMigracao:null,         historico:[] },
+  { id:9,  nome:"RADIO MONTE DA GAVEA LTDA",          qtdMaquinas:6,   status:"Planejamento", progresso:0,  confirmado:false, dataPrevista:"2026-06-13", dataMigracao:null,         historico:[] },
+  { id:10, nome:"ENESA ENGENHARIA S.A.",              qtdMaquinas:14,  status:"Planejamento", progresso:0,  confirmado:false, dataPrevista:"2026-06-28", dataMigracao:null,         historico:[] },
+  { id:11, nome:"GIMBA - SUPRICORP SUPRIMENTOS",      qtdMaquinas:102, status:"Planejamento", progresso:0,  confirmado:true,  dataPrevista:"2026-06-28", dataMigracao:null,         historico:[] },
+  { id:12, nome:"BMC MAQUINAS E EQUIP PESADOS",       qtdMaquinas:23,  status:"Planejamento", progresso:0,  confirmado:false, dataPrevista:null,         dataMigracao:null,         historico:[] },
+  { id:13, nome:"GEOFIX ENGENHARIA FUNDACOES",        qtdMaquinas:2,   status:"Planejamento", progresso:0,  confirmado:false, dataPrevista:null,         dataMigracao:null,         historico:[] },
+  { id:14, nome:"REFRIO ARMAZENS GERAIS LTDA",        qtdMaquinas:26,  status:"Planejamento", progresso:0,  confirmado:false, dataPrevista:null,         dataMigracao:null,         historico:[] },
+  { id:15, nome:"1TEAMCLOUD SOLUCOES",                qtdMaquinas:1,   status:"Planejamento", progresso:0,  confirmado:false, dataPrevista:null,         dataMigracao:null,         historico:[] },
+  { id:16, nome:"GRUPO RAIZES",                       qtdMaquinas:13,  status:"Planejamento", progresso:0,  confirmado:false, dataPrevista:null,         dataMigracao:null,         historico:[] },
+  { id:17, nome:"SAT CONSULTORIA",                    qtdMaquinas:3,   status:"Planejamento", progresso:0,  confirmado:false, dataPrevista:null,         dataMigracao:null,         historico:[] },
 ];
 let mgNextId = 18;
 let mgClienteAtivo = null;
@@ -2245,17 +2250,19 @@ function mgRender() {
           ${ultimaNota ? `<div style="font-size:10px;color:${notaColor};margin-top:3px;font-weight:600;max-width:260px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">↳ ${ultimaNota}</div>` : ''}
         </td>
         <td style="padding:12px 16px;text-align:center;"><span style="font-size:13px;font-weight:800;color:var(--blue);">${c.qtdMaquinas||0}</span></td>
-        <td style="padding:12px 16px;text-align:center;">${statusHtml}</td>
-        <td style="padding:12px 16px;">
-          <div style="display:flex;align-items:center;gap:10px;">
-            <div class="bar-track" style="flex:1;min-width:80px;">
-              <div class="bar-fill ${done?'fill-green':atrasado?'fill-dark':'fill-blue'}" style="width:${c.progresso}%;"></div>
-            </div>
-            <span style="font-size:12px;font-weight:800;color:${rowAccent};min-width:32px;text-align:right;">${c.progresso}%</span>
-          </div>
+        <td style="padding:12px 16px;text-align:center;">
+          <select onchange="mgSetStatus(${c.id},this.value)" style="padding:5px 9px;background:var(--bg);border:1.5px solid #d0d7e8;border-radius:8px;font-size:11px;font-family:'Sora',sans-serif;font-weight:600;cursor:pointer;color:var(--text-dark);outline:none;">
+            <option value="Em Progresso" ${c.status==='Em Progresso'?'selected':''}>⏳ Em Progresso</option>
+            <option value="Planejamento" ${c.status==='Planejamento'?'selected':''}>🟣 Planejamento</option>
+            <option value="Migrado"      ${c.status==='Migrado'?'selected':''}>🟢 Migrado</option>
+            <option value="Troca de IP"  ${c.status==='Troca de IP'?'selected':''}>⚫ Troca de IP</option>
+          </select>
         </td>
         <td style="padding:12px 16px;text-align:center;">
-          <input type="date" value="${c.dataPrevista||''}" style="padding:5px 9px;background:var(--bg);color:${dateColor};border:1.5px solid ${atrasado?'#f0a070':'#d0d7e8'};border-radius:8px;font-size:11px;font-family:'Sora',sans-serif;font-weight:600;cursor:pointer;" onchange="mgSetDataPrevista(${c.id},this.value)">
+          <select onchange="mgSetConfirmado(${c.id},this.value==='true')" style="padding:5px 9px;border:1.5px solid ${c.confirmado?'#c8e6c9':'#ffe0b2'};border-radius:8px;font-size:11px;font-family:'Sora',sans-serif;font-weight:700;cursor:pointer;outline:none;background:${c.confirmado?'#e8f5e9':'#fff3e0'};color:${c.confirmado?'#27ae60':'#e67e22'};">
+            <option value="true"  ${c.confirmado?'selected':''}>Confirmado</option>
+            <option value="false" ${!c.confirmado?'selected':''}>Não confirmado</option>
+          </select>
         </td>
         <td style="padding:12px 16px;text-align:center;">
           <input type="date" value="${c.dataMigracao||''}" style="padding:5px 9px;background:var(--bg);color:var(--text-dark);border:1.5px solid #d0d7e8;border-radius:8px;font-size:11px;font-family:'Sora',sans-serif;font-weight:600;cursor:pointer;" onchange="mgSetDataMigracao(${c.id},this.value)">
@@ -2286,6 +2293,22 @@ function mgIniciar(id) {
   const c=mgClientes.find(x=>x.id===id); if(!c) return;
   c.status='Em Progresso'; c.progresso=10;
   c.historico.push({data:mgHoje(),acao:'Migração iniciada — progresso: 10%'});
+  mgRender();
+}
+
+function mgSetStatus(id, val) {
+  const c = mgClientes.find(x=>x.id===id);
+  if (!c) return;
+  c.status = val;
+  c.historico.push({data: mgAgora(), acao: `Status alterado para: ${val}`});
+  mgRender();
+}
+
+function mgSetConfirmado(id, val) {
+  const c = mgClientes.find(x=>x.id===id);
+  if (!c) return;
+  c.confirmado = val;
+  c.historico.push({data: mgAgora(), acao: `Confirmação: ${val ? '✅ Confirmado' : '⏳ Não confirmado'}`});
   mgRender();
 }
 
@@ -3017,459 +3040,10 @@ function san20GovExport() {
   a.href = bg.toDataURL('image/png');
   a.click();
 }
+
+const SAN20_VM_INVENTORY = {"1team.cloud": {"ligadas": ["UNICOBA_NEW"], "desligadas": []}, "automalogica.com.br": {"ligadas": ["BC-ATMLOGFTG"], "desligadas": ["BC-ATMLAD-01", "BC-ATMLOGVBR", "BC-ATMLZABBIX"]}, "binario.cloud": {"ligadas": ["bc-assistet-new", "bc-data-v3", "bc-mvp-cadastro", "bc-scheduler-api", "bc-skyline", "bc-telegram-ai", "dev-bc-mvp-cadastro", "49ers", "Browns", "Chiefs", "_cirros", "dev-apicloud", "dev-idp-mfa", "Eagles", "old-grafana", "Redskins", "Saints", "Seahawks", "shibboleth2-MFA", "Texans", "Titans", "VM-PowerBI-OTRS", "WashingtonFT", "Dev-central", "openstack-cli", "recovery-linux-openstack-cliente", "SRV-AD01", "SRV-AD02", "SRV-EXPORT", "VM-Teste-pFsense", "Dev-Horizon", "PROD-Central-Totvs", "PROD-Horizon", "Prod-Horizon-LDC", "Prod-Horizon-SuaNuvem", "PROD-Horizon-Totvs", "PROD-IDP-LDC", "PROD-IDP-SuaNuvem", "PROD-IDP-Totvs", "PROD-WHITELABEL-Central", "webproxy-1"], "desligadas": []}, "bmchyundai.com.br": {"ligadas": ["BMCAPP01", "BMCCRIVO01", "BMCCRIVO-HMLG", "BMCDBSINC", "BMCDBSQL01", "BMCDBSQL02", "BMCDC01", "BMCDC02", "BMC-ECOMMERCE-01", "BMCEMS01", "BMCERP002", "BMCFS01", "BMCHUBSPOT", "BMCHUBSPOT2", "BMCINTEGRACAO", "BMCSINC01", "BMCWEB01_", "FWBMCFGT01", "prx-bmchyundai", "SRV-VBR"], "desligadas": ["BMC-ECOMMERCE-01-OLD", "BMCHUBSPOT-OLD", "hubspottemp"]}, "Default": {"ligadas": ["alma-teste", "Linux-BLADE-test", "teste-02", "teste-hyperv", "teste-vlwc-luiz", "vm-attach-teste", "vm-test-network-port-again", "windows-temporary-coriolis", "01c9fa73-8ab4-4745-ae2f-100704bb9e47", "11137414-b68e-4f1b-9931-ebf0b20f467d", "330da416-861e-4d5c-9e60-4bcc1bd7c202", "4b9fb4c0-4bc7-4c9e-bad1-11a5196c4256", "5915afc7-4c91-4309-952d-c6cd0a384e4b", "5d8e4dcf-18a2-4f8e-912c-80e724cba119", "6c7117a8-4c9b-449e-9098-20357f7887e2", "70fc7ddc-7bb8-43d2-a868-ad153973fb50", "91832dcb-020e-4f1f-9d49-a6e2c2fda759", "a00YO48ZAS", "a01fe7c3-564a-4e86-97ba-1cb100c88ac0", "a15YHU2NQU", "a1TRHR9GOD", "a643CYBW7Y", "a70WXMGW6X", "aA46FCAUXY", "aAF6MUD2TM", "aCCUS6B1X1", "aCJ1ZY0IZ1", "aDPBP2IWFT", "aDPJ39QYH4", "afdd5cf9-c72b-4ea9-9626-bc9819e2848e", "aFPGOHBDZJ", "aHIUH4DIJ0", "aIAI9ZZP0F", "aIXLHUPQBN", "aJSE6RFHEP", "aL9MSBTZMG", "aM5HDURG09", "aN9W4FW7H2", "aO7JAV5LKF", "aPIPU59AIJ", "aPXSSKL4N4", "aRVY07LHEX", "aUTYW6TRUC", "aV656QKONF", "aVBDH35K80", "aWVO0YF70C", "aXFQ266YX0", "aZ0610P8GU", "bastion-BD", "BD-01", "cdcaf14b-0df0-476f-9629-edf12f39c422", "cluster-dba-member-1657817189", "cluster-mariadb-member-1618771444", "cluster-mariadb-member-1618771445", "cluster-mariadb-member-1618771446", "DB01", "e090f9de-c6ca-443f-b239-4e9e829298df", "eaeb898d-e69a-4de1-bdd5-c18186cef3bc", "f3856329-5961-43ed-8dfc-72f13f3cd624", "MARIADB", "MARIADB-01", "Orbium", "teste", "teste-maria1", "vm-bcdata-dev", "vm_db01"], "desligadas": []}, "dismac.com.bo": {"ligadas": [], "desligadas": ["FW-PFDISMAC"]}, "domain-cloud2": {"ligadas": ["src-host-kvm"], "desligadas": ["ubuntu-cloud2", "windows-cloud2", "windows-cloud2-22"]}, "enesa.com.br": {"ligadas": ["ENSP-000SEVMBKP", "ENSP-000SEVMPRI", "ENSP-00FWPF", "ENSP-SEVMBD", "SVAPP03", "SVDB02", "SVDC01", "SVFASTVUE", "SVFS01", "SVHOMOLOG", "SVRDP", "SVRPA", "SVRS01", "SVWEB01", "VBR-MIGRACA"], "desligadas": []}, "geofix.com.br": {"ligadas": ["CLOUD-BOXFWGFX", "CLOUD-SRVADGFX"], "desligadas": []}, "gimba2.com.br": {"ligadas": ["adabasdev", "DR-ORACLEERP", "GBAPIBD", "GBAPIG", "GBAPIGTP", "GBAPIPORTAL", "GBBARRAMENTO", "gbecommerce-01", "gbecommerce-02", "gbecommerce-03", "GBGOVMON", "GBNGINX-01-DEV-HML", "GBNGINX-02-DEV-HML", "gbredis-01", "gbredis-02", "gbredis-03", "GBSRVINDEX-01", "GBWEB01", "GBWEB02", "GBWEB05", "GBWEB06", "GBWEB07", "GBWEB08", "GIMBASQL", "GIMBASQLOLD", "ORACLEERP", "ORADESENV", "SolrDev", "SolrMaster", "SolrSlave-01", "SolrSlave-02", "Veeam", "vm-bacula", "vm-pfsense"], "desligadas": ["devsolr-01", "GBWEB08-OLD", "openstack", "Solr-01", "Solr-02", "Solr-03", "vm-opnsense", "vm-repositorio-temp"]}, "gimba.com.br": {"ligadas": ["ADABASLINUX_CLONE", "BC-DEVOPS", "BC-DMZ-AD-03", "BCGBACESSO", "BCGBAPREIIS02", "BCGBAPREIIS03", "BCGBDEVIIS02", "BCGBDEVIIS03", "BCGBHMLIIS02", "BCGBHMLIIS03", "BCGBHMLIIS03-N", "BCGBOPERADOR", "BCGBSADIG", "BC-GMA-AD-01", "BC-GMA-AD-02", "BCGMAWEB05", "BCGMAWEB07", "BC-GMB-KSEC", "BC-REPLICATOR", "DR_ADABASLINUX_CLONE", "GBAGENTES_IA", "GBAPREIIS1", "GBAPRESQL1", "GBAPRESQL2", "GBAPRESQL3", "GBARQUIVOS", "GBDEVIIS01", "GBDEVIIS03-PERF", "GBDEVJITTERBIT", "GBDEVSQL01", "GBDEVSQL02", "GBDEVSQL03", "GBDEVSQLDW01", "GBGLPI", "GBHMLIIS01", "GBHMLJITTERBIT", "GBHMLSQL01", "GBHMLSQL02", "GBHMLSQL03", "GBIIS1", "GBIIS6", "GBJITTERBIT", "GBSFTP", "GBSQUADVIRTUAL", "GBSRVNFS01", "GBSRVTOTALL", "GBSRVTOTALL2", "GBSRVTOTALL3", "GBWEBSQL01", "GBWEBSQL02", "GBWEBSQL04", "GBWEBSQL11", "GBWEBSQL12", "GBWEBSQLDW01", "GMA-EC-01", "LINUX-MANOBRA-VEEAM", "NGINX-ORACLE", "oracle-ksek", "ORACLEPRD03", "ORACLEPRD1", "ORACLEPRD4", "PRX-GIMBA", "SRVBACKUP", "TESTE-SISTEMAS", "VEEAM-GIMBA", "VM-FORTIGATE"], "desligadas": ["ADABASLINUX-RECOVERY", "BC-TEST", "GBJITTERBIT-Old", "GBSRVTOTALL-TESTE", "ORACLEPROD01", "ORACLEPROD02"]}, "gruporaizes.com": {"ligadas": ["BC-GRRAIZESAD", "BC-GRRAIZESAD02", "BC-GRRAIZESBD", "BC-GRRAIZES-FS", "BC-GRRAIZESFW", "BC-GRRAIZESOD", "BC-GRRAIZES-RPA-01", "BC-GRRAIZES-RPA-02", "BC-GRRAIZES-RPA-03", "BC-GRRAIZES-RPA-04", "BC-GRRAIZESTK", "BC-GRRAIZESVBR", "prx-gpraizes"], "desligadas": []}, "luizalabs.com": {"ligadas": ["DB01", "magalu-opnsense", "magalu-veeam", "prx-magalu", "WEB02", "bastion", "linux-teste", "pfsense-firewall", "vm01_labs", "vm03_labs"], "desligadas": ["magalu-bacula"]}, "mahlerededepostos.com.br": {"ligadas": [], "desligadas": ["FPFSSRV01", "SRVWS2K22PRN01"]}, "mbmsolutions.com.br": {"ligadas": [], "desligadas": ["Base-Oficial", "Cloud01-MBM", "CLOUD02-MBM", "Linux-MBM", "Proxy"]}, "netza.com.br": {"ligadas": ["NETZA-FW01", "prx-netza", "VBR-Migracao-Netza", "vm-netza"], "desligadas": []}, "prumoengenharia.com.br": {"ligadas": ["Bluepex_UTM_Atualizado", "SRVAD-BC01", "SRV-Zimbra"], "desligadas": ["test-windows", "SistemaS4"]}, "qos.com.br": {"ligadas": ["APPInfra-ClaroFust", "APPInfra-Media", "bkp-1.qos.srv.br", "captiveportal.grupobinario.net-aplicação", "captiveportal.grupobinario.net-database", "captiveportal.grupobinario.net-database2", "ciena-tim-win-1.qos.srv.br", "Claro - Ferramenta de Testes BB", "cloud-vsrx-1.qos.srv.br", "diretorio-2", "diretorio.qos.srv.br", "fortinet-algar-1.qos.srv.br", "jump-dasa-win-1.qos.srv.br", "jump-tim-lnx-1.qos.srv.br", "otrs-1.qos.srv.br", "PoC-Captive Portal-Ubiquiti", "qos-ftp-win", "radius-1.qos.srv.br", "SRV-VBR-QOS", "VBR-Migracao-QoS", "vpn-1.qos.srv.br", "www.qos.srv.br", "zbx-dasa.qos.srv.br"], "desligadas": ["Airwave-Dasa", "DASA_WIFI-ZABBIX", "DASA_WIFI-ZABBIX-DB", "DASA-WIFI-ZABBIX-PROXY", "ntb-dasa.qos.srv.br"]}, "radiojb.fm": {"ligadas": ["GRUPOJB-DB", "JBFM-FWPF01", "JBFM-WEB-2023", "RADIOCIDADE-2023", "RTMP/n8n Server", "TOTVS"], "desligadas": []}, "refrio.com.br": {"ligadas": ["Check-ip", "Fortigate-BACKBONE", "MGMT", "pfSense-BACKBONE", "prx-refrio", "binario-pfSense", "DCITAPECERICA", "FSITAPECERICA", "ABNET", "AD", "FILE-SERVER", "ORACLE-DB - New", "ORACLE-WMS", "ServerCSM", "SERVER-ERP", "Servererpnewhom", "ServerMID", "servermid01", "ServerSVS", "ServerSVShomol", "srvbierphml", "VPN-PFSENSE", "WMS-RECOVERY", "ZABBIX-SERVER"], "desligadas": ["prx-refrio1", "COLETOR-WMS"]}, "sagaengenharia.com.br": {"ligadas": ["SRV-MIGRACAO"], "desligadas": ["MAILSERVER", "MAILSERVERBKP"]}, "sattelecom.com": {"ligadas": ["satc4cloud"], "desligadas": ["SatC5Cloud"]}, "sattelecomip.com": {"ligadas": ["satc4_NEW", "SatC5Cloud"], "desligadas": ["satc4cloud"]}, "selbetti.com": {"ligadas": [], "desligadas": ["teste", "VM1"]}, "(Sem Domínio)": {"ligadas": ["CSM teste", "db-srv-1", "db-srv-2", "kid", "Linux", "maquina teste", "Odoo", "RabbitMQ", "RabbitMQ", "RabbitMQ", "vm-01", "vm-01", "vm-01", "vm-01", "vm-01", "vm-01", "vm-01", "vm-01", "vm-01", "vm-01", "vm-01", "vm-01", "vm-01", "vm-01", "vm-01", "vm-02", "vm-02", "vm-02", "vm-02", "vm-02", "vm-02", "vm-02", "vm-02", "vm-02", "vm-02", "web-srv-1", "web-srv-2"], "desligadas": ["IIS2"]}, "sistecweb.com.br": {"ligadas": ["BC-SISTECWFW"], "desligadas": ["BC-FRIGBBAD", "VBR-Veeam"]}, "smarapd.com.br": {"ligadas": ["smarapdPF", "smarapdPMRibeiraoApp", "smarapdPMRibEntesapp", "smarapdSAEItuiutabaApp", "smarapdSAEItuiutabaProxy", "smarapdSQL01", "smarapd_SRV_APPTB", "smarapd_SRV_BDTB"], "desligadas": []}, "soprema.com.br": {"ligadas": ["BRSUZ-SW0100", "FTGSPRCLD", "SRV-DOCKER", "SRV-EMS", "SRV-FAZ", "SRV-MIGRACAO", "SWSPR001_NEW", "SWSPR007"], "desligadas": ["SWSPR001"]}, "spheraeducacional.com.br": {"ligadas": ["WEB01"], "desligadas": []}, "sre.binario.cloud": {"ligadas": ["coriolis-clientes", "EdgeConnect", "fw-ish", "fw-pfcoriolis", "zabbixproxy-5"], "desligadas": []}, "suporte.binario.cloud": {"ligadas": ["PNET-LAB"], "desligadas": []}, "waits.com.br": {"ligadas": ["PIRA-BC-APP01", "PIRA-BC-APP02", "PIRA-BC-BFW01", "PIRA-BC-BKP01", "PIRA-BC-DC01", "PIRA-BC-SAP01", "PIRA-BC-SAP02", "PIRA-BC-SAP03", "PIRA-BC-TS", "PIRA-BC-VPN01"], "desligadas": []}, "zanthus.com.br": {"ligadas": ["BC-QA-EXEC-2", "BC-QA-EXECUTOR-1", "BC-QA-FIREWALL", "BC-QA-SERVIDOR-1", "BC-QA-SERVIDOR-2", "BC-QA-SERVIDOR-3", "VBR-MIGRACAO", "BC-ADMIN", "BC-CLAZ", "BC-DOCKER", "BC-DOCKER-RESTORE", "BC-ECOMM", "BC-GITLAB", "BC-IT-FIREWALL", "BC-MSSQL", "BC-PGSQL", "BC-PINCODE", "BC-PROTHEUS", "BC-SCAVENGER", "srvmig-tishare02", "SRV-ZANT025"], "desligadas": ["BC-POC-ZRETAIL"]}};
+
 </script>
-
-</body>
-</html>
-<!-- updated: Sun Jun  7 11:36:43 UTC 2026 -->const SAN20_VM_INVENTORY = {"1team.cloud": {"ligadas": ["UNICOBA_NEW"], "desligadas": []}, "automalogica.com.br": {"ligadas": ["BC-ATMLOGFTG"], "desligadas": ["BC-ATMLAD-01", "BC-ATMLOGVBR", "BC-ATMLZABBIX"]}, "binario.cloud": {"ligadas": ["bc-assistet-new", "bc-data-v3", "bc-mvp-cadastro", "bc-scheduler-api", "bc-skyline", "bc-telegram-ai", "dev-bc-mvp-cadastro", "49ers", "Browns", "Chiefs", "_cirros", "dev-apicloud", "dev-idp-mfa", "Eagles", "old-grafana", "Redskins", "Saints", "Seahawks", "shibboleth2-MFA", "Texans", "Titans", "VM-PowerBI-OTRS", "WashingtonFT", "Dev-central", "openstack-cli", "recovery-linux-openstack-cliente", "SRV-AD01", "SRV-AD02", "SRV-EXPORT", "VM-Teste-pFsense", "Dev-Horizon", "PROD-Central-Totvs", "PROD-Horizon", "Prod-Horizon-LDC", "Prod-Horizon-SuaNuvem", "PROD-Horizon-Totvs", "PROD-IDP-LDC", "PROD-IDP-SuaNuvem", "PROD-IDP-Totvs", "PROD-WHITELABEL-Central", "webproxy-1"], "desligadas": []}, "bmchyundai.com.br": {"ligadas": ["BMCAPP01", "BMCCRIVO01", "BMCCRIVO-HMLG", "BMCDBSINC", "BMCDBSQL01", "BMCDBSQL02", "BMCDC01", "BMCDC02", "BMC-ECOMMERCE-01", "BMCEMS01", "BMCERP002", "BMCFS01", "BMCHUBSPOT", "BMCHUBSPOT2", "BMCINTEGRACAO", "BMCSINC01", "BMCWEB01_", "FWBMCFGT01", "prx-bmchyundai", "SRV-VBR"], "desligadas": ["BMC-ECOMMERCE-01-OLD", "BMCHUBSPOT-OLD", "hubspottemp"]}, "Default": {"ligadas": ["alma-teste", "Linux-BLADE-test", "teste-02", "teste-hyperv", "teste-vlwc-luiz", "vm-attach-teste", "vm-test-network-port-again", "windows-temporary-coriolis", "01c9fa73-8ab4-4745-ae2f-100704bb9e47", "11137414-b68e-4f1b-9931-ebf0b20f467d", "330da416-861e-4d5c-9e60-4bcc1bd7c202", "4b9fb4c0-4bc7-4c9e-bad1-11a5196c4256", "5915afc7-4c91-4309-952d-c6cd0a384e4b", "5d8e4dcf-18a2-4f8e-912c-80e724cba119", "6c7117a8-4c9b-449e-9098-20357f7887e2", "70fc7ddc-7bb8-43d2-a868-ad153973fb50", "91832dcb-020e-4f1f-9d49-a6e2c2fda759", "a00YO48ZAS", "a01fe7c3-564a-4e86-97ba-1cb100c88ac0", "a15YHU2NQU", "a1TRHR9GOD", "a643CYBW7Y", "a70WXMGW6X", "aA46FCAUXY", "aAF6MUD2TM", "aCCUS6B1X1", "aCJ1ZY0IZ1", "aDPBP2IWFT", "aDPJ39QYH4", "afdd5cf9-c72b-4ea9-9626-bc9819e2848e", "aFPGOHBDZJ", "aHIUH4DIJ0", "aIAI9ZZP0F", "aIXLHUPQBN", "aJSE6RFHEP", "aL9MSBTZMG", "aM5HDURG09", "aN9W4FW7H2", "aO7JAV5LKF", "aPIPU59AIJ", "aPXSSKL4N4", "aRVY07LHEX", "aUTYW6TRUC", "aV656QKONF", "aVBDH35K80", "aWVO0YF70C", "aXFQ266YX0", "aZ0610P8GU", "bastion-BD", "BD-01", "cdcaf14b-0df0-476f-9629-edf12f39c422", "cluster-dba-member-1657817189", "cluster-mariadb-member-1618771444", "cluster-mariadb-member-1618771445", "cluster-mariadb-member-1618771446", "DB01", "e090f9de-c6ca-443f-b239-4e9e829298df", "eaeb898d-e69a-4de1-bdd5-c18186cef3bc", "f3856329-5961-43ed-8dfc-72f13f3cd624", "MARIADB", "MARIADB-01", "Orbium", "teste", "teste-maria1", "vm-bcdata-dev", "vm_db01"], "desligadas": []}, "dismac.com.bo": {"ligadas": [], "desligadas": ["FW-PFDISMAC"]}, "domain-cloud2": {"ligadas": ["src-host-kvm"], "desligadas": ["ubuntu-cloud2", "windows-cloud2", "windows-cloud2-22"]}, "enesa.com.br": {"ligadas": ["ENSP-000SEVMBKP", "ENSP-000SEVMPRI", "ENSP-00FWPF", "ENSP-SEVMBD", "SVAPP03", "SVDB02", "SVDC01", "SVFASTVUE", "SVFS01", "SVHOMOLOG", "SVRDP", "SVRPA", "SVRS01", "SVWEB01", "VBR-MIGRACA"], "desligadas": []}, "geofix.com.br": {"ligadas": ["CLOUD-BOXFWGFX", "CLOUD-SRVADGFX"], "desligadas": []}, "gimba2.com.br": {"ligadas": ["adabasdev", "DR-ORACLEERP", "GBAPIBD", "GBAPIG", "GBAPIGTP", "GBAPIPORTAL", "GBBARRAMENTO", "gbecommerce-01", "gbecommerce-02", "gbecommerce-03", "GBGOVMON", "GBNGINX-01-DEV-HML", "GBNGINX-02-DEV-HML", "gbredis-01", "gbredis-02", "gbredis-03", "GBSRVINDEX-01", "GBWEB01", "GBWEB02", "GBWEB05", "GBWEB06", "GBWEB07", "GBWEB08", "GIMBASQL", "GIMBASQLOLD", "ORACLEERP", "ORADESENV", "SolrDev", "SolrMaster", "SolrSlave-01", "SolrSlave-02", "Veeam", "vm-bacula", "vm-pfsense"], "desligadas": ["devsolr-01", "GBWEB08-OLD", "openstack", "Solr-01", "Solr-02", "Solr-03", "vm-opnsense", "vm-repositorio-temp"]}, "gimba.com.br": {"ligadas": ["ADABASLINUX_CLONE", "BC-DEVOPS", "BC-DMZ-AD-03", "BCGBACESSO", "BCGBAPREIIS02", "BCGBAPREIIS03", "BCGBDEVIIS02", "BCGBDEVIIS03", "BCGBHMLIIS02", "BCGBHMLIIS03", "BCGBHMLIIS03-N", "BCGBOPERADOR", "BCGBSADIG", "BC-GMA-AD-01", "BC-GMA-AD-02", "BCGMAWEB05", "BCGMAWEB07", "BC-GMB-KSEC", "BC-REPLICATOR", "DR_ADABASLINUX_CLONE", "GBAGENTES_IA", "GBAPREIIS1", "GBAPRESQL1", "GBAPRESQL2", "GBAPRESQL3", "GBARQUIVOS", "GBDEVIIS01", "GBDEVIIS03-PERF", "GBDEVJITTERBIT", "GBDEVSQL01", "GBDEVSQL02", "GBDEVSQL03", "GBDEVSQLDW01", "GBGLPI", "GBHMLIIS01", "GBHMLJITTERBIT", "GBHMLSQL01", "GBHMLSQL02", "GBHMLSQL03", "GBIIS1", "GBIIS6", "GBJITTERBIT", "GBSFTP", "GBSQUADVIRTUAL", "GBSRVNFS01", "GBSRVTOTALL", "GBSRVTOTALL2", "GBSRVTOTALL3", "GBWEBSQL01", "GBWEBSQL02", "GBWEBSQL04", "GBWEBSQL11", "GBWEBSQL12", "GBWEBSQLDW01", "GMA-EC-01", "LINUX-MANOBRA-VEEAM", "NGINX-ORACLE", "oracle-ksek", "ORACLEPRD03", "ORACLEPRD1", "ORACLEPRD4", "PRX-GIMBA", "SRVBACKUP", "TESTE-SISTEMAS", "VEEAM-GIMBA", "VM-FORTIGATE"], "desligadas": ["ADABASLINUX-RECOVERY", "BC-TEST", "GBJITTERBIT-Old", "GBSRVTOTALL-TESTE", "ORACLEPROD01", "ORACLEPROD02"]}, "gruporaizes.com": {"ligadas": ["BC-GRRAIZESAD", "BC-GRRAIZESAD02", "BC-GRRAIZESBD", "BC-GRRAIZES-FS", "BC-GRRAIZESFW", "BC-GRRAIZESOD", "BC-GRRAIZES-RPA-01", "BC-GRRAIZES-RPA-02", "BC-GRRAIZES-RPA-03", "BC-GRRAIZES-RPA-04", "BC-GRRAIZESTK", "BC-GRRAIZESVBR", "prx-gpraizes"], "desligadas": []}, "luizalabs.com": {"ligadas": ["DB01", "magalu-opnsense", "magalu-veeam", "prx-magalu", "WEB02", "bastion", "linux-teste", "pfsense-firewall", "vm01_labs", "vm03_labs"], "desligadas": ["magalu-bacula"]}, "mahlerededepostos.com.br": {"ligadas": [], "desligadas": ["FPFSSRV01", "SRVWS2K22PRN01"]}, "mbmsolutions.com.br": {"ligadas": [], "desligadas": ["Base-Oficial", "Cloud01-MBM", "CLOUD02-MBM", "Linux-MBM", "Proxy"]}, "netza.com.br": {"ligadas": ["NETZA-FW01", "prx-netza", "VBR-Migracao-Netza", "vm-netza"], "desligadas": []}, "prumoengenharia.com.br": {"ligadas": ["Bluepex_UTM_Atualizado", "SRVAD-BC01", "SRV-Zimbra"], "desligadas": ["test-windows", "SistemaS4"]}, "qos.com.br": {"ligadas": ["APPInfra-ClaroFust", "APPInfra-Media", "bkp-1.qos.srv.br", "captiveportal.grupobinario.net-aplicação", "captiveportal.grupobinario.net-database", "captiveportal.grupobinario.net-database2", "ciena-tim-win-1.qos.srv.br", "Claro - Ferramenta de Testes BB", "cloud-vsrx-1.qos.srv.br", "diretorio-2", "diretorio.qos.srv.br", "fortinet-algar-1.qos.srv.br", "jump-dasa-win-1.qos.srv.br", "jump-tim-lnx-1.qos.srv.br", "otrs-1.qos.srv.br", "PoC-Captive Portal-Ubiquiti", "qos-ftp-win", "radius-1.qos.srv.br", "SRV-VBR-QOS", "VBR-Migracao-QoS", "vpn-1.qos.srv.br", "www.qos.srv.br", "zbx-dasa.qos.srv.br"], "desligadas": ["Airwave-Dasa", "DASA_WIFI-ZABBIX", "DASA_WIFI-ZABBIX-DB", "DASA-WIFI-ZABBIX-PROXY", "ntb-dasa.qos.srv.br"]}, "radiojb.fm": {"ligadas": ["GRUPOJB-DB", "JBFM-FWPF01", "JBFM-WEB-2023", "RADIOCIDADE-2023", "RTMP/n8n Server", "TOTVS"], "desligadas": []}, "refrio.com.br": {"ligadas": ["Check-ip", "Fortigate-BACKBONE", "MGMT", "pfSense-BACKBONE", "prx-refrio", "binario-pfSense", "DCITAPECERICA", "FSITAPECERICA", "ABNET", "AD", "FILE-SERVER", "ORACLE-DB - New", "ORACLE-WMS", "ServerCSM", "SERVER-ERP", "Servererpnewhom", "ServerMID", "servermid01", "ServerSVS", "ServerSVShomol", "srvbierphml", "VPN-PFSENSE", "WMS-RECOVERY", "ZABBIX-SERVER"], "desligadas": ["prx-refrio1", "COLETOR-WMS"]}, "sagaengenharia.com.br": {"ligadas": ["SRV-MIGRACAO"], "desligadas": ["MAILSERVER", "MAILSERVERBKP"]}, "sattelecom.com": {"ligadas": ["satc4cloud"], "desligadas": ["SatC5Cloud"]}, "sattelecomip.com": {"ligadas": ["satc4_NEW", "SatC5Cloud"], "desligadas": ["satc4cloud"]}, "selbetti.com": {"ligadas": [], "desligadas": ["teste", "VM1"]}, "(Sem Domínio)": {"ligadas": ["CSM teste", "db-srv-1", "db-srv-2", "kid", "Linux", "maquina teste", "Odoo", "RabbitMQ", "RabbitMQ", "RabbitMQ", "vm-01", "vm-01", "vm-01", "vm-01", "vm-01", "vm-01", "vm-01", "vm-01", "vm-01", "vm-01", "vm-01", "vm-01", "vm-01", "vm-01", "vm-01", "vm-02", "vm-02", "vm-02", "vm-02", "vm-02", "vm-02", "vm-02", "vm-02", "vm-02", "vm-02", "web-srv-1", "web-srv-2"], "desligadas": ["IIS2"]}, "sistecweb.com.br": {"ligadas": ["BC-SISTECWFW"], "desligadas": ["BC-FRIGBBAD", "VBR-Veeam"]}, "smarapd.com.br": {"ligadas": ["smarapdPF", "smarapdPMRibeiraoApp", "smarapdPMRibEntesapp", "smarapdSAEItuiutabaApp", "smarapdSAEItuiutabaProxy", "smarapdSQL01", "smarapd_SRV_APPTB", "smarapd_SRV_BDTB"], "desligadas": []}, "soprema.com.br": {"ligadas": ["BRSUZ-SW0100", "FTGSPRCLD", "SRV-DOCKER", "SRV-EMS", "SRV-FAZ", "SRV-MIGRACAO", "SWSPR001_NEW", "SWSPR007"], "desligadas": ["SWSPR001"]}, "spheraeducacional.com.br": {"ligadas": ["WEB01"], "desligadas": []}, "sre.binario.cloud": {"ligadas": ["coriolis-clientes", "EdgeConnect", "fw-ish", "fw-pfcoriolis", "zabbixproxy-5"], "desligadas": []}, "suporte.binario.cloud": {"ligadas": ["PNET-LAB"], "desligadas": []}, "waits.com.br": {"ligadas": ["PIRA-BC-APP01", "PIRA-BC-APP02", "PIRA-BC-BFW01", "PIRA-BC-BKP01", "PIRA-BC-DC01", "PIRA-BC-SAP01", "PIRA-BC-SAP02", "PIRA-BC-SAP03", "PIRA-BC-TS", "PIRA-BC-VPN01"], "desligadas": []}, "zanthus.com.br": {"ligadas": ["BC-QA-EXEC-2", "BC-QA-EXECUTOR-1", "BC-QA-FIREWALL", "BC-QA-SERVIDOR-1", "BC-QA-SERVIDOR-2", "BC-QA-SERVIDOR-3", "VBR-MIGRACAO", "BC-ADMIN", "BC-CLAZ", "BC-DOCKER", "BC-DOCKER-RESTORE", "BC-ECOMM", "BC-GITLAB", "BC-IT-FIREWALL", "BC-MSSQL", "BC-PGSQL", "BC-PINCODE", "BC-PROTHEUS", "BC-SCAVENGER", "srvmig-tishare02", "SRV-ZANT025"], "desligadas": ["BC-POC-ZRETAIL"]}};<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-<meta charset="UTF-8">
-<meta name="description" content="Escritório de Projetos Binario Cloud — painel executivo de portfólio, entregas e iniciativas estratégicas.">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Escritório de Projetos – Binario Cloud</title>
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-<style>
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-:root {
-  --bg: #f5f7fa;
-  --card-bg: #fff;
-  --blue: #3498db;
-  --blue-light: #5dade2;
-  --green: #27ae60;
-  --green-bar: #2ecc71;
-  --dark-bar: #2c3e50;
-  --text-dark: #1a1a2e;
-  --text-mid: #555;
-  --text-light: #888;
-  --accent-red: #e74c3c;
-  --bar-track: #ecf0f1;
-  --radius: 14px;
-  --shadow: 0 2px 12px rgba(0,0,0,.08);
-  --shadow-hover: 0 12px 32px rgba(0,0,0,.15);
-  --card-h: 160px;
-  --drawer-w: 260px;
-}
-
-body { font-family:'Sora',sans-serif; background:var(--bg); min-height:100vh; color:var(--text-dark); overflow-x:hidden; }
-
-#drawer-trigger {
-  position: fixed; top: 24px; left: 24px; z-index: 300;
-  display: flex; align-items: center;
-  padding: 10px 16px;
-  background: rgba(255,255,255,.15);
-  border: 1.5px solid rgba(255,255,255,.28);
-  backdrop-filter: blur(12px); border-radius: 50px;
-  cursor: pointer; transition: background .2s, border-color .2s, transform .18s, box-shadow .2s;
-  color: #fff;
-}
-#drawer-trigger:hover { background: rgba(255,255,255,.25); border-color: rgba(255,255,255,.5); transform: translateY(-1px); box-shadow: 0 8px 24px rgba(0,0,0,.18); }
-body.page-internal #drawer-trigger { background: #fff; border-color: #e2e5f0; color: #192552; box-shadow: 0 2px 12px rgba(0,0,0,.08); }
-body.page-internal #drawer-trigger:hover { background: #f4f6fb; border-color: #c8cde8; box-shadow: 0 6px 20px rgba(0,0,0,.12); }
-.trig-svg { transition: opacity .2s; }
-
-#drawer-backdrop { position: fixed; inset: 0; z-index: 400; background: rgba(6,15,46,.45); backdrop-filter: blur(4px); opacity: 0; pointer-events: none; transition: opacity .28s; }
-#drawer-backdrop.open { opacity: 1; pointer-events: all; }
-
-#drawer { position: fixed; top: 0; left: 0; bottom: 0; width: var(--drawer-w); background: linear-gradient(180deg, #2c3e50 0%, #34495e 100%); z-index: 500; display: flex; flex-direction: column; box-shadow: 6px 0 32px rgba(0,0,0,.2); transform: translateX(calc(-1 * var(--drawer-w) - 20px)); transition: transform .32s cubic-bezier(.4,0,.2,1); }
-#drawer.open { transform: translateX(0); }
-
-.dr-logo { padding: 28px 22px 22px; border-bottom: 1px solid rgba(255,255,255,.08); display: flex; align-items: center; justify-content: space-between; }
-.dr-logo-left { display: flex; align-items: center; gap: 11px; }
-.dr-logo-icon { width: 38px; height: 38px; background: rgba(255,255,255,.11); border: 1.5px solid rgba(255,255,255,.2); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 20px; font-weight: 800; color: #fff; }
-.dr-logo-text .brand { font-size: 17px; font-weight: 800; color: #fff; display: block; line-height: 1.1; }
-.dr-logo-text .sub   { font-size: 9px; color: rgba(255,255,255,.4); font-weight: 600; letter-spacing: 2.5px; text-transform: uppercase; }
-.dr-close { width: 30px; height: 30px; border-radius: 50%; border: 1px solid rgba(255,255,255,.15); background: transparent; cursor: pointer; display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,.5); font-size: 14px; transition: all .16s; }
-.dr-close:hover { background: rgba(255,255,255,.1); color: #fff; border-color: rgba(255,255,255,.3); }
-
-.dr-nav { padding: 20px 12px; flex: 1; display: flex; flex-direction: column; gap: 4px; overflow-y: auto; overflow-x: hidden; }
-.dr-nav::-webkit-scrollbar { width: 6px; }
-.dr-nav::-webkit-scrollbar-track { background: rgba(255,255,255,.05); border-radius: 10px; margin: 8px 0; }
-.dr-nav::-webkit-scrollbar-thumb { background: rgba(255,255,255,.2); border-radius: 10px; }
-.dr-section-label { font-size: 9px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,.28); padding: 8px 10px 6px; }
-.dr-item { display: flex; align-items: center; gap: 10px; padding: 10px 12px; border-radius: 10px; cursor: pointer; border: 1.5px solid transparent; transition: all .18s; }
-.dr-item:hover { background: rgba(255,255,255,.08); }
-.dr-item.active-blue   { background: rgba(52,152,219,.25); border-color: #3498db; }
-.dr-item.active-green  { background: rgba(39,174,96,.25);  border-color: #27ae60; }
-.dr-item.active-purple { background: rgba(155,89,182,.25); border-color: #9b59b6; }
-.dr-item-icon { width: 32px; height: 32px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 15px; flex-shrink: 0; background: rgba(255,255,255,.07); }
-.dr-item.active-blue  .dr-item-icon { background: rgba(52,152,219,.35); }
-.dr-item.active-green .dr-item-icon { background: rgba(39,174,96,.35); }
-.dr-item.active-purple .dr-item-icon { background: rgba(155,89,182,.35); }
-.dr-item-label { font-size: 13px; font-weight: 700; color: rgba(255,255,255,.65); line-height: 1.2; }
-.dr-item-sub   { font-size: 10px; color: rgba(255,255,255,.32); font-weight: 500; }
-.dr-item.active-blue .dr-item-label, .dr-item.active-green .dr-item-label { color: #fff; }
-.dr-item.active-blue .dr-item-sub,   .dr-item.active-green .dr-item-sub   { color: rgba(255,255,255,.55); }
-.dr-divider { height: 1px; background: rgba(255,255,255,.07); margin: 6px 12px; }
-
-.dr-submenu-container { position: relative; }
-.dr-submenu-toggle { display: flex; align-items: center; justify-content: space-between; }
-.dr-submenu-toggle .toggle-icon { transition: transform .2s; font-size: 12px; }
-.dr-submenu-toggle.open .toggle-icon { transform: rotate(180deg); }
-.dr-submenu { display: none; flex-direction: column; gap: 0; padding-left: 8px; margin-top: 4px; }
-.dr-submenu.open { display: flex; }
-.dr-submenu-item { display: flex; align-items: center; gap: 10px; padding: 8px 12px; border-radius: 8px; cursor: pointer; border: 1.5px solid transparent; transition: all .18s; font-size: 12px; color: rgba(255,255,255,.55); font-weight: 600; margin-left: 8px; border-left: 3px solid transparent; }
-.dr-submenu-item:hover { background: rgba(255,255,255,.06); color: rgba(255,255,255,.75); }
-.dr-submenu-item.active { color: #fff; border-left-color: #3498db; background: rgba(52,152,219,.15); }
-
-.dr-footer { padding: 16px 22px; border-top: 1px solid rgba(255,255,255,.07); font-size: 10px; color: rgba(255,255,255,.28); line-height: 1.7; }
-
-/* PÁGINAS */
-.page { display: none; min-height: 100vh; }
-.page.active { display: block; }
-
-#cover { min-height: 100vh; background: linear-gradient(135deg, #060f2e 0%, #0d3a8a 55%, #1255b0 100%); align-items: center; justify-content: center; position: relative; overflow: hidden; }
-#cover.active { display: flex; }
-#cover::before, #cover::after { content:''; position:absolute; border-radius:50%; opacity:.06; }
-#cover::before { width:700px; height:700px; background:#fff; top:-220px; right:-200px; }
-#cover::after  { width:450px; height:450px; background:#fff; bottom:-160px; left:-130px; }
-.cover-grid { position:absolute; inset:0; background-image: linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px); background-size: 60px 60px; }
-.cover-content { position:relative; z-index:2; text-align:center; }
-.cover-eyebrow { font-size:12px; font-weight:600; letter-spacing:4px; text-transform:uppercase; color:rgba(255,255,255,.4); margin-bottom:16px; }
-.cover-period  { font-size:clamp(52px,7vw,84px); font-weight:800; color:#fff; letter-spacing:-3px; line-height:1; margin-bottom:8px; }
-.cover-desc { font-size:clamp(14px,2vw,18px); font-weight:400; color:rgba(255,255,255,.5); line-height:1.6; margin:18px 0 24px; letter-spacing:.2px; }
-
-.topbar { background: linear-gradient(180deg, #fff 0%, #f8fafb 100%); box-shadow: 0 2px 12px rgba(0,0,0,.08); padding: 0 32px 0 100px; height: 64px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; border-bottom: 1px solid rgba(0,0,0,.04); }
-.tb-heading { font-size: 17px; font-weight: 900; color: #1a1a2e; letter-spacing: -0.5px; }
-.tb-heading span { font-weight: 500; color: #aaa; margin-left: 8px; }
-
-.page-body { padding: 36px 40px 56px; }
-
-.page-hero { border-radius:18px; padding:28px 36px; margin-bottom:32px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:16px; }
-.hero-cli { background: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%); box-shadow: 0 8px 32px rgba(39,174,96,.25); }
-.hero-est { background: linear-gradient(135deg, #3498db 0%, #5dade2 100%); box-shadow: 0 8px 32px rgba(52,152,219,.25); }
-.hero-title { font-size:24px; font-weight:800; color:#fff; letter-spacing:-.5px; }
-.hero-sub   { font-size:13px; color:rgba(255,255,255,.6); margin-top:4px; }
-.hero-stats { display:flex; gap:32px; }
-.hero-stat  { text-align:center; }
-.hero-stat .sv { font-size:32px; font-weight:900; color:#fff; line-height:1; letter-spacing:-1px; }
-.hero-stat .sl { font-size:11px; color:rgba(255,255,255,.7); font-weight:600; letter-spacing:1.2px; text-transform:uppercase; margin-top:6px; }
-
-.sec-label { font-size:12px; font-weight:800; color:#2c3e50; margin-bottom:20px; letter-spacing:2px; text-transform:uppercase; display:flex; align-items:center; gap:12px; }
-.sec-label::after { content:''; flex:1; height:2px; background:linear-gradient(90deg,#d0d7e8 0%,transparent 100%); }
-
-.grid { display:grid; gap:20px; margin-bottom:28px; }
-.grid-2 { grid-template-columns:repeat(2,1fr); }
-.grid-3 { grid-template-columns:repeat(3,1fr); }
-.grid-4 { grid-template-columns:repeat(4,1fr); }
-
-.card { background:linear-gradient(135deg,var(--card-bg) 0%,#f8fafb 100%); border-radius:var(--radius); border:1px solid rgba(0,0,0,.04); box-shadow:var(--shadow); display:flex; flex-direction:column; height:var(--card-h); padding:14px 14px 10px; position:relative; overflow:hidden; transition:all .3s ease; }
-.card:hover { transform:translateY(-4px); box-shadow:var(--shadow-hover); }
-.card-accent { position:absolute; top:0; left:0; right:0; height:4px; }
-.accent-blue  { background:linear-gradient(90deg,var(--blue),var(--blue-light)); }
-.accent-green { background:linear-gradient(90deg,var(--green),var(--green-bar)); }
-.accent-dark  { background:linear-gradient(90deg,var(--dark-bar),#3949ab); }
-.card-header  { display:flex; align-items:flex-start; justify-content:space-between; margin-top:8px; margin-bottom:8px; flex-shrink:0; }
-.pill { display:inline-flex; align-items:center; gap:5px; font-size:10px; font-weight:700; letter-spacing:.5px; text-transform:uppercase; padding:4px 10px; border-radius:99px; white-space:nowrap; }
-.pill-prog  { background:#dceefb; color:#3498db; }
-.pill-done  { background:#d4f0dd; color:#27ae60; }
-.pill-delay { background:#ffe8d1; color:#e67e22; }
-.pill-wait  { background:#fff3e0; color:#e67e22; }
-.card-pct   { font-size:30px; font-weight:800; color:var(--text-dark); line-height:1; letter-spacing:-1px; flex-shrink:0; }
-.card-title { font-size:10.5px; font-weight:700; color:var(--text-dark); line-height:1.3; flex:1; }
-.card-title.blue { color:var(--blue-light); }
-.card-footer { margin-top:auto; flex-shrink:0; }
-.prog-note  { font-size:11px; color:var(--text-light); font-weight:500; line-height:1.4; margin-bottom:7px; display:block; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
-.prog-note .delay { color:#f57c00; font-weight:700; }
-.bar-track  { width:100%; height:6px; background:var(--bar-track); border-radius:99px; overflow:hidden; }
-.bar-fill   { height:100%; border-radius:99px; width:0%; transition:width .9s cubic-bezier(.4,0,.2,1); }
-.fill-blue  { background:linear-gradient(90deg,var(--blue),var(--blue-light)); }
-.fill-green { background:linear-gradient(90deg,var(--green),var(--green-bar)); }
-.fill-dark  { background:linear-gradient(90deg,var(--dark-bar),#3949ab); }
-.btn-det { margin-top:10px; width:100%; padding:9px 0; border-radius:10px; border:1.5px solid #d0d7e8; background:linear-gradient(135deg,#f5f7fa 0%,#eef1f7 100%); font-family:'Sora',sans-serif; font-size:10.5px; font-weight:700; color:#666; letter-spacing:.5px; text-transform:uppercase; cursor:pointer; transition:all .2s; display:flex; align-items:center; justify-content:center; gap:6px; flex-shrink:0; }
-.btn-det:hover { background:linear-gradient(135deg,#dceefb 0%,#c5e4f5 100%); border-color:#3498db; color:#3498db; }
-.btn-det svg { transition:transform .18s; }
-.btn-det:hover svg { transform:translateX(3px); }
-
-/* MODAL */
-.overlay { position:fixed; inset:0; background:rgba(10,18,50,.5); backdrop-filter:blur(5px); z-index:600; display:flex; align-items:center; justify-content:center; opacity:0; pointer-events:none; transition:opacity .22s; }
-.overlay.open { opacity:1; pointer-events:all; }
-.modal { background:#fff; border-radius:22px; width:580px; max-width:calc(100vw - 40px); max-height:88vh; overflow-y:auto; box-shadow:0 30px 90px rgba(0,0,0,.25); transform:translateY(28px) scale(.96); transition:transform .3s cubic-bezier(.34,1.3,.64,1),opacity .22s; opacity:0; scrollbar-width:thin; scrollbar-color:#dde0ea transparent; }
-.overlay.open .modal { transform:translateY(0) scale(1); opacity:1; }
-.modal-hd { padding:24px 26px 18px; border-bottom:1px solid #f0f1f7; display:flex; justify-content:space-between; align-items:flex-start; }
-.modal-header-content { flex:1; }
-.modal-accent { height:5px; border-radius:99px; margin-bottom:16px; }
-.modal-eye    { font-size:10px; font-weight:700; letter-spacing:2.5px; text-transform:uppercase; color:var(--text-light); margin-bottom:4px; }
-.modal-ttl    { font-size:18px; font-weight:800; color:var(--text-dark); letter-spacing:-.4px; line-height:1.3; padding-right:44px; }
-.modal-x      { position:absolute; top:20px; right:20px; width:34px; height:34px; border-radius:50%; border:1.5px solid #e6e8f2; background:transparent; cursor:pointer; display:flex; align-items:center; justify-content:center; font-size:15px; color:var(--text-light); transition:all .16s; }
-.modal-x:hover { background:#f2f3fa; color:var(--text-dark); border-color:#c8cbe0; }
-.modal-bd { padding:20px 26px 26px; }
-.m-summary { display:flex; align-items:center; gap:18px; padding:14px 18px; border-radius:14px; background:var(--bg); margin-bottom:20px; }
-.m-big-pct { font-size:50px; font-weight:800; color:var(--text-dark); letter-spacing:-2px; line-height:1; flex-shrink:0; }
-.m-pct-right { flex:1; }
-.m-pct-label { font-size:10px; font-weight:700; color:var(--text-light); text-transform:uppercase; letter-spacing:1.5px; margin-bottom:7px; }
-.m-bar-track { width:100%; height:10px; background:#dde0ea; border-radius:99px; overflow:hidden; margin-bottom:9px; }
-.m-bar-fill  { height:100%; border-radius:99px; width:0%; transition:width 1s cubic-bezier(.4,0,.2,1); }
-.m-tags { display:flex; flex-wrap:wrap; gap:7px; margin-bottom:20px; }
-.m-tag { padding:4px 13px; border-radius:99px; font-size:11px; font-weight:700; border:1px solid; }
-.m-tag.blue   { background:#e8f0fe; color:var(--blue);     border-color:#c5d8fc; }
-.m-tag.green  { background:#e8f5e9; color:var(--green);    border-color:#c8e6c9; }
-.m-tag.orange { background:#fff3e0; color:#e65100;         border-color:#ffe0b2; }
-.m-tag.dark   { background:#e8eaf6; color:var(--dark-bar); border-color:#c5cae9; }
-.m-sec   { margin-bottom:18px; }
-.m-sec-t { font-size:10px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--text-light); margin-bottom:9px; display:flex; align-items:center; gap:8px; }
-.m-sec-t::after { content:''; flex:1; height:1px; background:#ecedf5; }
-.m-rows  { display:flex; flex-direction:column; gap:7px; }
-.m-row   { display:flex; align-items:flex-start; gap:11px; padding:10px 14px; border-radius:10px; background:#fafbfd; border:1px solid #eef0f6; font-size:12.5px; color:var(--text-mid); line-height:1.5; }
-.m-icon  { font-size:14px; flex-shrink:0; margin-top:1px; }
-.m-row strong { color:var(--text-dark); font-weight:700; }
-
-.btn-edit-modal { padding:8px 16px; background:var(--blue); color:white; border:none; border-radius:8px; font-size:12px; font-weight:700; cursor:pointer; transition:all .2s; height:34px; display:flex; align-items:center; gap:6px; }
-.btn-edit-modal:hover { background:var(--blue-light); }
-.btn-edit-modal.save { background:var(--green); }
-.btn-edit-modal.save:hover { background:#229954; }
-.btn-edit-modal.cancel { background:#999; }
-.btn-edit-modal.cancel:hover { background:#666; }
-.modal.edit-mode .m-row { border:1px solid #c5d8fc; background:#f0f6ff; }
-.modal.edit-mode .m-row span:last-child { outline:none; background:white; border:1px solid #ddd; border-radius:6px; padding:6px 10px; cursor:text; flex:1; font-size:12.5px; display:block; min-height:24px; }
-
-/* BOTÃO HISTÓRICO */
-.btn-historico { display:flex; align-items:center; gap:14px; width:100%; padding:18px 22px; margin-top:28px; background:linear-gradient(135deg,#fff 0%,#f0f9f0 100%); border:2px solid #2e7d32; border-radius:16px; cursor:pointer; font-family:'Sora',sans-serif; transition:all .22s; box-shadow:0 6px 24px rgba(46,125,50,.18); }
-.btn-historico:hover { background:linear-gradient(135deg,#f8fdf8 0%,#e8f9e8 100%); border-color:#1b5e20; box-shadow:0 8px 32px rgba(46,125,50,.25); transform:translateY(-2px); }
-.btn-historico.open { border-color:#1b5e20; background:linear-gradient(135deg,#e8f5e9 0%,#c8e6c9 100%); border-bottom-left-radius:0; border-bottom-right-radius:0; border-bottom-color:transparent; }
-.btn-hist-icon { width:48px; height:48px; background:linear-gradient(135deg,#c8e6c9 0%,#a5d6a7 100%); border-radius:12px; display:flex; align-items:center; justify-content:center; font-size:22px; flex-shrink:0; transition:background .22s; box-shadow:0 2px 8px rgba(46,125,50,.15); }
-.btn-historico:hover .btn-hist-icon, .btn-historico.open .btn-hist-icon { background:linear-gradient(135deg,#81c784 0%,#66bb6a 100%); }
-.btn-hist-text { flex:1; text-align:left; }
-.btn-hist-title { display:block; font-size:14px; font-weight:900; color:#1b5e20; letter-spacing:-.2px; }
-.btn-hist-sub   { display:block; font-size:12px; color:#2e7d32; font-weight:700; margin-top:3px; }
-.btn-hist-arrow { color:#2e7d32; flex-shrink:0; transition:transform .3s cubic-bezier(.4,0,.2,1),color .2s; font-weight:bold; }
-.btn-historico.open .btn-hist-arrow { transform:rotate(180deg); color:#1b5e20; }
-.historico-panel { max-height:0; overflow:hidden; opacity:0; border:1.5px solid transparent; border-top:none; border-radius:0 0 14px 14px; background:#f6faf6; padding:0 20px; transition:max-height .4s cubic-bezier(.4,0,.2,1),opacity .3s,padding .3s,border-color .22s; }
-.historico-panel.open { max-height:500px; opacity:1; padding:20px; border-color:#2e7d32; }
-
-/* PROJETOS FINALIZADOS */
-.fin-wrapper { display:flex; flex-direction:column; gap:0; }
-.fin-year-block { margin-bottom:36px; }
-.fin-year-label {
-  display: flex; align-items: center; gap: 14px;
-  margin-bottom: 20px;
-}
-.fin-year-pill {
-  background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
-  color: #fff; font-size: 18px; font-weight: 900;
-  padding: 6px 20px; border-radius: 50px;
-  letter-spacing: -0.5px; box-shadow: 0 4px 14px rgba(44,62,80,.25);
-}
-.fin-year-line { flex:1; height:2px; background:linear-gradient(90deg,#d0d7e8,transparent); }
-.fin-year-count { font-size:11px; font-weight:700; color:var(--text-light); letter-spacing:1px; }
-
-.fin-timeline { display:flex; flex-direction:column; gap:0; position:relative; padding-left:32px; }
-.fin-timeline::before { content:''; position:absolute; left:10px; top:8px; bottom:8px; width:2px; background:linear-gradient(180deg,#27ae60,#2ecc71,rgba(39,174,96,.1)); border-radius:2px; }
-
-.fin-month-row { position:relative; margin-bottom:20px; }
-.fin-month-dot {
-  position:absolute; left:-28px; top:14px;
-  width:16px; height:16px; border-radius:50%;
-  background:linear-gradient(135deg,#27ae60,#2ecc71);
-  border:3px solid #fff; box-shadow:0 0 0 2px #27ae60;
-  z-index:1;
-}
-.fin-month-card {
-  background:#fff; border-radius:14px;
-  box-shadow:var(--shadow); overflow:hidden;
-  transition:box-shadow .2s, transform .2s;
-}
-.fin-month-card:hover { box-shadow:var(--shadow-hover); transform:translateY(-2px); }
-
-.fin-month-header {
-  display:flex; align-items:center; justify-content:space-between;
-  padding:14px 18px; cursor:pointer; user-select:none;
-  background:linear-gradient(90deg,#f0faf0 0%,#f8fbff 100%);
-  border-bottom:1px solid #eef2f7;
-  transition:background .18s;
-}
-.fin-month-header:hover { background:linear-gradient(90deg,#e0f5e0 0%,#eef6ff 100%); }
-.fin-month-left { display:flex; align-items:center; gap:12px; }
-.fin-month-icon { width:36px; height:36px; border-radius:10px; background:linear-gradient(135deg,#c8e6c9,#a5d6a7); display:flex; align-items:center; justify-content:center; font-size:16px; }
-.fin-month-name { font-size:14px; font-weight:800; color:var(--text-dark); }
-.fin-month-sub  { font-size:11px; color:var(--text-light); font-weight:500; margin-top:1px; }
-.fin-month-right { display:flex; align-items:center; gap:10px; }
-.fin-count-badge { background:var(--green); color:#fff; font-size:11px; font-weight:800; padding:3px 10px; border-radius:50px; }
-.fin-chevron { color:var(--text-light); font-size:12px; transition:transform .25s; }
-.fin-chevron.open { transform:rotate(180deg); }
-
-.fin-month-body { max-height:0; overflow:hidden; transition:max-height .35s cubic-bezier(.4,0,.2,1); }
-.fin-month-body.open { max-height:600px; }
-
-.fin-proj-list { padding:12px 16px 14px; display:flex; flex-direction:column; gap:8px; }
-.fin-proj-item {
-  display:flex; align-items:center; gap:12px;
-  padding:12px 14px; border-radius:10px;
-  background:var(--bg); border:1px solid #eef0f6;
-  cursor:pointer; transition:all .18s;
-}
-.fin-proj-item:hover { background:#f0f7ff; border-color:#c5d8fc; transform:translateX(3px); }
-.fin-proj-check {
-  width:34px; height:34px; border-radius:8px; flex-shrink:0;
-  background:linear-gradient(135deg,#e8f5e9,#c8e6c9);
-  display:flex; align-items:center; justify-content:center;
-  font-size:14px; color:var(--green);
-}
-.fin-proj-info { flex:1; min-width:0; }
-.fin-proj-name { font-size:12.5px; font-weight:700; color:var(--text-dark); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
-.fin-proj-eye  { font-size:10px; color:var(--text-light); margin-top:2px; }
-.fin-proj-date { font-size:10px; font-weight:700; color:var(--green); background:#e8f5e9; padding:3px 9px; border-radius:6px; white-space:nowrap; flex-shrink:0; }
-
-/* Sumário topo */
-.fin-summary-bar {
-  display:flex; gap:16px; margin-bottom:28px; flex-wrap:wrap;
-}
-.fin-sum-card {
-  flex:1; min-width:120px; padding:16px 20px; border-radius:14px;
-  display:flex; align-items:center; gap:12px;
-  background:#fff; box-shadow:var(--shadow);
-  border-left:4px solid;
-}
-.fin-sum-card.green { border-color:var(--green); }
-.fin-sum-card.blue  { border-color:var(--blue); }
-.fin-sum-card.dark  { border-color:#2c3e50; }
-.fin-sum-icon { font-size:22px; }
-.fin-sum-val  { font-size:26px; font-weight:900; color:var(--text-dark); line-height:1; }
-.fin-sum-lbl  { font-size:10px; color:var(--text-light); font-weight:600; letter-spacing:.8px; text-transform:uppercase; margin-top:3px; }
-
-@keyframes fadeUp { from { opacity:0; transform:translateY(20px); } to { opacity:1; transform:translateY(0); } }
-.anim { animation:fadeUp .4s cubic-bezier(.34,1.56,.64,1) both; }
-.anim:nth-child(1){animation-delay:.04s}.anim:nth-child(2){animation-delay:.09s}
-.anim:nth-child(3){animation-delay:.14s}.anim:nth-child(4){animation-delay:.19s}
-.anim:nth-child(5){animation-delay:.24s}.anim:nth-child(6){animation-delay:.29s}
-.anim:nth-child(7){animation-delay:.34s}.anim:nth-child(8){animation-delay:.39s}
-
-/* RESPONSIVO */
-@media (max-width: 900px) {
-  .grid-3 { grid-template-columns: repeat(2,1fr); }
-  .grid-4 { grid-template-columns: repeat(2,1fr); }
-}
-@media (max-width: 600px) {
-  .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
-  .page-body { padding: 20px 16px 40px; }
-  .topbar { padding: 0 16px 0 72px; }
-  .hero-stats { gap: 16px; }
-  .page-hero { padding: 20px 20px; }
-}
-
-/* SCROLLBAR GLOBAL */
-::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: transparent; }
-::-webkit-scrollbar-thumb { background: #ccd0e0; border-radius: 10px; }
-
-/* FOCUS VISÍVEL PARA ACESSIBILIDADE */
-button:focus-visible, a:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
-
-</style>
-</head>
-<body>
-
-<button id="drawer-trigger" onclick="handleTriggerClick()">
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 513 190" style="height:28px;width:auto;display:block;" class="trig-svg"><path fill="currentColor" d="M148.949 43.28c2.524.303 16.612.24 19.178-.025-.173 3.18-.043 7.54-.04 10.795l-.019 19.49c3.047-2.703 6.511-4.246 10.502-4.958 16.944-3.023 29.188 7.185 32.179 23.475a37.25 37.25 0 0 1-6.016 28.371c-10.556 13.294-27.911 13.822-43.289 11.223-4.188-.708-8.228-2.012-12.372-2.869-.307-9.076-.123-19.067-.122-28.213zm19.161 72.637c4.567.812 6.931 1.182 11.679.691 7.786-1.796 11.493-7.319 12.078-15.13.604-8.066-2.491-16.624-11.734-16.999-3.588.145-6.268.53-8.852 3.283-2.825 3.01-3.169 7.177-3.201 11.102-.044 5.685.001 11.369.03 17.053"/><path fill="currentColor" d="M339.028 67.204c34.559.139 27.71 29.154 28.369 53.832.087 3.278-.096 6.648.032 9.933-3.796-.371-14.342-.251-18.23-.041.02-1.705-.211-3.837-.352-5.568-8.015 8.565-22.845 9.745-32.415 2.96-2.207-1.564-3.537-3.56-4.909-5.848a21.87 21.87 0 0 1-1.784-11.05c2.113-19.824 23.797-21.474 39.405-19.77-1.844-9.891-8.252-10.201-17.299-9.128-4.507.534-8.13 2.601-12.074 4.682-1.532-1.84-6.263-9.412-7.833-11.796 8.661-6.352 16.692-7.786 27.09-8.206m-.7 51.659c9.476-1.307 10.415-6.843 10.691-15.059-2.812-.29-6.909-.752-9.684-.326-3.532.337-6.98.689-9.446 3.641a7.58 7.58 0 0 0-1.694 5.596c.517 5.352 5.76 6.353 10.133 6.148"/><path fill="currentColor" d="M281.51 67.95c5.636-.253 12.089 1.314 16.456 5.032 8.057 6.857 7.445 16.92 7.438 26.504l-.036 19.897c-.008 3.437-.152 8.334.115 11.633-3.247-.352-16.106-.341-19.379-.003.477-11.819-.142-24.053.008-35.905.146-11.519-11.871-13.816-18.828-6.05-1.199 1.731-2.202 3.848-2.37 5.982-.718 9.09-.152 18.347-.307 27.474-.046 2.737-.048 5.789.138 8.497-3.016-.357-16.313-.325-19.422-.011.084-2.985.117-6.14.068-9.125-.287-17.424.426-35.116-.089-52.512 5.342.296 13.009.046 18.569.043l.458 6.05c4.849-5.082 10.37-7.014 17.181-7.507"/><path fill="currentColor" d="M409.8 68.206c3.732-.102 5.737.193 9.359.762-.364 3.83-2.315 13.51-3.127 17.374-8.494-2.729-19.111-.225-20.987 9.682-1.116 5.887-.553 13.2-.626 19.266-.062 5.077-.198 10.65.04 15.687-3.92-.383-11.788-.175-15.984-.185-1.078.021-2.299.138-3.387.218.2-4.039.086-8.832.086-12.914l.005-22.316.003-16.264c.002-3.079.118-7.151-.161-10.157 5.747.272 12.999-.002 18.933.09-.201 2.397.071 4.913.255 7.319q.187-.234.382-.462c4.629-5.423 8.213-7.521 15.209-8.1"/><path fill="#129ad7" d="m440.442 69.23.489-.02c.363.56-.031 55.325.221 61.815-4.141-.407-15.509-.272-19.717-.027.077-20.494.198-41.319-.016-61.795 5.196.338 13.807.261 19.023.026"/><path fill="currentColor" d="M217.366 69.358c4.837.316 14.294.087 19.266-.002-.026 6.326.301 60.697-.232 61.579-2.912-.292-16.1-.224-19.063.063.279-20.337.069-41.266.029-61.64"/><path fill="#129ad7" d="M504.222 146.024q3.108-.015 6.214.065c.307 3.681.083 10.416.084 14.376l.008 28.31c-2.121-.146-4.547.469-6.006-.821-.517-.764-.404-1.7-.402-2.637-4.307 3.882-8.107 4.979-13.706 3.251q-.452-.194-.897-.401c-3.42-1.594-5.44-4.075-6.746-7.575-5.211-13.968 7.254-27.517 21.476-20.69-.126-1.449-.331-12.774-.025-13.878m-8.247 38.042c10.14-1.772 7.998-9.764 8.143-17.753.047-2.6-6.146-2.811-7.84-2.74-10.787 1.839-11.619 18.958-.303 20.493"/><path fill="#129ad7" d="M430.482 158.038c22.915-1.324 23.06 28.158 4.805 31.123l-.194.035c-3.887.664-8.298-.367-11.508-2.654a15.55 15.55 0 0 1-6.226-9.938c-1.566-9.373 3.675-17.075 13.123-18.566m4.074 25.697c13.177-4.61 7.231-22.134-3.065-20.482-2.828.616-4.86 1.805-6.467 4.302a11.22 11.22 0 0 0-1.502 8.463c1.187 5.268 5.603 8.636 11.034 7.717"/><path fill="#129ad7" d="M385.39 145.275c8.666-1.144 13.848 2.254 19.367 8.314-1.676 1.547-3.022 2.829-4.88 4.164-2.013-2.788-5.459-5.808-8.886-6.43-19.583-3.559-23.986 27.091-6.076 31.712 3.535.912 7.581-.095 10.613-2.039 1.791-1.331 2.919-2.492 4.495-4.056 1.667 1.244 5.532 3.253 3.381 5.625-7.24 7.984-19.594 9.244-28.313 2.876-9.837-7.185-10.844-22.941-3.815-32.365 3.609-4.86 8.3-6.973 14.114-7.801"/><path fill="#129ad7" d="M474.471 158.817c1.047-.043 2.899.13 4.005.203.227 3.061.033 7.915.021 11.139l.004 18.513c-1.967.069-4.232-.067-6.221-.139-.011-1.144.129-2.727.2-3.903q-.253.268-.515.528c-4.455 4.41-12.41 5.696-17.268 1.068-3.459-3.295-3.251-9.787-3.213-14.312a373 373 0 0 0-.122-12.914c2.432-.196 4.08-.127 6.493.001-.009 4.944-2.375 23.796 4.111 24.536 14.692 1.677 8.521-17.403 10.294-24.336.53-.375 1.522-.344 2.211-.384"/><path fill="currentColor" d="M216.934 43.42c6.131.18 14.267.069 20.408-.091.177 4.618-.303 13.634.165 17.593-5.849-.136-15.324-.362-20.889.04-.003-2.388-.345-16.364.316-17.543"/><path fill="#129ad7" d="M421.338 43.273c6.585.172 13.685-.156 20.152.178.473 4.07.248 12.791.237 17.26-.774.219-1.759.16-2.578.169-8.676.084-18.505 1.18-18.043-10.792.078-1.997-.33-4.82.232-6.815"/><path fill="#129ad7" d="m407.435 146.036 6.414.05c-.096 4.555.192 41.066-.385 42.556a182 182 0 0 0-6.099.105c-.156-3.556-.318-41.76.07-42.711"/><path fill="currentColor" d="M0 37.47c5.314 5.586 6.785 7.105 14.737 7.637 3.218.215 16.1-.545 18.023.483.895 1.426.656 6.237.654 8.106l-.026 19.726c-.011 10.5-1.348 19.524 7.078 27.314a21.56 21.56 0 0 0 9.912 5.287c5.098 1.183 10.288.454 14.745-2.347A19.3 19.3 0 0 0 73.8 91.617c.92-4.133.866-25.833.063-30.153a21.7 21.7 0 0 0-3.134-7.94 21 21 0 0 0-13.398-9.396c-4.348-.95-9.98-.492-14.51-.495-5.003-.004-8.4-2.914-6.89-8.173C40.68 18.9 56.355 15.934 71.232 19.6a48.13 48.13 0 0 1 29.83 21.853c7.318 12.108 6.957 22.173 6.816 35.729-.069 6.663.301 11.558-1.35 18.209a47.93 47.93 0 0 1-21.823 29.555c-10.73 6.452-19.823 7.126-32.003 6.883-6.391-.128-10.244.152-16.695-1.466a48 48 0 0 1-29.466-21.914A47.6 47.6 0 0 1 .744 93.397c-.15-.748-.34-1.967-.744-2.58z"/><path fill="#129ad7" d="M513 104.305c-1.703 5.332-1.065 6.722-4.389 12.699a31.08 31.08 0 0 1-18.706 14.614c-8.44 2.39-18.897 1.495-26.592-2.807a31.43 31.43 0 0 1-15.105-19.348c-4.814-17.353 4.005-36.276 22.035-41.003 17.436-4.572 36.047 3.327 41.311 21.443.601 2.07.898 4.057 1.446 6.095zm-31.667 11.815c18.625-2.753 16.556-32.967-2.305-32.224l-.136.025c-18.982 3.005-17.304 32.792 2.441 32.199"/><path fill="#129ad7" d="M0 0h32.326c.69.96.868 1.792.996 2.935.766 6.866.231 15.977.215 23.02-.01 4.492.49 10.799-.2 15.113-.118.74-.2 1.44-.841 1.897-2.135 1.52-18.215.88-21.235.306-3.833-.728-6.59-2.068-8.82-5.36C1.41 36.393.896 34.75 0 33.237z"/></svg>
-</button>
-
-<div id="drawer-backdrop" onclick="closeDrawer()"></div>
-
-<div id="drawer">
-  <div class="dr-logo">
-    <div class="dr-logo-left">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 513 190" style="height:32px;width:auto;" ><path fill="#fff" d="M148.949 43.28c2.524.303 16.612.24 19.178-.025-.173 3.18-.043 7.54-.04 10.795l-.019 19.49c3.047-2.703 6.511-4.246 10.502-4.958 16.944-3.023 29.188 7.185 32.179 23.475a37.25 37.25 0 0 1-6.016 28.371c-10.556 13.294-27.911 13.822-43.289 11.223-4.188-.708-8.228-2.012-12.372-2.869-.307-9.076-.123-19.067-.122-28.213zm19.161 72.637c4.567.812 6.931 1.182 11.679.691 7.786-1.796 11.493-7.319 12.078-15.13.604-8.066-2.491-16.624-11.734-16.999-3.588.145-6.268.53-8.852 3.283-2.825 3.01-3.169 7.177-3.201 11.102-.044 5.685.001 11.369.03 17.053"/><path fill="#fff" d="M339.028 67.204c34.559.139 27.71 29.154 28.369 53.832.087 3.278-.096 6.648.032 9.933-3.796-.371-14.342-.251-18.23-.041.02-1.705-.211-3.837-.352-5.568-8.015 8.565-22.845 9.745-32.415 2.96-2.207-1.564-3.537-3.56-4.909-5.848a21.87 21.87 0 0 1-1.784-11.05c2.113-19.824 23.797-21.474 39.405-19.77-1.844-9.891-8.252-10.201-17.299-9.128-4.507.534-8.13 2.601-12.074 4.682-1.532-1.84-6.263-9.412-7.833-11.796 8.661-6.352 16.692-7.786 27.09-8.206m-.7 51.659c9.476-1.307 10.415-6.843 10.691-15.059-2.812-.29-6.909-.752-9.684-.326-3.532.337-6.98.689-9.446 3.641a7.58 7.58 0 0 0-1.694 5.596c.517 5.352 5.76 6.353 10.133 6.148"/><path fill="#fff" d="M281.51 67.95c5.636-.253 12.089 1.314 16.456 5.032 8.057 6.857 7.445 16.92 7.438 26.504l-.036 19.897c-.008 3.437-.152 8.334.115 11.633-3.247-.352-16.106-.341-19.379-.003.477-11.819-.142-24.053.008-35.905.146-11.519-11.871-13.816-18.828-6.05-1.199 1.731-2.202 3.848-2.37 5.982-.718 9.09-.152 18.347-.307 27.474-.046 2.737-.048 5.789.138 8.497-3.016-.357-16.313-.325-19.422-.011.084-2.985.117-6.14.068-9.125-.287-17.424.426-35.116-.089-52.512 5.342.296 13.009.046 18.569.043l.458 6.05c4.849-5.082 10.37-7.014 17.181-7.507"/><path fill="#fff" d="M409.8 68.206c3.732-.102 5.737.193 9.359.762-.364 3.83-2.315 13.51-3.127 17.374-8.494-2.729-19.111-.225-20.987 9.682-1.116 5.887-.553 13.2-.626 19.266-.062 5.077-.198 10.65.04 15.687-3.92-.383-11.788-.175-15.984-.185-1.078.021-2.299.138-3.387.218.2-4.039.086-8.832.086-12.914l.005-22.316.003-16.264c.002-3.079.118-7.151-.161-10.157 5.747.272 12.999-.002 18.933.09-.201 2.397.071 4.913.255 7.319q.187-.234.382-.462c4.629-5.423 8.213-7.521 15.209-8.1"/><path fill="#129ad7" d="m440.442 69.23.489-.02c.363.56-.031 55.325.221 61.815-4.141-.407-15.509-.272-19.717-.027.077-20.494.198-41.319-.016-61.795 5.196.338 13.807.261 19.023.026"/><path fill="#fff" d="M217.366 69.358c4.837.316 14.294.087 19.266-.002-.026 6.326.301 60.697-.232 61.579-2.912-.292-16.1-.224-19.063.063.279-20.337.069-41.266.029-61.64"/><path fill="#129ad7" d="M504.222 146.024q3.108-.015 6.214.065c.307 3.681.083 10.416.084 14.376l.008 28.31c-2.121-.146-4.547.469-6.006-.821-.517-.764-.404-1.7-.402-2.637-4.307 3.882-8.107 4.979-13.706 3.251q-.452-.194-.897-.401c-3.42-1.594-5.44-4.075-6.746-7.575-5.211-13.968 7.254-27.517 21.476-20.69-.126-1.449-.331-12.774-.025-13.878m-8.247 38.042c10.14-1.772 7.998-9.764 8.143-17.753.047-2.6-6.146-2.811-7.84-2.74-10.787 1.839-11.619 18.958-.303 20.493"/><path fill="#129ad7" d="M430.482 158.038c22.915-1.324 23.06 28.158 4.805 31.123l-.194.035c-3.887.664-8.298-.367-11.508-2.654a15.55 15.55 0 0 1-6.226-9.938c-1.566-9.373 3.675-17.075 13.123-18.566m4.074 25.697c13.177-4.61 7.231-22.134-3.065-20.482-2.828.616-4.86 1.805-6.467 4.302a11.22 11.22 0 0 0-1.502 8.463c1.187 5.268 5.603 8.636 11.034 7.717"/><path fill="#129ad7" d="M385.39 145.275c8.666-1.144 13.848 2.254 19.367 8.314-1.676 1.547-3.022 2.829-4.88 4.164-2.013-2.788-5.459-5.808-8.886-6.43-19.583-3.559-23.986 27.091-6.076 31.712 3.535.912 7.581-.095 10.613-2.039 1.791-1.331 2.919-2.492 4.495-4.056 1.667 1.244 5.532 3.253 3.381 5.625-7.24 7.984-19.594 9.244-28.313 2.876-9.837-7.185-10.844-22.941-3.815-32.365 3.609-4.86 8.3-6.973 14.114-7.801"/><path fill="#129ad7" d="M474.471 158.817c1.047-.043 2.899.13 4.005.203.227 3.061.033 7.915.021 11.139l.004 18.513c-1.967.069-4.232-.067-6.221-.139-.011-1.144.129-2.727.2-3.903q-.253.268-.515.528c-4.455 4.41-12.41 5.696-17.268 1.068-3.459-3.295-3.251-9.787-3.213-14.312a373 373 0 0 0-.122-12.914c2.432-.196 4.08-.127 6.493.001-.009 4.944-2.375 23.796 4.111 24.536 14.692 1.677 8.521-17.403 10.294-24.336.53-.375 1.522-.344 2.211-.384"/><path fill="#fff" d="M216.934 43.42c6.131.18 14.267.069 20.408-.091.177 4.618-.303 13.634.165 17.593-5.849-.136-15.324-.362-20.889.04-.003-2.388-.345-16.364.316-17.543"/><path fill="#129ad7" d="M421.338 43.273c6.585.172 13.685-.156 20.152.178.473 4.07.248 12.791.237 17.26-.774.219-1.759.16-2.578.169-8.676.084-18.505 1.18-18.043-10.792.078-1.997-.33-4.82.232-6.815"/><path fill="#129ad7" d="m407.435 146.036 6.414.05c-.096 4.555.192 41.066-.385 42.556a182 182 0 0 0-6.099.105c-.156-3.556-.318-41.76.07-42.711"/><path fill="#fff" d="M0 37.47c5.314 5.586 6.785 7.105 14.737 7.637 3.218.215 16.1-.545 18.023.483.895 1.426.656 6.237.654 8.106l-.026 19.726c-.011 10.5-1.348 19.524 7.078 27.314a21.56 21.56 0 0 0 9.912 5.287c5.098 1.183 10.288.454 14.745-2.347A19.3 19.3 0 0 0 73.8 91.617c.92-4.133.866-25.833.063-30.153a21.7 21.7 0 0 0-3.134-7.94 21 21 0 0 0-13.398-9.396c-4.348-.95-9.98-.492-14.51-.495-5.003-.004-8.4-2.914-6.89-8.173C40.68 18.9 56.355 15.934 71.232 19.6a48.13 48.13 0 0 1 29.83 21.853c7.318 12.108 6.957 22.173 6.816 35.729-.069 6.663.301 11.558-1.35 18.209a47.93 47.93 0 0 1-21.823 29.555c-10.73 6.452-19.823 7.126-32.003 6.883-6.391-.128-10.244.152-16.695-1.466a48 48 0 0 1-29.466-21.914A47.6 47.6 0 0 1 .744 93.397c-.15-.748-.34-1.967-.744-2.58z"/><path fill="#129ad7" d="M513 104.305c-1.703 5.332-1.065 6.722-4.389 12.699a31.08 31.08 0 0 1-18.706 14.614c-8.44 2.39-18.897 1.495-26.592-2.807a31.43 31.43 0 0 1-15.105-19.348c-4.814-17.353 4.005-36.276 22.035-41.003 17.436-4.572 36.047 3.327 41.311 21.443.601 2.07.898 4.057 1.446 6.095zm-31.667 11.815c18.625-2.753 16.556-32.967-2.305-32.224l-.136.025c-18.982 3.005-17.304 32.792 2.441 32.199"/><path fill="#129ad7" d="M0 0h32.326c.69.96.868 1.792.996 2.935.766 6.866.231 15.977.215 23.02-.01 4.492.49 10.799-.2 15.113-.118.74-.2 1.44-.841 1.897-2.135 1.52-18.215.88-21.235.306-3.833-.728-6.59-2.068-8.82-5.36C1.41 36.393.896 34.75 0 33.237z"/></svg>
-    </div>
-    <button class="dr-close" onclick="closeDrawer()">✕</button>
-  </div>
-  <nav class="dr-nav">
-    <div class="dr-section-label">Escritório de Projetos</div>
-
-    <!-- Projetos -->
-    <div class="dr-submenu-container">
-      <div class="dr-item dr-submenu-toggle" onclick="toggleSubmenu('projetos-menu')">
-        <div style="display:flex;align-items:center;gap:10px;flex:1;">
-          <div class="dr-item-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
-          <div><div class="dr-item-label">Projetos</div><div class="dr-item-sub">2 categorias</div></div>
-        </div>
-        <span class="toggle-icon">▼</span>
-      </div>
-      <div class="dr-submenu" id="projetos-menu">
-        <div class="dr-submenu-item" id="nav-clientes" onclick="navTo('clientes','active-blue')">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-          Clientes
-        </div>
-        <div class="dr-submenu-item" id="nav-estruturantes" onclick="navTo('estruturantes','active-green')">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M12 12h.01"/><path d="M17 12h.01"/><path d="M7 12h.01"/></svg>
-          Estruturantes
-        </div>
-      </div>
-    </div>
-
-    <!-- Entregas -->
-    <div class="dr-submenu-container">
-      <div class="dr-item dr-submenu-toggle" onclick="toggleSubmenu('entregas-menu')">
-        <div style="display:flex;align-items:center;gap:10px;flex:1;">
-          <div class="dr-item-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 21 6 12 2 12"/><path d="M6 12L4.3 4.3A1 1 0 0 1 5.1 3h13.8a1 1 0 0 1 .9 1.3L18 12"/></svg></div>
-          <div><div class="dr-item-label">Entregas</div><div class="dr-item-sub">1 item</div></div>
-        </div>
-        <span class="toggle-icon">▼</span>
-      </div>
-      <div class="dr-submenu" id="entregas-menu">
-        <div class="dr-submenu-item" id="nav-finalizados" onclick="navTo('finalizados','active-green')">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-          Projetos Finalizados
-        </div>
-      </div>
-    </div>
-
-    <!-- Status da Migração -->
-    <div class="dr-submenu-container">
-      <div class="dr-item dr-submenu-toggle" onclick="toggleSubmenu('status-menu')">
-        <div style="display:flex;align-items:center;gap:10px;flex:1;">
-          <div class="dr-item-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 1l4 4-4 4"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><path d="M7 23l-4-4 4-4"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg></div>
-          <div><div class="dr-item-label">Status da Migração</div><div class="dr-item-sub">2 itens</div></div>
-        </div>
-        <span class="toggle-icon">▼</span>
-      </div>
-      <div class="dr-submenu" id="status-menu">
-        <div class="dr-submenu-item" id="nav-status-migracao" onclick="navTo('status-migracao','active-purple')">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 1l4 4-4 4"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><path d="M7 23l-4-4 4-4"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>
-          Status migração 2>3
-        </div>
-        <div class="dr-submenu-item" id="nav-controle-migracao" onclick="navTo('controle-migracao','active-purple')">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
-          Controle de Migração
-        </div>
-      </div>
-    </div>
-
-    <div class="dr-divider"></div>
-
-    <!-- Governança -->
-    <div class="dr-submenu-container">
-      <div class="dr-item dr-submenu-toggle" onclick="toggleSubmenu('governanca-menu')">
-        <div style="display:flex;align-items:center;gap:10px;flex:1;">
-          <div class="dr-item-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div>
-          <div><div class="dr-item-label">Governança</div><div class="dr-item-sub">2 itens</div></div>
-        </div>
-        <span class="toggle-icon">▼</span>
-      </div>
-      <div class="dr-submenu" id="governanca-menu">
-        <div class="dr-submenu-item" id="nav-capacity-20" onclick="navTo('capacity-20','active-purple')">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.66 4.03 3 9 3s9-1.34 9-3V5"/><path d="M3 12c0 1.66 4.03 3 9 3s9-1.34 9-3"/></svg>
-          Sanitização 2.0
-        </div>
-        <div class="dr-submenu-item" id="nav-capacity-30" onclick="navTo('capacity-30','active-purple')">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.66 4.03 3 9 3s9-1.34 9-3V5"/><path d="M3 12c0 1.66 4.03 3 9 3s9-1.34 9-3"/></svg>
-          Sanitização 3.0
-        </div>
-      </div>
-    </div>
-  </nav>
-  <div class="dr-footer">Binario Cloud · Escritório de Projetos</div>
-</div>
-
-<!-- CAPA -->
-<div id="cover" class="page active">
-  <div class="cover-grid"></div>
-  <div class="cover-content">
-    <div class="cover-eyebrow">Binario Cloud</div>
-    <div class="cover-period">Escritório de Projetos</div>
-    <p class="cover-desc">Visão executiva do portfólio de projetos,<br>entregas e iniciativas estratégicas.</p>
-  </div>
-</div>
 
 </body>
 </html>
