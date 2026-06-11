@@ -2362,15 +2362,15 @@ function mgRender() {
 }
 
 function mgUpdateMetrics() {
-  const total    = mgClientes.length;
-  const migrados = mgClientes.filter(c=>c.status==='Migrado').length;
-  const em       = mgClientes.filter(c=>c.status==='Em Progresso').length;
-  const pct      = total ? Math.round(mgClientes.reduce((s,c)=>s+c.progresso,0)/total) : 0;
+  const total       = mgClientes.length;
+  const confirmados = mgClientes.filter(c=>c.confirmado===true).length;
+  const em          = mgClientes.filter(c=>c.status==='Em Progresso').length;
+  const maquinas    = mgClientes.reduce((s,c)=>s+(c.qtdMaquinas||0),0);
   const el = id => document.getElementById(id);
-  if(el('mg-metTotal'))     el('mg-metTotal').textContent    = total;
-  if(el('mg-metMigrados'))  el('mg-metMigrados').textContent = migrados;
-  if(el('mg-metProgresso')) el('mg-metProgresso').textContent= em;
-  if(el('mg-metPct'))       el('mg-metPct').textContent      = pct+'%';
+  if(el('mg-metTotal'))       el('mg-metTotal').textContent       = total;
+  if(el('mg-metConfirmados')) el('mg-metConfirmados').textContent = confirmados;
+  if(el('mg-metProgresso'))   el('mg-metProgresso').textContent   = em;
+  if(el('mg-metMaquinas'))    el('mg-metMaquinas').textContent    = maquinas;
 }
 
 function mgIniciar(id) {
