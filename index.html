@@ -2273,12 +2273,12 @@ function mgRender() {
   const fStatus = document.getElementById('mg-filtroStatus')?.value || '';
   const fNome   = (document.getElementById('mg-filtroNome')?.value || '').toLowerCase();
   const lista   = mgClientes.filter(c => (!fStatus || c.status===fStatus) && c.nome.toLowerCase().includes(fNome)).sort((a,b) => {
-    // 1. Confirmados primeiro
-    if (a.confirmado !== b.confirmado) return (b.confirmado ? 1 : 0) - (a.confirmado ? 1 : 0);
-    // 2. Por data de migração (mais próxima primeiro)
+    // 1. Por data de migração (mais próxima primeiro, sem data vai pro fim)
     const da = a.dataMigracao || '9999-99-99';
     const db = b.dataMigracao || '9999-99-99';
     if (da !== db) return da < db ? -1 : 1;
+    // 2. Confirmados primeiro dentro da mesma data
+    if (a.confirmado !== b.confirmado) return (b.confirmado ? 1 : 0) - (a.confirmado ? 1 : 0);
     // 3. Por progresso
     return b.progresso - a.progresso;
   });
