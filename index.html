@@ -2831,7 +2831,7 @@ function san20VMLRender(lista, cor) {
 
       <!-- Gráfico full width -->
       <div style="background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);border-radius:16px;padding:20px;margin-bottom:20px;">
-        <div style="font-size:10px;font-weight:800;color:#475569;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:16px;">Comparativo de VMs por Domínio</div>
+        <div style="font-size:10px;font-weight:800;color:#475569;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:16px;">Comparativo de VMs por Domínio com Alteração</div>
         <div id="san20-gov-chart-wrap" style="overflow-x:auto;overflow-y:hidden;width:100%;">
           <canvas id="san20-gov-canvas"></canvas>
         </div>
@@ -2988,7 +2988,11 @@ function san20OpenRelatorio() {
   const todosDominios = [...new Set([
     ...ant.dominios.map(d=>d.dominio),
     ...atual.map(d=>d.dominio)
-  ])].sort((a,b) => {
+  ])].filter(dom => {
+    const a = ant.dominios.find(x=>x.dominio===dom) || {vms:0,ligadas:0,desligadas:0};
+    const b = atual.find(x=>x.dominio===dom)        || {vms:0,ligadas:0,desligadas:0};
+    return a.vms!==b.vms || a.ligadas!==b.ligadas || a.desligadas!==b.desligadas;
+  }).sort((a,b) => {
     const va = atual.find(x=>x.dominio===a)?.vms || ant.dominios.find(x=>x.dominio===a)?.vms || 0;
     const vb = atual.find(x=>x.dominio===b)?.vms || ant.dominios.find(x=>x.dominio===b)?.vms || 0;
     return vb - va;
@@ -4641,7 +4645,11 @@ function san30OpenRelatorio() {
   const todosDominios = [...new Set([
     ...ant.dominios.map(d=>d.dominio),
     ...atual.map(d=>d.dominio)
-  ])].sort((a,b) => {
+  ])].filter(dom => {
+    const a = ant.dominios.find(x=>x.dominio===dom) || {vms:0,ligadas:0,desligadas:0};
+    const b = atual.find(x=>x.dominio===dom)        || {vms:0,ligadas:0,desligadas:0};
+    return a.vms!==b.vms || a.ligadas!==b.ligadas || a.desligadas!==b.desligadas;
+  }).sort((a,b) => {
     const va = atual.find(x=>x.dominio===a)?.vms || ant.dominios.find(x=>x.dominio===a)?.vms || 0;
     const vb = atual.find(x=>x.dominio===b)?.vms || ant.dominios.find(x=>x.dominio===b)?.vms || 0;
     return vb - va;
@@ -4863,7 +4871,7 @@ function san30VMLRender(lista, cor) {
 
       <!-- Gráfico full width -->
       <div style="background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);border-radius:16px;padding:20px;margin-bottom:20px;">
-        <div style="font-size:10px;font-weight:800;color:#475569;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:16px;">Comparativo de VMs por Domínio</div>
+        <div style="font-size:10px;font-weight:800;color:#475569;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:16px;">Comparativo de VMs por Domínio com Alteração</div>
         <div id="san30-gov-chart-wrap" style="overflow-x:auto;overflow-y:hidden;width:100%;">
           <canvas id="san30-gov-canvas"></canvas>
         </div>
@@ -5027,7 +5035,7 @@ function san30VMLExportXLS() {
 
       <!-- Gráfico full width -->
       <div style="background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);border-radius:16px;padding:20px;margin-bottom:20px;">
-        <div style="font-size:10px;font-weight:800;color:#475569;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:16px;">Comparativo de VMs por Domínio</div>
+        <div style="font-size:10px;font-weight:800;color:#475569;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:16px;">Comparativo de VMs por Domínio com Alteração</div>
         <div id="san30-gov-chart-wrap" style="overflow-x:auto;overflow-y:hidden;width:100%;">
           <canvas id="san30-gov-canvas"></canvas>
         </div>
