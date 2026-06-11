@@ -794,7 +794,7 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--blue); outline-
     <div class="bcp-page-header">
       <div>
         <h1 style="font-size:17px;font-weight:700;color:#111827;letter-spacing:-.3px;margin:0;">Gestão Cloud de Domínios</h1>
-        <p style="font-size:11px;color:#6b7280;margin:3px 0 0;">Ambiente 30.0 — 790 VMs · 83 Domínios<span id="san30-timestamp"></span></p>
+        <p style="font-size:11px;color:#6b7280;margin:3px 0 0;">Ambiente 2.0 — 471 VMs · 31 Domínios<span id="san20-timestamp"></span></p>
       </div>
       <button class="bcp-btn bcp-btn-purple" onclick="san30OpenRelatorio()">Relatório</button>
     </div>
@@ -2455,7 +2455,7 @@ renderFinalizados();
    CONTROLE DE MIGRAÇÃO
 ═══════════════════════════════════════ */
 let mgClientes = [
-  { id:2, nome:"QoS (Projeto 1)", qtdMaquinas:8, status:"Planejamento", progresso:85, confirmado:true, dataPrevista:"2026-05-30", dataMigracao:"2026-06-12", historico:[{"data": "2024-01-01", "acao": "DECISÃO: Recriação do zero na BCOS 3.0 - Não haverá migração"}, {"data": "2024-01-01", "acao": "Responsável: Alan (desenvolvedor) | Motivo: Mais rápido, mais limpo, evita compatibilidade"}, {"data": "2024-01-01", "acao": "JANELA 1 - 05/05/2026 14h | RPA_Faturas_Dasa | PoC-Captive Portal-Ubiquiti"}, {"data": "2024-01-01", "acao": "JANELA 2 - 12/05/2026 00h01 | APPInfra-ClaroFust | APPInfra-Media"}, {"data": "2026-05-30", "acao": "Virada prevista para hoje, contemplando o total de 8 máquinas."}, {"data": "2026-06-03", "acao": "Progresso: 85% — Aguardando teste e validação na 3.0. Data prevista: 30/05. Data de migração: 07/06/2026"}, {"data": "2026-06-07", "acao": "Necessário obter status junto ao Augusto (CSE)"}, {"data": "09/06/2026 14:29", "acao": "Status alterado para: Planejamento"}, {"data": "09/06/2026 14:29", "acao": "Confirmação: ✅ Confirmado"}, {"data": "2026-06-09", "acao": "Data de migração agendada para 12/06/2026"}, {"data": "09/06/2026 14:29", "acao": "Status alterado para: Planejamento"}] },
+  { id:2, nome:"QoS (Projeto 1)", qtdMaquinas:8, status:"Em Progresso", progresso:85, confirmado:true, dataPrevista:"2026-05-30", dataMigracao:"2026-06-12", historico:[{"data": "2024-01-01", "acao": "DECISÃO: Recriação do zero na BCOS 3.0 - Não haverá migração"}, {"data": "2024-01-01", "acao": "Responsável: Alan (desenvolvedor) | Motivo: Mais rápido, mais limpo, evita compatibilidade"}, {"data": "2024-01-01", "acao": "JANELA 1 - 05/05/2026 14h | RPA_Faturas_Dasa | PoC-Captive Portal-Ubiquiti"}, {"data": "2024-01-01", "acao": "JANELA 2 - 12/05/2026 00h01 | APPInfra-ClaroFust | APPInfra-Media"}, {"data": "2026-05-30", "acao": "Virada prevista para hoje, contemplando o total de 8 máquinas."}, {"data": "2026-06-03", "acao": "Progresso: 85% — Aguardando teste e validação na 3.0. Data prevista: 30/05. Data de migração: 07/06/2026"}, {"data": "2026-06-07", "acao": "Necessário obter status junto ao Augusto (CSE)"}, {"data": "09/06/2026 14:29", "acao": "Status alterado para: Planejamento"}, {"data": "09/06/2026 14:29", "acao": "Confirmação: ✅ Confirmado"}, {"data": "2026-06-09", "acao": "Data de migração agendada para 12/06/2026"}, {"data": "09/06/2026 14:29", "acao": "Status alterado para: Planejamento"}, {"data": "11/06/2026 16:31", "acao": "Status alterado para: Em Progresso — Confirmado — Data de migração: 12/06/2026"}] },
   { id:3, nome:"QoS (Projeto 2)", qtdMaquinas:10, status:"Planejamento", progresso:85, confirmado:true, dataPrevista:"2026-05-30", dataMigracao:"2026-06-12", historico:[{"data": "2026-05-30", "acao": "Virada prevista para o dia 12, contemplando o total de 10 máquinas."}, {"data": "2026-06-03", "acao": "Progresso: 85% — Aguardando teste e validação na 3.0. Data prevista: 30/05. Data de migração: 07/06/2026"}, {"data": "2026-06-07", "acao": "Necessário obter status junto ao Augusto (CSE)"}, {"data": "09/06/2026 14:29", "acao": "Status alterado para: Planejamento"}, {"data": "09/06/2026 14:29", "acao": "Confirmação: ✅ Confirmado"}, {"data": "2026-06-09", "acao": "Data de migração agendada para 12/06/2026"}, {"data": "09/06/2026 14:29", "acao": "Status alterado para: Planejamento"}] },
   { id:4, nome:"SOPREMA - INDUSTRIA E COMERCIO", qtdMaquinas:8, status:"Planejamento", progresso:75, confirmado:true, dataPrevista:"2026-06-12", dataMigracao:"2026-06-12", historico:[{"data": "2026-05-26", "acao": "Reunião de alinhamento para virada realizada em 26/05."}, {"data": "2026-05-30", "acao": "Aguardando devolutiva do Bruno Queiroz para alinhamento com o cliente."}, {"data": "2026-06-07", "acao": "Janela confirmada para sexta-feira (12/06), após configuração de firewall"}, {"data": "2026-06-09", "acao": "Data de migração agendada para 12/06/2026"}, {"data": "09/06/2026 14:29", "acao": "Confirmação: ✅ Confirmado"}, {"data": "09/06/2026 14:29", "acao": "Status alterado para: Planejamento"}] },
   { id:5, nome:"ZANTHUS - COMERCIO E SERVICOS", qtdMaquinas:24, status:"Planejamento", progresso:50, confirmado:null, dataPrevista:"2026-06-12", dataMigracao:null, historico:[{"data": "2026-05-30", "acao": "Criado - Status: Em Progresso, aguardando definição do histórico."}, {"data": "2026-06-07", "acao": "Necessário definição e confirmação da janela para 12/06"}, {"data": "09/06/2026 14:29", "acao": "Status alterado para: Planejamento"}] },
@@ -5206,47 +5206,7 @@ function san30VMLExportXLS() {
 // helper used in vmPanel template to avoid nested backtick
 </script>
 
-<div id="san30-gov-overlay" onclick="if(event.target===this)san30GovClose()" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.85);backdrop-filter:blur(10px);z-index:900;align-items:flex-start;justify-content:center;padding:2vh 20px 40px;overflow-y:auto;">
-  <div style="background:linear-gradient(160deg,#0a0f1e 0%,#0f172a 100%);border:1px solid rgba(37,99,235,.25);border-radius:22px;width:1100px;max-width:100%;box-shadow:0 50px 120px rgba(0,0,0,.9);">
 
-    <!-- Header -->
-    <div style="display:flex;justify-content:space-between;align-items:center;padding:22px 32px 18px;border-bottom:1px solid rgba(255,255,255,.06);">
-      <div style="display:flex;align-items:center;gap:14px;">
-        <div style="width:42px;height:42px;background:linear-gradient(135deg,#1e3a5f,#2563eb);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:20px;box-shadow:0 4px 16px rgba(37,99,235,.4);">📊</div>
-        <div>
-          <div style="font-size:17px;font-weight:800;color:#f1f5f9;letter-spacing:-.3px;">Relatório de Gestão Cloud · BCP 3.0</div>
-          <div id="san30-gov-sub" style="font-size:11px;color:#475569;margin-top:3px;font-weight:500;"></div>
-        </div>
-      </div>
-      <div style="display:flex;gap:8px;align-items:center;">
-        <button onclick="san30GovExport()" style="display:flex;align-items:center;gap:6px;padding:9px 18px;background:linear-gradient(135deg,#065f46,#059669);color:#fff;border:none;border-radius:10px;font-size:11px;font-weight:700;font-family:'Sora',sans-serif;cursor:pointer;box-shadow:0 4px 12px rgba(5,150,105,.3);">
-          ⬇ Exportar PNG
-        </button>
-        <button onclick="san30GovClose()" style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);color:#94a3b8;width:34px;height:34px;border-radius:50%;cursor:pointer;font-size:15px;display:flex;align-items:center;justify-content:center;" onmouseover="this.style.background='rgba(255,255,255,.12)'" onmouseout="this.style.background='rgba(255,255,255,.06)'">✕</button>
-      </div>
-    </div>
-
-    <div style="padding:24px 32px 32px;">
-
-      <!-- Métricas -->
-      <div id="san30-gov-metrics" style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:28px;"></div>
-
-      <!-- Gráfico full width -->
-      <div style="background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);border-radius:16px;padding:20px;margin-bottom:20px;">
-        <div style="font-size:10px;font-weight:800;color:#475569;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:16px;">Comparativo de VMs por Domínio com Alteração</div>
-        <div id="san30-gov-chart-wrap" style="overflow-x:auto;overflow-y:hidden;width:100%;">
-          <canvas id="san30-gov-canvas"></canvas>
-        </div>
-      </div>
-
-      <!-- Tabela de alterações full width -->
-      <div style="background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);border-radius:16px;padding:20px;max-height:320px;overflow-y:auto;">
-        <div style="font-size:10px;font-weight:800;color:#475569;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:14px;">Domínios com Alteração</div>
-        <div id="san30-gov-changes"></div>
-      </div>
-    </div>
-  </div>
-</div>
 
 <div id="san30vml-overlay"
      onclick="if(event.target===this)san30VMLClose()"
