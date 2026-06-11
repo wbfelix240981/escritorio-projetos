@@ -32,9 +32,9 @@
 body { font-family:'Sora',sans-serif; background:var(--bg); min-height:100vh; color:var(--text-dark); overflow-x:hidden; }
 
 #drawer-trigger {
-  position: fixed; top: 10px; left: 16px; z-index: 160;
+  position: fixed; top: 24px; left: 24px; z-index: 300;
   display: flex; align-items: center;
-  padding: 8px 14px;
+  padding: 10px 16px;
   background: rgba(255,255,255,.15);
   border: 1.5px solid rgba(255,255,255,.28);
   backdrop-filter: blur(12px); border-radius: 50px;
@@ -93,9 +93,7 @@ body.page-internal #drawer-trigger:hover { background: #f4f6fb; border-color: #c
 .dr-footer { padding: 16px 22px; border-top: 1px solid rgba(255,255,255,.07); font-size: 10px; color: rgba(255,255,255,.28); line-height: 1.7; }
 
 /* PÁGINAS */
-.page { display: none; }
-.page.active { display: block; }
-.page.active.bcp-page { display: flex; flex-direction: column; height: 100vh; overflow: hidden; }
+.page { display: none; min-height: 100vh; }
 .page.active { display: block; }
 
 #cover { min-height: 100vh; background: linear-gradient(135deg, #060f2e 0%, #0d3a8a 55%, #1255b0 100%); align-items: center; justify-content: center; position: relative; overflow: hidden; }
@@ -109,7 +107,7 @@ body.page-internal #drawer-trigger:hover { background: #f4f6fb; border-color: #c
 .cover-period  { font-size:clamp(52px,7vw,84px); font-weight:800; color:#fff; letter-spacing:-3px; line-height:1; margin-bottom:8px; }
 .cover-desc { font-size:clamp(14px,2vw,18px); font-weight:400; color:rgba(255,255,255,.5); line-height:1.6; margin:18px 0 24px; letter-spacing:.2px; }
 
-.topbar { background: linear-gradient(180deg, #fff 0%, #f8fafb 100%); box-shadow: 0 2px 12px rgba(0,0,0,.08); padding: 0 32px 0 160px; height: 64px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 150; border-bottom: 1px solid rgba(0,0,0,.04); flex-shrink: 0; }
+.topbar { background: linear-gradient(180deg, #fff 0%, #f8fafb 100%); box-shadow: 0 2px 12px rgba(0,0,0,.08); padding: 0 32px 0 100px; height: 64px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; border-bottom: 1px solid rgba(0,0,0,.04); }
 .tb-heading { font-size: 17px; font-weight: 900; color: #1a1a2e; letter-spacing: -0.5px; }
 .tb-heading span { font-weight: 500; color: #aaa; margin-left: 8px; }
 
@@ -164,16 +162,16 @@ body.page-internal #drawer-trigger:hover { background: #f4f6fb; border-color: #c
 /* MODAL */
 .overlay { position:fixed; inset:0; background:rgba(10,18,50,.5); backdrop-filter:blur(5px); z-index:600; display:flex; align-items:center; justify-content:center; opacity:0; pointer-events:none; transition:opacity .22s; }
 .overlay.open { opacity:1; pointer-events:all; }
-.modal { background:#fff; border-radius:22px; width:580px; max-width:calc(100vw - 40px); max-height:88vh; overflow-y:auto; box-shadow:0 30px 90px rgba(0,0,0,.25); transform:translateY(28px) scale(.96); transition:transform .3s cubic-bezier(.34,1.3,.64,1),opacity .22s; opacity:0; scrollbar-width:thin; scrollbar-color:#dde0ea transparent; position:relative; }
+.modal { background:#fff; border-radius:22px; width:580px; max-width:calc(100vw - 40px); max-height:88vh; overflow-y:auto; box-shadow:0 30px 90px rgba(0,0,0,.25); transform:translateY(28px) scale(.96); transition:transform .3s cubic-bezier(.34,1.3,.64,1),opacity .22s; opacity:0; scrollbar-width:thin; scrollbar-color:#dde0ea transparent; }
 .overlay.open .modal { transform:translateY(0) scale(1); opacity:1; }
-.modal-hd { padding:20px 22px 16px; border-bottom:1px solid #f0f1f7; display:flex; justify-content:space-between; align-items:center; gap:12px; }
-.modal-header-content { flex:1; min-width:0; }
+.modal-hd { padding:24px 26px 18px; border-bottom:1px solid #f0f1f7; display:flex; justify-content:space-between; align-items:flex-start; }
+.modal-header-content { flex:1; }
 .modal-accent { height:5px; border-radius:99px; margin-bottom:16px; }
 .modal-eye    { font-size:10px; font-weight:700; letter-spacing:2.5px; text-transform:uppercase; color:var(--text-light); margin-bottom:4px; }
 .modal-ttl    { font-size:18px; font-weight:800; color:var(--text-dark); letter-spacing:-.4px; line-height:1.3; padding-right:44px; }
-.modal-x      { flex-shrink:0; margin-left:12px; width:34px; height:34px; border-radius:50%; border:1.5px solid #e6e8f2; background:transparent; cursor:pointer; display:flex; align-items:center; justify-content:center; font-size:15px; color:var(--text-light); transition:all .16s; }
+.modal-x      { position:absolute; top:20px; right:20px; width:34px; height:34px; border-radius:50%; border:1.5px solid #e6e8f2; background:transparent; cursor:pointer; display:flex; align-items:center; justify-content:center; font-size:15px; color:var(--text-light); transition:all .16s; }
 .modal-x:hover { background:#f2f3fa; color:var(--text-dark); border-color:#c8cbe0; }
-.modal-bd { padding:22px 26px 28px; }
+.modal-bd { padding:20px 26px 26px; }
 .m-summary { display:flex; align-items:center; gap:18px; padding:14px 18px; border-radius:14px; background:var(--bg); margin-bottom:20px; }
 .m-big-pct { font-size:50px; font-weight:800; color:var(--text-dark); letter-spacing:-2px; line-height:1; flex-shrink:0; }
 .m-pct-right { flex:1; }
@@ -334,163 +332,6 @@ body.page-internal #drawer-trigger:hover { background: #f4f6fb; border-color: #c
 
 /* FOCUS VISÍVEL PARA ACESSIBILIDADE */
 button:focus-visible, a:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
-
-
-/* ── Paleta 3: BCP pages — sidebar dark + content light ── */
-.bcp-shell {
-  display: flex;
-  flex: 1;
-  overflow: hidden;
-  font-family: 'Sora', sans-serif;
-  background: #f9fafb;
-}
-.bcp-sidebar {
-  width: 220px;
-  flex-shrink: 0;
-  background: #111827;
-  padding: 20px 10px;
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-  border-right: 1px solid rgba(255,255,255,.06);
-  height: 100%;
-  overflow-y: auto;
-}
-.bcp-sidebar-section {
-  font-size: 9px; font-weight: 700; color: #4b5563;
-  letter-spacing: 1px; text-transform: uppercase;
-  padding: 10px 10px 4px;
-}
-.bcp-nav-item {
-  display: flex; align-items: center; gap: 8px;
-  padding: 7px 10px; border-radius: 7px;
-  font-size: 12px; font-weight: 500; color: #9ca3af;
-  cursor: pointer; border: none; background: transparent;
-  font-family: 'Sora', sans-serif; width: 100%; text-align: left;
-  transition: all .15s;
-}
-.bcp-nav-item:hover { color: #e5e7eb; background: rgba(255,255,255,.05); }
-.bcp-nav-item.active { color: #fff; background: rgba(255,255,255,.1); }
-.bcp-nav-item svg { width: 14px; height: 14px; flex-shrink: 0; opacity: .7; }
-.bcp-nav-item.active svg { opacity: 1; }
-.bcp-nav-count {
-  margin-left: auto; font-size: 10px; font-weight: 700;
-  padding: 1px 7px; border-radius: 99px;
-}
-.bcp-main {
-  flex: 1;
-  overflow: hidden;
-  background: #f9fafb;
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-}
-.bcp-page-header {
-  padding: 20px 28px 16px;
-  border-bottom: 1px solid #e5e7eb;
-  background: #fff;
-  display: flex; align-items: flex-start; justify-content: space-between; gap: 16px;
-}
-.bcp-page-title { font-size: 16px; font-weight: 700; color: #111827; letter-spacing: -.3px; }
-.bcp-page-sub   { font-size: 11px; color: #6b7280; margin-top: 3px; }
-.bcp-metrics {
-  display: flex; gap: 1px;
-  background: #e5e7eb;
-  border-bottom: 1px solid #e5e7eb;
-}
-.bcp-metric {
-  flex: 1; padding: 14px 18px;
-  background: #fff;
-}
-.bcp-metric-val { font-size: 20px; font-weight: 700; color: #111827; font-variant-numeric: tabular-nums; }
-.bcp-metric-lbl { font-size: 10px; color: #9ca3af; margin-top: 2px; font-weight: 500; text-transform: uppercase; letter-spacing: .5px; }
-.bcp-metric-delta {
-  display: inline-flex; align-items: center;
-  font-size: 10px; font-weight: 700; padding: 2px 7px; border-radius: 99px; margin-top: 5px;
-}
-.bcp-delta-up   { background: #dcfce7; color: #15803d; }
-.bcp-delta-down { background: #fee2e2; color: #dc2626; }
-.bcp-filters {
-  display: flex; align-items: center; gap: 8px;
-  padding: 12px 20px;
-  background: #fff;
-  border-bottom: 1px solid #e5e7eb;
-}
-.bcp-search-wrap { position: relative; flex: 1; max-width: 260px; }
-.bcp-search-wrap svg { position: absolute; left: 9px; top: 50%; transform: translateY(-50%); width: 13px; height: 13px; color: #9ca3af; }
-.bcp-search-input {
-  width: 100%; padding: 6px 10px 6px 28px; font-size: 12px; font-family: 'Sora', sans-serif;
-  background: #f9fafb; border: 1px solid #d1d5db; border-radius: 7px;
-  color: #111827; outline: none; transition: border-color .15s;
-}
-.bcp-search-input::placeholder { color: #9ca3af; }
-.bcp-search-input:focus { border-color: #2563eb; }
-.bcp-filter-group { display: flex; gap: 1px; border: 1px solid #d1d5db; border-radius: 8px; overflow: hidden; }
-.bcp-filter-btn {
-  font-size: 11px; font-weight: 600; padding: 5px 12px;
-  background: transparent; border: none; cursor: pointer;
-  color: #6b7280; transition: all .15s; font-family: 'Sora', sans-serif;
-}
-.bcp-filter-btn:hover { color: #111827; background: #f3f4f6; }
-.bcp-filter-btn.active { color: #1d4ed8; background: #eff6ff; }
-.bcp-filter-btn.active.purple { color: #6d28d9; background: #f5f3ff; }
-.bcp-table-wrap { overflow-y: auto; flex: 1; min-height: 0; }
-.bcp-table { width: 100%; border-collapse: collapse; }
-.bcp-table thead th {
-  font-size: 10px; font-weight: 600; color: #9ca3af;
-  letter-spacing: .6px; text-transform: uppercase;
-  padding: 10px 16px; text-align: left;
-  background: #f9fafb; border-bottom: 1px solid #e5e7eb;
-  position: sticky; top: 0;
-}
-.bcp-table thead th:first-child { padding-left: 24px; }
-.bcp-table tbody tr { border-bottom: 1px solid #f3f4f6; transition: background .1s; }
-.bcp-table tbody tr:hover { background: #f9fafb; }
-.bcp-table tbody td { padding: 11px 16px; font-size: 12px; vertical-align: middle; }
-.bcp-table tbody td:first-child { padding-left: 24px; }
-.bcp-dom { display: flex; align-items: center; gap: 7px; font-family: 'JetBrains Mono', 'Fira Code', monospace; font-size: 12px; font-weight: 500; color: #111827; }
-.bcp-dom-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
-.bcp-dom-cli  .bcp-dom-dot { background: #16a34a; }
-.bcp-dom-fnd  .bcp-dom-dot { background: #d1d5db; }
-.bcp-badge { font-size: 10px; font-weight: 700; padding: 3px 9px; border-radius: 99px; }
-.bcp-badge-cli  { background: #dcfce7; color: #15803d; border: 1px solid #bbf7d0; }
-.bcp-badge-fnd  { background: #f3f4f6; color: #6b7280; border: 1px solid #e5e7eb; }
-.bcp-badge-canc { background: #fef3c7; color: #92400e; border: 1px solid #fde68a; }
-.bcp-bar-track { height: 4px; border-radius: 99px; background: #f3f4f6; display: flex; overflow: hidden; margin-bottom: 4px; }
-.bcp-bar-on  { background: #16a34a; }
-.bcp-bar-off { background: #ef4444; }
-.bcp-bar-nums { display: flex; gap: 8px; font-size: 10px; font-weight: 600; }
-.bcp-bar-on-lbl  { color: #16a34a; }
-.bcp-bar-off-lbl { color: #ef4444; }
-.bcp-bar-tot-lbl { color: #9ca3af; }
-.bcp-expand-btn {
-  width: 24px; height: 24px; border-radius: 5px;
-  background: #f9fafb; border: 1px solid #e5e7eb;
-  color: #6b7280; cursor: pointer; display: flex;
-  align-items: center; justify-content: center; font-size: 11px;
-  transition: all .15s;
-}
-.bcp-expand-btn:hover { border-color: #9ca3af; color: #111827; }
-.bcp-notif {
-  display: flex; align-items: center; gap: 10px;
-  margin: 16px 24px 0;
-  padding: 10px 14px; border-radius: 9px;
-  font-size: 12px; font-weight: 500;
-  background: #fffbeb; border: 1px solid #fde68a; color: #92400e;
-}
-.bcp-notif svg { width: 14px; height: 14px; flex-shrink: 0; color: #f59e0b; }
-.bcp-btn {
-  display: flex; align-items: center; gap: 6px;
-  font-size: 12px; font-weight: 600; padding: 7px 14px;
-  border-radius: 7px; cursor: pointer;
-  border: 1px solid #d1d5db; background: #f9fafb; color: #374151;
-  transition: all .15s; font-family: 'Sora', sans-serif;
-}
-.bcp-btn:hover { border-color: #9ca3af; background: #f3f4f6; }
-.bcp-btn-primary { background: #2563eb; border-color: #2563eb; color: #fff; }
-.bcp-btn-primary:hover { background: #1d4ed8; border-color: #1d4ed8; }
-.bcp-btn-purple { background: #7c3aed; border-color: #7c3aed; color: #fff; }
-.bcp-btn-purple:hover { background: #6d28d9; border-color: #6d28d9; }
 
 </style>
 </head>
@@ -759,62 +600,37 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--blue); outline-
 </div>
 
 <!-- SANITIZAÇÃO 2.0 -->
-<div id="capacity-20" class="page bcp-page">
+<div id="capacity-20" class="page">
   <div class="topbar"><div class="tb-heading">BCP 2.0 <span>| Binario Cloud</span></div></div>
-  <div class="bcp-shell">
-<div class="bcp-sidebar">
-      <div class="bcp-sidebar-section">Filtros</div>
-      <button class="bcp-nav-item active" onclick="san20SetFilter('all',this)">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/></svg>
-        Todos
-        <span class="bcp-nav-count" style="background:rgba(59,130,246,.15);color:#60a5fa;" id="san20-sidebar-all">31</span>
-      </button>
-      <button class="bcp-nav-item" onclick="san20SetFilter('cliente',this)">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 20V10M12 20V4M6 20v-6"/></svg>
-        ☁ Cloud Cliente
-        <span class="bcp-nav-count" style="background:rgba(22,163,74,.12);color:#16a34a;" id="san20-sidebar-cli">—</span>
-      </button>
-      <button class="bcp-nav-item" onclick="san20SetFilter('foundation',this)">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
-        🏗 Foundation
-        <span class="bcp-nav-count" style="background:rgba(239,68,68,.12);color:#dc2626;" id="san20-sidebar-fnd">—</span>
-      </button>
-      <div class="bcp-sidebar-section" style="margin-top:8px;">Ações</div>
-      <button class="bcp-nav-item" onclick="san20OpenRelatorio()">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 17v-2m3 2v-4m3 4v-6M5 20h14a1 1 0 001-1V5a1 1 0 00-1-1H5a1 1 0 00-1 1v14a1 1 0 001 1z"/></svg>
-        Relatório
-      </button>
-      <button class="bcp-nav-item">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
-        Exportar
-      </button>
-    </div>
-    <div class="bcp-main">
+  <div style="background:linear-gradient(135deg,#0f0c29 0%,#1a1040 50%,#0f172a 100%);min-height:calc(100vh - 64px);padding:32px 40px 56px;font-family:'Sora',sans-serif;">
 
-    <div class="bcp-page-header">
-      <div>
-        <h1 style="font-size:17px;font-weight:700;color:#111827;letter-spacing:-.3px;margin:0;">Gestão Cloud de Domínios</h1>
-        <p style="font-size:11px;color:#6b7280;margin:3px 0 0;">Ambiente 2.0 — 471 VMs · 31 Domínios<span id="san20-timestamp"></span></p>
+    <!-- Header -->
+    <div style="margin-bottom:28px;">
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:6px;">
+        <div>
+          <h1 style="font-size:22px;font-weight:800;color:#fff;letter-spacing:-.5px;margin:0;">Gestão Cloud de Domínios</h1>
+          <p style="font-size:12px;color:#94a3b8;margin:2px 0 0;">Ambiente 2.0 — Inventário OpenStack · 471 VMs · 31 Domínios · 419 ligadas · 52 desligadas<span id="san20-timestamp"></span></p>
+        </div>
       </div>
-      <button class="bcp-btn bcp-btn-purple" onclick="san30OpenRelatorio()">Relatório</button>
     </div>
+
     <!-- Métricas -->
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:16px;margin-bottom:28px;" id="san20-metrics">
-      <div style="background:#f3f4f6;border:1px solid #e5e7eb;border-radius:14px;padding:20px;">
-        <div style="font-size:10px;font-weight:700;color:#6b7280;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px;">Total de Domínios</div>
+      <div style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:20px;">
+        <div style="font-size:10px;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px;">Total de Domínios</div>
         <div style="font-size:36px;font-weight:900;color:#f1f5f9;line-height:1;" id="san20-total">0</div>
       </div>
       <div id="san20-card-ok" style="background:rgba(34,197,94,.08);border:1px solid rgba(34,197,94,.2);border-radius:14px;padding:20px;">
         <div style="font-size:10px;font-weight:700;color:#86efac;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px;">☁ Cloud Cliente</div>
-        <div style="font-size:36px;font-weight:900;color:#16a34a;line-height:1;" id="san20-ok">0</div>
+        <div style="font-size:36px;font-weight:900;color:#4ade80;line-height:1;" id="san20-ok">0</div>
       </div>
       <div id="san20-card-nok" style="background:rgba(251,191,36,.08);border:1px solid rgba(251,191,36,.2);border-radius:14px;padding:20px;">
         <div style="font-size:10px;font-weight:700;color:#fde68a;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px;">🏗 Cloud Foundation</div>
-        <div style="font-size:36px;font-weight:900;color:#d97706;line-height:1;" id="san20-nok">0</div>
+        <div style="font-size:36px;font-weight:900;color:#fbbf24;line-height:1;" id="san20-nok">0</div>
       </div>
       <div style="background:rgba(56,189,248,.08);border:1px solid rgba(56,189,248,.2);border-radius:14px;padding:20px;">
         <div style="font-size:10px;font-weight:700;color:#bae6fd;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px;">Total de VMs</div>
-        <div style="font-size:36px;font-weight:900;color:#0ea5e9;line-height:1;" id="san20-totalvms">0</div>
+        <div style="font-size:36px;font-weight:900;color:#38bdf8;line-height:1;" id="san20-totalvms">0</div>
       </div>
       <div style="background:rgba(251,113,133,.08);border:1px solid rgba(251,113,133,.2);border-radius:14px;padding:20px;">
         <div style="font-size:10px;font-weight:700;color:#fda4af;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px;">Candidatos Remoção</div>
@@ -822,11 +638,11 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--blue); outline-
       </div>
       <div style="background:rgba(34,197,94,.08);border:1px solid rgba(34,197,94,.25);border-radius:14px;padding:20px;">
         <div style="font-size:10px;font-weight:700;color:#86efac;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px;">🟢 VMs Ligadas</div>
-        <div style="font-size:36px;font-weight:900;color:#16a34a;line-height:1;" id="san20-ligadas">0</div>
+        <div style="font-size:36px;font-weight:900;color:#4ade80;line-height:1;" id="san20-ligadas">0</div>
       </div>
       <div style="background:rgba(239,68,68,.08);border:1px solid rgba(239,68,68,.2);border-radius:14px;padding:20px;">
         <div style="font-size:10px;font-weight:700;color:#fca5a5;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px;">⚫ VMs Desligadas</div>
-        <div style="font-size:36px;font-weight:900;color:#dc2626;line-height:1;" id="san20-desligadas">0</div>
+        <div style="font-size:36px;font-weight:900;color:#f87171;line-height:1;" id="san20-desligadas">0</div>
       </div>
     </div>
 
@@ -834,7 +650,7 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--blue); outline-
     <div style="display:flex;flex-direction:column;gap:12px;margin-bottom:18px;">
       <!-- Botão Gestão Cloud -->
       <div style="display:flex;justify-content:flex-end;align-items:center;gap:10px;">
-        <span id="san20-save-txt" style="font-size:11px;color:#6b7280;"></span>
+        <span id="san20-save-txt" style="font-size:11px;color:#64748b;"></span>
         <button onclick="san20OpenRelatorio()" style="display:flex;align-items:center;gap:7px;padding:9px 18px;background:linear-gradient(135deg,#1e3a5f,#2563eb);color:#fff;border:none;border-radius:10px;font-size:12px;font-weight:700;font-family:'Sora',sans-serif;cursor:pointer;box-shadow:0 4px 14px rgba(37,99,235,.35);">
           📊 Relatório de Gestão Cloud
         </button>
@@ -842,26 +658,26 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--blue); outline-
       <!-- Busca e Filtros -->
       <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
         <div style="position:relative;">
-          <input id="san20-search" type="text" placeholder="Buscar domínio ou cliente..." style="background:#e5e7eb;border:1px solid rgba(255,255,255,.12);border-radius:10px;padding:9px 14px 9px 36px;color:#f1f5f9;font-size:13px;font-family:'Sora',sans-serif;width:260px;outline:none;" oninput="san20Render()">
+          <input id="san20-search" type="text" placeholder="Buscar domínio ou cliente..." style="background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:10px;padding:9px 14px 9px 36px;color:#f1f5f9;font-size:13px;font-family:'Sora',sans-serif;width:260px;outline:none;" oninput="san20Render()">
           <span style="position:absolute;left:12px;top:50%;transform:translateY(-50%);font-size:14px;opacity:.5;">🔍</span>
         </div>
-        <div style="display:flex;gap:6px;background:#f3f4f6;border:1px solid #e5e7eb;border-radius:12px;padding:4px;">
+        <div style="display:flex;gap:6px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:4px;">
           <button id="san20-btn-all"        onclick="san20SetFilter('all')"        style="padding:7px 16px;border-radius:8px;border:none;font-size:12px;font-weight:700;font-family:'Sora',sans-serif;cursor:pointer;transition:all .18s;background:rgba(168,85,247,.9);color:#fff;box-shadow:0 2px 8px rgba(168,85,247,.4);">Todos</button>
-          <button id="san20-btn-cliente"    onclick="san20SetFilter('cliente')"    style="padding:7px 16px;border-radius:8px;border:none;font-size:12px;font-weight:700;font-family:'Sora',sans-serif;cursor:pointer;transition:all .18s;background:transparent;color:#6b7280;">☁ Cloud Cliente</button>
-          <button id="san20-btn-foundation" onclick="san20SetFilter('foundation')" style="padding:7px 16px;border-radius:8px;border:none;font-size:12px;font-weight:700;font-family:'Sora',sans-serif;cursor:pointer;transition:all .18s;background:transparent;color:#6b7280;">🏗 Cloud Foundation</button>
+          <button id="san20-btn-cliente"    onclick="san20SetFilter('cliente')"    style="padding:7px 16px;border-radius:8px;border:none;font-size:12px;font-weight:700;font-family:'Sora',sans-serif;cursor:pointer;transition:all .18s;background:transparent;color:#64748b;">☁ Cloud Cliente</button>
+          <button id="san20-btn-foundation" onclick="san20SetFilter('foundation')" style="padding:7px 16px;border-radius:8px;border:none;font-size:12px;font-weight:700;font-family:'Sora',sans-serif;cursor:pointer;transition:all .18s;background:transparent;color:#64748b;">🏗 Cloud Foundation</button>
         </div>
-        <span id="san20-count-label" style="font-size:11px;color:#6b7280;font-weight:600;"></span>
+        <span id="san20-count-label" style="font-size:11px;color:#475569;font-weight:600;"></span>
       </div>
     </div>
     <!-- input hidden para manter compatibilidade com san20Render -->
     <input type="hidden" id="san20-filter" value="all">
 
     <!-- Tabela -->
-    <div style="background:#f9fafb;border:1px solid #e5e7eb;border-radius:16px;overflow:hidden;">
-      <div style="display:grid;grid-template-columns:2fr 2fr 1.6fr;padding:12px 20px;background:#f3f4f6;border-bottom:1px solid rgba(255,255,255,.07);">
-        <span style="font-size:10px;font-weight:700;color:#6b7280;text-transform:uppercase;letter-spacing:1.5px;">Domínio</span>
-        <span style="font-size:10px;font-weight:700;color:#6b7280;text-transform:uppercase;letter-spacing:1.5px;">Cliente / Serviço</span>
-        <span style="font-size:10px;font-weight:700;color:#6b7280;text-transform:uppercase;letter-spacing:1.5px;">Máquinas</span>
+    <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:16px;overflow:hidden;">
+      <div style="display:grid;grid-template-columns:2fr 2fr 1.6fr;padding:12px 20px;background:rgba(255,255,255,.05);border-bottom:1px solid rgba(255,255,255,.07);">
+        <span style="font-size:10px;font-weight:700;color:#64748b;text-transform:uppercase;letter-spacing:1.5px;">Domínio</span>
+        <span style="font-size:10px;font-weight:700;color:#64748b;text-transform:uppercase;letter-spacing:1.5px;">Cliente / Serviço</span>
+        <span style="font-size:10px;font-weight:700;color:#64748b;text-transform:uppercase;letter-spacing:1.5px;">Máquinas</span>
       </div>
       <div id="san20-tbody"></div>
     </div>
@@ -869,7 +685,7 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--blue); outline-
     <!-- Empty state -->
     <div id="san20-empty" style="display:none;text-align:center;padding:60px 20px;">
       <div style="font-size:48px;margin-bottom:12px;">🌐</div>
-      <p style="color:#6b7280;font-size:14px;font-weight:600;">Nenhum domínio encontrado</p>
+      <p style="color:#475569;font-size:14px;font-weight:600;">Nenhum domínio encontrado</p>
       <p style="color:#334155;font-size:12px;margin-top:4px;">Adicione domínios ou ajuste os filtros</p>
     </div>
 
@@ -880,19 +696,19 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--blue); outline-
     <div style="background:linear-gradient(135deg,#1e1b4b,#1e293b);border:1px solid rgba(168,85,247,.3);border-radius:20px;padding:32px;width:460px;max-width:calc(100vw - 40px);box-shadow:0 30px 80px rgba(0,0,0,.5);">
       <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;">
         <h2 style="font-size:17px;font-weight:800;color:#fff;margin:0;" id="san20-modal-title">Adicionar Domínio</h2>
-        <button onclick="san20CloseModal()" style="background:#e5e7eb;border:none;color:#6b7280;width:30px;height:30px;border-radius:50%;cursor:pointer;font-size:14px;">✕</button>
+        <button onclick="san20CloseModal()" style="background:rgba(255,255,255,.08);border:none;color:#94a3b8;width:30px;height:30px;border-radius:50%;cursor:pointer;font-size:14px;">✕</button>
       </div>
       <div style="display:flex;flex-direction:column;gap:16px;">
         <div>
-          <label style="font-size:11px;font-weight:700;color:#6b7280;letter-spacing:1px;text-transform:uppercase;display:block;margin-bottom:6px;">Domínio *</label>
-          <input id="san20-inp-dominio" type="text" placeholder="ex: portal.binario.cloud" style="width:100%;background:#e5e7eb;border:1px solid rgba(255,255,255,.15);border-radius:10px;padding:10px 14px;color:#f1f5f9;font-size:13px;font-family:'Sora',sans-serif;outline:none;box-sizing:border-box;">
+          <label style="font-size:11px;font-weight:700;color:#94a3b8;letter-spacing:1px;text-transform:uppercase;display:block;margin-bottom:6px;">Domínio *</label>
+          <input id="san20-inp-dominio" type="text" placeholder="ex: portal.binario.cloud" style="width:100%;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);border-radius:10px;padding:10px 14px;color:#f1f5f9;font-size:13px;font-family:'Sora',sans-serif;outline:none;box-sizing:border-box;">
         </div>
         <div>
-          <label style="font-size:11px;font-weight:700;color:#6b7280;letter-spacing:1px;text-transform:uppercase;display:block;margin-bottom:6px;">Cliente / Serviço *</label>
-          <input id="san20-inp-cliente" type="text" placeholder="ex: Binario Cloud — Portal" style="width:100%;background:#e5e7eb;border:1px solid rgba(255,255,255,.15);border-radius:10px;padding:10px 14px;color:#f1f5f9;font-size:13px;font-family:'Sora',sans-serif;outline:none;box-sizing:border-box;">
+          <label style="font-size:11px;font-weight:700;color:#94a3b8;letter-spacing:1px;text-transform:uppercase;display:block;margin-bottom:6px;">Cliente / Serviço *</label>
+          <input id="san20-inp-cliente" type="text" placeholder="ex: Binario Cloud — Portal" style="width:100%;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);border-radius:10px;padding:10px 14px;color:#f1f5f9;font-size:13px;font-family:'Sora',sans-serif;outline:none;box-sizing:border-box;">
         </div>
         <div>
-          <label style="font-size:11px;font-weight:700;color:#6b7280;letter-spacing:1px;text-transform:uppercase;display:block;margin-bottom:6px;">Tipo</label>
+          <label style="font-size:11px;font-weight:700;color:#94a3b8;letter-spacing:1px;text-transform:uppercase;display:block;margin-bottom:6px;">Tipo</label>
           <select id="san20-inp-tipo" style="width:100%;background:#1e293b;border:1px solid rgba(255,255,255,.15);border-radius:10px;padding:10px 14px;color:#f1f5f9;font-size:13px;font-family:'Sora',sans-serif;outline:none;cursor:pointer;">
             <option>Aplicação Web</option>
             <option>API</option>
@@ -905,7 +721,7 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--blue); outline-
         <div id="san20-modal-preview" style="display:none;padding:12px 14px;border-radius:10px;font-size:12px;font-weight:600;margin-top:4px;"></div>
       </div>
       <div style="display:flex;gap:10px;margin-top:24px;">
-        <button onclick="san20CloseModal()" style="flex:1;padding:11px;background:#e5e7eb;color:#6b7280;border:1px solid #e5e7eb;border-radius:10px;font-size:13px;font-weight:700;font-family:'Sora',sans-serif;cursor:pointer;">Cancelar</button>
+        <button onclick="san20CloseModal()" style="flex:1;padding:11px;background:rgba(255,255,255,.07);color:#94a3b8;border:1px solid rgba(255,255,255,.1);border-radius:10px;font-size:13px;font-weight:700;font-family:'Sora',sans-serif;cursor:pointer;">Cancelar</button>
         <button onclick="san20Salvar()" style="flex:2;padding:11px;background:linear-gradient(135deg,#7c3aed,#a855f7);color:#fff;border:none;border-radius:10px;font-size:13px;font-weight:700;font-family:'Sora',sans-serif;cursor:pointer;box-shadow:0 4px 14px rgba(124,58,237,.35);">Salvar</button>
       </div>
     </div>
@@ -975,9 +791,9 @@ function san20ToggleVMs(id, btn) {
 function san20SetFilter(val) {
   document.getElementById('san20-filter').value = val;
   const styles = {
-    all:        { bg:'rgba(168,85,247,.9)', color:'#111827', shadow:'0 2px 8px rgba(168,85,247,.4)' },
-    cliente:    { bg:'rgba(37,99,235,.85)', color:'#111827', shadow:'0 2px 8px rgba(37,99,235,.4)'  },
-    foundation: { bg:'rgba(217,119,6,.85)', color:'#111827', shadow:'0 2px 8px rgba(217,119,6,.4)'  },
+    all:        { bg:'rgba(168,85,247,.9)', color:'#fff', shadow:'0 2px 8px rgba(168,85,247,.4)' },
+    cliente:    { bg:'rgba(37,99,235,.85)', color:'#fff', shadow:'0 2px 8px rgba(37,99,235,.4)'  },
+    foundation: { bg:'rgba(217,119,6,.85)', color:'#fff', shadow:'0 2px 8px rgba(217,119,6,.4)'  },
   };
   ['all','cliente','foundation'].forEach(k => {
     const btn = document.getElementById('san20-btn-' + k);
@@ -1043,12 +859,12 @@ function san20Render() {
     const lig = r.ligadas != null ? r.ligadas : '—';
     const desl = r.desligadas != null ? r.desligadas : '—';
     let alertTag = '';
-    if (r.obs === 'migrando') alertTag = `<span style="font-size:10px;background:rgba(56,189,248,.15);color:#0ea5e9;border:1px solid rgba(56,189,248,.3);padding:2px 8px;border-radius:99px;margin-left:6px;">🔄 Migrando · Pagamento ativo</span>`;
-    else if (pct === 100)    alertTag = `<span style="font-size:10px;background:rgba(239,68,68,.2);color:#dc2626;border:1px solid rgba(239,68,68,.3);padding:2px 8px;border-radius:99px;margin-left:6px;">🗑 Candidato remoção</span>`;
-    else if (pct >= 50)      alertTag = `<span style="font-size:10px;background:rgba(251,191,36,.15);color:#d97706;border:1px solid rgba(251,191,36,.3);padding:2px 8px;border-radius:99px;margin-left:6px;">⚠ +50% desligadas</span>`;
+    if (r.obs === 'migrando') alertTag = `<span style="font-size:10px;background:rgba(56,189,248,.15);color:#38bdf8;border:1px solid rgba(56,189,248,.3);padding:2px 8px;border-radius:99px;margin-left:6px;">🔄 Migrando · Pagamento ativo</span>`;
+    else if (pct === 100)    alertTag = `<span style="font-size:10px;background:rgba(239,68,68,.2);color:#f87171;border:1px solid rgba(239,68,68,.3);padding:2px 8px;border-radius:99px;margin-left:6px;">🗑 Candidato remoção</span>`;
+    else if (pct >= 50)      alertTag = `<span style="font-size:10px;background:rgba(251,191,36,.15);color:#fbbf24;border:1px solid rgba(251,191,36,.3);padding:2px 8px;border-radius:99px;margin-left:6px;">⚠ +50% desligadas</span>`;
 
     const vmInfo = r.vms != null
-      ? `<div style="font-size:10px;color:#6b7280;margin-top:3px;">VMs: ${vms} total${alertTag}</div>`
+      ? `<div style="font-size:10px;color:#64748b;margin-top:3px;">VMs: ${vms} total${alertTag}</div>`
       : '';
 
     const hasVMs = r.vms != null && r.vms > 0;
@@ -1057,62 +873,62 @@ function san20Render() {
     const machinesCol = hasVMs ? `
       <div style="display:flex;align-items:center;gap:8px;">
         <div style="flex:1;">
-          <div style="height:6px;border-radius:99px;overflow:hidden;background:#e5e7eb;display:flex;margin-bottom:4px;">
+          <div style="height:6px;border-radius:99px;overflow:hidden;background:rgba(255,255,255,.08);display:flex;margin-bottom:4px;">
             <div style="width:${ligPct}%;background:linear-gradient(90deg,#22c55e,#4ade80);"></div>
             <div style="width:${deslPct}%;background:linear-gradient(90deg,#ef4444,#f87171);"></div>
           </div>
           <div style="display:flex;gap:8px;">
-            <span style="font-size:10px;color:#16a34a;font-weight:600;">🟢 ${r.ligadas}</span>
-            <span style="font-size:10px;color:#dc2626;font-weight:600;">⚫ ${r.desligadas}</span>
-            <span style="font-size:10px;color:#6b7280;">/ ${r.vms} VMs</span>
+            <span style="font-size:10px;color:#4ade80;font-weight:600;">🟢 ${r.ligadas}</span>
+            <span style="font-size:10px;color:#f87171;font-weight:600;">⚫ ${r.desligadas}</span>
+            <span style="font-size:10px;color:#64748b;">/ ${r.vms} VMs</span>
           </div>
         </div>
-        <button onclick="san20ToggleVMs(${r.id},this)" title="Ver detalhes" style="flex-shrink:0;width:26px;height:26px;border-radius:6px;background:#e5e7eb;border:1px solid #e5e7eb;color:#6b7280;font-size:13px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .18s;">▾</button>
-      </div>` : `<div style="font-size:11px;color:#6b7280;">—</div>`;
+        <button onclick="san20ToggleVMs(${r.id},this)" title="Ver detalhes" style="flex-shrink:0;width:26px;height:26px;border-radius:6px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);color:#94a3b8;font-size:13px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .18s;">▾</button>
+      </div>` : `<div style="font-size:11px;color:#475569;">—</div>`;
 
     const vmPanel = hasVMs ? `
-      <div id="san20-vmpanel-${r.id}" style="display:none;grid-column:1/-1;background:#f9fafb;border-top:1px solid rgba(255,255,255,.06);padding:14px 20px;">
-        <div style="font-size:10px;font-weight:700;color:#6b7280;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:10px;">Detalhe de Máquinas — ${r.dominio}</div>
+      <div id="san20-vmpanel-${r.id}" style="display:none;grid-column:1/-1;background:rgba(255,255,255,.03);border-top:1px solid rgba(255,255,255,.06);padding:14px 20px;">
+        <div style="font-size:10px;font-weight:700;color:#64748b;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:10px;">Detalhe de Máquinas — ${r.dominio}</div>
         <div style="display:flex;gap:24px;flex-wrap:wrap;">
           <div onclick="san20OpenVMList('${r.dominio}','ACTIVE')" style="background:rgba(34,197,94,.08);border:1px solid rgba(34,197,94,.2);border-radius:10px;padding:14px 20px;min-width:130px;text-align:center;cursor:pointer;transition:all .18s;" onmouseover="this.style.background='rgba(34,197,94,.18)'" onmouseout="this.style.background='rgba(34,197,94,.08)'">
-            <div style="font-size:28px;font-weight:900;color:#16a34a;line-height:1;">${r.ligadas}</div>
+            <div style="font-size:28px;font-weight:900;color:#4ade80;line-height:1;">${r.ligadas}</div>
             <div style="font-size:10px;color:#86efac;font-weight:700;margin-top:4px;text-transform:uppercase;letter-spacing:1px;">🟢 Ligadas</div>
-            <div style="font-size:11px;color:#6b7280;margin-top:2px;">${ligPct}% do total</div>
-            <div style="font-size:10px;color:#16a34a;margin-top:6px;opacity:.7;">clique para listar →</div>
+            <div style="font-size:11px;color:#64748b;margin-top:2px;">${ligPct}% do total</div>
+            <div style="font-size:10px;color:#4ade80;margin-top:6px;opacity:.7;">clique para listar →</div>
           </div>
           <div onclick="san20OpenVMList('${r.dominio}','SHUTOFF')" style="background:rgba(239,68,68,.08);border:1px solid rgba(239,68,68,.2);border-radius:10px;padding:14px 20px;min-width:130px;text-align:center;cursor:pointer;transition:all .18s;" onmouseover="this.style.background='rgba(239,68,68,.18)'" onmouseout="this.style.background='rgba(239,68,68,.08)'">
-            <div style="font-size:28px;font-weight:900;color:#dc2626;line-height:1;">${r.desligadas}</div>
+            <div style="font-size:28px;font-weight:900;color:#f87171;line-height:1;">${r.desligadas}</div>
             <div style="font-size:10px;color:#fca5a5;font-weight:700;margin-top:4px;text-transform:uppercase;letter-spacing:1px;">⚫ Desligadas</div>
-            <div style="font-size:11px;color:#6b7280;margin-top:2px;">${deslPct}% do total</div>
-            <div style="font-size:10px;color:#dc2626;margin-top:6px;opacity:.7;">clique para listar →</div>
+            <div style="font-size:11px;color:#64748b;margin-top:2px;">${deslPct}% do total</div>
+            <div style="font-size:10px;color:#f87171;margin-top:6px;opacity:.7;">clique para listar →</div>
           </div>
           <div onclick="san20OpenVMList('${r.dominio}','ALL')" style="background:rgba(56,189,248,.08);border:1px solid rgba(56,189,248,.2);border-radius:10px;padding:14px 20px;min-width:130px;text-align:center;cursor:pointer;transition:all .18s;" onmouseover="this.style.background='rgba(56,189,248,.18)'" onmouseout="this.style.background='rgba(56,189,248,.08)'">
-            <div style="font-size:28px;font-weight:900;color:#0ea5e9;line-height:1;">${r.vms}</div>
+            <div style="font-size:28px;font-weight:900;color:#38bdf8;line-height:1;">${r.vms}</div>
             <div style="font-size:10px;color:#bae6fd;font-weight:700;margin-top:4px;text-transform:uppercase;letter-spacing:1px;">Total VMs</div>
-            <div style="font-size:11px;color:#6b7280;margin-top:2px;">todas · clique p/ listar</div>
+            <div style="font-size:11px;color:#64748b;margin-top:2px;">todas · clique p/ listar</div>
           </div>
           <div style="flex:1;min-width:200px;display:flex;flex-direction:column;justify-content:center;gap:6px;">
-            <div style="font-size:11px;color:#6b7280;margin-bottom:4px;">Proporção ligadas/desligadas</div>
-            <div style="height:10px;border-radius:99px;overflow:hidden;background:#e5e7eb;display:flex;">
+            <div style="font-size:11px;color:#94a3b8;margin-bottom:4px;">Proporção ligadas/desligadas</div>
+            <div style="height:10px;border-radius:99px;overflow:hidden;background:rgba(255,255,255,.08);display:flex;">
               <div style="width:${ligPct}%;background:linear-gradient(90deg,#22c55e,#4ade80);transition:width .8s;"></div>
               <div style="width:${deslPct}%;background:linear-gradient(90deg,#ef4444,#f87171);transition:width .8s;"></div>
             </div>
             <div style="display:flex;gap:14px;font-size:11px;">
-              <span style="color:#16a34a;">🟢 ${ligPct}% ligadas</span>
-              <span style="color:#dc2626;">⚫ ${deslPct}% desligadas</span>
+              <span style="color:#4ade80;">🟢 ${ligPct}% ligadas</span>
+              <span style="color:#f87171;">⚫ ${deslPct}% desligadas</span>
             </div>
           </div>
         </div>
       </div>` : '';
 
-    return `<div style="display:grid;grid-template-columns:2fr 2fr 1.6fr;border-bottom:1px solid #f3f4f6;" id="san20-row-${r.id}">
+    return `<div style="display:grid;grid-template-columns:2fr 2fr 1.6fr;border-bottom:1px solid rgba(255,255,255,.05);" id="san20-row-${r.id}">
       <div style="padding:14px 20px;display:flex;align-items:center;" onmouseover="document.getElementById('san20-row-${r.id}').style.background='rgba(255,255,255,.03)'" onmouseout="document.getElementById('san20-row-${r.id}').style.background='transparent'">
         <div>
           <div style="font-size:13px;font-weight:700;color:${domColor};font-family:monospace,sans-serif;">🌐 ${r.dominio}</div>
           ${vmInfo}
         </div>
       </div>
-      <div style="padding:14px 20px;display:flex;align-items:center;font-size:12px;color:#374151;font-weight:500;">${r.cliente}</div>
+      <div style="padding:14px 20px;display:flex;align-items:center;font-size:12px;color:#cbd5e1;font-weight:500;">${r.cliente}</div>
       <div style="padding:14px 20px;display:flex;align-items:center;">${machinesCol}</div>
       ${vmPanel}
     </div>`;
@@ -1814,65 +1630,37 @@ document.addEventListener('page-changed', function(e) {
 </script>
 
 <!-- CAPACITY 3.0 -->
-<div id="capacity-30" class="page bcp-page">
+<div id="capacity-30" class="page">
   <div class="topbar"><div class="tb-heading">BCP 3.0 <span>| Binario Cloud</span></div></div>
-  <div class="bcp-shell">
-<div class="bcp-sidebar">
-      <div class="bcp-sidebar-section">Filtros</div>
-      <button class="bcp-nav-item active" onclick="san30SetFilter('all',this)">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/></svg>
-        Todos
-        <span class="bcp-nav-count" style="background:rgba(59,130,246,.15);color:#60a5fa;" id="san30-sidebar-all">83</span>
-      </button>
-      <button class="bcp-nav-item" onclick="san30SetFilter('cliente',this)">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 20V10M12 20V4M6 20v-6"/></svg>
-        ☁ Cloud Cliente
-        <span class="bcp-nav-count" style="background:rgba(22,163,74,.12);color:#16a34a;" id="san30-sidebar-cli">—</span>
-      </button>
-      <button class="bcp-nav-item" onclick="san30SetFilter('foundation',this)">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
-        🏗 Foundation
-        <span class="bcp-nav-count" style="background:rgba(239,68,68,.12);color:#dc2626;" id="san30-sidebar-fnd">—</span>
-      </button>
-      <div class="bcp-sidebar-section" style="margin-top:8px;">Ações</div>
-      <button class="bcp-nav-item" onclick="san30OpenRelatorio()">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 17v-2m3 2v-4m3 4v-6M5 20h14a1 1 0 001-1V5a1 1 0 00-1-1H5a1 1 0 00-1 1v14a1 1 0 001 1z"/></svg>
-        Relatório
-      </button>
-      <button class="bcp-nav-item">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
-        Exportar
-      </button>
-    </div>
-    <div class="bcp-main">
+  <div style="background:linear-gradient(135deg,#0f0c29 0%,#1a1040 50%,#0f172a 100%);min-height:calc(100vh - 64px);padding:32px 40px 56px;font-family:'Sora',sans-serif;">
 
-    <div class="bcp-page-header">
-      <div>
+    <!-- Header -->
+    <div style="margin-bottom:28px;">
       <div style="display:flex;align-items:center;gap:12px;margin-bottom:6px;">
         <div>
-          <h1 style="font-size:17px;font-weight:700;color:#111827;letter-spacing:-.3px;margin:0;">Gestão Cloud de Domínios</h1>
-          <p style="font-size:11px;color:#6b7280;margin:2px 0 0;">Ambiente 3.0 — Inventário OpenStack · 790 VMs · 83 Domínios · 790 ligadas · 80 desligadas<span id="san30-timestamp"></span></p>
+          <h1 style="font-size:22px;font-weight:800;color:#fff;letter-spacing:-.5px;margin:0;">Gestão Cloud de Domínios</h1>
+          <p style="font-size:12px;color:#94a3b8;margin:2px 0 0;">Ambiente 3.0 — Inventário OpenStack · 790 VMs · 83 Domínios · 790 ligadas · 80 desligadas<span id="san30-timestamp"></span></p>
+        </div>
       </div>
-      <button class="bcp-btn bcp-btn-purple" onclick="san30OpenRelatorio()">Relatório</button>
     </div>
 
     <!-- Métricas -->
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:16px;margin-bottom:28px;" id="san30-metrics">
-      <div style="background:#f3f4f6;border:1px solid #e5e7eb;border-radius:14px;padding:20px;">
-        <div style="font-size:10px;font-weight:700;color:#6b7280;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px;">Total de Domínios</div>
+      <div style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:20px;">
+        <div style="font-size:10px;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px;">Total de Domínios</div>
         <div style="font-size:36px;font-weight:900;color:#f1f5f9;line-height:1;" id="san30-total">0</div>
       </div>
       <div id="san30-card-ok" style="background:rgba(34,197,94,.08);border:1px solid rgba(34,197,94,.2);border-radius:14px;padding:20px;">
         <div style="font-size:10px;font-weight:700;color:#86efac;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px;">☁ Cloud Cliente</div>
-        <div style="font-size:36px;font-weight:900;color:#16a34a;line-height:1;" id="san30-ok">0</div>
+        <div style="font-size:36px;font-weight:900;color:#4ade80;line-height:1;" id="san30-ok">0</div>
       </div>
       <div id="san30-card-nok" style="background:rgba(251,191,36,.08);border:1px solid rgba(251,191,36,.2);border-radius:14px;padding:20px;">
         <div style="font-size:10px;font-weight:700;color:#fde68a;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px;">🏗 Cloud Foundation</div>
-        <div style="font-size:36px;font-weight:900;color:#d97706;line-height:1;" id="san30-nok">0</div>
+        <div style="font-size:36px;font-weight:900;color:#fbbf24;line-height:1;" id="san30-nok">0</div>
       </div>
       <div style="background:rgba(56,189,248,.08);border:1px solid rgba(56,189,248,.2);border-radius:14px;padding:20px;">
         <div style="font-size:10px;font-weight:700;color:#bae6fd;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px;">Total de VMs</div>
-        <div style="font-size:36px;font-weight:900;color:#0ea5e9;line-height:1;" id="san30-totalvms">0</div>
+        <div style="font-size:36px;font-weight:900;color:#38bdf8;line-height:1;" id="san30-totalvms">0</div>
       </div>
       <div style="background:rgba(251,113,133,.08);border:1px solid rgba(251,113,133,.2);border-radius:14px;padding:20px;">
         <div style="font-size:10px;font-weight:700;color:#fda4af;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px;">Candidatos Remoção</div>
@@ -1880,11 +1668,11 @@ document.addEventListener('page-changed', function(e) {
       </div>
       <div style="background:rgba(34,197,94,.08);border:1px solid rgba(34,197,94,.25);border-radius:14px;padding:20px;">
         <div style="font-size:10px;font-weight:700;color:#86efac;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px;">🟢 VMs Ligadas</div>
-        <div style="font-size:36px;font-weight:900;color:#16a34a;line-height:1;" id="san30-ligadas">0</div>
+        <div style="font-size:36px;font-weight:900;color:#4ade80;line-height:1;" id="san30-ligadas">0</div>
       </div>
       <div style="background:rgba(239,68,68,.08);border:1px solid rgba(239,68,68,.2);border-radius:14px;padding:20px;">
         <div style="font-size:10px;font-weight:700;color:#fca5a5;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px;">⚫ VMs Desligadas</div>
-        <div style="font-size:36px;font-weight:900;color:#dc2626;line-height:1;" id="san30-desligadas">0</div>
+        <div style="font-size:36px;font-weight:900;color:#f87171;line-height:1;" id="san30-desligadas">0</div>
       </div>
     </div>
 
@@ -1892,34 +1680,34 @@ document.addEventListener('page-changed', function(e) {
     <div style="display:flex;flex-direction:column;gap:12px;margin-bottom:18px;">
       <!-- Botão Gestão Cloud -->
       <div style="display:flex;justify-content:flex-end;align-items:center;gap:10px;">
-        <span id="san30-save-txt" style="font-size:11px;color:#6b7280;"></span>
-        <button onclick="san30OpenRelatorio()" class="bcp-shell">
+        <span id="san30-save-txt" style="font-size:11px;color:#64748b;"></span>
+        <button onclick="san30OpenRelatorio()" style="display:flex;align-items:center;gap:7px;padding:9px 18px;background:linear-gradient(135deg,#4a148c,#7b1fa2);color:#fff;border:none;border-radius:10px;font-size:12px;font-weight:700;font-family:'Sora',sans-serif;cursor:pointer;box-shadow:0 4px 14px rgba(123,31,162,.35);">
           📊 Relatório de Gestão Cloud
         </button>
       </div>
       <!-- Busca e Filtros -->
       <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
         <div style="position:relative;">
-          <input id="san30-search" type="text" placeholder="Buscar domínio ou cliente..." style="background:#e5e7eb;border:1px solid rgba(255,255,255,.12);border-radius:10px;padding:9px 14px 9px 36px;color:#f1f5f9;font-size:13px;font-family:'Sora',sans-serif;width:260px;outline:none;" oninput="san30Render()">
+          <input id="san30-search" type="text" placeholder="Buscar domínio ou cliente..." style="background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:10px;padding:9px 14px 9px 36px;color:#f1f5f9;font-size:13px;font-family:'Sora',sans-serif;width:260px;outline:none;" oninput="san30Render()">
           <span style="position:absolute;left:12px;top:50%;transform:translateY(-50%);font-size:14px;opacity:.5;">🔍</span>
         </div>
-        <div style="display:flex;gap:6px;background:#f3f4f6;border:1px solid #e5e7eb;border-radius:12px;padding:4px;">
+        <div style="display:flex;gap:6px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:4px;">
           <button id="san30-btn-all"        onclick="san30SetFilter('all')"        style="padding:7px 16px;border-radius:8px;border:none;font-size:12px;font-weight:700;font-family:'Sora',sans-serif;cursor:pointer;transition:all .18s;background:rgba(168,85,247,.9);color:#fff;box-shadow:0 2px 8px rgba(168,85,247,.4);">Todos</button>
-          <button id="san30-btn-cliente"    onclick="san30SetFilter('cliente')"    style="padding:7px 16px;border-radius:8px;border:none;font-size:12px;font-weight:700;font-family:'Sora',sans-serif;cursor:pointer;transition:all .18s;background:transparent;color:#6b7280;">☁ Cloud Cliente</button>
-          <button id="san30-btn-foundation" onclick="san30SetFilter('foundation')" style="padding:7px 16px;border-radius:8px;border:none;font-size:12px;font-weight:700;font-family:'Sora',sans-serif;cursor:pointer;transition:all .18s;background:transparent;color:#6b7280;">🏗 Cloud Foundation</button>
+          <button id="san30-btn-cliente"    onclick="san30SetFilter('cliente')"    style="padding:7px 16px;border-radius:8px;border:none;font-size:12px;font-weight:700;font-family:'Sora',sans-serif;cursor:pointer;transition:all .18s;background:transparent;color:#64748b;">☁ Cloud Cliente</button>
+          <button id="san30-btn-foundation" onclick="san30SetFilter('foundation')" style="padding:7px 16px;border-radius:8px;border:none;font-size:12px;font-weight:700;font-family:'Sora',sans-serif;cursor:pointer;transition:all .18s;background:transparent;color:#64748b;">🏗 Cloud Foundation</button>
         </div>
-        <span id="san30-count-label" style="font-size:11px;color:#6b7280;font-weight:600;"></span>
+        <span id="san30-count-label" style="font-size:11px;color:#475569;font-weight:600;"></span>
       </div>
     </div>
     <!-- input hidden para manter compatibilidade com san30Render -->
     <input type="hidden" id="san30-filter" value="all">
 
     <!-- Tabela -->
-    <div style="background:#f9fafb;border:1px solid #e5e7eb;border-radius:16px;overflow:hidden;">
-      <div style="display:grid;grid-template-columns:2fr 2fr 1.6fr;padding:12px 20px;background:#f3f4f6;border-bottom:1px solid rgba(255,255,255,.07);">
-        <span style="font-size:10px;font-weight:700;color:#6b7280;text-transform:uppercase;letter-spacing:1.5px;">Domínio</span>
-        <span style="font-size:10px;font-weight:700;color:#6b7280;text-transform:uppercase;letter-spacing:1.5px;">Cliente / Serviço</span>
-        <span style="font-size:10px;font-weight:700;color:#6b7280;text-transform:uppercase;letter-spacing:1.5px;">Máquinas</span>
+    <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:16px;overflow:hidden;">
+      <div style="display:grid;grid-template-columns:2fr 2fr 1.6fr;padding:12px 20px;background:rgba(255,255,255,.05);border-bottom:1px solid rgba(255,255,255,.07);">
+        <span style="font-size:10px;font-weight:700;color:#64748b;text-transform:uppercase;letter-spacing:1.5px;">Domínio</span>
+        <span style="font-size:10px;font-weight:700;color:#64748b;text-transform:uppercase;letter-spacing:1.5px;">Cliente / Serviço</span>
+        <span style="font-size:10px;font-weight:700;color:#64748b;text-transform:uppercase;letter-spacing:1.5px;">Máquinas</span>
       </div>
       <div id="san30-tbody"></div>
     </div>
@@ -1927,7 +1715,7 @@ document.addEventListener('page-changed', function(e) {
     <!-- Empty state -->
     <div id="san30-empty" style="display:none;text-align:center;padding:60px 20px;">
       <div style="font-size:48px;margin-bottom:12px;">🌐</div>
-      <p style="color:#6b7280;font-size:14px;font-weight:600;">Nenhum domínio encontrado</p>
+      <p style="color:#475569;font-size:14px;font-weight:600;">Nenhum domínio encontrado</p>
       <p style="color:#334155;font-size:12px;margin-top:4px;">Adicione domínios ou ajuste os filtros</p>
     </div>
 
@@ -1938,19 +1726,19 @@ document.addEventListener('page-changed', function(e) {
     <div style="background:linear-gradient(135deg,#1e1b4b,#1e293b);border:1px solid rgba(168,85,247,.3);border-radius:20px;padding:32px;width:460px;max-width:calc(100vw - 40px);box-shadow:0 30px 80px rgba(0,0,0,.5);">
       <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;">
         <h2 style="font-size:17px;font-weight:800;color:#fff;margin:0;" id="san30-modal-title">Adicionar Domínio</h2>
-        <button onclick="san30CloseModal()" style="background:#e5e7eb;border:none;color:#6b7280;width:30px;height:30px;border-radius:50%;cursor:pointer;font-size:14px;">✕</button>
+        <button onclick="san30CloseModal()" style="background:rgba(255,255,255,.08);border:none;color:#94a3b8;width:30px;height:30px;border-radius:50%;cursor:pointer;font-size:14px;">✕</button>
       </div>
       <div style="display:flex;flex-direction:column;gap:16px;">
         <div>
-          <label style="font-size:11px;font-weight:700;color:#6b7280;letter-spacing:1px;text-transform:uppercase;display:block;margin-bottom:6px;">Domínio *</label>
-          <input id="san30-inp-dominio" type="text" placeholder="ex: portal.binario.cloud" style="width:100%;background:#e5e7eb;border:1px solid rgba(255,255,255,.15);border-radius:10px;padding:10px 14px;color:#f1f5f9;font-size:13px;font-family:'Sora',sans-serif;outline:none;box-sizing:border-box;">
+          <label style="font-size:11px;font-weight:700;color:#94a3b8;letter-spacing:1px;text-transform:uppercase;display:block;margin-bottom:6px;">Domínio *</label>
+          <input id="san30-inp-dominio" type="text" placeholder="ex: portal.binario.cloud" style="width:100%;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);border-radius:10px;padding:10px 14px;color:#f1f5f9;font-size:13px;font-family:'Sora',sans-serif;outline:none;box-sizing:border-box;">
         </div>
         <div>
-          <label style="font-size:11px;font-weight:700;color:#6b7280;letter-spacing:1px;text-transform:uppercase;display:block;margin-bottom:6px;">Cliente / Serviço *</label>
-          <input id="san30-inp-cliente" type="text" placeholder="ex: Binario Cloud — Portal" style="width:100%;background:#e5e7eb;border:1px solid rgba(255,255,255,.15);border-radius:10px;padding:10px 14px;color:#f1f5f9;font-size:13px;font-family:'Sora',sans-serif;outline:none;box-sizing:border-box;">
+          <label style="font-size:11px;font-weight:700;color:#94a3b8;letter-spacing:1px;text-transform:uppercase;display:block;margin-bottom:6px;">Cliente / Serviço *</label>
+          <input id="san30-inp-cliente" type="text" placeholder="ex: Binario Cloud — Portal" style="width:100%;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);border-radius:10px;padding:10px 14px;color:#f1f5f9;font-size:13px;font-family:'Sora',sans-serif;outline:none;box-sizing:border-box;">
         </div>
         <div>
-          <label style="font-size:11px;font-weight:700;color:#6b7280;letter-spacing:1px;text-transform:uppercase;display:block;margin-bottom:6px;">Tipo</label>
+          <label style="font-size:11px;font-weight:700;color:#94a3b8;letter-spacing:1px;text-transform:uppercase;display:block;margin-bottom:6px;">Tipo</label>
           <select id="san30-inp-tipo" style="width:100%;background:#1e293b;border:1px solid rgba(255,255,255,.15);border-radius:10px;padding:10px 14px;color:#f1f5f9;font-size:13px;font-family:'Sora',sans-serif;outline:none;cursor:pointer;">
             <option>Aplicação Web</option>
             <option>API</option>
@@ -1963,7 +1751,7 @@ document.addEventListener('page-changed', function(e) {
         <div id="san30-modal-preview" style="display:none;padding:12px 14px;border-radius:10px;font-size:12px;font-weight:600;margin-top:4px;"></div>
       </div>
       <div style="display:flex;gap:10px;margin-top:24px;">
-        <button onclick="san30CloseModal()" style="flex:1;padding:11px;background:#e5e7eb;color:#6b7280;border:1px solid #e5e7eb;border-radius:10px;font-size:13px;font-weight:700;font-family:'Sora',sans-serif;cursor:pointer;">Cancelar</button>
+        <button onclick="san30CloseModal()" style="flex:1;padding:11px;background:rgba(255,255,255,.07);color:#94a3b8;border:1px solid rgba(255,255,255,.1);border-radius:10px;font-size:13px;font-weight:700;font-family:'Sora',sans-serif;cursor:pointer;">Cancelar</button>
         <button onclick="san30Salvar()" style="flex:2;padding:11px;background:linear-gradient(135deg,#7c3aed,#a855f7);color:#fff;border:none;border-radius:10px;font-size:13px;font-weight:700;font-family:'Sora',sans-serif;cursor:pointer;box-shadow:0 4px 14px rgba(124,58,237,.35);">Salvar</button>
       </div>
     </div>
@@ -2082,7 +1870,7 @@ document.addEventListener('page-changed', function(e) {
         <div class="modal-eye"  id="mEye"></div>
         <div class="modal-ttl"  id="mTitle"></div>
       </div>
-      <div style="display:flex;gap:8px;align-items:center;flex-shrink:0;">
+      <div style="display:flex;gap:8px;align-items:center;position:relative;">
         <button class="btn-edit-modal" id="btnEditModal" onclick="toggleEditMode()">✎ Editar</button>
         <button class="modal-x" onclick="closeModal()">✕</button>
       </div>
@@ -2455,7 +2243,7 @@ renderFinalizados();
    CONTROLE DE MIGRAÇÃO
 ═══════════════════════════════════════ */
 let mgClientes = [
-  { id:2, nome:"QoS (Projeto 1)", qtdMaquinas:8, status:"Em Progresso", progresso:85, confirmado:true, dataPrevista:"2026-05-30", dataMigracao:"2026-06-12", historico:[{"data": "2024-01-01", "acao": "DECISÃO: Recriação do zero na BCOS 3.0 - Não haverá migração"}, {"data": "2024-01-01", "acao": "Responsável: Alan (desenvolvedor) | Motivo: Mais rápido, mais limpo, evita compatibilidade"}, {"data": "2024-01-01", "acao": "JANELA 1 - 05/05/2026 14h | RPA_Faturas_Dasa | PoC-Captive Portal-Ubiquiti"}, {"data": "2024-01-01", "acao": "JANELA 2 - 12/05/2026 00h01 | APPInfra-ClaroFust | APPInfra-Media"}, {"data": "2026-05-30", "acao": "Virada prevista para hoje, contemplando o total de 8 máquinas."}, {"data": "2026-06-03", "acao": "Progresso: 85% — Aguardando teste e validação na 3.0. Data prevista: 30/05. Data de migração: 07/06/2026"}, {"data": "2026-06-07", "acao": "Necessário obter status junto ao Augusto (CSE)"}, {"data": "09/06/2026 14:29", "acao": "Status alterado para: Planejamento"}, {"data": "09/06/2026 14:29", "acao": "Confirmação: ✅ Confirmado"}, {"data": "2026-06-09", "acao": "Data de migração agendada para 12/06/2026"}, {"data": "09/06/2026 14:29", "acao": "Status alterado para: Planejamento"}, {"data": "11/06/2026 16:31", "acao": "Status alterado para: Em Progresso — Confirmado — Data de migração: 12/06/2026"}] },
+  { id:2, nome:"QoS (Projeto 1)", qtdMaquinas:8, status:"Planejamento", progresso:85, confirmado:true, dataPrevista:"2026-05-30", dataMigracao:"2026-06-12", historico:[{"data": "2024-01-01", "acao": "DECISÃO: Recriação do zero na BCOS 3.0 - Não haverá migração"}, {"data": "2024-01-01", "acao": "Responsável: Alan (desenvolvedor) | Motivo: Mais rápido, mais limpo, evita compatibilidade"}, {"data": "2024-01-01", "acao": "JANELA 1 - 05/05/2026 14h | RPA_Faturas_Dasa | PoC-Captive Portal-Ubiquiti"}, {"data": "2024-01-01", "acao": "JANELA 2 - 12/05/2026 00h01 | APPInfra-ClaroFust | APPInfra-Media"}, {"data": "2026-05-30", "acao": "Virada prevista para hoje, contemplando o total de 8 máquinas."}, {"data": "2026-06-03", "acao": "Progresso: 85% — Aguardando teste e validação na 3.0. Data prevista: 30/05. Data de migração: 07/06/2026"}, {"data": "2026-06-07", "acao": "Necessário obter status junto ao Augusto (CSE)"}, {"data": "09/06/2026 14:29", "acao": "Status alterado para: Planejamento"}, {"data": "09/06/2026 14:29", "acao": "Confirmação: ✅ Confirmado"}, {"data": "2026-06-09", "acao": "Data de migração agendada para 12/06/2026"}, {"data": "09/06/2026 14:29", "acao": "Status alterado para: Planejamento"}] },
   { id:3, nome:"QoS (Projeto 2)", qtdMaquinas:10, status:"Planejamento", progresso:85, confirmado:true, dataPrevista:"2026-05-30", dataMigracao:"2026-06-12", historico:[{"data": "2026-05-30", "acao": "Virada prevista para o dia 12, contemplando o total de 10 máquinas."}, {"data": "2026-06-03", "acao": "Progresso: 85% — Aguardando teste e validação na 3.0. Data prevista: 30/05. Data de migração: 07/06/2026"}, {"data": "2026-06-07", "acao": "Necessário obter status junto ao Augusto (CSE)"}, {"data": "09/06/2026 14:29", "acao": "Status alterado para: Planejamento"}, {"data": "09/06/2026 14:29", "acao": "Confirmação: ✅ Confirmado"}, {"data": "2026-06-09", "acao": "Data de migração agendada para 12/06/2026"}, {"data": "09/06/2026 14:29", "acao": "Status alterado para: Planejamento"}] },
   { id:4, nome:"SOPREMA - INDUSTRIA E COMERCIO", qtdMaquinas:8, status:"Planejamento", progresso:75, confirmado:true, dataPrevista:"2026-06-12", dataMigracao:"2026-06-12", historico:[{"data": "2026-05-26", "acao": "Reunião de alinhamento para virada realizada em 26/05."}, {"data": "2026-05-30", "acao": "Aguardando devolutiva do Bruno Queiroz para alinhamento com o cliente."}, {"data": "2026-06-07", "acao": "Janela confirmada para sexta-feira (12/06), após configuração de firewall"}, {"data": "2026-06-09", "acao": "Data de migração agendada para 12/06/2026"}, {"data": "09/06/2026 14:29", "acao": "Confirmação: ✅ Confirmado"}, {"data": "09/06/2026 14:29", "acao": "Status alterado para: Planejamento"}] },
   { id:5, nome:"ZANTHUS - COMERCIO E SERVICOS", qtdMaquinas:24, status:"Planejamento", progresso:50, confirmado:null, dataPrevista:"2026-06-12", dataMigracao:null, historico:[{"data": "2026-05-30", "acao": "Criado - Status: Em Progresso, aguardando definição do histórico."}, {"data": "2026-06-07", "acao": "Necessário definição e confirmação da janela para 12/06"}, {"data": "09/06/2026 14:29", "acao": "Status alterado para: Planejamento"}] },
@@ -5206,7 +4994,47 @@ function san30VMLExportXLS() {
 // helper used in vmPanel template to avoid nested backtick
 </script>
 
+<div id="san30-gov-overlay" onclick="if(event.target===this)san30GovClose()" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.85);backdrop-filter:blur(10px);z-index:900;align-items:flex-start;justify-content:center;padding:2vh 20px 40px;overflow-y:auto;">
+  <div style="background:linear-gradient(160deg,#0a0f1e 0%,#0f172a 100%);border:1px solid rgba(37,99,235,.25);border-radius:22px;width:1100px;max-width:100%;box-shadow:0 50px 120px rgba(0,0,0,.9);">
 
+    <!-- Header -->
+    <div style="display:flex;justify-content:space-between;align-items:center;padding:22px 32px 18px;border-bottom:1px solid rgba(255,255,255,.06);">
+      <div style="display:flex;align-items:center;gap:14px;">
+        <div style="width:42px;height:42px;background:linear-gradient(135deg,#1e3a5f,#2563eb);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:20px;box-shadow:0 4px 16px rgba(37,99,235,.4);">📊</div>
+        <div>
+          <div style="font-size:17px;font-weight:800;color:#f1f5f9;letter-spacing:-.3px;">Relatório de Gestão Cloud · BCP 3.0</div>
+          <div id="san30-gov-sub" style="font-size:11px;color:#475569;margin-top:3px;font-weight:500;"></div>
+        </div>
+      </div>
+      <div style="display:flex;gap:8px;align-items:center;">
+        <button onclick="san30GovExport()" style="display:flex;align-items:center;gap:6px;padding:9px 18px;background:linear-gradient(135deg,#065f46,#059669);color:#fff;border:none;border-radius:10px;font-size:11px;font-weight:700;font-family:'Sora',sans-serif;cursor:pointer;box-shadow:0 4px 12px rgba(5,150,105,.3);">
+          ⬇ Exportar PNG
+        </button>
+        <button onclick="san30GovClose()" style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);color:#94a3b8;width:34px;height:34px;border-radius:50%;cursor:pointer;font-size:15px;display:flex;align-items:center;justify-content:center;" onmouseover="this.style.background='rgba(255,255,255,.12)'" onmouseout="this.style.background='rgba(255,255,255,.06)'">✕</button>
+      </div>
+    </div>
+
+    <div style="padding:24px 32px 32px;">
+
+      <!-- Métricas -->
+      <div id="san30-gov-metrics" style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:28px;"></div>
+
+      <!-- Gráfico full width -->
+      <div style="background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);border-radius:16px;padding:20px;margin-bottom:20px;">
+        <div style="font-size:10px;font-weight:800;color:#475569;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:16px;">Comparativo de VMs por Domínio com Alteração</div>
+        <div id="san30-gov-chart-wrap" style="overflow-x:auto;overflow-y:hidden;width:100%;">
+          <canvas id="san30-gov-canvas"></canvas>
+        </div>
+      </div>
+
+      <!-- Tabela de alterações full width -->
+      <div style="background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);border-radius:16px;padding:20px;max-height:320px;overflow-y:auto;">
+        <div style="font-size:10px;font-weight:800;color:#475569;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:14px;">Domínios com Alteração</div>
+        <div id="san30-gov-changes"></div>
+      </div>
+    </div>
+  </div>
+</div>
 
 <div id="san30vml-overlay"
      onclick="if(event.target===this)san30VMLClose()"
