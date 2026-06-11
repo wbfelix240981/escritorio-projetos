@@ -32,9 +32,9 @@
 body { font-family:'Sora',sans-serif; background:var(--bg); min-height:100vh; color:var(--text-dark); overflow-x:hidden; }
 
 #drawer-trigger {
-  position: fixed; top: 24px; left: 24px; z-index: 300;
+  position: fixed; top: 10px; left: 16px; z-index: 160;
   display: flex; align-items: center;
-  padding: 10px 16px;
+  padding: 8px 14px;
   background: rgba(255,255,255,.15);
   border: 1.5px solid rgba(255,255,255,.28);
   backdrop-filter: blur(12px); border-radius: 50px;
@@ -107,7 +107,7 @@ body.page-internal #drawer-trigger:hover { background: #f4f6fb; border-color: #c
 .cover-period  { font-size:clamp(52px,7vw,84px); font-weight:800; color:#fff; letter-spacing:-3px; line-height:1; margin-bottom:8px; }
 .cover-desc { font-size:clamp(14px,2vw,18px); font-weight:400; color:rgba(255,255,255,.5); line-height:1.6; margin:18px 0 24px; letter-spacing:.2px; }
 
-.topbar { background: linear-gradient(180deg, #fff 0%, #f8fafb 100%); box-shadow: 0 2px 12px rgba(0,0,0,.08); padding: 0 32px 0 100px; height: 64px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; border-bottom: 1px solid rgba(0,0,0,.04); }
+.topbar { background: linear-gradient(180deg, #fff 0%, #f8fafb 100%); box-shadow: 0 2px 12px rgba(0,0,0,.08); padding: 0 32px 0 160px; height: 64px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 150; border-bottom: 1px solid rgba(0,0,0,.04); }
 .tb-heading { font-size: 17px; font-weight: 900; color: #1a1a2e; letter-spacing: -0.5px; }
 .tb-heading span { font-weight: 500; color: #aaa; margin-left: 8px; }
 
@@ -131,7 +131,7 @@ body.page-internal #drawer-trigger:hover { background: #f4f6fb; border-color: #c
 .grid-3 { grid-template-columns:repeat(3,1fr); }
 .grid-4 { grid-template-columns:repeat(4,1fr); }
 
-.card { background:linear-gradient(135deg,var(--card-bg) 0%,#f8fafb 100%); border-radius:var(--radius); border:1px solid rgba(0,0,0,.04); box-shadow:var(--shadow); display:flex; flex-direction:column; height:var(--card-h); padding:14px 14px 10px; position:relative; overflow:hidden; transition:all .3s ease; }
+.card { background:linear-gradient(135deg,var(--card-bg) 0%,#f8fafb 100%); border-radius:var(--radius); border:1px solid rgba(0,0,0,.04); box-shadow:var(--shadow); display:flex; flex-direction:column; min-height:var(--card-h); padding:14px 14px 10px; position:relative; overflow:hidden; transition:all .3s ease; }
 .card:hover { transform:translateY(-4px); box-shadow:var(--shadow-hover); }
 .card-accent { position:absolute; top:0; left:0; right:0; height:4px; }
 .accent-blue  { background:linear-gradient(90deg,var(--blue),var(--blue-light)); }
@@ -162,16 +162,16 @@ body.page-internal #drawer-trigger:hover { background: #f4f6fb; border-color: #c
 /* MODAL */
 .overlay { position:fixed; inset:0; background:rgba(10,18,50,.5); backdrop-filter:blur(5px); z-index:600; display:flex; align-items:center; justify-content:center; opacity:0; pointer-events:none; transition:opacity .22s; }
 .overlay.open { opacity:1; pointer-events:all; }
-.modal { background:#fff; border-radius:22px; width:580px; max-width:calc(100vw - 40px); max-height:88vh; overflow-y:auto; box-shadow:0 30px 90px rgba(0,0,0,.25); transform:translateY(28px) scale(.96); transition:transform .3s cubic-bezier(.34,1.3,.64,1),opacity .22s; opacity:0; scrollbar-width:thin; scrollbar-color:#dde0ea transparent; }
+.modal { background:#fff; border-radius:22px; width:580px; max-width:calc(100vw - 40px); max-height:88vh; overflow-y:auto; box-shadow:0 30px 90px rgba(0,0,0,.25); transform:translateY(28px) scale(.96); transition:transform .3s cubic-bezier(.34,1.3,.64,1),opacity .22s; opacity:0; scrollbar-width:thin; scrollbar-color:#dde0ea transparent; position:relative; }
 .overlay.open .modal { transform:translateY(0) scale(1); opacity:1; }
-.modal-hd { padding:24px 26px 18px; border-bottom:1px solid #f0f1f7; display:flex; justify-content:space-between; align-items:flex-start; }
-.modal-header-content { flex:1; }
+.modal-hd { padding:20px 22px 16px; border-bottom:1px solid #f0f1f7; display:flex; justify-content:space-between; align-items:center; gap:12px; }
+.modal-header-content { flex:1; min-width:0; }
 .modal-accent { height:5px; border-radius:99px; margin-bottom:16px; }
 .modal-eye    { font-size:10px; font-weight:700; letter-spacing:2.5px; text-transform:uppercase; color:var(--text-light); margin-bottom:4px; }
 .modal-ttl    { font-size:18px; font-weight:800; color:var(--text-dark); letter-spacing:-.4px; line-height:1.3; padding-right:44px; }
-.modal-x      { position:absolute; top:20px; right:20px; width:34px; height:34px; border-radius:50%; border:1.5px solid #e6e8f2; background:transparent; cursor:pointer; display:flex; align-items:center; justify-content:center; font-size:15px; color:var(--text-light); transition:all .16s; }
+.modal-x      { flex-shrink:0; margin-left:12px; width:34px; height:34px; border-radius:50%; border:1.5px solid #e6e8f2; background:transparent; cursor:pointer; display:flex; align-items:center; justify-content:center; font-size:15px; color:var(--text-light); transition:all .16s; }
 .modal-x:hover { background:#f2f3fa; color:var(--text-dark); border-color:#c8cbe0; }
-.modal-bd { padding:20px 26px 26px; }
+.modal-bd { padding:22px 26px 28px; }
 .m-summary { display:flex; align-items:center; gap:18px; padding:14px 18px; border-radius:14px; background:var(--bg); margin-bottom:20px; }
 .m-big-pct { font-size:50px; font-weight:800; color:var(--text-dark); letter-spacing:-2px; line-height:1; flex-shrink:0; }
 .m-pct-right { flex:1; }
@@ -1870,21 +1870,12 @@ document.addEventListener('page-changed', function(e) {
         <div class="modal-eye"  id="mEye"></div>
         <div class="modal-ttl"  id="mTitle"></div>
       </div>
-      <div style="display:flex;gap:8px;align-items:center;position:relative;">
+      <div style="display:flex;gap:8px;align-items:center;flex-shrink:0;">
         <button class="btn-edit-modal" id="btnEditModal" onclick="toggleEditMode()">✎ Editar</button>
         <button class="modal-x" onclick="closeModal()">✕</button>
       </div>
     </div>
     <div class="modal-bd" id="mBody"></div>
-    <button class="btn-historico" id="btn-historico" onclick="toggleHistorico()">
-      <div class="btn-hist-icon">📋</div>
-      <div style="flex:1;text-align:left;">
-        <div style="font-size:13px;font-weight:700;color:#1b5e20;">Histórico do projeto</div>
-        <div style="font-size:11px;color:#388e3c;margin-top:2px;">Ver linha do tempo e atualizações</div>
-      </div>
-      <svg class="btn-hist-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2e7d32" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
-    </button>
-    <div class="historico-panel" id="historico-panel"></div>
   </div>
 </div>
 
