@@ -2532,46 +2532,37 @@ const MG_SEED = [
   { id:16, nome:"GRUPO RAIZES",                    qtdMaquinas:13,  status:"Planejamento", progresso:0,  dataPrevista:null,         dataMigracao:null,         historico:[{data:"2026-06-07",acao:"Sem contato ou retorno até o momento"}] },
   { id:17, nome:"SAT CONSULTORIA",                 qtdMaquinas:3,   status:"Em Progresso", progresso:0,  dataPrevista:"2026-06-27",         dataMigracao:"2026-06-27",         historico:[{data:"2026-06-07",acao:"Sem contato ou retorno até o momento"}] },
 ];
-const MG_SEED_VERSION = "2026-06-11-v12"; // incrementar ao alterar o seed
+const MG_SEED_VERSION = "2026-06-11-v13"; // incrementar ao alterar o seed
 
 async function mgCarregarDados() {
   try {
-    const res = await window.storage.get('mg_clientes');
-    let savedVersion = null;
-    try { const rv = await window.storage.get('mg_seed_version'); savedVersion = rv?.value; } catch(e){}
+    // Seed é SEMPRE a fonte da verdade para status, confirmado, datas
+    // Storage preserva apenas notas manuais extras adicionadas pelo usuário
+    let stored = [];
+    try {
+      const res = await window.storage.get('mg_clientes');
+      if (res?.value) { stored = JSON.parse(res.value).mgClientes || []; }
+    } catch(e) {}
 
-    if (res?.value && savedVersion === MG_SEED_VERSION) {
-      // Storage está na versão atual — carrega normalmente
-      const d = JSON.parse(res.value);
-      mgClientes = d.mgClientes;
-      mgNextId   = d.mgNextId;
-    } else {
-      // Versão desatualizada ou primeiro acesso — seed substitui tudo, preserva apenas notas manuais extras
-      let stored = [];
-      if (res?.value) {
-        try { stored = JSON.parse(res.value).mgClientes || []; } catch(e){}
-      }
-      // Seed é fonte da verdade: status, progresso, datas e histórico base vêm do seed
-      mgClientes = MG_SEED.map(seedItem => {
-        const saved = stored.find(s => s.id === seedItem.id);
-        if (!saved) return { ...seedItem };
-        // Preserva apenas notas adicionadas manualmente DEPOIS da última data do seed
-        const lastSeedDate = seedItem.historico.length ? seedItem.historico[seedItem.historico.length-1].data : '2000-01-01';
-        const extraHistory = saved.historico.filter(sh =>
-          sh.data > lastSeedDate &&
-          !seedItem.historico.some(si => si.data === sh.data && si.acao === sh.acao)
-        );
-        return { ...seedItem, historico: [...seedItem.historico, ...extraHistory] };
-      });
-      // Preserva clientes criados manualmente que não estão no seed
-      stored.forEach(s => {
-        if (!MG_SEED.some(si => si.id === s.id)) mgClientes.push(s);
-      });
-      mgNextId = Math.max(18, ...mgClientes.map(c => c.id)) + 1;
-      // Salva versão atualizada
-      await window.storage.set('mg_seed_version', MG_SEED_VERSION);
-      await window.storage.set('mg_clientes', JSON.stringify({mgClientes, mgNextId}));
-    }
+    mgClientes = MG_SEED.map(seedItem => {
+      const saved = stored.find(s => s.id === seedItem.id);
+      if (!saved) return { ...seedItem };
+      // Preserva apenas notas adicionadas manualmente após o histórico do seed
+      const lastSeedDate = seedItem.historico.length ? seedItem.historico[seedItem.historico.length-1].data : '2000-01-01';
+      const extraHistory = saved.historico ? saved.historico.filter(sh =>
+        sh.data > lastSeedDate &&
+        !seedItem.historico.some(si => si.data === sh.data && si.acao === sh.acao)
+      ) : [];
+      return { ...seedItem, historico: [...seedItem.historico, ...extraHistory] };
+    });
+    // Preserva clientes criados manualmente que não estão no seed
+    stored.forEach(s => {
+      if (!MG_SEED.some(si => si.id === s.id)) mgClientes.push(s);
+    });
+    mgNextId = Math.max(18, ...mgClientes.map(c => c.id)) + 1;
+    // Salva sempre com os dados atuais do seed
+    await window.storage.set('mg_seed_version', MG_SEED_VERSION);
+    await window.storage.set('mg_clientes', JSON.stringify({mgClientes, mgNextId}));
   } catch(e) {
     mgClientes = MG_SEED.map(r => ({...r}));
     mgNextId   = MG_SEED.length + 1;
