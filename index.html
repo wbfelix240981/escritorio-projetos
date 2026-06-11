@@ -2256,7 +2256,7 @@ let mgClientes = [
   { id:12, nome:"BMC MAQUINAS E EQUIP PESADOS", qtdMaquinas:23, status:"Planejamento", progresso:0, confirmado:true, dataPrevista:null, dataMigracao:null, historico:[{"data": "2026-06-07", "acao": "Não haverá migração neste momento — será realizada apenas troca de IP"}] },
   { id:13, nome:"GEOFIX ENGENHARIA FUNDACOES", qtdMaquinas:2, status:"Em Progresso", progresso:0, confirmado:true, dataPrevista:null, dataMigracao:null, historico:[{"data": "09/06/2026 14:31", "acao": "Status alterado para: Em Progresso"}] },
   { id:14, nome:"REFRIO ARMAZENS GERAIS LTDA", qtdMaquinas:26, status:"Em Progresso", progresso:0, confirmado:true, dataPrevista:null, dataMigracao:null, historico:[{"data": "09/06/2026 14:31", "acao": "Status alterado para: Em Progresso"}] },
-  { id:15, nome:"1TEAMCLOUD SOLUCOES", qtdMaquinas:1, status:"Em Progresso", progresso:0, confirmado:true, dataPrevista:"2026-06-13", dataMigracao:"2026-06-13", historico:[{"data": "09/06/2026 14:31", "acao": "Status alterado para: Em Progresso"}, {"data": "11/06/2026 17:31", "acao": "Confirmado — Data migração: 06-13 — Status: Em Progresso"}] },
+  { id:15, nome:"1TEAMCLOUD SOLUCOES", qtdMaquinas:1, status:"Planejamento", progresso:0, confirmado:false, dataPrevista:null, dataMigracao:null, historico:[{"data": "09/06/2026 14:31", "acao": "Status alterado para: Em Progresso"}, {"data": "11/06/2026 17:31", "acao": "Confirmado — Data migração: 06-13 — Status: Em Progresso"}] },
   { id:16, nome:"GRUPO RAIZES", qtdMaquinas:13, status:"Em Progresso", progresso:0, confirmado:true, dataPrevista:null, dataMigracao:null, historico:[{"data": "09/06/2026 14:31", "acao": "Status alterado para: Em Progresso"}] },
   { id:17, nome:"SAT CONSULTORIA", qtdMaquinas:3, status:"Em Progresso", progresso:0, confirmado:true, dataPrevista:"2026-06-27", dataMigracao:"2026-06-27", historico:[{"data": "09/06/2026 14:31", "acao": "Status alterado para: Em Progresso"}, {"data": "11/06/2026 17:31", "acao": "Confirmado — Data migração: 06-27 — Status: Em Progresso"}] },
 ];
@@ -2525,11 +2525,11 @@ const MG_SEED = [
   { id:12, nome:"BMC MAQUINAS E EQUIP PESADOS",    qtdMaquinas:23,  status:"Planejamento", progresso:0,  dataPrevista:null,         dataMigracao:null,         historico:[{data:"2026-06-07",acao:"Não haverá migração neste momento — será realizada apenas troca de IP"}] },
   { id:13, nome:"GEOFIX ENGENHARIA FUNDACOES",     qtdMaquinas:2,   status:"Planejamento", progresso:0,  dataPrevista:null,         dataMigracao:null,         historico:[] },
   { id:14, nome:"REFRIO ARMAZENS GERAIS LTDA",     qtdMaquinas:26,  status:"Planejamento", progresso:0,  dataPrevista:null,         dataMigracao:null,         historico:[] },
-  { id:15, nome:"1TEAMCLOUD SOLUCOES",             qtdMaquinas:1,   status:"Em Progresso", progresso:0,  confirmado:true, dataPrevista:"2026-06-13",         dataMigracao:"2026-06-13",         historico:[] },
+  { id:15, nome:"1TEAMCLOUD SOLUCOES",             qtdMaquinas:1,   status:"Planejamento", progresso:0,  confirmado:false, dataPrevista:null,         dataMigracao:null,         historico:[] },
   { id:16, nome:"GRUPO RAIZES",                    qtdMaquinas:13,  status:"Planejamento", progresso:0,  dataPrevista:null,         dataMigracao:null,         historico:[] },
   { id:17, nome:"SAT CONSULTORIA",                 qtdMaquinas:3,   status:"Em Progresso", progresso:0,  confirmado:true, dataPrevista:"2026-06-27",         dataMigracao:"2026-06-27",         historico:[] },
 ];
-const MG_SEED_VERSION = "2026-06-11-v15"; // incrementar ao alterar o seed
+const MG_SEED_VERSION = "2026-06-11-v16"; // incrementar ao alterar o seed
 
 async function mgCarregarDados() {
   try {
