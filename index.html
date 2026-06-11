@@ -2272,7 +2272,16 @@ function mgFmtData(iso) { if(!iso) return '—'; const [y,m,d]=iso.split('-'); r
 function mgRender() {
   const fStatus = document.getElementById('mg-filtroStatus')?.value || '';
   const fNome   = (document.getElementById('mg-filtroNome')?.value || '').toLowerCase();
-  const lista   = mgClientes.filter(c => (!fStatus || c.status===fStatus) && c.nome.toLowerCase().includes(fNome)).sort((a,b) => b.progresso - a.progresso);
+  const lista   = mgClientes.filter(c => (!fStatus || c.status===fStatus) && c.nome.toLowerCase().includes(fNome)).sort((a,b) => {
+    // 1. Confirmados primeiro
+    if (a.confirmado !== b.confirmado) return (b.confirmado ? 1 : 0) - (a.confirmado ? 1 : 0);
+    // 2. Por data de migração (mais próxima primeiro)
+    const da = a.dataMigracao || '9999-99-99';
+    const db = b.dataMigracao || '9999-99-99';
+    if (da !== db) return da < db ? -1 : 1;
+    // 3. Por progresso
+    return b.progresso - a.progresso;
+  });
   const tbody   = document.getElementById('mg-tbody');
   const empty   = document.getElementById('mg-emptyState');
   if (!tbody) return;
