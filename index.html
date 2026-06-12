@@ -338,8 +338,9 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--blue); outline-
 
 /* ── Login Screen ── */
 #login-screen {
-  position: fixed; inset: 0; z-index: 9999;
+  position: fixed; inset: 0; z-index: 99999;
   display: flex; font-family: 'Sora', sans-serif;
+  opacity: 1; transition: opacity .4s ease;
 }
 .login-left {
   flex: 1;
@@ -5216,8 +5217,11 @@ function doLogin() {
   const err   = document.getElementById('login-error');
   const user  = USERS.find(u => u.email === email && u.pass === pass);
   if (user) {
-    document.getElementById('login-screen').style.display = 'none';
-    sessionStorage.setItem('binario-auth', '1');
+    const screen = document.getElementById('login-screen');
+    screen.style.transition = 'opacity .4s ease';
+    screen.style.opacity = '0';
+    setTimeout(() => { screen.style.display = 'none'; }, 400);
+    localStorage.setItem('binario-auth', '1');
     err.classList.remove('show');
   } else {
     err.classList.add('show');
@@ -5226,9 +5230,10 @@ function doLogin() {
   }
 }
 (function() {
-  if (sessionStorage.getItem('binario-auth') === '1') {
-    const el = document.getElementById('login-screen');
-    if (el) el.style.display = 'none';
+  const el = document.getElementById('login-screen');
+  if (!el) return;
+  if (localStorage.getItem('binario-auth') === '1') {
+    el.style.display = 'none';
   }
 })();
 </script>
