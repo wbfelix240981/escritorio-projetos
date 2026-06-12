@@ -418,11 +418,11 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--blue); outline-
   opacity: 1; transition: opacity .4s ease;
 }
 .login-left {
-  width: 300px; flex-shrink: 0;
+  width: 25vw; min-width: 260px; max-width: 320px; flex-shrink: 0;
   background: #fff;
   display: flex; flex-direction: column;
   align-items: center; justify-content: center;
-  padding: 44px 32px;
+  padding: 40px 28px;
   border-right: 1px solid #e2e8f0;
   z-index: 1;
 }
@@ -453,32 +453,32 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--blue); outline-
 .login-stat-val { font-size: 22px; font-weight: 800; color: #fff; }
 .login-stat-lbl { font-size: 10px; color: #64748b; margin-top: 2px; text-transform: uppercase; letter-spacing: .5px; }
 
-.lf-logo { margin-bottom: 24px; }
-.lf-logo img { width: 110px; }
-.lf-title { font-size: 17px; font-weight: 800; color: #0f172a; margin-bottom: 4px; }
-.lf-sub { font-size: 11px; color: #64748b; margin-bottom: 24px; }
-.lf-label { display: block; font-size: 11px; font-weight: 700; color: #374151; letter-spacing: .6px; text-transform: uppercase; margin-bottom: 7px; }
+.lf-logo { margin-bottom: 20px; }
+.lf-logo img { width: 90px; }
+.lf-title { font-size: 15px; font-weight: 800; color: #0f172a; margin-bottom: 3px; }
+.lf-sub { font-size: 11px; color: #64748b; margin-bottom: 18px; }
+.lf-label { display: block; font-size: 10px; font-weight: 700; color: #374151; letter-spacing: .5px; text-transform: uppercase; margin-bottom: 5px; }
 .lf-input-wrap { position: relative; margin-bottom: 18px; }
 .lf-input-icon { position: absolute; left: 13px; top: 50%; transform: translateY(-50%); color: #9ca3af; }
 .lf-input-icon svg { width: 15px; height: 15px; }
 .lf-input {
-  width: 100%; padding: 12px 12px 12px 38px; font-size: 13px; font-family: 'Sora', sans-serif;
-  border: 1.5px solid #e2e8f0; border-radius: 10px; color: #0f172a;
+  width: 100%; padding: 10px 10px 10px 34px; font-size: 12px; font-family: 'Sora', sans-serif;
+  border: 1.5px solid #e2e8f0; border-radius: 8px; color: #0f172a;
   outline: none; background: #f8fafc; transition: all .2s; box-sizing: border-box;
 }
 .lf-input::placeholder { color: #9ca3af; }
 .lf-input:focus { border-color: #3b82f6; background: #fff; box-shadow: 0 0 0 3px rgba(59,130,246,.1); }
 .lf-btn {
-  width: 100%; padding: 13px; margin-top: 4px;
-  background: #1d4ed8; border: none; border-radius: 10px;
-  color: #fff; font-size: 14px; font-weight: 700; font-family: 'Sora', sans-serif;
+  width: 100%; padding: 11px; margin-top: 4px;
+  background: #1d4ed8; border: none; border-radius: 8px;
+  color: #fff; font-size: 13px; font-weight: 700; font-family: 'Sora', sans-serif;
   cursor: pointer; transition: all .2s; display: flex; align-items: center; justify-content: center; gap: 8px;
 }
 .lf-btn:hover { background: #1e40af; transform: translateY(-1px); }
 .lf-btn svg { width: 16px; height: 16px; }
 .lf-error { display: none; margin-top: 14px; padding: 10px 14px; background: #fef2f2; border: 1px solid #fecaca; border-radius: 8px; color: #dc2626; font-size: 12px; font-weight: 500; }
 .lf-error.show { display: flex; align-items: center; gap: 8px; }
-.lf-footer { margin-top: 32px; font-size: 11px; color: #9ca3af; text-align: center; }
+.lf-footer { margin-top: 20px; font-size: 10px; color: #9ca3af; text-align: center; }
 
 @media (max-width: 768px) {
   .login-right { display: none; }
