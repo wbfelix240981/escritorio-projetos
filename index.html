@@ -1008,6 +1008,111 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--blue); outline-
   .sm-grid { gap: 8px !important; }
 }
 
+
+
+/* ══════════════════════════════════════════
+   STATUS MIGRAÇÃO — CSS Completo
+══════════════════════════════════════════ */
+.sm-hero { background: linear-gradient(120deg,#6a1b9a 0%,#8e24aa 100%) !important; }
+.sm-section { margin-bottom: 28px; }
+.sm-section-title { font-size: 13px; font-weight: 800; color: #1a1a2e; margin-bottom: 14px; }
+
+/* Grid de 3 cards */
+.sm-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin-bottom: 14px;
+}
+
+/* Card base */
+.sm-card {
+  padding: 20px 16px;
+  border-radius: 12px;
+  text-align: center;
+  color: #fff;
+}
+.sm-blue  { background: linear-gradient(135deg,#3498db,#2980b9); }
+.sm-green { background: linear-gradient(135deg,#27ae60,#229954); }
+.sm-gray  { background: linear-gradient(135deg,#95a5a6,#7f8c8d); }
+.sm-num   { font-size: 38px; font-weight: 900; line-height: 1; margin-bottom: 6px; }
+.sm-lbl   { font-size: 12px; font-weight: 600; }
+.sm-sub   { font-size: 11px; margin-top: 4px; opacity: .85; }
+
+/* Barra de progresso */
+.sm-bar-track {
+  display: flex;
+  height: 28px;
+  border-radius: 6px;
+  overflow: hidden;
+  background: #ecf0f1;
+  margin-bottom: 8px;
+}
+.sm-bar-fill {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 10px;
+  min-width: 30px;
+}
+.sm-bar-fill span { color: #fff; font-weight: 700; font-size: 11px; white-space: nowrap; }
+.sm-bar-green { background: linear-gradient(90deg,#27ae60,#2ecc71); }
+.sm-bar-gray  { background: linear-gradient(90deg,#95a5a6,#bdc3c7); }
+
+/* Legenda */
+.sm-legend {
+  display: flex;
+  gap: 16px;
+  font-size: 11px;
+  flex-wrap: wrap;
+  color: #555;
+}
+.sm-leg-item { display: flex; align-items: center; gap: 6px; }
+.sm-leg-dot  { width: 10px; height: 10px; border-radius: 2px; flex-shrink: 0; }
+
+/* ── Mobile ≤768px ── */
+@media (max-width: 768px) {
+  #status-migracao .page-body {
+    padding: 12px 12px 32px !important;
+  }
+  .sm-section { margin-bottom: 20px !important; }
+  .sm-section-title { font-size: 12px !important; margin-bottom: 10px !important; }
+
+  /* Grid: 1 coluna no mobile */
+  .sm-grid {
+    grid-template-columns: 1fr !important;
+    gap: 8px !important;
+    margin-bottom: 10px !important;
+  }
+  .sm-card  { padding: 14px 16px !important; border-radius: 10px !important; }
+  .sm-num   { font-size: 28px !important; margin-bottom: 4px !important; }
+  .sm-lbl   { font-size: 12px !important; }
+  .sm-sub   { font-size: 10px !important; }
+
+  .sm-bar-track { height: 22px !important; }
+  .sm-bar-fill span { font-size: 10px !important; }
+
+  .sm-legend {
+    justify-content: flex-start !important;
+    gap: 10px !important;
+    font-size: 11px !important;
+    margin-top: 6px !important;
+  }
+
+  /* Hero sem stats — compacto */
+  .sm-hero {
+    padding: 14px 14px !important;
+    min-height: auto !important;
+  }
+  .sm-hero .hero-title { font-size: 15px !important; }
+  .sm-hero .hero-sub   { font-size: 11px !important; }
+}
+
+@media (max-width: 480px) {
+  .sm-num { font-size: 24px !important; }
+  .sm-card { padding: 12px !important; }
+}
+
 </style>
 </head>
 <body>
