@@ -418,7 +418,7 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--blue); outline-
 /* ── Pages ── */
 .page { display: none; }
 .page.active { display: block; }
-.page.active.bcp-page { display: flex !important; flex-direction: column; height: 100vh; overflow: hidden; }
+.page.active.bcp-page { display: flex !important; flex-direction: column; min-height: 100vh; overflow: hidden; }
 
 /* ── Login Screen ── */
 #login-screen {
@@ -479,6 +479,13 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--blue); outline-
 
 /* ── Base mobile ── */
 @media (max-width: 768px) {
+
+  /* BCP pages mobile */
+  .page.bcp-page, .page.active.bcp-page { height: auto !important; min-height: 100vh; overflow-y: auto !important; }
+  #capacity-20 > div:last-child,
+  #capacity-30 > div:last-child { padding: 16px 14px 40px !important; overflow-y: auto; }
+  #capacity-20 table, #capacity-30 table { min-width: 600px; }
+  #capacity-20 .san20-table-wrap, #capacity-30 .san30-table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
 
   /* Botão Binario */
   #drawer-trigger { top: 8px; left: 10px; padding: 6px 10px; font-size: 11px; z-index: 160; }
@@ -873,7 +880,7 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--blue); outline-
 <!-- SANITIZAÇÃO 2.0 -->
 <div id="capacity-20" class="page bcp-page">
   <div class="topbar"><div class="tb-heading">BCP 2.0 <span>| Binario Cloud</span></div></div>
-  <div style="background:linear-gradient(135deg,#0f0c29 0%,#1a1040 50%,#0f172a 100%);min-height:calc(100vh - 64px);padding:32px 40px 56px;font-family:'Sora',sans-serif;">
+  <div style="background:linear-gradient(135deg,#0f0c29 0%,#1a1040 50%,#0f172a 100%);min-height:calc(100vh - 64px);padding:32px 40px 56px;font-family:'Sora',sans-serif;overflow-y:auto;-webkit-overflow-scrolling:touch;">
 
     <!-- Header -->
     <div style="margin-bottom:28px;">
@@ -1908,7 +1915,7 @@ document.addEventListener('page-changed', function(e) {
 <!-- CAPACITY 3.0 -->
 <div id="capacity-30" class="page bcp-page">
   <div class="topbar"><div class="tb-heading">BCP 3.0 <span>| Binario Cloud</span></div></div>
-  <div style="background:linear-gradient(135deg,#0f0c29 0%,#1a1040 50%,#0f172a 100%);min-height:calc(100vh - 64px);padding:32px 40px 56px;font-family:'Sora',sans-serif;">
+  <div style="background:linear-gradient(135deg,#0f0c29 0%,#1a1040 50%,#0f172a 100%);min-height:calc(100vh - 64px);padding:32px 40px 56px;font-family:'Sora',sans-serif;overflow-y:auto;-webkit-overflow-scrolling:touch;">
 
     <!-- Header -->
     <div style="margin-bottom:28px;">
