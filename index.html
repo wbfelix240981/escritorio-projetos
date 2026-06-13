@@ -970,13 +970,37 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--blue); outline-
 
 /* Mobile */
 @media (max-width: 768px) {
-  .sm-grid { grid-template-columns: 1fr !important; gap: 10px !important; }
-  .sm-card { padding: 16px !important; }
-  .sm-num  { font-size: 28px !important; }
-  .sm-lbl  { font-size: 12px !important; }
-  .sm-section-title { font-size: 12px !important; }
-  .sm-bar-track { height: 24px !important; }
-  .sm-legend { justify-content: center !important; }
+  /* sm-grid: 1 coluna */
+  .sm-grid {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 8px !important;
+  }
+  .sm-card { padding: 14px !important; border-radius: 10px !important; }
+  .sm-num  { font-size: 26px !important; }
+  .sm-lbl  { font-size: 11px !important; }
+  .sm-sub  { font-size: 10px !important; }
+  .sm-section-title { font-size: 12px !important; margin-bottom: 10px !important; }
+  .sm-section { margin-bottom: 24px !important; }
+  .sm-bar-track { height: 22px !important; }
+  .sm-bar-fill span { font-size: 10px !important; }
+  .sm-legend {
+    justify-content: center !important;
+    flex-wrap: wrap !important;
+    gap: 8px !important;
+    font-size: 11px !important;
+  }
+  /* Hero sem stats */
+  .sm-hero {
+    padding: 16px !important;
+    min-height: auto !important;
+  }
+  .sm-hero .hero-title { font-size: 16px !important; }
+  .sm-hero .hero-sub   { font-size: 11px !important; }
+}
+
+@media (max-width: 480px) {
+  .sm-grid { grid-template-columns: 1fr !important; gap: 6px !important; }
+  .sm-num  { font-size: 22px !important; }
 }
 
 @media (max-width: 480px) {
