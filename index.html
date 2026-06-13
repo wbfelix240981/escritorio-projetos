@@ -418,7 +418,7 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--blue); outline-
 /* ── Pages ── */
 .page { display: none; }
 .page.active { display: block; }
-.page.active.bcp-page { display: flex; flex-direction: column; height: 100vh; overflow: hidden; }
+.page.active.bcp-page { display: flex !important; flex-direction: column; height: 100vh; overflow: hidden; }
 
 /* ── Login Screen ── */
 #login-screen {
@@ -536,9 +536,9 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--blue); outline-
   #controle-migracao input { font-size: 11px; }
 
   /* BCP 2.0 e 3.0 */
-  .bcp-shell { flex-direction: column; height: auto !important; }
-  .bcp-sidebar { display: none; }
-  .bcp-main { width: 100%; }
+  .bcp-shell { flex-direction: column !important; height: auto !important; }
+  .bcp-sidebar { display: none !important; }
+  .bcp-main { width: 100% !important; overflow-y: auto; }
   .bcp-page-header { padding: 12px 14px; flex-direction: column; gap: 8px; align-items: flex-start; }
   .bcp-page-title { font-size: 14px; }
   .bcp-metrics { flex-wrap: wrap; gap: 1px; }
@@ -546,7 +546,7 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--blue); outline-
   .bcp-metric-val { font-size: 16px; }
   .bcp-filters { flex-wrap: wrap; gap: 6px; padding: 10px 12px; }
   .bcp-search-wrap { max-width: 100%; width: 100%; }
-  .bcp-table-wrap { overflow-x: auto; }
+  .bcp-table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
   .bcp-table thead th, .bcp-table tbody td { padding: 8px 10px; font-size: 11px; }
 
   /* Projetos finalizados */
