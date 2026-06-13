@@ -132,6 +132,7 @@ body.page-internal #drawer-trigger:hover { background: #f4f6fb; border-color: #c
 .grid { display:grid; gap:20px; margin-bottom:28px; }
 .grid-2 { grid-template-columns:repeat(2,1fr); }
 .grid-3 { grid-template-columns:repeat(3,1fr); }
+.grid-est-bottom { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:20px; max-width:66.666%; margin:0 auto 28px auto; }
 .grid-4 { grid-template-columns:repeat(4,1fr); }
 
 .card { background:linear-gradient(135deg,var(--card-bg) 0%,#f8fafb 100%); border-radius:var(--radius); border:1px solid rgba(0,0,0,.04); box-shadow:var(--shadow); display:flex; flex-direction:column; min-height:var(--card-h); padding:14px 14px 10px; position:relative; overflow:hidden; transition:all .3s ease; }
@@ -689,6 +690,11 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--blue); outline-
   .grid-2, .grid-3, .grid-4 {
     grid-template-columns: 1fr !important;
   }
+  .grid-est-bottom {
+    grid-template-columns: 1fr !important;
+    max-width: 100% !important;
+    margin: 0 0 20px 0 !important;
+  }
 
 
   .card-body { padding: 14px !important; }
@@ -1148,7 +1154,7 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--blue); outline-
       <div class="card anim"><div class="card-accent accent-blue"></div><div class="card-header"><span class="pill pill-prog">● Em progresso</span><span class="card-pct">95%</span></div><div class="card-title">ClaudIA</div><div class="card-footer"><span class="prog-note">Produção assistida · Treinamento em andamento</span><div class="bar-track"><div class="bar-fill fill-blue" data-pct="95"></div></div><button class="btn-det" onclick="openModal('claudia')">Ver detalhes <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 6.5h9M7 2l4.5 4.5L7 11" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div></div>
       <div class="card anim"><div class="card-accent accent-blue"></div><div class="card-header"><span class="pill pill-prog">● Em progresso</span><span class="card-pct">80%</span></div><div class="card-title">Observabilidade</div><div class="card-footer"><span class="prog-note">Meta: conclusão em 31/07</span><div class="bar-track"><div class="bar-fill fill-blue" data-pct="80"></div></div><button class="btn-det" onclick="openModal('obs')">Ver detalhes <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 6.5h9M7 2l4.5 4.5L7 11" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div></div>
     </div>
-    <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;max-width:66.666%;margin:0 auto 28px auto;">
+    <div class="grid-est-bottom">
       <div class="card anim"><div class="card-accent accent-blue"></div><div class="card-header"><span class="pill pill-prog">● Em progresso</span><span class="card-pct">95%</span></div><div class="card-title">Implementação – Storware</div><div class="card-footer"><span class="prog-note">Aguardando renovação · Testes em andamento</span><div class="bar-track"><div class="bar-fill fill-blue" data-pct="95"></div></div><button class="btn-det" onclick="openModal('storware')">Ver detalhes <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 6.5h9M7 2l4.5 4.5L7 11" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div></div>
       <div class="card anim"><div class="card-accent accent-blue"></div><div class="card-header"><span class="pill pill-prog">● Em progresso</span><span class="card-pct">80%</span></div><div class="card-title">BCP 2.0 / 3.0</div><div class="card-footer"><span class="prog-note">Em progresso</span><div class="bar-track"><div class="bar-fill fill-blue" data-pct="80"></div></div><button class="btn-det" onclick="openModal('san')">Ver detalhes <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 6.5h9M7 2l4.5 4.5L7 11" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div></div>
     </div>
