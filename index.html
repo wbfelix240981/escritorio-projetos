@@ -480,12 +480,81 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--blue); outline-
 /* ── Base mobile ── */
 @media (max-width: 768px) {
 
-  /* BCP pages mobile */
-  .page.bcp-page, .page.active.bcp-page { height: auto !important; min-height: 100vh; overflow-y: auto !important; }
-  #capacity-20 > div:last-child,
-  #capacity-30 > div:last-child { padding: 16px 14px 40px !important; overflow-y: auto; }
-  #capacity-20 table, #capacity-30 table { min-width: 600px; }
-  #capacity-20 .san20-table-wrap, #capacity-30 .san30-table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  /* BCP pages mobile — override inline styles */
+  .page.bcp-page, .page.active.bcp-page {
+    height: auto !important;
+    min-height: 100vh !important;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+  }
+
+  /* Container principal das páginas BCP */
+  #capacity-20 > div:nth-child(2),
+  #capacity-30 > div:nth-child(2) {
+    padding: 16px 12px 40px !important;
+    min-height: unset !important;
+    overflow-y: visible !important;
+  }
+
+  /* Título/Header */
+  #capacity-20 h1, #capacity-30 h1 { font-size: 16px !important; }
+  #capacity-20 p,  #capacity-30 p  { font-size: 11px !important; }
+
+  /* Métricas — 2 por linha */
+  #san20-metrics, #san30-metrics {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 8px !important;
+    margin-bottom: 16px !important;
+  }
+  #san20-metrics > div, #san30-metrics > div {
+    padding: 12px !important;
+    border-radius: 10px !important;
+  }
+  #san20-metrics [style*="font-size:36px"],
+  #san30-metrics [style*="font-size:36px"],
+  #san20-total, #san20-ok, #san20-nok, #san20-totalvms, #san20-remocao,
+  #san30-total, #san30-ok, #san30-nok, #san30-totalvms {
+    font-size: 24px !important;
+  }
+
+  /* Filtros */
+  #san20-filtros, #san30-filtros,
+  div[style*="display:flex"][style*="gap:10px"] {
+    flex-direction: column !important;
+    gap: 8px !important;
+    margin-bottom: 12px !important;
+  }
+  #san20-q, #san30-q,
+  input[id^="san"] {
+    width: 100% !important;
+    font-size: 13px !important;
+    padding: 10px 12px !important;
+  }
+  select[id^="san"], select[onchange^="san"] {
+    width: 100% !important;
+    font-size: 12px !important;
+  }
+
+  /* Tabela — scroll horizontal */
+  #san20-tbody, #san30-tbody,
+  div[id$="-tbody"] {
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    display: block !important;
+  }
+
+  /* Export buttons */
+  button[onclick*="san20Export"], button[onclick*="san30Export"],
+  button[onclick*="Export"] {
+    font-size: 11px !important;
+    padding: 6px 10px !important;
+  }
+
+  /* Cards de domínio na tabela */
+  #san20-tbody > div, #san30-tbody > div {
+    padding: 12px !important;
+    margin-bottom: 8px !important;
+  }
 
   /* Botão Binario */
   #drawer-trigger { top: 8px; left: 10px; padding: 6px 10px; font-size: 11px; z-index: 160; }
@@ -880,7 +949,7 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--blue); outline-
 <!-- SANITIZAÇÃO 2.0 -->
 <div id="capacity-20" class="page bcp-page">
   <div class="topbar"><div class="tb-heading">BCP 2.0 <span>| Binario Cloud</span></div></div>
-  <div style="background:linear-gradient(135deg,#0f0c29 0%,#1a1040 50%,#0f172a 100%);min-height:calc(100vh - 64px);padding:32px 40px 56px;font-family:'Sora',sans-serif;overflow-y:auto;-webkit-overflow-scrolling:touch;">
+  <div style="background:linear-gradient(135deg,#0f0c29 0%,#1a1040 50%,#0f172a 100%);min-height:calc(100vh - 64px);padding:32px 40px 56px;font-family:'Sora',sans-serif;overflow-y:auto;-webkit-overflow-scrolling:touch;box-sizing:border-box;width:100%;max-width:100%;overflow-x:hidden;">
 
     <!-- Header -->
     <div style="margin-bottom:28px;">
@@ -1915,7 +1984,7 @@ document.addEventListener('page-changed', function(e) {
 <!-- CAPACITY 3.0 -->
 <div id="capacity-30" class="page bcp-page">
   <div class="topbar"><div class="tb-heading">BCP 3.0 <span>| Binario Cloud</span></div></div>
-  <div style="background:linear-gradient(135deg,#0f0c29 0%,#1a1040 50%,#0f172a 100%);min-height:calc(100vh - 64px);padding:32px 40px 56px;font-family:'Sora',sans-serif;overflow-y:auto;-webkit-overflow-scrolling:touch;">
+  <div style="background:linear-gradient(135deg,#0f0c29 0%,#1a1040 50%,#0f172a 100%);min-height:calc(100vh - 64px);padding:32px 40px 56px;font-family:'Sora',sans-serif;overflow-y:auto;-webkit-overflow-scrolling:touch;box-sizing:border-box;width:100%;max-width:100%;overflow-x:hidden;">
 
     <!-- Header -->
     <div style="margin-bottom:28px;">
