@@ -1281,7 +1281,12 @@ function san20Delete(id) {
 
 async function san20SaveStorage() {
   try {
-    await window.storage.set('san20_data', JSON.stringify({ san20Data, san20NextId }));
+    const payload = JSON.stringify({ san20Data, san20NextId });
+    if (window.storage) {
+      await window.storage.set('san20_data', payload);
+    } else {
+      localStorage.setItem('san20_data', payload);
+    }
     const t = document.getElementById('san20-save-txt');
     if (t) { t.textContent = '✓ Salvo'; t.style.color = '#4ade80'; setTimeout(()=>{ t.textContent=''; }, 2000); }
   } catch(e) {}
@@ -2808,7 +2813,7 @@ async function mgCarregarDados() {
     // Storage preserva apenas notas manuais extras adicionadas pelo usuário
     let stored = [];
     try {
-      const res = await window.storage.get('mg_clientes');
+      const res = window.storage ? await window.storage.get('mg_clientes') : { value: localStorage.getItem('mg_clientes') };
       if (res?.value) { stored = JSON.parse(res.value).mgClientes || []; }
     } catch(e) {}
 
@@ -4837,7 +4842,7 @@ async function san30SaveStorage() {
 
 async function san30LoadStorage() {
   try {
-    const res = await window.storage.get('san30_data');
+    const res = window.storage ? await window.storage.get('san30_data') : { value: localStorage.getItem('san30_data') };
     if (res?.value) {
       const d = JSON.parse(res.value);
       san30Data   = d.san30Data   || [];
