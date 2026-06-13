@@ -94,7 +94,9 @@ body.page-internal #drawer-trigger:hover { background: #f4f6fb; border-color: #c
 .dr-footer { padding: 16px 22px; border-top: 1px solid rgba(255,255,255,.07); font-size: 10px; color: rgba(255,255,255,.28); line-height: 1.7; }
 
 /* PÁGINAS */
-.page { display: none; min-height: 100vh; }
+.page { display: none; }
+.page.active { display: block; }
+.page.active.bcp-page { display: flex; flex-direction: column; height: 100vh; overflow: hidden; }
 .page.active { display: block; }
 
 #cover { min-height: 100vh; background: linear-gradient(135deg, #060f2e 0%, #0d3a8a 55%, #1255b0 100%); align-items: center; justify-content: center; position: relative; overflow: hidden; }
@@ -342,6 +344,10 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--blue); outline-
   display: flex; font-family: 'Sora', sans-serif;
   opacity: 1; transition: opacity .4s ease;
 }
+#login-screen.hidden {
+  display: none !important;
+  pointer-events: none;
+}
 .login-left {
   flex: 1;
   background: linear-gradient(160deg, #0a1628 0%, #112244 40%, #1a3a6e 100%);
@@ -417,6 +423,10 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--blue); outline-
   display: flex; font-family: 'Sora', sans-serif;
   opacity: 1; transition: opacity .4s ease;
 }
+#login-screen.hidden {
+  display: none !important;
+  pointer-events: none;
+}
 .login-left {
   width: 25vw; min-width: 260px; max-width: 320px; flex-shrink: 0;
   background: #fff;
@@ -483,6 +493,72 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--blue); outline-
 @media (max-width: 768px) {
   .login-right { display: none; }
   .login-left { width: 100%; }
+}
+
+
+/* ── Mobile Responsive ── */
+@media (max-width: 768px) {
+  /* Drawer trigger */
+  #drawer-trigger { top: 8px; left: 10px; padding: 6px 10px; font-size: 12px; }
+
+  /* Topbar */
+  .topbar { padding: 0 12px 0 110px; height: 52px; }
+  .tb-heading { font-size: 13px; }
+
+  /* Page body */
+  .page-body { padding: 20px 16px 40px; }
+
+  /* Hero */
+  .page-hero { padding: 20px; }
+  .hero-title { font-size: 20px; }
+  .hero-sub { font-size: 12px; }
+  .hero-stats { gap: 10px; }
+  .hero-stat { padding: 10px 14px; }
+  .sv { font-size: 20px; }
+
+  /* Grid */
+  .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+
+  /* Cards */
+  .card { min-height: auto; }
+
+  /* Modal */
+  .modal { width: calc(100vw - 20px); max-height: 90vh; }
+  .modal-hd { padding: 16px; }
+  .modal-bd { padding: 14px 16px 20px; }
+
+  /* Login */
+  .login-left { width: 100%; min-width: unset; max-width: unset; padding: 32px 24px; }
+  .login-right { display: none; }
+
+  /* BCP pages */
+  .bcp-sidebar { display: none; }
+  .bcp-main { width: 100%; }
+  .bcp-page-header { padding: 14px 16px; flex-direction: column; gap: 10px; }
+  .bcp-metrics { flex-wrap: wrap; }
+  .bcp-metric { min-width: calc(50% - 1px); }
+  .bcp-filters { flex-wrap: wrap; gap: 8px; padding: 10px 12px; }
+  .bcp-search-wrap { max-width: 100%; }
+  .bcp-table tbody td, .bcp-table thead th { padding: 8px 10px; font-size: 11px; }
+
+  /* Status migração */
+  #status-migracao .page-body { padding: 16px; }
+
+  /* Controle migração */
+  #controle-migracao table { font-size: 11px; }
+  #controle-migracao th, #controle-migracao td { padding: 8px 6px; }
+
+  /* Cover */
+  .cover-title { font-size: 26px; }
+  .cover-sub { font-size: 12px; }
+}
+
+@media (max-width: 480px) {
+  .topbar { padding: 0 10px 0 100px; }
+  .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+  .hero-stats { flex-direction: column; align-items: flex-start; gap: 8px; }
+  .modal { width: calc(100vw - 10px); }
+  .bcp-metric { min-width: 100%; }
 }
 
 </style>
@@ -858,7 +934,7 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--blue); outline-
 </div>
 
 <!-- SANITIZAÇÃO 2.0 -->
-<div id="capacity-20" class="page">
+<div id="capacity-20" class="page bcp-page">
   <div class="topbar"><div class="tb-heading">BCP 2.0 <span>| Binario Cloud</span></div></div>
   <div style="background:linear-gradient(135deg,#0f0c29 0%,#1a1040 50%,#0f172a 100%);min-height:calc(100vh - 64px);padding:32px 40px 56px;font-family:'Sora',sans-serif;">
 
@@ -1888,7 +1964,7 @@ document.addEventListener('page-changed', function(e) {
 </script>
 
 <!-- CAPACITY 3.0 -->
-<div id="capacity-30" class="page">
+<div id="capacity-30" class="page bcp-page">
   <div class="topbar"><div class="tb-heading">BCP 3.0 <span>| Binario Cloud</span></div></div>
   <div style="background:linear-gradient(135deg,#0f0c29 0%,#1a1040 50%,#0f172a 100%);min-height:calc(100vh - 64px);padding:32px 40px 56px;font-family:'Sora',sans-serif;">
 
@@ -5335,9 +5411,8 @@ function doLogin() {
   const user  = USERS.find(u => u.email === email && u.pass === pass);
   if (user) {
     const screen = document.getElementById('login-screen');
-    screen.style.transition = 'opacity .4s ease';
     screen.style.opacity = '0';
-    setTimeout(() => { screen.style.display = 'none'; }, 400);
+    setTimeout(() => { screen.classList.add('hidden'); }, 400);
     localStorage.setItem('binario-auth', '1');
     err.classList.remove('show');
   } else {
@@ -5350,7 +5425,7 @@ function doLogin() {
   const el = document.getElementById('login-screen');
   if (!el) return;
   if (localStorage.getItem('binario-auth') === '1') {
-    el.style.display = 'none';
+    el.classList.add('hidden');
   }
 })();
 </script>
