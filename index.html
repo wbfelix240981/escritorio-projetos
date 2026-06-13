@@ -473,9 +473,6 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--blue); outline-
 @media (max-width: 768px) { .lf-right { display: none; } .lf-left { width: 100%; } }
 
 
-/* ══════════════════════════════════════════════
-   MOBILE RESPONSIVE — Todas as páginas
-══════════════════════════════════════════════ */
 
 /* ── Base mobile ── */
 @media (max-width: 768px) {
@@ -640,6 +637,281 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--blue); outline-
   #controle-migracao table { font-size: 10px; }
   #controle-migracao th, #controle-migracao td { padding: 5px 4px; }
   .grid-2 > div:last-child { display: none; } /* ocultar segundo card de 2 col em mobile pequeno apenas se necessário */
+}
+
+
+/* ══════════════════════════════════════════════════════════════
+   MOBILE RESPONSIVE — Criteriosa para todas as páginas
+   Breakpoints: 768px (tablet) | 480px (mobile)
+══════════════════════════════════════════════════════════════ */
+
+@media (max-width: 768px) {
+
+  /* ── Botão Binario ── */
+  #drawer-trigger {
+    top: 8px !important;
+    left: 10px !important;
+    padding: 6px 10px !important;
+    font-size: 11px !important;
+  }
+
+  /* ── Topbar ── */
+  .topbar {
+    padding: 0 12px 0 108px !important;
+    height: 52px !important;
+    flex-shrink: 0;
+  }
+  .tb-heading { font-size: 13px !important; }
+  .tb-heading span { display: none !important; }
+
+  /* ── Drawer ── */
+  #drawer { width: 270px !important; }
+
+  /* ── Pages gerais ── */
+  .page-body { padding: 16px 14px 40px !important; }
+  .page-hero {
+    padding: 16px !important;
+    flex-direction: column !important;
+    gap: 12px !important;
+    align-items: flex-start !important;
+  }
+  .hero-title { font-size: 17px !important; }
+  .hero-sub   { font-size: 11px !important; }
+  .hero-stats {
+    gap: 8px !important;
+    flex-wrap: wrap !important;
+    width: 100% !important;
+  }
+  .hero-stat { padding: 8px 12px !important; flex: 1 1 auto !important; }
+  .sv { font-size: 20px !important; }
+
+  /* ── Grids ── */
+  .grid-2, .grid-3, .grid-4 {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* ── Cards ── */
+  .card { min-height: auto !important; }
+  .card-body { padding: 14px !important; }
+
+  /* ── Modal ── */
+  .modal {
+    width: calc(100vw - 16px) !important;
+    max-height: 90vh !important;
+    border-radius: 14px !important;
+    margin: 8px !important;
+  }
+  .modal-hd { padding: 14px 16px 12px !important; }
+  .modal-bd { padding: 14px 16px 20px !important; }
+  .modal-ttl { font-size: 14px !important; }
+
+  /* ── Cover ── */
+  #cover .cover-content { padding: 24px 20px !important; }
+  .cover-title  { font-size: 22px !important; }
+  .cover-sub    { font-size: 11px !important; }
+  .cover-period { font-size: 18px !important; }
+  .cover-eyebrow { font-size: 11px !important; }
+  .cover-desc { font-size: 12px !important; }
+
+  /* ── Clientes ── */
+  #clientes .page-body { padding: 14px !important; }
+  #clientes [style*="display:flex;align-items:center;gap:10px"] {
+    flex-wrap: wrap !important;
+    gap: 6px !important;
+  }
+
+  /* ── Status Migração ── */
+  #status-migracao .page-body { padding: 14px !important; }
+  #status-migracao [style*="display:flex;gap:20px"] {
+    flex-direction: column !important;
+    gap: 8px !important;
+  }
+  #status-migracao [style*="display:flex;height:32px"] {
+    height: 24px !important;
+  }
+
+  /* ── Finalizados ── */
+  #finalizados .page-body { padding: 14px !important; }
+
+  /* ── Controle Migração ── */
+  #controle-migracao .page-body { padding: 12px 8px 40px !important; }
+  #controle-migracao .page-hero { padding: 14px !important; }
+
+  /* Botões e filtros do controle */
+  #controle-migracao [style*="display:flex"][style*="gap"] {
+    flex-wrap: wrap !important;
+    gap: 6px !important;
+  }
+  #controle-migracao input[type="text"],
+  #controle-migracao input[type="search"],
+  #controle-migracao select {
+    font-size: 12px !important;
+    padding: 8px 10px !important;
+    max-width: 100% !important;
+    width: 100% !important;
+  }
+
+  /* Tabela controle */
+  #mg-table-wrap, #controle-migracao .table-wrap {
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    border-radius: 10px !important;
+  }
+  #mg-table { min-width: 520px !important; }
+  #mg-table th, #mg-table td {
+    padding: 8px 8px !important;
+    font-size: 11px !important;
+    white-space: nowrap !important;
+  }
+
+  /* Dropdowns do controle */
+  #mg-table select {
+    font-size: 10px !important;
+    padding: 3px 4px !important;
+    min-width: 90px !important;
+  }
+  #mg-table input[type="date"] {
+    font-size: 10px !important;
+    padding: 3px 4px !important;
+  }
+
+  /* ── BCP 2.0 e 3.0 ── */
+  .page.bcp-page, .page.active.bcp-page {
+    height: auto !important;
+    min-height: 100vh !important;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+  }
+
+  #capacity-20 > div:nth-child(2),
+  #capacity-30 > div:nth-child(2) {
+    padding: 14px 12px 40px !important;
+    overflow-x: hidden !important;
+  }
+
+  /* BCP Header */
+  #capacity-20 h1, #capacity-30 h1 {
+    font-size: 16px !important;
+    letter-spacing: -.3px !important;
+  }
+  #capacity-20 p, #capacity-30 p {
+    font-size: 11px !important;
+  }
+
+  /* BCP Métricas — 2 por linha */
+  #san20-metrics, #san30-metrics {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 8px !important;
+    margin-bottom: 14px !important;
+  }
+  #san20-metrics > div,
+  #san30-metrics > div {
+    padding: 10px 12px !important;
+    border-radius: 8px !important;
+  }
+  #san20-total, #san20-ok, #san20-nok,
+  #san20-totalvms, #san20-remocao,
+  #san30-total, #san30-ok, #san30-nok, #san30-totalvms {
+    font-size: 22px !important;
+  }
+
+  /* BCP Filtros — coluna */
+  #capacity-20 [style*="display:flex"][style*="gap:12px"],
+  #capacity-20 [style*="display:flex"][style*="gap:10px"],
+  #capacity-30 [style*="display:flex"][style*="gap:12px"],
+  #capacity-30 [style*="display:flex"][style*="gap:10px"] {
+    flex-direction: column !important;
+    gap: 8px !important;
+  }
+
+  /* BCP inputs de busca */
+  #san20-q, #san30-q,
+  input[id^="san"][type="text"] {
+    width: 100% !important;
+    max-width: 100% !important;
+    font-size: 13px !important;
+    box-sizing: border-box !important;
+  }
+
+  /* BCP selects */
+  select[id^="san"],
+  select[onchange^="san"],
+  select[oninput^="san"] {
+    width: 100% !important;
+    font-size: 12px !important;
+    box-sizing: border-box !important;
+  }
+
+  /* BCP Tabela resultados — scroll */
+  #san20-tbody, #san30-tbody {
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    display: block !important;
+  }
+  #san20-tbody table, #san30-tbody table {
+    min-width: 480px !important;
+  }
+
+  /* BCP Botões export */
+  button[onclick*="Export"], button[onclick*="export"],
+  #san20-export-btn, #san30-export-btn {
+    font-size: 11px !important;
+    padding: 6px 10px !important;
+    width: 100% !important;
+    justify-content: center !important;
+  }
+
+  /* BCP Modal */
+  #san20-modal .modal, #san30-modal .modal,
+  [id^="san"][id$="-modal"] > div {
+    width: calc(100vw - 20px) !important;
+    max-height: 88vh !important;
+    overflow-y: auto !important;
+    border-radius: 12px !important;
+  }
+  [id^="san"][id$="-modal"] input,
+  [id^="san"][id$="-modal"] select,
+  [id^="san"][id$="-modal"] textarea {
+    font-size: 13px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  /* ── Login ── */
+  #login-screen { flex-direction: column !important; }
+  .lf-right { display: none !important; }
+  .lf-left {
+    width: 100% !important;
+    min-width: unset !important;
+    max-width: unset !important;
+    min-height: 100vh !important;
+    padding: 36px 24px !important;
+  }
+  .lf-logo img { width: 100px !important; }
+}
+
+/* ── Mobile pequeno ── */
+@media (max-width: 480px) {
+  .topbar { padding: 0 8px 0 100px !important; height: 48px !important; }
+  .page-body { padding: 12px 10px 32px !important; }
+
+  .hero-stats { flex-direction: column !important; gap: 6px !important; }
+  .hero-stat  { width: 100% !important; }
+
+  .sv { font-size: 18px !important; }
+
+  .modal { width: calc(100vw - 8px) !important; }
+
+  #san20-metrics, #san30-metrics {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 6px !important;
+  }
+
+  #mg-table th, #mg-table td { font-size: 10px !important; padding: 6px 6px !important; }
+
+  #capacity-20 h1, #capacity-30 h1 { font-size: 14px !important; }
+
+  .lf-left { padding: 28px 18px !important; }
 }
 
 </style>
