@@ -949,42 +949,42 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--blue); outline-
 <!-- SANITIZAÇÃO 2.0 -->
 <div id="capacity-20" class="page bcp-page">
   <div class="topbar"><div class="tb-heading">BCP 2.0 <span>| Binario Cloud</span></div></div>
-  <div style="background:linear-gradient(135deg,#0f0c29 0%,#1a1040 50%,#0f172a 100%);min-height:calc(100vh - 64px);padding:32px 40px 56px;font-family:'Sora',sans-serif;overflow-y:auto;-webkit-overflow-scrolling:touch;box-sizing:border-box;width:100%;max-width:100%;overflow-x:hidden;">
+  <div style="background:#f5f7fa;min-height:calc(100vh - 64px);padding:32px 40px 56px;font-family:'Sora',sans-serif;overflow-y:auto;-webkit-overflow-scrolling:touch;box-sizing:border-box;width:100%;max-width:100%;overflow-x:hidden;">
 
     <!-- Header -->
     <div style="margin-bottom:28px;">
       <div style="display:flex;align-items:center;gap:12px;margin-bottom:6px;">
         <div>
-          <h1 style="font-size:22px;font-weight:800;color:#fff;letter-spacing:-.5px;margin:0;">Gestão Cloud de Domínios</h1>
-          <p style="font-size:12px;color:#94a3b8;margin:2px 0 0;">Ambiente 2.0 — Inventário OpenStack · 471 VMs · 31 Domínios · 419 ligadas · 52 desligadas<span id="san20-timestamp"></span></p>
+          <h1 style="font-size:22px;font-weight:800;color:#0f172a;letter-spacing:-.5px;margin:0;">Gestão Cloud de Domínios</h1>
+          <p style="font-size:12px;color:#64748b;margin:2px 0 0;">Ambiente 2.0 — Inventário OpenStack · 471 VMs · 31 Domínios · 419 ligadas · 52 desligadas<span id="san20-timestamp"></span></p>
         </div>
       </div>
     </div>
 
     <!-- Métricas -->
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:16px;margin-bottom:28px;" id="san20-metrics">
-      <div style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:20px;">
-        <div style="font-size:10px;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px;">Total de Domínios</div>
-        <div style="font-size:36px;font-weight:900;color:#f1f5f9;line-height:1;" id="san20-total">0</div>
+      <div style="background:#ffffff;border:1px solid #e2e8f0;border-radius:12px;padding:16px;box-shadow:0 1px 3px rgba(0,0,0,.06);">
+        <div style="font-size:10px;font-weight:700;color:#64748b;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;">Total de Domínios</div>
+        <div style="font-size:32px;font-weight:900;color:#0f172a;line-height:1;" id="san20-total">0</div>
       </div>
-      <div id="san20-card-ok" style="background:rgba(34,197,94,.08);border:1px solid rgba(34,197,94,.2);border-radius:14px;padding:20px;">
-        <div style="font-size:10px;font-weight:700;color:#86efac;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px;">☁ Cloud Cliente</div>
+      <div id="san20-card-ok" style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:12px;padding:16px;box-shadow:0 1px 3px rgba(0,0,0,.06);">
+        <div style="font-size:10px;font-weight:700;color:#16a34a;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px;">☁ Cloud Cliente</div>
         <div style="font-size:36px;font-weight:900;color:#4ade80;line-height:1;" id="san20-ok">0</div>
       </div>
-      <div id="san20-card-nok" style="background:rgba(251,191,36,.08);border:1px solid rgba(251,191,36,.2);border-radius:14px;padding:20px;">
-        <div style="font-size:10px;font-weight:700;color:#fde68a;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px;">🏗 Cloud Foundation</div>
+      <div id="san20-card-nok" style="background:#fffbeb;border:1px solid #fde68a;border-radius:12px;padding:16px;box-shadow:0 1px 3px rgba(0,0,0,.06);">
+        <div style="font-size:10px;font-weight:700;color:#d97706;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px;">🏗 Cloud Foundation</div>
         <div style="font-size:36px;font-weight:900;color:#fbbf24;line-height:1;" id="san20-nok">0</div>
       </div>
-      <div style="background:rgba(56,189,248,.08);border:1px solid rgba(56,189,248,.2);border-radius:14px;padding:20px;">
-        <div style="font-size:10px;font-weight:700;color:#bae6fd;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px;">Total de VMs</div>
+      <div style="background:#eff6ff;border:1px solid #bfdbfe;border-radius:12px;padding:16px;box-shadow:0 1px 3px rgba(0,0,0,.06);">
+        <div style="font-size:10px;font-weight:700;color:#1d4ed8;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px;">Total de VMs</div>
         <div style="font-size:36px;font-weight:900;color:#38bdf8;line-height:1;" id="san20-totalvms">0</div>
       </div>
-      <div style="background:rgba(251,113,133,.08);border:1px solid rgba(251,113,133,.2);border-radius:14px;padding:20px;">
-        <div style="font-size:10px;font-weight:700;color:#fda4af;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px;">Candidatos Remoção</div>
+      <div style="background:#fff1f2;border:1px solid #fecdd3;border-radius:12px;padding:16px;box-shadow:0 1px 3px rgba(0,0,0,.06);">
+        <div style="font-size:10px;font-weight:700;color:#dc2626;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px;">Candidatos Remoção</div>
         <div style="font-size:36px;font-weight:900;color:#fb7185;line-height:1;" id="san20-remocao">0</div>
       </div>
       <div style="background:rgba(34,197,94,.08);border:1px solid rgba(34,197,94,.25);border-radius:14px;padding:20px;">
-        <div style="font-size:10px;font-weight:700;color:#86efac;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px;">🟢 VMs Ligadas</div>
+        <div style="font-size:10px;font-weight:700;color:#16a34a;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px;">🟢 VMs Ligadas</div>
         <div style="font-size:36px;font-weight:900;color:#4ade80;line-height:1;" id="san20-ligadas">0</div>
       </div>
       <div style="background:rgba(239,68,68,.08);border:1px solid rgba(239,68,68,.2);border-radius:14px;padding:20px;">
@@ -1984,42 +1984,42 @@ document.addEventListener('page-changed', function(e) {
 <!-- CAPACITY 3.0 -->
 <div id="capacity-30" class="page bcp-page">
   <div class="topbar"><div class="tb-heading">BCP 3.0 <span>| Binario Cloud</span></div></div>
-  <div style="background:linear-gradient(135deg,#0f0c29 0%,#1a1040 50%,#0f172a 100%);min-height:calc(100vh - 64px);padding:32px 40px 56px;font-family:'Sora',sans-serif;overflow-y:auto;-webkit-overflow-scrolling:touch;box-sizing:border-box;width:100%;max-width:100%;overflow-x:hidden;">
+  <div style="background:#f5f7fa;min-height:calc(100vh - 64px);padding:32px 40px 56px;font-family:'Sora',sans-serif;overflow-y:auto;-webkit-overflow-scrolling:touch;box-sizing:border-box;width:100%;max-width:100%;overflow-x:hidden;">
 
     <!-- Header -->
     <div style="margin-bottom:28px;">
       <div style="display:flex;align-items:center;gap:12px;margin-bottom:6px;">
         <div>
-          <h1 style="font-size:22px;font-weight:800;color:#fff;letter-spacing:-.5px;margin:0;">Gestão Cloud de Domínios</h1>
-          <p style="font-size:12px;color:#94a3b8;margin:2px 0 0;">Ambiente 3.0 — Inventário OpenStack · 790 VMs · 83 Domínios · 790 ligadas · 80 desligadas<span id="san30-timestamp"></span></p>
+          <h1 style="font-size:22px;font-weight:800;color:#0f172a;letter-spacing:-.5px;margin:0;">Gestão Cloud de Domínios</h1>
+          <p style="font-size:12px;color:#64748b;margin:2px 0 0;">Ambiente 3.0 — Inventário OpenStack · 790 VMs · 83 Domínios · 790 ligadas · 80 desligadas<span id="san30-timestamp"></span></p>
         </div>
       </div>
     </div>
 
     <!-- Métricas -->
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:16px;margin-bottom:28px;" id="san30-metrics">
-      <div style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:20px;">
-        <div style="font-size:10px;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px;">Total de Domínios</div>
-        <div style="font-size:36px;font-weight:900;color:#f1f5f9;line-height:1;" id="san30-total">0</div>
+      <div style="background:#ffffff;border:1px solid #e2e8f0;border-radius:12px;padding:16px;box-shadow:0 1px 3px rgba(0,0,0,.06);">
+        <div style="font-size:10px;font-weight:700;color:#64748b;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;">Total de Domínios</div>
+        <div style="font-size:32px;font-weight:900;color:#0f172a;line-height:1;" id="san30-total">0</div>
       </div>
-      <div id="san30-card-ok" style="background:rgba(34,197,94,.08);border:1px solid rgba(34,197,94,.2);border-radius:14px;padding:20px;">
-        <div style="font-size:10px;font-weight:700;color:#86efac;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px;">☁ Cloud Cliente</div>
+      <div id="san30-card-ok" style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:12px;padding:16px;box-shadow:0 1px 3px rgba(0,0,0,.06);">
+        <div style="font-size:10px;font-weight:700;color:#16a34a;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px;">☁ Cloud Cliente</div>
         <div style="font-size:36px;font-weight:900;color:#4ade80;line-height:1;" id="san30-ok">0</div>
       </div>
-      <div id="san30-card-nok" style="background:rgba(251,191,36,.08);border:1px solid rgba(251,191,36,.2);border-radius:14px;padding:20px;">
-        <div style="font-size:10px;font-weight:700;color:#fde68a;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px;">🏗 Cloud Foundation</div>
+      <div id="san30-card-nok" style="background:#fffbeb;border:1px solid #fde68a;border-radius:12px;padding:16px;box-shadow:0 1px 3px rgba(0,0,0,.06);">
+        <div style="font-size:10px;font-weight:700;color:#d97706;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px;">🏗 Cloud Foundation</div>
         <div style="font-size:36px;font-weight:900;color:#fbbf24;line-height:1;" id="san30-nok">0</div>
       </div>
-      <div style="background:rgba(56,189,248,.08);border:1px solid rgba(56,189,248,.2);border-radius:14px;padding:20px;">
-        <div style="font-size:10px;font-weight:700;color:#bae6fd;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px;">Total de VMs</div>
+      <div style="background:#eff6ff;border:1px solid #bfdbfe;border-radius:12px;padding:16px;box-shadow:0 1px 3px rgba(0,0,0,.06);">
+        <div style="font-size:10px;font-weight:700;color:#1d4ed8;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px;">Total de VMs</div>
         <div style="font-size:36px;font-weight:900;color:#38bdf8;line-height:1;" id="san30-totalvms">0</div>
       </div>
-      <div style="background:rgba(251,113,133,.08);border:1px solid rgba(251,113,133,.2);border-radius:14px;padding:20px;">
-        <div style="font-size:10px;font-weight:700;color:#fda4af;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px;">Candidatos Remoção</div>
+      <div style="background:#fff1f2;border:1px solid #fecdd3;border-radius:12px;padding:16px;box-shadow:0 1px 3px rgba(0,0,0,.06);">
+        <div style="font-size:10px;font-weight:700;color:#dc2626;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px;">Candidatos Remoção</div>
         <div style="font-size:36px;font-weight:900;color:#fb7185;line-height:1;" id="san30-remocao">0</div>
       </div>
       <div style="background:rgba(34,197,94,.08);border:1px solid rgba(34,197,94,.25);border-radius:14px;padding:20px;">
-        <div style="font-size:10px;font-weight:700;color:#86efac;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px;">🟢 VMs Ligadas</div>
+        <div style="font-size:10px;font-weight:700;color:#16a34a;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px;">🟢 VMs Ligadas</div>
         <div style="font-size:36px;font-weight:900;color:#4ade80;line-height:1;" id="san30-ligadas">0</div>
       </div>
       <div style="background:rgba(239,68,68,.08);border:1px solid rgba(239,68,68,.2);border-radius:14px;padding:20px;">
