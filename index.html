@@ -414,109 +414,6 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--blue); outline-
 }
 
 
-/* ── Mobile Responsive ── */
-@media (max-width: 768px) {
-  /* Drawer trigger */
-  #drawer-trigger { top: 8px; left: 10px; padding: 6px 10px; font-size: 12px; }
-
-  /* Topbar */
-  .topbar { padding: 0 12px 0 110px; height: 52px; }
-  .tb-heading { font-size: 13px; }
-
-  /* Page body */
-  .page-body { padding: 20px 16px 40px; }
-
-  /* Hero */
-  .page-hero { padding: 20px; }
-  .hero-title { font-size: 20px; }
-  .hero-sub { font-size: 12px; }
-  .hero-stats { gap: 10px; }
-  .hero-stat { padding: 10px 14px; }
-  .sv { font-size: 20px; }
-
-  /* Grid */
-  .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
-
-  /* Cards */
-  .card { min-height: auto; }
-
-  /* Modal */
-  .modal { width: calc(100vw - 20px); max-height: 90vh; }
-  .modal-hd { padding: 16px; }
-  .modal-bd { padding: 14px 16px 20px; }
-
-  /* Login */
-  .login-left { width: 100%; min-width: unset; max-width: unset; padding: 32px 24px; }
-  .login-right { display: none; }
-
-  /* BCP pages */
-  .bcp-sidebar { display: none; }
-  .bcp-main { width: 100%; }
-  .bcp-page-header { padding: 14px 16px; flex-direction: column; gap: 10px; }
-  .bcp-metrics { flex-wrap: wrap; }
-  .bcp-metric { min-width: calc(50% - 1px); }
-  .bcp-filters { flex-wrap: wrap; gap: 8px; padding: 10px 12px; }
-  .bcp-search-wrap { max-width: 100%; }
-  .bcp-table tbody td, .bcp-table thead th { padding: 8px 10px; font-size: 11px; }
-
-  /* Status migração */
-  #status-migracao .page-body { padding: 16px; }
-
-  /* Controle migração */
-  #controle-migracao table { font-size: 11px; }
-  #controle-migracao th, #controle-migracao td { padding: 8px 6px; }
-
-  /* Cover */
-  .cover-title { font-size: 26px; }
-  .cover-sub { font-size: 12px; }
-}
-
-@media (max-width: 480px) {
-  .topbar { padding: 0 10px 0 100px; }
-  .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
-  .hero-stats { flex-direction: column; align-items: flex-start; gap: 8px; }
-  .modal { width: calc(100vw - 10px); }
-  .bcp-metric { min-width: 100%; }
-}
-
-
-.login-right-content { position: relative; z-index: 2; text-align: center; color: #fff; padding: 60px 80px; }
-.login-brand-logo { margin-bottom: 36px; }
-.login-tagline { font-size: 36px; font-weight: 800; line-height: 1.25; margin-bottom: 16px; letter-spacing: -.8px; }
-.login-tagline span { color: #60a5fa; }
-.login-desc { font-size: 14px; color: #94a3b8; line-height: 1.8; max-width: 360px; }
-
-.lf-logo { margin-bottom: 20px; }
-.lf-title { font-size: 15px; font-weight: 800; color: #0f172a; margin-bottom: 3px; align-self: flex-start; }
-.lf-sub { font-size: 11px; color: #64748b; margin-bottom: 18px; align-self: flex-start; }
-.lf-label { display: block; font-size: 10px; font-weight: 700; color: #374151; letter-spacing: .5px; text-transform: uppercase; margin-bottom: 5px; }
-.lf-input-wrap { position: relative; margin-bottom: 14px; }
-.lf-input-icon { position: absolute; left: 10px; top: 50%; transform: translateY(-50%); color: #9ca3af; display: flex; }
-.lf-input-icon svg { width: 14px; height: 14px; }
-.lf-input {
-  width: 100%; padding: 10px 10px 10px 32px; font-size: 12px; font-family: 'Sora', sans-serif;
-  border: 1.5px solid #e2e8f0; border-radius: 8px; color: #0f172a;
-  outline: none; background: #f8fafc; transition: all .2s; box-sizing: border-box;
-}
-.lf-input::placeholder { color: #9ca3af; }
-.lf-input:focus { border-color: #3b82f6; background: #fff; box-shadow: 0 0 0 3px rgba(59,130,246,.1); }
-.lf-btn {
-  width: 100%; padding: 11px; margin-top: 4px;
-  background: #1d4ed8; border: none; border-radius: 8px;
-  color: #fff; font-size: 13px; font-weight: 700; font-family: 'Sora', sans-serif;
-  cursor: pointer; transition: all .2s; display: flex; align-items: center; justify-content: center; gap: 8px;
-}
-.lf-btn:hover { background: #1e40af; }
-.lf-btn svg { width: 14px; height: 14px; }
-.lf-error { display: none; margin-top: 12px; padding: 9px 12px; background: #fef2f2; border: 1px solid #fecaca; border-radius: 8px; color: #dc2626; font-size: 11px; font-weight: 500; align-items: center; gap: 8px; }
-.lf-error.show { display: flex; }
-.lf-footer { margin-top: 20px; font-size: 10px; color: #9ca3af; text-align: center; }
-
-@media (max-width: 768px) {
-  .login-right { display: none; }
-  .login-left { width: 100%; min-width: unset; max-width: unset; }
-}
-
 
 /* ── Pages ── */
 .page { display: none; }
@@ -574,6 +471,100 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--blue); outline-
 .lf-err.on { display: flex; }
 .lf-foot { margin-top: 28px; font-size: 10px; color: #9ca3af; text-align: center; }
 @media (max-width: 768px) { .lf-right { display: none; } .lf-left { width: 100%; } }
+
+
+/* ══════════════════════════════════════════════
+   MOBILE RESPONSIVE — Todas as páginas
+══════════════════════════════════════════════ */
+
+/* ── Base mobile ── */
+@media (max-width: 768px) {
+
+  /* Botão Binario */
+  #drawer-trigger { top: 8px; left: 10px; padding: 6px 10px; font-size: 11px; z-index: 160; }
+
+  /* Topbar */
+  .topbar { padding: 0 12px 0 108px; height: 52px; }
+  .tb-heading { font-size: 13px; }
+  .tb-heading span { display: none; }
+
+  /* Drawer lateral */
+  #drawer { width: 260px; }
+
+  /* Body pages */
+  .page-body { padding: 18px 14px 40px; }
+
+  /* Hero */
+  .page-hero { padding: 18px; flex-direction: column; gap: 12px; }
+  .hero-title { font-size: 18px; }
+  .hero-sub { font-size: 11px; }
+  .hero-stats { gap: 8px; flex-wrap: wrap; }
+  .hero-stat { padding: 8px 12px; }
+  .sv { font-size: 18px; }
+  .sl { font-size: 10px; }
+
+  /* Grids — 1 coluna */
+  .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr !important; }
+
+  /* Cards */
+  .card { min-height: auto; }
+
+  /* Modal */
+  .modal { width: calc(100vw - 16px); max-height: 92vh; border-radius: 14px; }
+  .modal-hd { padding: 14px 16px 12px; }
+  .modal-bd { padding: 14px 16px 20px; }
+  .modal-ttl { font-size: 14px; }
+
+  /* Login */
+  #login-screen { flex-direction: column; }
+  .lf-right { display: none; }
+  .lf-left { width: 100% !important; min-width: unset !important; max-width: unset !important; padding: 36px 24px; min-height: 100vh; }
+
+  /* Cover */
+  .cover-title { font-size: 24px !important; }
+  .cover-sub { font-size: 11px !important; }
+  .cover-period { font-size: 20px !important; }
+
+  /* Status migração */
+  .status-cards { grid-template-columns: 1fr !important; }
+
+  /* Controle migração */
+  #controle-migracao .page-body { padding: 14px; }
+  #controle-migracao table { font-size: 11px; }
+  #controle-migracao th, #controle-migracao td { padding: 7px 6px; }
+  #controle-migracao select { font-size: 10px; padding: 4px 6px; }
+  #controle-migracao input { font-size: 11px; }
+
+  /* BCP 2.0 e 3.0 */
+  .bcp-shell { flex-direction: column; height: auto !important; }
+  .bcp-sidebar { display: none; }
+  .bcp-main { width: 100%; }
+  .bcp-page-header { padding: 12px 14px; flex-direction: column; gap: 8px; align-items: flex-start; }
+  .bcp-page-title { font-size: 14px; }
+  .bcp-metrics { flex-wrap: wrap; gap: 1px; }
+  .bcp-metric { min-width: calc(50% - 1px); padding: 10px 12px; }
+  .bcp-metric-val { font-size: 16px; }
+  .bcp-filters { flex-wrap: wrap; gap: 6px; padding: 10px 12px; }
+  .bcp-search-wrap { max-width: 100%; width: 100%; }
+  .bcp-table-wrap { overflow-x: auto; }
+  .bcp-table thead th, .bcp-table tbody td { padding: 8px 10px; font-size: 11px; }
+
+  /* Projetos finalizados */
+  #finalizados .page-body { padding: 16px; }
+}
+
+/* ── Celular pequeno ── */
+@media (max-width: 480px) {
+  .topbar { padding: 0 8px 0 100px; height: 48px; }
+  .page-body { padding: 14px 10px 32px; }
+  .hero-stats { flex-direction: column; gap: 6px; }
+  .hero-stat { width: 100%; }
+  .modal { width: calc(100vw - 8px); }
+  .bcp-metric { min-width: 100%; }
+  #controle-migracao table { font-size: 10px; }
+  #controle-migracao th, #controle-migracao td { padding: 5px 4px; }
+  .grid-2 > div:last-child { display: none; } /* ocultar segundo card de 2 col em mobile pequeno apenas se necessário */
+}
 
 </style>
 </head>
