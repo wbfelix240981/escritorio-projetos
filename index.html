@@ -5435,7 +5435,7 @@ function doLogin() {
   var ok  = USERS.some(function(x){ return x.u === u && x.p === p; });
 
   if (ok) {
-    localStorage.setItem('bc-auth', '1');
+    sessionStorage.setItem('bc-auth', '1');
     var sc = document.getElementById('login-screen');
     sc.style.opacity = '0';
     sc.style.transition = 'opacity .3s';
@@ -5459,7 +5459,7 @@ function showCover() {
 
 /* Checar ao carregar */
 (function(){
-  if (localStorage.getItem('bc-auth') === '1') {
+  if (sessionStorage.getItem('bc-auth') === '1') {
     var sc = document.getElementById('login-screen');
     if (sc) sc.classList.add('gone');
     showCover();
