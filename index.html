@@ -1113,6 +1113,36 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--blue); outline-
   .sm-card { padding: 12px !important; }
 }
 
+
+/* ── BCP Tabela Colunas Mobile ── */
+@media (max-width: 768px) {
+  /* Esconder cabeçalho no mobile */
+  #san20-table-header,
+  #san30-table-header { display: none !important; }
+
+  /* Cada linha vira card empilhado */
+  .bcp-row {
+    display: block !important;
+    border-radius: 10px !important;
+    margin-bottom: 10px !important;
+    border: 1px solid rgba(255,255,255,.12) !important;
+    overflow: hidden !important;
+    background: rgba(255,255,255,.03) !important;
+  }
+
+  /* Cada célula ocupa linha inteira */
+  .bcp-row > div {
+    display: block !important;
+    width: 100% !important;
+    padding: 10px 14px !important;
+    border-bottom: 1px solid rgba(255,255,255,.06) !important;
+    box-sizing: border-box !important;
+  }
+  .bcp-row > div:last-child {
+    border-bottom: none !important;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -1496,7 +1526,7 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--blue); outline-
 
     <!-- Tabela -->
     <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:16px;overflow:hidden;">
-      <div style="display:grid;grid-template-columns:2fr 2fr 1.6fr;padding:12px 20px;background:rgba(255,255,255,.05);border-bottom:1px solid rgba(255,255,255,.07);">
+      <div id="san20-table-header" style="display:grid;grid-template-columns:2fr 2fr 1.6fr;padding:12px 20px;background:rgba(255,255,255,.05);border-bottom:1px solid rgba(255,255,255,.07);">
         <span style="font-size:10px;font-weight:700;color:#64748b;text-transform:uppercase;letter-spacing:1.5px;">Domínio</span>
         <span style="font-size:10px;font-weight:700;color:#64748b;text-transform:uppercase;letter-spacing:1.5px;">Cliente / Serviço</span>
         <span style="font-size:10px;font-weight:700;color:#64748b;text-transform:uppercase;letter-spacing:1.5px;">Máquinas</span>
@@ -1743,7 +1773,7 @@ function san20Render() {
         </div>
       </div>` : '';
 
-    return `<div style="display:grid;grid-template-columns:2fr 2fr 1.6fr;border-bottom:1px solid rgba(255,255,255,.05);" id="san20-row-${r.id}">
+    return `<div class="bcp-row" style="display:grid;grid-template-columns:2fr 2fr 1.6fr;border-bottom:1px solid rgba(255,255,255,.05);" id="san20-row-${r.id}">
       <div style="padding:14px 20px;display:flex;align-items:center;" onmouseover="document.getElementById('san20-row-${r.id}').style.background='rgba(255,255,255,.03)'" onmouseout="document.getElementById('san20-row-${r.id}').style.background='transparent'">
         <div>
           <div style="font-size:13px;font-weight:700;color:${domColor};font-family:monospace,sans-serif;">🌐 ${r.dominio}</div>
@@ -2531,7 +2561,7 @@ document.addEventListener('page-changed', function(e) {
 
     <!-- Tabela -->
     <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:16px;overflow:hidden;">
-      <div style="display:grid;grid-template-columns:2fr 2fr 1.6fr;padding:12px 20px;background:rgba(255,255,255,.05);border-bottom:1px solid rgba(255,255,255,.07);">
+      <div id="san20-table-header" style="display:grid;grid-template-columns:2fr 2fr 1.6fr;padding:12px 20px;background:rgba(255,255,255,.05);border-bottom:1px solid rgba(255,255,255,.07);">
         <span style="font-size:10px;font-weight:700;color:#64748b;text-transform:uppercase;letter-spacing:1.5px;">Domínio</span>
         <span style="font-size:10px;font-weight:700;color:#64748b;text-transform:uppercase;letter-spacing:1.5px;">Cliente / Serviço</span>
         <span style="font-size:10px;font-weight:700;color:#64748b;text-transform:uppercase;letter-spacing:1.5px;">Máquinas</span>
@@ -5286,7 +5316,7 @@ function san30Render() {
         </div>
       </div>` : '';
 
-    return `<div style="display:grid;grid-template-columns:2fr 2fr 1.6fr;border-bottom:1px solid rgba(255,255,255,.05);" id="san30-row-${r.id}">
+    return `<div class="bcp-row" style="display:grid;grid-template-columns:2fr 2fr 1.6fr;border-bottom:1px solid rgba(255,255,255,.05);" id="san30-row-${r.id}">
       <div style="padding:14px 20px;display:flex;align-items:center;" onmouseover="document.getElementById('san30-row-${r.id}').style.background='rgba(255,255,255,.03)'" onmouseout="document.getElementById('san30-row-${r.id}').style.background='transparent'">
         <div>
           <div style="font-size:13px;font-weight:700;color:${domColor};font-family:monospace,sans-serif;">🌐 ${r.dominio}</div>
