@@ -1370,14 +1370,14 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--blue); outline-
 <!-- SANITIZAÇÃO 2.0 -->
 <div id="capacity-20" class="page bcp-page">
   <div class="topbar"><div class="tb-heading">BCP 2.0 <span>| Binario Cloud</span></div></div>
-  <div style="background:linear-gradient(160deg,#1a2744 0%,#1e3a5f 40%,#162035 100%);min-height:calc(100vh - 64px);padding:32px 40px 56px;font-family:'Sora',sans-serif;overflow-y:auto;-webkit-overflow-scrolling:touch;box-sizing:border-box;width:100%;max-width:100%;overflow-x:hidden;">
+  <div style="background:#e8edf2;min-height:calc(100vh - 64px);padding:32px 40px 56px;font-family:'Sora',sans-serif;overflow-y:auto;-webkit-overflow-scrolling:touch;box-sizing:border-box;width:100%;max-width:100%;overflow-x:hidden;">
 
     <!-- Header -->
     <div style="margin-bottom:28px;">
       <div style="display:flex;align-items:center;gap:12px;margin-bottom:6px;">
         <div>
-          <h1 style="font-size:22px;font-weight:800;color:#f1f5f9;letter-spacing:-.5px;margin:0;">Gestão Cloud de Domínios</h1>
-          <p style="font-size:12px;color:#94a3b8;margin:2px 0 0;">Ambiente 2.0 — Inventário OpenStack · 471 VMs · 31 Domínios · 419 ligadas · 52 desligadas<span id="san20-timestamp"></span></p>
+          <h1 style="font-size:22px;font-weight:800;color:#1a2a3a;letter-spacing:-.5px;margin:0;">Gestão Cloud de Domínios</h1>
+          <p style="font-size:12px;color:#5a6a7a;margin:2px 0 0;">Ambiente 2.0 — Inventário OpenStack · 471 VMs · 31 Domínios · 419 ligadas · 52 desligadas<span id="san20-timestamp"></span></p>
         </div>
       </div>
     </div>
@@ -1385,8 +1385,8 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--blue); outline-
     <!-- Métricas -->
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:16px;margin-bottom:28px;" id="san20-metrics">
       <div style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:16px;box-shadow:0 4px 16px rgba(0,0,0,.2);backdrop-filter:blur(8px);">
-        <div style="font-size:10px;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;">Total de Domínios</div>
-        <div style="font-size:32px;font-weight:900;color:#f1f5f9;line-height:1;" id="san20-total">0</div>
+        <div style="font-size:10px;font-weight:700;color:#6a7a8a;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;">Total de Domínios</div>
+        <div style="font-size:32px;font-weight:900;color:#1a2a3a;line-height:1;" id="san20-total">0</div>
       </div>
       <div id="san20-card-ok" style="background:rgba(34,197,94,.12);border:1px solid rgba(34,197,94,.25);border-radius:12px;padding:16px;box-shadow:0 4px 16px rgba(34,197,94,.15);">
         <div style="font-size:10px;font-weight:700;color:#4ade80;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px;">☁ Cloud Cliente</div>
@@ -1442,7 +1442,7 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--blue); outline-
 
     <!-- Tabela -->
     <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:16px;overflow:hidden;">
-      <div id="san20-table-header" style="display:grid;grid-template-columns:2fr 2fr 1.6fr;padding:12px 20px;background:rgba(255,255,255,.05);border-bottom:1px solid rgba(255,255,255,.07);">
+      <div id="san20-table-header" style="display:grid;grid-template-columns:2fr 2fr 1.6fr;padding:12px 20px;background:#c8d3dc;border-bottom:1px solid #b4c0cc;">
         <span style="font-size:10px;font-weight:700;color:#64748b;text-transform:uppercase;letter-spacing:1.5px;">Domínio</span>
         <span style="font-size:10px;font-weight:700;color:#64748b;text-transform:uppercase;letter-spacing:1.5px;">Cliente / Serviço</span>
         <span style="font-size:10px;font-weight:700;color:#64748b;text-transform:uppercase;letter-spacing:1.5px;">Máquinas</span>
@@ -1461,23 +1461,23 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--blue); outline-
 
   <!-- Modal Adicionar/Editar -->
   <div id="san20-modal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.7);backdrop-filter:blur(6px);z-index:700;align-items:center;justify-content:center;">
-    <div style="background:linear-gradient(135deg,#1e1b4b,#1e293b);border:1px solid rgba(168,85,247,.3);border-radius:20px;padding:32px;width:460px;max-width:calc(100vw - 40px);box-shadow:0 30px 80px rgba(0,0,0,.5);">
+    <div style="background:#d6dde4;border:1px solid #c0ccd6;border-radius:20px;padding:32px;width:460px;max-width:calc(100vw - 40px);box-shadow:0 8px 30px rgba(0,0,0,.12);">
       <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;">
-        <h2 style="font-size:17px;font-weight:800;color:#fff;margin:0;" id="san20-modal-title">Adicionar Domínio</h2>
-        <button onclick="san20CloseModal()" style="background:rgba(255,255,255,.08);border:none;color:#94a3b8;width:30px;height:30px;border-radius:50%;cursor:pointer;font-size:14px;">✕</button>
+        <h2 style="font-size:17px;font-weight:800;color:#1a2a3a;font-weight:800;margin:0;" id="san20-modal-title">Adicionar Domínio</h2>
+        <button onclick="san20CloseModal()" style="background:#c8d3dc;border:none;color:#3a4a5a;width:30px;height:30px;border-radius:50%;cursor:pointer;font-size:14px;">✕</button>
       </div>
       <div style="display:flex;flex-direction:column;gap:16px;">
         <div>
-          <label style="font-size:11px;font-weight:700;color:#94a3b8;letter-spacing:1px;text-transform:uppercase;display:block;margin-bottom:6px;">Domínio *</label>
-          <input id="san20-inp-dominio" type="text" placeholder="ex: portal.binario.cloud" style="width:100%;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);border-radius:10px;padding:10px 14px;color:#f1f5f9;font-size:13px;font-family:'Sora',sans-serif;outline:none;box-sizing:border-box;">
+          <label style="font-size:11px;font-weight:800;color:#4a5a6a;letter-spacing:1px;text-transform:uppercase;display:block;margin-bottom:6px;">Domínio *</label>
+          <input id="san20-inp-dominio" type="text" placeholder="ex: portal.binario.cloud" style="width:100%;background:#c8d3dc;border:1px solid #b4c0cc;border-radius:10px;padding:10px 14px;color:#1a2a3a;font-size:13px;font-family:'Sora',sans-serif;outline:none;box-sizing:border-box;">
         </div>
         <div>
-          <label style="font-size:11px;font-weight:700;color:#94a3b8;letter-spacing:1px;text-transform:uppercase;display:block;margin-bottom:6px;">Cliente / Serviço *</label>
-          <input id="san20-inp-cliente" type="text" placeholder="ex: Binario Cloud — Portal" style="width:100%;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);border-radius:10px;padding:10px 14px;color:#f1f5f9;font-size:13px;font-family:'Sora',sans-serif;outline:none;box-sizing:border-box;">
+          <label style="font-size:11px;font-weight:800;color:#4a5a6a;letter-spacing:1px;text-transform:uppercase;display:block;margin-bottom:6px;">Cliente / Serviço *</label>
+          <input id="san20-inp-cliente" type="text" placeholder="ex: Binario Cloud — Portal" style="width:100%;background:#c8d3dc;border:1px solid #b4c0cc;border-radius:10px;padding:10px 14px;color:#1a2a3a;font-size:13px;font-family:'Sora',sans-serif;outline:none;box-sizing:border-box;">
         </div>
         <div>
-          <label style="font-size:11px;font-weight:700;color:#94a3b8;letter-spacing:1px;text-transform:uppercase;display:block;margin-bottom:6px;">Tipo</label>
-          <select id="san20-inp-tipo" style="width:100%;background:#1e293b;border:1px solid rgba(255,255,255,.15);border-radius:10px;padding:10px 14px;color:#f1f5f9;font-size:13px;font-family:'Sora',sans-serif;outline:none;cursor:pointer;">
+          <label style="font-size:11px;font-weight:800;color:#4a5a6a;letter-spacing:1px;text-transform:uppercase;display:block;margin-bottom:6px;">Tipo</label>
+          <select id="san20-inp-tipo" style="width:100%;background:#c8d3dc;border:1px solid #b4c0cc;border-radius:10px;padding:10px 14px;color:#1a2a3a;font-size:13px;font-family:'Sora',sans-serif;outline:none;cursor:pointer;">
             <option>Aplicação Web</option>
             <option>API</option>
             <option>Painel Administrativo</option>
@@ -1489,7 +1489,7 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--blue); outline-
         <div id="san20-modal-preview" style="display:none;padding:12px 14px;border-radius:10px;font-size:12px;font-weight:600;margin-top:4px;"></div>
       </div>
       <div style="display:flex;gap:10px;margin-top:24px;">
-        <button onclick="san20CloseModal()" style="flex:1;padding:11px;background:rgba(255,255,255,.07);color:#94a3b8;border:1px solid rgba(255,255,255,.1);border-radius:10px;font-size:13px;font-weight:700;font-family:'Sora',sans-serif;cursor:pointer;">Cancelar</button>
+        <button onclick="san20CloseModal()" style="flex:1;padding:11px;background:#c8d3dc;color:#3a4a5a;border:1px solid #b4c0cc;border-radius:10px;font-size:13px;font-weight:700;font-family:'Sora',sans-serif;cursor:pointer;">Cancelar</button>
         <button onclick="san20Salvar()" style="flex:2;padding:11px;background:linear-gradient(135deg,#7c3aed,#a855f7);color:#fff;border:none;border-radius:10px;font-size:13px;font-weight:700;font-family:'Sora',sans-serif;cursor:pointer;box-shadow:0 4px 14px rgba(124,58,237,.35);">Salvar</button>
       </div>
     </div>
@@ -1660,20 +1660,20 @@ function san20Render() {
         <div style="display:flex;gap:24px;flex-wrap:wrap;">
           <div onclick="san20OpenVMList('${r.dominio}','ACTIVE')" style="background:rgba(34,197,94,.08);border:1px solid rgba(34,197,94,.2);border-radius:10px;padding:14px 20px;min-width:130px;text-align:center;cursor:pointer;transition:all .18s;" onmouseover="this.style.background='rgba(34,197,94,.18)'" onmouseout="this.style.background='rgba(34,197,94,.08)'">
             <div style="font-size:28px;font-weight:900;color:#4ade80;line-height:1;">${r.ligadas}</div>
-            <div style="font-size:10px;color:#86efac;font-weight:700;margin-top:4px;text-transform:uppercase;letter-spacing:1px;">🟢 Ligadas</div>
-            <div style="font-size:11px;color:#64748b;margin-top:2px;">${ligPct}% do total</div>
+            <div style="font-size:10px;color:#2a6a3a;font-weight:700;margin-top:4px;text-transform:uppercase;letter-spacing:1px;">🟢 Ligadas</div>
+            <div style="font-size:11px;font-weight:700;color:#5a6a7a;margin-top:2px;">${ligPct}% do total</div>
             <div style="font-size:10px;color:#4ade80;margin-top:6px;opacity:.7;">clique para listar →</div>
           </div>
           <div onclick="san20OpenVMList('${r.dominio}','SHUTOFF')" style="background:rgba(239,68,68,.08);border:1px solid rgba(239,68,68,.2);border-radius:10px;padding:14px 20px;min-width:130px;text-align:center;cursor:pointer;transition:all .18s;" onmouseover="this.style.background='rgba(239,68,68,.18)'" onmouseout="this.style.background='rgba(239,68,68,.08)'">
             <div style="font-size:28px;font-weight:900;color:#f87171;line-height:1;">${r.desligadas}</div>
             <div style="font-size:10px;color:#fca5a5;font-weight:700;margin-top:4px;text-transform:uppercase;letter-spacing:1px;">⚫ Desligadas</div>
-            <div style="font-size:11px;color:#64748b;margin-top:2px;">${deslPct}% do total</div>
+            <div style="font-size:11px;font-weight:700;color:#5a6a7a;margin-top:2px;">${deslPct}% do total</div>
             <div style="font-size:10px;color:#f87171;margin-top:6px;opacity:.7;">clique para listar →</div>
           </div>
           <div onclick="san20OpenVMList('${r.dominio}','ALL')" style="background:rgba(56,189,248,.08);border:1px solid rgba(56,189,248,.2);border-radius:10px;padding:14px 20px;min-width:130px;text-align:center;cursor:pointer;transition:all .18s;" onmouseover="this.style.background='rgba(56,189,248,.18)'" onmouseout="this.style.background='rgba(56,189,248,.08)'">
             <div style="font-size:28px;font-weight:900;color:#38bdf8;line-height:1;">${r.vms}</div>
-            <div style="font-size:10px;color:#bae6fd;font-weight:700;margin-top:4px;text-transform:uppercase;letter-spacing:1px;">Total VMs</div>
-            <div style="font-size:11px;color:#64748b;margin-top:2px;">todas · clique p/ listar</div>
+            <div style="font-size:10px;color:#1a4a7a;font-weight:700;margin-top:4px;text-transform:uppercase;letter-spacing:1px;">Total VMs</div>
+            <div style="font-size:11px;font-weight:700;color:#5a6a7a;margin-top:2px;">todas · clique p/ listar</div>
           </div>
           <div style="flex:1;min-width:200px;display:flex;flex-direction:column;justify-content:center;gap:6px;">
             <div style="font-size:11px;color:#94a3b8;margin-bottom:4px;">Proporção ligadas/desligadas</div>
@@ -1696,7 +1696,7 @@ function san20Render() {
           ${vmInfo}
         </div>
       </div>
-      <div style="padding:14px 20px;display:flex;align-items:center;font-size:12px;color:#cbd5e1;font-weight:500;">${r.cliente}</div>
+      <div style="padding:14px 20px;display:flex;align-items:center;font-size:12px;color:#4a5a6a;font-weight:500;">${r.cliente}</div>
       <div style="padding:14px 20px;display:flex;align-items:center;">${machinesCol}</div>
       ${vmPanel}
     </div>`;
@@ -2405,14 +2405,14 @@ document.addEventListener('page-changed', function(e) {
 <!-- CAPACITY 3.0 -->
 <div id="capacity-30" class="page bcp-page">
   <div class="topbar"><div class="tb-heading">BCP 3.0 <span>| Binario Cloud</span></div></div>
-  <div style="background:linear-gradient(160deg,#1a2744 0%,#1e3a5f 40%,#162035 100%);min-height:calc(100vh - 64px);padding:32px 40px 56px;font-family:'Sora',sans-serif;overflow-y:auto;-webkit-overflow-scrolling:touch;box-sizing:border-box;width:100%;max-width:100%;overflow-x:hidden;">
+  <div style="background:#e8edf2;min-height:calc(100vh - 64px);padding:32px 40px 56px;font-family:'Sora',sans-serif;overflow-y:auto;-webkit-overflow-scrolling:touch;box-sizing:border-box;width:100%;max-width:100%;overflow-x:hidden;">
 
     <!-- Header -->
     <div style="margin-bottom:28px;">
       <div style="display:flex;align-items:center;gap:12px;margin-bottom:6px;">
         <div>
-          <h1 style="font-size:22px;font-weight:800;color:#f1f5f9;letter-spacing:-.5px;margin:0;">Gestão Cloud de Domínios</h1>
-          <p style="font-size:12px;color:#94a3b8;margin:2px 0 0;">Ambiente 3.0 — Inventário OpenStack · 790 VMs · 83 Domínios · 790 ligadas · 80 desligadas<span id="san30-timestamp"></span></p>
+          <h1 style="font-size:22px;font-weight:800;color:#1a2a3a;letter-spacing:-.5px;margin:0;">Gestão Cloud de Domínios</h1>
+          <p style="font-size:12px;color:#5a6a7a;margin:2px 0 0;">Ambiente 3.0 — Inventário OpenStack · 790 VMs · 83 Domínios · 790 ligadas · 80 desligadas<span id="san30-timestamp"></span></p>
         </div>
       </div>
     </div>
@@ -2420,8 +2420,8 @@ document.addEventListener('page-changed', function(e) {
     <!-- Métricas -->
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:16px;margin-bottom:28px;" id="san30-metrics">
       <div style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:16px;box-shadow:0 4px 16px rgba(0,0,0,.2);backdrop-filter:blur(8px);">
-        <div style="font-size:10px;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;">Total de Domínios</div>
-        <div style="font-size:32px;font-weight:900;color:#f1f5f9;line-height:1;" id="san30-total">0</div>
+        <div style="font-size:10px;font-weight:700;color:#6a7a8a;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;">Total de Domínios</div>
+        <div style="font-size:32px;font-weight:900;color:#1a2a3a;line-height:1;" id="san30-total">0</div>
       </div>
       <div id="san30-card-ok" style="background:rgba(34,197,94,.12);border:1px solid rgba(34,197,94,.25);border-radius:12px;padding:16px;box-shadow:0 4px 16px rgba(34,197,94,.15);">
         <div style="font-size:10px;font-weight:700;color:#4ade80;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px;">☁ Cloud Cliente</div>
@@ -2477,7 +2477,7 @@ document.addEventListener('page-changed', function(e) {
 
     <!-- Tabela -->
     <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:16px;overflow:hidden;">
-      <div id="san20-table-header" style="display:grid;grid-template-columns:2fr 2fr 1.6fr;padding:12px 20px;background:rgba(255,255,255,.05);border-bottom:1px solid rgba(255,255,255,.07);">
+      <div id="san20-table-header" style="display:grid;grid-template-columns:2fr 2fr 1.6fr;padding:12px 20px;background:#c8d3dc;border-bottom:1px solid #b4c0cc;">
         <span style="font-size:10px;font-weight:700;color:#64748b;text-transform:uppercase;letter-spacing:1.5px;">Domínio</span>
         <span style="font-size:10px;font-weight:700;color:#64748b;text-transform:uppercase;letter-spacing:1.5px;">Cliente / Serviço</span>
         <span style="font-size:10px;font-weight:700;color:#64748b;text-transform:uppercase;letter-spacing:1.5px;">Máquinas</span>
@@ -2496,23 +2496,23 @@ document.addEventListener('page-changed', function(e) {
 
   <!-- Modal Adicionar/Editar -->
   <div id="san30-modal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.7);backdrop-filter:blur(6px);z-index:700;align-items:center;justify-content:center;">
-    <div style="background:linear-gradient(135deg,#1e1b4b,#1e293b);border:1px solid rgba(168,85,247,.3);border-radius:20px;padding:32px;width:460px;max-width:calc(100vw - 40px);box-shadow:0 30px 80px rgba(0,0,0,.5);">
+    <div style="background:#d6dde4;border:1px solid #c0ccd6;border-radius:20px;padding:32px;width:460px;max-width:calc(100vw - 40px);box-shadow:0 8px 30px rgba(0,0,0,.12);">
       <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;">
-        <h2 style="font-size:17px;font-weight:800;color:#fff;margin:0;" id="san30-modal-title">Adicionar Domínio</h2>
-        <button onclick="san30CloseModal()" style="background:rgba(255,255,255,.08);border:none;color:#94a3b8;width:30px;height:30px;border-radius:50%;cursor:pointer;font-size:14px;">✕</button>
+        <h2 style="font-size:17px;font-weight:800;color:#1a2a3a;font-weight:800;margin:0;" id="san30-modal-title">Adicionar Domínio</h2>
+        <button onclick="san30CloseModal()" style="background:#c8d3dc;border:none;color:#3a4a5a;width:30px;height:30px;border-radius:50%;cursor:pointer;font-size:14px;">✕</button>
       </div>
       <div style="display:flex;flex-direction:column;gap:16px;">
         <div>
-          <label style="font-size:11px;font-weight:700;color:#94a3b8;letter-spacing:1px;text-transform:uppercase;display:block;margin-bottom:6px;">Domínio *</label>
-          <input id="san30-inp-dominio" type="text" placeholder="ex: portal.binario.cloud" style="width:100%;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);border-radius:10px;padding:10px 14px;color:#f1f5f9;font-size:13px;font-family:'Sora',sans-serif;outline:none;box-sizing:border-box;">
+          <label style="font-size:11px;font-weight:800;color:#4a5a6a;letter-spacing:1px;text-transform:uppercase;display:block;margin-bottom:6px;">Domínio *</label>
+          <input id="san30-inp-dominio" type="text" placeholder="ex: portal.binario.cloud" style="width:100%;background:#c8d3dc;border:1px solid #b4c0cc;border-radius:10px;padding:10px 14px;color:#1a2a3a;font-size:13px;font-family:'Sora',sans-serif;outline:none;box-sizing:border-box;">
         </div>
         <div>
-          <label style="font-size:11px;font-weight:700;color:#94a3b8;letter-spacing:1px;text-transform:uppercase;display:block;margin-bottom:6px;">Cliente / Serviço *</label>
-          <input id="san30-inp-cliente" type="text" placeholder="ex: Binario Cloud — Portal" style="width:100%;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);border-radius:10px;padding:10px 14px;color:#f1f5f9;font-size:13px;font-family:'Sora',sans-serif;outline:none;box-sizing:border-box;">
+          <label style="font-size:11px;font-weight:800;color:#4a5a6a;letter-spacing:1px;text-transform:uppercase;display:block;margin-bottom:6px;">Cliente / Serviço *</label>
+          <input id="san30-inp-cliente" type="text" placeholder="ex: Binario Cloud — Portal" style="width:100%;background:#c8d3dc;border:1px solid #b4c0cc;border-radius:10px;padding:10px 14px;color:#1a2a3a;font-size:13px;font-family:'Sora',sans-serif;outline:none;box-sizing:border-box;">
         </div>
         <div>
-          <label style="font-size:11px;font-weight:700;color:#94a3b8;letter-spacing:1px;text-transform:uppercase;display:block;margin-bottom:6px;">Tipo</label>
-          <select id="san30-inp-tipo" style="width:100%;background:#1e293b;border:1px solid rgba(255,255,255,.15);border-radius:10px;padding:10px 14px;color:#f1f5f9;font-size:13px;font-family:'Sora',sans-serif;outline:none;cursor:pointer;">
+          <label style="font-size:11px;font-weight:800;color:#4a5a6a;letter-spacing:1px;text-transform:uppercase;display:block;margin-bottom:6px;">Tipo</label>
+          <select id="san30-inp-tipo" style="width:100%;background:#c8d3dc;border:1px solid #b4c0cc;border-radius:10px;padding:10px 14px;color:#1a2a3a;font-size:13px;font-family:'Sora',sans-serif;outline:none;cursor:pointer;">
             <option>Aplicação Web</option>
             <option>API</option>
             <option>Painel Administrativo</option>
@@ -2524,7 +2524,7 @@ document.addEventListener('page-changed', function(e) {
         <div id="san30-modal-preview" style="display:none;padding:12px 14px;border-radius:10px;font-size:12px;font-weight:600;margin-top:4px;"></div>
       </div>
       <div style="display:flex;gap:10px;margin-top:24px;">
-        <button onclick="san30CloseModal()" style="flex:1;padding:11px;background:rgba(255,255,255,.07);color:#94a3b8;border:1px solid rgba(255,255,255,.1);border-radius:10px;font-size:13px;font-weight:700;font-family:'Sora',sans-serif;cursor:pointer;">Cancelar</button>
+        <button onclick="san30CloseModal()" style="flex:1;padding:11px;background:#c8d3dc;color:#3a4a5a;border:1px solid #b4c0cc;border-radius:10px;font-size:13px;font-weight:700;font-family:'Sora',sans-serif;cursor:pointer;">Cancelar</button>
         <button onclick="san30Salvar()" style="flex:2;padding:11px;background:linear-gradient(135deg,#7c3aed,#a855f7);color:#fff;border:none;border-radius:10px;font-size:13px;font-weight:700;font-family:'Sora',sans-serif;cursor:pointer;box-shadow:0 4px 14px rgba(124,58,237,.35);">Salvar</button>
       </div>
     </div>
@@ -3361,7 +3361,7 @@ document.addEventListener('page-changed', function(e) {
     <!-- Header -->
     <div style="display:flex;justify-content:space-between;align-items:center;padding:22px 28px 18px;border-bottom:1px solid rgba(255,255,255,.07);flex-shrink:0;">
       <div>
-        <div id="san20vml-title" style="font-size:17px;font-weight:800;color:#f1f5f9;letter-spacing:-.3px;"></div>
+        <div id="san20vml-title" style="font-size:17px;font-weight:800;color:#1a2a3a;letter-spacing:-.3px;"></div>
         <div id="san20vml-sub"   style="font-size:12px;color:#64748b;margin-top:3px;"></div>
       </div>
       <div style="display:flex;align-items:center;gap:8px;">
@@ -3560,23 +3560,23 @@ function san20VMLRender(lista, cor) {
 </script>
 
 <!-- MODAL: Relatório de Gestão Cloud -->
-<div id="san20-gov-overlay" onclick="if(event.target===this)san20GovClose()" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.85);backdrop-filter:blur(10px);z-index:900;align-items:flex-start;justify-content:center;padding:2vh 20px 40px;overflow-y:auto;">
-  <div style="background:linear-gradient(160deg,#0a0f1e 0%,#0f172a 100%);border:1px solid rgba(37,99,235,.25);border-radius:22px;width:1100px;max-width:100%;box-shadow:0 50px 120px rgba(0,0,0,.9);">
+<div id="san20-gov-overlay" onclick="if(event.target===this)san20GovClose()" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:900;align-items:flex-start;justify-content:center;padding:2vh 20px 40px;overflow-y:auto;">
+  <div style="background:#e8edf2;border:1px solid #c0ccd6;border-radius:22px;width:1100px;max-width:100%;box-shadow:0 8px 40px rgba(0,0,0,.2);">
 
     <!-- Header -->
-    <div style="display:flex;justify-content:space-between;align-items:center;padding:22px 32px 18px;border-bottom:1px solid rgba(255,255,255,.06);">
+    <div style="display:flex;justify-content:space-between;align-items:center;padding:22px 32px 18px;border-bottom:1px solid #c0ccd6;">
       <div style="display:flex;align-items:center;gap:14px;">
         <div style="width:42px;height:42px;background:linear-gradient(135deg,#1e3a5f,#2563eb);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:20px;box-shadow:0 4px 16px rgba(37,99,235,.4);">📊</div>
         <div>
-          <div style="font-size:17px;font-weight:800;color:#f1f5f9;letter-spacing:-.3px;">Relatório de Gestão Cloud · BCP 2.0</div>
-          <div id="san20-gov-sub" style="font-size:11px;color:#475569;margin-top:3px;font-weight:500;"></div>
+          <div style="font-size:17px;font-weight:800;color:#1a2a3a;letter-spacing:-.3px;">Relatório de Gestão Cloud · BCP 2.0</div>
+          <div id="san20-gov-sub" style="font-size:11px;color:#5a6a7a;margin-top:3px;font-weight:700;"></div>
         </div>
       </div>
       <div style="display:flex;gap:8px;align-items:center;">
         <button onclick="san20GovExport()" style="display:flex;align-items:center;gap:6px;padding:9px 18px;background:linear-gradient(135deg,#065f46,#059669);color:#fff;border:none;border-radius:10px;font-size:11px;font-weight:700;font-family:'Sora',sans-serif;cursor:pointer;box-shadow:0 4px 12px rgba(5,150,105,.3);">
           ⬇ Exportar PNG
         </button>
-        <button onclick="san20GovClose()" style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);color:#94a3b8;width:34px;height:34px;border-radius:50%;cursor:pointer;font-size:15px;display:flex;align-items:center;justify-content:center;" onmouseover="this.style.background='rgba(255,255,255,.12)'" onmouseout="this.style.background='rgba(255,255,255,.06)'">✕</button>
+        <button onclick="san20GovClose()" style="background:#c8d3dc;border:1px solid #b4c0cc;color:#3a4a5a;width:34px;height:34px;border-radius:50%;cursor:pointer;font-size:15px;display:flex;align-items:center;justify-content:center;" onmouseover="this.style.background='#b4c0cc'" onmouseout="this.style.background='#c8d3dc'">✕</button>
       </div>
     </div>
 
@@ -3587,7 +3587,7 @@ function san20VMLRender(lista, cor) {
 
       <!-- Gráfico full width -->
       <div style="background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);border-radius:16px;padding:20px;margin-bottom:20px;">
-        <div style="font-size:10px;font-weight:800;color:#475569;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:16px;">Comparativo de VMs por Domínio com Alteração</div>
+        <div style="font-size:10px;font-weight:800;color:#4a5a6a;font-weight:800;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:16px;">Comparativo de VMs por Domínio com Alteração</div>
         <div id="san20-gov-chart-wrap" style="overflow-x:auto;overflow-y:hidden;width:100%;">
           <canvas id="san20-gov-canvas"></canvas>
         </div>
@@ -3595,7 +3595,7 @@ function san20VMLRender(lista, cor) {
 
       <!-- Tabela de alterações full width -->
       <div style="background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);border-radius:16px;padding:20px;max-height:320px;overflow-y:auto;">
-        <div style="font-size:10px;font-weight:800;color:#475569;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:14px;">Domínios com Alteração</div>
+        <div style="font-size:10px;font-weight:800;color:#4a5a6a;font-weight:800;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:14px;">Domínios com Alteração</div>
         <div id="san20-gov-changes"></div>
       </div>
     </div>
@@ -3730,9 +3730,9 @@ function san20OpenRelatorio() {
   const diff = totalAtual - totalAnt;
 
   // Métricas
-  const mcard = (val,lbl,cor) => `<div style="background:rgba(${cor},.1);border:1px solid rgba(${cor},.25);border-radius:12px;padding:14px;text-align:center;">
+  const mcard = (val,lbl,cor) => `<div style="background:#dce3ea;border:1px solid #c0ccd6;border-radius:12px;padding:14px;text-align:center;">
     <div style="font-size:28px;font-weight:900;color:rgba(${cor},1);">${val}</div>
-    <div style="font-size:10px;color:rgba(${cor},.8);text-transform:uppercase;letter-spacing:1px;margin-top:4px;">${lbl}</div>
+    <div style="font-size:10px;font-weight:800;color:#4a5a6a;text-transform:uppercase;letter-spacing:1px;margin-top:4px;">${lbl}</div>
   </div>`;
   document.getElementById('san20-gov-metrics').innerHTML =
     mcard(totalAnt,'VMs '+ant.data,'148,163,184') +
@@ -3824,9 +3824,9 @@ function san20OpenRelatorio() {
                 : m.novo?'<span style="font-size:8px;background:rgba(34,197,94,.2);color:#4ade80;padding:1px 6px;border-radius:99px;font-weight:700;display:block;margin-top:2px;">NOVO</span>':'';
       return `<div style="padding:10px 12px;border-bottom:1px solid rgba(255,255,255,.05);display:flex;align-items:center;justify-content:space-between;gap:8px;">
         <div style="flex:1;min-width:0;">
-          <div style="font-size:11px;font-weight:700;color:#e2e8f0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${m.dominio}</div>
+          <div style="font-size:11px;font-weight:700;color:#1a2a3a;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${m.dominio}</div>
           ${tag}
-          <div style="font-size:10px;color:#475569;margin-top:3px;">
+          <div style="font-size:10px;color:#5a6a7a;font-weight:700;margin-top:3px;">
             <span style="color:${dLig<0?'#f87171':dLig>0?'#4ade80':'#64748b'};">🟢 ${m.atLig} (${dLig>0?'+':''}${dLig})</span>
             &nbsp;
             <span style="color:${dDesl<0?'#4ade80':dDesl>0?'#f87171':'#64748b'};">🔴 ${m.atDesl} (${dDesl>0?'+':''}${dDesl})</span>
@@ -3834,7 +3834,7 @@ function san20OpenRelatorio() {
         </div>
         <div style="text-align:right;flex-shrink:0;">
           <div style="font-size:18px;font-weight:900;color:${colVms};">${dVms>0?'+':''}${dVms}</div>
-          <div style="font-size:9px;color:#475569;">${m.antVms}→${m.atVms}</div>
+          <div style="font-size:9px;color:#4a5a6a;">${m.antVms}→${m.atVms}</div>
         </div>
       </div>`;
     }).join('');
@@ -5184,7 +5184,7 @@ function san30Render() {
     const machinesCol = hasVMs ? `
       <div style="display:flex;align-items:center;gap:8px;">
         <div style="flex:1;">
-          <div style="height:6px;border-radius:99px;overflow:hidden;background:rgba(255,255,255,.08);display:flex;margin-bottom:4px;">
+          <div style="height:6px;border-radius:99px;overflow:hidden;background:#c8d3dc;display:flex;margin-bottom:4px;">
             <div style="width:${ligPct}%;background:linear-gradient(90deg,#22c55e,#4ade80);"></div>
             <div style="width:${deslPct}%;background:linear-gradient(90deg,#ef4444,#f87171);"></div>
           </div>
@@ -5194,33 +5194,33 @@ function san30Render() {
             <span style="font-size:10px;color:#64748b;">/ ${r.vms} VMs</span>
           </div>
         </div>
-        <button onclick="san30ToggleVMs(${r.id},this)" title="Ver detalhes" style="flex-shrink:0;width:26px;height:26px;border-radius:6px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);color:#94a3b8;font-size:13px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .18s;">▾</button>
-      </div>` : `<div style="font-size:11px;color:#475569;">—</div>`;
+        <button onclick="san30ToggleVMs(${r.id},this)" title="Ver detalhes" style="flex-shrink:0;width:26px;height:26px;border-radius:6px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);color:#3a4a5a;font-size:13px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .18s;">▾</button>
+      </div>` : `<div style="font-size:11px;color:#4a5a6a;">—</div>`;
 
     const vmPanel = hasVMs ? `
-      <div id="san30-vmpanel-${r.id}" style="display:none;grid-column:1/-1;background:rgba(255,255,255,.03);border-top:1px solid rgba(255,255,255,.06);padding:14px 20px;">
+      <div id="san30-vmpanel-${r.id}" style="display:none;grid-column:1/-1;background:#dce3ea;border-top:1px solid #c0ccd6;padding:14px 20px;">
         <div style="font-size:10px;font-weight:700;color:#64748b;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:10px;">Detalhe de Máquinas — ${r.dominio}</div>
         <div style="display:flex;gap:24px;flex-wrap:wrap;">
           <div onclick="san30OpenVMList('${r.dominio}','ACTIVE')" style="background:rgba(34,197,94,.08);border:1px solid rgba(34,197,94,.2);border-radius:10px;padding:14px 20px;min-width:130px;text-align:center;cursor:pointer;transition:all .18s;" onmouseover="this.style.background='rgba(34,197,94,.18)'" onmouseout="this.style.background='rgba(34,197,94,.08)'">
             <div style="font-size:28px;font-weight:900;color:#4ade80;line-height:1;">${r.ligadas}</div>
             <div style="font-size:10px;color:#86efac;font-weight:700;margin-top:4px;text-transform:uppercase;letter-spacing:1px;">🟢 Ligadas</div>
-            <div style="font-size:11px;color:#64748b;margin-top:2px;">${ligPct}% do total</div>
+            <div style="font-size:11px;font-weight:700;color:#5a6a7a;margin-top:2px;">${ligPct}% do total</div>
             <div style="font-size:10px;color:#4ade80;margin-top:6px;opacity:.7;">clique para listar →</div>
           </div>
           <div onclick="san30OpenVMList('${r.dominio}','SHUTOFF')" style="background:rgba(239,68,68,.08);border:1px solid rgba(239,68,68,.2);border-radius:10px;padding:14px 20px;min-width:130px;text-align:center;cursor:pointer;transition:all .18s;" onmouseover="this.style.background='rgba(239,68,68,.18)'" onmouseout="this.style.background='rgba(239,68,68,.08)'">
             <div style="font-size:28px;font-weight:900;color:#f87171;line-height:1;">${r.desligadas}</div>
             <div style="font-size:10px;color:#fca5a5;font-weight:700;margin-top:4px;text-transform:uppercase;letter-spacing:1px;">⚫ Desligadas</div>
-            <div style="font-size:11px;color:#64748b;margin-top:2px;">${deslPct}% do total</div>
+            <div style="font-size:11px;font-weight:700;color:#5a6a7a;margin-top:2px;">${deslPct}% do total</div>
             <div style="font-size:10px;color:#f87171;margin-top:6px;opacity:.7;">clique para listar →</div>
           </div>
           <div onclick="san30OpenVMList('${r.dominio}','ALL')" style="background:rgba(56,189,248,.08);border:1px solid rgba(56,189,248,.2);border-radius:10px;padding:14px 20px;min-width:130px;text-align:center;cursor:pointer;transition:all .18s;" onmouseover="this.style.background='rgba(56,189,248,.18)'" onmouseout="this.style.background='rgba(56,189,248,.08)'">
             <div style="font-size:28px;font-weight:900;color:#38bdf8;line-height:1;">${r.vms}</div>
             <div style="font-size:10px;color:#bae6fd;font-weight:700;margin-top:4px;text-transform:uppercase;letter-spacing:1px;">Total VMs</div>
-            <div style="font-size:11px;color:#64748b;margin-top:2px;">todas · clique p/ listar</div>
+            <div style="font-size:11px;font-weight:700;color:#5a6a7a;margin-top:2px;">todas · clique p/ listar</div>
           </div>
           <div style="flex:1;min-width:200px;display:flex;flex-direction:column;justify-content:center;gap:6px;">
-            <div style="font-size:11px;color:#94a3b8;margin-bottom:4px;">Proporção ligadas/desligadas</div>
-            <div style="height:10px;border-radius:99px;overflow:hidden;background:rgba(255,255,255,.08);display:flex;">
+            <div style="font-size:11px;color:#5a6a7a;font-weight:700;margin-bottom:4px;">Proporção ligadas/desligadas</div>
+            <div style="height:10px;border-radius:99px;overflow:hidden;background:#c8d3dc;display:flex;">
               <div style="width:${ligPct}%;background:linear-gradient(90deg,#22c55e,#4ade80);transition:width .8s;"></div>
               <div style="width:${deslPct}%;background:linear-gradient(90deg,#ef4444,#f87171);transition:width .8s;"></div>
             </div>
@@ -5387,9 +5387,9 @@ function san30OpenRelatorio() {
   const diff = totalAtual - totalAnt;
 
   // Métricas
-  const mcard = (val,lbl,cor) => `<div style="background:rgba(${cor},.1);border:1px solid rgba(${cor},.25);border-radius:12px;padding:14px;text-align:center;">
+  const mcard = (val,lbl,cor) => `<div style="background:#dce3ea;border:1px solid #c0ccd6;border-radius:12px;padding:14px;text-align:center;">
     <div style="font-size:28px;font-weight:900;color:rgba(${cor},1);">${val}</div>
-    <div style="font-size:10px;color:rgba(${cor},.8);text-transform:uppercase;letter-spacing:1px;margin-top:4px;">${lbl}</div>
+    <div style="font-size:10px;font-weight:800;color:#4a5a6a;text-transform:uppercase;letter-spacing:1px;margin-top:4px;">${lbl}</div>
   </div>`;
   document.getElementById('san30-gov-metrics').innerHTML =
     mcard(totalAnt,'VMs '+ant.data,'148,163,184') +
@@ -5481,9 +5481,9 @@ function san30OpenRelatorio() {
                 : m.novo?'<span style="font-size:8px;background:rgba(34,197,94,.2);color:#4ade80;padding:1px 6px;border-radius:99px;font-weight:700;display:block;margin-top:2px;">NOVO</span>':'';
       return `<div style="padding:10px 12px;border-bottom:1px solid rgba(255,255,255,.05);display:flex;align-items:center;justify-content:space-between;gap:8px;">
         <div style="flex:1;min-width:0;">
-          <div style="font-size:11px;font-weight:700;color:#e2e8f0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${m.dominio}</div>
+          <div style="font-size:11px;font-weight:700;color:#1a2a3a;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${m.dominio}</div>
           ${tag}
-          <div style="font-size:10px;color:#475569;margin-top:3px;">
+          <div style="font-size:10px;color:#5a6a7a;font-weight:700;margin-top:3px;">
             <span style="color:${dLig<0?'#f87171':dLig>0?'#4ade80':'#64748b'};">🟢 ${m.atLig} (${dLig>0?'+':''}${dLig})</span>
             &nbsp;
             <span style="color:${dDesl<0?'#4ade80':dDesl>0?'#f87171':'#64748b'};">🔴 ${m.atDesl} (${dDesl>0?'+':''}${dDesl})</span>
@@ -5491,7 +5491,7 @@ function san30OpenRelatorio() {
         </div>
         <div style="text-align:right;flex-shrink:0;">
           <div style="font-size:18px;font-weight:900;color:${colVms};">${dVms>0?'+':''}${dVms}</div>
-          <div style="font-size:9px;color:#475569;">${m.antVms}→${m.atVms}</div>
+          <div style="font-size:9px;color:#4a5a6a;">${m.antVms}→${m.atVms}</div>
         </div>
       </div>`;
     }).join('');
@@ -5565,7 +5565,7 @@ function san30VMLRender(lista, cor) {
   sub.textContent = lista.length + ' VM' + (lista.length !== 1 ? 's' : '');
 
   if (!lista.length) {
-    body.innerHTML = '<div style="text-align:center;padding:40px 0;color:#475569;font-size:13px;">Nenhuma VM encontrada</div>';
+    body.innerHTML = '<div style="text-align:center;padding:40px 0;color:#4a5a6a;font-size:13px;">Nenhuma VM encontrada</div>';
     return;
   }
 
@@ -5579,7 +5579,7 @@ function san30VMLRender(lista, cor) {
     return '<tr style="background:' + bg + ';transition:background .12s;"'
          + ' onmouseover="this.style.background=\'rgba(255,255,255,.05)\'"'
          + ' onmouseout="this.style.background=\'' + bg + '\'">'
-         + '<td style="padding:10px 12px;font-size:11px;color:#475569;font-weight:700;white-space:nowrap;">' + (i+1) + '</td>'
+         + '<td style="padding:10px 12px;font-size:11px;color:#4a5a6a;font-weight:700;white-space:nowrap;">' + (i+1) + '</td>'
          + '<td style="padding:10px 12px;font-size:13px;font-weight:700;color:#e2e8f0;">' + v.n + '</td>'
          + '<td style="padding:10px 12px;font-family:monospace;font-size:11px;color:#64748b;white-space:nowrap;">' + v.id + '</td>'
          + '<td style="padding:10px 12px;font-size:11px;color:#94a3b8;">' + v.p + '</td>'
@@ -5588,35 +5588,35 @@ function san30VMLRender(lista, cor) {
   }).join('');
 
   body.innerHTML = '<table style="width:100%;border-collapse:collapse;">'
-    + '<thead><tr style="background:rgba(255,255,255,.04);">'
-    + '<th style="padding:8px 12px;text-align:left;font-size:10px;font-weight:700;color:#475569;text-transform:uppercase;letter-spacing:1.2px;border-bottom:1px solid rgba(255,255,255,.07);">#</th>'
-    + '<th style="padding:8px 12px;text-align:left;font-size:10px;font-weight:700;color:#475569;text-transform:uppercase;letter-spacing:1.2px;border-bottom:1px solid rgba(255,255,255,.07);">Nome da VM</th>'
-    + '<th style="padding:8px 12px;text-align:left;font-size:10px;font-weight:700;color:#475569;text-transform:uppercase;letter-spacing:1.2px;border-bottom:1px solid rgba(255,255,255,.07);">ID</th>'
-    + '<th style="padding:8px 12px;text-align:left;font-size:10px;font-weight:700;color:#475569;text-transform:uppercase;letter-spacing:1.2px;border-bottom:1px solid rgba(255,255,255,.07);">Projeto</th>'
-    + '<th style="padding:8px 12px;text-align:center;font-size:10px;font-weight:700;color:#475569;text-transform:uppercase;letter-spacing:1.2px;border-bottom:1px solid rgba(255,255,255,.07);">Status</th>'
+    + '<thead><tr style="background:#d0d9e2;">'
+    + '<th style="padding:8px 12px;text-align:left;font-size:10px;font-weight:700;color:#4a5a6a;text-transform:uppercase;letter-spacing:1.2px;border-bottom:1px solid rgba(255,255,255,.07);">#</th>'
+    + '<th style="padding:8px 12px;text-align:left;font-size:10px;font-weight:700;color:#4a5a6a;text-transform:uppercase;letter-spacing:1.2px;border-bottom:1px solid rgba(255,255,255,.07);">Nome da VM</th>'
+    + '<th style="padding:8px 12px;text-align:left;font-size:10px;font-weight:700;color:#4a5a6a;text-transform:uppercase;letter-spacing:1.2px;border-bottom:1px solid rgba(255,255,255,.07);">ID</th>'
+    + '<th style="padding:8px 12px;text-align:left;font-size:10px;font-weight:700;color:#4a5a6a;text-transform:uppercase;letter-spacing:1.2px;border-bottom:1px solid rgba(255,255,255,.07);">Projeto</th>'
+    + '<th style="padding:8px 12px;text-align:center;font-size:10px;font-weight:700;color:#4a5a6a;text-transform:uppercase;letter-spacing:1.2px;border-bottom:1px solid rgba(255,255,255,.07);">Status</th>'
     + '</tr></thead>'
     + '<tbody>' + rows + '</tbody></table>';
 }
 </script>
 
 <!-- MODAL: Relatório de Gestão Cloud -->
-<div id="san30-gov-overlay" onclick="if(event.target===this)san30GovClose()" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.85);backdrop-filter:blur(10px);z-index:900;align-items:flex-start;justify-content:center;padding:2vh 20px 40px;overflow-y:auto;">
-  <div style="background:linear-gradient(160deg,#0a0f1e 0%,#0f172a 100%);border:1px solid rgba(37,99,235,.25);border-radius:22px;width:1100px;max-width:100%;box-shadow:0 50px 120px rgba(0,0,0,.9);">
+<div id="san30-gov-overlay" onclick="if(event.target===this)san30GovClose()" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:900;align-items:flex-start;justify-content:center;padding:2vh 20px 40px;overflow-y:auto;">
+  <div style="background:#e8edf2;border:1px solid #c0ccd6;border-radius:22px;width:1100px;max-width:100%;box-shadow:0 8px 40px rgba(0,0,0,.2);">
 
     <!-- Header -->
-    <div style="display:flex;justify-content:space-between;align-items:center;padding:22px 32px 18px;border-bottom:1px solid rgba(255,255,255,.06);">
+    <div style="display:flex;justify-content:space-between;align-items:center;padding:22px 32px 18px;border-bottom:1px solid #c0ccd6;">
       <div style="display:flex;align-items:center;gap:14px;">
         <div style="width:42px;height:42px;background:linear-gradient(135deg,#1e3a5f,#2563eb);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:20px;box-shadow:0 4px 16px rgba(37,99,235,.4);">📊</div>
         <div>
-          <div style="font-size:17px;font-weight:800;color:#f1f5f9;letter-spacing:-.3px;">Relatório de Gestão Cloud · BCP 3.0</div>
-          <div id="san30-gov-sub" style="font-size:11px;color:#475569;margin-top:3px;font-weight:500;"></div>
+          <div style="font-size:17px;font-weight:800;color:#1a2a3a;letter-spacing:-.3px;">Relatório de Gestão Cloud · BCP 3.0</div>
+          <div id="san30-gov-sub" style="font-size:11px;color:#5a6a7a;margin-top:3px;font-weight:700;"></div>
         </div>
       </div>
       <div style="display:flex;gap:8px;align-items:center;">
         <button onclick="san30GovExport()" style="display:flex;align-items:center;gap:6px;padding:9px 18px;background:linear-gradient(135deg,#065f46,#059669);color:#fff;border:none;border-radius:10px;font-size:11px;font-weight:700;font-family:'Sora',sans-serif;cursor:pointer;box-shadow:0 4px 12px rgba(5,150,105,.3);">
           ⬇ Exportar PNG
         </button>
-        <button onclick="san30GovClose()" style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);color:#94a3b8;width:34px;height:34px;border-radius:50%;cursor:pointer;font-size:15px;display:flex;align-items:center;justify-content:center;" onmouseover="this.style.background='rgba(255,255,255,.12)'" onmouseout="this.style.background='rgba(255,255,255,.06)'">✕</button>
+        <button onclick="san30GovClose()" style="background:#c8d3dc;border:1px solid #b4c0cc;color:#3a4a5a;width:34px;height:34px;border-radius:50%;cursor:pointer;font-size:15px;display:flex;align-items:center;justify-content:center;" onmouseover="this.style.background='#b4c0cc'" onmouseout="this.style.background='#c8d3dc'">✕</button>
       </div>
     </div>
 
@@ -5627,7 +5627,7 @@ function san30VMLRender(lista, cor) {
 
       <!-- Gráfico full width -->
       <div style="background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);border-radius:16px;padding:20px;margin-bottom:20px;">
-        <div style="font-size:10px;font-weight:800;color:#475569;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:16px;">Comparativo de VMs por Domínio com Alteração</div>
+        <div style="font-size:10px;font-weight:800;color:#4a5a6a;font-weight:800;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:16px;">Comparativo de VMs por Domínio com Alteração</div>
         <div id="san30-gov-chart-wrap" style="overflow-x:auto;overflow-y:hidden;width:100%;">
           <canvas id="san30-gov-canvas"></canvas>
         </div>
@@ -5635,7 +5635,7 @@ function san30VMLRender(lista, cor) {
 
       <!-- Tabela de alterações full width -->
       <div style="background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);border-radius:16px;padding:20px;max-height:320px;overflow-y:auto;">
-        <div style="font-size:10px;font-weight:800;color:#475569;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:14px;">Domínios com Alteração</div>
+        <div style="font-size:10px;font-weight:800;color:#4a5a6a;font-weight:800;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:14px;">Domínios com Alteração</div>
         <div id="san30-gov-changes"></div>
       </div>
     </div>
@@ -5764,23 +5764,23 @@ function san30VMLExportXLS() {
 // helper used in vmPanel template to avoid nested backtick
 </script>
 
-<div id="san30-gov-overlay" onclick="if(event.target===this)san30GovClose()" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.85);backdrop-filter:blur(10px);z-index:900;align-items:flex-start;justify-content:center;padding:2vh 20px 40px;overflow-y:auto;">
-  <div style="background:linear-gradient(160deg,#0a0f1e 0%,#0f172a 100%);border:1px solid rgba(37,99,235,.25);border-radius:22px;width:1100px;max-width:100%;box-shadow:0 50px 120px rgba(0,0,0,.9);">
+<div id="san30-gov-overlay" onclick="if(event.target===this)san30GovClose()" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:900;align-items:flex-start;justify-content:center;padding:2vh 20px 40px;overflow-y:auto;">
+  <div style="background:#e8edf2;border:1px solid #c0ccd6;border-radius:22px;width:1100px;max-width:100%;box-shadow:0 8px 40px rgba(0,0,0,.2);">
 
     <!-- Header -->
-    <div style="display:flex;justify-content:space-between;align-items:center;padding:22px 32px 18px;border-bottom:1px solid rgba(255,255,255,.06);">
+    <div style="display:flex;justify-content:space-between;align-items:center;padding:22px 32px 18px;border-bottom:1px solid #c0ccd6;">
       <div style="display:flex;align-items:center;gap:14px;">
         <div style="width:42px;height:42px;background:linear-gradient(135deg,#1e3a5f,#2563eb);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:20px;box-shadow:0 4px 16px rgba(37,99,235,.4);">📊</div>
         <div>
-          <div style="font-size:17px;font-weight:800;color:#f1f5f9;letter-spacing:-.3px;">Relatório de Gestão Cloud · BCP 3.0</div>
-          <div id="san30-gov-sub" style="font-size:11px;color:#475569;margin-top:3px;font-weight:500;"></div>
+          <div style="font-size:17px;font-weight:800;color:#1a2a3a;letter-spacing:-.3px;">Relatório de Gestão Cloud · BCP 3.0</div>
+          <div id="san30-gov-sub" style="font-size:11px;color:#5a6a7a;margin-top:3px;font-weight:700;"></div>
         </div>
       </div>
       <div style="display:flex;gap:8px;align-items:center;">
         <button onclick="san30GovExport()" style="display:flex;align-items:center;gap:6px;padding:9px 18px;background:linear-gradient(135deg,#065f46,#059669);color:#fff;border:none;border-radius:10px;font-size:11px;font-weight:700;font-family:'Sora',sans-serif;cursor:pointer;box-shadow:0 4px 12px rgba(5,150,105,.3);">
           ⬇ Exportar PNG
         </button>
-        <button onclick="san30GovClose()" style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);color:#94a3b8;width:34px;height:34px;border-radius:50%;cursor:pointer;font-size:15px;display:flex;align-items:center;justify-content:center;" onmouseover="this.style.background='rgba(255,255,255,.12)'" onmouseout="this.style.background='rgba(255,255,255,.06)'">✕</button>
+        <button onclick="san30GovClose()" style="background:#c8d3dc;border:1px solid #b4c0cc;color:#3a4a5a;width:34px;height:34px;border-radius:50%;cursor:pointer;font-size:15px;display:flex;align-items:center;justify-content:center;" onmouseover="this.style.background='#b4c0cc'" onmouseout="this.style.background='#c8d3dc'">✕</button>
       </div>
     </div>
 
@@ -5791,7 +5791,7 @@ function san30VMLExportXLS() {
 
       <!-- Gráfico full width -->
       <div style="background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);border-radius:16px;padding:20px;margin-bottom:20px;">
-        <div style="font-size:10px;font-weight:800;color:#475569;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:16px;">Comparativo de VMs por Domínio com Alteração</div>
+        <div style="font-size:10px;font-weight:800;color:#4a5a6a;font-weight:800;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:16px;">Comparativo de VMs por Domínio com Alteração</div>
         <div id="san30-gov-chart-wrap" style="overflow-x:auto;overflow-y:hidden;width:100%;">
           <canvas id="san30-gov-canvas"></canvas>
         </div>
@@ -5799,7 +5799,7 @@ function san30VMLExportXLS() {
 
       <!-- Tabela de alterações full width -->
       <div style="background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);border-radius:16px;padding:20px;max-height:320px;overflow-y:auto;">
-        <div style="font-size:10px;font-weight:800;color:#475569;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:14px;">Domínios com Alteração</div>
+        <div style="font-size:10px;font-weight:800;color:#4a5a6a;font-weight:800;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:14px;">Domínios com Alteração</div>
         <div id="san30-gov-changes"></div>
       </div>
     </div>
@@ -5813,7 +5813,7 @@ function san30VMLExportXLS() {
     <!-- Header -->
     <div style="display:flex;justify-content:space-between;align-items:center;padding:22px 28px 18px;border-bottom:1px solid rgba(255,255,255,.07);flex-shrink:0;">
       <div>
-        <div id="san30vml-title" style="font-size:17px;font-weight:800;color:#f1f5f9;letter-spacing:-.3px;"></div>
+        <div id="san30vml-title" style="font-size:17px;font-weight:800;color:#1a2a3a;letter-spacing:-.3px;"></div>
         <div id="san30vml-sub"   style="font-size:12px;color:#64748b;margin-top:3px;"></div>
       </div>
       <div style="display:flex;align-items:center;gap:8px;">
