@@ -4621,31 +4621,27 @@ function san20OpenVMsDesligadas() {
   {n:'WEB01',d:'spheraeducacional.com.br',dt:'Após 26/05/2026',dias:0,s:'nova'}
   ];
 
-  const jaEstava  = VMS_RELATORIO.filter(v => v.s === 'ja_estava');
-  const nova      = VMS_RELATORIO.filter(v => v.s === 'nova');
+  const jaEstava  = VMS_RELATORIO.filter(v => v.s === 'ja_estava' && v.dias >= 15);
+  const nova      = [];
   const total     = VMS_RELATORIO.length;
   const hoje_str  = new Date().toLocaleDateString('pt-BR',{day:'2-digit',month:'2-digit',year:'numeric'});
 
+  const filtradas = VMS_RELATORIO.filter(v => v.s === 'ja_estava' && v.dias >= 15);
   document.getElementById('san20-vmd-sub').textContent =
-    `${total} VMs desligadas em 14/06/2026 · Cruzamento com base histórica de 26/05/2026`;
+    `${filtradas.length} VMs desligadas há mais de 15 dias · Base histórica: 26/05/2026`;
 
   // ── Cards de resumo ──────────────────────────────────────────────────────
   let html = `
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:18px;">
-      <div style="background:#dcc4c4;border:1px solid #c8a0a0;border-radius:10px;padding:14px;text-align:center;">
-        <div style="font-size:28px;font-weight:800;color:#6a1a1a;">${jaEstava.length}</div>
-        <div style="font-size:10px;font-weight:800;color:#7a2a2a;text-transform:uppercase;letter-spacing:1px;margin-top:4px;">Já desligadas em 26/05</div>
-        <div style="font-size:11px;font-weight:700;color:#9a4a4a;margin-top:4px;">≥ 19 dias desligadas</div>
+    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:18px;">
+      <div style="background:#dcc4c4;border:1px solid #c8a0a0;border-radius:10px;padding:16px;text-align:center;">
+        <div style="font-size:32px;font-weight:800;color:#6a1a1a;">${jaEstava.length}</div>
+        <div style="font-size:10px;font-weight:800;color:#7a2a2a;text-transform:uppercase;letter-spacing:1px;margin-top:6px;">VMs desligadas ≥ 15 dias</div>
+        <div style="font-size:11px;font-weight:700;color:#9a4a4a;margin-top:4px;">Já estavam off em 26/05/2026</div>
       </div>
-      <div style="background:#ddd4b0;border:1px solid #c8bb88;border-radius:10px;padding:14px;text-align:center;">
-        <div style="font-size:28px;font-weight:800;color:#6a4a10;">${nova.length}</div>
-        <div style="font-size:10px;font-weight:800;color:#7a5a20;text-transform:uppercase;letter-spacing:1px;margin-top:4px;">Desligadas após 26/05</div>
-        <div style="font-size:11px;font-weight:700;color:#9a7a30;margin-top:4px;">Entre 26/05 e 14/06</div>
-      </div>
-      <div style="background:#dce3ea;border:1px solid #c0ccd6;border-radius:10px;padding:14px;text-align:center;">
-        <div style="font-size:28px;font-weight:800;color:#1a2a3a;">${total}</div>
-        <div style="font-size:10px;font-weight:800;color:#3a4a5a;text-transform:uppercase;letter-spacing:1px;margin-top:4px;">Total desligadas hoje</div>
-        <div style="font-size:11px;font-weight:700;color:#5a6a7a;margin-top:4px;">Em 14/06/2026</div>
+      <div style="background:#dce3ea;border:1px solid #c0ccd6;border-radius:10px;padding:16px;text-align:center;">
+        <div style="font-size:32px;font-weight:800;color:#1a2a3a;">${VMS_RELATORIO.length}</div>
+        <div style="font-size:10px;font-weight:800;color:#3a4a5a;text-transform:uppercase;letter-spacing:1px;margin-top:6px;">Total desligadas em 14/06</div>
+        <div style="font-size:11px;font-weight:700;color:#5a6a7a;margin-top:4px;">${VMS_RELATORIO.length - jaEstava.length} desligadas há menos de 15 dias</div>
       </div>
     </div>`;
 
@@ -4677,30 +4673,7 @@ function san20OpenVMsDesligadas() {
     });
   });
 
-  // ── Seção 2: Novas desligadas após 26/05 ─────────────────────────────────
-  html += `<div style="font-size:11px;font-weight:800;color:#6a4a10;text-transform:uppercase;letter-spacing:1.5px;margin:16px 0 8px;">
-    🟡 Desligadas após 26/05/2026 — ${nova.length} VMs
-  </div>`;
 
-  html += `<div style="background:#c8d3dc;border-radius:8px;padding:8px 14px;display:grid;grid-template-columns:2fr 2fr 1fr;gap:8px;margin-bottom:6px;">
-    <div style="font-size:10px;font-weight:800;color:#4a5a6a;text-transform:uppercase;letter-spacing:1px;">VM</div>
-    <div style="font-size:10px;font-weight:800;color:#4a5a6a;text-transform:uppercase;letter-spacing:1px;">Domínio</div>
-    <div style="font-size:10px;font-weight:800;color:#4a5a6a;text-transform:uppercase;letter-spacing:1px;">Status</div>
-  </div>`;
-
-  const domNova = {};
-  nova.forEach(v => { if(!domNova[v.d]) domNova[v.d]=[]; domNova[v.d].push(v); });
-  Object.entries(domNova).sort((a,b) => b[1].length - a[1].length).forEach(([dom, vms]) => {
-    html += `<div style="background:#d8d0c0;border-radius:6px;padding:6px 14px;margin-bottom:3px;font-size:10px;font-weight:800;color:#6a4a10;text-transform:uppercase;letter-spacing:1px;">
-      ${dom} — ${vms.length} VM${vms.length>1?'s':''}</div>`;
-    vms.forEach(v => {
-      html += `<div style="background:#ddd4b0;border:1px solid #c8bb88;border-radius:6px;padding:9px 14px;display:grid;grid-template-columns:2fr 2fr 1fr;gap:8px;align-items:center;margin-bottom:3px;">
-        <div style="font-size:12px;font-weight:700;color:#6a4a10;font-family:monospace;">${v.n}</div>
-        <div style="font-size:11px;font-weight:700;color:#7a5a20;">${v.d}</div>
-        <div style="font-size:11px;font-weight:700;color:#8a6a20;">Após 26/05</div>
-      </div>`;
-    });
-  });
 
   document.getElementById('san20-vmd-body').innerHTML = html;
 }
