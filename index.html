@@ -3584,7 +3584,12 @@ function san20VMLRender(lista, cor) {
           <div style="font-size:17px;font-weight:800;color:#1a2a3a;letter-spacing:-.3px;">⏱ Relatório de VMs Desligadas — BCP 2.0</div>
           <div id="san20-vmd-sub" style="font-size:11px;color:#5a6a7a;margin-top:3px;font-weight:700;"></div>
         </div>
-        <button onclick="san20CloseVMsDesligadas()" style="background:#c8d3dc;border:1px solid #b4c0cc;color:#3a4a5a;width:34px;height:34px;border-radius:50%;cursor:pointer;font-size:15px;display:flex;align-items:center;justify-content:center;">✕</button>
+        <div style="display:flex;gap:8px;align-items:center;">
+          <button onclick="san20ExportVMsDesligadas()" style="display:flex;align-items:center;gap:6px;padding:9px 16px;background:linear-gradient(135deg,#065f46,#059669);color:#fff;border:none;border-radius:10px;font-size:12px;font-weight:700;font-family:'Sora',sans-serif;cursor:pointer;">
+            ⬇ Exportar CSV
+          </button>
+          <button onclick="san20CloseVMsDesligadas()" style="background:#c8d3dc;border:1px solid #b4c0cc;color:#3a4a5a;width:34px;height:34px;border-radius:50%;cursor:pointer;font-size:15px;display:flex;align-items:center;justify-content:center;">✕</button>
+        </div>
       </div>
       <div style="padding:24px 32px;">
         <div id="san20-vmd-body"></div>
@@ -4675,8 +4680,48 @@ function san20OpenVMsDesligadas() {
 
 
 
+  window._san20VmRelatorio = VMS_RELATORIO.filter(v => v.s === 'ja_estava' && v.dias >= 15);
   document.getElementById('san20-vmd-body').innerHTML = html;
 }
+function san20ExportVMsDesligadas() {
+  // Coletar dados do relatório atual (já renderizado)
+  const rows = document.querySelectorAll('#san20-vmd-body [style*="font-family:monospace"]');
+  if (!rows.length) { alert('Abra o relatório primeiro.'); return; }
+
+  let csv = 'VM;Domínio;Desligada desde;Dias desligada\n';
+  document.querySelectorAll('#san20-vmd-body > div[style*="border-radius:6px"][style*="padding:9px"]').forEach(row => {
+    const cells = row.querySelectorAll('div > div');
+    if (cells.length >= 4) {
+      const vm   = cells[0]?.textContent?.trim() || '';
+      const dom  = cells[1]?.textContent?.trim() || '';
+      const dt   = cells[2]?.textContent?.trim() || '';
+      const dias = cells[3]?.textContent?.trim() || '';
+      csv += `"${vm}";"${dom}";"${dt}";"${dias}"\n`;
+    }
+  });
+
+  // Fallback — percorrer pelo innerHTML
+  if (csv.split('\n').length <= 2) {
+    // Usar dados do VMS_RELATORIO global se disponível
+    if (window._san20VmRelatorio) {
+      csv = 'VM;Domínio;Desligada desde;Dias desligada\n';
+      window._san20VmRelatorio.forEach(v => {
+        csv += `"${v.n}";"${v.d}";"${v.dt}";"≥ ${v.dias} dias"\n`;
+      });
+    }
+  }
+
+  const blob = new Blob(['﻿' + csv], { type: 'text/csv;charset=utf-8;' });
+  const url  = URL.createObjectURL(blob);
+  const a    = document.createElement('a');
+  a.href = url;
+  a.download = 'vms_desligadas_BCP20_' + new Date().toLocaleDateString('pt-BR').replace(/\//g,'-') + '.csv';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+}
+
 function san20CloseVMsDesligadas() {
   document.getElementById('san20-vmd-overlay').style.display = 'none';
 }
