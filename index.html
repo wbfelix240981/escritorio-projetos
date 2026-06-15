@@ -1784,7 +1784,7 @@ function san20Delete(id) {
 
 async function san20SaveStorage() {
   try {
-    const payload = JSON.stringify({ san20Data, san20NextId });
+    const payload = JSON.stringify({ san20Data, san20NextId, seed_version: '2026-06-14-v1' });
     if (window.storage) {
       await window.storage.set('san20_data', payload);
     } else {
@@ -2373,20 +2373,32 @@ const SAN20_VMS = {
 };
 
 async function san20LoadStorage() {
+  const SEED_VERSION = '2026-06-14-v1';
   try {
-    const res = await window.storage.get('san20_data');
-    if (res?.value) {
-      const d = JSON.parse(res.value);
+    let saved = null;
+    if (window.storage) {
+      const res = await window.storage.get('san20_data');
+      saved = res?.value || null;
+    } else {
+      saved = localStorage.getItem('san20_data');
+    }
+    if (saved) {
+      const d = JSON.parse(saved);
+      // Se versão diferente, ignorar cache e usar SEED
+      if (d.seed_version !== SEED_VERSION) {
+        throw new Error('seed_version mismatch');
+      }
       san20Data   = d.san20Data   || [];
       san20NextId = d.san20NextId || 1;
     } else {
-      // Sem dados salvos — carrega seed da planilha
       san20Data   = SAN20_SEED.map(r => ({ ...r }));
-      san20NextId = 32;
+      san20NextId = SAN20_SEED.length + 1;
     }
   } catch(e) {
     san20Data   = SAN20_SEED.map(r => ({ ...r }));
-    san20NextId = 32;
+    san20NextId = SAN20_SEED.length + 1;
+    // Limpar cache desatualizado
+    try { localStorage.removeItem('san20_data'); } catch(e2) {}
   }
 }
 
