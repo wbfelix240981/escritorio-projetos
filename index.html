@@ -4508,132 +4508,193 @@ function san20OpenVMsDesligadas() {
   const overlay = document.getElementById('san20-vmd-overlay');
   overlay.style.display = 'flex';
 
-  let snaps = [];
-  try { snaps = JSON.parse(localStorage.getItem(SAN20_SNAP_KEY) || '[]'); } catch(e) {}
-
-  // Incluir snapshot inicial (08/06/2026)
-  const snapInicial = {
-    data: '08/06/2026',
-    ts: new Date('2026-06-08').getTime(),
-    vms: []
-  };
-  Object.entries(SAN20_VMS).forEach(([dominio, vms]) => {
-    vms.forEach(vm => {
-      snapInicial.vms.push({ n: vm.n, id: vm.id, s: vm.s, dominio: dominio });
-    });
-  });
-
-  // Adicionar snapshot inicial se não existir
-  const todosSnaps = [...snaps];
-  if (!todosSnaps.find(s => s.data === '08/06/2026')) {
-    todosSnaps.push(snapInicial);
-  }
-
-  // Estado atual das VMs
-  const vmsAtuais = {};
-  Object.entries(SAN20_VMS).forEach(([dominio, vms]) => {
-    vms.forEach(vm => { vmsAtuais[vm.id] = { ...vm, dominio }; });
-  });
-
-  // Para cada VM desligada HOJE, encontrar a primeira data que apareceu desligada
-  const hoje = new Date();
-  const relatorio = [];
-
-  Object.values(vmsAtuais).forEach(vm => {
-    if (vm.s !== 'SHUTOFF') return;
-
-    // Encontrar o snapshot mais antigo onde esta VM já estava SHUTOFF
-    let primeiraDataDeslig = null;
-    let primeiroTs = hoje.getTime();
-
-    // Ordenar snapshots do mais antigo para o mais recente
-    const snapOrdenados = [...todosSnaps].sort((a, b) => (a.ts||0) - (b.ts||0));
-
-    for (const snap of snapOrdenados) {
-      const vmSnap = snap.vms.find(v => v.id === vm.id);
-      if (vmSnap && vmSnap.s === 'SHUTOFF') {
-        if (!primeiraDataDeslig || (snap.ts||0) < primeiroTs) {
-          primeiraDataDeslig = snap.data;
-          primeiroTs = snap.ts || 0;
-        }
-      }
-    }
-
-    // Calcular dias desligada
-    const dataRef = primeiraDataDeslig
-      ? new Date(primeiroTs || hoje)
-      : hoje;
-    const diasDeslig = Math.floor((hoje.getTime() - dataRef.getTime()) / (1000*60*60*24));
-
-    relatorio.push({
-      nome: vm.n,
-      dominio: vm.dominio,
-      primeiraDataDeslig: primeiraDataDeslig || 'Hoje',
-      diasDeslig: diasDeslig,
-      id: vm.id
-    });
-  });
-
-  // Ordenar por dias desligada (mais antiga primeiro)
-  relatorio.sort((a, b) => b.diasDeslig - a.diasDeslig);
-
-  const body = document.getElementById('san20-vmd-body');
-  const nSnaps = todosSnaps.length;
-  const hoje_str = new Date().toLocaleDateString('pt-BR', {day:'2-digit',month:'2-digit',year:'numeric'});
-  document.getElementById('san20-vmd-sub').textContent =
-    `${relatorio.length} VMs desligadas · ${nSnaps} snapshot(s) · Hoje: ${hoje_str}`;
-
-  if (relatorio.length === 0) {
-    body.innerHTML = '<div style="text-align:center;padding:40px;color:#5a6a7a;font-weight:700;">Nenhuma VM desligada encontrada.</div>';
-    return;
-  }
-
-  // Agrupar por faixa de tempo
-  const faixas = [
-    { label: '🔴 Mais de 30 dias', min: 30, max: Infinity, cor: '#dcc4c4', borda: '#c8a0a0', txt: '#6a1a1a' },
-    { label: '🟠 15 a 30 dias',    min: 15, max: 29,       cor: '#ddd4b0', borda: '#c8bb88', txt: '#6a4a10' },
-    { label: '🟡 7 a 14 dias',     min: 7,  max: 14,       cor: '#dce3ea', borda: '#c0ccd6', txt: '#3a4a5a' },
-    { label: '⚪ Menos de 7 dias', min: 0,  max: 6,        cor: '#d6dde4', borda: '#c0ccd6', txt: '#3a4a5a' },
+  // Dados pré-calculados do cruzamento 26/05 x 14/06
+  const VMS_RELATORIO = [
+  {n:'BC-ATMLAD-01',d:'automalogica.com.br',dt:'26/05/2026',dias:19,s:'ja_estava'},
+  {n:'BC-ATMLZABBIX',d:'automalogica.com.br',dt:'26/05/2026',dias:19,s:'ja_estava'},
+  {n:'BMC-ECOMMERCE-01-OLD',d:'bmchyundai.com.br',dt:'26/05/2026',dias:19,s:'ja_estava'},
+  {n:'BMCHUBSPOT-OLD',d:'bmchyundai.com.br',dt:'26/05/2026',dias:19,s:'ja_estava'},
+  {n:'hubspottemp',d:'bmchyundai.com.br',dt:'26/05/2026',dias:19,s:'ja_estava'},
+  {n:'FW-PFDISMAC',d:'dismac.com.bo',dt:'26/05/2026',dias:19,s:'ja_estava'},
+  {n:'ubuntu-cloud2',d:'domain-cloud2',dt:'26/05/2026',dias:19,s:'ja_estava'},
+  {n:'windows-cloud2',d:'domain-cloud2',dt:'26/05/2026',dias:19,s:'ja_estava'},
+  {n:'windows-cloud2-22',d:'domain-cloud2',dt:'26/05/2026',dias:19,s:'ja_estava'},
+  {n:'ADABASLINUX-RECOVERY',d:'gimba.com.br',dt:'26/05/2026',dias:19,s:'ja_estava'},
+  {n:'BC-TEST',d:'gimba.com.br',dt:'26/05/2026',dias:19,s:'ja_estava'},
+  {n:'GBJITTERBIT-Old',d:'gimba.com.br',dt:'26/05/2026',dias:19,s:'ja_estava'},
+  {n:'GBSRVTOTALL-TESTE',d:'gimba.com.br',dt:'26/05/2026',dias:19,s:'ja_estava'},
+  {n:'ORACLEPROD01',d:'gimba.com.br',dt:'26/05/2026',dias:19,s:'ja_estava'},
+  {n:'ORACLEPROD02',d:'gimba.com.br',dt:'26/05/2026',dias:19,s:'ja_estava'},
+  {n:'devsolr-01',d:'gimba2.com.br',dt:'26/05/2026',dias:19,s:'ja_estava'},
+  {n:'GBWEB08-OLD',d:'gimba2.com.br',dt:'26/05/2026',dias:19,s:'ja_estava'},
+  {n:'openstack',d:'gimba2.com.br',dt:'26/05/2026',dias:19,s:'ja_estava'},
+  {n:'Solr-01',d:'gimba2.com.br',dt:'26/05/2026',dias:19,s:'ja_estava'},
+  {n:'Solr-02',d:'gimba2.com.br',dt:'26/05/2026',dias:19,s:'ja_estava'},
+  {n:'Solr-03',d:'gimba2.com.br',dt:'26/05/2026',dias:19,s:'ja_estava'},
+  {n:'vm-opnsense',d:'gimba2.com.br',dt:'26/05/2026',dias:19,s:'ja_estava'},
+  {n:'vm-repositorio-temp',d:'gimba2.com.br',dt:'26/05/2026',dias:19,s:'ja_estava'},
+  {n:'magalu-bacula',d:'luizalabs.com',dt:'26/05/2026',dias:19,s:'ja_estava'},
+  {n:'test-windows',d:'prumoengenharia.com.br',dt:'26/05/2026',dias:19,s:'ja_estava'},
+  {n:'SistemaS4',d:'prumoengenharia.com.br',dt:'26/05/2026',dias:19,s:'ja_estava'},
+  {n:'Airwave-Dasa',d:'qos.com.br',dt:'26/05/2026',dias:19,s:'ja_estava'},
+  {n:'DASA_WIFI-ZABBIX',d:'qos.com.br',dt:'26/05/2026',dias:19,s:'ja_estava'},
+  {n:'DASA_WIFI-ZABBIX-DB',d:'qos.com.br',dt:'26/05/2026',dias:19,s:'ja_estava'},
+  {n:'DASA-WIFI-ZABBIX-PROXY',d:'qos.com.br',dt:'26/05/2026',dias:19,s:'ja_estava'},
+  {n:'ntb-dasa.qos.srv.br',d:'qos.com.br',dt:'26/05/2026',dias:19,s:'ja_estava'},
+  {n:'prx-refrio1',d:'refrio.com.br',dt:'26/05/2026',dias:19,s:'ja_estava'},
+  {n:'COLETOR-WMS',d:'refrio.com.br',dt:'26/05/2026',dias:19,s:'ja_estava'},
+  {n:'MAILSERVER',d:'sagaengenharia.com.br',dt:'26/05/2026',dias:19,s:'ja_estava'},
+  {n:'MAILSERVERBKP',d:'sagaengenharia.com.br',dt:'26/05/2026',dias:19,s:'ja_estava'},
+  {n:'SatC5Cloud',d:'sattelecom.com',dt:'26/05/2026',dias:19,s:'ja_estava'},
+  {n:'satc4cloud',d:'sattelecomip.com',dt:'26/05/2026',dias:19,s:'ja_estava'},
+  {n:'teste',d:'selbetti.com',dt:'26/05/2026',dias:19,s:'ja_estava'},
+  {n:'VM1',d:'selbetti.com',dt:'26/05/2026',dias:19,s:'ja_estava'},
+  {n:'BC-FRIGBBAD',d:'sistecweb.com.br',dt:'26/05/2026',dias:19,s:'ja_estava'},
+  {n:'VBR-Veeam',d:'sistecweb.com.br',dt:'26/05/2026',dias:19,s:'ja_estava'},
+  {n:'SWSPR001',d:'soprema.com.br',dt:'26/05/2026',dias:19,s:'ja_estava'},
+  {n:'BC-POC-ZRETAIL',d:'zanthus.com.br',dt:'26/05/2026',dias:19,s:'ja_estava'},
+  {n:'CSM teste',d:'(Sem Domínio)',dt:'Após 26/05/2026',dias:0,s:'nova'},
+  {n:'db-srv-1',d:'(Sem Domínio)',dt:'Após 26/05/2026',dias:0,s:'nova'},
+  {n:'db-srv-2',d:'(Sem Domínio)',dt:'Após 26/05/2026',dias:0,s:'nova'},
+  {n:'IIS2',d:'(Sem Domínio)',dt:'Após 26/05/2026',dias:0,s:'nova'},
+  {n:'kid',d:'(Sem Domínio)',dt:'Após 26/05/2026',dias:0,s:'nova'},
+  {n:'Linux',d:'(Sem Domínio)',dt:'Após 26/05/2026',dias:0,s:'nova'},
+  {n:'maquina teste',d:'(Sem Domínio)',dt:'Após 26/05/2026',dias:0,s:'nova'},
+  {n:'Odoo',d:'(Sem Domínio)',dt:'Após 26/05/2026',dias:0,s:'nova'},
+  {n:'RabbitMQ',d:'(Sem Domínio)',dt:'Após 26/05/2026',dias:0,s:'nova'},
+  {n:'RabbitMQ',d:'(Sem Domínio)',dt:'Após 26/05/2026',dias:0,s:'nova'},
+  {n:'RabbitMQ',d:'(Sem Domínio)',dt:'Após 26/05/2026',dias:0,s:'nova'},
+  {n:'vm-01',d:'(Sem Domínio)',dt:'Após 26/05/2026',dias:0,s:'nova'},
+  {n:'vm-01',d:'(Sem Domínio)',dt:'Após 26/05/2026',dias:0,s:'nova'},
+  {n:'vm-01',d:'(Sem Domínio)',dt:'Após 26/05/2026',dias:0,s:'nova'},
+  {n:'vm-01',d:'(Sem Domínio)',dt:'Após 26/05/2026',dias:0,s:'nova'},
+  {n:'vm-01',d:'(Sem Domínio)',dt:'Após 26/05/2026',dias:0,s:'nova'},
+  {n:'vm-01',d:'(Sem Domínio)',dt:'Após 26/05/2026',dias:0,s:'nova'},
+  {n:'vm-01',d:'(Sem Domínio)',dt:'Após 26/05/2026',dias:0,s:'nova'},
+  {n:'vm-01',d:'(Sem Domínio)',dt:'Após 26/05/2026',dias:0,s:'nova'},
+  {n:'vm-01',d:'(Sem Domínio)',dt:'Após 26/05/2026',dias:0,s:'nova'},
+  {n:'vm-01',d:'(Sem Domínio)',dt:'Após 26/05/2026',dias:0,s:'nova'},
+  {n:'vm-01',d:'(Sem Domínio)',dt:'Após 26/05/2026',dias:0,s:'nova'},
+  {n:'vm-01',d:'(Sem Domínio)',dt:'Após 26/05/2026',dias:0,s:'nova'},
+  {n:'vm-01',d:'(Sem Domínio)',dt:'Após 26/05/2026',dias:0,s:'nova'},
+  {n:'vm-01',d:'(Sem Domínio)',dt:'Após 26/05/2026',dias:0,s:'nova'},
+  {n:'vm-01',d:'(Sem Domínio)',dt:'Após 26/05/2026',dias:0,s:'nova'},
+  {n:'vm-02',d:'(Sem Domínio)',dt:'Após 26/05/2026',dias:0,s:'nova'},
+  {n:'vm-02',d:'(Sem Domínio)',dt:'Após 26/05/2026',dias:0,s:'nova'},
+  {n:'vm-02',d:'(Sem Domínio)',dt:'Após 26/05/2026',dias:0,s:'nova'},
+  {n:'vm-02',d:'(Sem Domínio)',dt:'Após 26/05/2026',dias:0,s:'nova'},
+  {n:'vm-02',d:'(Sem Domínio)',dt:'Após 26/05/2026',dias:0,s:'nova'},
+  {n:'vm-02',d:'(Sem Domínio)',dt:'Após 26/05/2026',dias:0,s:'nova'},
+  {n:'vm-02',d:'(Sem Domínio)',dt:'Após 26/05/2026',dias:0,s:'nova'},
+  {n:'vm-02',d:'(Sem Domínio)',dt:'Após 26/05/2026',dias:0,s:'nova'},
+  {n:'vm-02',d:'(Sem Domínio)',dt:'Após 26/05/2026',dias:0,s:'nova'},
+  {n:'vm-02',d:'(Sem Domínio)',dt:'Após 26/05/2026',dias:0,s:'nova'},
+  {n:'web-srv-1',d:'(Sem Domínio)',dt:'Após 26/05/2026',dias:0,s:'nova'},
+  {n:'web-srv-2',d:'(Sem Domínio)',dt:'Após 26/05/2026',dias:0,s:'nova'},
+  {n:'alma-teste',d:'Default',dt:'Após 26/05/2026',dias:0,s:'nova'},
+  {n:'Linux-BLADE-test',d:'Default',dt:'Após 26/05/2026',dias:0,s:'nova'},
+  {n:'teste-02',d:'Default',dt:'Após 26/05/2026',dias:0,s:'nova'},
+  {n:'teste-hyperv',d:'Default',dt:'Após 26/05/2026',dias:0,s:'nova'},
+  {n:'teste-vlwc-luiz',d:'Default',dt:'Após 26/05/2026',dias:0,s:'nova'},
+  {n:'vm-attach-teste',d:'Default',dt:'Após 26/05/2026',dias:0,s:'nova'},
+  {n:'vm-test-network-port-again',d:'Default',dt:'Após 26/05/2026',dias:0,s:'nova'},
+  {n:'windows-temporary-coriolis',d:'Default',dt:'Após 26/05/2026',dias:0,s:'nova'},
+  {n:'BC-ATMLOGVBR',d:'automalogica.com.br',dt:'Após 26/05/2026',dias:0,s:'nova'},
+  {n:'src-host-kvm',d:'domain-cloud2',dt:'Após 26/05/2026',dias:0,s:'nova'},
+  {n:'SRV-MIGRACAO',d:'sagaengenharia.com.br',dt:'Após 26/05/2026',dias:0,s:'nova'},
+  {n:'BC-SISTECWFW',d:'sistecweb.com.br',dt:'Após 26/05/2026',dias:0,s:'nova'},
+  {n:'BRSUZ-SW0100',d:'soprema.com.br',dt:'Após 26/05/2026',dias:0,s:'nova'},
+  {n:'FTGSPRCLD',d:'soprema.com.br',dt:'Após 26/05/2026',dias:0,s:'nova'},
+  {n:'SRV-EMS',d:'soprema.com.br',dt:'Após 26/05/2026',dias:0,s:'nova'},
+  {n:'SRV-FAZ',d:'soprema.com.br',dt:'Após 26/05/2026',dias:0,s:'nova'},
+  {n:'SWSPR001_NEW',d:'soprema.com.br',dt:'Após 26/05/2026',dias:0,s:'nova'},
+  {n:'SWSPR007',d:'soprema.com.br',dt:'Após 26/05/2026',dias:0,s:'nova'},
+  {n:'WEB01',d:'spheraeducacional.com.br',dt:'Após 26/05/2026',dias:0,s:'nova'}
   ];
 
+  const jaEstava  = VMS_RELATORIO.filter(v => v.s === 'ja_estava');
+  const nova      = VMS_RELATORIO.filter(v => v.s === 'nova');
+  const total     = VMS_RELATORIO.length;
+  const hoje_str  = new Date().toLocaleDateString('pt-BR',{day:'2-digit',month:'2-digit',year:'numeric'});
+
+  document.getElementById('san20-vmd-sub').textContent =
+    `${total} VMs desligadas em 14/06/2026 · Cruzamento com base histórica de 26/05/2026`;
+
+  // ── Cards de resumo ──────────────────────────────────────────────────────
   let html = `
-    <div style="margin-bottom:16px;display:grid;grid-template-columns:repeat(4,1fr);gap:8px;">
-      ${faixas.map(f => {
-        const n = relatorio.filter(r => r.diasDeslig >= f.min && r.diasDeslig <= f.max).length;
-        return `<div style="background:${f.cor};border:1px solid ${f.borda};border-radius:10px;padding:12px;text-align:center;">
-          <div style="font-size:22px;font-weight:800;color:${f.txt};">${n}</div>
-          <div style="font-size:10px;font-weight:700;color:${f.txt};margin-top:4px;">${f.label}</div>
-        </div>`;
-      }).join('')}
-    </div>
-  `;
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:18px;">
+      <div style="background:#dcc4c4;border:1px solid #c8a0a0;border-radius:10px;padding:14px;text-align:center;">
+        <div style="font-size:28px;font-weight:800;color:#6a1a1a;">${jaEstava.length}</div>
+        <div style="font-size:10px;font-weight:800;color:#7a2a2a;text-transform:uppercase;letter-spacing:1px;margin-top:4px;">Já desligadas em 26/05</div>
+        <div style="font-size:11px;font-weight:700;color:#9a4a4a;margin-top:4px;">≥ 19 dias desligadas</div>
+      </div>
+      <div style="background:#ddd4b0;border:1px solid #c8bb88;border-radius:10px;padding:14px;text-align:center;">
+        <div style="font-size:28px;font-weight:800;color:#6a4a10;">${nova.length}</div>
+        <div style="font-size:10px;font-weight:800;color:#7a5a20;text-transform:uppercase;letter-spacing:1px;margin-top:4px;">Desligadas após 26/05</div>
+        <div style="font-size:11px;font-weight:700;color:#9a7a30;margin-top:4px;">Entre 26/05 e 14/06</div>
+      </div>
+      <div style="background:#dce3ea;border:1px solid #c0ccd6;border-radius:10px;padding:14px;text-align:center;">
+        <div style="font-size:28px;font-weight:800;color:#1a2a3a;">${total}</div>
+        <div style="font-size:10px;font-weight:800;color:#3a4a5a;text-transform:uppercase;letter-spacing:1px;margin-top:4px;">Total desligadas hoje</div>
+        <div style="font-size:11px;font-weight:700;color:#5a6a7a;margin-top:4px;">Em 14/06/2026</div>
+      </div>
+    </div>`;
 
-  // Tabela
-  html += `
-    <div style="background:#c8d3dc;border-radius:8px;padding:8px 14px;display:grid;grid-template-columns:2fr 2fr 1fr 1fr;gap:8px;margin-bottom:6px;">
-      <div style="font-size:10px;font-weight:800;color:#4a5a6a;text-transform:uppercase;letter-spacing:1px;">VM</div>
-      <div style="font-size:10px;font-weight:800;color:#4a5a6a;text-transform:uppercase;letter-spacing:1px;">Domínio</div>
-      <div style="font-size:10px;font-weight:800;color:#4a5a6a;text-transform:uppercase;letter-spacing:1px;">1ª vez desligada</div>
-      <div style="font-size:10px;font-weight:800;color:#4a5a6a;text-transform:uppercase;letter-spacing:1px;">Dias desligada</div>
-    </div>
-  `;
+  // ── Seção 1: Já estavam desligadas em 26/05 ──────────────────────────────
+  html += `<div style="font-size:11px;font-weight:800;color:#6a1a1a;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px;">
+    🔴 Já estavam desligadas em 26/05/2026 — ${jaEstava.length} VMs (≥ 19 dias)
+  </div>`;
 
-  relatorio.forEach(r => {
-    const cor = r.diasDeslig >= 30 ? '#dcc4c4' : r.diasDeslig >= 15 ? '#ddd4b0' : '#d6dde4';
-    const borda = r.diasDeslig >= 30 ? '#c8a0a0' : r.diasDeslig >= 15 ? '#c8bb88' : '#c0ccd6';
-    const txt   = r.diasDeslig >= 30 ? '#6a1a1a' : r.diasDeslig >= 15 ? '#6a4a10' : '#1a2a3a';
-    html += `
-      <div style="background:${cor};border:1px solid ${borda};border-radius:8px;padding:10px 14px;display:grid;grid-template-columns:2fr 2fr 1fr 1fr;gap:8px;align-items:center;margin-bottom:4px;">
-        <div style="font-size:12px;font-weight:700;color:${txt};font-family:monospace;">${r.nome}</div>
-        <div style="font-size:11px;font-weight:700;color:${txt};">${r.dominio}</div>
-        <div style="font-size:11px;font-weight:700;color:${txt};">${r.primeiraDataDeslig}</div>
-        <div style="font-size:13px;font-weight:800;color:${txt};">${r.diasDeslig > 0 ? r.diasDeslig + ' dias' : 'Hoje'}</div>
+  html += `<div style="background:#c8d3dc;border-radius:8px;padding:8px 14px;display:grid;grid-template-columns:2fr 2fr 1fr 1fr;gap:8px;margin-bottom:6px;">
+    <div style="font-size:10px;font-weight:800;color:#4a5a6a;text-transform:uppercase;letter-spacing:1px;">VM</div>
+    <div style="font-size:10px;font-weight:800;color:#4a5a6a;text-transform:uppercase;letter-spacing:1px;">Domínio</div>
+    <div style="font-size:10px;font-weight:800;color:#4a5a6a;text-transform:uppercase;letter-spacing:1px;">Desligada desde</div>
+    <div style="font-size:10px;font-weight:800;color:#4a5a6a;text-transform:uppercase;letter-spacing:1px;">Dias desligada</div>
+  </div>`;
+
+  // Agrupar por domínio
+  const domJa = {};
+  jaEstava.forEach(v => { if(!domJa[v.d]) domJa[v.d]=[]; domJa[v.d].push(v); });
+  Object.entries(domJa).sort((a,b) => b[1].length - a[1].length).forEach(([dom, vms]) => {
+    html += `<div style="background:#ddd0d0;border-radius:6px;padding:6px 14px;margin-bottom:3px;font-size:10px;font-weight:800;color:#5a2a2a;text-transform:uppercase;letter-spacing:1px;">
+      ${dom} — ${vms.length} VM${vms.length>1?'s':''}</div>`;
+    vms.forEach(v => {
+      html += `<div style="background:#dcc4c4;border:1px solid #c8a0a0;border-radius:6px;padding:9px 14px;display:grid;grid-template-columns:2fr 2fr 1fr 1fr;gap:8px;align-items:center;margin-bottom:3px;">
+        <div style="font-size:12px;font-weight:700;color:#6a1a1a;font-family:monospace;">${v.n}</div>
+        <div style="font-size:11px;font-weight:700;color:#7a2a2a;">${v.d}</div>
+        <div style="font-size:11px;font-weight:700;color:#7a2a2a;">${v.dt}</div>
+        <div style="font-size:13px;font-weight:800;color:#6a1a1a;">≥ ${v.dias} dias</div>
       </div>`;
+    });
   });
 
-  body.innerHTML = html;
-}
+  // ── Seção 2: Novas desligadas após 26/05 ─────────────────────────────────
+  html += `<div style="font-size:11px;font-weight:800;color:#6a4a10;text-transform:uppercase;letter-spacing:1.5px;margin:16px 0 8px;">
+    🟡 Desligadas após 26/05/2026 — ${nova.length} VMs
+  </div>`;
 
+  html += `<div style="background:#c8d3dc;border-radius:8px;padding:8px 14px;display:grid;grid-template-columns:2fr 2fr 1fr;gap:8px;margin-bottom:6px;">
+    <div style="font-size:10px;font-weight:800;color:#4a5a6a;text-transform:uppercase;letter-spacing:1px;">VM</div>
+    <div style="font-size:10px;font-weight:800;color:#4a5a6a;text-transform:uppercase;letter-spacing:1px;">Domínio</div>
+    <div style="font-size:10px;font-weight:800;color:#4a5a6a;text-transform:uppercase;letter-spacing:1px;">Status</div>
+  </div>`;
+
+  const domNova = {};
+  nova.forEach(v => { if(!domNova[v.d]) domNova[v.d]=[]; domNova[v.d].push(v); });
+  Object.entries(domNova).sort((a,b) => b[1].length - a[1].length).forEach(([dom, vms]) => {
+    html += `<div style="background:#d8d0c0;border-radius:6px;padding:6px 14px;margin-bottom:3px;font-size:10px;font-weight:800;color:#6a4a10;text-transform:uppercase;letter-spacing:1px;">
+      ${dom} — ${vms.length} VM${vms.length>1?'s':''}</div>`;
+    vms.forEach(v => {
+      html += `<div style="background:#ddd4b0;border:1px solid #c8bb88;border-radius:6px;padding:9px 14px;display:grid;grid-template-columns:2fr 2fr 1fr;gap:8px;align-items:center;margin-bottom:3px;">
+        <div style="font-size:12px;font-weight:700;color:#6a4a10;font-family:monospace;">${v.n}</div>
+        <div style="font-size:11px;font-weight:700;color:#7a5a20;">${v.d}</div>
+        <div style="font-size:11px;font-weight:700;color:#8a6a20;">Após 26/05</div>
+      </div>`;
+    });
+  });
+
+  document.getElementById('san20-vmd-body').innerHTML = html;
+}
 function san20CloseVMsDesligadas() {
   document.getElementById('san20-vmd-overlay').style.display = 'none';
 }
