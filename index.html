@@ -4810,9 +4810,9 @@ function san20GovExport() {
 
 
 /* ── Snapshots históricos de VMs ── */
-const SAN20_SNAP_KEY = 'san20_vm_snapshots';
+const SAN30_SNAP_KEY = 'san20_vm_snapshots';
 
-function san20GravarSnapshot() {
+function san30GravarSnapshot() {
   const hoje = new Date();
   const data = hoje.toLocaleDateString('pt-BR', {day:'2-digit',month:'2-digit',year:'numeric'});
   const hora = hoje.toLocaleTimeString('pt-BR', {hour:'2-digit',minute:'2-digit'});
@@ -4825,7 +4825,7 @@ function san20GravarSnapshot() {
     vms: []
   };
 
-  Object.entries(SAN20_VMS).forEach(([dominio, vms]) => {
+  Object.entries(SAN30_VMS).forEach(([dominio, vms]) => {
     vms.forEach(vm => {
       snap.vms.push({
         n: vm.n,
@@ -4838,13 +4838,13 @@ function san20GravarSnapshot() {
 
   // Salvar no localStorage
   let snaps = [];
-  try { snaps = JSON.parse(localStorage.getItem(SAN20_SNAP_KEY) || '[]'); } catch(e) {}
+  try { snaps = JSON.parse(localStorage.getItem(SAN30_SNAP_KEY) || '[]'); } catch(e) {}
   // Evitar duplicata no mesmo dia
   snaps = snaps.filter(s => s.data !== data);
   snaps.unshift(snap);
   // Manter apenas os últimos 30 snapshots
   if (snaps.length > 30) snaps = snaps.slice(0, 30);
-  localStorage.setItem(SAN20_SNAP_KEY, JSON.stringify(snaps));
+  localStorage.setItem(SAN30_SNAP_KEY, JSON.stringify(snaps));
 
   // Feedback visual
   const btn = event.target.closest('button');
@@ -5895,55 +5895,6 @@ function san30GovExport() {
 
 
 /* ── Snapshots históricos de VMs ── */
-const SAN20_SNAP_KEY = 'san30_vm_snapshots';
-
-function san20GravarSnapshot() {
-  const hoje = new Date();
-  const data = hoje.toLocaleDateString('pt-BR', {day:'2-digit',month:'2-digit',year:'numeric'});
-  const hora = hoje.toLocaleTimeString('pt-BR', {hour:'2-digit',minute:'2-digit'});
-
-  // Montar snapshot das VMs atuais
-  const snap = {
-    data: data,
-    hora: hora,
-    ts: hoje.getTime(),
-    vms: []
-  };
-
-  Object.entries(SAN30_VMS).forEach(([dominio, vms]) => {
-    vms.forEach(vm => {
-      snap.vms.push({
-        n: vm.n,
-        id: vm.id,
-        s: vm.s,
-        dominio: dominio
-      });
-    });
-  });
-
-  // Salvar no localStorage
-  let snaps = [];
-  try { snaps = JSON.parse(localStorage.getItem(SAN20_SNAP_KEY) || '[]'); } catch(e) {}
-  // Evitar duplicata no mesmo dia
-  snaps = snaps.filter(s => s.data !== data);
-  snaps.unshift(snap);
-  // Manter apenas os últimos 30 snapshots
-  if (snaps.length > 30) snaps = snaps.slice(0, 30);
-  localStorage.setItem(SAN20_SNAP_KEY, JSON.stringify(snaps));
-
-  // Feedback visual
-  const btn = event.target.closest('button');
-  const orig = btn.innerHTML;
-  btn.innerHTML = '✅ Gravado!';
-  btn.style.background = '#c8dccb';
-  btn.style.color = '#1a4a2a';
-  setTimeout(() => {
-    btn.innerHTML = orig;
-    btn.style.background = '#c8d3dc';
-    btn.style.color = '#1a2a3a';
-  }, 2000);
-}
-
 function san30OpenVMsDesligadas() {
   const overlay = document.getElementById('san30-vmd-overlay');
   overlay.style.display = 'flex';
