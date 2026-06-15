@@ -4200,7 +4200,7 @@ function mgRender() {
       return `<tr style="border-bottom:1px solid #eef0f6;${rowBg};transition:background .15s;border-left:3px solid ${rowAccent};" onmouseover="this.style.background='#f5f7fb'" onmouseout="this.style.background='${done?'linear-gradient(135deg,#f0fdf4,#f8fafb)':atrasado?'linear-gradient(135deg,#fff8f0,#fff5eb)':semContato?'linear-gradient(135deg,#fff5f5,#fef2f2)':trocaIp?'linear-gradient(135deg,#f8f9fa,#f1f3f5)':''}'">
         <td style="padding:12px 16px;">
           <strong style="font-size:12px;color:var(--text-dark);">${c.nome}</strong>
-          ${ultimaNota ? `<div style="font-size:10px;color:${notaColor};margin-top:3px;font-weight:600;max-width:260px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">↳ ${ultimaNota}</div>` : ''}
+          
         </td>
         <td style="padding:12px 16px;text-align:center;"><span style="font-size:13px;font-weight:800;color:var(--blue);">${c.qtdMaquinas||0}</span></td>
         <td style="padding:12px 16px;text-align:center;">
