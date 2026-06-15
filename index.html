@@ -2553,18 +2553,6 @@ document.addEventListener('page-changed', function(e) {
 </div>
 
 <script>
-// ── SANITIZAÇÃO 2.0 ──────────────────────────────────────────────────────────
-const SAN20_ALLOWED = [
-  'binario.net',
-  'gimba.com.br','gimba2.com.br','qos.com.br','refrio.com.br',
-  'bmchyundai.com.br','zanthus.com.br','enesa.com.br','gruporaizes.com',
-  'luizalabs.com','soprema.com.br','radiojb.fm','mbmsolutions.com.br',
-  'prumoengenharia.com.br','netza.com.br','automalogica.com.br',
-  'sagaengenharia.com.br','geofix.com.br','dismac.com.bo',
-  'smarapd.com.br','waits.com.br','sattelecomip.com','sistecweb.com.br',
-  'sattelecom.com','selbetti.com','spheraeducacional.com.br',
-  '1team.cloud','piramidal.com.br','piramidal.com','piramidal'
-];
 let san30Data = [];
 let san30NextId = 32;
 let san30EditId = null;
@@ -2901,12 +2889,7 @@ document.addEventListener('page-changed', function(e) {
       el.textContent = `${d} às ${h}`;
     }
   }
-});const SAN30_SNAPSHOT_ANT = {
-  data: '',
-  ts: 0,
-  dominios: [],
-  vms: []
-};
+});
 </script>
 
 <!-- CAPACITY 3.0 -->
@@ -5757,7 +5740,7 @@ const SAN30_SNAPSHOT_ANT = {
   ]
 };
 
-let san20GovChart = null;
+let san30GovChart = null;
 
 function san30OpenRelatorio() {
   const overlay = document.getElementById('san30-gov-overlay');
@@ -5812,9 +5795,9 @@ function san30OpenRelatorio() {
   canvas.style.width  = canvas.width  + 'px';
   canvas.style.height = canvas.height + 'px';
 
-  if(san20GovChart) { san20GovChart.destroy(); san20GovChart = null; }
+  if(san30GovChart) { san30GovChart.destroy(); san30GovChart = null; }
 
-  san20GovChart = new Chart(canvas, {
+  san30GovChart = new Chart(canvas, {
     type: 'bar',
     plugins: [{
       id: 'bgFill',
