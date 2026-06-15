@@ -2472,6 +2472,12 @@ document.addEventListener('page-changed', function(e) {
         <button onclick="san30OpenVMsDesligadas()" style="display:flex;align-items:center;gap:7px;padding:9px 18px;background:#ddd4b0;color:#6a4a10;border:1px solid #c8bb88;border-radius:10px;font-size:12px;font-weight:700;font-family:'Sora',sans-serif;cursor:pointer;" title="Ver relatório de VMs desligadas">
           ⏱ VMs Desligadas
         </button>
+        <button onclick="san30ExportCSV()" style="display:flex;align-items:center;gap:7px;padding:9px 14px;background:#c8dccb;color:#1a4a2a;border:1px solid #a0c8a8;border-radius:10px;font-size:12px;font-weight:700;font-family:'Sora',sans-serif;cursor:pointer;">
+          ⬇ CSV
+        </button>
+        <button onclick="san30ExportXLSX()" style="display:flex;align-items:center;gap:7px;padding:9px 14px;background:#c0d8ec;color:#1a4a7a;border:1px solid #9abcd8;border-radius:10px;font-size:12px;font-weight:700;font-family:'Sora',sans-serif;cursor:pointer;">
+          ⬇ XLS
+        </button>
         <button onclick="san30OpenRelatorio()" style="display:flex;align-items:center;gap:7px;padding:9px 18px;background:linear-gradient(135deg,#1e3a5f,#2563eb);color:#fff;border:none;border-radius:10px;font-size:12px;font-weight:700;font-family:'Sora',sans-serif;cursor:pointer;box-shadow:0 4px 14px rgba(37,99,235,.35);">
           📊 Relatório de Gestão Cloud
         </button>
@@ -4969,6 +4975,25 @@ function san20VMLRender(lista, cor) {
 
 <!-- MODAL: Relatório de Gestão Cloud -->
 
+  <!-- VMs Desligadas Overlay 3.0 -->
+  <div id="san30-vmd-overlay" onclick="if(event.target===this)san30CloseVMsDesligadas()" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:900;align-items:flex-start;justify-content:center;padding:2vh 20px 40px;overflow-y:auto;">
+    <div style="background:#e8edf2;border:1px solid #c0ccd6;border-radius:22px;width:900px;max-width:100%;box-shadow:0 8px 40px rgba(0,0,0,.2);">
+      <div style="display:flex;justify-content:space-between;align-items:center;padding:22px 32px 18px;border-bottom:1px solid #c0ccd6;">
+        <div>
+          <div style="font-size:17px;font-weight:800;color:#1a2a3a;letter-spacing:-.3px;">⏱ Relatório de VMs Desligadas — BCP 3.0</div>
+          <div id="san30-vmd-sub" style="font-size:11px;color:#5a6a7a;margin-top:3px;font-weight:700;"></div>
+        </div>
+        <div style="display:flex;gap:8px;align-items:center;">
+          <button onclick="san30ExportVMsDesligadas()" style="display:flex;align-items:center;gap:6px;padding:9px 16px;background:linear-gradient(135deg,#065f46,#059669);color:#fff;border:none;border-radius:10px;font-size:12px;font-weight:700;font-family:'Sora',sans-serif;cursor:pointer;">⬇ Exportar CSV</button>
+          <button onclick="san30CloseVMsDesligadas()" style="background:#c8d3dc;border:1px solid #b4c0cc;color:#3a4a5a;width:34px;height:34px;border-radius:50%;cursor:pointer;font-size:15px;display:flex;align-items:center;justify-content:center;">✕</button>
+        </div>
+      </div>
+      <div style="padding:24px 32px;">
+        <div id="san30-vmd-body"></div>
+      </div>
+    </div>
+  </div>
+
   <!-- VMs Desligadas Overlay -->
   <div id="san20-vmd-overlay" onclick="if(event.target===this)san20CloseVMsDesligadas()" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:900;align-items:flex-start;justify-content:center;padding:2vh 20px 40px;overflow-y:auto;">
     <div style="background:#e8edf2;border:1px solid #c0ccd6;border-radius:22px;width:900px;max-width:100%;box-shadow:0 8px 40px rgba(0,0,0,.2);">
@@ -7323,6 +7348,73 @@ function san30ExportVMsDesligadas() {
   URL.revokeObjectURL(url);
 }
 
+
+function san30AlertHtml(tag) { return tag ? '<div style="margin-top:6px;">' + tag + '</div>' : ''; }
+
+function san30GetExportRows() {
+  const rows = [];
+  san30Data.forEach(r => {
+    const vms = SAN30_VMS_EXPORT[r.dominio] || [];
+    vms.forEach(vm => {
+      rows.push({
+        Dominio: r.dominio,
+        Cliente: r.cliente,
+        VM: vm.n,
+        Status: vm.s,
+        Projeto: vm.p || '(Sem Projeto)',
+        Conforme: san20IsConforme(r.dominio) ? 'Sim' : 'Não'
+      });
+    });
+    // se não tem VMs no inventário detalhado, cria linha resumo
+    if(!vms.length) {
+      rows.push({
+        Dominio: r.dominio,
+        Cliente: r.cliente,
+        VM: `(${r.ligadas} ligadas / ${r.desligadas} desligadas)`,
+        Status: '',
+        Projeto: '',
+        Conforme: san20IsConforme(r.dominio) ? 'Sim' : 'Não'
+      });
+    }
+  });
+  return rows;
+}
+
+function san30ExportCSV() {
+  const rows = san30GetExportRows();
+  const header = 'Domínio,Cliente,VM,Status,Projeto,Conforme';
+  const body = rows.map(r =>
+    [r.Dominio, r.Cliente, r.VM, r.Status, r.Projeto, r.Conforme]
+      .map(v => `"${String(v).replace(/"/g,'""')}"`)
+      .join(',')
+  ).join('\n');
+  const blob = new Blob(['\uFEFF' + header + '\n' + body], {type:'text/csv;charset=utf-8'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = `sanitizacao-2.0-${new Date().toISOString().slice(0,10)}.csv`;
+  a.click();
+}
+
+function san30ExportXLSX() {
+  const rows = san30GetExportRows();
+  // Monta XML XLSX simples
+  const cols = ['Domínio','Cliente','VM','Status','Projeto','Conforme'];
+  const keys = ['Dominio','Cliente','VM','Status','Projeto','Conforme'];
+  let xml = `<?xml version="1.0" encoding="UTF-8"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+ xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet">
+<Worksheet ss:Name="BCP 3.0"><Table>
+<Row>${cols.map(c=>`<Cell><Data ss:Type="String">${c}</Data></Cell>`).join('')}</Row>`;
+  rows.forEach(r => {
+    xml += '<Row>' + keys.map(k => `<Cell><Data ss:Type="String">${String(r[k]).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}</Data></Cell>`).join('') + '</Row>';
+  });
+  xml += '</Table></Worksheet></Workbook>';
+  const blob = new Blob([xml], {type:'application/vnd.ms-excel;charset=utf-8'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = `sanitizacao-2.0-${new Date().toISOString().slice(0,10)}.xls`;
+  a.click();
+}
 function san30CloseVMsDesligadas() {
   document.getElementById('san30-vmd-overlay').style.display = 'none';
 }
