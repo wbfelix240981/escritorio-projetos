@@ -1418,7 +1418,7 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--blue); outline-
     <div style="display:flex;flex-direction:column;gap:12px;margin-bottom:18px;">
       <!-- Botão Gestão Cloud -->
       <div style="display:flex;justify-content:flex-end;align-items:center;gap:10px;">
-        <span id="san20-save-txt" style="font-size:11px;color:#64748b;"></span>
+        <span id="san20-save-txt" style="font-size:11px;color:#3a4a5a;"></span>
         <button onclick="san20OpenVMsDesligadas()" style="display:flex;align-items:center;gap:7px;padding:9px 18px;background:#ddd4b0;color:#6a4a10;border:1px solid #c8bb88;border-radius:10px;font-size:12px;font-weight:700;font-family:'Sora',sans-serif;cursor:pointer;" title="Ver relatório de VMs desligadas">
           ⏱ VMs Desligadas
         </button>
@@ -1429,13 +1429,13 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--blue); outline-
       <!-- Busca e Filtros -->
       <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
         <div style="position:relative;">
-          <input id="san20-search" type="text" placeholder="Buscar domínio ou cliente..." style="background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:10px;padding:9px 14px 9px 36px;color:#f1f5f9;font-size:13px;font-family:'Sora',sans-serif;width:260px;outline:none;" oninput="san20Render()">
+          <input id="san20-search" type="text" placeholder="Buscar domínio ou cliente..." style="background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:10px;padding:9px 14px 9px 36px;color:#1a2a3a;font-size:13px;font-family:'Sora',sans-serif;width:260px;outline:none;" oninput="san20Render()">
           <span style="position:absolute;left:12px;top:50%;transform:translateY(-50%);font-size:14px;opacity:.5;">🔍</span>
         </div>
         <div style="display:flex;gap:6px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:4px;">
-          <button id="san20-btn-all"        onclick="san20SetFilter('all')"        style="padding:7px 16px;border-radius:8px;border:none;font-size:12px;font-weight:700;font-family:'Sora',sans-serif;cursor:pointer;transition:all .18s;background:rgba(168,85,247,.9);color:#fff;box-shadow:0 2px 8px rgba(168,85,247,.4);">Todos</button>
-          <button id="san20-btn-cliente"    onclick="san20SetFilter('cliente')"    style="padding:7px 16px;border-radius:8px;border:none;font-size:12px;font-weight:700;font-family:'Sora',sans-serif;cursor:pointer;transition:all .18s;background:transparent;color:#64748b;">☁ Cloud Cliente</button>
-          <button id="san20-btn-foundation" onclick="san20SetFilter('foundation')" style="padding:7px 16px;border-radius:8px;border:none;font-size:12px;font-weight:700;font-family:'Sora',sans-serif;cursor:pointer;transition:all .18s;background:transparent;color:#64748b;">🏗 Cloud Foundation</button>
+          <button id="san20-btn-all"        onclick="san20SetFilter('all')"        style="padding:7px 16px;border-radius:8px;border:none;font-size:12px;font-weight:700;font-family:'Sora',sans-serif;cursor:pointer;transition:all .18s;background:rgba(168,85,247,.9);color:#ffffff;box-shadow:0 2px 8px rgba(37,99,235,.3);">Todos</button>
+          <button id="san20-btn-cliente"    onclick="san20SetFilter('cliente')"    style="padding:7px 16px;border-radius:8px;border:none;font-size:12px;font-weight:700;font-family:'Sora',sans-serif;cursor:pointer;transition:all .18s;background:transparent;color:#3a4a5a;">☁ Cloud Cliente</button>
+          <button id="san20-btn-foundation" onclick="san20SetFilter('foundation')" style="padding:7px 16px;border-radius:8px;border:none;font-size:12px;font-weight:700;font-family:'Sora',sans-serif;cursor:pointer;transition:all .18s;background:transparent;color:#3a4a5a;">🏗 Cloud Foundation</button>
         </div>
         <span id="san20-count-label" style="font-size:11px;color:#475569;font-weight:600;"></span>
       </div>
@@ -1446,9 +1446,9 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--blue); outline-
     <!-- Tabela -->
     <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:16px;overflow:hidden;">
       <div id="san20-table-header" style="display:grid;grid-template-columns:2fr 2fr 1.6fr;padding:12px 20px;background:#c8d3dc;border-bottom:1px solid #b4c0cc;">
-        <span style="font-size:10px;font-weight:700;color:#64748b;text-transform:uppercase;letter-spacing:1.5px;">Domínio</span>
-        <span style="font-size:10px;font-weight:700;color:#64748b;text-transform:uppercase;letter-spacing:1.5px;">Cliente / Serviço</span>
-        <span style="font-size:10px;font-weight:700;color:#64748b;text-transform:uppercase;letter-spacing:1.5px;">Máquinas</span>
+        <span style="font-size:10px;font-weight:700;color:#3a4a5a;font-weight:800;text-transform:uppercase;letter-spacing:1.5px;">Domínio</span>
+        <span style="font-size:10px;font-weight:700;color:#3a4a5a;font-weight:800;text-transform:uppercase;letter-spacing:1.5px;">Cliente / Serviço</span>
+        <span style="font-size:10px;font-weight:700;color:#3a4a5a;font-weight:800;text-transform:uppercase;letter-spacing:1.5px;">Máquinas</span>
       </div>
       <div id="san20-tbody"></div>
     </div>
@@ -1623,7 +1623,7 @@ function san20Render() {
 
   tbody.innerHTML = rows.map(r => {
     const conforme  = san20IsConforme(r.dominio);
-    const domColor  = conforme ? '#a78bfa' : '#f87171';
+    const domColor  = conforme ? '#1a4a8a' : '#8a1a1a';
 
     const pct = r.pctDeslig || 0;
     const vms = r.vms || '—';
@@ -1635,7 +1635,7 @@ function san20Render() {
     else if (pct >= 50)      alertTag = `<span style="font-size:10px;background:rgba(251,191,36,.15);color:#fbbf24;border:1px solid rgba(251,191,36,.3);padding:2px 8px;border-radius:99px;margin-left:6px;">⚠ +50% desligadas</span>`;
 
     const vmInfo = r.vms != null
-      ? `<div style="font-size:10px;color:#64748b;margin-top:3px;">VMs: ${vms} total${alertTag}</div>`
+      ? `<div style="font-size:10px;color:#4a5a6a;margin-top:3px;">VMs: ${vms} total${alertTag}</div>`
       : '';
 
     const hasVMs = r.vms != null && r.vms > 0;
@@ -1651,15 +1651,15 @@ function san20Render() {
           <div style="display:flex;gap:8px;">
             <span style="font-size:10px;color:#4ade80;font-weight:600;">🟢 ${r.ligadas}</span>
             <span style="font-size:10px;color:#f87171;font-weight:600;">⚫ ${r.desligadas}</span>
-            <span style="font-size:10px;color:#64748b;">/ ${r.vms} VMs</span>
+            <span style="font-size:10px;color:#3a4a5a;">/ ${r.vms} VMs</span>
           </div>
         </div>
-        <button onclick="san20ToggleVMs(${r.id},this)" title="Ver detalhes" style="flex-shrink:0;width:26px;height:26px;border-radius:6px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);color:#94a3b8;font-size:13px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .18s;">▾</button>
+        <button onclick="san20ToggleVMs(${r.id},this)" title="Ver detalhes" style="flex-shrink:0;width:26px;height:26px;border-radius:6px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);color:#3a4a5a;font-size:13px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .18s;">▾</button>
       </div>` : `<div style="font-size:11px;color:#475569;">—</div>`;
 
     const vmPanel = hasVMs ? `
       <div id="san20-vmpanel-${r.id}" style="display:none;grid-column:1/-1;background:rgba(255,255,255,.03);border-top:1px solid rgba(255,255,255,.06);padding:14px 20px;">
-        <div style="font-size:10px;font-weight:700;color:#64748b;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:10px;">Detalhe de Máquinas — ${r.dominio}</div>
+        <div style="font-size:10px;font-weight:700;color:#3a4a5a;font-weight:800;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:10px;">Detalhe de Máquinas — ${r.dominio}</div>
         <div style="display:flex;gap:24px;flex-wrap:wrap;">
           <div onclick="san20OpenVMList('${r.dominio}','ACTIVE')" style="background:rgba(34,197,94,.08);border:1px solid rgba(34,197,94,.2);border-radius:10px;padding:14px 20px;min-width:130px;text-align:center;cursor:pointer;transition:all .18s;" onmouseover="this.style.background='rgba(34,197,94,.18)'" onmouseout="this.style.background='rgba(34,197,94,.08)'">
             <div style="font-size:28px;font-weight:900;color:#4ade80;line-height:1;">${r.ligadas}</div>
@@ -1679,7 +1679,7 @@ function san20Render() {
             <div style="font-size:11px;font-weight:700;color:#5a6a7a;margin-top:2px;">todas · clique p/ listar</div>
           </div>
           <div style="flex:1;min-width:200px;display:flex;flex-direction:column;justify-content:center;gap:6px;">
-            <div style="font-size:11px;color:#94a3b8;margin-bottom:4px;">Proporção ligadas/desligadas</div>
+            <div style="font-size:11px;color:#4a5a6a;margin-bottom:4px;">Proporção ligadas/desligadas</div>
             <div style="height:10px;border-radius:99px;overflow:hidden;background:rgba(255,255,255,.08);display:flex;">
               <div style="width:${ligPct}%;background:linear-gradient(90deg,#22c55e,#4ade80);transition:width .8s;"></div>
               <div style="width:${deslPct}%;background:linear-gradient(90deg,#ef4444,#f87171);transition:width .8s;"></div>
@@ -2468,7 +2468,7 @@ document.addEventListener('page-changed', function(e) {
     <div style="display:flex;flex-direction:column;gap:12px;margin-bottom:18px;">
       <!-- Botão Gestão Cloud -->
       <div style="display:flex;justify-content:flex-end;align-items:center;gap:10px;">
-        <span id="san30-save-txt" style="font-size:11px;color:#64748b;"></span>
+        <span id="san30-save-txt" style="font-size:11px;color:#3a4a5a;"></span>
         <button onclick="san30OpenRelatorio()" style="display:flex;align-items:center;gap:7px;padding:9px 18px;background:linear-gradient(135deg,#4a148c,#7b1fa2);color:#fff;border:none;border-radius:10px;font-size:12px;font-weight:700;font-family:'Sora',sans-serif;cursor:pointer;box-shadow:0 4px 14px rgba(123,31,162,.35);">
           📊 Relatório de Gestão Cloud
         </button>
@@ -2476,13 +2476,13 @@ document.addEventListener('page-changed', function(e) {
       <!-- Busca e Filtros -->
       <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
         <div style="position:relative;">
-          <input id="san30-search" type="text" placeholder="Buscar domínio ou cliente..." style="background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:10px;padding:9px 14px 9px 36px;color:#f1f5f9;font-size:13px;font-family:'Sora',sans-serif;width:260px;outline:none;" oninput="san30Render()">
+          <input id="san30-search" type="text" placeholder="Buscar domínio ou cliente..." style="background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:10px;padding:9px 14px 9px 36px;color:#1a2a3a;font-size:13px;font-family:'Sora',sans-serif;width:260px;outline:none;" oninput="san30Render()">
           <span style="position:absolute;left:12px;top:50%;transform:translateY(-50%);font-size:14px;opacity:.5;">🔍</span>
         </div>
         <div style="display:flex;gap:6px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:4px;">
-          <button id="san30-btn-all"        onclick="san30SetFilter('all')"        style="padding:7px 16px;border-radius:8px;border:none;font-size:12px;font-weight:700;font-family:'Sora',sans-serif;cursor:pointer;transition:all .18s;background:rgba(168,85,247,.9);color:#fff;box-shadow:0 2px 8px rgba(168,85,247,.4);">Todos</button>
-          <button id="san30-btn-cliente"    onclick="san30SetFilter('cliente')"    style="padding:7px 16px;border-radius:8px;border:none;font-size:12px;font-weight:700;font-family:'Sora',sans-serif;cursor:pointer;transition:all .18s;background:transparent;color:#64748b;">☁ Cloud Cliente</button>
-          <button id="san30-btn-foundation" onclick="san30SetFilter('foundation')" style="padding:7px 16px;border-radius:8px;border:none;font-size:12px;font-weight:700;font-family:'Sora',sans-serif;cursor:pointer;transition:all .18s;background:transparent;color:#64748b;">🏗 Cloud Foundation</button>
+          <button id="san30-btn-all"        onclick="san30SetFilter('all')"        style="padding:7px 16px;border-radius:8px;border:none;font-size:12px;font-weight:700;font-family:'Sora',sans-serif;cursor:pointer;transition:all .18s;background:rgba(168,85,247,.9);color:#ffffff;box-shadow:0 2px 8px rgba(37,99,235,.3);">Todos</button>
+          <button id="san30-btn-cliente"    onclick="san30SetFilter('cliente')"    style="padding:7px 16px;border-radius:8px;border:none;font-size:12px;font-weight:700;font-family:'Sora',sans-serif;cursor:pointer;transition:all .18s;background:transparent;color:#3a4a5a;">☁ Cloud Cliente</button>
+          <button id="san30-btn-foundation" onclick="san30SetFilter('foundation')" style="padding:7px 16px;border-radius:8px;border:none;font-size:12px;font-weight:700;font-family:'Sora',sans-serif;cursor:pointer;transition:all .18s;background:transparent;color:#3a4a5a;">🏗 Cloud Foundation</button>
         </div>
         <span id="san30-count-label" style="font-size:11px;color:#475569;font-weight:600;"></span>
       </div>
@@ -2493,9 +2493,9 @@ document.addEventListener('page-changed', function(e) {
     <!-- Tabela -->
     <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:16px;overflow:hidden;">
       <div id="san20-table-header" style="display:grid;grid-template-columns:2fr 2fr 1.6fr;padding:12px 20px;background:#c8d3dc;border-bottom:1px solid #b4c0cc;">
-        <span style="font-size:10px;font-weight:700;color:#64748b;text-transform:uppercase;letter-spacing:1.5px;">Domínio</span>
-        <span style="font-size:10px;font-weight:700;color:#64748b;text-transform:uppercase;letter-spacing:1.5px;">Cliente / Serviço</span>
-        <span style="font-size:10px;font-weight:700;color:#64748b;text-transform:uppercase;letter-spacing:1.5px;">Máquinas</span>
+        <span style="font-size:10px;font-weight:700;color:#3a4a5a;font-weight:800;text-transform:uppercase;letter-spacing:1.5px;">Domínio</span>
+        <span style="font-size:10px;font-weight:700;color:#3a4a5a;font-weight:800;text-transform:uppercase;letter-spacing:1.5px;">Cliente / Serviço</span>
+        <span style="font-size:10px;font-weight:700;color:#3a4a5a;font-weight:800;text-transform:uppercase;letter-spacing:1.5px;">Máquinas</span>
       </div>
       <div id="san30-tbody"></div>
     </div>
