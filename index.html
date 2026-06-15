@@ -2111,7 +2111,7 @@ document.addEventListener('page-changed', function(e) {
       <div style="display:flex;align-items:center;gap:12px;margin-bottom:6px;">
         <div>
           <h1 style="font-size:22px;font-weight:800;color:#1a2a3a;letter-spacing:-.5px;margin:0;">Gestão Cloud de Domínios</h1>
-          <p style="font-size:12px;color:#5a6a7a;margin:2px 0 0;">Ambiente 3.0 — Inventário OpenStack · 804 VMs · 83 Domínios · 715 ligadas · 85 desligadas<span id="san30-timestamp"></span></p>
+          <p style="font-size:12px;color:#5a6a7a;margin:2px 0 0;">Ambiente 3.0 — Inventário OpenStack · 803 VMs · 84 Domínios · 714 ligadas · 85 desligadas<span id="san30-timestamp"></span></p>
         </div>
       </div>
     </div>
@@ -2521,7 +2521,7 @@ async function san30SaveStorage() {
 
 
 const SAN30_SEED = [
-  // ── Inventário OpenStack 3.0 — 15/06/2026 | 804 VMs | 83 Domínios | 715 ligadas | 85 desligadas ──
+  // ── Inventário OpenStack 3.0 — 15/06/2026 v72 | 803 VMs | 84 Domínios | 714 ligadas | 85 desligadas ──
   { id: 1, dominio:'gimba.com.br', cliente:'Gimba', tipo:'Aplicação Web', vms:113, ligadas:105, desligadas:8, pctDeslig:7.1 },
   { id: 2, dominio:'Default', cliente:'Admin / Service (OpenStack interno)', tipo:'Serviço Interno', vms:111, ligadas:102, desligadas:9, pctDeslig:8.1 },
   { id: 3, dominio:'binario.cloud', cliente:'Binario Cloud — Ambiente Principal', tipo:'Cloud Foundation', vms:65, ligadas:53, desligadas:12, pctDeslig:18.5 },
@@ -2544,18 +2544,18 @@ const SAN30_SEED = [
   { id: 20, dominio:'adorno.biz', cliente:'adorno.biz', tipo:'Aplicação Web', vms:7, ligadas:7, desligadas:0, pctDeslig:0.0 },
   { id: 21, dominio:'raconnect.com.br', cliente:'raconnect.com.br', tipo:'Aplicação Web', vms:7, ligadas:4, desligadas:3, pctDeslig:42.9 },
   { id: 22, dominio:'bestsmart.com.br', cliente:'bestsmart.com.br', tipo:'Aplicação Web', vms:7, ligadas:7, desligadas:0, pctDeslig:0.0 },
-  { id: 23, dominio:'ish.com.br', cliente:'ish.com.br', tipo:'Aplicação Web', vms:6, ligadas:6, desligadas:0, pctDeslig:0.0 },
-  { id: 24, dominio:'suporte.binario.cloud', cliente:'Binario Cloud Suporte', tipo:'Cloud Foundation', vms:6, ligadas:5, desligadas:1, pctDeslig:16.7 },
-  { id: 25, dominio:'guardiaofamiliar.com.br', cliente:'guardiaofamiliar.com.br', tipo:'Aplicação Web', vms:6, ligadas:6, desligadas:0, pctDeslig:0.0 },
-  { id: 26, dominio:'(Sem Domínio)', cliente:'(Sem Domínio / Projetos Órfãos)', tipo:'Serviço Interno', vms:5, ligadas:4, desligadas:0, pctDeslig:0.0 },
-  { id: 27, dominio:'brainlaw.com.br', cliente:'brainlaw.com.br', tipo:'Aplicação Web', vms:5, ligadas:5, desligadas:0, pctDeslig:0.0 },
-  { id: 28, dominio:'acaoengenharia.com.br', cliente:'acaoengenharia.com.br', tipo:'Aplicação Web', vms:5, ligadas:5, desligadas:0, pctDeslig:0.0 },
-  { id: 29, dominio:'pgadvogados.com.br', cliente:'pgadvogados.com.br', tipo:'Aplicação Web', vms:5, ligadas:5, desligadas:0, pctDeslig:0.0 },
-  { id: 30, dominio:'laboratoriolebon.com.br', cliente:'laboratoriolebon.com.br', tipo:'Aplicação Web', vms:5, ligadas:5, desligadas:0, pctDeslig:0.0 },
-  { id: 31, dominio:'oinsurance.com.br', cliente:'oinsurance.com.br', tipo:'Aplicação Web', vms:5, ligadas:5, desligadas:0, pctDeslig:0.0 },
-  { id: 32, dominio:'digitalwork.com.br', cliente:'digitalwork.com.br', tipo:'Aplicação Web', vms:5, ligadas:4, desligadas:1, pctDeslig:20.0 },
-  { id: 33, dominio:'nautika.com.br', cliente:'nautika.com.br', tipo:'Aplicação Web', vms:5, ligadas:5, desligadas:0, pctDeslig:0.0 },
-  { id: 34, dominio:'novodente.com.br', cliente:'novodente.com.br', tipo:'Aplicação Web', vms:5, ligadas:5, desligadas:0, pctDeslig:0.0 },
+  { id: 23, dominio:'suporte.binario.cloud', cliente:'Binario Cloud Suporte', tipo:'Cloud Foundation', vms:6, ligadas:5, desligadas:1, pctDeslig:16.7 },
+  { id: 24, dominio:'guardiaofamiliar.com.br', cliente:'guardiaofamiliar.com.br', tipo:'Aplicação Web', vms:6, ligadas:6, desligadas:0, pctDeslig:0.0 },
+  { id: 25, dominio:'(Sem Domínio)', cliente:'(Sem Domínio / Projetos Órfãos)', tipo:'Serviço Interno', vms:5, ligadas:4, desligadas:0, pctDeslig:0.0 },
+  { id: 26, dominio:'brainlaw.com.br', cliente:'brainlaw.com.br', tipo:'Aplicação Web', vms:5, ligadas:5, desligadas:0, pctDeslig:0.0 },
+  { id: 27, dominio:'acaoengenharia.com.br', cliente:'acaoengenharia.com.br', tipo:'Aplicação Web', vms:5, ligadas:5, desligadas:0, pctDeslig:0.0 },
+  { id: 28, dominio:'pgadvogados.com.br', cliente:'pgadvogados.com.br', tipo:'Aplicação Web', vms:5, ligadas:5, desligadas:0, pctDeslig:0.0 },
+  { id: 29, dominio:'laboratoriolebon.com.br', cliente:'laboratoriolebon.com.br', tipo:'Aplicação Web', vms:5, ligadas:5, desligadas:0, pctDeslig:0.0 },
+  { id: 30, dominio:'oinsurance.com.br', cliente:'oinsurance.com.br', tipo:'Aplicação Web', vms:5, ligadas:5, desligadas:0, pctDeslig:0.0 },
+  { id: 31, dominio:'digitalwork.com.br', cliente:'digitalwork.com.br', tipo:'Aplicação Web', vms:5, ligadas:4, desligadas:1, pctDeslig:20.0 },
+  { id: 32, dominio:'nautika.com.br', cliente:'nautika.com.br', tipo:'Aplicação Web', vms:5, ligadas:5, desligadas:0, pctDeslig:0.0 },
+  { id: 33, dominio:'novodente.com.br', cliente:'novodente.com.br', tipo:'Aplicação Web', vms:5, ligadas:5, desligadas:0, pctDeslig:0.0 },
+  { id: 34, dominio:'ish.com.br', cliente:'ISH Technology', tipo:'Aplicação Web', vms:4, ligadas:4, desligadas:0, pctDeslig:0.0 },
   { id: 35, dominio:'solutika.com.br', cliente:'solutika.com.br', tipo:'Aplicação Web', vms:4, ligadas:4, desligadas:0, pctDeslig:0.0 },
   { id: 36, dominio:'mbmsolutions.com.br', cliente:'MBM Solutions', tipo:'Aplicação Web', vms:4, ligadas:4, desligadas:0, pctDeslig:0.0 },
   { id: 37, dominio:'automalogica.com.br', cliente:'Automalogica', tipo:'Aplicação Web', vms:4, ligadas:4, desligadas:0, pctDeslig:0.0 },
@@ -2597,14 +2597,15 @@ const SAN30_SEED = [
   { id: 73, dominio:'clubecascatinha.com.br', cliente:'clubecascatinha.com.br', tipo:'Aplicação Web', vms:2, ligadas:2, desligadas:0, pctDeslig:0.0 },
   { id: 74, dominio:'carlsons.com.br', cliente:'carlsons.com.br', tipo:'Aplicação Web', vms:2, ligadas:2, desligadas:0, pctDeslig:0.0 },
   { id: 75, dominio:'08setv32.com', cliente:'08setv32.com', tipo:'Aplicação Web', vms:2, ligadas:0, desligadas:1, pctDeslig:50.0 },
-  { id: 76, dominio:'radiojb.fm', cliente:'Rádio JB', tipo:'Aplicação Web', vms:1, ligadas:1, desligadas:0, pctDeslig:0.0 },
-  { id: 77, dominio:'transgobbi.com.br', cliente:'transgobbi.com.br', tipo:'Aplicação Web', vms:1, ligadas:1, desligadas:0, pctDeslig:0.0 },
-  { id: 78, dominio:'besimple.inf.br', cliente:'besimple.inf.br', tipo:'Aplicação Web', vms:1, ligadas:1, desligadas:0, pctDeslig:0.0 },
-  { id: 79, dominio:'claro.com.br', cliente:'claro.com.br', tipo:'Aplicação Web', vms:1, ligadas:1, desligadas:0, pctDeslig:0.0 },
-  { id: 80, dominio:'spsp.com.br', cliente:'spsp.com.br', tipo:'Aplicação Web', vms:1, ligadas:1, desligadas:0, pctDeslig:0.0 },
-  { id: 81, dominio:'qos.com.br', cliente:'QoS', tipo:'Aplicação Web', vms:1, ligadas:1, desligadas:0, pctDeslig:0.0 },
-  { id: 82, dominio:'silicom.com.br', cliente:'silicom.com.br', tipo:'Aplicação Web', vms:1, ligadas:0, desligadas:1, pctDeslig:100.0 },
-  { id: 83, dominio:'forceline.com.br', cliente:'forceline.com.br', tipo:'Aplicação Web', vms:1, ligadas:0, desligadas:1, pctDeslig:100.0 },
+  { id: 76, dominio:'dismac.com.bo', cliente:'Dismac', tipo:'Aplicação Web', vms:1, ligadas:1, desligadas:0, pctDeslig:0.0 },
+  { id: 77, dominio:'radiojb.fm', cliente:'Rádio JB', tipo:'Aplicação Web', vms:1, ligadas:1, desligadas:0, pctDeslig:0.0 },
+  { id: 78, dominio:'transgobbi.com.br', cliente:'transgobbi.com.br', tipo:'Aplicação Web', vms:1, ligadas:1, desligadas:0, pctDeslig:0.0 },
+  { id: 79, dominio:'besimple.inf.br', cliente:'besimple.inf.br', tipo:'Aplicação Web', vms:1, ligadas:1, desligadas:0, pctDeslig:0.0 },
+  { id: 80, dominio:'claro.com.br', cliente:'claro.com.br', tipo:'Aplicação Web', vms:1, ligadas:1, desligadas:0, pctDeslig:0.0 },
+  { id: 81, dominio:'spsp.com.br', cliente:'spsp.com.br', tipo:'Aplicação Web', vms:1, ligadas:1, desligadas:0, pctDeslig:0.0 },
+  { id: 82, dominio:'qos.com.br', cliente:'QoS', tipo:'Aplicação Web', vms:1, ligadas:1, desligadas:0, pctDeslig:0.0 },
+  { id: 83, dominio:'silicom.com.br', cliente:'silicom.com.br', tipo:'Aplicação Web', vms:1, ligadas:0, desligadas:1, pctDeslig:100.0 },
+  { id: 84, dominio:'forceline.com.br', cliente:'forceline.com.br', tipo:'Aplicação Web', vms:1, ligadas:0, desligadas:1, pctDeslig:100.0 },
 ];
 
 const SAN30_VMS = {
@@ -2999,8 +3000,8 @@ const SAN30_VMS = {
     {n:'manila_service_instance_generic_39fe3959-9e8e-49cb-aaac-148564930559',id:'a6963fcc-3269-4209-aebf-0ed1f27289ad',s:'ACTIVE',p:'service',pid:'918bb1a15ada41e593855ba033277f7e'},
     {n:'manila_service_instance_generic_3a4a86b9-3778-431a-b4c4-e7ef4cbae1ec',id:'051174d4-22fb-4ef5-b8f5-a66f48026931',s:'ACTIVE',p:'service',pid:'918bb1a15ada41e593855ba033277f7e'},
     {n:'manila_service_instance_generic_427c5f72-9000-4553-9828-44e3891eff78',id:'815521ab-49e1-4c64-9fbb-5c22d4fb71de',s:'ACTIVE',p:'service',pid:'918bb1a15ada41e593855ba033277f7e'},
-    {n:'manila_service_instance_generic_4369981b-f404-4437-aa0f-af3853f5fc4b',id:'f5236d41-ac2d-4533-965b-0f7cf9f06326',s:'ACTIVE',p:'service',pid:'918bb1a15ada41e593855ba033277f7e'},
     {n:'manila_service_instance_generic_4369981b-f404-4437-aa0f-af3853f5fc4b',id:'2b0534ef-883f-46fd-a628-aee7a3779e73',s:'ACTIVE',p:'service',pid:'918bb1a15ada41e593855ba033277f7e'},
+    {n:'manila_service_instance_generic_4369981b-f404-4437-aa0f-af3853f5fc4b',id:'f5236d41-ac2d-4533-965b-0f7cf9f06326',s:'ACTIVE',p:'service',pid:'918bb1a15ada41e593855ba033277f7e'},
     {n:'manila_service_instance_generic_45c8161e-e05c-4529-8bab-74eda187512d',id:'38f6a594-f60e-4638-92a3-38682a77c063',s:'ACTIVE',p:'service',pid:'918bb1a15ada41e593855ba033277f7e'},
     {n:'manila_service_instance_generic_66c5e583-ac69-46e6-b02f-411deb851a3c',id:'3d82bee7-8a97-47c8-9d37-59a81764065f',s:'ACTIVE',p:'service',pid:'918bb1a15ada41e593855ba033277f7e'},
     {n:'manila_service_instance_generic_78a558c7-43b8-4589-9af6-ea236675f374',id:'b38da02b-9c82-4001-8734-3863d95c64a9',s:'SHUTOFF',p:'service',pid:'918bb1a15ada41e593855ba033277f7e'},
@@ -3029,6 +3030,9 @@ const SAN30_VMS = {
     {n:'fg.snoc.digitalwork.com.br',id:'c44d2c4c-7f7a-4c80-9196-b4f45323894a',s:'ACTIVE',p:'project-digital-work',pid:'725c7687ab2e49b696c66a4fa15f8e38'},
     {n:'fmg.sec.digitalwork.com.br',id:'7e3fa1ce-7554-4801-aa76-e015f99678bd',s:'SHUTOFF',p:'project-digital-work',pid:'725c7687ab2e49b696c66a4fa15f8e38'},
     {n:'portainer.snoc.digitawork.com.br',id:'03270a95-a620-42ef-ae53-6272ae41ed2b',s:'ACTIVE',p:'project-digital-work',pid:'725c7687ab2e49b696c66a4fa15f8e38'},
+  ],
+  'dismac.com.bo': [
+    {n:'coriolis-3ec9a67f-1fc6-4356-859a-7e1544f9aaa4-import-worker',id:'234084db-f940-4298-9830-019811b77f5c',s:'ACTIVE',p:'project-dr-dismac',pid:'ef32526ed3254d45821972d22bad0b99'},
   ],
   'edudata.com.br': [
     {n:'cache-01-edu',id:'7063b665-3ddf-43fa-90f7-c24c05784c75',s:'SHUTOFF',p:'project-edudata',pid:'221e3d63150b4b0cb3bc172db341ca91'},
@@ -3205,9 +3209,7 @@ const SAN30_VMS = {
     {n:'VBR-IPDA',id:'357e82ec-1eb7-4d4a-b455-c3ffd0049a30',s:'ACTIVE',p:'project-ipda',pid:'0017b16923c8463d8a3d6162aed09cba'},
   ],
   'ish.com.br': [
-    {n:'coriolis-2715f942-4f43-476c-98c6-f9a488689a6b-import-worker',id:'bc5eceda-efc6-4627-8ec5-279c00e8cee7',s:'ACTIVE',p:'CLI-DR',pid:'feff4201134d4c4192632defc0d94948'},
-    {n:'coriolis-93a5bc94-cb3d-4c21-94e0-1be8c943f98e-import-worker',id:'4cc07d40-d41e-4b8a-809d-fbe55efc324c',s:'ACTIVE',p:'CLI-DR',pid:'feff4201134d4c4192632defc0d94948'},
-    {n:'coriolis-96c828d1-bcce-411d-873d-593213b1169d-import-worker',id:'a885bd73-6c62-402c-a69f-442f1ec244b0',s:'ACTIVE',p:'CLI-DR',pid:'feff4201134d4c4192632defc0d94948'},
+    {n:'coriolis-032b3203-bb68-4f51-8120-1341362d8644-import-worker',id:'be298b4e-1c3f-42c6-a827-0f46f667baa2',s:'ACTIVE',p:'CLI-DR',pid:'feff4201134d4c4192632defc0d94948'},
     {n:'DC2-CLOUD-ISH',id:'e4d9dea4-d60c-4e07-a178-a96967195313',s:'ACTIVE',p:'CLI-DR',pid:'feff4201134d4c4192632defc0d94948'},
     {n:'PFSENSE-ISH',id:'71c30b0f-203a-402b-8194-3ba16e97e0ec',s:'ACTIVE',p:'CLI-DR',pid:'feff4201134d4c4192632defc0d94948'},
     {n:'prx-ishdr',id:'93d9e915-d6af-45ec-aca3-4e16db09cd1c',s:'ACTIVE',p:'CLI-DR',pid:'feff4201134d4c4192632defc0d94948'},
@@ -3290,11 +3292,11 @@ const SAN30_VMS = {
   'netza.com.br': [
     {n:'NETZA-FW01',id:'cf27a70a-4de6-4e9d-ba6a-411ae6fc3e32',s:'ACTIVE',p:'project-netza',pid:'b65c032d48e04d488fe6ee6012938c49'},
     {n:'RECOVERY-vm-netza-DISCO0',id:'05f487d5-9175-43d3-9f92-c77955babe3d',s:'ACTIVE',p:'project-netza',pid:'b65c032d48e04d488fe6ee6012938c49'},
-    {n:'RECOVERY-vm-netza-DISCO1',id:'07a8d34d-a45c-4e67-8c37-79613e18e178',s:'ACTIVE',p:'project-netza',pid:'b65c032d48e04d488fe6ee6012938c49'},
     {n:'RECOVERY-vm-netza-DISCO1-1',id:'1ed75aab-08dd-4609-b0cd-11a2cf439e4e',s:'ACTIVE',p:'project-netza',pid:'b65c032d48e04d488fe6ee6012938c49'},
-    {n:'RECOVERY-vm-netza-disco2',id:'1118b9d6-59ec-4816-aea6-a46a20c639b4',s:'ACTIVE',p:'project-netza',pid:'b65c032d48e04d488fe6ee6012938c49'},
-    {n:'RECOVERY-vm-netza-DISCO3',id:'c285a178-2a47-4f01-a7d9-1e9911632ad3',s:'ACTIVE',p:'project-netza',pid:'b65c032d48e04d488fe6ee6012938c49'},
-    {n:'RECOVERY-vm-netza-DISCO4',id:'b45ca90a-a18c-4e2e-8228-ba7a5a8e519e',s:'ACTIVE',p:'project-netza',pid:'b65c032d48e04d488fe6ee6012938c49'},
+    {n:'RECOVERY-vm-netza-disco2',id:'ee983281-1db8-473b-94c0-fdd190094f2a',s:'ACTIVE',p:'project-netza',pid:'b65c032d48e04d488fe6ee6012938c49'},
+    {n:'RECOVERY-vm-netza-DISCO3',id:'622f42ef-9539-4eef-9f0f-9ec8043c591d',s:'ACTIVE',p:'project-netza',pid:'b65c032d48e04d488fe6ee6012938c49'},
+    {n:'RECOVERY-vm-netza-DISCO4',id:'e3594bd0-f1a7-400d-bb74-451520cedd5e',s:'ACTIVE',p:'project-netza',pid:'b65c032d48e04d488fe6ee6012938c49'},
+    {n:'vm-netza',id:'ae7dbbdd-8fed-489d-9929-86b3c17b3c65',s:'ACTIVE',p:'project-netza',pid:'b65c032d48e04d488fe6ee6012938c49'},
   ],
   'novodente.com.br': [
     {n:'fw-pfnvdente',id:'9341a2fa-cd65-4861-b887-1e677210f223',s:'ACTIVE',p:'project--infra-novodente',pid:'0493dafbc1344171b5b4e8bc08fc4be6'},
@@ -3581,7 +3583,7 @@ const SAN30_VMS = {
 };
 
 async function san30LoadStorage() {
-  const SEED_VERSION = '2026-06-15-v1-san30';
+  const SEED_VERSION = '2026-06-15-v2-san30';
   try {
     let saved = null;
     if (window.storage) {
