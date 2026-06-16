@@ -1228,15 +1228,28 @@ img, svg { max-width: 100%; }
 <script>
 // ── SANITIZAÇÃO 2.0 ──────────────────────────────────────────────────────────
 const SAN20_ALLOWED = [
-  'binario.net',
-  'gimba.com.br','gimba2.com.br','qos.com.br','refrio.com.br',
-  'bmchyundai.com.br','zanthus.com.br','enesa.com.br','gruporaizes.com',
-  'luizalabs.com','soprema.com.br','radiojb.fm','mbmsolutions.com.br',
-  'prumoengenharia.com.br','netza.com.br','automalogica.com.br',
-  'sagaengenharia.com.br','geofix.com.br','dismac.com.bo',
-  'smarapd.com.br','waits.com.br','sattelecomip.com','sistecweb.com.br',
-  'sattelecom.com','selbetti.com','spheraeducacional.com.br',
-  '1team.cloud','piramidal.com.br','piramidal.com','piramidal'
+  'binario.net','gimba.com.br','gimba2.com.br','qos.com.br',
+  'refrio.com.br','bmchyundai.com.br','zanthus.com.br','enesa.com.br',
+  'gruporaizes.com','luizalabs.com','soprema.com.br','radiojb.fm',
+  'mbmsolutions.com.br','prumoengenharia.com.br','netza.com.br','automalogica.com.br',
+  'sagaengenharia.com.br','geofix.com.br','dismac.com.bo','smarapd.com.br',
+  'waits.com.br','sattelecomip.com','sistecweb.com.br','sattelecom.com',
+  'selbetti.com','spheraeducacional.com.br','1team.cloud','piramidal.com.br',
+  'piramidal.com','piramidal','skyone.solutions','aptu.cloud',
+  'cannect.com.br','ncsolucoes.com.br','pedreiraumvalemix.com.br','trajeto.com.br',
+  'edudata.com.br','mextrametal.com.br','fipe.org.br','raconnect.com.br',
+  'bestsmart.com.br','guardiaofamiliar.com.br','brainlaw.com.br','acaoengenharia.com.br',
+  'pgadvogados.com.br','laboratoriolebon.com.br','oinsurance.com.br','digitalwork.com.br',
+  'nautika.com.br','novodente.com.br','ish.com.br','solutika.com.br',
+  'lemartransportes.com.br','jmprimesp','jrdiesel.com.br','maravilhalivros.com.br',
+  'uniorka.com.br','rocie.corp','thompsonferramentas.com.br','dailytechla.com',
+  'cgvinc.com','ouropak.com.br','platlog.com.br','protecta.net.br',
+  'witec.com.br','rkpartners.com.br','fibrion.com.br','navirai.ms.gov.br',
+  'vac-audit.com.br','ipda.com.br','hospitalsaojose.com','coasa.com.br',
+  'rbxsoft.com','inventivo.digital','aplubcap.com.br','promofarma.com.br',
+  'fernandeseota.com.br','trucklocadora.com.br','cartellone.com.br','shoebiz.com.br',
+  'corumba4.com.br','clubecascatinha.com.br','transgobbi.com.br','besimple.inf.br',
+  'claro.com.br','spsp.com.br','silicom.com.br','forceline.com.br'
 ];
 let san20Data = [];
 let san20NextId = 32;
