@@ -988,50 +988,89 @@ img, svg { max-width: 100%; }
 <!-- STATUS MIGRAÇÃO -->
 <div id="status-migracao" class="page">
   <div class="topbar"><div class="tb-heading">Status migração 2>3 <span>| Binario Cloud</span></div></div>
-  <div class="page-body">
-    <div class="page-hero anim sm-hero">
-      <div><div class="hero-title">Status migração 2>3</div><div class="hero-sub">Acompanhamento da migração de ambientes</div></div>
+  <div class="page-body" style="background:#f0f2f5;padding:24px 28px 48px;overflow-x:hidden;">
+
+    <!-- Título -->
+    <div style="margin-bottom:20px;">
+      <div style="font-size:18px;font-weight:800;color:#1a2a3a;">Status Migração BCP 2.0 → 3.0</div>
+      <div style="font-size:12px;color:#64748b;margin-top:3px;font-weight:500;">Acompanhamento da migração de ambientes · Atualizado em: 15/06/2026</div>
     </div>
-    <div class="sec-label">Projetos Migração BCP 3.0 | Atualizado em: 11/05/26</div>
 
     <!-- Visão Clientes -->
-    <div class="sm-section">
-      <div class="sm-section-title">👥 Visão - Clientes</div>
-      <div class="sm-grid">
-        <div class="sm-card sm-blue"><div class="sm-num">76</div><div class="sm-lbl">Clientes Elegíveis</div><div class="sm-sub">*(105)</div></div>
-        <div class="sm-card sm-green"><div class="sm-num">62</div><div class="sm-lbl">Clientes Migrados</div></div>
-        <div class="sm-card sm-gray"><div class="sm-num">15</div><div class="sm-lbl">Clientes em Andamento</div></div>
+    <div style="background:#fff;border-radius:14px;padding:20px 24px;margin-bottom:16px;box-shadow:0 1px 6px rgba(0,0,0,.07);">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:16px;">
+        <div style="width:14px;height:14px;border-radius:3px;background:#3b82f6;"></div>
+        <span style="font-size:13px;font-weight:800;color:#1a2a3a;">Visão – Clientes</span>
       </div>
-      <div class="sm-bar-track">
-        <div class="sm-bar-fill sm-bar-green" style="width:80.5%"><span>80.5%</span></div>
-        <div class="sm-bar-fill sm-bar-gray" style="width:19.5%"><span>19.5%</span></div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:14px;">
+        <div style="background:#3b82f6;border-radius:10px;padding:20px 16px;text-align:center;">
+          <div style="font-size:42px;font-weight:900;color:#fff;line-height:1;">76</div>
+          <div style="font-size:13px;font-weight:700;color:#fff;margin-top:6px;">Clientes Elegíveis</div>
+          <div style="font-size:11px;color:rgba(255,255,255,.8);margin-top:2px;">*(105)</div>
+        </div>
+        <div style="background:#22c55e;border-radius:10px;padding:20px 16px;text-align:center;">
+          <div style="font-size:42px;font-weight:900;color:#fff;line-height:1;">62</div>
+          <div style="font-size:13px;font-weight:700;color:#fff;margin-top:6px;">Clientes Migrados</div>
+        </div>
+        <div style="background:#94a3b8;border-radius:10px;padding:20px 16px;text-align:center;">
+          <div style="font-size:42px;font-weight:900;color:#fff;line-height:1;">15</div>
+          <div style="font-size:13px;font-weight:700;color:#fff;margin-top:6px;">Clientes em Andamento</div>
+        </div>
       </div>
-      <div class="sm-legend">
-        <div class="sm-leg-item"><div class="sm-leg-dot" style="background:#27ae60"></div><span>Concluídas (62)</span></div>
-        <div class="sm-leg-item"><div class="sm-leg-dot" style="background:#95a5a6"></div><span>Em Andamento (15)</span></div>
+      <!-- Barra clientes -->
+      <div style="display:flex;border-radius:99px;overflow:hidden;height:28px;margin-bottom:8px;">
+        <div style="background:#22c55e;width:80.5%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#fff;">80.5%</div>
+        <div style="background:#e2e8f0;flex:1;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#64748b;">19.5%</div>
+      </div>
+      <!-- Legenda clientes -->
+      <div style="display:flex;gap:16px;margin-top:6px;">
+        <div style="display:flex;align-items:center;gap:6px;font-size:12px;font-weight:600;color:#1a2a3a;">
+          <div style="width:12px;height:12px;border-radius:2px;background:#22c55e;"></div>Concluídas (62)
+        </div>
+        <div style="display:flex;align-items:center;gap:6px;font-size:12px;font-weight:600;color:#1a2a3a;">
+          <div style="width:12px;height:12px;border-radius:2px;background:#94a3b8;"></div>Em Andamento (15)
+        </div>
       </div>
     </div>
 
     <!-- Visão VMs -->
-    <div class="sm-section">
-      <div class="sm-section-title">⚙️ Visão - VMs</div>
-      <div class="sm-grid">
-        <div class="sm-card sm-blue"><div class="sm-num">489</div><div class="sm-lbl">VMs Mapeadas</div></div>
-        <div class="sm-card sm-green"><div class="sm-num">243</div><div class="sm-lbl">VMs Migradas</div></div>
-        <div class="sm-card sm-gray"><div class="sm-num">234</div><div class="sm-lbl">VMs em Andamento</div></div>
+    <div style="background:#fff;border-radius:14px;padding:20px 24px;box-shadow:0 1px 6px rgba(0,0,0,.07);">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:16px;">
+        <div style="width:14px;height:14px;border-radius:3px;background:#3b82f6;"></div>
+        <span style="font-size:13px;font-weight:800;color:#1a2a3a;">Visão – VMs</span>
       </div>
-      <div class="sm-bar-track">
-        <div class="sm-bar-fill sm-bar-green" style="width:49.7%"><span>49.7%</span></div>
-        <div class="sm-bar-fill sm-bar-gray" style="width:50.3%"><span>50.3%</span></div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:14px;">
+        <div style="background:#3b82f6;border-radius:10px;padding:20px 16px;text-align:center;">
+          <div style="font-size:42px;font-weight:900;color:#fff;line-height:1;">489</div>
+          <div style="font-size:13px;font-weight:700;color:#fff;margin-top:6px;">VMs Mapeadas</div>
+        </div>
+        <div style="background:#22c55e;border-radius:10px;padding:20px 16px;text-align:center;">
+          <div style="font-size:42px;font-weight:900;color:#fff;line-height:1;">243</div>
+          <div style="font-size:13px;font-weight:700;color:#fff;margin-top:6px;">VMs Migradas</div>
+        </div>
+        <div style="background:#94a3b8;border-radius:10px;padding:20px 16px;text-align:center;">
+          <div style="font-size:42px;font-weight:900;color:#fff;line-height:1;">234</div>
+          <div style="font-size:13px;font-weight:700;color:#fff;margin-top:6px;">VMs em Andamento</div>
+        </div>
       </div>
-      <div class="sm-legend">
-        <div class="sm-leg-item"><div class="sm-leg-dot" style="background:#27ae60"></div><span>Concluídas (243)</span></div>
-        <div class="sm-leg-item"><div class="sm-leg-dot" style="background:#95a5a6"></div><span>Em Andamento (234)</span></div>
+      <!-- Barra VMs -->
+      <div style="display:flex;border-radius:99px;overflow:hidden;height:28px;margin-bottom:8px;">
+        <div style="background:#22c55e;width:49.7%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#fff;">49.7%</div>
+        <div style="background:#e2e8f0;flex:1;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#64748b;">50.3%</div>
+      </div>
+      <!-- Legenda VMs -->
+      <div style="display:flex;gap:16px;margin-top:6px;">
+        <div style="display:flex;align-items:center;gap:6px;font-size:12px;font-weight:600;color:#1a2a3a;">
+          <div style="width:12px;height:12px;border-radius:2px;background:#22c55e;"></div>Concluídas (243)
+        </div>
+        <div style="display:flex;align-items:center;gap:6px;font-size:12px;font-weight:600;color:#1a2a3a;">
+          <div style="width:12px;height:12px;border-radius:2px;background:#94a3b8;"></div>Em Andamento (234)
+        </div>
       </div>
     </div>
+
   </div>
 </div>
-
 
 
 <!-- PROJETOS FINALIZADOS -->
