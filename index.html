@@ -1249,7 +1249,8 @@ const SAN20_ALLOWED = [
   'rbxsoft.com','inventivo.digital','aplubcap.com.br','promofarma.com.br',
   'fernandeseota.com.br','trucklocadora.com.br','cartellone.com.br','shoebiz.com.br',
   'corumba4.com.br','clubecascatinha.com.br','transgobbi.com.br','besimple.inf.br',
-  'claro.com.br','spsp.com.br','silicom.com.br','forceline.com.br'
+  'claro.com.br','spsp.com.br','silicom.com.br','forceline.com.br',
+  'unionlab.com.br','carlsons.com.br'
 ];
 let san20Data = [];
 let san20NextId = 32;
@@ -2583,7 +2584,7 @@ const SAN30_SEED = [
   { id: 44, dominio:'enesa.com.br', cliente:'ENESA Engenharia', tipo:'Aplicação Web', vms:3, ligadas:1, desligadas:2, pctDeslig:66.7 },
   { id: 45, dominio:'rocie.corp', cliente:'rocie.corp', tipo:'Cloud Cliente', vms:3, ligadas:3, desligadas:0, pctDeslig:0.0 },
   { id: 46, dominio:'thompsonferramentas.com.br', cliente:'thompsonferramentas.com.br', tipo:'Cloud Cliente', vms:3, ligadas:3, desligadas:0, pctDeslig:0.0 },
-  { id: 47, dominio:'unionlab.com.br', cliente:'unionlab.com.br', tipo:'Aplicação Web', vms:3, ligadas:3, desligadas:0, pctDeslig:0.0 },
+  { id: 47, dominio:'unionlab.com.br', cliente:'unionlab.com.br', tipo:'Cloud Cliente', vms:3, ligadas:3, desligadas:0, pctDeslig:0.0 },
   { id: 48, dominio:'dailytechla.com', cliente:'dailytechla.com', tipo:'Cloud Cliente', vms:3, ligadas:3, desligadas:0, pctDeslig:0.0 },
   { id: 49, dominio:'cgvinc.com', cliente:'cgvinc.com', tipo:'Cloud Cliente', vms:3, ligadas:3, desligadas:0, pctDeslig:0.0 },
   { id: 50, dominio:'ouropak.com.br', cliente:'ouropak.com.br', tipo:'Cloud Cliente', vms:3, ligadas:2, desligadas:1, pctDeslig:33.3 },
@@ -2610,7 +2611,7 @@ const SAN30_SEED = [
   { id: 71, dominio:'shoebiz.com.br', cliente:'shoebiz.com.br', tipo:'Cloud Cliente', vms:2, ligadas:2, desligadas:0, pctDeslig:0.0 },
   { id: 72, dominio:'corumba4.com.br', cliente:'corumba4.com.br', tipo:'Cloud Cliente', vms:2, ligadas:2, desligadas:0, pctDeslig:0.0 },
   { id: 73, dominio:'clubecascatinha.com.br', cliente:'clubecascatinha.com.br', tipo:'Cloud Cliente', vms:2, ligadas:2, desligadas:0, pctDeslig:0.0 },
-  { id: 74, dominio:'carlsons.com.br', cliente:'carlsons.com.br', tipo:'Aplicação Web', vms:2, ligadas:2, desligadas:0, pctDeslig:0.0 },
+  { id: 74, dominio:'carlsons.com.br', cliente:'carlsons.com.br', tipo:'Cloud Cliente', vms:2, ligadas:2, desligadas:0, pctDeslig:0.0 },
   { id: 75, dominio:'08setv32.com', cliente:'08setv32.com', tipo:'Aplicação Web', vms:2, ligadas:0, desligadas:1, pctDeslig:50.0 },
   { id: 76, dominio:'dismac.com.bo', cliente:'Dismac', tipo:'Aplicação Web', vms:1, ligadas:1, desligadas:0, pctDeslig:0.0 },
   { id: 77, dominio:'radiojb.fm', cliente:'Rádio JB', tipo:'Aplicação Web', vms:1, ligadas:1, desligadas:0, pctDeslig:0.0 },
@@ -3599,7 +3600,7 @@ const SAN30_VMS = {
 };
 
 async function san30LoadStorage() {
-  const SEED_VERSION = '2026-06-16-v1-san30';
+  const SEED_VERSION = '2026-06-16-v2-san30';
   try {
     let saved = null;
     if (window.storage) {
