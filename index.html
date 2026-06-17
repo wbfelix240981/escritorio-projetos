@@ -1518,7 +1518,7 @@ function san20Delete(id) {
 
 async function san20SaveStorage() {
   try {
-    const payload = JSON.stringify({ san20Data, san20NextId, seed_version: '2026-06-17-v1' });
+    const payload = JSON.stringify({ san20Data, san20NextId, seed_version: '2026-06-17-v2' });
     if (window.storage) {
       await window.storage.set('san20_data', payload);
     } else {
@@ -1536,7 +1536,7 @@ async function san20SaveStorage() {
 
 
 const SAN20_SEED = [
-  // ── Inventário OpenStack — 17/06/2026 v89 | 435 VMs | 31 Domínios | 369 ligadas | 65 desligadas ──
+  // ── Inventário OpenStack — 17/06/2026 | 435 VMs | 31 Domínios | 369 ligadas | 65 desligadas ──
   { id: 1, dominio:'gimba.com.br', cliente:'Gimba', tipo:'Aplicação Web', vms:72, ligadas:66, desligadas:6, pctDeslig:8.3 },
   { id: 2, dominio:'Default', cliente:'Admin / Service (OpenStack interno)', tipo:'Serviço Interno', vms:66, ligadas:58, desligadas:8, pctDeslig:12.1 },
   { id: 3, dominio:'gimba2.com.br', cliente:'Gimba 2', tipo:'Aplicação Web', vms:42, ligadas:34, desligadas:8, pctDeslig:19.0 },
@@ -2071,7 +2071,7 @@ const SAN20_VMS = {
 };
 
 async function san20LoadStorage() {
-  const SEED_VERSION = '2026-06-17-v1';
+  const SEED_VERSION = '2026-06-17-v2';
   try {
     let saved = null;
     if (window.storage) {
