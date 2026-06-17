@@ -1100,7 +1100,7 @@ img, svg { max-width: 100%; }
       <div style="display:flex;align-items:center;gap:12px;margin-bottom:6px;">
         <div>
           <h1 style="font-size:22px;font-weight:800;color:#1a2a3a;letter-spacing:-.5px;margin:0;">Gestão Cloud de Domínios</h1>
-          <p style="font-size:12px;color:#5a6a7a;margin:2px 0 0;">Ambiente 2.0 — Inventário OpenStack · 434 VMs · 31 Domínios · 371 ligadas · 62 desligadas<span id="san20-timestamp"></span></p>
+          <p style="font-size:12px;color:#5a6a7a;margin:2px 0 0;">Ambiente 2.0 — Inventário OpenStack · 435 VMs · 31 Domínios · 369 ligadas · 65 desligadas<span id="san20-timestamp"></span></p>
         </div>
       </div>
     </div>
@@ -1518,7 +1518,7 @@ function san20Delete(id) {
 
 async function san20SaveStorage() {
   try {
-    const payload = JSON.stringify({ san20Data, san20NextId, seed_version: '2026-06-15-v2' });
+    const payload = JSON.stringify({ san20Data, san20NextId, seed_version: '2026-06-17-v1' });
     if (window.storage) {
       await window.storage.set('san20_data', payload);
     } else {
@@ -1536,20 +1536,20 @@ async function san20SaveStorage() {
 
 
 const SAN20_SEED = [
-  // ── Inventário OpenStack — 15/06/2026 v78 | 434 VMs | 31 Domínios | 371 ligadas | 62 desligadas ──
+  // ── Inventário OpenStack — 17/06/2026 v89 | 435 VMs | 31 Domínios | 369 ligadas | 65 desligadas ──
   { id: 1, dominio:'gimba.com.br', cliente:'Gimba', tipo:'Aplicação Web', vms:72, ligadas:66, desligadas:6, pctDeslig:8.3 },
   { id: 2, dominio:'Default', cliente:'Admin / Service (OpenStack interno)', tipo:'Serviço Interno', vms:66, ligadas:58, desligadas:8, pctDeslig:12.1 },
   { id: 3, dominio:'gimba2.com.br', cliente:'Gimba 2', tipo:'Aplicação Web', vms:42, ligadas:34, desligadas:8, pctDeslig:19.0 },
   { id: 4, dominio:'binario.cloud', cliente:'Binario Cloud — Ambiente Principal', tipo:'Cloud Foundation', vms:41, ligadas:41, desligadas:0, pctDeslig:0.0 },
   { id: 5, dominio:'qos.com.br', cliente:'QoS', tipo:'Aplicação Web', vms:28, ligadas:23, desligadas:5, pctDeslig:17.9 },
   { id: 6, dominio:'refrio.com.br', cliente:'Refrio', tipo:'Aplicação Web', vms:26, ligadas:24, desligadas:2, pctDeslig:7.7 },
-  { id: 7, dominio:'bmchyundai.com.br', cliente:'BMC Hyundai', tipo:'Aplicação Web', vms:23, ligadas:20, desligadas:3, pctDeslig:13.0 },
-  { id: 8, dominio:'zanthus.com.br', cliente:'Zanthus', tipo:'Aplicação Web', vms:22, ligadas:21, desligadas:1, pctDeslig:4.5 },
+  { id: 7, dominio:'zanthus.com.br', cliente:'Zanthus', tipo:'Aplicação Web', vms:23, ligadas:21, desligadas:2, pctDeslig:8.7 },
+  { id: 8, dominio:'bmchyundai.com.br', cliente:'BMC Hyundai', tipo:'Aplicação Web', vms:23, ligadas:20, desligadas:3, pctDeslig:13.0 },
   { id: 9, dominio:'enesa.com.br', cliente:'ENESA Engenharia', tipo:'Aplicação Web', vms:15, ligadas:15, desligadas:0, pctDeslig:0.0 },
   { id: 10, dominio:'gruporaizes.com', cliente:'Grupo Raízes', tipo:'Aplicação Web', vms:13, ligadas:13, desligadas:0, pctDeslig:0.0 },
   { id: 11, dominio:'luizalabs.com', cliente:'Magazine Luiza', tipo:'Aplicação Web', vms:11, ligadas:10, desligadas:1, pctDeslig:9.1 },
   { id: 12, dominio:'waits.com.br', cliente:'Piramidal', tipo:'Aplicação Web', vms:10, ligadas:10, desligadas:0, pctDeslig:0.0 },
-  { id: 13, dominio:'soprema.com.br', cliente:'Soprema', tipo:'Aplicação Web', vms:9, ligadas:2, desligadas:7, pctDeslig:77.8 },
+  { id: 13, dominio:'soprema.com.br', cliente:'Soprema', tipo:'Aplicação Web', vms:9, ligadas:0, desligadas:9, pctDeslig:100.0 },
   { id: 14, dominio:'smarapd.com.br', cliente:'Smarapd', tipo:'Aplicação Web', vms:8, ligadas:8, desligadas:0, pctDeslig:0.0 },
   { id: 15, dominio:'radiojb.fm', cliente:'Rádio JB', tipo:'Aplicação Web', vms:6, ligadas:6, desligadas:0, pctDeslig:0.0 },
   { id: 16, dominio:'sre.binario.cloud', cliente:'Binario Cloud SRE', tipo:'Cloud Foundation', vms:5, ligadas:5, desligadas:0, pctDeslig:0.0 },
@@ -2010,10 +2010,10 @@ const SAN20_VMS = {
   'soprema.com.br': [
     {n:'BRSUZ-SW0100',id:'a7389969-2866-4d4b-9593-70c02a3e38a0',s:'SHUTOFF',p:'project-soprema-brasil',pid:'690502c4b47d472daa4eff4e11a30c42'},
     {n:'FTGSPRCLD',id:'5cb39bef-e000-4022-b027-179794c03d36',s:'SHUTOFF',p:'project-soprema-brasil',pid:'690502c4b47d472daa4eff4e11a30c42'},
-    {n:'SRV-DOCKER',id:'f70eaa30-126e-42e6-87b5-39db78334bba',s:'ACTIVE',p:'project-soprema-brasil',pid:'690502c4b47d472daa4eff4e11a30c42'},
+    {n:'SRV-DOCKER',id:'f70eaa30-126e-42e6-87b5-39db78334bba',s:'SHUTOFF',p:'project-soprema-brasil',pid:'690502c4b47d472daa4eff4e11a30c42'},
     {n:'SRV-EMS',id:'7994396e-28c9-4b3f-95d9-e596bf9e54cc',s:'SHUTOFF',p:'project-soprema-brasil',pid:'690502c4b47d472daa4eff4e11a30c42'},
     {n:'SRV-FAZ',id:'806f5518-fd9c-4767-bd59-39715824231c',s:'SHUTOFF',p:'project-soprema-brasil',pid:'690502c4b47d472daa4eff4e11a30c42'},
-    {n:'SRV-MIGRACAO',id:'e859cb55-4ff1-4b07-9d9f-d697e1f7874c',s:'ACTIVE',p:'project-soprema-brasil',pid:'690502c4b47d472daa4eff4e11a30c42'},
+    {n:'SRV-MIGRACAO',id:'e859cb55-4ff1-4b07-9d9f-d697e1f7874c',s:'SHUTOFF',p:'project-soprema-brasil',pid:'690502c4b47d472daa4eff4e11a30c42'},
     {n:'SWSPR001',id:'6fa68578-da7c-4aef-8f71-5ce43d53fa95',s:'SHUTOFF',p:'project-soprema-brasil',pid:'690502c4b47d472daa4eff4e11a30c42'},
     {n:'SWSPR001_NEW',id:'e71e7395-9139-4eb8-912d-717b42c28eab',s:'SHUTOFF',p:'project-soprema-brasil',pid:'690502c4b47d472daa4eff4e11a30c42'},
     {n:'SWSPR007',id:'8e0241ae-2497-46a4-8edc-c55feac95fec',s:'SHUTOFF',p:'project-soprema-brasil',pid:'690502c4b47d472daa4eff4e11a30c42'},
@@ -2053,7 +2053,8 @@ const SAN20_VMS = {
     {n:'VBR-MIGRACAO',id:'22399ba3-ee20-43c4-a5a0-51bf03e7dcc8',s:'ACTIVE',p:'ZCLOUD-ZANTHUS-QA-BC',pid:'de4ff95007ff4f98a3eae5df8f4387d9'},
     {n:'BC-ADMIN',id:'92ba45d1-21c3-4027-86aa-fa3b17c3ce80',s:'ACTIVE',p:'ZCLOUD-ZANTHUS-TI-BC',pid:'a74e1b339de544e79b9ca202805bd16c'},
     {n:'BC-CLAZ',id:'ccba83f0-b91d-4449-9754-3036972cab96',s:'ACTIVE',p:'ZCLOUD-ZANTHUS-TI-BC',pid:'a74e1b339de544e79b9ca202805bd16c'},
-    {n:'BC-DOCKER',id:'97951bc4-3463-48da-b6ba-92d7ac087e9f',s:'ACTIVE',p:'ZCLOUD-ZANTHUS-TI-BC',pid:'a74e1b339de544e79b9ca202805bd16c'},
+    {n:'BC-DOCKER',id:'97951bc4-3463-48da-b6ba-92d7ac087e9f',s:'SHUTOFF',p:'ZCLOUD-ZANTHUS-TI-BC',pid:'a74e1b339de544e79b9ca202805bd16c'},
+    {n:'BC-DOCKER_N',id:'3b44e68c-0c17-4909-bce7-e87945f998ed',s:'ACTIVE',p:'ZCLOUD-ZANTHUS-TI-BC',pid:'a74e1b339de544e79b9ca202805bd16c'},
     {n:'BC-DOCKER-RESTORE',id:'9da60652-0a71-4a85-8429-1217845a3c0d',s:'ACTIVE',p:'ZCLOUD-ZANTHUS-TI-BC',pid:'a74e1b339de544e79b9ca202805bd16c'},
     {n:'BC-ECOMM',id:'d02a6999-7428-43f5-9471-d35523689bbe',s:'ACTIVE',p:'ZCLOUD-ZANTHUS-TI-BC',pid:'a74e1b339de544e79b9ca202805bd16c'},
     {n:'BC-GITLAB',id:'9607c8e9-6ef8-4197-978a-1a3b884afa0c',s:'ACTIVE',p:'ZCLOUD-ZANTHUS-TI-BC',pid:'a74e1b339de544e79b9ca202805bd16c'},
@@ -2070,7 +2071,7 @@ const SAN20_VMS = {
 };
 
 async function san20LoadStorage() {
-  const SEED_VERSION = '2026-06-15-v2';
+  const SEED_VERSION = '2026-06-17-v1';
   try {
     let saved = null;
     if (window.storage) {
@@ -5640,49 +5641,49 @@ function san20OpenVMsDesligadas() {
 
   // Dados pré-calculados do cruzamento 26/05 x 14/06
   const VMS_RELATORIO = [
-  {n:'BC-ATMLAD-01',d:'automalogica.com.br',dt:'26/05/2026',dias:20,s:'ja_estava'},
-  {n:'BC-ATMLZABBIX',d:'automalogica.com.br',dt:'26/05/2026',dias:20,s:'ja_estava'},
-  {n:'BMC-ECOMMERCE-01-OLD',d:'bmchyundai.com.br',dt:'26/05/2026',dias:20,s:'ja_estava'},
-  {n:'BMCHUBSPOT-OLD',d:'bmchyundai.com.br',dt:'26/05/2026',dias:20,s:'ja_estava'},
-  {n:'hubspottemp',d:'bmchyundai.com.br',dt:'26/05/2026',dias:20,s:'ja_estava'},
-  {n:'FW-PFDISMAC',d:'dismac.com.bo',dt:'26/05/2026',dias:20,s:'ja_estava'},
-  {n:'ubuntu-cloud2',d:'domain-cloud2',dt:'26/05/2026',dias:20,s:'ja_estava'},
-  {n:'windows-cloud2',d:'domain-cloud2',dt:'26/05/2026',dias:20,s:'ja_estava'},
-  {n:'windows-cloud2-22',d:'domain-cloud2',dt:'26/05/2026',dias:20,s:'ja_estava'},
-  {n:'ADABASLINUX-RECOVERY',d:'gimba.com.br',dt:'26/05/2026',dias:20,s:'ja_estava'},
-  {n:'BC-TEST',d:'gimba.com.br',dt:'26/05/2026',dias:20,s:'ja_estava'},
-  {n:'GBJITTERBIT-Old',d:'gimba.com.br',dt:'26/05/2026',dias:20,s:'ja_estava'},
-  {n:'GBSRVTOTALL-TESTE',d:'gimba.com.br',dt:'26/05/2026',dias:20,s:'ja_estava'},
-  {n:'ORACLEPROD01',d:'gimba.com.br',dt:'26/05/2026',dias:20,s:'ja_estava'},
-  {n:'ORACLEPROD02',d:'gimba.com.br',dt:'26/05/2026',dias:20,s:'ja_estava'},
-  {n:'devsolr-01',d:'gimba2.com.br',dt:'26/05/2026',dias:20,s:'ja_estava'},
-  {n:'GBWEB08-OLD',d:'gimba2.com.br',dt:'26/05/2026',dias:20,s:'ja_estava'},
-  {n:'openstack',d:'gimba2.com.br',dt:'26/05/2026',dias:20,s:'ja_estava'},
-  {n:'Solr-01',d:'gimba2.com.br',dt:'26/05/2026',dias:20,s:'ja_estava'},
-  {n:'Solr-02',d:'gimba2.com.br',dt:'26/05/2026',dias:20,s:'ja_estava'},
-  {n:'Solr-03',d:'gimba2.com.br',dt:'26/05/2026',dias:20,s:'ja_estava'},
-  {n:'vm-opnsense',d:'gimba2.com.br',dt:'26/05/2026',dias:20,s:'ja_estava'},
-  {n:'vm-repositorio-temp',d:'gimba2.com.br',dt:'26/05/2026',dias:20,s:'ja_estava'},
-  {n:'magalu-bacula',d:'luizalabs.com',dt:'26/05/2026',dias:20,s:'ja_estava'},
-  {n:'test-windows',d:'prumoengenharia.com.br',dt:'26/05/2026',dias:20,s:'ja_estava'},
-  {n:'SistemaS4',d:'prumoengenharia.com.br',dt:'26/05/2026',dias:20,s:'ja_estava'},
-  {n:'Airwave-Dasa',d:'qos.com.br',dt:'26/05/2026',dias:20,s:'ja_estava'},
-  {n:'DASA_WIFI-ZABBIX',d:'qos.com.br',dt:'26/05/2026',dias:20,s:'ja_estava'},
-  {n:'DASA_WIFI-ZABBIX-DB',d:'qos.com.br',dt:'26/05/2026',dias:20,s:'ja_estava'},
-  {n:'DASA-WIFI-ZABBIX-PROXY',d:'qos.com.br',dt:'26/05/2026',dias:20,s:'ja_estava'},
-  {n:'ntb-dasa.qos.srv.br',d:'qos.com.br',dt:'26/05/2026',dias:20,s:'ja_estava'},
-  {n:'prx-refrio1',d:'refrio.com.br',dt:'26/05/2026',dias:20,s:'ja_estava'},
-  {n:'COLETOR-WMS',d:'refrio.com.br',dt:'26/05/2026',dias:20,s:'ja_estava'},
-  {n:'MAILSERVER',d:'sagaengenharia.com.br',dt:'26/05/2026',dias:20,s:'ja_estava'},
-  {n:'MAILSERVERBKP',d:'sagaengenharia.com.br',dt:'26/05/2026',dias:20,s:'ja_estava'},
-  {n:'SatC5Cloud',d:'sattelecom.com',dt:'26/05/2026',dias:20,s:'ja_estava'},
-  {n:'satc4cloud',d:'sattelecomip.com',dt:'26/05/2026',dias:20,s:'ja_estava'},
-  {n:'teste',d:'selbetti.com',dt:'26/05/2026',dias:20,s:'ja_estava'},
-  {n:'VM1',d:'selbetti.com',dt:'26/05/2026',dias:20,s:'ja_estava'},
-  {n:'BC-FRIGBBAD',d:'sistecweb.com.br',dt:'26/05/2026',dias:20,s:'ja_estava'},
-  {n:'VBR-Veeam',d:'sistecweb.com.br',dt:'26/05/2026',dias:20,s:'ja_estava'},
-  {n:'SWSPR001',d:'soprema.com.br',dt:'26/05/2026',dias:20,s:'ja_estava'},
-  {n:'BC-POC-ZRETAIL',d:'zanthus.com.br',dt:'26/05/2026',dias:20,s:'ja_estava'}
+  {n:'BC-ATMLAD-01',d:'automalogica.com.br',dt:'26/05/2026',dias:22,s:'ja_estava'},
+  {n:'BC-ATMLZABBIX',d:'automalogica.com.br',dt:'26/05/2026',dias:22,s:'ja_estava'},
+  {n:'BMC-ECOMMERCE-01-OLD',d:'bmchyundai.com.br',dt:'26/05/2026',dias:22,s:'ja_estava'},
+  {n:'BMCHUBSPOT-OLD',d:'bmchyundai.com.br',dt:'26/05/2026',dias:22,s:'ja_estava'},
+  {n:'hubspottemp',d:'bmchyundai.com.br',dt:'26/05/2026',dias:22,s:'ja_estava'},
+  {n:'FW-PFDISMAC',d:'dismac.com.bo',dt:'26/05/2026',dias:22,s:'ja_estava'},
+  {n:'ubuntu-cloud2',d:'domain-cloud2',dt:'26/05/2026',dias:22,s:'ja_estava'},
+  {n:'windows-cloud2',d:'domain-cloud2',dt:'26/05/2026',dias:22,s:'ja_estava'},
+  {n:'windows-cloud2-22',d:'domain-cloud2',dt:'26/05/2026',dias:22,s:'ja_estava'},
+  {n:'ADABASLINUX-RECOVERY',d:'gimba.com.br',dt:'26/05/2026',dias:22,s:'ja_estava'},
+  {n:'BC-TEST',d:'gimba.com.br',dt:'26/05/2026',dias:22,s:'ja_estava'},
+  {n:'GBJITTERBIT-Old',d:'gimba.com.br',dt:'26/05/2026',dias:22,s:'ja_estava'},
+  {n:'GBSRVTOTALL-TESTE',d:'gimba.com.br',dt:'26/05/2026',dias:22,s:'ja_estava'},
+  {n:'ORACLEPROD01',d:'gimba.com.br',dt:'26/05/2026',dias:22,s:'ja_estava'},
+  {n:'ORACLEPROD02',d:'gimba.com.br',dt:'26/05/2026',dias:22,s:'ja_estava'},
+  {n:'devsolr-01',d:'gimba2.com.br',dt:'26/05/2026',dias:22,s:'ja_estava'},
+  {n:'GBWEB08-OLD',d:'gimba2.com.br',dt:'26/05/2026',dias:22,s:'ja_estava'},
+  {n:'openstack',d:'gimba2.com.br',dt:'26/05/2026',dias:22,s:'ja_estava'},
+  {n:'Solr-01',d:'gimba2.com.br',dt:'26/05/2026',dias:22,s:'ja_estava'},
+  {n:'Solr-02',d:'gimba2.com.br',dt:'26/05/2026',dias:22,s:'ja_estava'},
+  {n:'Solr-03',d:'gimba2.com.br',dt:'26/05/2026',dias:22,s:'ja_estava'},
+  {n:'vm-opnsense',d:'gimba2.com.br',dt:'26/05/2026',dias:22,s:'ja_estava'},
+  {n:'vm-repositorio-temp',d:'gimba2.com.br',dt:'26/05/2026',dias:22,s:'ja_estava'},
+  {n:'magalu-bacula',d:'luizalabs.com',dt:'26/05/2026',dias:22,s:'ja_estava'},
+  {n:'test-windows',d:'prumoengenharia.com.br',dt:'26/05/2026',dias:22,s:'ja_estava'},
+  {n:'SistemaS4',d:'prumoengenharia.com.br',dt:'26/05/2026',dias:22,s:'ja_estava'},
+  {n:'Airwave-Dasa',d:'qos.com.br',dt:'26/05/2026',dias:22,s:'ja_estava'},
+  {n:'DASA_WIFI-ZABBIX',d:'qos.com.br',dt:'26/05/2026',dias:22,s:'ja_estava'},
+  {n:'DASA_WIFI-ZABBIX-DB',d:'qos.com.br',dt:'26/05/2026',dias:22,s:'ja_estava'},
+  {n:'DASA-WIFI-ZABBIX-PROXY',d:'qos.com.br',dt:'26/05/2026',dias:22,s:'ja_estava'},
+  {n:'ntb-dasa.qos.srv.br',d:'qos.com.br',dt:'26/05/2026',dias:22,s:'ja_estava'},
+  {n:'prx-refrio1',d:'refrio.com.br',dt:'26/05/2026',dias:22,s:'ja_estava'},
+  {n:'COLETOR-WMS',d:'refrio.com.br',dt:'26/05/2026',dias:22,s:'ja_estava'},
+  {n:'MAILSERVER',d:'sagaengenharia.com.br',dt:'26/05/2026',dias:22,s:'ja_estava'},
+  {n:'MAILSERVERBKP',d:'sagaengenharia.com.br',dt:'26/05/2026',dias:22,s:'ja_estava'},
+  {n:'SatC5Cloud',d:'sattelecom.com',dt:'26/05/2026',dias:22,s:'ja_estava'},
+  {n:'satc4cloud',d:'sattelecomip.com',dt:'26/05/2026',dias:22,s:'ja_estava'},
+  {n:'teste',d:'selbetti.com',dt:'26/05/2026',dias:22,s:'ja_estava'},
+  {n:'VM1',d:'selbetti.com',dt:'26/05/2026',dias:22,s:'ja_estava'},
+  {n:'BC-FRIGBBAD',d:'sistecweb.com.br',dt:'26/05/2026',dias:22,s:'ja_estava'},
+  {n:'VBR-Veeam',d:'sistecweb.com.br',dt:'26/05/2026',dias:22,s:'ja_estava'},
+  {n:'SWSPR001',d:'soprema.com.br',dt:'26/05/2026',dias:22,s:'ja_estava'},
+  {n:'BC-POC-ZRETAIL',d:'zanthus.com.br',dt:'26/05/2026',dias:22,s:'ja_estava'}
   ];
 
   const jaEstava  = VMS_RELATORIO.filter(v => v.s === 'ja_estava' && v.dias >= 15);
