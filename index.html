@@ -7421,13 +7421,13 @@ function uolSetPct(pct) {
 // Carregar % salvo no localStorage ao abrir a página
 document.addEventListener('page-changed', function(e) {
   if (e.detail === 'clientes') {
-    const saved = localStorage.getItem('uol_pct');
-    if (saved) uolSetPct(parseFloat(saved));
+    uolSetPct(97.8);
   }
 });
 document.addEventListener('DOMContentLoaded', function() {
-  const saved = localStorage.getItem('uol_pct');
-  if (saved) uolSetPct(parseFloat(saved));
+  // Sempre usar o valor do HTML (92.8%), ignorar localStorage
+  localStorage.removeItem('uol_pct');
+  uolSetPct(97.8);
 });
 </script>
 
