@@ -939,12 +939,12 @@ img, svg { max-width: 100%; }
         <div class="card-accent accent-green"></div>
         <div class="card-header">
           <span class="pill pill-prog">● Em progresso</span>
-          <span class="card-pct">15%</span>
+          <span class="card-pct">95%</span>
         </div>
         <div class="card-title">SPSP – Sistema de Prestação de Serviços</div>
         <div class="card-footer">
           <span class="prog-note">Iniciando implantação</span>
-          <div class="bar-track"><div class="bar-fill fill-green" data-pct="15"></div></div>
+          <div class="bar-track"><div class="bar-fill fill-green" data-pct="95"></div></div>
           <button class="btn-det" onclick="openModal('spsp')">Ver detalhes <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 6.5h9M7 2l4.5 4.5L7 11" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
         </div>
       </div>
@@ -3962,15 +3962,19 @@ const P = {
     ]
   },
   spsp:{
-    eye:'Projeto de Cliente', title:'SPSP – Sistema de Prestação de Serviços', pct:15,
+    eye:'Projeto de Cliente', title:'SPSP – Sistema de Prestação de Serviços', pct:95,
     fc:'fill-green', grad:'linear-gradient(90deg,#2e7d32,#43a047)',
     pill:'<span class="pill pill-prog">● Em progresso</span>',
-    tags:[['Cliente','green'],['Em andamento','green']],
+    tags:[['Cliente','green'],['95%','green'],['Aguardando TEP','orange']],
     completed:null,
     secs:[
       {t:'Escopo', rows:[['🖥️','Implantação do Sistema de Prestação de Serviços (SPSP)']]},
-      {t:'Status atual', rows:[['🔄','Projeto em fase inicial de implantação — 15% concluído']]},
-      {t:'Próximos passos', rows:[['📋','Definir cronograma e próximas entregas do projeto']]},
+      {t:'Status atual', rows:[
+        ['✅','Projeto concluído — 95% entregue'],
+        ['📄','Projeto já foi entregue ao cliente — aguardando assinatura do TEP (Termo de Entrega do Projeto)'],
+        ['⏳','Pendente: recebimento e formalização do TEP para encerramento oficial']
+      ]},
+      {t:'Próximos passos', rows:[['📋','Receber e assinar o TEP para encerramento do projeto']]},
       {t:'Chamados ClickUp', rows:[
         ['📋','Registros no portfólio: 2 chamados'],
         ['✅','Upgrade SPSP — Concluído'],
