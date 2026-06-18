@@ -924,12 +924,12 @@ img, svg { max-width: 100%; }
         <div class="card-accent accent-green"></div>
         <div class="card-header">
           <span class="pill pill-prog">● Em progresso</span>
-          <span class="card-pct">92.8%</span>
+          <span class="card-pct" id="uol-pct-display">92.8%</span>
         </div>
         <div class="card-title">UOL – Modernização<br>de Nuvem Privada</div>
         <div class="card-footer">
           <span class="prog-note">Aguardando envio das máquinas · Prev. 11-12/06</span>
-          <div class="bar-track"><div class="bar-fill fill-green" data-pct="92.8"></div></div>
+          <div class="bar-track"><div class="bar-fill fill-green" id="uol-bar-fill" data-pct="92.8"></div></div>
           <button class="btn-det" onclick="openModal('uol')">Ver detalhes <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 6.5h9M7 2l4.5 4.5L7 11" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
         </div>
       </div>
@@ -3913,13 +3913,17 @@ const P = {
       {t:'Chamados ClickUp',rows:[['📋','Portfólio: 1 chamado ativo (BCOS 3.0)'],['⚠️','Status: Atrasado'],['👥','Wagner Bento Felix']]}]},
   storware:{eye:'Projeto Estruturante',title:'Implementação – Storware',pct:95,fc:'fill-blue',grad:'linear-gradient(90deg,#1565c0,#2979ff)',pill:'<span class="pill pill-prog">● Em progresso</span>',completed:null,tags:[['Backup','blue'],['Storware','blue'],['95%','blue']],secs:[{t:'Status atual',rows:[['⏳','Aguardando renovação das licenças'],['🧪','Realizando testes com as licenças fornecidas']]},{t:'Próximos passos',rows:[['🔄','Conclusão dos testes de restore'],['✅','Ativação após renovação das licenças']]}]},
   uol:{
-    eye:'Projeto de Cliente', title:'UOL – Modernização de Nuvem Privada', pct:0,
+    eye:'Projeto de Cliente', title:'UOL – Modernização de Nuvem Privada', pct:92.8,
     fc:'fill-blue', grad:'linear-gradient(90deg,#1565c0,#2979ff)',
     pill:'<span class="pill pill-prog">● Em progresso</span>',
     tags:[['Cliente','blue'],['Modernização','blue'],['Nuvem Privada','blue'],['0%','blue']],
     completed:null,
-    link:'https://projeto-binario-uol-modernizacao-de-nuvem.pages.dev/',
+    link:'https://projeto-binario-uol-modernizacao-de-nuvem.pages.dev/painel',
     secs:[
+      {t:'Painel do Projeto', rows:[
+        ['🔗','<a href="https://projeto-binario-uol-modernizacao-de-nuvem.pages.dev/painel" target="_blank" style="color:#2979ff;font-weight:700;">Abrir painel completo ↗</a>'],
+        ['📊','Progresso atualizado em tempo real via painel BCP'],
+      ]},
       {t:'Escopo', rows:[
         ['☁️','Modernização da infraestrutura de nuvem privada'],
         ['🔄','Atualização e otimização de ambientes existentes'],
@@ -7382,5 +7386,67 @@ function showCover() {
   }
 })();
 </script>
+
+<script>
+// Fetch dinâmico do % do projeto UOL
+async function uolFetchPct() {
+  try {
+    const res = await fetch('https://projeto-binario-uol-modernizacao-de-nuvem.pages.dev/painel', {
+      mode: 'cors', cache: 'no-cache'
+    });
+    if (!res.ok) throw new Error('fetch failed');
+    const html = await res.text();
+
+    // Tentar extrair o % do HTML — buscar padrão de progresso
+    const match = html.match(/(\d+[\.,]\d+)\s*%/);
+    if (match) {
+      const pct = parseFloat(match[1].replace(',', '.'));
+      if (pct > 0 && pct <= 100) {
+        uolUpdatePct(pct);
+      }
+    }
+  } catch(e) {
+    // Se falhar (CORS etc), manter o valor atual
+    console.log('UOL fetch:', e.message);
+  }
+}
+
+function uolUpdatePct(pct) {
+  // Atualizar card
+  const display = document.getElementById('uol-pct-display');
+  if (display) display.textContent = pct + '%';
+
+  // Atualizar barra
+  const bar = document.getElementById('uol-bar-fill');
+  if (bar) {
+    bar.dataset.pct = pct;
+    bar.style.width = pct + '%';
+  }
+
+  // Atualizar P.uol para o modal
+  if (typeof P !== 'undefined' && P.uol) {
+    P.uol.pct = pct;
+    // Atualizar tag de %
+    const tagIdx = P.uol.tags.findIndex(t => t[0].includes('%'));
+    if (tagIdx >= 0) P.uol.tags[tagIdx][0] = pct + '%';
+    else P.uol.tags.push([pct + '%', 'blue']);
+  }
+}
+
+// Executar quando a página clientes for aberta
+document.addEventListener('page-changed', function(e) {
+  if (e.detail === 'clientes') {
+    uolFetchPct();
+  }
+});
+
+// Também executar na carga inicial se já estiver na página clientes
+document.addEventListener('DOMContentLoaded', function() {
+  if (document.getElementById('clientes')?.classList.contains('active')) {
+    uolFetchPct();
+  }
+});
+</script>
+
 </body>
 </html>
