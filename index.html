@@ -924,7 +924,7 @@ img, svg { max-width: 100%; }
         <div class="card-accent accent-green"></div>
         <div class="card-header">
           <span class="pill pill-prog">● Em progresso</span>
-          <span class="card-pct" id="uol-pct-display">92.8%</span>
+          <span class="card-pct" id="uol-pct-display" onclick="uolEditPct()" title="Clique para atualizar o %" style="cursor:pointer;">92.8%</span>
         </div>
         <div class="card-title">UOL – Modernização<br>de Nuvem Privada</div>
         <div class="card-footer">
@@ -7388,63 +7388,46 @@ function showCover() {
 </script>
 
 <script>
-// Fetch dinâmico do % do projeto UOL
-async function uolFetchPct() {
-  try {
-    const res = await fetch('https://projeto-binario-uol-modernizacao-de-nuvem.pages.dev/painel', {
-      mode: 'cors', cache: 'no-cache'
-    });
-    if (!res.ok) throw new Error('fetch failed');
-    const html = await res.text();
-
-    // Tentar extrair o % do HTML — buscar padrão de progresso
-    const match = html.match(/(\d+[\.,]\d+)\s*%/);
-    if (match) {
-      const pct = parseFloat(match[1].replace(',', '.'));
-      if (pct > 0 && pct <= 100) {
-        uolUpdatePct(pct);
-      }
-    }
-  } catch(e) {
-    // Se falhar (CORS etc), manter o valor atual
-    console.log('UOL fetch:', e.message);
+// UOL % — editável diretamente na página
+function uolEditPct() {
+  const current = parseFloat(document.getElementById('uol-pct-display').textContent) || 0;
+  const novo = prompt('Informe o novo % do projeto UOL (ex: 92.8):', current);
+  if (novo !== null && novo.trim() !== '') {
+    uolSetPct(parseFloat(novo.replace(',','.')));
   }
 }
 
-function uolUpdatePct(pct) {
+function uolSetPct(pct) {
+  pct = parseFloat(pct);
+  if (isNaN(pct) || pct < 0 || pct > 100) return;
+
   // Atualizar card
   const display = document.getElementById('uol-pct-display');
   if (display) display.textContent = pct + '%';
 
   // Atualizar barra
   const bar = document.getElementById('uol-bar-fill');
-  if (bar) {
-    bar.dataset.pct = pct;
-    bar.style.width = pct + '%';
-  }
+  if (bar) { bar.dataset.pct = pct; bar.style.width = pct + '%'; }
 
   // Atualizar P.uol para o modal
   if (typeof P !== 'undefined' && P.uol) {
     P.uol.pct = pct;
-    // Atualizar tag de %
-    const tagIdx = P.uol.tags.findIndex(t => t[0].includes('%'));
+    const tagIdx = P.uol.tags ? P.uol.tags.findIndex(t => t[0] && t[0].includes('%')) : -1;
     if (tagIdx >= 0) P.uol.tags[tagIdx][0] = pct + '%';
-    else P.uol.tags.push([pct + '%', 'blue']);
   }
+  localStorage.setItem('uol_pct', pct);
 }
 
-// Executar quando a página clientes for aberta
+// Carregar % salvo no localStorage ao abrir a página
 document.addEventListener('page-changed', function(e) {
   if (e.detail === 'clientes') {
-    uolFetchPct();
+    const saved = localStorage.getItem('uol_pct');
+    if (saved) uolSetPct(parseFloat(saved));
   }
 });
-
-// Também executar na carga inicial se já estiver na página clientes
 document.addEventListener('DOMContentLoaded', function() {
-  if (document.getElementById('clientes')?.classList.contains('active')) {
-    uolFetchPct();
-  }
+  const saved = localStorage.getItem('uol_pct');
+  if (saved) uolSetPct(parseFloat(saved));
 });
 </script>
 
