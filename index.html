@@ -1100,7 +1100,7 @@ img, svg { max-width: 100%; }
       <div style="display:flex;align-items:center;gap:12px;margin-bottom:6px;">
         <div>
           <h1 style="font-size:22px;font-weight:800;color:#1a2a3a;letter-spacing:-.5px;margin:0;">Gestão Cloud de Domínios</h1>
-          <p style="font-size:12px;color:#5a6a7a;margin:2px 0 0;">Ambiente 2.0 — Inventário OpenStack · 436 VMs · 31 Domínios · 370 ligadas · 65 desligadas<span id="san20-timestamp"></span></p>
+          <p style="font-size:12px;color:#5a6a7a;margin:2px 0 0;">Ambiente 2.0 — Inventário OpenStack · 413 VMs · 24 Domínios · 364 ligadas · 48 desligadas<span id="san20-timestamp"></span></p>
         </div>
       </div>
     </div>
@@ -1518,7 +1518,7 @@ function san20Delete(id) {
 
 async function san20SaveStorage() {
   try {
-    const payload = JSON.stringify({ san20Data, san20NextId, seed_version: '2026-06-18-v1' });
+    const payload = JSON.stringify({ san20Data, san20NextId, seed_version: '2026-06-18-v2' });
     if (window.storage) {
       await window.storage.set('san20_data', payload);
     } else {
@@ -1536,38 +1536,31 @@ async function san20SaveStorage() {
 
 
 const SAN20_SEED = [
-  // ── Inventário OpenStack — 18/06/2026 v95 | 436 VMs | 31 Domínios | 370 ligadas | 65 desligadas ──
+  // ── Inventário OpenStack — 18/06/2026 v101 | 413 VMs | 24 Domínios | 364 ligadas | 48 desligadas ──
   { id: 1, dominio:'gimba.com.br', cliente:'Gimba', tipo:'Aplicação Web', vms:72, ligadas:66, desligadas:6, pctDeslig:8.3 },
   { id: 2, dominio:'Default', cliente:'Admin / Service (OpenStack interno)', tipo:'Serviço Interno', vms:66, ligadas:58, desligadas:8, pctDeslig:12.1 },
   { id: 3, dominio:'gimba2.com.br', cliente:'Gimba 2', tipo:'Aplicação Web', vms:42, ligadas:34, desligadas:8, pctDeslig:19.0 },
   { id: 4, dominio:'binario.cloud', cliente:'Binario Cloud — Ambiente Principal', tipo:'Cloud Foundation', vms:41, ligadas:41, desligadas:0, pctDeslig:0.0 },
   { id: 5, dominio:'qos.com.br', cliente:'QoS', tipo:'Aplicação Web', vms:28, ligadas:23, desligadas:5, pctDeslig:17.9 },
   { id: 6, dominio:'refrio.com.br', cliente:'Refrio', tipo:'Aplicação Web', vms:26, ligadas:24, desligadas:2, pctDeslig:7.7 },
-  { id: 7, dominio:'zanthus.com.br', cliente:'Zanthus', tipo:'Aplicação Web', vms:24, ligadas:22, desligadas:2, pctDeslig:8.3 },
+  { id: 7, dominio:'zanthus.com.br', cliente:'Zanthus', tipo:'Aplicação Web', vms:24, ligadas:16, desligadas:8, pctDeslig:33.3 },
   { id: 8, dominio:'bmchyundai.com.br', cliente:'BMC Hyundai', tipo:'Aplicação Web', vms:23, ligadas:20, desligadas:3, pctDeslig:13.0 },
   { id: 9, dominio:'enesa.com.br', cliente:'ENESA Engenharia', tipo:'Aplicação Web', vms:15, ligadas:15, desligadas:0, pctDeslig:0.0 },
   { id: 10, dominio:'gruporaizes.com', cliente:'Grupo Raízes', tipo:'Aplicação Web', vms:13, ligadas:13, desligadas:0, pctDeslig:0.0 },
   { id: 11, dominio:'luizalabs.com', cliente:'Magazine Luiza', tipo:'Aplicação Web', vms:11, ligadas:10, desligadas:1, pctDeslig:9.1 },
   { id: 12, dominio:'waits.com.br', cliente:'Piramidal', tipo:'Aplicação Web', vms:10, ligadas:10, desligadas:0, pctDeslig:0.0 },
-  { id: 13, dominio:'soprema.com.br', cliente:'Soprema', tipo:'Aplicação Web', vms:9, ligadas:0, desligadas:9, pctDeslig:100.0 },
-  { id: 14, dominio:'smarapd.com.br', cliente:'Smarapd', tipo:'Aplicação Web', vms:8, ligadas:8, desligadas:0, pctDeslig:0.0 },
-  { id: 15, dominio:'radiojb.fm', cliente:'Rádio JB', tipo:'Aplicação Web', vms:6, ligadas:6, desligadas:0, pctDeslig:0.0 },
-  { id: 16, dominio:'sre.binario.cloud', cliente:'Binario Cloud SRE', tipo:'Cloud Foundation', vms:5, ligadas:5, desligadas:0, pctDeslig:0.0 },
-  { id: 17, dominio:'prumoengenharia.com.br', cliente:'Prumo Engenharia', tipo:'Aplicação Web', vms:5, ligadas:3, desligadas:2, pctDeslig:40.0 },
-  { id: 18, dominio:'netza.com.br', cliente:'Netza', tipo:'Aplicação Web', vms:4, ligadas:4, desligadas:0, pctDeslig:0.0 },
-  { id: 19, dominio:'domain-cloud2', cliente:'Cloud 2 (Interno)', tipo:'Serviço Interno', vms:4, ligadas:0, desligadas:4, pctDeslig:100.0 },
-  { id: 20, dominio:'automalogica.com.br', cliente:'Automalogica', tipo:'Aplicação Web', vms:4, ligadas:1, desligadas:3, pctDeslig:75.0 },
-  { id: 21, dominio:'sistecweb.com.br', cliente:'Sistecweb', tipo:'Aplicação Web', vms:3, ligadas:0, desligadas:3, pctDeslig:100.0 },
-  { id: 22, dominio:'sagaengenharia.com.br', cliente:'Saga Engenharia', tipo:'Aplicação Web', vms:3, ligadas:0, desligadas:3, pctDeslig:100.0 },
-  { id: 23, dominio:'sattelecomip.com', cliente:'SAT Telecom IP', tipo:'Aplicação Web', vms:3, ligadas:2, desligadas:1, pctDeslig:33.3 },
-  { id: 24, dominio:'selbetti.com', cliente:'Selbetti', tipo:'Aplicação Web', vms:2, ligadas:0, desligadas:2, pctDeslig:100.0 },
-  { id: 25, dominio:'geofix.com.br', cliente:'Geofix', tipo:'Aplicação Web', vms:2, ligadas:2, desligadas:0, pctDeslig:0.0 },
-  { id: 26, dominio:'sattelecom.com', cliente:'SAT Telecom', tipo:'Aplicação Web', vms:2, ligadas:1, desligadas:1, pctDeslig:50.0 },
-  { id: 27, dominio:'suporte.binario.cloud', cliente:'Binario Cloud Suporte', tipo:'Cloud Foundation', vms:1, ligadas:1, desligadas:0, pctDeslig:0.0 },
-  { id: 28, dominio:'dismac.com.bo', cliente:'Dismac', tipo:'Aplicação Web', vms:1, ligadas:0, desligadas:1, pctDeslig:100.0 },
-  { id: 29, dominio:'(Sem Domínio)', cliente:'(Sem Domínio / Projetos Órfãos)', tipo:'Serviço Interno', vms:1, ligadas:0, desligadas:0, pctDeslig:0.0 },
-  { id: 30, dominio:'1team.cloud', cliente:'1TeamCloud', tipo:'Aplicação Web', vms:1, ligadas:1, desligadas:0, pctDeslig:0.0 },
-  { id: 31, dominio:'spheraeducacional.com.br', cliente:'Sphera Educacional', tipo:'Aplicação Web', vms:1, ligadas:0, desligadas:1, pctDeslig:100.0 },
+  { id: 13, dominio:'smarapd.com.br', cliente:'Smarapd', tipo:'Aplicação Web', vms:8, ligadas:8, desligadas:0, pctDeslig:0.0 },
+  { id: 14, dominio:'radiojb.fm', cliente:'Rádio JB', tipo:'Aplicação Web', vms:6, ligadas:6, desligadas:0, pctDeslig:0.0 },
+  { id: 15, dominio:'sre.binario.cloud', cliente:'Binario Cloud SRE', tipo:'Cloud Foundation', vms:5, ligadas:5, desligadas:0, pctDeslig:0.0 },
+  { id: 16, dominio:'prumoengenharia.com.br', cliente:'Prumo Engenharia', tipo:'Aplicação Web', vms:5, ligadas:3, desligadas:2, pctDeslig:40.0 },
+  { id: 17, dominio:'netza.com.br', cliente:'Netza', tipo:'Aplicação Web', vms:4, ligadas:4, desligadas:0, pctDeslig:0.0 },
+  { id: 18, dominio:'automalogica.com.br', cliente:'Automalogica', tipo:'Aplicação Web', vms:4, ligadas:1, desligadas:3, pctDeslig:75.0 },
+  { id: 19, dominio:'sattelecomip.com', cliente:'SAT Telecom IP', tipo:'Aplicação Web', vms:3, ligadas:2, desligadas:1, pctDeslig:33.3 },
+  { id: 20, dominio:'geofix.com.br', cliente:'Geofix', tipo:'Aplicação Web', vms:2, ligadas:2, desligadas:0, pctDeslig:0.0 },
+  { id: 21, dominio:'sattelecom.com', cliente:'SAT Telecom', tipo:'Aplicação Web', vms:2, ligadas:1, desligadas:1, pctDeslig:50.0 },
+  { id: 22, dominio:'suporte.binario.cloud', cliente:'Binario Cloud Suporte', tipo:'Cloud Foundation', vms:1, ligadas:1, desligadas:0, pctDeslig:0.0 },
+  { id: 23, dominio:'(Sem Domínio)', cliente:'(Sem Domínio / Projetos Órfãos)', tipo:'Serviço Interno', vms:1, ligadas:0, desligadas:0, pctDeslig:0.0 },
+  { id: 24, dominio:'1team.cloud', cliente:'1TeamCloud', tipo:'Aplicação Web', vms:1, ligadas:1, desligadas:0, pctDeslig:0.0 },
 ];
 
 const SAN20_VMS = {
@@ -1715,15 +1708,6 @@ const SAN20_VMS = {
     {n:'teste-maria1',id:'13de95a8-d503-4990-825c-6bc6be8c15c7',s:'ACTIVE',p:'service',pid:'798d029731cf47779549467e79ff6c0e'},
     {n:'vm-bcdata-dev',id:'f91c56b5-02b7-4ed0-bd31-e4fcca6b344f',s:'ACTIVE',p:'service',pid:'798d029731cf47779549467e79ff6c0e'},
     {n:'vm_db01',id:'a67fb6b2-03b0-4c0d-93fc-c6b1489f5aa6',s:'ACTIVE',p:'service',pid:'798d029731cf47779549467e79ff6c0e'},
-  ],
-  'dismac.com.bo': [
-    {n:'FW-PFDISMAC',id:'6559a7a4-7208-4759-ae16-c0e3ad447499',s:'SHUTOFF',p:'project-dr-dismac',pid:'7eee390e168a416f9bc662b1669b7ae3'},
-  ],
-  'domain-cloud2': [
-    {n:'src-host-kvm',id:'84e647fe-46dd-4cca-8ded-37932715573e',s:'SHUTOFF',p:'project-cloud2',pid:'a5d6da2a803f4c8186ce84e38f6c76d0'},
-    {n:'ubuntu-cloud2',id:'669944dc-be8f-44d0-978e-eccd73c74aa4',s:'SHUTOFF',p:'project-cloud2',pid:'a5d6da2a803f4c8186ce84e38f6c76d0'},
-    {n:'windows-cloud2',id:'586e2f7a-847b-41e2-93ea-5386634421d1',s:'SHUTOFF',p:'project-cloud2',pid:'a5d6da2a803f4c8186ce84e38f6c76d0'},
-    {n:'windows-cloud2-22',id:'c70c7faa-b9c0-4e23-bc2f-76f0762b8faf',s:'SHUTOFF',p:'project-cloud2',pid:'a5d6da2a803f4c8186ce84e38f6c76d0'},
   ],
   'enesa.com.br': [
     {n:'ENSP-000SEVMBKP',id:'7cfb65f2-37a4-4e04-adae-9320001561f8',s:'ACTIVE',p:'project-backup-enesa',pid:'da35d2f76e3d43f4ac237f02c92a9765'},
@@ -1971,11 +1955,6 @@ const SAN20_VMS = {
     {n:'WMS-RECOVERY',id:'94c89d73-f071-4265-b3a9-5a781412079d',s:'ACTIVE',p:'project-refrio-taboao',pid:'d21b4398a1e14ec68ae73fdec69cfb47'},
     {n:'ZABBIX-SERVER',id:'dc9d8ff1-09e4-4e55-baea-047e2586a38e',s:'ACTIVE',p:'project-refrio-taboao',pid:'d21b4398a1e14ec68ae73fdec69cfb47'},
   ],
-  'sagaengenharia.com.br': [
-    {n:'MAILSERVER',id:'dae2253e-6b90-4178-9f7a-6a82fa02592a',s:'SHUTOFF',p:'project-sagamail',pid:'d22063a28b38464f8cfe206fa885e85f'},
-    {n:'MAILSERVERBKP',id:'915f62a7-f0ba-4114-bb4a-66c9ffd51e1a',s:'SHUTOFF',p:'project-sagamail',pid:'d22063a28b38464f8cfe206fa885e85f'},
-    {n:'SRV-MIGRACAO',id:'829fd693-5aa5-4ab3-90a5-a02e330d8113',s:'SHUTOFF',p:'project-sagamail',pid:'d22063a28b38464f8cfe206fa885e85f'},
-  ],
   'sattelecom.com': [
     {n:'satc4cloud',id:'448a2754-0a1c-44cf-a5dd-b6784d9ebdd1',s:'ACTIVE',p:'Project-Sat-Telecom',pid:'638aac27d55648b4bf6c7f636d7d9b62'},
     {n:'SatC5Cloud',id:'f62d26d4-3d7b-4102-9180-a0aa614c7986',s:'SHUTOFF',p:'Project-Sat-Telecom',pid:'638aac27d55648b4bf6c7f636d7d9b62'},
@@ -1985,17 +1964,8 @@ const SAN20_VMS = {
     {n:'satc4_NEW',id:'fb1397cb-9923-42b4-82e4-eea646ba7b2f',s:'ACTIVE',p:'Project-Sat-TelecomIP',pid:'a57b07d4a197411cb55ac44d8bc8602a'},
     {n:'SatC5Cloud',id:'32d2f459-89cd-4eab-94ea-a3f9723ff769',s:'ACTIVE',p:'Project-Sat-TelecomIP',pid:'a57b07d4a197411cb55ac44d8bc8602a'},
   ],
-  'selbetti.com': [
-    {n:'teste',id:'8a84b098-3e11-4ef2-8533-f02e785cb169',s:'SHUTOFF',p:'project-projetct-ambiente-teste',pid:'0065051e24334b679739fad7ceb6cbbe'},
-    {n:'VM1',id:'5681c771-32e3-4c49-a9bb-76fbced2e722',s:'SHUTOFF',p:'selbetti-sso',pid:'ae039d3dae4448e2a26a2c6ecbb4c3d9'},
-  ],
   '(Sem Domínio)': [
     {n:'IIS2',id:'dd522131-b8f2-44aa-b1d0-98cef6a6367a',s:'ACTIVE',p:'(Sem Projeto)',pid:'5a2ed3d7e48c4ad0acb3c00558cf2f33'},
-  ],
-  'sistecweb.com.br': [
-    {n:'BC-FRIGBBAD',id:'ba7548c7-b51d-4799-a2cf-b4181d99933d',s:'SHUTOFF',p:'project-frigorifico_bb',pid:'07ffe707f90942388c200db65c6666d0'},
-    {n:'BC-SISTECWFW',id:'49d3d985-6d27-4413-8224-7d722b7fa59b',s:'SHUTOFF',p:'project-frigorifico_bb',pid:'07ffe707f90942388c200db65c6666d0'},
-    {n:'VBR-Veeam',id:'4b4b4d22-661c-44bc-8357-ae98f3e77b9f',s:'SHUTOFF',p:'project-frigorifico_bb',pid:'07ffe707f90942388c200db65c6666d0'},
   ],
   'smarapd.com.br': [
     {n:'smarapdPF',id:'582b846e-a598-4e4b-803d-96e8972650cf',s:'ACTIVE',p:'project-smarapdsaeituiutaba',pid:'7420239444f34a53b884e7409cfd9198'},
@@ -2006,20 +1976,6 @@ const SAN20_VMS = {
     {n:'smarapdSQL01',id:'358241c8-410d-4540-b541-e3c3469e660e',s:'ACTIVE',p:'project-smarapdsaeituiutaba',pid:'7420239444f34a53b884e7409cfd9198'},
     {n:'smarapd_SRV_APPTB',id:'2405a3c5-a50d-47d8-aff1-ff4cc550750a',s:'ACTIVE',p:'project-smarapdsaeituiutaba',pid:'7420239444f34a53b884e7409cfd9198'},
     {n:'smarapd_SRV_BDTB',id:'bc5aa2bf-6d49-4662-b17e-99d26ed36bb5',s:'ACTIVE',p:'project-smarapdsaeituiutaba',pid:'7420239444f34a53b884e7409cfd9198'},
-  ],
-  'soprema.com.br': [
-    {n:'BRSUZ-SW0100',id:'a7389969-2866-4d4b-9593-70c02a3e38a0',s:'SHUTOFF',p:'project-soprema-brasil',pid:'690502c4b47d472daa4eff4e11a30c42'},
-    {n:'FTGSPRCLD',id:'5cb39bef-e000-4022-b027-179794c03d36',s:'SHUTOFF',p:'project-soprema-brasil',pid:'690502c4b47d472daa4eff4e11a30c42'},
-    {n:'SRV-DOCKER',id:'f70eaa30-126e-42e6-87b5-39db78334bba',s:'SHUTOFF',p:'project-soprema-brasil',pid:'690502c4b47d472daa4eff4e11a30c42'},
-    {n:'SRV-EMS',id:'7994396e-28c9-4b3f-95d9-e596bf9e54cc',s:'SHUTOFF',p:'project-soprema-brasil',pid:'690502c4b47d472daa4eff4e11a30c42'},
-    {n:'SRV-FAZ',id:'806f5518-fd9c-4767-bd59-39715824231c',s:'SHUTOFF',p:'project-soprema-brasil',pid:'690502c4b47d472daa4eff4e11a30c42'},
-    {n:'SRV-MIGRACAO',id:'e859cb55-4ff1-4b07-9d9f-d697e1f7874c',s:'SHUTOFF',p:'project-soprema-brasil',pid:'690502c4b47d472daa4eff4e11a30c42'},
-    {n:'SWSPR001',id:'6fa68578-da7c-4aef-8f71-5ce43d53fa95',s:'SHUTOFF',p:'project-soprema-brasil',pid:'690502c4b47d472daa4eff4e11a30c42'},
-    {n:'SWSPR001_NEW',id:'e71e7395-9139-4eb8-912d-717b42c28eab',s:'SHUTOFF',p:'project-soprema-brasil',pid:'690502c4b47d472daa4eff4e11a30c42'},
-    {n:'SWSPR007',id:'8e0241ae-2497-46a4-8edc-c55feac95fec',s:'SHUTOFF',p:'project-soprema-brasil',pid:'690502c4b47d472daa4eff4e11a30c42'},
-  ],
-  'spheraeducacional.com.br': [
-    {n:'WEB01',id:'22f45d68-1240-4606-a3cd-7c99b3ba3deb',s:'SHUTOFF',p:'project-esa',pid:'5c06425158424d5d87bd6c6f2b644450'},
   ],
   'sre.binario.cloud': [
     {n:'coriolis-clientes',id:'15ebc448-023c-43fe-887b-c78fc6580430',s:'ACTIVE',p:'coriolis-projects',pid:'f54ca7db48244d07a1e637e588f40bb0'},
@@ -2045,12 +2001,12 @@ const SAN20_VMS = {
   ],
   'zanthus.com.br': [
     {n:'bc-binariosh',id:'4a3c8b69-b1e3-404b-8bf1-73c4cf7262b0',s:'ACTIVE',p:'ZCLOUD-ZANTHUS-QA-BC',pid:'de4ff95007ff4f98a3eae5df8f4387d9'},
-    {n:'BC-QA-EXEC-2',id:'a5cb0a36-9223-49ad-8ca0-7f798220e136',s:'ACTIVE',p:'ZCLOUD-ZANTHUS-QA-BC',pid:'de4ff95007ff4f98a3eae5df8f4387d9'},
-    {n:'BC-QA-EXECUTOR-1',id:'95e43ced-b66d-46e1-86a8-e5389664bed2',s:'ACTIVE',p:'ZCLOUD-ZANTHUS-QA-BC',pid:'de4ff95007ff4f98a3eae5df8f4387d9'},
-    {n:'BC-QA-FIREWALL',id:'e6bb3dc8-401d-41db-a4b6-73c59b824a0c',s:'ACTIVE',p:'ZCLOUD-ZANTHUS-QA-BC',pid:'de4ff95007ff4f98a3eae5df8f4387d9'},
-    {n:'BC-QA-SERVIDOR-1',id:'496e3aab-1b9f-4cef-91ca-e16948f5a6fb',s:'ACTIVE',p:'ZCLOUD-ZANTHUS-QA-BC',pid:'de4ff95007ff4f98a3eae5df8f4387d9'},
-    {n:'BC-QA-SERVIDOR-2',id:'a0955aa5-bf52-4a65-9c88-7cb009454ab1',s:'ACTIVE',p:'ZCLOUD-ZANTHUS-QA-BC',pid:'de4ff95007ff4f98a3eae5df8f4387d9'},
-    {n:'BC-QA-SERVIDOR-3',id:'16db73c0-2bc6-46bb-b963-60c29a0ec638',s:'ACTIVE',p:'ZCLOUD-ZANTHUS-QA-BC',pid:'de4ff95007ff4f98a3eae5df8f4387d9'},
+    {n:'BC-QA-EXEC-2',id:'a5cb0a36-9223-49ad-8ca0-7f798220e136',s:'SHUTOFF',p:'ZCLOUD-ZANTHUS-QA-BC',pid:'de4ff95007ff4f98a3eae5df8f4387d9'},
+    {n:'BC-QA-EXECUTOR-1',id:'95e43ced-b66d-46e1-86a8-e5389664bed2',s:'SHUTOFF',p:'ZCLOUD-ZANTHUS-QA-BC',pid:'de4ff95007ff4f98a3eae5df8f4387d9'},
+    {n:'BC-QA-FIREWALL',id:'e6bb3dc8-401d-41db-a4b6-73c59b824a0c',s:'SHUTOFF',p:'ZCLOUD-ZANTHUS-QA-BC',pid:'de4ff95007ff4f98a3eae5df8f4387d9'},
+    {n:'BC-QA-SERVIDOR-1',id:'496e3aab-1b9f-4cef-91ca-e16948f5a6fb',s:'SHUTOFF',p:'ZCLOUD-ZANTHUS-QA-BC',pid:'de4ff95007ff4f98a3eae5df8f4387d9'},
+    {n:'BC-QA-SERVIDOR-2',id:'a0955aa5-bf52-4a65-9c88-7cb009454ab1',s:'SHUTOFF',p:'ZCLOUD-ZANTHUS-QA-BC',pid:'de4ff95007ff4f98a3eae5df8f4387d9'},
+    {n:'BC-QA-SERVIDOR-3',id:'16db73c0-2bc6-46bb-b963-60c29a0ec638',s:'SHUTOFF',p:'ZCLOUD-ZANTHUS-QA-BC',pid:'de4ff95007ff4f98a3eae5df8f4387d9'},
     {n:'VBR-MIGRACAO',id:'22399ba3-ee20-43c4-a5a0-51bf03e7dcc8',s:'ACTIVE',p:'ZCLOUD-ZANTHUS-QA-BC',pid:'de4ff95007ff4f98a3eae5df8f4387d9'},
     {n:'BC-ADMIN',id:'92ba45d1-21c3-4027-86aa-fa3b17c3ce80',s:'ACTIVE',p:'ZCLOUD-ZANTHUS-TI-BC',pid:'a74e1b339de544e79b9ca202805bd16c'},
     {n:'BC-CLAZ',id:'ccba83f0-b91d-4449-9754-3036972cab96',s:'ACTIVE',p:'ZCLOUD-ZANTHUS-TI-BC',pid:'a74e1b339de544e79b9ca202805bd16c'},
@@ -2072,7 +2028,7 @@ const SAN20_VMS = {
 };
 
 async function san20LoadStorage() {
-  const SEED_VERSION = '2026-06-18-v1';
+  const SEED_VERSION = '2026-06-18-v2';
   try {
     let saved = null;
     if (window.storage) {
@@ -5699,10 +5655,6 @@ function san20OpenVMsDesligadas() {
   {n:'BMC-ECOMMERCE-01-OLD',d:'bmchyundai.com.br',dt:'26/05/2026',dias:23,s:'ja_estava'},
   {n:'BMCHUBSPOT-OLD',d:'bmchyundai.com.br',dt:'26/05/2026',dias:23,s:'ja_estava'},
   {n:'hubspottemp',d:'bmchyundai.com.br',dt:'26/05/2026',dias:23,s:'ja_estava'},
-  {n:'FW-PFDISMAC',d:'dismac.com.bo',dt:'26/05/2026',dias:23,s:'ja_estava'},
-  {n:'ubuntu-cloud2',d:'domain-cloud2',dt:'26/05/2026',dias:23,s:'ja_estava'},
-  {n:'windows-cloud2',d:'domain-cloud2',dt:'26/05/2026',dias:23,s:'ja_estava'},
-  {n:'windows-cloud2-22',d:'domain-cloud2',dt:'26/05/2026',dias:23,s:'ja_estava'},
   {n:'ADABASLINUX-RECOVERY',d:'gimba.com.br',dt:'26/05/2026',dias:23,s:'ja_estava'},
   {n:'BC-TEST',d:'gimba.com.br',dt:'26/05/2026',dias:23,s:'ja_estava'},
   {n:'GBJITTERBIT-Old',d:'gimba.com.br',dt:'26/05/2026',dias:23,s:'ja_estava'},
@@ -5727,15 +5679,8 @@ function san20OpenVMsDesligadas() {
   {n:'ntb-dasa.qos.srv.br',d:'qos.com.br',dt:'26/05/2026',dias:23,s:'ja_estava'},
   {n:'prx-refrio1',d:'refrio.com.br',dt:'26/05/2026',dias:23,s:'ja_estava'},
   {n:'COLETOR-WMS',d:'refrio.com.br',dt:'26/05/2026',dias:23,s:'ja_estava'},
-  {n:'MAILSERVER',d:'sagaengenharia.com.br',dt:'26/05/2026',dias:23,s:'ja_estava'},
-  {n:'MAILSERVERBKP',d:'sagaengenharia.com.br',dt:'26/05/2026',dias:23,s:'ja_estava'},
   {n:'SatC5Cloud',d:'sattelecom.com',dt:'26/05/2026',dias:23,s:'ja_estava'},
   {n:'satc4cloud',d:'sattelecomip.com',dt:'26/05/2026',dias:23,s:'ja_estava'},
-  {n:'teste',d:'selbetti.com',dt:'26/05/2026',dias:23,s:'ja_estava'},
-  {n:'VM1',d:'selbetti.com',dt:'26/05/2026',dias:23,s:'ja_estava'},
-  {n:'BC-FRIGBBAD',d:'sistecweb.com.br',dt:'26/05/2026',dias:23,s:'ja_estava'},
-  {n:'VBR-Veeam',d:'sistecweb.com.br',dt:'26/05/2026',dias:23,s:'ja_estava'},
-  {n:'SWSPR001',d:'soprema.com.br',dt:'26/05/2026',dias:23,s:'ja_estava'},
   {n:'BC-POC-ZRETAIL',d:'zanthus.com.br',dt:'26/05/2026',dias:23,s:'ja_estava'}
   ];
 
