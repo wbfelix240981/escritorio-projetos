@@ -2119,7 +2119,7 @@ document.addEventListener('page-changed', function(e) {
       <div style="display:flex;align-items:center;gap:12px;margin-bottom:6px;">
         <div>
           <h1 style="font-size:22px;font-weight:800;color:#1a2a3a;letter-spacing:-.5px;margin:0;">Gestão Cloud de Domínios</h1>
-          <p style="font-size:12px;color:#5a6a7a;margin:2px 0 0;">Ambiente 3.0 — Inventário OpenStack · 787 VMs · 86 Domínios · 700 ligadas · 83 desligadas<span id="san30-timestamp"></span></p>
+          <p style="font-size:12px;color:#5a6a7a;margin:2px 0 0;">Ambiente 3.0 — Inventário OpenStack · 800 VMs · 86 Domínios · 699 ligadas · 97 desligadas<span id="san30-timestamp"></span></p>
         </div>
       </div>
     </div>
@@ -2511,7 +2511,7 @@ function san30Delete(id) {
 
 async function san30SaveStorage() {
   try {
-    const payload = JSON.stringify({ san30Data, san30NextId, seed_version: '2026-06-24-v1-san30' });
+    const payload = JSON.stringify({ san30Data, san30NextId, seed_version: '2026-06-25-v1-san30' });
     if (window.storage) {
       await window.storage.set('san30_data', payload);
     } else {
@@ -2529,21 +2529,21 @@ async function san30SaveStorage() {
 
 
 const SAN30_SEED = [
-  // ── Inventário OpenStack 3.0 — 24/06/2026 | 787 VMs | 86 Domínios | 700 ligadas | 83 desligadas ──
-  { id: 1, dominio:'gimba.com.br', cliente:'Gimba', tipo:'Aplicação Web', vms:119, ligadas:111, desligadas:8, pctDeslig:6.7 },
+  // ── Inventário OpenStack 3.0 — 25/06/2026 v115 | 800 VMs | 86 Domínios | 699 ligadas | 97 desligadas ──
+  { id: 1, dominio:'gimba.com.br', cliente:'Gimba', tipo:'Aplicação Web', vms:120, ligadas:112, desligadas:8, pctDeslig:6.7 },
   { id: 2, dominio:'Default', cliente:'Admin / Service (OpenStack interno)', tipo:'Serviço Interno', vms:104, ligadas:104, desligadas:0, pctDeslig:0.0 },
-  { id: 3, dominio:'binario.cloud', cliente:'Binario Cloud — Ambiente Principal', tipo:'Cloud Foundation', vms:68, ligadas:55, desligadas:12, pctDeslig:17.6 },
-  { id: 4, dominio:'sre.binario.cloud', cliente:'Binario Cloud SRE', tipo:'Cloud Foundation', vms:44, ligadas:27, desligadas:15, pctDeslig:34.1 },
+  { id: 3, dominio:'binario.cloud', cliente:'Binario Cloud — Ambiente Principal', tipo:'Cloud Foundation', vms:82, ligadas:56, desligadas:25, pctDeslig:30.5 },
+  { id: 4, dominio:'sre.binario.cloud', cliente:'Binario Cloud SRE', tipo:'Cloud Foundation', vms:43, ligadas:26, desligadas:15, pctDeslig:34.9 },
   { id: 5, dominio:'binario', cliente:'binario', tipo:'Aplicação Web', vms:39, ligadas:39, desligadas:0, pctDeslig:0.0 },
   { id: 6, dominio:'skyone.solutions', cliente:'Skyone', tipo:'Cloud Cliente', vms:34, ligadas:31, desligadas:2, pctDeslig:5.9 },
   { id: 7, dominio:'aptu.cloud', cliente:'Aptu', tipo:'Cloud Cliente', vms:25, ligadas:15, desligadas:10, pctDeslig:40.0 },
   { id: 8, dominio:'cannect.com.br', cliente:'Cannect', tipo:'Cloud Cliente', vms:25, ligadas:25, desligadas:0, pctDeslig:0.0 },
-  { id: 9, dominio:'binario.net', cliente:'Binario.net', tipo:'Cloud Foundation', vms:23, ligadas:22, desligadas:1, pctDeslig:4.3 },
+  { id: 9, dominio:'binario.net', cliente:'Binario.net', tipo:'Cloud Foundation', vms:22, ligadas:21, desligadas:1, pctDeslig:4.5 },
   { id: 10, dominio:'zanthus.com.br', cliente:'Zanthus', tipo:'Aplicação Web', vms:16, ligadas:16, desligadas:0, pctDeslig:0.0 },
   { id: 11, dominio:'ncsolucoes.com.br', cliente:'NC Soluções', tipo:'Cloud Cliente', vms:15, ligadas:14, desligadas:1, pctDeslig:6.7 },
   { id: 12, dominio:'pedreiraumvalemix.com.br', cliente:'pedreiraumvalemix.com.br', tipo:'Cloud Cliente', vms:13, ligadas:11, desligadas:2, pctDeslig:15.4 },
   { id: 13, dominio:'trajeto.com.br', cliente:'trajeto.com.br', tipo:'Cloud Cliente', vms:13, ligadas:13, desligadas:0, pctDeslig:0.0 },
-  { id: 14, dominio:'edudata.com.br', cliente:'EduData', tipo:'Cloud Cliente', vms:11, ligadas:8, desligadas:3, pctDeslig:27.3 },
+  { id: 14, dominio:'edudata.com.br', cliente:'EduData', tipo:'Cloud Cliente', vms:11, ligadas:7, desligadas:4, pctDeslig:36.4 },
   { id: 15, dominio:'mextrametal.com.br', cliente:'mextrametal.com.br', tipo:'Cloud Cliente', vms:9, ligadas:9, desligadas:0, pctDeslig:0.0 },
   { id: 16, dominio:'suporte.binario.cloud', cliente:'Binario Cloud Suporte', tipo:'Cloud Foundation', vms:8, ligadas:1, desligadas:7, pctDeslig:87.5 },
   { id: 17, dominio:'fipe.org.br', cliente:'fipe.org.br', tipo:'Cloud Cliente', vms:8, ligadas:8, desligadas:0, pctDeslig:0.0 },
@@ -2552,8 +2552,8 @@ const SAN30_SEED = [
   { id: 20, dominio:'raconnect.com.br', cliente:'raconnect.com.br', tipo:'Cloud Cliente', vms:7, ligadas:4, desligadas:3, pctDeslig:42.9 },
   { id: 21, dominio:'bestsmart.com.br', cliente:'bestsmart.com.br', tipo:'Cloud Cliente', vms:7, ligadas:6, desligadas:1, pctDeslig:14.3 },
   { id: 22, dominio:'guardiaofamiliar.com.br', cliente:'guardiaofamiliar.com.br', tipo:'Cloud Cliente', vms:6, ligadas:6, desligadas:0, pctDeslig:0.0 },
-  { id: 23, dominio:'solutika.com.br', cliente:'solutika.com.br', tipo:'Cloud Cliente', vms:5, ligadas:5, desligadas:0, pctDeslig:0.0 },
-  { id: 24, dominio:'ish.com.br', cliente:'ISH Technology', tipo:'Cloud Cliente', vms:5, ligadas:5, desligadas:0, pctDeslig:0.0 },
+  { id: 23, dominio:'ish.com.br', cliente:'ISH Technology', tipo:'Cloud Cliente', vms:5, ligadas:5, desligadas:0, pctDeslig:0.0 },
+  { id: 24, dominio:'solutika.com.br', cliente:'solutika.com.br', tipo:'Cloud Cliente', vms:5, ligadas:5, desligadas:0, pctDeslig:0.0 },
   { id: 25, dominio:'acme.binario.lab', cliente:'acme.binario.lab', tipo:'Cloud Foundation', vms:5, ligadas:4, desligadas:1, pctDeslig:20.0 },
   { id: 26, dominio:'brainlaw.com.br', cliente:'brainlaw.com.br', tipo:'Cloud Cliente', vms:5, ligadas:5, desligadas:0, pctDeslig:0.0 },
   { id: 27, dominio:'acaoengenharia.com.br', cliente:'acaoengenharia.com.br', tipo:'Cloud Cliente', vms:5, ligadas:5, desligadas:0, pctDeslig:0.0 },
@@ -2753,6 +2753,20 @@ const SAN30_VMS = {
     {n:'srv-csehmlgw02',id:'d4935826-6f10-48ca-b7f9-2d98cf9f53e0',s:'ACTIVE',p:'cse-binario-cloud',pid:'2b0ca192789442bfb5a959ee43a885ce'},
     {n:'srv-csehmlgw03',id:'acf4a9e8-63fd-42ab-8934-a6eb108ea244',s:'ACTIVE',p:'cse-binario-cloud',pid:'2b0ca192789442bfb5a959ee43a885ce'},
     {n:'srv-csehmlwebvspc',id:'99686f13-43d7-4ad4-9473-3f90624898e6',s:'ACTIVE',p:'cse-binario-cloud',pid:'2b0ca192789442bfb5a959ee43a885ce'},
+    {n:'sofia-api-1',id:'1cd084b9-4b06-4f4c-b093-0becde510d5d',s:'SHUTOFF',p:'lab',pid:'13f4a330248f4accbf1245ce49e82b69'},
+    {n:'sofia-api-2',id:'86d99f9a-f14a-4c3c-b908-044c5d498d76',s:'SHUTOFF',p:'lab',pid:'13f4a330248f4accbf1245ce49e82b69'},
+    {n:'sofia-flower',id:'ca70e916-448c-402a-a5dd-0b5ee8ccf2a7',s:'SHUTOFF',p:'lab',pid:'13f4a330248f4accbf1245ce49e82b69'},
+    {n:'sofia-monitoring',id:'4ad26980-af77-4b38-beda-cabf0f63a807',s:'SHUTOFF',p:'lab',pid:'13f4a330248f4accbf1245ce49e82b69'},
+    {n:'sofia-ollama',id:'3e9e0fd9-9022-41d0-a955-2d4b12260f07',s:'SHUTOFF',p:'lab',pid:'13f4a330248f4accbf1245ce49e82b69'},
+    {n:'sofia-opensearch',id:'a4b9f236-861b-497e-a029-dc9ccd79f1f3',s:'SHUTOFF',p:'lab',pid:'13f4a330248f4accbf1245ce49e82b69'},
+    {n:'sofia-postgres',id:'e0002d8c-b15f-43dd-83d8-343a886251bd',s:'SHUTOFF',p:'lab',pid:'13f4a330248f4accbf1245ce49e82b69'},
+    {n:'sofia-redis',id:'302fe711-990b-4b7b-89cd-960a27e2d7d2',s:'SHUTOFF',p:'lab',pid:'13f4a330248f4accbf1245ce49e82b69'},
+    {n:'sofia-traefik',id:'0fb59add-a010-4f4d-b22f-e1eecdde4929',s:'SHUTOFF',p:'lab',pid:'13f4a330248f4accbf1245ce49e82b69'},
+    {n:'sofia-worker-beat',id:'fa1beb3e-c0bf-4156-8538-a8e149ec067b',s:'SHUTOFF',p:'lab',pid:'13f4a330248f4accbf1245ce49e82b69'},
+    {n:'sofia-worker-discovery',id:'925e2686-8403-4ae6-a293-cbff0fdb36cf',s:'SHUTOFF',p:'lab',pid:'13f4a330248f4accbf1245ce49e82b69'},
+    {n:'sofia-worker-proposals',id:'749e76e5-890c-4fa0-b425-f141d0667afc',s:'SHUTOFF',p:'lab',pid:'13f4a330248f4accbf1245ce49e82b69'},
+    {n:'sofia-worker-qualification',id:'a9ea1460-6ad0-4ce6-999f-1faa73b74697',s:'SHUTOFF',p:'lab',pid:'13f4a330248f4accbf1245ce49e82b69'},
+    {n:'vm-lab-terraform',id:'a02a3452-a4a6-48a6-9bb0-dca67487ede5',s:'ACTIVE',p:'lab',pid:'13f4a330248f4accbf1245ce49e82b69'},
     {n:'Serverwin',id:'64e5bf3d-5fd7-4b06-85b9-2d5da31ef584',s:'ACTIVE',p:'pleion_poc',pid:'f5e9da821d3746fda21a75e24d91a380'},
     {n:'atacante',id:'92941d9b-840c-4c1f-a27f-d3a31cfb44f7',s:'ACTIVE',p:'prevendas-binario-cloud',pid:'17885577377f44ee963c7eab54b2e97a'},
     {n:'firewall',id:'5f5b373e-d389-4909-95e2-80a2ec1a5645',s:'ACTIVE',p:'prevendas-binario-cloud',pid:'17885577377f44ee963c7eab54b2e97a'},
@@ -2818,7 +2832,6 @@ const SAN30_VMS = {
     {n:'BN-SRV-DDC01',id:'a496a82f-e39c-40c7-929e-f42dd3ed9c8e',s:'ACTIVE',p:'prod-binario-net',pid:'cdb14c590c174981870f6d9e88c8bcfa'},
     {n:'BN-SRV-DDC02',id:'57267b14-841c-4c92-ac13-cec9a399d717',s:'ACTIVE',p:'prod-binario-net',pid:'cdb14c590c174981870f6d9e88c8bcfa'},
     {n:'BN-SRV-Ferramenta_Testes_Claro',id:'e2a72dd3-2aac-4a89-a8da-1755197a44af',s:'ACTIVE',p:'prod-binario-net',pid:'cdb14c590c174981870f6d9e88c8bcfa'},
-    {n:'BN-SRV-otrs-1',id:'c39f77ec-f6c3-4443-b392-97f9a5b34918',s:'ACTIVE',p:'prod-binario-net',pid:'cdb14c590c174981870f6d9e88c8bcfa'},
     {n:'BN-SRV-OTRS-APP',id:'83a28f7c-000e-49f9-971c-09d81a51538b',s:'ACTIVE',p:'prod-binario-net',pid:'cdb14c590c174981870f6d9e88c8bcfa'},
     {n:'BN-SRV-OTRS-BD',id:'eaf7449b-d256-4fe8-9743-02d08713b993',s:'ACTIVE',p:'prod-binario-net',pid:'cdb14c590c174981870f6d9e88c8bcfa'},
     {n:'BN-SRV-RPA_Faturas_Dasa',id:'d2fbef77-5cab-4088-8216-ecfe6b2927ba',s:'ACTIVE',p:'prod-binario-net',pid:'cdb14c590c174981870f6d9e88c8bcfa'},
@@ -2927,7 +2940,6 @@ const SAN30_VMS = {
     {n:'amphora-132edbfe-d6c2-4622-856b-a65befe6a681',id:'37233808-8ba3-4f70-953f-18a9f622c549',s:'ACTIVE',p:'service',pid:'918bb1a15ada41e593855ba033277f7e'},
     {n:'amphora-1504deab-173e-4d82-89f0-7de6fec61e99',id:'4efe038b-ce5a-4de9-bfdb-08bebecd3541',s:'ACTIVE',p:'service',pid:'918bb1a15ada41e593855ba033277f7e'},
     {n:'amphora-206ff530-76c7-423b-bd16-ed2f2566ef35',id:'7ad7bed2-878f-4b81-891d-9c2df7d527aa',s:'ACTIVE',p:'service',pid:'918bb1a15ada41e593855ba033277f7e'},
-    {n:'amphora-21eeefda-a255-4df6-b890-3430c5a47401',id:'d2d4514d-fcff-4329-884c-192d5cb0f2c5',s:'ACTIVE',p:'service',pid:'918bb1a15ada41e593855ba033277f7e'},
     {n:'amphora-253a7e3e-e787-4371-92ee-e8d15cad0f9c',id:'4dca2af3-23cc-4918-a52d-2e2681aac37a',s:'ACTIVE',p:'service',pid:'918bb1a15ada41e593855ba033277f7e'},
     {n:'amphora-2571aa21-7b71-4142-a5de-0caa57ecc225',id:'c44eb335-a5d4-42d0-80db-878342058b16',s:'ACTIVE',p:'service',pid:'918bb1a15ada41e593855ba033277f7e'},
     {n:'amphora-2a4bb955-041c-4495-b3a8-15e02e9fbb9d',id:'4664b6e7-0b64-4d3e-8cf2-dd05df248c2b',s:'ACTIVE',p:'service',pid:'918bb1a15ada41e593855ba033277f7e'},
@@ -2974,17 +2986,17 @@ const SAN30_VMS = {
     {n:'amphora-fbc309b8-cff3-4b2d-9629-f97cab4329e3',id:'da057bbb-172f-479b-aa0c-a54ecf2754f7',s:'ACTIVE',p:'service',pid:'918bb1a15ada41e593855ba033277f7e'},
     {n:'amphora-fbed264b-3ea2-4f37-9b55-b55285da0a62',id:'31bf501b-c57b-4bd5-8142-40efb242f311',s:'ACTIVE',p:'service',pid:'918bb1a15ada41e593855ba033277f7e'},
     {n:'apicannect-bi',id:'46233eee-92b4-4cc6-83b6-1ff186c962a5',s:'ACTIVE',p:'service',pid:'918bb1a15ada41e593855ba033277f7e'},
-    {n:'asdasd',id:'d1b1538a-8def-448c-a1d8-289bc3053d7d',s:'ACTIVE',p:'service',pid:'918bb1a15ada41e593855ba033277f7e'},
     {n:'BC3db-1794',id:'a777dafe-a8bd-4d81-b55f-e3e143b29b80',s:'ACTIVE',p:'service',pid:'918bb1a15ada41e593855ba033277f7e'},
     {n:'bc3db-mariadb-tor-000',id:'38429359-6725-4061-a6ff-9408764f96d1',s:'ACTIVE',p:'service',pid:'918bb1a15ada41e593855ba033277f7e'},
-    {n:'bc3db-mongodb-tor-000',id:'cb247b7f-ce92-4545-8805-806ad98cc291',s:'ACTIVE',p:'service',pid:'918bb1a15ada41e593855ba033277f7e'},
     {n:'bc3db-mongodb-tor-000',id:'9a1f48bd-c82d-44e0-a74b-597d4750fc19',s:'ACTIVE',p:'service',pid:'918bb1a15ada41e593855ba033277f7e'},
+    {n:'bc3db-mongodb-tor-000',id:'cb247b7f-ce92-4545-8805-806ad98cc291',s:'ACTIVE',p:'service',pid:'918bb1a15ada41e593855ba033277f7e'},
     {n:'bc3db-mongo-tor-000',id:'fa1b73fd-2cbb-41cc-b15c-18771ad70b80',s:'ACTIVE',p:'service',pid:'918bb1a15ada41e593855ba033277f7e'},
     {n:'bc3db-mongo-tor-001',id:'09752fd7-81c2-407b-a68f-9e2962dfdaf3',s:'ACTIVE',p:'service',pid:'918bb1a15ada41e593855ba033277f7e'},
     {n:'bc3db-postg-tor-000',id:'1d682552-3b77-4d11-97ed-b8a0870c5980',s:'ACTIVE',p:'service',pid:'918bb1a15ada41e593855ba033277f7e'},
     {n:'bc3db-teste-my-29-003',id:'cfa25892-6c77-4386-923f-5c71f9998df1',s:'ACTIVE',p:'service',pid:'918bb1a15ada41e593855ba033277f7e'},
     {n:'bc3db-teste-tor-5.7.29',id:'f6997efc-5765-47f9-9f70-622e321a5d80',s:'ACTIVE',p:'service',pid:'918bb1a15ada41e593855ba033277f7e'},
     {n:'connect-load-machine',id:'8f047c4d-64dc-4afd-8165-dbeb3abd008b',s:'ACTIVE',p:'service',pid:'918bb1a15ada41e593855ba033277f7e'},
+    {n:'db-postgresql',id:'90e43cdc-fa1b-4b09-8b42-591cb4468434',s:'ACTIVE',p:'service',pid:'918bb1a15ada41e593855ba033277f7e'},
     {n:'manila_service_instance_generic_023b02be-5b27-496d-878e-00d0bc483ca4',id:'54d923cd-05e3-4ce6-9f2a-8713aaa5210e',s:'ACTIVE',p:'service',pid:'918bb1a15ada41e593855ba033277f7e'},
     {n:'manila_service_instance_generic_02979ef4-bf0f-421c-badd-0722c252cd3f',id:'bfb34a9b-bfac-45c3-8dce-08710c35a5d6',s:'ACTIVE',p:'service',pid:'918bb1a15ada41e593855ba033277f7e'},
     {n:'manila_service_instance_generic_1834d539-f6e2-46a8-84a9-54319c1facb4',id:'0112b443-a8de-45a8-9559-6f22b9b63940',s:'ACTIVE',p:'service',pid:'918bb1a15ada41e593855ba033277f7e'},
@@ -3010,6 +3022,7 @@ const SAN30_VMS = {
     {n:'manila_service_instance_generic_cf4bff75-b746-477d-9a4f-08c8085d8ef5',id:'b19547f7-7489-40cb-bd5d-70672841c26a',s:'ACTIVE',p:'service',pid:'918bb1a15ada41e593855ba033277f7e'},
     {n:'manila_service_instance_generic_f77b7474-2446-4848-bda2-13a9d25d0e25',id:'76c292fb-2109-4a03-ae9e-bb8e87fe81b1',s:'ACTIVE',p:'service',pid:'918bb1a15ada41e593855ba033277f7e'},
     {n:'manila_service_instance_generic_f8469cd6-33bf-418b-84ef-f3fe6c99e2b7',id:'b88677ca-a8a7-4670-bdb3-86f3053f62cf',s:'ACTIVE',p:'service',pid:'918bb1a15ada41e593855ba033277f7e'},
+    {n:'mysql-teste',id:'d24065c5-cd83-4016-a5fe-b730b1781595',s:'ACTIVE',p:'service',pid:'918bb1a15ada41e593855ba033277f7e'},
     {n:'postgresql-16.5',id:'444914e6-bbf8-47be-a95b-748cdba428c9',s:'ACTIVE',p:'service',pid:'918bb1a15ada41e593855ba033277f7e'},
     {n:'postgresql-16.5-agora-vai',id:'711fb6dd-c4e9-4fb1-b920-7486c202251b',s:'ACTIVE',p:'service',pid:'918bb1a15ada41e593855ba033277f7e'},
     {n:'postgresql-16.5-teste',id:'f6d6ce53-9d9f-4781-99e6-3d2829b8c762',s:'ACTIVE',p:'service',pid:'918bb1a15ada41e593855ba033277f7e'},
@@ -3040,7 +3053,7 @@ const SAN30_VMS = {
     {n:'moodle-04-edu',id:'19159b73-2cb4-43b5-b2d1-cdc4250503d9',s:'SHUTOFF',p:'project-edudata',pid:'221e3d63150b4b0cb3bc172db341ca91'},
     {n:'mysql-master-edu',id:'b64b519d-e025-473e-8983-a388078b54e0',s:'ACTIVE',p:'project-edudata',pid:'221e3d63150b4b0cb3bc172db341ca91'},
     {n:'mysql-slave2-edu',id:'5cb08e9c-7e1d-46d8-af11-afb4d8825bbf',s:'SHUTOFF',p:'project-edudata',pid:'221e3d63150b4b0cb3bc172db341ca91'},
-    {n:'mysql-slave-edu',id:'ae31ccab-8b82-4f6a-b7d6-6134b5f15a21',s:'ACTIVE',p:'project-edudata',pid:'221e3d63150b4b0cb3bc172db341ca91'},
+    {n:'mysql-slave-edu',id:'ae31ccab-8b82-4f6a-b7d6-6134b5f15a21',s:'SHUTOFF',p:'project-edudata',pid:'221e3d63150b4b0cb3bc172db341ca91'},
     {n:'nfs-edu',id:'b2e9d0de-ab74-4519-9651-0681c124dac5',s:'ACTIVE',p:'project-edudata',pid:'221e3d63150b4b0cb3bc172db341ca91'},
   ],
   'enesa.com.br': [
@@ -3098,6 +3111,7 @@ const SAN30_VMS = {
     {n:'BCGMAWEB07',id:'1d153844-22ff-437a-8a54-bc5975b3c623',s:'ACTIVE',p:'project-gimba',pid:'78c403ae7d4f428090054e8b32b38c51'},
     {n:'BC-GMB-KSEC',id:'4288f731-dc72-4d27-b3ab-d242973d6d7a',s:'ACTIVE',p:'project-gimba',pid:'78c403ae7d4f428090054e8b32b38c51'},
     {n:'BC-REPLICATOR',id:'808f4bba-8727-41a6-9e6b-276b90cdb744',s:'ACTIVE',p:'project-gimba',pid:'78c403ae7d4f428090054e8b32b38c51'},
+    {n:'DEVSQUADVIRTUAL',id:'43e58163-32b6-4786-8126-df1c2e3cf985',s:'ACTIVE',p:'project-gimba',pid:'78c403ae7d4f428090054e8b32b38c51'},
     {n:'DR_ADABASLINUX_CLONE',id:'1845b7b5-b49f-44ed-b989-6f55ea0cf88d',s:'ACTIVE',p:'project-gimba',pid:'78c403ae7d4f428090054e8b32b38c51'},
     {n:'DR-ORACLEERP',id:'6bba1edf-979a-480d-8013-5050175abd80',s:'ACTIVE',p:'project-gimba',pid:'78c403ae7d4f428090054e8b32b38c51'},
     {n:'dst-host-kvm',id:'da035c24-c98e-4f15-a887-cc7821a35f33',s:'ACTIVE',p:'project-gimba',pid:'78c403ae7d4f428090054e8b32b38c51'},
@@ -3212,8 +3226,8 @@ const SAN30_VMS = {
     {n:'VBR-IPDA',id:'357e82ec-1eb7-4d4a-b455-c3ffd0049a30',s:'ACTIVE',p:'project-ipda',pid:'0017b16923c8463d8a3d6162aed09cba'},
   ],
   'ish.com.br': [
-    {n:'coriolis-5d61118b-f97e-49cf-a2ee-01c62da14a89-import-worker',id:'c8b86acc-8d47-4106-bf27-fcec7f005a61',s:'ACTIVE',p:'CLI-DR',pid:'feff4201134d4c4192632defc0d94948'},
-    {n:'coriolis-8a76a789-5c2c-4c40-ac88-8400af981935-import-worker',id:'fcd4e891-4b3c-4d44-8b0f-78405f97c856',s:'ACTIVE',p:'CLI-DR',pid:'feff4201134d4c4192632defc0d94948'},
+    {n:'coriolis-75bfc9f7-c915-4e20-97b1-20a93dff4685-import-worker',id:'3578d2f9-3b4a-49b2-911c-f15cbb37d88b',s:'ACTIVE',p:'CLI-DR',pid:'feff4201134d4c4192632defc0d94948'},
+    {n:'coriolis-ae2f79e0-6225-4ba2-9d2b-43eef56e3262-import-worker',id:'b68061e4-73f9-4ffd-a3e4-6775efe19c15',s:'ACTIVE',p:'CLI-DR',pid:'feff4201134d4c4192632defc0d94948'},
     {n:'DC2-CLOUD-ISH',id:'e4d9dea4-d60c-4e07-a178-a96967195313',s:'ACTIVE',p:'CLI-DR',pid:'feff4201134d4c4192632defc0d94948'},
     {n:'PFSENSE-ISH',id:'71c30b0f-203a-402b-8194-3ba16e97e0ec',s:'ACTIVE',p:'CLI-DR',pid:'feff4201134d4c4192632defc0d94948'},
     {n:'prx-ishdr',id:'93d9e915-d6af-45ec-aca3-4e16db09cd1c',s:'ACTIVE',p:'CLI-DR',pid:'feff4201134d4c4192632defc0d94948'},
@@ -3442,7 +3456,7 @@ const SAN30_VMS = {
     {n:'FW-PF-001',id:'72ce082a-c1c1-40ce-a701-50beed35f4cc',s:'ACTIVE',p:'project-solutika',pid:'a0adadbb27c8465c96db9b9486f6eeb4'},
     {n:'OMADA',id:'dc396ae6-181d-4c2f-8afc-21129b04a641',s:'ACTIVE',p:'project-solutika',pid:'a0adadbb27c8465c96db9b9486f6eeb4'},
     {n:'PROXY',id:'b70456c4-0b31-42b8-a3ff-e1633174c09c',s:'ACTIVE',p:'project-solutika',pid:'a0adadbb27c8465c96db9b9486f6eeb4'},
-    {n:'SRV-SNUTRI-GNI',id:'1a141393-267d-4ae5-8a7c-e709fe760411',s:'ACTIVE',p:'project-solutika',pid:'a0adadbb27c8465c96db9b9486f6eeb4'},
+    {n:'SRV-SNUTRI-GNI',id:'73d74952-724c-4424-aa9f-cf768b27f74c',s:'ACTIVE',p:'project-solutika',pid:'a0adadbb27c8465c96db9b9486f6eeb4'},
     {n:'VBR-Veeam',id:'417e5507-1a51-4065-b15f-4c6e907b96e8',s:'ACTIVE',p:'project-solutika',pid:'a0adadbb27c8465c96db9b9486f6eeb4'},
   ],
   'soprema.com.br': [
@@ -3475,15 +3489,14 @@ const SAN30_VMS = {
     {n:'Gitlab-Server',id:'d189b59c-0c37-41ff-8ac8-d37a50360c57',s:'ACTIVE',p:'poc-faturamento-paas',pid:'f9ca0e261adc4eac87534445cc3a237e'},
     {n:'Grafana',id:'2a9b2e0b-7c18-4153-b6af-746de9cea16d',s:'ACTIVE',p:'poc-faturamento-paas',pid:'f9ca0e261adc4eac87534445cc3a237e'},
     {n:'MySQL-Server',id:'96fecaef-5a35-44fa-9319-99b93ec88e9a',s:'ACTIVE',p:'poc-faturamento-paas',pid:'f9ca0e261adc4eac87534445cc3a237e'},
-    {n:'lb-teste-1',id:'ab5a2d1c-813d-467a-8b69-3665adb28a05',s:'ACTIVE',p:'project-lab-sre',pid:'8ae6d3ef89be47b68692602bbfbd8aaa'},
-    {n:'lb-teste-2',id:'26a1d6c2-ab46-453d-a41c-077ba9431f8f',s:'ACTIVE',p:'project-lab-sre',pid:'8ae6d3ef89be47b68692602bbfbd8aaa'},
-    {n:'lb-teste-3',id:'289a003b-bf6f-478d-b5c9-b67c8bb34492',s:'ACTIVE',p:'project-lab-sre',pid:'8ae6d3ef89be47b68692602bbfbd8aaa'},
     {n:'linux-matheus',id:'645fd547-073a-4a59-8885-d37017308cdf',s:'ACTIVE',p:'project-lab-sre',pid:'8ae6d3ef89be47b68692602bbfbd8aaa'},
     {n:'linux-nathan',id:'018a2505-fa32-4cdb-81a1-b81985a8eb0a',s:'ACTIVE',p:'project-lab-sre',pid:'8ae6d3ef89be47b68692602bbfbd8aaa'},
     {n:'os-migrate',id:'91b9de04-d455-4751-b148-23b7fc94c7f4',s:'ACTIVE',p:'project-lab-sre',pid:'8ae6d3ef89be47b68692602bbfbd8aaa'},
     {n:'pfsense-gateway',id:'91d9b169-c76e-428c-a6de-ee9cd0f115ea',s:'ACTIVE',p:'project-lab-sre',pid:'8ae6d3ef89be47b68692602bbfbd8aaa'},
+    {n:'Prometheus-Server',id:'1159ebbe-49d6-4086-9276-84aad8054fcd',s:'ACTIVE',p:'project-lab-sre',pid:'8ae6d3ef89be47b68692602bbfbd8aaa'},
     {n:'RabbitMQ - Server',id:'62a93ffd-0fd9-4573-97da-6269e754d821',s:'ACTIVE',p:'project-lab-sre',pid:'8ae6d3ef89be47b68692602bbfbd8aaa'},
     {n:'ubuntu-metadata',id:'ac1d0ecd-6aa6-4928-801e-f19d92b293a2',s:'ACTIVE',p:'project-lab-sre',pid:'8ae6d3ef89be47b68692602bbfbd8aaa'},
+    {n:'ubuntu-teste-carlos',id:'53a2dcfa-2c2f-4d1f-9b86-ca4ad342bc5c',s:'ACTIVE',p:'project-lab-sre',pid:'8ae6d3ef89be47b68692602bbfbd8aaa'},
     {n:'WinJump-Panama',id:'43e846e2-10e5-471a-997e-128bc8e74962',s:'ACTIVE',p:'project-lab-sre',pid:'8ae6d3ef89be47b68692602bbfbd8aaa'},
     {n:'wordpress - Server',id:'60dba2f3-e6c7-423c-a11a-95a90908aebf',s:'ACTIVE',p:'project-lab-sre',pid:'8ae6d3ef89be47b68692602bbfbd8aaa'},
     {n:'srv-windows-2022',id:'c0f3e012-ad8b-48cd-9067-327b94247309',s:'ACTIVE',p:'project-sre-rfogaca',pid:'461f7fad4cb54ab9af3438ce4ce72068'},
@@ -6839,32 +6852,33 @@ function san30OpenVMsDesligadas() {
 
   // Dados pré-calculados do cruzamento 26/05 x 14/06
   const VMS_RELATORIO = [
-  {n:'teste-centos',d:'08setv32.com',dt:'26/05/2026',dias:29,s:'ja_estava'},
-  {n:'AptuAP01-sata',d:'aptu.cloud',dt:'26/05/2026',dias:29,s:'ja_estava'},
-  {n:'aptudb01-nova',d:'aptu.cloud',dt:'26/05/2026',dias:29,s:'ja_estava'},
-  {n:'AptuDB01-scsi',d:'aptu.cloud',dt:'26/05/2026',dias:29,s:'ja_estava'},
-  {n:'AptuFS01-scsi',d:'aptu.cloud',dt:'26/05/2026',dias:29,s:'ja_estava'},
-  {n:'AptuSW01-28022026',d:'aptu.cloud',dt:'26/05/2026',dias:29,s:'ja_estava'},
-  {n:'AptuSW02',d:'aptu.cloud',dt:'26/05/2026',dias:29,s:'ja_estava'},
-  {n:'DC-RecoveryConsole',d:'aptu.cloud',dt:'26/05/2026',dias:29,s:'ja_estava'},
-  {n:'test-scsi-ide',d:'aptu.cloud',dt:'26/05/2026',dias:29,s:'ja_estava'},
-  {n:'test-scsi-scsi',d:'aptu.cloud',dt:'26/05/2026',dias:29,s:'ja_estava'},
-  {n:'Server01',d:'aptu.cloud',dt:'26/05/2026',dias:29,s:'ja_estava'},
-  {n:'cloudmind-dev',d:'binario.cloud',dt:'26/05/2026',dias:29,s:'ja_estava'},
-  {n:'fmg.sec.digitalwork.com.br',d:'digitalwork.com.br',dt:'26/05/2026',dias:29,s:'ja_estava'},
-  {n:'moodle-03-edu',d:'edudata.com.br',dt:'26/05/2026',dias:29,s:'ja_estava'},
-  {n:'moodle-04-edu',d:'edudata.com.br',dt:'26/05/2026',dias:29,s:'ja_estava'},
-  {n:'mysql-slave2-edu',d:'edudata.com.br',dt:'26/05/2026',dias:29,s:'ja_estava'},
-  {n:'jrd-app',d:'jrdiesel.com.br',dt:'26/05/2026',dias:29,s:'ja_estava'},
-  {n:'fw-pforpak-old',d:'ouropak.com.br',dt:'26/05/2026',dias:29,s:'ja_estava'},
-  {n:'DC-P1-SGADB',d:'pedreiraumvalemix.com.br',dt:'26/05/2026',dias:29,s:'ja_estava'},
-  {n:'DC-P1-SGADB-06032026',d:'pedreiraumvalemix.com.br',dt:'26/05/2026',dias:29,s:'ja_estava'},
-  {n:'vm',d:'raconnect.com.br',dt:'26/05/2026',dias:29,s:'ja_estava'},
-  {n:'homologacao',d:'raconnect.com.br',dt:'26/05/2026',dias:29,s:'ja_estava'},
-  {n:'wc-new',d:'raconnect.com.br',dt:'26/05/2026',dias:29,s:'ja_estava'},
-  {n:'bc-silicom',d:'silicom.com.br',dt:'26/05/2026',dias:29,s:'ja_estava'},
-  {n:'SKYONE_BINARIO_UBUNTU22_POC',d:'skyone.solutions',dt:'26/05/2026',dias:29,s:'ja_estava'},
-  {n:'SKYONE_BINARIO_WINDOWS22_POC',d:'skyone.solutions',dt:'26/05/2026',dias:29,s:'ja_estava'}
+  {n:'teste-centos',d:'08setv32.com',dt:'26/05/2026',dias:30,s:'ja_estava'},
+  {n:'AptuAP01-sata',d:'aptu.cloud',dt:'26/05/2026',dias:30,s:'ja_estava'},
+  {n:'aptudb01-nova',d:'aptu.cloud',dt:'26/05/2026',dias:30,s:'ja_estava'},
+  {n:'AptuDB01-scsi',d:'aptu.cloud',dt:'26/05/2026',dias:30,s:'ja_estava'},
+  {n:'AptuFS01-scsi',d:'aptu.cloud',dt:'26/05/2026',dias:30,s:'ja_estava'},
+  {n:'AptuSW01-28022026',d:'aptu.cloud',dt:'26/05/2026',dias:30,s:'ja_estava'},
+  {n:'AptuSW02',d:'aptu.cloud',dt:'26/05/2026',dias:30,s:'ja_estava'},
+  {n:'DC-RecoveryConsole',d:'aptu.cloud',dt:'26/05/2026',dias:30,s:'ja_estava'},
+  {n:'test-scsi-ide',d:'aptu.cloud',dt:'26/05/2026',dias:30,s:'ja_estava'},
+  {n:'test-scsi-scsi',d:'aptu.cloud',dt:'26/05/2026',dias:30,s:'ja_estava'},
+  {n:'Server01',d:'aptu.cloud',dt:'26/05/2026',dias:30,s:'ja_estava'},
+  {n:'cloudmind-dev',d:'binario.cloud',dt:'26/05/2026',dias:30,s:'ja_estava'},
+  {n:'fmg.sec.digitalwork.com.br',d:'digitalwork.com.br',dt:'26/05/2026',dias:30,s:'ja_estava'},
+  {n:'moodle-03-edu',d:'edudata.com.br',dt:'26/05/2026',dias:30,s:'ja_estava'},
+  {n:'moodle-04-edu',d:'edudata.com.br',dt:'26/05/2026',dias:30,s:'ja_estava'},
+  {n:'mysql-slave2-edu',d:'edudata.com.br',dt:'26/05/2026',dias:30,s:'ja_estava'},
+  {n:'mysql-slave-edu',d:'edudata.com.br',dt:'26/05/2026',dias:30,s:'ja_estava'},
+  {n:'jrd-app',d:'jrdiesel.com.br',dt:'26/05/2026',dias:30,s:'ja_estava'},
+  {n:'fw-pforpak-old',d:'ouropak.com.br',dt:'26/05/2026',dias:30,s:'ja_estava'},
+  {n:'DC-P1-SGADB',d:'pedreiraumvalemix.com.br',dt:'26/05/2026',dias:30,s:'ja_estava'},
+  {n:'DC-P1-SGADB-06032026',d:'pedreiraumvalemix.com.br',dt:'26/05/2026',dias:30,s:'ja_estava'},
+  {n:'vm',d:'raconnect.com.br',dt:'26/05/2026',dias:30,s:'ja_estava'},
+  {n:'homologacao',d:'raconnect.com.br',dt:'26/05/2026',dias:30,s:'ja_estava'},
+  {n:'wc-new',d:'raconnect.com.br',dt:'26/05/2026',dias:30,s:'ja_estava'},
+  {n:'bc-silicom',d:'silicom.com.br',dt:'26/05/2026',dias:30,s:'ja_estava'},
+  {n:'SKYONE_BINARIO_UBUNTU22_POC',d:'skyone.solutions',dt:'26/05/2026',dias:30,s:'ja_estava'},
+  {n:'SKYONE_BINARIO_WINDOWS22_POC',d:'skyone.solutions',dt:'26/05/2026',dias:30,s:'ja_estava'}
   ];
 
   const jaEstava  = VMS_RELATORIO.filter(v => v.s === 'ja_estava' && v.dias >= 15);
