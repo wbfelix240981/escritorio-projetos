@@ -885,6 +885,7 @@ img, svg { max-width: 100%; }
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
           Controle de Migração
         </div>
+        <div class="dr-submenu-item" id="nav-daily-projetos" onclick="navTo('daily-projetos','active-blue')">Daily de Projetos</div>
       </div>
     </div>
 
@@ -3569,6 +3570,72 @@ document.addEventListener('page-changed', function(e) {
   </div>
 </div>
 
+<!-- ═══════════ DAILY DE PROJETOS ═══════════ -->
+<div id="daily-projetos" class="page">
+  <div class="topbar" role="banner"><div class="tb-heading">Daily de Projetos <span>| Binario Cloud</span></div></div>
+  <div class="page-content">
+
+    <!-- Hero -->
+    <div class="page-hero anim" style="background:linear-gradient(135deg,#0d47a1 0%,#1565c0 55%,#1976d2 100%);">
+      <div>
+        <div class="hero-title">Daily de Projetos</div>
+        <div class="hero-sub">Controle diário dos projetos abertos — Clientes e Estruturantes</div>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat"><div class="sv" id="dl-total">0</div><div class="sl">Abertos</div></div>
+        <div class="hero-stat"><div class="sv" id="dl-risco" style="color:#ffcc80;">0</div><div class="sl">Em risco</div></div>
+        <div class="hero-stat"><div class="sv" id="dl-atraso" style="color:#ef9a9a;">0</div><div class="sl">Atrasado</div></div>
+        <div class="hero-stat"><div class="sv" id="dl-prog" style="color:#a5d6a7;">0%</div><div class="sl">Progresso médio</div></div>
+      </div>
+    </div>
+
+    <!-- Termômetro por fase -->
+    <div class="anim" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:20px;" id="dl-fases"></div>
+
+    <!-- Filtro -->
+    <div style="display:flex;gap:10px;margin-bottom:16px;flex-wrap:wrap;align-items:center;">
+      <select id="dl-filtro" onchange="dlRender()" style="padding:9px 14px;background:var(--card-bg);border:1.5px solid #d0d7e8;border-radius:10px;color:var(--text-dark);font-size:12px;font-family:'Sora',sans-serif;font-weight:600;cursor:pointer;">
+        <option value="">Todos os projetos</option>
+        <option value="cliente">Somente Clientes</option>
+        <option value="estruturante">Somente Estruturantes</option>
+        <option value="risco">Em risco / Atrasado</option>
+      </select>
+      <span style="font-size:11px;color:var(--text-light);">Clique num projeto para ver detalhes</span>
+    </div>
+
+    <!-- Tabela de projetos -->
+    <div class="anim" style="background:var(--card-bg);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;overflow-x:auto;">
+      <table style="width:100%;border-collapse:collapse;font-size:12.5px;min-width:820px;">
+        <thead>
+          <tr style="background:#eef2f8;color:var(--text-dark);text-align:left;">
+            <th style="padding:12px 14px;font-weight:800;">Projeto</th>
+            <th style="padding:12px 10px;font-weight:800;">Tipo</th>
+            <th style="padding:12px 10px;font-weight:800;">Fase</th>
+            <th style="padding:12px 10px;font-weight:800;">Saúde</th>
+            <th style="padding:12px 10px;font-weight:800;min-width:130px;">Progresso</th>
+            <th style="padding:12px 10px;font-weight:800;">Próxima entrega</th>
+            <th style="padding:12px 10px;font-weight:800;">Bloqueio</th>
+          </tr>
+        </thead>
+        <tbody id="dl-tbody"></tbody>
+      </table>
+    </div>
+
+    <!-- Roteiro da Daily -->
+    <div class="anim" style="background:var(--card-bg);border-radius:var(--radius);box-shadow:var(--shadow);padding:20px 22px;margin-top:20px;">
+      <div style="font-size:14px;font-weight:800;color:var(--text-dark);margin-bottom:12px;">Roteiro da Daily <span style="font-size:11px;font-weight:600;color:var(--text-light);">(10–15 min)</span></div>
+      <div style="display:grid;gap:9px;font-size:12.5px;color:var(--text-mid);line-height:1.5;">
+        <div><b style="color:#1565c0;">1. Termômetro</b> — abra o painel e foque no que está Em risco / Atrasado.</div>
+        <div><b style="color:#1565c0;">2. Projeto a projeto</b> — o que avançou? qual o foco de hoje? tem bloqueio?</div>
+        <div><b style="color:#1565c0;">3. Bloqueios</b> — para cada um, defina quem destrava e até quando.</div>
+        <div><b style="color:#1565c0;">4. Parking lot</b> — discussão longa (+2 min) fica para depois, só com quem interessa.</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
 
 
 <script>
@@ -3608,6 +3675,7 @@ function navTo(id, cls) {
   window.scrollTo({ top: 0, behavior: 'smooth' });
   setTimeout(animatePage, 60, id);
   if (id === 'finalizados') renderFinalizados();
+  if (id === 'daily-projetos') dlRender();
   document.dispatchEvent(new CustomEvent('page-changed', { detail: id }));
 }
 function animatePage(id) {
@@ -7234,6 +7302,134 @@ document.addEventListener('DOMContentLoaded', function() {
 
 <script>
 // Sincroniza card "Migração BCP – 3.0" (Estruturantes) com o % da página Status Migração
+// ══════════════════════════════════════════════════════════════
+// DAILY DE PROJETOS — controle diário dos projetos abertos
+// Puxa automaticamente de P os projetos não-finalizados (Clientes +
+// Estruturantes). Fase/Saúde/Bloqueio ficam em dlMeta (editável).
+// ══════════════════════════════════════════════════════════════
+const dlMeta = {
+  uol:        { fase:'Homologação',  saude:'No prazo', entrega:'Acompanhamento de novo cliente', bloqueio:'' },
+  schioppa:   { fase:'Execução',     saude:'No prazo', entrega:'Continuidade da migração',        bloqueio:'' },
+  promofarma: { fase:'Discovery',    saude:'No prazo', entrega:'Definição de escopo',             bloqueio:'' },
+  bcp:        { fase:'Execução',     saude:'Em risco', entrega:'Netza e Enesa (final de semana)', bloqueio:'' },
+  obs:        { fase:'Execução',     saude:'No prazo', entrega:'Painel funcional 03/07',          bloqueio:'' },
+  storware:   { fase:'Homologação',  saude:'No prazo', entrega:'Testes 26–27',                    bloqueio:'' },
+  gimba:      { fase:'Execução',     saude:'No prazo', entrega:'—',                               bloqueio:'' },
+  san:        { fase:'Execução',     saude:'No prazo', entrega:'—',                               bloqueio:'' },
+};
+
+function dlIsFinalizado(p) {
+  if (p.completed) return true;
+  const pillFin = p.pill && (/Finalizado/i.test(p.pill) || /pill-done/i.test(p.pill));
+  return p.pct === 100 && pillFin;
+}
+
+function dlProjetos() {
+  // Lê AUTOMATICAMENTE os cards abertos das páginas Clientes e Estruturantes.
+  // Qualquer projeto não-finalizado que apareça nessas páginas entra aqui sozinho.
+  const lista = [];
+  const lerPagina = (pageId, tipo) => {
+    const page = document.getElementById(pageId);
+    if (!page) return;
+    page.querySelectorAll('.card.anim').forEach(card => {
+      // ignora cards escondidos (finalizados pela regra eterna)
+      if (card.style.display === 'none') return;
+      const pill = card.querySelector('.pill');
+      if (pill && (pill.classList.contains('pill-done') || /Finaliza/i.test(pill.textContent))) return;
+      const btn = card.querySelector('.btn-det');
+      if (!btn) return;
+      const mk = (btn.getAttribute('onclick')||'').match(/openModal\('(\w+)'\)/);
+      if (!mk) return;
+      const key = mk[1];
+      const titleEl = card.querySelector('.card-title');
+      const pctEl = card.querySelector('.card-pct');
+      const title = titleEl ? titleEl.textContent.trim() : (P[key] ? P[key].title : key);
+      const pct = pctEl ? parseFloat(String(pctEl.textContent).replace('%','').replace(',','.')) : (P[key] ? P[key].pct : 0);
+      const m = dlMeta[key] || { fase:'Execução', saude:'No prazo', entrega:'—', bloqueio:'' };
+      lista.push({ key, title, pct: isNaN(pct)?0:pct, tipo, ...m });
+    });
+  };
+  lerPagina('clientes', 'cliente');
+  lerPagina('estruturantes', 'estruturante');
+  // Fallback: se o DOM ainda não montou (ex.: carga inicial), usa P direto
+  if (!lista.length) {
+    ['uol','schioppa','promofarma','bcp','obs','storware'].forEach(key => {
+      if (!P[key] || dlIsFinalizado(P[key])) return;
+      const p = P[key];
+      const tipo = /estrutur/i.test(p.eye||'') ? 'estruturante' : 'cliente';
+      const m = dlMeta[key] || { fase:'Execução', saude:'No prazo', entrega:'—', bloqueio:'' };
+      lista.push({ key, title:p.title, pct:p.pct, tipo, ...m });
+    });
+  }
+  lista.sort((a,b) => (a.tipo===b.tipo) ? b.pct - a.pct : (a.tipo==='cliente'?-1:1));
+  return lista;
+}
+
+function dlSaudeCor(s) {
+  if (/atras/i.test(s)) return { bg:'#fdecea', fg:'#c0392b' };
+  if (/risco/i.test(s)) return { bg:'#fff4e0', fg:'#b9770e' };
+  return { bg:'#e8f7ee', fg:'#1e8e4e' };
+}
+
+function dlRender() {
+  const projs = dlProjetos();
+  const filtro = (document.getElementById('dl-filtro')||{}).value || '';
+  let vis = projs;
+  if (filtro === 'cliente')      vis = projs.filter(p => p.tipo==='cliente');
+  else if (filtro === 'estruturante') vis = projs.filter(p => p.tipo==='estruturante');
+  else if (filtro === 'risco')   vis = projs.filter(p => /risco|atras/i.test(p.saude));
+
+  // Métricas (sempre sobre todos os abertos)
+  const total = projs.length;
+  const risco = projs.filter(p => /risco/i.test(p.saude)).length;
+  const atraso = projs.filter(p => /atras/i.test(p.saude)).length;
+  const progMed = total ? Math.round(projs.reduce((s,p)=>s+p.pct,0)/total) : 0;
+  const set = (id,v) => { const e=document.getElementById(id); if(e) e.textContent=v; };
+  set('dl-total', total); set('dl-risco', risco); set('dl-atraso', atraso); set('dl-prog', progMed + '%');
+
+  // Fases
+  const fases = ['Discovery','Planejamento','Execução','Homologação','Concluído'];
+  const cont = {}; fases.forEach(f=>cont[f]=0);
+  projs.forEach(p => { if(cont[p.fase]!==undefined) cont[p.fase]++; });
+  const fasesEl = document.getElementById('dl-fases');
+  if (fasesEl) {
+    fasesEl.innerHTML = fases.map(f => `
+      <div style="background:var(--card-bg);border-radius:12px;box-shadow:var(--shadow);padding:14px 16px;text-align:center;">
+        <div style="font-size:26px;font-weight:800;color:#1565c0;">${cont[f]}</div>
+        <div style="font-size:11px;color:var(--text-light);font-weight:600;margin-top:2px;">${f}</div>
+      </div>`).join('');
+  }
+
+  // Tabela
+  const tb = document.getElementById('dl-tbody');
+  if (tb) {
+    tb.innerHTML = vis.map(p => {
+      const c = dlSaudeCor(p.saude);
+      const tipoBadge = p.tipo==='cliente'
+        ? '<span style="background:#e8f5e9;color:#1e8e4e;font-size:10px;font-weight:700;padding:3px 9px;border-radius:99px;">Cliente</span>'
+        : '<span style="background:#e3f0fc;color:#1565c0;font-size:10px;font-weight:700;padding:3px 9px;border-radius:99px;">Estruturante</span>';
+      const barCor = p.tipo==='cliente' ? '#27ae60' : '#3498db';
+      const bloq = p.bloqueio
+        ? `<span style="color:#c0392b;font-weight:600;">⚠ ${p.bloqueio}</span>`
+        : '<span style="color:#bbb;">—</span>';
+      return `<tr onclick="openModal('${p.key}')" style="border-top:1px solid #eef2f6;cursor:pointer;transition:background .15s;" onmouseover="this.style.background='#f7fafd'" onmouseout="this.style.background=''">
+        <td style="padding:11px 14px;font-weight:700;color:var(--text-dark);">${p.title}</td>
+        <td style="padding:11px 10px;">${tipoBadge}</td>
+        <td style="padding:11px 10px;color:var(--text-mid);">${p.fase}</td>
+        <td style="padding:11px 10px;"><span style="background:${c.bg};color:${c.fg};font-size:10.5px;font-weight:700;padding:3px 10px;border-radius:99px;">${p.saude}</span></td>
+        <td style="padding:11px 10px;">
+          <div style="display:flex;align-items:center;gap:8px;">
+            <div style="flex:1;height:7px;background:var(--bar-track);border-radius:99px;overflow:hidden;"><div style="width:${p.pct}%;height:100%;background:${barCor};border-radius:99px;"></div></div>
+            <span style="font-size:11px;font-weight:700;color:var(--text-mid);min-width:34px;">${p.pct}%</span>
+          </div>
+        </td>
+        <td style="padding:11px 10px;color:var(--text-mid);font-size:11.5px;">${p.entrega}</td>
+        <td style="padding:11px 10px;font-size:11.5px;">${bloq}</td>
+      </tr>`;
+    }).join('') || '<tr><td colspan="7" style="padding:24px;text-align:center;color:var(--text-light);">Nenhum projeto neste filtro.</td></tr>';
+  }
+}
+
 // ══════════════════════════════════════════════════════════════
 // REGRA ETERNA: projetos finalizados aparecem SOMENTE em "Projetos
 // Entregues". Esta função esconde automaticamente qualquer card com
