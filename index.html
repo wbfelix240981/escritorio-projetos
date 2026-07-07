@@ -1148,7 +1148,7 @@ img, svg { max-width: 100%; }
       <div style="display:flex;align-items:center;gap:12px;margin-bottom:6px;">
         <div>
           <h1 style="font-size:22px;font-weight:800;color:#1a2a3a;letter-spacing:-.5px;margin:0;">Gestão Cloud de Domínios</h1>
-          <p style="font-size:12px;color:#5a6a7a;margin:2px 0 0;">Ambiente 2.0 — Inventário OpenStack · 243 VMs · 21 Domínios · 199 ligadas · 43 desligadas<span id="san20-timestamp"></span></p>
+          <p style="font-size:12px;color:#5a6a7a;margin:2px 0 0;">Ambiente 2.0 — Inventário OpenStack · 244 VMs · 21 Domínios · 199 ligadas · 44 desligadas<span id="san20-timestamp"></span></p>
         </div>
       </div>
     </div>
@@ -1583,13 +1583,13 @@ async function san20SaveStorage() {
 
 
 const SAN20_SEED = [
-  // ── Inventário OpenStack — 06/07/2026 | 243 VMs | 21 Domínios | 199 ligadas | 43 desligadas ──
+  // ── Inventário OpenStack — 06/07/2026 | 244 VMs | 21 Domínios | 199 ligadas | 44 desligadas ──
   { id: 1, dominio:'Default', cliente:'Admin / Service (OpenStack interno)', tipo:'Serviço Interno', vms:58, ligadas:58, desligadas:0, pctDeslig:0.0 },
   { id: 2, dominio:'binario.cloud', cliente:'Binario Cloud — Ambiente Principal', tipo:'Cloud Foundation', vms:41, ligadas:41, desligadas:0, pctDeslig:0.0 },
   { id: 3, dominio:'refrio.com.br', cliente:'Refrio', tipo:'Aplicação Web', vms:26, ligadas:24, desligadas:2, pctDeslig:7.7 },
   { id: 4, dominio:'bmchyundai.com.br', cliente:'BMC Hyundai', tipo:'Aplicação Web', vms:23, ligadas:20, desligadas:3, pctDeslig:13.0 },
   { id: 5, dominio:'enesa.com.br', cliente:'ENESA Engenharia', tipo:'Aplicação Web', vms:15, ligadas:0, desligadas:15, pctDeslig:100.0 },
-  { id: 6, dominio:'zanthus.com.br', cliente:'Zanthus', tipo:'Aplicação Web', vms:14, ligadas:0, desligadas:14, pctDeslig:100.0 },
+  { id: 6, dominio:'zanthus.com.br', cliente:'Zanthus', tipo:'Aplicação Web', vms:15, ligadas:0, desligadas:15, pctDeslig:100.0 },
   { id: 7, dominio:'gruporaizes.com', cliente:'Grupo Raízes', tipo:'Aplicação Web', vms:13, ligadas:13, desligadas:0, pctDeslig:0.0 },
   { id: 8, dominio:'waits.com.br', cliente:'Piramidal', tipo:'Aplicação Web', vms:11, ligadas:11, desligadas:0, pctDeslig:0.0 },
   { id: 9, dominio:'luizalabs.com', cliente:'Magazine Luiza', tipo:'Aplicação Web', vms:10, ligadas:10, desligadas:0, pctDeslig:0.0 },
@@ -1795,6 +1795,7 @@ const SAN20_VMS = {
     {n:'BC-POC-ZRETAIL',id:'00fdda9d-7607-4f49-a8fe-afdc21707285',s:'SHUTOFF',p:'ZCLOUD-ZANTHUS-TI-BC',pid:'a74e1b339de544e79b9ca202805bd16c'},
     {n:'BC-PROTHEUS',id:'e13b4724-041e-4297-8f4d-02ec108a7881',s:'SHUTOFF',p:'ZCLOUD-ZANTHUS-TI-BC',pid:'a74e1b339de544e79b9ca202805bd16c'},
     {n:'BC-SCAVENGER',id:'8f33188b-fd13-4c9f-a0e8-b041b0ab3f58',s:'SHUTOFF',p:'ZCLOUD-ZANTHUS-TI-BC',pid:'a74e1b339de544e79b9ca202805bd16c'},
+    {n:'SRVMIGRACAO-SHARE',id:'c34f123c-ed79-4fb3-b764-d577cff996f8',s:'SHUTOFF',p:'ZCLOUD-ZANTHUS-TI-BC',pid:'a74e1b339de544e79b9ca202805bd16c'},
     {n:'SRV-ZANT025',id:'af72f4a3-f3d4-4733-a916-136e9f0e84c4',s:'SHUTOFF',p:'ZCLOUD-ZANTHUS-TI-BC',pid:'a74e1b339de544e79b9ca202805bd16c'},
   ],
   'gruporaizes.com': [
@@ -1896,7 +1897,7 @@ const SAN20_VMS = {
 };
 
 async function san20LoadStorage() {
-  const SEED_VERSION = '2026-07-06-v3';
+  const SEED_VERSION = '2026-07-06-v4';
   try {
     let saved = null;
     if (window.storage) {
