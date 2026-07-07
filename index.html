@@ -1037,8 +1037,8 @@ img, svg { max-width: 100%; }
         <div class="hero-sub">Iniciativas internas de infraestrutura e evolução</div>
       </div>
       <div class="hero-stats">
-        <div class="hero-stat"><div class="sv">2</div><div class="sl">Projetos</div></div>
-        <div class="hero-stat"><div class="sv">92.5%</div><div class="sl">Média geral</div></div>
+        <div class="hero-stat"><div class="sv">3</div><div class="sl">Projetos</div></div>
+        <div class="hero-stat"><div class="sv">61.7%</div><div class="sl">Média geral</div></div>
         <div class="hero-stat"><div class="sv">0</div><div class="sl">Com atraso</div></div>
       </div>
 
@@ -1048,6 +1048,7 @@ img, svg { max-width: 100%; }
       <div class="card anim"><div class="card-accent accent-blue"></div><div class="card-header"><span class="pill pill-done">✓ Finalizado — Jun/2026</span><span class="card-pct" id="bcp3-card-pct">100%</span></div><div class="card-title">Migração BCP – 3.0</div><div class="card-footer"><span class="prog-note">Migração concluída — 100%</span><div class="bar-track"><div class="bar-fill fill-green" id="bcp3-card-bar" data-pct="100"></div></div><button class="btn-det" onclick="openModal('bcp')">Ver detalhes <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 6.5h9M7 2l4.5 4.5L7 11" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div></div>
       <div class="card anim"><div class="card-accent accent-blue"></div><div class="card-header"><span class="pill pill-prog">● Em progresso</span><span class="card-pct">90%</span></div><div class="card-title">Observabilidade</div><div class="card-footer"><span class="prog-note">Meta: conclusão em 31/07</span><div class="bar-track"><div class="bar-fill fill-blue" data-pct="90"></div></div><button class="btn-det" onclick="openModal('obs')">Ver detalhes <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 6.5h9M7 2l4.5 4.5L7 11" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div></div>
       <div class="card anim"><div class="card-accent accent-blue"></div><div class="card-header"><span class="pill pill-prog">● Em progresso</span><span class="card-pct">95%</span></div><div class="card-title">Implementação – Storware</div><div class="card-footer"><span class="prog-note">Aguardando renovação · Testes em andamento</span><div class="bar-track"><div class="bar-fill fill-blue" data-pct="95"></div></div><button class="btn-det" onclick="openModal('storware')">Ver detalhes <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 6.5h9M7 2l4.5 4.5L7 11" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div></div>
+      <div class="card anim"><div class="card-accent accent-blue"></div><div class="card-header"><span class="pill pill-prog">○ Não iniciado</span><span class="card-pct">0%</span></div><div class="card-title">Desmobilização da Cloud 2.0</div><div class="card-footer"><span class="prog-note">Projeto ainda não iniciado</span><div class="bar-track"><div class="bar-fill fill-blue" data-pct="0"></div></div><button class="btn-det" onclick="openModal('desmob20')">Ver detalhes <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 6.5h9M7 2l4.5 4.5L7 11" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div></div>
     </div>
   </div>
 </div>
@@ -3729,6 +3730,7 @@ const P = {
   san:{eye:'Projeto Estruturante',title:'BCP 2.0 / 3.0',pct:80,fc:'fill-blue',grad:'linear-gradient(90deg,#1565c0,#2979ff)',pill:'<span class="pill pill-prog">● Em progresso</span>',completed:null,tags:[['Sanitização','blue'],['Segurança','blue']],secs:[{t:'Escopo',rows:[[' ',' ']]},{t:'Status atual',rows:[[' ',' ']]},{t:'Próximos passos',rows:[[' ',' ']]},
       {t:'Chamados ClickUp',rows:[['📋','Portfólio: 1 chamado ativo (BCOS 3.0)'],['⚠️','Status: Atrasado'],['👥','Wagner Bento Felix']]}]},
   storware:{eye:'Projeto Estruturante',title:'Implementação – Storware',pct:95,fc:'fill-blue',grad:'linear-gradient(90deg,#1565c0,#2979ff)',pill:'<span class="pill pill-prog">● Em progresso</span>',completed:null,tags:[['Backup','blue'],['Storware','blue'],['95%','blue']],secs:[{t:'Status atual',rows:[['🧪','Serão iniciados os testes necessários nos próximos dias 26 e 27/06'],['⏳','Aguardando renovação das licenças']]},{t:'Próximos passos',rows:[['📅','Testes necessários nos dias 26 e 27/06']]}]},
+  desmob20:{eye:'Projeto Estruturante',title:'Desmobilização da Cloud 2.0',pct:0,fc:'fill-blue',grad:'linear-gradient(90deg,#1565c0,#2979ff)',pill:'<span class="pill pill-prog">○ Não iniciado</span>',completed:null,tags:[['Desmobilização','blue'],['Cloud 2.0','blue'],['Não iniciado','blue'],['0%','blue']],secs:[{t:'Escopo',rows:[['☁️','Desmobilização do ambiente Cloud 2.0 após migração para a 3.0']]},{t:'Status atual',rows:[['⏳','Projeto ainda não iniciado — 0%']]},{t:'Próximos passos',rows:[['📋','Definir escopo, cronograma e plano de desmobilização']]}]},
   uol:{
     eye:'Projeto de Cliente', title:'UOL – Modernização de Nuvem Privada', pct:99.5,
     fc:'fill-blue', grad:'linear-gradient(90deg,#1565c0,#2979ff)',
