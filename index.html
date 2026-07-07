@@ -964,7 +964,7 @@ img, svg { max-width: 100%; }
       </div>
       <div class="hero-stats">
         <div class="hero-stat"><div class="sv">3</div><div class="sl">Projetos</div></div>
-        <div class="hero-stat"><div class="sv">58.2%</div><div class="sl">Média ativos</div></div>
+        <div class="hero-stat"><div class="sv">88.2%</div><div class="sl">Média ativos</div></div>
         <div class="hero-stat"><div class="sv">3</div><div class="sl">Em andamento</div></div>
       </div>
     </div>
@@ -1009,12 +1009,12 @@ img, svg { max-width: 100%; }
         <div class="card-accent accent-green"></div>
         <div class="card-header">
           <span class="pill pill-prog">● Em progresso</span>
-          <span class="card-pct">5%</span>
+          <span class="card-pct">95%</span>
         </div>
         <div class="card-title">Organização Farmacêutica Nakano Ltda (PromoFarma)</div>
         <div class="card-footer">
-          <span class="prog-note">Projeto em fase inicial</span>
-          <div class="bar-track"><div class="bar-fill fill-green" data-pct="5"></div></div>
+          <span class="prog-note">Concluído · TEP submetido para assinatura</span>
+          <div class="bar-track"><div class="bar-fill fill-green" data-pct="95"></div></div>
           <button class="btn-det" onclick="openModal('promofarma')">Ver detalhes <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 6.5h9M7 2l4.5 4.5L7 11" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
         </div>
       </div>
@@ -3791,17 +3791,18 @@ const P = {
     ],
   },
   promofarma:{
-    eye:'Projeto de Cliente', title:'Organização Farmacêutica Nakano Ltda (PromoFarma)', pct:5,
+    eye:'Projeto de Cliente', title:'Organização Farmacêutica Nakano Ltda (PromoFarma)', pct:95,
     fc:'fill-green', grad:'linear-gradient(90deg,#2e7d32,#43a047)',
     pill:'<span class="pill pill-prog">● Em progresso</span>',
-    tags:[['Cliente','green'],['Em progresso','green'],['5%','green']],
+    tags:[['Cliente','green'],['Em progresso','green'],['95%','green']],
     completed:null,
     secs:[
       {t:'Escopo', rows:[['☁️','Migração e modernização da infraestrutura de nuvem']]},
       {t:'Status atual', rows:[
-        ['🚀','Projeto em fase inicial — 5% concluído']
+        ['✅','Atividade realizada com sucesso — 95% concluído'],
+        ['📄','TEP submetido para assinatura do cliente']
       ]},
-      {t:'Próximos passos', rows:[['📋','Definir escopo, cronograma e próximas entregas']]},
+      {t:'Próximos passos', rows:[['✍️','Aguardando assinatura do TEP pelo cliente']]},
     ],
   },
   spsp:{
