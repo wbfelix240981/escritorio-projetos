@@ -1974,7 +1974,7 @@ document.addEventListener('page-changed', function(e) {
       <div style="display:flex;align-items:center;gap:12px;margin-bottom:6px;">
         <div>
           <h1 style="font-size:22px;font-weight:800;color:#1a2a3a;letter-spacing:-.5px;margin:0;">Gestão Cloud de Domínios</h1>
-          <p style="font-size:12px;color:#5a6a7a;margin:2px 0 0;">Ambiente 3.0 — Inventário OpenStack · 815 VMs · 81 Domínios · 735 ligadas · 75 desligadas<span id="san30-timestamp"></span></p>
+          <p style="font-size:12px;color:#5a6a7a;margin:2px 0 0;">Ambiente 3.0 — Inventário OpenStack · 824 VMs · 81 Domínios · 747 ligadas · 72 desligadas<span id="san30-timestamp"></span></p>
         </div>
       </div>
     </div>
@@ -2366,7 +2366,7 @@ function san30Delete(id) {
 
 async function san30SaveStorage() {
   try {
-    const payload = JSON.stringify({ san30Data, san30NextId, seed_version: '2026-07-07-v1-san30' });
+    const payload = JSON.stringify({ san30Data, san30NextId, seed_version: '2026-07-08-v1-san30' });
     if (window.storage) {
       await window.storage.set('san30_data', payload);
     } else {
@@ -2384,21 +2384,21 @@ async function san30SaveStorage() {
 
 
 const SAN30_SEED = [
-  // ── Inventário OpenStack 3.0 — 07/07/2026 | 815 VMs | 81 Domínios | 735 ligadas | 75 desligadas ──
+  // ── Inventário OpenStack 3.0 — 08/07/2026 | 824 VMs | 81 Domínios | 747 ligadas | 72 desligadas ──
   { id: 1, dominio:'gimba.com.br', cliente:'Gimba', tipo:'Aplicação Web', vms:122, ligadas:114, desligadas:8, pctDeslig:6.6 },
-  { id: 2, dominio:'Default', cliente:'Admin / Service (OpenStack interno)', tipo:'Serviço Interno', vms:114, ligadas:114, desligadas:0, pctDeslig:0.0 },
-  { id: 3, dominio:'binario.cloud', cliente:'Binario Cloud — Ambiente Principal', tipo:'Cloud Foundation', vms:94, ligadas:67, desligadas:26, pctDeslig:27.7 },
-  { id: 4, dominio:'sre.binario.cloud', cliente:'Binario Cloud SRE', tipo:'Cloud Foundation', vms:44, ligadas:28, desligadas:14, pctDeslig:31.8 },
+  { id: 2, dominio:'Default', cliente:'Admin / Service (OpenStack interno)', tipo:'Serviço Interno', vms:118, ligadas:118, desligadas:0, pctDeslig:0.0 },
+  { id: 3, dominio:'binario.cloud', cliente:'Binario Cloud — Ambiente Principal', tipo:'Cloud Foundation', vms:97, ligadas:70, desligadas:26, pctDeslig:26.8 },
+  { id: 4, dominio:'sre.binario.cloud', cliente:'Binario Cloud SRE', tipo:'Cloud Foundation', vms:45, ligadas:29, desligadas:14, pctDeslig:31.1 },
   { id: 5, dominio:'binario', cliente:'binario', tipo:'Aplicação Web', vms:40, ligadas:40, desligadas:0, pctDeslig:0.0 },
   { id: 6, dominio:'skyone.solutions', cliente:'Skyone', tipo:'Cloud Cliente', vms:34, ligadas:33, desligadas:0, pctDeslig:0.0 },
-  { id: 7, dominio:'binario.net', cliente:'Binario.net', tipo:'Cloud Foundation', vms:29, ligadas:27, desligadas:1, pctDeslig:3.4 },
+  { id: 7, dominio:'binario.net', cliente:'Binario.net', tipo:'Cloud Foundation', vms:30, ligadas:29, desligadas:0, pctDeslig:0.0 },
   { id: 8, dominio:'cannect.com.br', cliente:'Cannect', tipo:'Cloud Cliente', vms:25, ligadas:25, desligadas:0, pctDeslig:0.0 },
   { id: 9, dominio:'aptu.cloud', cliente:'Aptu', tipo:'Cloud Cliente', vms:16, ligadas:14, desligadas:2, pctDeslig:12.5 },
   { id: 10, dominio:'zanthus.com.br', cliente:'Zanthus', tipo:'Aplicação Web', vms:16, ligadas:16, desligadas:0, pctDeslig:0.0 },
   { id: 11, dominio:'ncsolucoes.com.br', cliente:'NC Soluções', tipo:'Cloud Cliente', vms:15, ligadas:15, desligadas:0, pctDeslig:0.0 },
   { id: 12, dominio:'pedreiraumvalemix.com.br', cliente:'pedreiraumvalemix.com.br', tipo:'Cloud Cliente', vms:13, ligadas:11, desligadas:2, pctDeslig:15.4 },
   { id: 13, dominio:'trajeto.com.br', cliente:'trajeto.com.br', tipo:'Cloud Cliente', vms:13, ligadas:13, desligadas:0, pctDeslig:0.0 },
-  { id: 14, dominio:'edudata.com.br', cliente:'EduData', tipo:'Cloud Cliente', vms:11, ligadas:7, desligadas:4, pctDeslig:36.4 },
+  { id: 14, dominio:'edudata.com.br', cliente:'EduData', tipo:'Cloud Cliente', vms:11, ligadas:9, desligadas:2, pctDeslig:18.2 },
   { id: 15, dominio:'mextrametal.com.br', cliente:'mextrametal.com.br', tipo:'Cloud Cliente', vms:9, ligadas:9, desligadas:0, pctDeslig:0.0 },
   { id: 16, dominio:'bestsmart.com.br', cliente:'bestsmart.com.br', tipo:'Cloud Cliente', vms:8, ligadas:8, desligadas:0, pctDeslig:0.0 },
   { id: 17, dominio:'fipe.org.br', cliente:'fipe.org.br', tipo:'Cloud Cliente', vms:8, ligadas:8, desligadas:0, pctDeslig:0.0 },
@@ -2619,9 +2619,11 @@ const SAN30_VMS = {
     {n:'amphora-31ec4118-edb2-41c7-9685-3d09f0555639',id:'81303cc4-2cf6-4363-8782-6157a2f58c10',s:'ACTIVE',p:'service',pid:'918bb1a15ada41e593855ba033277f7e'},
     {n:'amphora-32ec6807-c5d3-4a57-ab86-5aba86a6079c',id:'ed460749-a64a-46a6-8212-a2651ce877aa',s:'ACTIVE',p:'service',pid:'918bb1a15ada41e593855ba033277f7e'},
     {n:'amphora-35edc8d1-b51d-4259-aa77-1dbfc4d6c17f',id:'86fe63f4-f5b4-4321-b784-009f52c37280',s:'ACTIVE',p:'service',pid:'918bb1a15ada41e593855ba033277f7e'},
+    {n:'amphora-35edf01f-3742-4a06-88b1-36ce80be8b75',id:'abfcf1a7-9903-4320-9861-cf038b12ba7f',s:'ACTIVE',p:'service',pid:'918bb1a15ada41e593855ba033277f7e'},
     {n:'amphora-385b90c6-a8fd-4192-8097-95464b2e760e',id:'4e6be90a-7f10-4be1-8a7b-e092137c0b5a',s:'ACTIVE',p:'service',pid:'918bb1a15ada41e593855ba033277f7e'},
     {n:'amphora-3e2d096e-498e-42f0-8586-3c17309a33de',id:'c570995a-34d7-4470-977f-06c93c04010d',s:'ACTIVE',p:'service',pid:'918bb1a15ada41e593855ba033277f7e'},
     {n:'amphora-412efe05-7de5-45ce-bcfe-26f196607694',id:'f25f501a-0222-43df-b2f8-806c91612803',s:'ACTIVE',p:'service',pid:'918bb1a15ada41e593855ba033277f7e'},
+    {n:'amphora-42fc2727-a8b4-4b23-a96c-f35ae882a34b',id:'f193a868-88f5-4504-87a4-af45485fc16b',s:'ACTIVE',p:'service',pid:'918bb1a15ada41e593855ba033277f7e'},
     {n:'amphora-4711f0e5-b49a-424b-a84e-a8a814afeca8',id:'df7ba4f6-1c53-41d7-803b-57143a95606a',s:'ACTIVE',p:'service',pid:'918bb1a15ada41e593855ba033277f7e'},
     {n:'amphora-4b5eef66-69bd-4cb1-9e28-3ffbd096e56d',id:'c8010f62-d721-4af8-a300-c13734703f0e',s:'ACTIVE',p:'service',pid:'918bb1a15ada41e593855ba033277f7e'},
     {n:'amphora-4f1a010a-e6d9-411d-b54e-e9404f9529bb',id:'70861abf-d3f4-4d5e-a449-64581fe59334',s:'ACTIVE',p:'service',pid:'918bb1a15ada41e593855ba033277f7e'},
@@ -2635,6 +2637,7 @@ const SAN30_VMS = {
     {n:'amphora-78831f68-ee19-44ff-bd6b-666a0985e357',id:'e55a8024-613b-467c-a348-2cadd756040a',s:'ACTIVE',p:'service',pid:'918bb1a15ada41e593855ba033277f7e'},
     {n:'amphora-7fc3dfb5-ae7f-4978-8b00-d419fdf15f35',id:'3fc57bd1-11eb-49bc-841a-d8ebab6248da',s:'ACTIVE',p:'service',pid:'918bb1a15ada41e593855ba033277f7e'},
     {n:'amphora-832b6e07-e932-4586-956c-2a4b0c5850c0',id:'42f29390-7af3-4527-848f-59fa5c458138',s:'ACTIVE',p:'service',pid:'918bb1a15ada41e593855ba033277f7e'},
+    {n:'amphora-8ca67e77-bde2-4f25-a87e-0abe5f47fc06',id:'7665cca9-e893-4e58-be10-f86b6094bb1b',s:'ACTIVE',p:'service',pid:'918bb1a15ada41e593855ba033277f7e'},
     {n:'amphora-8d771dd7-492f-4c80-8a78-db4423f45a67',id:'c5e69061-a204-4f2f-8eef-e779757bc603',s:'ACTIVE',p:'service',pid:'918bb1a15ada41e593855ba033277f7e'},
     {n:'amphora-8e1202a2-e700-4fa3-b304-59f6611d20ec',id:'0b1b3087-1dc6-4b89-8db3-5168bbec4b11',s:'ACTIVE',p:'service',pid:'918bb1a15ada41e593855ba033277f7e'},
     {n:'amphora-8f5a9241-4469-4b98-9f31-311c6f1b9fc0',id:'dd694e30-1bf8-4d8e-83a6-56307c3f76c6',s:'ACTIVE',p:'service',pid:'918bb1a15ada41e593855ba033277f7e'},
@@ -2658,6 +2661,7 @@ const SAN30_VMS = {
     {n:'amphora-df2a4731-5c46-478b-b964-a6ab964e24b9',id:'22a96347-2ca8-4f62-9eb7-a881b427cdf9',s:'ACTIVE',p:'service',pid:'918bb1a15ada41e593855ba033277f7e'},
     {n:'amphora-df3d77f4-7289-465f-8ac9-601035c92e5e',id:'d60405b7-3fb8-43f2-9d80-960359a7b6b4',s:'ACTIVE',p:'service',pid:'918bb1a15ada41e593855ba033277f7e'},
     {n:'amphora-e4818562-411c-4cad-b04d-8bafe23159f4',id:'c8ea5eb7-3610-43d2-a813-eb93048fa67c',s:'ACTIVE',p:'service',pid:'918bb1a15ada41e593855ba033277f7e'},
+    {n:'amphora-e59285bd-977c-4e61-a4c5-8cc9e104bff4',id:'90623878-fdb0-4c70-9d73-185df030d68f',s:'ACTIVE',p:'service',pid:'918bb1a15ada41e593855ba033277f7e'},
     {n:'amphora-e7848a34-e21b-4c0b-b9bb-e7d8787173ab',id:'a152d539-12dd-4875-b59e-ce4ae37a0e08',s:'ACTIVE',p:'service',pid:'918bb1a15ada41e593855ba033277f7e'},
     {n:'amphora-f39be794-fbe6-44e8-8556-b7dfc0ae0d08',id:'2c47b2fc-e415-495f-bfbf-e75117943100',s:'ACTIVE',p:'service',pid:'918bb1a15ada41e593855ba033277f7e'},
     {n:'amphora-f4911c77-48b8-4361-a5a5-799b75251193',id:'4761cb65-40ec-4a2a-b702-8fd1e88d295e',s:'ACTIVE',p:'service',pid:'918bb1a15ada41e593855ba033277f7e'},
@@ -2668,8 +2672,8 @@ const SAN30_VMS = {
     {n:'apicannect-bi',id:'46233eee-92b4-4cc6-83b6-1ff186c962a5',s:'ACTIVE',p:'service',pid:'918bb1a15ada41e593855ba033277f7e'},
     {n:'BC3db-1794',id:'a777dafe-a8bd-4d81-b55f-e3e143b29b80',s:'ACTIVE',p:'service',pid:'918bb1a15ada41e593855ba033277f7e'},
     {n:'bc3db-mariadb-tor-000',id:'38429359-6725-4061-a6ff-9408764f96d1',s:'ACTIVE',p:'service',pid:'918bb1a15ada41e593855ba033277f7e'},
-    {n:'bc3db-mongodb-tor-000',id:'cb247b7f-ce92-4545-8805-806ad98cc291',s:'ACTIVE',p:'service',pid:'918bb1a15ada41e593855ba033277f7e'},
     {n:'bc3db-mongodb-tor-000',id:'9a1f48bd-c82d-44e0-a74b-597d4750fc19',s:'ACTIVE',p:'service',pid:'918bb1a15ada41e593855ba033277f7e'},
+    {n:'bc3db-mongodb-tor-000',id:'cb247b7f-ce92-4545-8805-806ad98cc291',s:'ACTIVE',p:'service',pid:'918bb1a15ada41e593855ba033277f7e'},
     {n:'bc3db-mongo-tor-000',id:'fa1b73fd-2cbb-41cc-b15c-18771ad70b80',s:'ACTIVE',p:'service',pid:'918bb1a15ada41e593855ba033277f7e'},
     {n:'bc3db-mongo-tor-001',id:'09752fd7-81c2-407b-a68f-9e2962dfdaf3',s:'ACTIVE',p:'service',pid:'918bb1a15ada41e593855ba033277f7e'},
     {n:'bc3db-postg-tor-000',id:'1d682552-3b77-4d11-97ed-b8a0870c5980',s:'ACTIVE',p:'service',pid:'918bb1a15ada41e593855ba033277f7e'},
@@ -2731,6 +2735,9 @@ const SAN30_VMS = {
     {n:'dalx-k8s-dev-dv7zu3rstfij-master-0',id:'9f896edc-7fc7-4bca-bf96-732eeafc03d1',s:'ACTIVE',p:'dev-binario-cloud',pid:'ec976639cd7a444b97bd6852e928799a'},
     {n:'dalx-k8s-dev-dv7zu3rstfij-node-0',id:'b6999d46-06cd-413c-afe3-aefafeafa5a4',s:'ACTIVE',p:'dev-binario-cloud',pid:'ec976639cd7a444b97bd6852e928799a'},
     {n:'dalx-k8s-dev-dv7zu3rstfij-node-1',id:'8cfb7dcf-8397-458f-9cf2-9a56b4ec6f13',s:'ACTIVE',p:'dev-binario-cloud',pid:'ec976639cd7a444b97bd6852e928799a'},
+    {n:'services-db-dev',id:'44a90e61-44f2-4960-8297-65b1d95548f6',s:'ACTIVE',p:'dev-binario-cloud',pid:'ec976639cd7a444b97bd6852e928799a'},
+    {n:'services-dev-zusysh6sxwey-master-0',id:'a8cae027-80f8-4c69-9358-b534b729d8ec',s:'ACTIVE',p:'dev-binario-cloud',pid:'ec976639cd7a444b97bd6852e928799a'},
+    {n:'services-dev-zusysh6sxwey-node-0',id:'801f102e-baf6-4889-a291-a5e6bcc9289c',s:'ACTIVE',p:'dev-binario-cloud',pid:'ec976639cd7a444b97bd6852e928799a'},
     {n:'kubernetescluster-5i4kz5vwhyh5-master-0',id:'2291de12-8869-4822-a5fa-588d861423ef',s:'ACTIVE',p:'hidrovias_poc',pid:'1c9d4967c84b4293a9a6c4d2e31ef557'},
     {n:'kubernetescluster-5i4kz5vwhyh5-node-0',id:'21ce0fe2-a34d-487c-822b-5a2605f94b49',s:'ACTIVE',p:'hidrovias_poc',pid:'1c9d4967c84b4293a9a6c4d2e31ef557'},
     {n:'kubernetescluster-5i4kz5vwhyh5-node-1',id:'76989cd1-e196-40a3-be11-0e4e3b9a3e72',s:'ACTIVE',p:'hidrovias_poc',pid:'1c9d4967c84b4293a9a6c4d2e31ef557'},
@@ -2810,6 +2817,7 @@ const SAN30_VMS = {
     {n:'Teste2',id:'5220e520-a4df-4bc9-99a7-cea305552de1',s:'ACTIVE',p:'Acme',pid:'1282227013974d44aedb85282fd2c1cf'},
     {n:'Ubuntu1',id:'d37286b0-b42e-4eb5-97ae-7ec3fe34b8d7',s:'BUILD',p:'Acme',pid:'1282227013974d44aedb85282fd2c1cf'},
     {n:'VBR-ACME',id:'90caa73d-467d-4c3f-850e-cf030a315830',s:'ACTIVE',p:'Acme',pid:'1282227013974d44aedb85282fd2c1cf'},
+    {n:'N8N-Server',id:'2d65601d-6a6a-4183-80d7-591028c8e9fd',s:'ACTIVE',p:'dev',pid:'f6c3cce5ba7549c2bb32082e432ee9b0'},
     {n:'Ollama-Server',id:'0c0adbf2-5ae7-431e-aac3-b25ed0fdcdaf',s:'ACTIVE',p:'dev',pid:'f6c3cce5ba7549c2bb32082e432ee9b0'},
     {n:'Prometheus LINUX',id:'2e6250fc-08d1-4035-842d-f3f331ae1c5e',s:'ACTIVE',p:'dev',pid:'f6c3cce5ba7549c2bb32082e432ee9b0'},
     {n:'vm-random-1',id:'05394253-a2f4-499d-abc4-3eb4195f0deb',s:'ACTIVE',p:'dev',pid:'f6c3cce5ba7549c2bb32082e432ee9b0'},
@@ -2931,6 +2939,7 @@ const SAN30_VMS = {
   ],
   'binario.net': [
     {n:'Firemon',id:'a9ae0dda-9202-41b1-8407-53b347ff85b1',s:'ACTIVE',p:'noc-binario-net',pid:'fb3aebc17a4c423fb4018418b0cd9411'},
+    {n:'Fortigate',id:'bd865367-2f14-40a9-85ae-5f9267b7cd6e',s:'ACTIVE',p:'noc-binario-net',pid:'fb3aebc17a4c423fb4018418b0cd9411'},
     {n:'FW-PF-NOC',id:'c020789f-c392-4788-8779-8825fe1c1acd',s:'ACTIVE',p:'noc-binario-net',pid:'fb3aebc17a4c423fb4018418b0cd9411'},
     {n:'BN-SRV-APPInfra-ClaroFust',id:'fa58af1b-9480-460c-9072-27ca95b5f45c',s:'ACTIVE',p:'prod-binario-net',pid:'cdb14c590c174981870f6d9e88c8bcfa'},
     {n:'BN-SRV-APPInfra-Media',id:'b0b34333-97e0-4e6a-8ecc-f51711fac401',s:'ACTIVE',p:'prod-binario-net',pid:'cdb14c590c174981870f6d9e88c8bcfa'},
@@ -2955,7 +2964,7 @@ const SAN30_VMS = {
     {n:'BN-SRV-zbx-dasa',id:'769449e7-2e01-4ef0-a026-79e7f577d347',s:'ACTIVE',p:'prod-binario-net',pid:'cdb14c590c174981870f6d9e88c8bcfa'},
     {n:'Eagle',id:'5f131414-92e0-4b3d-ad1b-f7039fb54599',s:'VERIFY_RESIZE',p:'prod-binario-net',pid:'cdb14c590c174981870f6d9e88c8bcfa'},
     {n:'fw-prod-binario-net',id:'cb871b8f-4838-4a67-ab21-af86ed834489',s:'ACTIVE',p:'prod-binario-net',pid:'cdb14c590c174981870f6d9e88c8bcfa'},
-    {n:'PNETLAB-Engenharia',id:'6ecd5445-1bcd-4bab-b256-e42ee2a47966',s:'SHUTOFF',p:'prod-binario-net',pid:'cdb14c590c174981870f6d9e88c8bcfa'},
+    {n:'PNETLAB-Engenharia',id:'6ecd5445-1bcd-4bab-b256-e42ee2a47966',s:'ACTIVE',p:'prod-binario-net',pid:'cdb14c590c174981870f6d9e88c8bcfa'},
     {n:'SRV-BN-DASHWEB',id:'3d74d9e0-7e9b-4c0d-ad83-4bf35ccbf45f',s:'ACTIVE',p:'prod-binario-net',pid:'cdb14c590c174981870f6d9e88c8bcfa'},
     {n:'vSRX',id:'34351338-e4f1-47d8-8ac3-27dcbd5d9c69',s:'ACTIVE',p:'prod-binario-net',pid:'cdb14c590c174981870f6d9e88c8bcfa'},
     {n:'waas-omada-controller',id:'eb6eafd5-4310-4142-8417-8bd4cb9928f5',s:'ACTIVE',p:'prod-binario-net',pid:'cdb14c590c174981870f6d9e88c8bcfa'},
@@ -3079,8 +3088,8 @@ const SAN30_VMS = {
     {n:'moodle-03-edu',id:'7791f484-b93f-4aa2-bd02-fcce342e1986',s:'SHUTOFF',p:'project-edudata',pid:'221e3d63150b4b0cb3bc172db341ca91'},
     {n:'moodle-04-edu',id:'19159b73-2cb4-43b5-b2d1-cdc4250503d9',s:'SHUTOFF',p:'project-edudata',pid:'221e3d63150b4b0cb3bc172db341ca91'},
     {n:'mysql-master-edu',id:'b64b519d-e025-473e-8983-a388078b54e0',s:'ACTIVE',p:'project-edudata',pid:'221e3d63150b4b0cb3bc172db341ca91'},
-    {n:'mysql-slave2-edu',id:'5cb08e9c-7e1d-46d8-af11-afb4d8825bbf',s:'SHUTOFF',p:'project-edudata',pid:'221e3d63150b4b0cb3bc172db341ca91'},
-    {n:'mysql-slave-edu',id:'ae31ccab-8b82-4f6a-b7d6-6134b5f15a21',s:'SHUTOFF',p:'project-edudata',pid:'221e3d63150b4b0cb3bc172db341ca91'},
+    {n:'mysql-slave2-edu',id:'5cb08e9c-7e1d-46d8-af11-afb4d8825bbf',s:'ACTIVE',p:'project-edudata',pid:'221e3d63150b4b0cb3bc172db341ca91'},
+    {n:'mysql-slave-edu',id:'ae31ccab-8b82-4f6a-b7d6-6134b5f15a21',s:'ACTIVE',p:'project-edudata',pid:'221e3d63150b4b0cb3bc172db341ca91'},
     {n:'nfs-edu',id:'b2e9d0de-ab74-4519-9651-0681c124dac5',s:'ACTIVE',p:'project-edudata',pid:'221e3d63150b4b0cb3bc172db341ca91'},
   ],
   'mextrametal.com.br': [
@@ -3162,7 +3171,7 @@ const SAN30_VMS = {
     {n:'OMADA',id:'dc396ae6-181d-4c2f-8afc-21129b04a641',s:'ACTIVE',p:'project-solutika',pid:'a0adadbb27c8465c96db9b9486f6eeb4'},
     {n:'PROXY',id:'b70456c4-0b31-42b8-a3ff-e1633174c09c',s:'ACTIVE',p:'project-solutika',pid:'a0adadbb27c8465c96db9b9486f6eeb4'},
     {n:'SRV-SNUTRI-GNI',id:'73d74952-724c-4424-aa9f-cf768b27f74c',s:'ACTIVE',p:'project-solutika',pid:'a0adadbb27c8465c96db9b9486f6eeb4'},
-    {n:'SRV-SOLUTIKA',id:'84ac3897-6ba8-40e7-9b22-353711b9ef51',s:'ACTIVE',p:'project-solutika',pid:'a0adadbb27c8465c96db9b9486f6eeb4'},
+    {n:'SRV-SOLUTIKA',id:'cfc84453-5674-46f2-a64e-367fcb6f9ffb',s:'ACTIVE',p:'project-solutika',pid:'a0adadbb27c8465c96db9b9486f6eeb4'},
     {n:'VBR-Veeam',id:'417e5507-1a51-4065-b15f-4c6e907b96e8',s:'ACTIVE',p:'project-solutika',pid:'a0adadbb27c8465c96db9b9486f6eeb4'},
   ],
   'acaoengenharia.com.br': [
@@ -3228,7 +3237,7 @@ const SAN30_VMS = {
     {n:'FW-PFATMLOG',id:'ceecd68a-1081-4562-9ccc-63aef54c4101',s:'ACTIVE',p:'project-automalogica',pid:'885ed2f86f0e4e92bdbc71b2616ae7ad'},
   ],
   'ish.com.br': [
-    {n:'coriolis-7ebad675-5112-41fe-bad0-e507e040dc9d-import-worker',id:'8ebd7490-4667-48f3-a9fd-a305af11a7a8',s:'ACTIVE',p:'CLI-DR',pid:'feff4201134d4c4192632defc0d94948'},
+    {n:'coriolis-32edabc7-e3de-4699-ae9d-953cd3a2d9a3-import-worker',id:'2685a4f5-963f-43e8-a217-ae7d65eaf8f1',s:'ACTIVE',p:'CLI-DR',pid:'feff4201134d4c4192632defc0d94948'},
     {n:'DC2-CLOUD-ISH',id:'e4d9dea4-d60c-4e07-a178-a96967195313',s:'ACTIVE',p:'CLI-DR',pid:'feff4201134d4c4192632defc0d94948'},
     {n:'PFSENSE-ISH',id:'71c30b0f-203a-402b-8194-3ba16e97e0ec',s:'ACTIVE',p:'CLI-DR',pid:'feff4201134d4c4192632defc0d94948'},
     {n:'prx-ishdr',id:'93d9e915-d6af-45ec-aca3-4e16db09cd1c',s:'ACTIVE',p:'CLI-DR',pid:'feff4201134d4c4192632defc0d94948'},
