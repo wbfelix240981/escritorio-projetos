@@ -1049,6 +1049,21 @@ img, svg { max-width: 100%; }
         </div>
       </div>
 
+      <!-- PS DO VIDRO - NUVEM PUBLICA + BACKUP VEEAM -->
+      <div class="card anim">
+        <div class="card-accent accent-green"></div>
+        <div class="card-header">
+          <span class="pill pill-prog">○ Não iniciado</span>
+          <span class="card-pct">0%</span>
+        </div>
+        <div class="card-title">PS do Vidro – Nuvem Pública &amp; Backup Veeam</div>
+        <div class="card-footer">
+          <span class="prog-note">Iniciando kick-off · Jul/2026</span>
+          <div class="bar-track"><div class="bar-fill fill-green" data-pct="0"></div></div>
+          <button class="btn-det" onclick="openModal('psdovidro')">Ver detalhes <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 6.5h9M7 2l4.5 4.5L7 11" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        </div>
+      </div>
+
     </div>
 
 
@@ -3971,6 +3986,56 @@ const P = {
       {t:'Status atual', rows:[
         ['⏳','Projeto ainda não iniciado — 0%'],
         ['🚀','Iniciando kick-off (Jul/2026)']
+      ]},
+    ],
+  },
+  psdovidro:{
+    eye:'Projeto de Cliente', title:'PS do Vidro – Nuvem Pública & Backup Veeam', pct:0,
+    fc:'fill-green', grad:'linear-gradient(90deg,#2e7d32,#43a047)',
+    pill:'<span class="pill pill-prog">○ Não iniciado</span>',
+    tags:[['Cliente','green'],['Nuvem Pública','green'],['Backup Veeam','green'],['Não iniciado','green'],['0%','green']],
+    completed:null,
+    secs:[
+      {t:'Sobre o cliente', rows:[
+        ['🪟','PS do Vidro — empresa brasileira especializada em soluções de vidro e espelhos, com fabricação própria e equipes de medição, beneficiamento e instalação'],
+        ['📍','Fundada em 1980 · 40+ anos de atuação · São Paulo – SP'],
+        ['🏗️','Segmento: vidros, espelhos, boxes e fachadas · +80 mil obras entregues · arquitetos e construtoras']
+      ]},
+      {t:'Contexto e objetivo', rows:[
+        ['🎯','Modernização do ambiente de TI, migrando sistemas corporativos, banco de dados e aplicações de gestão para a nuvem pública da Binário Cloud'],
+        ['⚠️','Cenário atual: ambiente on-premises, necessidade de modernização e proteção de dados'],
+        ['☁️','Objetivo: infraestrutura em nuvem (IaaS) segura, escalável e gerenciada, com backup Veeam e custos previsíveis em Reais']
+      ]},
+      {t:'Escopo contratado', rows:[
+        ['🖥️','1 VM App (bc1-standard-8-32) — Windows Server 2022 · 8 vCPU + 32 GB RAM · 300 GB Armazenamento Platinum'],
+        ['🗄️','1 VM DB (bc1-highmem-4-32) — Windows Server 2022 com SQL Server · 4 vCPU + 32 GB RAM · 700 GB Armazenamento Platinum'],
+        ['🛡️','1 Virtual Firewall pfSense (bc1-firewall-2-4) + 1 IP público'],
+        ['💾','Backup gerenciado Veeam Backup & Replication — 2 licenças Enterprise Plus · repositório 1,5 TB · padrão 3-2-1-1-0 com cópia imutável']
+      ]},
+      {t:'Resumo comercial', rows:[
+        ['📄','Solução: Nuvem Pública IaaS + Backup Veeam'],
+        ['📅','Vigência: 18 meses'],
+        ['📑','Documento base: Proposta IaaS PV v2.1']
+      ]},
+      {t:'Plano de implementação', rows:[
+        ['1️⃣','Semana 1 — Kickoff & Planejamento: alinhamento técnico, escopo, pré-requisitos, acessos e elaboração do TAP'],
+        ['2️⃣','Semana 1 — Execução e Controle: provisionamento das 2 VMs, storage 1 TB Platinum, firewall pfSense + IP público e Veeam Backup & Replication'],
+        ['3️⃣','Semana 1 — Testes e validação: conectividade, desempenho, segurança e backup'],
+        ['4️⃣','Semana 1 — Go Live: cutover para produção, handover ao suporte e elaboração do TEP']
+      ]},
+      {t:'Fora do escopo', rows:[
+        ['🚫','Migração de dados (salvo se expressamente contratada)'],
+        ['🚫','Gerenciamento e suporte das VMs, aplicações e bancos de dados (salvo se contratado)'],
+        ['🚫','Gerenciamento de Active Directory (usuários, grupos, senhas)']
+      ]},
+      {t:'Contato do cliente', rows:[
+        ['👤','André Nascimento — Gerente de TI'],
+        ['✉️','andre@psdovidro.com.br'],
+        ['📞','(11) 97069-9790']
+      ]},
+      {t:'Status atual', rows:[
+        ['⏳','Projeto ainda não iniciado — 0%'],
+        ['🚀','Aguardando kick-off']
       ]},
     ],
   },
