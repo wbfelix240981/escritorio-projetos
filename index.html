@@ -963,9 +963,9 @@ img, svg { max-width: 100%; }
         <div class="hero-sub">Acompanhamento de implantações e faturamento</div>
       </div>
       <div class="hero-stats">
-        <div class="hero-stat"><div class="sv">3</div><div class="sl">Projetos</div></div>
-        <div class="hero-stat"><div class="sv">56.5%</div><div class="sl">Média ativos</div></div>
-        <div class="hero-stat"><div class="sv">3</div><div class="sl">Em andamento</div></div>
+        <div class="hero-stat"><div class="sv">4</div><div class="sl">Projetos</div></div>
+        <div class="hero-stat"><div class="sv">42.4%</div><div class="sl">Média ativos</div></div>
+        <div class="hero-stat"><div class="sv">4</div><div class="sl">Em andamento</div></div>
       </div>
     </div>
     <div class="sec-label" style="display:flex;align-items:center;gap:10px;">
@@ -1031,6 +1031,21 @@ img, svg { max-width: 100%; }
           <span class="prog-note">Iniciando kick-off · Jul/2026</span>
           <div class="bar-track"><div class="bar-fill fill-green" data-pct="0"></div></div>
           <button class="btn-det" onclick="openModal('raizesfw')">Ver detalhes <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 6.5h9M7 2l4.5 4.5L7 11" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        </div>
+      </div>
+
+      <!-- NEUGEBAUER - NUVEM PUBLICA -->
+      <div class="card anim">
+        <div class="card-accent accent-green"></div>
+        <div class="card-header">
+          <span class="pill pill-prog">○ Não iniciado</span>
+          <span class="card-pct">0%</span>
+        </div>
+        <div class="card-title">Neugebauer – Nuvem Pública &amp; Serviços Gerenciados</div>
+        <div class="card-footer">
+          <span class="prog-note">Iniciando kick-off · Jul/2026</span>
+          <div class="bar-track"><div class="bar-fill fill-green" data-pct="0"></div></div>
+          <button class="btn-det" onclick="openModal('neugebauer')">Ver detalhes <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 6.5h9M7 2l4.5 4.5L7 11" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
         </div>
       </div>
 
@@ -1183,7 +1198,7 @@ img, svg { max-width: 100%; }
       <div style="display:flex;align-items:center;gap:12px;margin-bottom:6px;">
         <div>
           <h1 style="font-size:22px;font-weight:800;color:#1a2a3a;letter-spacing:-.5px;margin:0;">Gestão Cloud de Domínios</h1>
-          <p style="font-size:12px;color:#5a6a7a;margin:2px 0 0;">Ambiente 2.0 — Inventário OpenStack · 244 VMs · 21 Domínios · 199 ligadas · 44 desligadas<span id="san20-timestamp"></span></p>
+          <p style="font-size:12px;color:#5a6a7a;margin:2px 0 0;">Ambiente 2.0 — Inventário OpenStack · 227 VMs · 18 Domínios · 211 ligadas · 14 desligadas<span id="san20-timestamp"></span></p>
         </div>
       </div>
     </div>
@@ -1618,28 +1633,25 @@ async function san20SaveStorage() {
 
 
 const SAN20_SEED = [
-  // ── Inventário OpenStack — 06/07/2026 | 244 VMs | 21 Domínios | 199 ligadas | 44 desligadas ──
+  // ── Inventário OpenStack — 21/07/2026 | 227 VMs | 18 Domínios | 211 ligadas | 14 desligadas ──
   { id: 1, dominio:'Default', cliente:'Admin / Service (OpenStack interno)', tipo:'Serviço Interno', vms:58, ligadas:58, desligadas:0, pctDeslig:0.0 },
-  { id: 2, dominio:'binario.cloud', cliente:'Binario Cloud — Ambiente Principal', tipo:'Cloud Foundation', vms:41, ligadas:41, desligadas:0, pctDeslig:0.0 },
+  { id: 2, dominio:'binario.cloud', cliente:'Binario Cloud — Ambiente Principal', tipo:'Cloud Foundation', vms:45, ligadas:44, desligadas:1, pctDeslig:2.2 },
   { id: 3, dominio:'refrio.com.br', cliente:'Refrio', tipo:'Aplicação Web', vms:26, ligadas:24, desligadas:2, pctDeslig:7.7 },
   { id: 4, dominio:'bmchyundai.com.br', cliente:'BMC Hyundai', tipo:'Aplicação Web', vms:23, ligadas:20, desligadas:3, pctDeslig:13.0 },
-  { id: 5, dominio:'enesa.com.br', cliente:'ENESA Engenharia', tipo:'Aplicação Web', vms:15, ligadas:0, desligadas:15, pctDeslig:100.0 },
-  { id: 6, dominio:'zanthus.com.br', cliente:'Zanthus', tipo:'Aplicação Web', vms:15, ligadas:0, desligadas:15, pctDeslig:100.0 },
-  { id: 7, dominio:'gruporaizes.com', cliente:'Grupo Raízes', tipo:'Aplicação Web', vms:13, ligadas:13, desligadas:0, pctDeslig:0.0 },
-  { id: 8, dominio:'waits.com.br', cliente:'Piramidal', tipo:'Aplicação Web', vms:11, ligadas:11, desligadas:0, pctDeslig:0.0 },
-  { id: 9, dominio:'luizalabs.com', cliente:'Magazine Luiza', tipo:'Aplicação Web', vms:10, ligadas:10, desligadas:0, pctDeslig:0.0 },
-  { id: 10, dominio:'radiojb.fm', cliente:'Rádio JB', tipo:'Aplicação Web', vms:6, ligadas:6, desligadas:0, pctDeslig:0.0 },
+  { id: 5, dominio:'gruporaizes.com', cliente:'Grupo Raízes', tipo:'Aplicação Web', vms:18, ligadas:15, desligadas:3, pctDeslig:16.7 },
+  { id: 6, dominio:'waits.com.br', cliente:'Piramidal', tipo:'Aplicação Web', vms:11, ligadas:11, desligadas:0, pctDeslig:0.0 },
+  { id: 7, dominio:'luizalabs.com', cliente:'Magazine Luiza', tipo:'Aplicação Web', vms:10, ligadas:10, desligadas:0, pctDeslig:0.0 },
+  { id: 8, dominio:'smarapd.com.br', cliente:'smarapd.com.br', tipo:'Aplicação Web', vms:8, ligadas:7, desligadas:1, pctDeslig:12.5 },
+  { id: 9, dominio:'radiojb.fm', cliente:'Rádio JB', tipo:'Aplicação Web', vms:6, ligadas:6, desligadas:0, pctDeslig:0.0 },
+  { id: 10, dominio:'prumoengenharia.com.br', cliente:'Prumo Engenharia', tipo:'Aplicação Web', vms:5, ligadas:3, desligadas:2, pctDeslig:40.0 },
   { id: 11, dominio:'sre.binario.cloud', cliente:'Binario Cloud SRE', tipo:'Cloud Foundation', vms:5, ligadas:5, desligadas:0, pctDeslig:0.0 },
-  { id: 12, dominio:'netza.com.br', cliente:'Netza', tipo:'Aplicação Web', vms:4, ligadas:0, desligadas:4, pctDeslig:100.0 },
-  { id: 13, dominio:'prumoengenharia.com.br', cliente:'Prumo Engenharia', tipo:'Aplicação Web', vms:4, ligadas:2, desligadas:2, pctDeslig:50.0 },
-  { id: 14, dominio:'sattelecomip.com', cliente:'SAT Telecom IP', tipo:'Aplicação Web', vms:3, ligadas:2, desligadas:1, pctDeslig:33.3 },
-  { id: 15, dominio:'geofix.com.br', cliente:'Geofix', tipo:'Aplicação Web', vms:2, ligadas:2, desligadas:0, pctDeslig:0.0 },
-  { id: 16, dominio:'repositoriosbackup.com.br', cliente:'Repositórios / Backup', tipo:'Cloud Foundation', vms:2, ligadas:2, desligadas:0, pctDeslig:0.0 },
-  { id: 17, dominio:'sattelecom.com', cliente:'SAT Telecom', tipo:'Aplicação Web', vms:2, ligadas:1, desligadas:1, pctDeslig:50.0 },
-  { id: 18, dominio:'1team.cloud', cliente:'1TeamCloud', tipo:'Aplicação Web', vms:1, ligadas:1, desligadas:0, pctDeslig:0.0 },
-  { id: 19, dominio:'automalogica.com.br', cliente:'Automalogica', tipo:'Aplicação Web', vms:1, ligadas:1, desligadas:0, pctDeslig:0.0 },
-  { id: 20, dominio:'(Sem Domínio)', cliente:'(Sem Domínio / Projetos Órfãos)', tipo:'Serviço Interno', vms:1, ligadas:0, desligadas:0, pctDeslig:0.0 },
-  { id: 21, dominio:'suporte.binario.cloud', cliente:'Binario Cloud Suporte', tipo:'Cloud Foundation', vms:1, ligadas:0, desligadas:1, pctDeslig:100.0 },
+  { id: 12, dominio:'sattelecomip.com', cliente:'SAT Telecom IP', tipo:'Aplicação Web', vms:3, ligadas:2, desligadas:1, pctDeslig:33.3 },
+  { id: 13, dominio:'geofix.com.br', cliente:'Geofix', tipo:'Aplicação Web', vms:2, ligadas:2, desligadas:0, pctDeslig:0.0 },
+  { id: 14, dominio:'sattelecom.com', cliente:'SAT Telecom', tipo:'Aplicação Web', vms:2, ligadas:1, desligadas:1, pctDeslig:50.0 },
+  { id: 15, dominio:'(Sem Domínio)', cliente:'(Sem Domínio / Projetos Órfãos)', tipo:'Serviço Interno', vms:2, ligadas:0, desligadas:0, pctDeslig:0.0 },
+  { id: 16, dominio:'1team.cloud', cliente:'1TeamCloud', tipo:'Aplicação Web', vms:1, ligadas:1, desligadas:0, pctDeslig:0.0 },
+  { id: 17, dominio:'automalogica.com.br', cliente:'Automalogica', tipo:'Aplicação Web', vms:1, ligadas:1, desligadas:0, pctDeslig:0.0 },
+  { id: 18, dominio:'repositoriosbackup.com.br', cliente:'Repositórios / Backup', tipo:'Cloud Foundation', vms:1, ligadas:1, desligadas:0, pctDeslig:0.0 },
 ];
 
 const SAN20_VMS = {
@@ -1718,6 +1730,7 @@ const SAN20_VMS = {
     {n:'dev-apicloud',id:'d074fa85-9f91-4e4e-b081-c3a3f0692a0a',s:'ACTIVE',p:'project-binariocloud',pid:'e82b2d3daaa8436683608d40cff8070e'},
     {n:'dev-idp-mfa',id:'388e6552-d66b-414b-8454-8263d55c58ec',s:'ACTIVE',p:'project-binariocloud',pid:'e82b2d3daaa8436683608d40cff8070e'},
     {n:'Eagles',id:'af1bff1b-407f-41ec-81bc-e9f20c1b7044',s:'ACTIVE',p:'project-binariocloud',pid:'e82b2d3daaa8436683608d40cff8070e'},
+    {n:'linux-gpraizes',id:'b7840a07-7ca6-4362-9185-47eb5de98bca',s:'ACTIVE',p:'project-binariocloud',pid:'e82b2d3daaa8436683608d40cff8070e'},
     {n:'old-grafana',id:'876ad1f8-62fe-4ca2-99ef-2d7ae9d34e22',s:'ACTIVE',p:'project-binariocloud',pid:'e82b2d3daaa8436683608d40cff8070e'},
     {n:'Redskins',id:'4e7ffa56-79d4-4a4f-908d-1ac082f7da58',s:'ACTIVE',p:'project-binariocloud',pid:'e82b2d3daaa8436683608d40cff8070e'},
     {n:'Saints',id:'747d6ea2-e971-4b35-8aa3-ea31dfc14935',s:'ACTIVE',p:'project-binariocloud',pid:'e82b2d3daaa8436683608d40cff8070e'},
@@ -1727,13 +1740,16 @@ const SAN20_VMS = {
     {n:'Titans',id:'50ac0e83-19ef-457a-b97a-d2e00f8dab8e',s:'ACTIVE',p:'project-binariocloud',pid:'e82b2d3daaa8436683608d40cff8070e'},
     {n:'VM-PowerBI-OTRS',id:'bdf4556b-c19a-4da8-98f5-f06e69886865',s:'ACTIVE',p:'project-binariocloud',pid:'e82b2d3daaa8436683608d40cff8070e'},
     {n:'WashingtonFT',id:'c99f8042-624c-420c-99d6-5c7dc4fa2a63',s:'ACTIVE',p:'project-binariocloud',pid:'e82b2d3daaa8436683608d40cff8070e'},
+    {n:'windows-gpraizes',id:'2c1cd97c-7ab4-47f9-b19a-55071828445c',s:'SHUTOFF',p:'project-binariocloud',pid:'e82b2d3daaa8436683608d40cff8070e'},
     {n:'Dev-central',id:'45e2ad0f-4fb4-4f29-810d-3fadbb2d6c76',s:'ACTIVE',p:'project--central1',pid:'83896cb6fc6949989d548f2f292748fd'},
+    {n:'BLOPES',id:'f7470439-b0f2-4299-a202-2de4d34cbaa0',s:'ACTIVE',p:'project-migracao',pid:'f5e15d8fdf8a4487bc1522a7372c32b4'},
     {n:'openstack-cli',id:'cfcd0050-1ba3-4ccf-be65-0bb9a36c01e4',s:'ACTIVE',p:'project-migracao',pid:'f5e15d8fdf8a4487bc1522a7372c32b4'},
     {n:'recovery-linux-openstack-cliente',id:'9ca706b1-2a11-45d0-97fd-e8d9fb0bdf69',s:'ACTIVE',p:'project-migracao',pid:'f5e15d8fdf8a4487bc1522a7372c32b4'},
     {n:'SRV-AD01',id:'b6a9282c-4d8a-4ca2-a4aa-fd59ada7a1be',s:'ACTIVE',p:'project-migracao',pid:'f5e15d8fdf8a4487bc1522a7372c32b4'},
     {n:'SRV-AD02',id:'f0485966-dd9c-428c-9cfa-d1071f5b4c6b',s:'ACTIVE',p:'project-migracao',pid:'f5e15d8fdf8a4487bc1522a7372c32b4'},
     {n:'SRV-EXPORT',id:'e6d01898-aba1-4294-8a60-bb65120587f4',s:'ACTIVE',p:'project-migracao',pid:'f5e15d8fdf8a4487bc1522a7372c32b4'},
     {n:'VM-Teste-pFsense',id:'d10c739d-cd14-4dfe-94de-eeeeb92a6fbc',s:'ACTIVE',p:'project-migracao',pid:'f5e15d8fdf8a4487bc1522a7372c32b4'},
+    {n:'binario-teste',id:'6c60c9e0-4b81-403a-8d9c-ee3019c56c9b',s:'ACTIVE',p:'project-projeto-teste',pid:'9ef6f58337db4641a59739fb00e85eef'},
     {n:'Dev-Horizon',id:'310d6a5e-23f0-4a7f-98e8-ea5831b7c38d',s:'ACTIVE',p:'project-whitelabel',pid:'c5484fb437014bbb859aaeb62fbf3067'},
     {n:'PROD-Central-Totvs',id:'ce983d80-ad8f-4df5-934b-ea0f1e29fcce',s:'ACTIVE',p:'project-whitelabel',pid:'c5484fb437014bbb859aaeb62fbf3067'},
     {n:'PROD-Horizon',id:'1e95c4a0-7fd0-4f28-9021-f14bdd8e37de',s:'ACTIVE',p:'project-whitelabel',pid:'c5484fb437014bbb859aaeb62fbf3067'},
@@ -1799,54 +1815,25 @@ const SAN20_VMS = {
     {n:'prx-bmchyundai',id:'4c6aa053-00c9-4e09-864c-90a3144e2455',s:'ACTIVE',p:'project-bmc',pid:'704f5dd0fa754789a5bea1623c476748'},
     {n:'SRV-VBR',id:'8b63f814-99f7-4c69-8f08-0b09b04968e9',s:'ACTIVE',p:'project-bmc',pid:'704f5dd0fa754789a5bea1623c476748'},
   ],
-  'enesa.com.br': [
-    {n:'ENSP-000SEVMBKP',id:'7cfb65f2-37a4-4e04-adae-9320001561f8',s:'SHUTOFF',p:'project-backup-enesa',pid:'da35d2f76e3d43f4ac237f02c92a9765'},
-    {n:'ENSP-000SEVMPRI',id:'f6d0dcb4-2681-4d9c-a089-fe1777053be9',s:'SHUTOFF',p:'project-backup-enesa',pid:'da35d2f76e3d43f4ac237f02c92a9765'},
-    {n:'ENSP-00FWPF',id:'62e681f7-cada-42e4-a5b0-60f0617b6e04',s:'SHUTOFF',p:'project-backup-enesa',pid:'da35d2f76e3d43f4ac237f02c92a9765'},
-    {n:'ENSP-SEVMBD',id:'77dc63cf-7496-4f1f-9806-5ed59dbae5fc',s:'SHUTOFF',p:'project-backup-enesa',pid:'da35d2f76e3d43f4ac237f02c92a9765'},
-    {n:'SVAPP03',id:'2b38a14b-8c75-422a-bfcc-de41fb38c9ca',s:'SHUTOFF',p:'project-backup-enesa',pid:'da35d2f76e3d43f4ac237f02c92a9765'},
-    {n:'SVDB02',id:'4aa994c8-8022-4c2f-8962-66d264b7e781',s:'SHUTOFF',p:'project-backup-enesa',pid:'da35d2f76e3d43f4ac237f02c92a9765'},
-    {n:'SVDC01',id:'93f191b1-276f-4da4-8c0f-50bf785273b3',s:'SHUTOFF',p:'project-backup-enesa',pid:'da35d2f76e3d43f4ac237f02c92a9765'},
-    {n:'SVFASTVUE',id:'5f3f42b8-8707-46da-b4ff-97394a18c995',s:'SHUTOFF',p:'project-backup-enesa',pid:'da35d2f76e3d43f4ac237f02c92a9765'},
-    {n:'SVFS01',id:'cd679b6e-589b-445d-810b-9a9d32a15223',s:'SHUTOFF',p:'project-backup-enesa',pid:'da35d2f76e3d43f4ac237f02c92a9765'},
-    {n:'SVHOMOLOG',id:'adbc6aea-bd58-4459-b747-681e6541a297',s:'SHUTOFF',p:'project-backup-enesa',pid:'da35d2f76e3d43f4ac237f02c92a9765'},
-    {n:'SVRDP',id:'45f8bf43-ee51-4d59-aed5-4c5d2fea999d',s:'SHUTOFF',p:'project-backup-enesa',pid:'da35d2f76e3d43f4ac237f02c92a9765'},
-    {n:'SVRPA',id:'83af6ff0-e8dc-4175-964a-4aa224ac2550',s:'SHUTOFF',p:'project-backup-enesa',pid:'da35d2f76e3d43f4ac237f02c92a9765'},
-    {n:'SVRS01',id:'e12fd6de-63e5-4ff2-9718-c1c5002eda3e',s:'SHUTOFF',p:'project-backup-enesa',pid:'da35d2f76e3d43f4ac237f02c92a9765'},
-    {n:'SVWEB01',id:'bd71073e-8498-43f2-aff4-5b6d04b4fc4a',s:'SHUTOFF',p:'project-backup-enesa',pid:'da35d2f76e3d43f4ac237f02c92a9765'},
-    {n:'VBR-MIGRACA',id:'efd1c729-b7fb-47ee-8871-5081e5a6f720',s:'SHUTOFF',p:'project-backup-enesa',pid:'da35d2f76e3d43f4ac237f02c92a9765'},
-  ],
-  'zanthus.com.br': [
-    {n:'BC-ADMIN',id:'92ba45d1-21c3-4027-86aa-fa3b17c3ce80',s:'SHUTOFF',p:'ZCLOUD-ZANTHUS-TI-BC',pid:'a74e1b339de544e79b9ca202805bd16c'},
-    {n:'BC-CLAZ',id:'ccba83f0-b91d-4449-9754-3036972cab96',s:'SHUTOFF',p:'ZCLOUD-ZANTHUS-TI-BC',pid:'a74e1b339de544e79b9ca202805bd16c'},
-    {n:'BC-DOCKER',id:'3b44e68c-0c17-4909-bce7-e87945f998ed',s:'SHUTOFF',p:'ZCLOUD-ZANTHUS-TI-BC',pid:'a74e1b339de544e79b9ca202805bd16c'},
-    {n:'BC-DOCKER-RESTORE',id:'9da60652-0a71-4a85-8429-1217845a3c0d',s:'SHUTOFF',p:'ZCLOUD-ZANTHUS-TI-BC',pid:'a74e1b339de544e79b9ca202805bd16c'},
-    {n:'BC-ECOMM',id:'d02a6999-7428-43f5-9471-d35523689bbe',s:'SHUTOFF',p:'ZCLOUD-ZANTHUS-TI-BC',pid:'a74e1b339de544e79b9ca202805bd16c'},
-    {n:'BC-GITLAB',id:'9607c8e9-6ef8-4197-978a-1a3b884afa0c',s:'SHUTOFF',p:'ZCLOUD-ZANTHUS-TI-BC',pid:'a74e1b339de544e79b9ca202805bd16c'},
-    {n:'BC-IT-FIREWALL',id:'581eb013-f21a-46ec-9121-6f1868efd865',s:'SHUTOFF',p:'ZCLOUD-ZANTHUS-TI-BC',pid:'a74e1b339de544e79b9ca202805bd16c'},
-    {n:'BC-MSSQL',id:'286efaa8-37af-428c-90e7-5b3ce90ef3d9',s:'SHUTOFF',p:'ZCLOUD-ZANTHUS-TI-BC',pid:'a74e1b339de544e79b9ca202805bd16c'},
-    {n:'BC-PGSQL',id:'9592a510-0591-4810-9222-00331b0b59b5',s:'SHUTOFF',p:'ZCLOUD-ZANTHUS-TI-BC',pid:'a74e1b339de544e79b9ca202805bd16c'},
-    {n:'BC-PINCODE',id:'d57584d8-f517-4c6e-88e0-0829dfb7b6c2',s:'SHUTOFF',p:'ZCLOUD-ZANTHUS-TI-BC',pid:'a74e1b339de544e79b9ca202805bd16c'},
-    {n:'BC-POC-ZRETAIL',id:'00fdda9d-7607-4f49-a8fe-afdc21707285',s:'SHUTOFF',p:'ZCLOUD-ZANTHUS-TI-BC',pid:'a74e1b339de544e79b9ca202805bd16c'},
-    {n:'BC-PROTHEUS',id:'e13b4724-041e-4297-8f4d-02ec108a7881',s:'SHUTOFF',p:'ZCLOUD-ZANTHUS-TI-BC',pid:'a74e1b339de544e79b9ca202805bd16c'},
-    {n:'BC-SCAVENGER',id:'8f33188b-fd13-4c9f-a0e8-b041b0ab3f58',s:'SHUTOFF',p:'ZCLOUD-ZANTHUS-TI-BC',pid:'a74e1b339de544e79b9ca202805bd16c'},
-    {n:'SRVMIGRACAO-SHARE',id:'c34f123c-ed79-4fb3-b764-d577cff996f8',s:'SHUTOFF',p:'ZCLOUD-ZANTHUS-TI-BC',pid:'a74e1b339de544e79b9ca202805bd16c'},
-    {n:'SRV-ZANT025',id:'af72f4a3-f3d4-4733-a916-136e9f0e84c4',s:'SHUTOFF',p:'ZCLOUD-ZANTHUS-TI-BC',pid:'a74e1b339de544e79b9ca202805bd16c'},
-  ],
   'gruporaizes.com': [
     {n:'BC-GRRAIZESAD',id:'15f1547a-26ca-4aeb-a51a-70d151f7e30a',s:'ACTIVE',p:'project-grupo-raizes',pid:'44c245cd1ace4dfea935b451ccea7699'},
     {n:'BC-GRRAIZESAD02',id:'b1f136c9-fd35-411c-bde1-a80494adb2f0',s:'ACTIVE',p:'project-grupo-raizes',pid:'44c245cd1ace4dfea935b451ccea7699'},
     {n:'BC-GRRAIZESBD',id:'d04aad2b-1c17-437d-9dcf-da09fa83cb13',s:'ACTIVE',p:'project-grupo-raizes',pid:'44c245cd1ace4dfea935b451ccea7699'},
-    {n:'BC-GRRAIZES-FS',id:'63f81c11-9ad5-48f8-897a-b9315ea10fc1',s:'ACTIVE',p:'project-grupo-raizes',pid:'44c245cd1ace4dfea935b451ccea7699'},
+    {n:'BC-GRRAIZES-FS',id:'5b530df6-5920-48dc-a7bb-b418f431a49d',s:'ACTIVE',p:'project-grupo-raizes',pid:'44c245cd1ace4dfea935b451ccea7699'},
+    {n:'BC-GRRAIZES-FS-Infectada',id:'63f81c11-9ad5-48f8-897a-b9315ea10fc1',s:'SHUTOFF',p:'project-grupo-raizes',pid:'44c245cd1ace4dfea935b451ccea7699'},
     {n:'BC-GRRAIZESFW',id:'38a7640a-50dd-4adb-9c91-8111e865ee06',s:'ACTIVE',p:'project-grupo-raizes',pid:'44c245cd1ace4dfea935b451ccea7699'},
-    {n:'BC-GRRAIZESOD',id:'8c6c1a34-2090-418c-a534-d0a1483799c7',s:'ACTIVE',p:'project-grupo-raizes',pid:'44c245cd1ace4dfea935b451ccea7699'},
+    {n:'BC-GRRAIZESOD',id:'43d17568-cba9-425e-90d9-ebf3fa7317e1',s:'ACTIVE',p:'project-grupo-raizes',pid:'44c245cd1ace4dfea935b451ccea7699'},
+    {n:'BC-GRRAIZESOD-Infectada',id:'8c6c1a34-2090-418c-a534-d0a1483799c7',s:'SHUTOFF',p:'project-grupo-raizes',pid:'44c245cd1ace4dfea935b451ccea7699'},
     {n:'BC-GRRAIZES-RPA-01',id:'1ad282b3-270d-4f12-94ae-211ed5e169ec',s:'ACTIVE',p:'project-grupo-raizes',pid:'44c245cd1ace4dfea935b451ccea7699'},
     {n:'BC-GRRAIZES-RPA-02',id:'24d97b13-95f7-41aa-a6e8-bd83defd6c13',s:'ACTIVE',p:'project-grupo-raizes',pid:'44c245cd1ace4dfea935b451ccea7699'},
     {n:'BC-GRRAIZES-RPA-03',id:'d7ed68ea-969b-4f47-bd65-6f1a820c5840',s:'ACTIVE',p:'project-grupo-raizes',pid:'44c245cd1ace4dfea935b451ccea7699'},
     {n:'BC-GRRAIZES-RPA-04',id:'c056b064-47b4-435e-8293-9d1a245700b6',s:'ACTIVE',p:'project-grupo-raizes',pid:'44c245cd1ace4dfea935b451ccea7699'},
-    {n:'BC-GRRAIZESTK',id:'34748863-5134-4027-af05-0962fd7f73f6',s:'ACTIVE',p:'project-grupo-raizes',pid:'44c245cd1ace4dfea935b451ccea7699'},
+    {n:'BC-GRRAIZESTK-Infectada',id:'34748863-5134-4027-af05-0962fd7f73f6',s:'SHUTOFF',p:'project-grupo-raizes',pid:'44c245cd1ace4dfea935b451ccea7699'},
+    {n:'BC-GRRAIZESTK-NEW',id:'003f4661-90b8-45af-98b9-16fee7e978c4',s:'ACTIVE',p:'project-grupo-raizes',pid:'44c245cd1ace4dfea935b451ccea7699'},
     {n:'BC-GRRAIZESVBR',id:'7937d4af-5c7c-47c4-a3bd-30ea2d52ea1d',s:'ACTIVE',p:'project-grupo-raizes',pid:'44c245cd1ace4dfea935b451ccea7699'},
+    {n:'BC-GRRAIZESVBR',id:'404e9392-c6ee-43d9-bed0-a7c5ed5108f9',s:'ACTIVE',p:'project-grupo-raizes',pid:'44c245cd1ace4dfea935b451ccea7699'},
     {n:'prx-gpraizes',id:'ed55a962-5f61-4064-b6f0-2ccf1470a8a6',s:'ACTIVE',p:'project-grupo-raizes',pid:'44c245cd1ace4dfea935b451ccea7699'},
+    {n:'scan-un-D-FS',id:'daa446ce-45cd-4d19-aac2-c493c5ba91a8',s:'ACTIVE',p:'project-grupo-raizes',pid:'44c245cd1ace4dfea935b451ccea7699'},
   ],
   'waits.com.br': [
     {n:'PIRA-BC-APP01',id:'b932a81c-0590-4c3a-aca0-594290b14e63',s:'ACTIVE',p:'project-piramidal',pid:'7318a9bcacaf4dffb707aa108d0d41aa'},
@@ -1873,6 +1860,16 @@ const SAN20_VMS = {
     {n:'vm01_labs',id:'8f8f643a-bdc3-43d0-8ca8-4baa36fbdda0',s:'ACTIVE',p:'project-mgc',pid:'f461f142d06846b69a8177060514d4eb'},
     {n:'vm03_labs',id:'04d66569-0cd9-4ba5-8c95-749cf167bc59',s:'ACTIVE',p:'project-mgc',pid:'f461f142d06846b69a8177060514d4eb'},
   ],
+  'smarapd.com.br': [
+    {n:'smarapdPF',id:'582b846e-a598-4e4b-803d-96e8972650cf',s:'ACTIVE',p:'project-smarapdsaeituiutaba',pid:'7420239444f34a53b884e7409cfd9198'},
+    {n:'smarapdPMRibeiraoApp',id:'767cad09-0978-4036-8e0b-eabebe55f5f5',s:'SHUTOFF',p:'project-smarapdsaeituiutaba',pid:'7420239444f34a53b884e7409cfd9198'},
+    {n:'smarapdPMRibEntesapp',id:'9113012f-a79e-47c4-a82f-e2fad7529726',s:'ACTIVE',p:'project-smarapdsaeituiutaba',pid:'7420239444f34a53b884e7409cfd9198'},
+    {n:'smarapdSAEItuiutabaApp',id:'ff9a5027-0c8d-4061-8e21-55a41f48cee6',s:'ACTIVE',p:'project-smarapdsaeituiutaba',pid:'7420239444f34a53b884e7409cfd9198'},
+    {n:'smarapdSAEItuiutabaProxy',id:'2e760195-464e-4c39-8782-63d5c4856e84',s:'ACTIVE',p:'project-smarapdsaeituiutaba',pid:'7420239444f34a53b884e7409cfd9198'},
+    {n:'smarapdSQL01',id:'358241c8-410d-4540-b541-e3c3469e660e',s:'ACTIVE',p:'project-smarapdsaeituiutaba',pid:'7420239444f34a53b884e7409cfd9198'},
+    {n:'smarapd_SRV_APPTB',id:'2405a3c5-a50d-47d8-aff1-ff4cc550750a',s:'ACTIVE',p:'project-smarapdsaeituiutaba',pid:'7420239444f34a53b884e7409cfd9198'},
+    {n:'smarapd_SRV_BDTB',id:'bc5aa2bf-6d49-4662-b17e-99d26ed36bb5',s:'ACTIVE',p:'project-smarapdsaeituiutaba',pid:'7420239444f34a53b884e7409cfd9198'},
+  ],
   'radiojb.fm': [
     {n:'GRUPOJB-DB',id:'aea7062f-5e38-4f1a-8e7d-916bf0a071a8',s:'ACTIVE',p:'project-grupo-jbfm',pid:'832241eee849490e9c889872c3a6ba53'},
     {n:'JBFM-FWPF01',id:'da7562b6-3704-46d7-a84c-cd4cd014dfbf',s:'ACTIVE',p:'project-grupo-jbfm',pid:'832241eee849490e9c889872c3a6ba53'},
@@ -1881,24 +1878,19 @@ const SAN20_VMS = {
     {n:'RTMP/n8n Server',id:'19fc3f18-b2b4-4cb1-857f-b84cca97e0bb',s:'ACTIVE',p:'project-grupo-jbfm',pid:'832241eee849490e9c889872c3a6ba53'},
     {n:'TOTVS',id:'af784b5b-64eb-4342-b435-6acd92d830f7',s:'ACTIVE',p:'project-grupo-jbfm',pid:'832241eee849490e9c889872c3a6ba53'},
   ],
+  'prumoengenharia.com.br': [
+    {n:'Bluepex_UTM_Atualizado',id:'169f28fa-94a7-4961-a65f-230856b836d2',s:'ACTIVE',p:'project-provedor-de-email-zimbra',pid:'a545170c94ad471086c7ffc494365b6f'},
+    {n:'SRVAD-BC01',id:'b638659f-a08d-4418-b37a-6d1c10513b25',s:'ACTIVE',p:'project-provedor-de-email-zimbra',pid:'a545170c94ad471086c7ffc494365b6f'},
+    {n:'SRV-Zimbra',id:'f16a87b7-4b6d-4968-8e4d-8b5f33bb15fc',s:'SHUTOFF',p:'project-provedor-de-email-zimbra',pid:'a545170c94ad471086c7ffc494365b6f'},
+    {n:'test-windows',id:'2255394e-66eb-408c-9a7f-3198d57e4e9e',s:'SHUTOFF',p:'project-provedor-de-email-zimbra',pid:'a545170c94ad471086c7ffc494365b6f'},
+    {n:'VBR-Migracao',id:'b2e93827-6316-437f-a48f-5c57e4a8be39',s:'ACTIVE',p:'project-provedor-de-email-zimbra',pid:'a545170c94ad471086c7ffc494365b6f'},
+  ],
   'sre.binario.cloud': [
     {n:'coriolis-clientes',id:'15ebc448-023c-43fe-887b-c78fc6580430',s:'ACTIVE',p:'coriolis-projects',pid:'f54ca7db48244d07a1e637e588f40bb0'},
     {n:'EdgeConnect',id:'fb62c2ec-12ae-488f-9bf7-1bb167e185b7',s:'ACTIVE',p:'coriolis-projects',pid:'f54ca7db48244d07a1e637e588f40bb0'},
     {n:'fw-ish',id:'430729f9-2b02-4324-9ad6-5a59fe2951aa',s:'ACTIVE',p:'coriolis-projects',pid:'f54ca7db48244d07a1e637e588f40bb0'},
     {n:'fw-pfcoriolis',id:'570ada4a-5dd9-4d93-98a9-066e62ae6c63',s:'ACTIVE',p:'coriolis-projects',pid:'f54ca7db48244d07a1e637e588f40bb0'},
     {n:'zabbixproxy-5',id:'9bdaafba-b32e-4a19-a07d-a52efcec77ca',s:'ACTIVE',p:'coriolis-projects',pid:'f54ca7db48244d07a1e637e588f40bb0'},
-  ],
-  'netza.com.br': [
-    {n:'NETZA-FW01',id:'ca30a4f2-2661-44b5-90e0-48edd3f61e5f',s:'SHUTOFF',p:'NETZA',pid:'88e39ab425be42c2864d36c8e199c10f'},
-    {n:'prx-netza',id:'447a9f8e-2a8b-4a08-912e-dc43e64a69c4',s:'SHUTOFF',p:'NETZA',pid:'88e39ab425be42c2864d36c8e199c10f'},
-    {n:'VBR-Migracao-Netza',id:'7fe277ec-8e6e-4832-b5b2-4668e078de0a',s:'SHUTOFF',p:'NETZA',pid:'88e39ab425be42c2864d36c8e199c10f'},
-    {n:'vm-netza',id:'c6606820-804a-4b6c-a3ec-860c6f3f2079',s:'SHUTOFF',p:'NETZA',pid:'88e39ab425be42c2864d36c8e199c10f'},
-  ],
-  'prumoengenharia.com.br': [
-    {n:'Bluepex_UTM_Atualizado',id:'169f28fa-94a7-4961-a65f-230856b836d2',s:'ACTIVE',p:'project-provedor-de-email-zimbra',pid:'a545170c94ad471086c7ffc494365b6f'},
-    {n:'SRVAD-BC01',id:'b638659f-a08d-4418-b37a-6d1c10513b25',s:'ACTIVE',p:'project-provedor-de-email-zimbra',pid:'a545170c94ad471086c7ffc494365b6f'},
-    {n:'SRV-Zimbra',id:'f16a87b7-4b6d-4968-8e4d-8b5f33bb15fc',s:'SHUTOFF',p:'project-provedor-de-email-zimbra',pid:'a545170c94ad471086c7ffc494365b6f'},
-    {n:'test-windows',id:'2255394e-66eb-408c-9a7f-3198d57e4e9e',s:'SHUTOFF',p:'project-provedor-de-email-zimbra',pid:'a545170c94ad471086c7ffc494365b6f'},
   ],
   'sattelecomip.com': [
     {n:'satc4cloud',id:'c37bb58c-fe6c-49f7-8c9a-8033289c3e4d',s:'SHUTOFF',p:'Project-Sat-TelecomIP',pid:'a57b07d4a197411cb55ac44d8bc8602a'},
@@ -1909,13 +1901,13 @@ const SAN20_VMS = {
     {n:'CLOUD-BOXFWGFX',id:'c9d9c201-db4d-43dd-91df-66408b9500f8',s:'ACTIVE',p:'GEOFIX FUNDACOES LTDA',pid:'d517dc981849497f9347f283c30e8a81'},
     {n:'CLOUD-SRVADGFX',id:'87266230-d405-4a49-b3f2-39dda9eaea24',s:'ACTIVE',p:'GEOFIX FUNDACOES LTDA',pid:'d517dc981849497f9347f283c30e8a81'},
   ],
-  'repositoriosbackup.com.br': [
-    {n:'repo-bmchyundai',id:'103d9874-683b-490e-ade7-de5e76446cd3',s:'ACTIVE',p:'repositorios-temporarios',pid:'25738fa7fd8c434ead20c616c383b163'},
-    {n:'repo-krindges',id:'7d21a92f-7f29-466e-a31f-6c9d8a705afd',s:'ACTIVE',p:'repositorios-temporarios',pid:'25738fa7fd8c434ead20c616c383b163'},
-  ],
   'sattelecom.com': [
     {n:'satc4cloud',id:'448a2754-0a1c-44cf-a5dd-b6784d9ebdd1',s:'ACTIVE',p:'Project-Sat-Telecom',pid:'638aac27d55648b4bf6c7f636d7d9b62'},
     {n:'SatC5Cloud',id:'f62d26d4-3d7b-4102-9180-a0aa614c7986',s:'SHUTOFF',p:'Project-Sat-Telecom',pid:'638aac27d55648b4bf6c7f636d7d9b62'},
+  ],
+  '(Sem Domínio)': [
+    {n:'IIS2',id:'dd522131-b8f2-44aa-b1d0-98cef6a6367a',s:'ERROR',p:'(Sem Projeto)',pid:'5a2ed3d7e48c4ad0acb3c00558cf2f33'},
+    {n:'ORACLEPROD02',id:'a82307fe-3e94-4017-85f8-a137732e7297',s:'ERROR',p:'(Sem Projeto)',pid:'a563cc1066934c879bceb5c46f4f1177'},
   ],
   '1team.cloud': [
     {n:'UNICOBA_NEW',id:'30f77518-6fd1-4ab2-965a-c88abe74007b',s:'ACTIVE',p:'project-1teamcloud',pid:'0493aacd6302490aa6cd599e7ecb3b65'},
@@ -1923,16 +1915,13 @@ const SAN20_VMS = {
   'automalogica.com.br': [
     {n:'BC-ATMLOGFTG',id:'1553f0e8-750e-47cd-980c-70c92dde2e1d',s:'ACTIVE',p:'project-automalogica',pid:'69b201e574204d7cba0966841eb11d64'},
   ],
-  '(Sem Domínio)': [
-    {n:'IIS2',id:'dd522131-b8f2-44aa-b1d0-98cef6a6367a',s:'ERROR',p:'(Sem Projeto)',pid:'5a2ed3d7e48c4ad0acb3c00558cf2f33'},
-  ],
-  'suporte.binario.cloud': [
-    {n:'PNET-LAB',id:'4be887b9-5f77-487f-ae62-29b0240ece4c',s:'SHUTOFF',p:'gimba-lab',pid:'1352546f2f1b4ab6925193e2f4653749'},
+  'repositoriosbackup.com.br': [
+    {n:'repo-krindges',id:'7d21a92f-7f29-466e-a31f-6c9d8a705afd',s:'ACTIVE',p:'repositorios-temporarios',pid:'25738fa7fd8c434ead20c616c383b163'},
   ],
 };
 
 async function san20LoadStorage() {
-  const SEED_VERSION = '2026-07-06-v4';
+  const SEED_VERSION = '2026-07-21-v1';
   try {
     let saved = null;
     if (window.storage) {
@@ -3864,37 +3853,120 @@ const P = {
     tags:[['Cliente','green'],['Firewall / FWaaS','green'],['Não iniciado','green'],['0%','green']],
     completed:null,
     secs:[
+      {t:'Sobre o cliente', rows:[
+        ['🍽️','Grupo Raízes — grupo familiar brasileiro de gastronomia corporativa, varejo alimentício e hospitalidade (Cucinare, Quitanda, Quitanda Escolas e Coletiva)'],
+        ['📍','Fundação 2001 · Presença em SP e MG · +140 restaurantes corporativos'],
+        ['🌐','gruporaizes.com']
+      ]},
+      {t:'Contexto e objetivo', rows:[
+        ['🎯','Upgrade de firewall: mais capacidade, segurança e desempenho para o crescimento do ambiente'],
+        ['🔧','Substituição do appliance atual + gestão especializada (configuração, administração e Security Profiles)'],
+        ['📌','Escopo atual: FortiGate operando só com roteamento básico, NAT e regras de entrada/saída']
+      ]},
       {t:'Escopo contratado', rows:[
         ['🖥️','1 Instância Virtual — 6 vCPU · 16 GB RAM · 80 GB SSD NVMe (disco Platinum)'],
         ['🛡️','1 Firewall Fortinet FGT-90G — licenciamento UTP, em comodato'],
         ['☁️','Binario Cloud IaaS em VPC dedicada, sem exposição direta à internet']
       ]},
-      {t:'Solução', rows:[
-        ['🔄','FortiGate FGT-90G substitui o appliance atual'],
-        ['🔐','Instância Virtual na VPC Binario Cloud · conexão segura via VPN'],
-        ['👁️','Security Profiles ativos e geridos 24x7']
+      {t:'Arquitetura da solução', rows:[
+        ['🌐','Acesso via internet → Firewall (segurança, controle e roteamento) → VMs na VPC privada'],
+        ['🔐','VMs sem exposição direta à internet · comunicação apenas por regras previamente definidas'],
+        ['🔗','Firewall permite VPNs e conexões seguras entre redes externas']
+      ]},
+      {t:'Security Profiles (Fortinet)', rows:[
+        ['🛡️','IPS · Antivírus · Web Filter · Application Control · SSL Inspection — ativos e geridos 24×7']
+      ]},
+      {t:'SLA Gold — garantia de performance', rows:[
+        ['⏱️','15 min — primeiro atendimento de incidentes críticos'],
+        ['🕐','24×7 — suporte especializado sem interrupção'],
+        ['📈','99,9% — disponibilidade garantida em SLA'],
+        ['⏳','< 4h — resolução de incidentes críticos']
       ]},
       {t:'Plano de implementação (4 dias)', rows:[
-        ['1️⃣','Dia 1 — Kickoff & Preparação: escopo, pré-requisitos, acessos e credenciais'],
-        ['2️⃣','Dia 2 — Provisionamento da Infra: VM, recursos básicos e conectividade'],
-        ['3️⃣','Dia 3 — Implementação do Firewall: substituição do appliance, FortiOS e Security Profiles'],
-        ['4️⃣','Dia 4 — Roteamento, Testes & Go-live: OSPF, testes de failover e estabilização']
+        ['1️⃣','Dia 1 — Kickoff & Preparação: escopo, pré-requisitos, acessos e conectividade outbound'],
+        ['2️⃣','Dia 2 — Provisionamento da Infra: VM, recursos, conectividade e acesso remoto'],
+        ['3️⃣','Dia 3 — Implementação do Firewall: substituição, FortiOS e Security Profiles (IPS, AV, Web Filter, App Control, SSL)'],
+        ['4️⃣','Dia 4 — Roteamento, Testes & Go-live: migração para OSPF, testes de failover e estabilização']
       ]},
-      {t:'Entrega no go-live', rows:[
-        ['✅','FGT-90G em produção com Security Profiles ativos'],
-        ['🌐','Conectividade e roteamento dinâmico (OSPF) validados'],
-        ['🔒','VPN e políticas de firewall testadas e validadas'],
-        ['📄','Documentação técnica e runbook operacional'],
-        ['🤝','Handover para operação e suporte 24×7 (SLA Gold)']
+      {t:'Squad de implementação', rows:[
+        ['🔵','Binario: Project Manager · Líder Técnico · Arquiteto de Soluções · Engenheiro de Infra'],
+        ['🟢','Grupo Raízes: Sponsor · Product Owner · TI/Infraestrutura · Operações/SecOps']
       ]},
-      {t:'Responsabilidades', rows:[
-        ['🏢','Grupo Raízes: acessos e credenciais, liberar conectividade outbound, validar políticas e aprovar o go-live'],
-        ['⚙️','Binario Cloud: provisionar VM e firewall, configurar políticas e Security Profiles, migrar roteamento (OSPF) e operar 24×7']
+      {t:'Investimento (12 meses · OPEX mensal)', rows:[
+        ['☁️','Nuvem Pública — Binario Cloud IaaS: R$ 456,17/mês'],
+        ['🛡️','Segurança — FGT-90G UTP (comodato): R$ 6.505,93/mês'],
+        ['⚙️','Serviços Gerenciados — 3x Firewalls: R$ 1.723,00/mês'],
+        ['💰','Total OPEX: R$ 8.685,10/mês · com desconto parceria 10%: R$ 7.816,59/mês']
       ]},
-      {t:'Premissas de prazo', rows:[
-        ['📅','Kickoff em até 7 dias após assinatura'],
-        ['⚠️','Ativação condicionada à colaboração do cliente'],
-        ['📋','Prazo conforme escopo da proposta comercial']
+      {t:'Condições comerciais', rows:[
+        ['📅','Contrato mínimo 12 meses · renovação automática · encerramento com 90 dias de aviso'],
+        ['🚀','Kickoff em até 7 dias após assinatura · ativação condicionada à colaboração do cliente'],
+        ['🚚','1 movimentação do equipamento (FGT-90G) inclusa sem custo, limitada a São Paulo'],
+        ['📈','Reajuste anual por IGPM/IPCA · cobrança por consumo, faturamento mensal']
+      ]},
+      {t:'Aceite / contatos', rows:[
+        ['✍️','Cecília Savastano (Grupo Raízes) · Lucas Oliveira (Resp. Técnico Cliente) · Márcio Borges (Binario.cloud)']
+      ]},
+      {t:'Status atual', rows:[
+        ['⏳','Projeto ainda não iniciado — 0%'],
+        ['🚀','Iniciando kick-off (Jul/2026)']
+      ]},
+    ],
+  },
+  neugebauer:{
+    eye:'Projeto de Cliente', title:'Neugebauer – Nuvem Pública & Serviços Gerenciados', pct:0,
+    fc:'fill-green', grad:'linear-gradient(90deg,#2e7d32,#43a047)',
+    pill:'<span class="pill pill-prog">○ Não iniciado</span>',
+    tags:[['Cliente','green'],['Nuvem Pública','green'],['Cloud+','green'],['Não iniciado','green'],['0%','green']],
+    completed:null,
+    secs:[
+      {t:'Contexto', rows:[
+        ['🎯','Neugebauer busca fortalecer a governança de TI, aumentar a disponibilidade e garantir previsibilidade de custos para suportar seu crescimento'],
+        ['🔄','Hoje: infraestrutura própria operada pela Neugebauer → Migração para a Binário Cloud (moderna e gerenciada)'],
+        ['🚀','Resultado: time livre da operação, focado no que gera valor ao negócio']
+      ]},
+      {t:'Cenário atual (inventário validado)', rows:[
+        ['🖥️','38 VMs · 284 vCPU · 812 GB RAM'],
+        ['🐧','Linux: 15 VMs · Windows: 14 VMs'],
+        ['🗄️','Workloads: SAP (5) · Oracle (4) · Outros (29)'],
+        ['💾','~40 TB de armazenamento + 40 TB de redundância'],
+        ['📜','Licenciamento SuSE Linux SLES for SAP (produtivo) e Standard (dev/qa) · Appliances HANA certificados SAP']
+      ]},
+      {t:'Serviços contratados', rows:[
+        ['☁️','Infra: 38 VMs · 284 vCPU · 812 GB RAM na Binário Cloud'],
+        ['💾','Backup: Veeam gerenciado, padrão 3-2-1-1-0'],
+        ['🔗','Rede: conectividade segura entre ambientes'],
+        ['🛡️','Segurança: Virtual Firewall Fortinet, políticas geridas'],
+        ['⚙️','Gerenciamento: Cloud+ com monitoramento e operação contínua'],
+        ['🕐','Suporte: CCOE 24×7 (SLA Gold)']
+      ]},
+      {t:'Backup e proteção de dados', rows:[
+        ['📀','Full: 1x/semana · Domingo 02h00 · retenção 90 dias'],
+        ['🔁','Incremental: 2x/dia (Seg-Sáb, 02h00 e 14h00) · retenção 90 dias'],
+        ['🩺','Health Check: 1x/semana após o Full · integridade dos pontos de restauração'],
+        ['♻️','Teste de restauração: 1x/mês em janela acordada · valida recuperação real'],
+        ['🔒','Fluxo: Cliente → Veeam → Repositório Local → Cloud Binário (cópia imutável 3-2-1-1-0), monitorado 24×7']
+      ]},
+      {t:'Fases do projeto', rows:[
+        ['1️⃣','Condução: Kickoff · Apresentação do escopo · Refinamento do escopo'],
+        ['2️⃣','Execução: Implementação · Validação · Migração'],
+        ['3️⃣','Encerramento: Testes · Virada de chave (go-live) · Termo de aceite']
+      ]},
+      {t:'Refinamento — o que a Binário precisa conhecer', rows:[
+        ['📋','Inventário de aplicações e dependências · criticidade por sistema (RPO/RTO)'],
+        ['🛠️','Janelas de manutenção · políticas de segurança e compliance'],
+        ['🔌','Integrações externas, IPs e domínios · contatos técnicos por frente'],
+        ['📜','Particularidades de licenciamento (SAP, Oracle, Windows)']
+      ]},
+      {t:'Partes interessadas', rows:[
+        ['🟢','Neugebauer: Norton Soares (Gerente de TI) · Cassiano Morin (Segurança e Redes) · Francis Picoli (Infraestrutura)'],
+        ['🔵','Binário: Wagner Felix (PMO) · Diogo Lerison (Projetos) · Bruno Queiroz (Gerente CSE) · Brunno Lopes (TI Sênior CSE)']
+      ]},
+      {t:'Próximos passos', rows:[
+        ['✅','Confirmação do escopo detalhado e início do provisionamento'],
+        ['📅','Reuniões semanais de status e checkpoint ao fim de cada fase'],
+        ['📞','Canal dedicado + e-mail para formalizações · escalonamento CCOE 24×7'],
+        ['🚀','Fase 4 (Implementação) inicia em até 7 dias úteis após confirmação do escopo']
       ]},
       {t:'Status atual', rows:[
         ['⏳','Projeto ainda não iniciado — 0%'],
