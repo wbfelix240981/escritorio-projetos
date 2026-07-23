@@ -3537,8 +3537,9 @@ document.addEventListener('page-changed', function(e) {
       </div>
       <div class="hero-stats">
         <div class="hero-stat"><div class="sv" id="mg-metTotal">0</div><div class="sl">Total</div></div>
-        <div class="hero-stat"><div class="sv" id="mg-metMigrados" style="color:#a5d6a7;">0</div><div class="sl">Migrados</div></div>
-        <div class="hero-stat"><div class="sv" id="mg-metProgresso" style="color:#fff176;">0</div><div class="sl">Em progresso</div></div>
+        <div class="hero-stat"><div class="sv" id="mg-metAndamento" style="color:#a5d6a7;">0</div><div class="sl">Andamento</div></div>
+        <div class="hero-stat"><div class="sv" id="mg-metImpedimento" style="color:#ffab91;">0</div><div class="sl">Impeditivo</div></div>
+        <div class="hero-stat"><div class="sv" id="mg-metNaoIniciada" style="color:#e0e0e0;">0</div><div class="sl">Não iniciadas</div></div>
 
       </div>
     </div>
@@ -3547,9 +3548,9 @@ document.addEventListener('page-changed', function(e) {
     <div style="display:flex;gap:10px;margin-bottom:20px;flex-wrap:wrap;align-items:center;">
       <select id="mg-filtroStatus" onchange="mgRender()" style="padding:9px 14px;background:var(--card-bg);border:1.5px solid #d0d7e8;border-radius:10px;color:var(--text-dark);font-size:12px;font-family:'Sora',sans-serif;font-weight:600;cursor:pointer;">
         <option value="">Todos os status</option>
-        <option value="Migrado">✓ Migrado</option>
-        <option value="Em Progresso">⏳ Em Progresso</option>
-        <option value="Planejamento">📋 Planejamento</option>
+        <option value="Andamento">🟢 Andamento</option>
+        <option value="Impeditivo">🟠 Impeditivo</option>
+        <option value="Não iniciada">⚪ Não iniciada</option>
       </select>
       <input type="text" id="mg-filtroNome" placeholder="🔍  Buscar cliente..." oninput="mgRender()" style="padding:9px 14px;background:var(--card-bg);border:1.5px solid #d0d7e8;border-radius:10px;color:var(--text-dark);font-size:12px;font-family:'Sora',sans-serif;flex:1;min-width:200px;outline:none;">
       <button onclick="mgOpenModalNovo()" style="padding:9px 18px;background:linear-gradient(135deg,var(--blue),var(--blue-light));color:#fff;border:none;border-radius:10px;font-size:11px;font-weight:700;font-family:'Sora',sans-serif;letter-spacing:.5px;text-transform:uppercase;cursor:pointer;display:flex;align-items:center;gap:6px;white-space:nowrap;">+ Novo cliente</button>
@@ -3558,16 +3559,16 @@ document.addEventListener('page-changed', function(e) {
     </div>
 
     <!-- Table -->
-    <div class="sec-label">Clientes em migração</div>
+    <div class="sec-label">Acompanhamento de migração · impedimentos</div>
     <div style="background:var(--card-bg);border-radius:var(--radius);border:1px solid rgba(0,0,0,.05);box-shadow:var(--shadow);overflow:hidden;">
       <table style="width:100%;border-collapse:collapse;font-size:12px;font-family:'Sora',sans-serif;">
         <thead>
           <tr style="background:linear-gradient(135deg,#f5f7fa,#eef1f7);border-bottom:2px solid #d0d7e8;">
-            <th style="padding:12px 16px;text-align:left;font-weight:800;color:var(--text-dark);text-transform:uppercase;font-size:10px;letter-spacing:1.5px;">Cliente</th>
-            <th style="padding:12px 16px;text-align:center;font-weight:800;color:var(--text-dark);text-transform:uppercase;font-size:10px;letter-spacing:1.5px;">Máqs.</th>
-            <th style="padding:12px 16px;text-align:center;font-weight:800;color:var(--text-dark);text-transform:uppercase;font-size:10px;letter-spacing:1.5px;">Status</th>
-            <th style="padding:12px 16px;text-align:center;font-weight:800;color:var(--text-dark);text-transform:uppercase;font-size:10px;letter-spacing:1.5px;">Confirmação</th>
-            <th style="padding:12px 16px;text-align:center;font-weight:800;color:var(--text-dark);text-transform:uppercase;font-size:10px;letter-spacing:1.5px;">Data de Migração</th>
+            <th style="padding:12px 16px;font-weight:800;color:var(--text-dark);text-transform:uppercase;font-size:10px;letter-spacing:1.5px;text-align:left;">Cliente</th>
+            <th style="padding:12px 16px;font-weight:800;color:var(--text-dark);text-transform:uppercase;font-size:10px;letter-spacing:1.5px;text-align:center;">Status</th>
+            <th style="padding:12px 16px;font-weight:800;color:var(--text-dark);text-transform:uppercase;font-size:10px;letter-spacing:1.5px;text-align:center;">Data para Migração</th>
+            <th style="padding:12px 16px;font-weight:800;color:var(--text-dark);text-transform:uppercase;font-size:10px;letter-spacing:1.5px;text-align:center;">Prev. Conclusão</th>
+            <th style="padding:12px 16px;font-weight:800;color:var(--text-dark);text-transform:uppercase;font-size:10px;letter-spacing:1.5px;text-align:left;">Impedimento</th>
           </tr>
         </thead>
         <tbody id="mg-tbody"></tbody>
@@ -3591,15 +3592,12 @@ document.addEventListener('page-changed', function(e) {
     <div style="margin-bottom:1.1rem;">
       <label style="display:block;font-size:11px;font-weight:600;color:#cbd5e1;margin-bottom:6px;text-transform:uppercase;letter-spacing:.5px;">Status inicial</label>
       <select id="mg-novoStatus" style="width:100%;padding:10px 12px;background:rgba(30,41,59,.8);border:1px solid rgba(148,163,184,.2);border-radius:8px;color:#e2e8f0;font-size:14px;">
-        <option>Planejamento</option>
-        <option>Em Progresso</option>
-        <option>Migrado</option>
+        <option>Não iniciada</option>
+        <option>Andamento</option>
+        <option>Impeditivo</option>
       </select>
     </div>
-    <div style="margin-bottom:1.1rem;">
-      <label style="display:block;font-size:11px;font-weight:600;color:#cbd5e1;margin-bottom:6px;text-transform:uppercase;letter-spacing:.5px;">Progresso inicial (%)</label>
-      <input type="number" id="mg-novoProgresso" min="0" max="100" value="0" style="width:100%;padding:10px 12px;background:rgba(30,41,59,.8);border:1px solid rgba(148,163,184,.2);border-radius:8px;color:#e2e8f0;font-size:14px;">
-    </div>
+    
     <div style="display:flex;gap:10px;margin-top:1.5rem;">
       <button onclick="mgSalvarNovo()" style="flex:1;padding:11px;background:linear-gradient(135deg,#60a5fa,#3b82f6);color:#fff;border:none;border-radius:8px;font-weight:600;font-size:14px;cursor:pointer;">Salvar</button>
       <button onclick="mgCloseModalNovo()" style="flex:1;padding:11px;background:rgba(148,163,184,.1);color:#cbd5e1;border:1px solid rgba(148,163,184,.2);border-radius:8px;font-weight:600;font-size:14px;cursor:pointer;">Cancelar</button>
@@ -4241,23 +4239,19 @@ renderFinalizados();
    CONTROLE DE MIGRAÇÃO
 ═══════════════════════════════════════ */
 let mgClientes = [
-  { id:2, nome:"QoS (Projeto 1)", qtdMaquinas:8, status:"Migrado", progresso:85, confirmado:true, dataPrevista:"2026-06-13", dataMigracao:"2026-06-13", historico:[{"data": "2024-01-01", "acao": "DECISÃO: Recriação do zero na BCOS 3.0 - Não haverá migração"}, {"data": "2024-01-01", "acao": "Responsável: Alan (desenvolvedor) | Motivo: Mais rápido, mais limpo, evita compatibilidade"}, {"data": "2024-01-01", "acao": "JANELA 1 - 05/05/2026 14h | RPA_Faturas_Dasa | PoC-Captive Portal-Ubiquiti"}, {"data": "2024-01-01", "acao": "JANELA 2 - 12/05/2026 00h01 | APPInfra-ClaroFust | APPInfra-Media"}, {"data": "2026-05-30", "acao": "Virada prevista para hoje, contemplando o total de 8 máquinas."}, {"data": "09/06/2026 14:29", "acao": "Status alterado para: Planejamento"}, {"data": "09/06/2026 14:29", "acao": "Confirmação: ✅ Confirmado"}, {"data": "2026-06-09", "acao": "Data de migração agendada para 12/06/2026"}, {"data": "09/06/2026 14:29", "acao": "Status alterado para: Planejamento"}, {"data": "11/06/2026 16:44", "acao": "Status: Em Progresso — Confirmado — Data migração: 13/06/2026"}] },
-  { id:3, nome:"QoS (Projeto 2)", qtdMaquinas:10, status:"Migrado", progresso:85, confirmado:true, dataPrevista:"2026-06-13", dataMigracao:"2026-06-13", historico:[{"data": "2026-05-30", "acao": "Virada prevista para o dia 12, contemplando o total de 10 máquinas."}, {"data": "09/06/2026 14:29", "acao": "Status alterado para: Planejamento"}, {"data": "09/06/2026 14:29", "acao": "Confirmação: ✅ Confirmado"}, {"data": "2026-06-09", "acao": "Data de migração agendada para 12/06/2026"}, {"data": "09/06/2026 14:29", "acao": "Status alterado para: Planejamento"}, {"data": "11/06/2026 16:44", "acao": "Status: Em Progresso — Confirmado — Data migração: 13/06/2026"}] },
-  { id:4, nome:"SOPREMA - INDUSTRIA E COMERCIO", qtdMaquinas:8, status:"Migrado", progresso:75, confirmado:true, dataPrevista:"2026-06-13", dataMigracao:"2026-06-13", historico:[{"data": "2026-05-26", "acao": "Reunião de alinhamento para virada realizada em 26/05."}, {"data": "2026-05-30", "acao": "Aguardando devolutiva do Bruno Queiroz para alinhamento com o cliente."}, {"data": "2026-06-07", "acao": "Janela confirmada para sexta-feira (12/06), após configuração de firewall"}, {"data": "2026-06-09", "acao": "Data de migração agendada para 12/06/2026"}, {"data": "09/06/2026 14:29", "acao": "Confirmação: ✅ Confirmado"}, {"data": "09/06/2026 14:29", "acao": "Status alterado para: Planejamento"}, {"data": "11/06/2026 17:04", "acao": "Status: Em Progresso — Confirmado — Data migração: 13/06/2026"}] },
-  { id:5, nome:"ZANTHUS - COMERCIO E SERVICOS", qtdMaquinas:24, status:"Migrado", progresso:100, confirmado:true, dataPrevista:"2026-07-25", dataMigracao:"2026-07-25", historico:[{"data": "2026-05-30", "acao": "Criado - Status: Em Progresso, aguardando definição do histórico."}, {"data": "2026-06-07", "acao": "Necessário definição e confirmação da janela para 12/06"}, {"data": "09/06/2026 14:29", "acao": "Status alterado para: Planejamento"}, {"data": "11/06/2026 17:10", "acao": "Confirmado — Data migração: 06/27"}, {"data": "11/06/2026 17:23", "acao": "Status: Em Progresso (confirmado)"}] },
-  { id:1, nome:"PRUMO ENGENHARIA EIRELI", qtdMaquinas:3, status:"Em Progresso", progresso:30, confirmado:false, dataPrevista:"2026-07-25", dataMigracao:"2026-07-25", historico:[{"data": "2026-06-03", "acao": "Progresso: 30% — Aguardando retorno do acesso para criação das cópias no ambiente 3.0"}, {"data": "2026-06-03", "acao": "Data prevista de conclusão: 12/06/2026"}, {"data": "2026-06-07", "acao": "Aguardando liberação de acesso para que o time de Delivery realize as cópias e disponibilize para validação na versão 3.0"}, {"data": "2026-06-07", "acao": "Em andamento com parceiro responsável pela sustentação do Zimbra para obtenção dos dados de acesso"}, {"data": "09/06/2026 14:29", "acao": "Status alterado para: Planejamento"}, {"data": "11/06/2026 17:10", "acao": "Confirmado — Data migração: 06/27"}, {"data": "11/06/2026 17:23", "acao": "Status: Em Progresso (confirmado)"}] },
-  { id:11, nome:"GIMBA - SUPRICORP SUPRIMENTOS", qtdMaquinas:102, status:"Migrado", progresso:100, confirmado:true, dataPrevista:"2026-06-19", dataMigracao:"2026-06-19", historico:[{"data": "2026-06-07", "acao": "Migração confirmada para 19/06"}, {"data": "2026-06-09", "acao": "Data de migração agendada para 19/06/2026"}, {"data": "09/06/2026 14:30", "acao": "Confirmação: ✅ Confirmado"}, {"data": "09/06/2026 14:30", "acao": "Status alterado para: Planejamento"}, {"data": "11/06/2026 17:10", "acao": "Confirmado — Data migração: 06/19"}, {"data": "11/06/2026 17:14", "acao": "Status: Em Progresso (confirmado)"}] },
-  { id:6, nome:"MAGAZINE LUIZA S/A", qtdMaquinas:10, status:"Em Progresso", progresso:10, confirmado:true, dataPrevista:"2026-08-01", dataMigracao:"2026-08-01", historico:[{"data": "2026-06-07", "acao": "Reunião realizada com a cliente (Manuella), com apresentação do plano"}, {"data": "2026-06-07", "acao": "Pendente definição da janela de cópia até 15/06"}, {"data": "09/06/2026 14:30", "acao": "Status alterado para: Planejamento"}, {"data": "11/06/2026 17:10", "acao": "Confirmado — Data migração: 08/01"}, {"data": "11/06/2026 17:23", "acao": "Status: Em Progresso (confirmado)"}] },
-  { id:7, nome:"NETZA - PROMOCOES E EVENTOS", qtdMaquinas:4, status:"Migrado", progresso:100, confirmado:true, dataPrevista:"2026-06-26", dataMigracao:"2026-06-26", historico:[{"data": "2026-06-07", "acao": "Necessário realizar reunião para definição da janela em 12/06 e confirmação do término do backup"}, {"data": "09/06/2026 14:30", "acao": "Confirmação: ✅ Confirmado"}, {"data": "2026-06-09", "acao": "Data de migração agendada para 12/06/2026"}, {"data": "09/06/2026 14:30", "acao": "Status alterado para: Planejamento"}, {"data": "11/06/2026 17:10", "acao": "Confirmado — Data migração: 06/27"}, {"data": "11/06/2026 17:14", "acao": "Status: Em Progresso (confirmado)"}] },
-  { id:8, nome:"PIRAMIDAL - THERMOPLASTICS S.A.", qtdMaquinas:10, status:"Em Progresso", progresso:0, confirmado:true, dataPrevista:"2026-08-01", dataMigracao:"2026-08-01", historico:[{"data": "2026-06-07", "acao": "Reunião com fornecedores agendada para 10/06"}, {"data": "09/06/2026 14:30", "acao": "Status alterado para: Em Progresso"}, {"data": "09/06/2026 14:31", "acao": "Status alterado para: Planejamento"}, {"data": "11/06/2026 17:10", "acao": "Confirmado — Data migração: 08/01"}, {"data": "11/06/2026 17:23", "acao": "Status: Em Progresso (confirmado)"}] },
-  { id:9, nome:"RADIO MONTE DA GAVEA LTDA", qtdMaquinas:6, status:"Em Progresso", progresso:0, confirmado:false, dataPrevista:"2026-08-08", dataMigracao:"2026-08-08", historico:[{"data": "09/06/2026 14:30", "acao": "Status alterado para: Em Progresso"}, {"data": "11/06/2026 17:31", "acao": "Confirmado — Data migração: 06-27 — Status: Em Progresso"}] },
-  { id:10, nome:"ENESA ENGENHARIA S.A.", qtdMaquinas:15, status:"Migrado", progresso:100, confirmado:true, dataPrevista:"2026-06-26", dataMigracao:"2026-06-26", historico:[{"data": "2026-06-07", "acao": "Tema será tratado em reunião no dia 08/12"}, {"data": "09/06/2026 14:30", "acao": "Confirmação: ✅ Confirmado"}, {"data": "09/06/2026 14:30", "acao": "Status alterado para: Em Progresso"}, {"data": "09/06/2026 14:31", "acao": "Status alterado para: Planejamento"}, {"data": "11/06/2026 17:10", "acao": "Confirmado — Data migração: 06/13"}, {"data": "11/06/2026 17:14", "acao": "Status: Em Progresso (confirmado)"}] },
-  { id:12, nome:"BMC MAQUINAS E EQUIP PESADOS", qtdMaquinas:20, status:"Troca de IP", progresso:0, confirmado:false, dataPrevista:"2026-08-08", dataMigracao:"2026-08-08", historico:[{"data": "2026-06-07", "acao": "Não haverá migração neste momento — será realizada apenas troca de IP"}] },
-  { id:13, nome:"GEOFIX ENGENHARIA FUNDACOES", qtdMaquinas:2, status:"Em Progresso", progresso:0, confirmado:false, dataPrevista:"2026-08-22", dataMigracao:"2026-08-22", historico:[{"data": "09/06/2026 14:31", "acao": "Status alterado para: Em Progresso"}] },
-  { id:14, nome:"REFRIO ARMAZENS GERAIS LTDA", qtdMaquinas:24, status:"Em Progresso", progresso:0, confirmado:false, dataPrevista:"2026-08-22", dataMigracao:"2026-08-22", historico:[{"data": "09/06/2026 14:31", "acao": "Status alterado para: Em Progresso"}] },
-  { id:15, nome:"1TEAMCLOUD SOLUCOES", qtdMaquinas:1, status:"Em Progresso", progresso:0, confirmado:false, dataPrevista:"2026-08-29", dataMigracao:"2026-08-29", historico:[{"data": "09/06/2026 14:31", "acao": "Status alterado para: Em Progresso"}, {"data": "11/06/2026 17:31", "acao": "Confirmado — Data migração: 06-13 — Status: Em Progresso"}] },
-  { id:16, nome:"GRUPO RAIZES", qtdMaquinas:13, status:"Em Progresso", progresso:0, confirmado:false, dataPrevista:"2026-07-25", dataMigracao:"2026-07-25", historico:[{"data": "09/06/2026 14:31", "acao": "Status alterado para: Em Progresso"}] },
-  { id:17, nome:"SAT CONSULTORIA", qtdMaquinas:3, status:"Em Progresso", progresso:0, confirmado:false, dataPrevista:"2026-08-01", dataMigracao:"2026-08-01", historico:[{"data": "09/06/2026 14:31", "acao": "Status alterado para: Em Progresso"}, {"data": "11/06/2026 17:31", "acao": "Confirmado — Data migração: 06-27 — Status: Em Progresso"}] },
+  { id:1, nome:"ENESA ENGENHARIA S.A.", status:"Andamento", dataMigracao:"2026-06-26", prevConclusao:"24/jul", prevAlerta:false, impedimento:"Confirmação técnica pendente (não bloqueante) / Ambiente de teste até 24/07 / volumes sendo transferidos", qtdMaquinas:15, historico:[{"data": "2026-06-07", "acao": "Tema será tratado em reunião no dia 08/12"}] },
+  { id:2, nome:"PRUMO ENGENHARIA", status:"Andamento", dataMigracao:"2026-07-25", prevConclusao:"Não definido", prevAlerta:false, impedimento:"Reunião com Willian e Marcelo ainda pendente", qtdMaquinas:3, historico:[{"data": "2026-06-03", "acao": "Progresso: 30% — Aguardando retorno do acesso para criação das cópias no ambiente 3.0"}, {"data": "2026-06-03", "acao": "Data prevista de conclusão: 12/06/2026"}, {"data": "2026-06-07", "acao": "Aguardando liberação de acesso para que o time de Delivery realize as cópias e disponibilize para validação na versão 3.0"}, {"data": "2026-06-07", "acao": "Em andamento com parceiro responsável pela sustentação do Zimbra para obtenção dos dados de acesso"}] },
+  { id:3, nome:"ZANTHUS - COMERCIO E SERVICOS", status:"Andamento", dataMigracao:"2026-07-25", prevConclusao:"Não definido", prevAlerta:false, impedimento:"Falta subir servidor MariaDB e validar exportação/importação", qtdMaquinas:24, historico:[{"data": "2026-05-30", "acao": "Criado - Status: Em Progresso, aguardando definição do histórico."}, {"data": "2026-06-07", "acao": "Necessário definição e confirmação da janela para 12/06"}] },
+  { id:4, nome:"PIRAMIDAL - THERMOPLASTICS S.A.", status:"Andamento", dataMigracao:"2026-08-01", prevConclusao:"Não definido", prevAlerta:false, impedimento:"Acesso ao VBR pendente", qtdMaquinas:10, historico:[{"data": "2026-06-07", "acao": "Reunião com fornecedores agendada para 10/06"}] },
+  { id:5, nome:"NETZA - PROMOCOES E EVENTOS", status:"Impeditivo", dataMigracao:"2026-06-26", prevConclusao:"Não definido", prevAlerta:false, impedimento:"Aguardando a QoQ (tamanho do disco)", qtdMaquinas:4, historico:[{"data": "2026-06-07", "acao": "Necessário realizar reunião para definição da janela em 12/06 e confirmação do término do backup"}] },
+  { id:6, nome:"GRUPO RAIZES", status:"Impeditivo", dataMigracao:"2026-07-25", prevConclusao:"Não definido", prevAlerta:false, impedimento:"Impedimento com o cliente", qtdMaquinas:13, historico:[] },
+  { id:7, nome:"MAGAZINE LUIZA S/A", status:"Não iniciada", dataMigracao:"2026-08-01", prevConclusao:"01/08 (à confirmar)", prevAlerta:true, impedimento:"Questões financeiras + ambiente de teste não criado", qtdMaquinas:10, historico:[{"data": "2026-06-07", "acao": "Reunião realizada com a cliente (Manuella), com apresentação do plano"}, {"data": "2026-06-07", "acao": "Pendente definição da janela de cópia até 15/06"}] },
+  { id:8, nome:"SAT CONSULTORIA", status:"Não iniciada", dataMigracao:"2026-08-01", prevConclusao:"Não definido", prevAlerta:false, impedimento:"Acionar o cliente", qtdMaquinas:3, historico:[] },
+  { id:9, nome:"RADIO MONTE DA GAVEA LTDA", status:"Não iniciada", dataMigracao:"2026-08-08", prevConclusao:"Não definido", prevAlerta:false, impedimento:"Cliente sem disponibilidade de agenda até o fim do mês", qtdMaquinas:6, historico:[] },
+  { id:10, nome:"BMC MAQUINAS E EQUIP PESADOS", status:"Não iniciada", dataMigracao:"2026-08-08", prevConclusao:"08/08 (à confirmar)", prevAlerta:true, impedimento:"Sem data confirmada, sem autorização do cliente e sem definição operacional", qtdMaquinas:20, historico:[{"data": "2026-06-07", "acao": "Não haverá migração neste momento — será realizada apenas troca de IP"}] },
+  { id:11, nome:"GEOFIX ENGENHARIA FUNDACOES", status:"Não iniciada", dataMigracao:"2026-08-22", prevConclusao:"Não definido", prevAlerta:false, impedimento:"Agenda com Ulisses não disponibilizada", qtdMaquinas:2, historico:[] },
+  { id:12, nome:"REFRIO ARMAZENS GERAIS LTDA", status:"Não iniciada", dataMigracao:"2026-08-22", prevConclusao:"Não definido", prevAlerta:false, impedimento:"Agenda com Ulisses não disponibilizada", qtdMaquinas:24, historico:[] },
+  { id:13, nome:"1TEAMCLOUD SOLUCOES", status:"Não iniciada", dataMigracao:"2026-08-29", prevConclusao:"Não definido", prevAlerta:false, impedimento:"Verificar histórico do cliente", qtdMaquinas:1, historico:[] },
 ];
 
 let mgNextId = 18;
@@ -4270,89 +4264,45 @@ function mgFmtData(iso) { if(!iso) return '—'; const [y,m,d]=iso.split('-'); r
 function mgRender() {
   const fStatus = document.getElementById('mg-filtroStatus')?.value || '';
   const fNome   = (document.getElementById('mg-filtroNome')?.value || '').toLowerCase();
-  const lista   = mgClientes.filter(c => (!fStatus || c.status===fStatus) && c.nome.toLowerCase().includes(fNome)).sort((a,b) => {
-    // 1. Por data de migração (mais próxima primeiro, sem data vai pro fim)
-    const da = a.dataMigracao || '9999-99-99';
-    const db = b.dataMigracao || '9999-99-99';
-    if (da !== db) return da < db ? -1 : 1;
-    // 2. Confirmados primeiro dentro da mesma data
-    if (a.confirmado !== b.confirmado) return (b.confirmado ? 1 : 0) - (a.confirmado ? 1 : 0);
-    // 3. Por progresso
-    return b.progresso - a.progresso;
-  });
-  const tbody   = document.getElementById('mg-tbody');
-  const empty   = document.getElementById('mg-emptyState');
+  const rank    = s => s === 'Andamento' ? 0 : s === 'Impeditivo' ? 1 : 2;
+  const lista   = mgClientes
+    .filter(c => (!fStatus || c.status === fStatus) && c.nome.toLowerCase().includes(fNome))
+    .slice()
+    .sort((a,b) => (rank(a.status)-rank(b.status)) || String(a.dataMigracao||'9999').localeCompare(String(b.dataMigracao||'9999')));
+
+  const tbody = document.getElementById('mg-tbody');
+  const empty = document.getElementById('mg-emptyState');
   if (!tbody) return;
-  if (!lista.length) { tbody.innerHTML=''; empty.style.display='block'; }
+  if (!lista.length) { tbody.innerHTML=''; if(empty) empty.style.display='block'; }
   else {
-    empty.style.display='none';
+    if(empty) empty.style.display='none';
     tbody.innerHTML = lista.map(c => {
-      const done = c.progresso===100;
-      const hoje = mgHoje();
-      const atrasado = c.dataPrevista && c.dataPrevista < hoje && c.status !== 'Migrado';
-      const semContato = c.historico.some(h => h.acao.toLowerCase().includes('sem retorno') || h.acao.toLowerCase().includes('sem contato'));
-      const trocaIp = c.historico.some(h => h.acao.toLowerCase().includes('troca de ip'));
+      const st = c.status || 'Não iniciada';
+      const stBg  = st==='Andamento' ? '#4e7f36' : st==='Impeditivo' ? '#d9702a' : '#8f8f8f';
+      const prevCol = c.prevAlerta ? '#e53935' : (c.prevConclusao && c.prevConclusao!=='Não definido' ? 'var(--text-dark)' : 'var(--text-light)');
+      const esc = s => String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
 
-      // Cor da linha
-      const rowAccent = done ? '#27ae60'
-        : atrasado ? '#e67e22'
-        : semContato ? '#e74c3c'
-        : trocaIp ? '#95a5a6'
-        : c.status === 'Em Progresso' ? '#3498db'
-        : '#8e44ad';
-
-      const rowBg = done ? 'background:linear-gradient(135deg,#f0fdf4,#f8fafb)'
-        : atrasado ? 'background:linear-gradient(135deg,#fff8f0,#fff5eb)'
-        : semContato ? 'background:linear-gradient(135deg,#fff5f5,#fef2f2)'
-        : trocaIp ? 'background:linear-gradient(135deg,#f8f9fa,#f1f3f5)'
-        : '';
-
-      const dateColor = !c.dataPrevista ? 'var(--text-light)'
-        : atrasado ? '#e67e22'
-        : '#27ae60';
-
-      const statusHtml = c.status==='Migrado'
-        ? `<span class="pill" style="background:#e8f5e9;color:#27ae60;border:1.5px solid #c8e6c9;">🟢 Migrado</span>`
-        : c.status==='Em Progresso' && atrasado
-        ? `<span class="pill" style="background:#fff3e0;color:#e67e22;border:1.5px solid #ffe0b2;">🟠 Atrasado</span>`
-        : c.status==='Em Progresso'
-        ? `<span class="pill" style="background:#dceefb;color:#3498db;border:1.5px solid #b8d8f5;">🔵 Em Progresso</span>`
-        : trocaIp
-        ? `<span class="pill" style="background:#f0f0f0;color:#7f8c8d;border:1.5px solid #ddd;">⚫ Troca de IP</span>`
-        : `<span class="pill" style="background:#f3e5f5;color:#8e44ad;border:1.5px solid #e1bee7;">🟣 Planejamento</span>`;
-
-      // Última nota do histórico
-      const ultimaNota = c.historico.length ? c.historico[c.historico.length-1].acao : '';
-      const notaColor = done ? '#27ae60'
-        : semContato ? '#e74c3c'
-        : trocaIp ? '#95a5a6'
-        : atrasado ? '#e67e22'
-        : '#64748b';
-
-      return `<tr style="border-bottom:1px solid #eef0f6;${rowBg};transition:background .15s;border-left:3px solid ${rowAccent};" onmouseover="this.style.background='#f5f7fb'" onmouseout="this.style.background='${done?'linear-gradient(135deg,#f0fdf4,#f8fafb)':atrasado?'linear-gradient(135deg,#fff8f0,#fff5eb)':semContato?'linear-gradient(135deg,#fff5f5,#fef2f2)':trocaIp?'linear-gradient(135deg,#f8f9fa,#f1f3f5)':''}'">
-        <td style="padding:12px 16px;">
-          <strong style="font-size:12px;color:var(--text-dark);">${c.nome}</strong>
-          
+      return `<tr style="border-bottom:1px solid #eef0f6;transition:background .15s;border-left:3px solid ${stBg};" onmouseover="this.style.background='#f5f7fb'" onmouseout="this.style.background=''">
+        <td style="padding:11px 16px;">
+          <strong style="font-size:12px;color:var(--text-dark);">${esc(c.nome)}</strong>
+          ${c.qtdMaquinas ? `<div style="font-size:10px;color:var(--text-light);margin-top:2px;">${c.qtdMaquinas} máquina${c.qtdMaquinas>1?'s':''}</div>` : ''}
         </td>
-        <td style="padding:12px 16px;text-align:center;"><span style="font-size:13px;font-weight:800;color:var(--blue);">${c.qtdMaquinas||0}</span></td>
-        <td style="padding:12px 16px;text-align:center;">
-          <select onchange="mgSetStatus(${c.id},this.value)" style="padding:5px 9px;background:var(--bg);border:1.5px solid #d0d7e8;border-radius:8px;font-size:11px;font-family:'Sora',sans-serif;font-weight:600;cursor:pointer;color:var(--text-dark);outline:none;">
-            <option value="Em Progresso" ${c.status==='Em Progresso'?'selected':''}>⏳ Em Progresso</option>
-            <option value="Planejamento" ${c.status==='Planejamento'?'selected':''}>🟣 Planejamento</option>
-            <option value="Migrado"      ${c.status==='Migrado'?'selected':''}>🟢 Migrado</option>
-            <option value="Troca de IP"  ${c.status==='Troca de IP'?'selected':''}>⚫ Troca de IP</option>
+        <td style="padding:11px 12px;text-align:center;">
+          <select onchange="mgSetStatus(${c.id},this.value)" style="padding:5px 10px;border:none;border-radius:7px;font-size:11px;font-family:'Sora',sans-serif;font-weight:700;cursor:pointer;outline:none;background:${stBg};color:#fff;text-align:center;">
+            <option value="Andamento"    ${st==='Andamento'?'selected':''}>Andamento</option>
+            <option value="Impeditivo"   ${st==='Impeditivo'?'selected':''}>Impeditivo</option>
+            <option value="Não iniciada" ${st==='Não iniciada'?'selected':''}>Não iniciada</option>
           </select>
         </td>
-        <td style="padding:12px 16px;text-align:center;">
-          <select onchange="mgSetConfirmado(${c.id},this.value==='true')" style="padding:5px 9px;border:1.5px solid ${c.confirmado?'#c8e6c9':'#ffe0b2'};border-radius:8px;font-size:11px;font-family:'Sora',sans-serif;font-weight:700;cursor:pointer;outline:none;background:${c.confirmado?'#e8f5e9':'#fff3e0'};color:${c.confirmado?'#27ae60':'#e67e22'};">
-            <option value="true"  ${c.confirmado?'selected':''}>Confirmado</option>
-            <option value="false" ${!c.confirmado?'selected':''}>Não confirmado</option>
-          </select>
+        <td style="padding:11px 12px;text-align:center;">
+          <input type="date" value="${esc(c.dataMigracao)}" onchange="mgSetDataMigracao(${c.id},this.value)" style="padding:5px 9px;background:var(--bg);color:var(--text-dark);border:1.5px solid #d0d7e8;border-radius:8px;font-size:11px;font-family:'Sora',sans-serif;font-weight:600;cursor:pointer;outline:none;">
         </td>
-        <td style="padding:12px 16px;text-align:center;">
-          <input type="date" value="${c.dataMigracao||''}" style="padding:5px 9px;background:var(--bg);color:var(--text-dark);border:1.5px solid #d0d7e8;border-radius:8px;font-size:11px;font-family:'Sora',sans-serif;font-weight:600;cursor:pointer;" onchange="mgSetDataMigracao(${c.id},this.value)">
+        <td style="padding:11px 12px;text-align:center;">
+          <input type="text" value="${esc(c.prevConclusao)}" onchange="mgSetPrev(${c.id},this.value)" style="width:132px;padding:5px 8px;background:var(--bg);border:1.5px solid #d0d7e8;border-radius:8px;font-size:11px;font-family:'Sora',sans-serif;font-weight:700;text-align:center;outline:none;color:${prevCol};">
         </td>
-
+        <td style="padding:11px 16px;">
+          <input type="text" value="${esc(c.impedimento)}" onchange="mgSetImpedimento(${c.id},this.value)" placeholder="—" style="width:100%;padding:5px 8px;background:transparent;border:1px solid transparent;border-radius:6px;font-size:11.5px;font-family:'Sora',sans-serif;color:var(--text-dark);outline:none;" onfocus="this.style.background='var(--bg)';this.style.borderColor='#d0d7e8'" onblur="this.style.background='transparent';this.style.borderColor='transparent'">
+        </td>
       </tr>`;
     }).join('');
   }
@@ -4362,14 +4312,14 @@ function mgRender() {
 
 function mgUpdateMetrics() {
   const total       = mgClientes.length;
-  const confirmados = mgClientes.filter(c=>c.confirmado===true).length;
-  const em          = mgClientes.filter(c=>c.status==='Em Progresso').length;
-  const maquinas    = mgClientes.reduce((s,c)=>s+(c.qtdMaquinas||0),0);
+  const andamento   = mgClientes.filter(c=>c.status==='Andamento').length;
+  const impeditivo  = mgClientes.filter(c=>c.status==='Impeditivo').length;
+  const naoIniciada = mgClientes.filter(c=>c.status==='Não iniciada').length;
   const el = id => document.getElementById(id);
   if(el('mg-metTotal'))       el('mg-metTotal').textContent       = total;
-  if(el('mg-metConfirmados')) el('mg-metConfirmados').textContent = confirmados;
-  if(el('mg-metProgresso'))   el('mg-metProgresso').textContent   = em;
-  if(el('mg-metMaquinas'))    el('mg-metMaquinas').textContent    = maquinas;
+  if(el('mg-metAndamento'))   el('mg-metAndamento').textContent   = andamento;
+  if(el('mg-metImpedimento')) el('mg-metImpedimento').textContent = impeditivo;
+  if(el('mg-metNaoIniciada')) el('mg-metNaoIniciada').textContent = naoIniciada;
 }
 
 function mgIniciar(id) {
@@ -4383,7 +4333,48 @@ function mgSetStatus(id, val) {
   const c = mgClientes.find(x=>x.id===id);
   if (!c) return;
   c.status = val;
+  c.historico = c.historico || [];
   c.historico.push({data: mgAgora(), acao: `Status alterado para: ${val}`});
+  mgRender();
+}
+
+function mgSetPrev(id, val) {
+  const c = mgClientes.find(x=>x.id===id);
+  if (!c) return;
+  c.prevConclusao = (val||'').trim() || 'Não definido';
+  c.prevAlerta = /confirmar/i.test(c.prevConclusao);
+  c.historico = c.historico || [];
+  c.historico.push({data: mgAgora(), acao: `Prev. conclusão: ${c.prevConclusao}`});
+  mgRender();
+}
+
+function mgSetImpedimento(id, val) {
+  const c = mgClientes.find(x=>x.id===id);
+  if (!c) return;
+  c.impedimento = (val||'').trim();
+  c.historico = c.historico || [];
+  c.historico.push({data: mgAgora(), acao: `Impedimento atualizado: ${c.impedimento || '(sem impedimento)'}`});
+  mgRender();
+}
+
+
+
+function mgSetPrev(id, val) {
+  const c = mgClientes.find(x=>x.id===id);
+  if (!c) return;
+  c.prevConclusao = (val||'').trim() || 'Não definido';
+  c.prevAlerta = /confirmar/i.test(c.prevConclusao);
+  c.historico = c.historico || [];
+  c.historico.push({data: mgAgora(), acao: `Prev. conclusão: ${c.prevConclusao}`});
+  mgRender();
+}
+
+function mgSetImpedimento(id, val) {
+  const c = mgClientes.find(x=>x.id===id);
+  if (!c) return;
+  c.impedimento = (val||'').trim();
+  c.historico = c.historico || [];
+  c.historico.push({data: mgAgora(), acao: `Impedimento atualizado: ${c.impedimento || '(sem impedimento)'}`});
   mgRender();
 }
 
@@ -4396,14 +4387,11 @@ function mgSetConfirmado(id, val) {
 }
 
 function mgSetDataMigracao(id,val) {
-  const c=mgClientes.find(x=>x.id===id); if(!c) return;
-  c.dataMigracao=val||null;
-  if(val) {
-    if(val<=mgHoje()){c.status='Migrado';c.progresso=100;c.historico.push({data:mgHoje(),acao:`Migração concluída em ${mgFmtData(val)}`});}
-    else{if(c.status==='Planejamento'){c.status='Em Progresso';c.progresso=c.progresso||10;}c.historico.push({data:mgHoje(),acao:`Data de migração agendada para ${mgFmtData(val)}`});}
-  } else {
-    if(c.status==='Migrado'){c.status='Em Progresso';c.progresso=Math.min(c.progresso,90);c.historico.push({data:mgHoje(),acao:'Data removida — revertido para Em Progresso'});}
-  }
+  const c = mgClientes.find(x=>x.id===id);
+  if (!c) return;
+  c.dataMigracao = val || '';
+  c.historico = c.historico || [];
+  c.historico.push({data: mgAgora(), acao: val ? `Data para migração: ${mgFmtData(val)}` : 'Data para migração removida'});
   mgRender();
 }
 
@@ -4422,10 +4410,10 @@ function mgCloseModalNovo() { document.getElementById('mg-modalNovo').style.disp
 
 function mgSalvarNovo() {
   const nome=document.getElementById('mg-novoNome').value.trim();
-  const status=document.getElementById('mg-novoStatus').value;
-  const progresso=Math.min(100,Math.max(0,parseInt(document.getElementById('mg-novoProgresso').value)||0));
   if(!nome){alert('Digite o nome do cliente');return;}
-  mgClientes.push({id:mgNextId++,nome,status,progresso,qtdMaquinas:0,dataPrevista:null,dataMigracao:progresso===100?mgHoje():null,historico:[{data:mgHoje(),acao:`Criado — status: ${status}, progresso: ${progresso}%`}]});
+  const st=document.getElementById('mg-novoStatus')?.value || 'Não iniciada';
+  const status=['Andamento','Impeditivo','Não iniciada'].includes(st)?st:'Não iniciada';
+  mgClientes.push({id:mgNextId++,nome,status,dataMigracao:'',prevConclusao:'Não definido',prevAlerta:false,impedimento:'',qtdMaquinas:0,historico:[{data:mgHoje(),acao:`Criado — status: ${status}`}]});
   mgCloseModalNovo(); mgRender();
 }
 
@@ -4510,23 +4498,19 @@ async function mgSalvarDados() {
 
 // Seed de referência — usado para sincronizar dados atualizados
 const MG_SEED = [
-  { id:2,  nome:"QoS (Projeto 1)",                 qtdMaquinas:8,   status:"Migrado",     progresso:100, confirmado:true, dataPrevista:"2026-06-13", dataMigracao:"2026-06-13", historico:[{data:"2024-01-01",acao:"DECISÃO: Recriação do zero na BCOS 3.0 - Não haverá migração"},{data:"2024-01-01",acao:"Responsável: Alan (desenvolvedor) | Motivo: Mais rápido, mais limpo, evita compatibilidade"},{data:"2024-01-01",acao:"JANELA 1 - 05/05/2026 14h | RPA_Faturas_Dasa | PoC-Captive Portal-Ubiquiti"},{data:"2024-01-01",acao:"JANELA 2 - 12/05/2026 00h01 | APPInfra-ClaroFust | APPInfra-Media"},{data:"2026-05-30",acao:"Virada prevista para hoje, contemplando o total de 8 máquinas."}] },
-  { id:3,  nome:"QoS (Projeto 2)",                 qtdMaquinas:10,  status:"Migrado",     progresso:100, confirmado:true, dataPrevista:"2026-06-13", dataMigracao:"2026-06-13", historico:[{data:"2026-05-30",acao:"Virada prevista para o dia 12, contemplando o total de 10 máquinas."}] },
-  { id:4,  nome:"SOPREMA - INDUSTRIA E COMERCIO",  qtdMaquinas:8,   status:"Migrado",     progresso:100, confirmado:true, dataPrevista:"2026-06-13", dataMigracao:"2026-06-13",         historico:[{data:"2026-05-26",acao:"Reunião de alinhamento para virada realizada em 26/05."},{data:"2026-05-30",acao:"Aguardando devolutiva do Bruno Queiroz para alinhamento com o cliente."},{data:"2026-06-07",acao:"Janela confirmada para sexta-feira (12/06), após configuração de firewall"}] },
-  { id:5,  nome:"ZANTHUS - COMERCIO E SERVICOS",   qtdMaquinas:24,  status:"Migrado", progresso:100, confirmado:true, dataPrevista:"2026-07-25", dataMigracao:"2026-07-25",         historico:[{data:"2026-05-30",acao:"Criado - Status: Em Progresso, aguardando definição do histórico."},{data:"2026-06-07",acao:"Necessário definição e confirmação da janela para 12/06"}] },
-  { id:1,  nome:"PRUMO ENGENHARIA EIRELI",         qtdMaquinas:3,   status:"Em Progresso", progresso:30, confirmado:false, dataPrevista:"2026-07-25", dataMigracao:"2026-07-25",         historico:[{data:"2026-06-03",acao:"Progresso: 30% — Aguardando retorno do acesso para criação das cópias no ambiente 3.0"},{data:"2026-06-03",acao:"Data prevista de conclusão: 12/06/2026"},{data:"2026-06-07",acao:"Aguardando liberação de acesso para que o time de Delivery realize as cópias e disponibilize para validação na versão 3.0"},{data:"2026-06-07",acao:"Em andamento com parceiro responsável pela sustentação do Zimbra para obtenção dos dados de acesso"}] },
-  { id:11, nome:"GIMBA - SUPRICORP SUPRIMENTOS",   qtdMaquinas:102, status:"Migrado", progresso:100, confirmado:true, dataPrevista:"2026-06-19", dataMigracao:"2026-06-19",         historico:[{data:"2026-06-07",acao:"Migração confirmada para 19/06"}] },
-  { id:6,  nome:"MAGAZINE LUIZA S/A",              qtdMaquinas:10,  status:"Em Progresso", progresso:10, confirmado:true, dataPrevista:"2026-08-01", dataMigracao:"2026-08-01",         historico:[{data:"2026-06-07",acao:"Reunião realizada com a cliente (Manuella), com apresentação do plano"},{data:"2026-06-07",acao:"Pendente definição da janela de cópia até 15/06"}] },
-  { id:7,  nome:"NETZA - PROMOCOES E EVENTOS",     qtdMaquinas:4,   status:"Migrado", progresso:100, confirmado:true, dataPrevista:"2026-06-26", dataMigracao:"2026-06-26",         historico:[{data:"2026-06-07",acao:"Necessário realizar reunião para definição da janela em 12/06 e confirmação do término do backup"}] },
-  { id:8,  nome:"PIRAMIDAL - THERMOPLASTICS S.A.", qtdMaquinas:10,  status:"Em Progresso", progresso:0,  confirmado:true, dataPrevista:"2026-08-01", dataMigracao:"2026-08-01",         historico:[{data:"2026-06-07",acao:"Reunião com fornecedores agendada para 10/06"}] },
-  { id:9,  nome:"RADIO MONTE DA GAVEA LTDA",       qtdMaquinas:6,   status:"Em Progresso", progresso:0,  confirmado:false, dataPrevista:"2026-08-08",         dataMigracao:"2026-08-08",         historico:[] },
-  { id:10, nome:"ENESA ENGENHARIA S.A.",            qtdMaquinas:15,  status:"Migrado", progresso:100,  confirmado:true, dataPrevista:"2026-06-26", dataMigracao:"2026-06-26",         historico:[{data:"2026-06-07",acao:"Tema será tratado em reunião no dia 08/12"}] },
-  { id:12, nome:"BMC MAQUINAS E EQUIP PESADOS",    qtdMaquinas:20,  status:"Troca de IP", progresso:0,  confirmado:false, dataPrevista:"2026-08-08",         dataMigracao:"2026-08-08",         historico:[{data:"2026-06-07",acao:"Não haverá migração neste momento — será realizada apenas troca de IP"}] },
-  { id:13, nome:"GEOFIX ENGENHARIA FUNDACOES",     qtdMaquinas:2,   status:"Em Progresso", progresso:0, confirmado:false, dataPrevista:"2026-08-22",         dataMigracao:"2026-08-22",         historico:[] },
-  { id:14, nome:"REFRIO ARMAZENS GERAIS LTDA",     qtdMaquinas:24,  status:"Em Progresso", progresso:0, confirmado:false, dataPrevista:"2026-08-22",         dataMigracao:"2026-08-22",         historico:[] },
-  { id:15, nome:"1TEAMCLOUD SOLUCOES",             qtdMaquinas:1,   status:"Em Progresso", progresso:0,  confirmado:false, dataPrevista:"2026-08-29",         dataMigracao:"2026-08-29",         historico:[] },
-  { id:16, nome:"GRUPO RAIZES",                    qtdMaquinas:13,  status:"Em Progresso", progresso:0, confirmado:false, dataPrevista:"2026-07-25",         dataMigracao:"2026-07-25",         historico:[] },
-  { id:17, nome:"SAT CONSULTORIA",                 qtdMaquinas:3,   status:"Em Progresso", progresso:0,  confirmado:false, dataPrevista:"2026-08-01",         dataMigracao:"2026-08-01",         historico:[] },
+  { id:1, nome:"ENESA ENGENHARIA S.A.", status:"Andamento", dataMigracao:"2026-06-26", prevConclusao:"24/jul", prevAlerta:false, impedimento:"Confirmação técnica pendente (não bloqueante) / Ambiente de teste até 24/07 / volumes sendo transferidos", qtdMaquinas:15, historico:[{"data": "2026-06-07", "acao": "Tema será tratado em reunião no dia 08/12"}] },
+  { id:2, nome:"PRUMO ENGENHARIA", status:"Andamento", dataMigracao:"2026-07-25", prevConclusao:"Não definido", prevAlerta:false, impedimento:"Reunião com Willian e Marcelo ainda pendente", qtdMaquinas:3, historico:[{"data": "2026-06-03", "acao": "Progresso: 30% — Aguardando retorno do acesso para criação das cópias no ambiente 3.0"}, {"data": "2026-06-03", "acao": "Data prevista de conclusão: 12/06/2026"}, {"data": "2026-06-07", "acao": "Aguardando liberação de acesso para que o time de Delivery realize as cópias e disponibilize para validação na versão 3.0"}, {"data": "2026-06-07", "acao": "Em andamento com parceiro responsável pela sustentação do Zimbra para obtenção dos dados de acesso"}] },
+  { id:3, nome:"ZANTHUS - COMERCIO E SERVICOS", status:"Andamento", dataMigracao:"2026-07-25", prevConclusao:"Não definido", prevAlerta:false, impedimento:"Falta subir servidor MariaDB e validar exportação/importação", qtdMaquinas:24, historico:[{"data": "2026-05-30", "acao": "Criado - Status: Em Progresso, aguardando definição do histórico."}, {"data": "2026-06-07", "acao": "Necessário definição e confirmação da janela para 12/06"}] },
+  { id:4, nome:"PIRAMIDAL - THERMOPLASTICS S.A.", status:"Andamento", dataMigracao:"2026-08-01", prevConclusao:"Não definido", prevAlerta:false, impedimento:"Acesso ao VBR pendente", qtdMaquinas:10, historico:[{"data": "2026-06-07", "acao": "Reunião com fornecedores agendada para 10/06"}] },
+  { id:5, nome:"NETZA - PROMOCOES E EVENTOS", status:"Impeditivo", dataMigracao:"2026-06-26", prevConclusao:"Não definido", prevAlerta:false, impedimento:"Aguardando a QoQ (tamanho do disco)", qtdMaquinas:4, historico:[{"data": "2026-06-07", "acao": "Necessário realizar reunião para definição da janela em 12/06 e confirmação do término do backup"}] },
+  { id:6, nome:"GRUPO RAIZES", status:"Impeditivo", dataMigracao:"2026-07-25", prevConclusao:"Não definido", prevAlerta:false, impedimento:"Impedimento com o cliente", qtdMaquinas:13, historico:[] },
+  { id:7, nome:"MAGAZINE LUIZA S/A", status:"Não iniciada", dataMigracao:"2026-08-01", prevConclusao:"01/08 (à confirmar)", prevAlerta:true, impedimento:"Questões financeiras + ambiente de teste não criado", qtdMaquinas:10, historico:[{"data": "2026-06-07", "acao": "Reunião realizada com a cliente (Manuella), com apresentação do plano"}, {"data": "2026-06-07", "acao": "Pendente definição da janela de cópia até 15/06"}] },
+  { id:8, nome:"SAT CONSULTORIA", status:"Não iniciada", dataMigracao:"2026-08-01", prevConclusao:"Não definido", prevAlerta:false, impedimento:"Acionar o cliente", qtdMaquinas:3, historico:[] },
+  { id:9, nome:"RADIO MONTE DA GAVEA LTDA", status:"Não iniciada", dataMigracao:"2026-08-08", prevConclusao:"Não definido", prevAlerta:false, impedimento:"Cliente sem disponibilidade de agenda até o fim do mês", qtdMaquinas:6, historico:[] },
+  { id:10, nome:"BMC MAQUINAS E EQUIP PESADOS", status:"Não iniciada", dataMigracao:"2026-08-08", prevConclusao:"08/08 (à confirmar)", prevAlerta:true, impedimento:"Sem data confirmada, sem autorização do cliente e sem definição operacional", qtdMaquinas:20, historico:[{"data": "2026-06-07", "acao": "Não haverá migração neste momento — será realizada apenas troca de IP"}] },
+  { id:11, nome:"GEOFIX ENGENHARIA FUNDACOES", status:"Não iniciada", dataMigracao:"2026-08-22", prevConclusao:"Não definido", prevAlerta:false, impedimento:"Agenda com Ulisses não disponibilizada", qtdMaquinas:2, historico:[] },
+  { id:12, nome:"REFRIO ARMAZENS GERAIS LTDA", status:"Não iniciada", dataMigracao:"2026-08-22", prevConclusao:"Não definido", prevAlerta:false, impedimento:"Agenda com Ulisses não disponibilizada", qtdMaquinas:24, historico:[] },
+  { id:13, nome:"1TEAMCLOUD SOLUCOES", status:"Não iniciada", dataMigracao:"2026-08-29", prevConclusao:"Não definido", prevAlerta:false, impedimento:"Verificar histórico do cliente", qtdMaquinas:1, historico:[] },
 ];
 const MG_SEED_VERSION = "2026-07-08-v32"; // incrementar ao alterar o seed
 
