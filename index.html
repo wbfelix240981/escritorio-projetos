@@ -3532,6 +3532,14 @@ document.addEventListener('page-changed', function(e) {
   <div class="topbar" role="banner"><div class="tb-heading">Controle de Migração <span>| Binario Cloud</span></div></div>
   <div class="page-content">
 
+    <!-- Aviso temporário: página fora do ar -->
+    <div id="mg-maintenance" style="background:var(--card-bg);border:1px solid rgba(0,0,0,.05);border-radius:var(--radius);box-shadow:var(--shadow);padding:70px 30px;text-align:center;max-width:560px;margin:60px auto;">
+      <div style="font-size:44px;margin-bottom:16px;">⚠️</div>
+      <div style="font-size:18px;font-weight:800;color:var(--text-dark);margin-bottom:8px;">Página temporariamente indisponível</div>
+      <div style="font-size:13px;color:var(--text-light);line-height:1.6;">Estamos com uma instabilidade no Controle de Migração e já estamos trabalhando para normalizar.<br>Tente novamente em alguns instantes.</div>
+    </div>
+
+    <div id="mg-content-wrap" style="display:none;">
     <!-- Hero -->
     <div class="page-hero anim" style="background:linear-gradient(135deg,#1a237e 0%,#283593 60%,#3949ab 100%);">
       <div>
@@ -3579,6 +3587,7 @@ document.addEventListener('page-changed', function(e) {
       <div id="mg-emptyState" style="display:none;text-align:center;padding:3rem 2rem;color:var(--text-light);">
         <p style="font-size:13px;font-weight:600;">Nenhum cliente encontrado</p>
       </div>
+    </div>
     </div>
 
   </div>
