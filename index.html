@@ -802,7 +802,8 @@ body.role-comercial #nav-estruturantes,
 body.role-comercial #menu-group-entregas,
 body.role-comercial #menu-group-status,
 body.role-comercial #menu-divider-1,
-body.role-comercial #menu-group-governanca {
+body.role-comercial #menu-group-governanca,
+body.role-comercial #drawer-trigger {
   display: none !important;
 }
 </style>
@@ -3820,27 +3821,19 @@ const P = {
     eye:'Projeto de Cliente', title:'UOL – Modernização de Nuvem Privada', pct:99,
     fc:'fill-blue', grad:'linear-gradient(90deg,#1565c0,#2979ff)',
     pill:'<span class="pill pill-prog">● Em progresso</span>',
-    tags:[['Cliente','blue'],['Modernização','blue'],['Nuvem Privada','blue'],['0%','blue']],
+    tags:[],
     completed:null,
     link:'https://projeto-binario-uol-modernizacao-de-nuvem.pages.dev/painel',
     secs:[
-      {t:'Painel do Projeto', rows:[
-        ['🔗','<a href="https://projeto-binario-uol-modernizacao-de-nuvem.pages.dev/painel" target="_blank" style="color:#2979ff;font-weight:700;">Abrir painel completo ↗</a>'],
-        ['📊','Progresso atualizado em tempo real via painel BCP'],
-      ]},
-      {t:'Escopo', rows:[
-        ['☁️','Modernização da infraestrutura de nuvem privada'],
-        ['🔄','Atualização e otimização de ambientes existentes'],
-        ['🏗️','Implementação de novas soluções de infraestrutura']
-      ]},
-      {t:'Status atual', rows:[
-        ['👥','7 clientes já em fila para entrar'],
-        ['📅','Início dos próximos clientes na sequência da fila'],
-        ['✅','Projeto em estágio final — 99% concluído']
-      ]},
-      {t:'Próximos passos', rows:[
-        ['📐','Definição de arquitetura e escopo detalhado'],
-        ['⚙️','Início das atividades de implantação']
+      {t:'Checklist do Projeto', rows:[
+        ['🤝','Aceite de transferência via Meet: ⏳ Pendência'],
+        ['📝','Assinatura do TAP: ⏳ Pendência'],
+        ['💰','Faturamento de implantação: ⏳ Pendência'],
+        ['🚀','Kick-off com cliente: ✅ Check'],
+        ['📅','Implantação estimada: ⏳ Pendência'],
+        ['📄','Fechamento do TEP: ⏳ Pendência'],
+        ['📤','Encaminhamento do faturamento: ⏳ Pendência'],
+        ['🏁','Projeto finalizado: ❌ Não']
       ]}
     ]
   },
@@ -3868,16 +3861,19 @@ const P = {
     eye:'Projeto de Cliente', title:'BC – Metalúrgica Schioppa Ltda', pct:99,
     fc:'fill-green', grad:'linear-gradient(90deg,#2e7d32,#43a047)',
     pill:'<span class="pill pill-prog">● Em progresso</span>',
-    tags:[['Cliente','green'],['Em progresso','green'],['99%','green'],['TEP pendente','orange']],
+    tags:[],
     completed:null,
     secs:[
-      {t:'Escopo', rows:[['☁️','Migração e modernização da infraestrutura de nuvem']]},
-      {t:'Status atual', rows:[
-        ['🔄','Migração em andamento — 99% concluído'],
-        ['📄','Necessário envio da documentação técnica'],
-        ['📝','Aguardando recebimento do TEP para envio ao faturamento']
-      ]},
-      {t:'Próximos passos', rows:[['📋','Enviar documentação técnica e receber o TEP para liberar o faturamento']]},
+      {t:'Checklist do Projeto', rows:[
+        ['🤝','Aceite de transferência via Meet: ⏳ Pendência'],
+        ['📝','Assinatura do TAP: ⏳ Pendência'],
+        ['💰','Faturamento de implantação: ⏳ Pendência'],
+        ['🚀','Kick-off com cliente: ✅ Check'],
+        ['📅','Implantação estimada: ⏳ Pendência'],
+        ['📄','Fechamento do TEP: ⏳ Pendência'],
+        ['📤','Encaminhamento do faturamento: ⏳ Pendência'],
+        ['🏁','Projeto finalizado: ❌ Não']
+      ]}
     ],
   },
   promofarma:{
@@ -3899,185 +3895,57 @@ const P = {
     eye:'Projeto de Cliente', title:'Grupo Raízes – Firewall & Segurança Gerenciada (FWaaS)', pct:95,
     fc:'fill-green', grad:'linear-gradient(90deg,#2e7d32,#43a047)',
     pill:'<span class="pill pill-prog">● Em progresso</span>',
-    tags:[['Cliente','green'],['Firewall / FWaaS','green'],['Em progresso','green'],['95%','green']],
+    tags:[],
     completed:null,
     secs:[
-      {t:'Sobre o cliente', rows:[
-        ['🍽️','Grupo Raízes — grupo familiar brasileiro de gastronomia corporativa, varejo alimentício e hospitalidade (Cucinare, Quitanda, Quitanda Escolas e Coletiva)'],
-        ['📍','Fundação 2001 · Presença em SP e MG · +140 restaurantes corporativos'],
-        ['🌐','gruporaizes.com']
-      ]},
-      {t:'Contexto e objetivo', rows:[
-        ['🎯','Upgrade de firewall: mais capacidade, segurança e desempenho para o crescimento do ambiente'],
-        ['🔧','Substituição do appliance atual + gestão especializada (configuração, administração e Security Profiles)'],
-        ['📌','Escopo atual: FortiGate operando só com roteamento básico, NAT e regras de entrada/saída']
-      ]},
-      {t:'Escopo contratado', rows:[
-        ['🖥️','1 Instância Virtual — 6 vCPU · 16 GB RAM · 80 GB SSD NVMe (disco Platinum)'],
-        ['🛡️','1 Firewall Fortinet FGT-90G — licenciamento UTP, em comodato'],
-        ['☁️','Binario Cloud IaaS em VPC dedicada, sem exposição direta à internet']
-      ]},
-      {t:'Arquitetura da solução', rows:[
-        ['🌐','Acesso via internet → Firewall (segurança, controle e roteamento) → VMs na VPC privada'],
-        ['🔐','VMs sem exposição direta à internet · comunicação apenas por regras previamente definidas'],
-        ['🔗','Firewall permite VPNs e conexões seguras entre redes externas']
-      ]},
-      {t:'Security Profiles (Fortinet)', rows:[
-        ['🛡️','IPS · Antivírus · Web Filter · Application Control · SSL Inspection — ativos e geridos 24×7']
-      ]},
-      {t:'SLA Gold — garantia de performance', rows:[
-        ['⏱️','15 min — primeiro atendimento de incidentes críticos'],
-        ['🕐','24×7 — suporte especializado sem interrupção'],
-        ['📈','99,9% — disponibilidade garantida em SLA'],
-        ['⏳','< 4h — resolução de incidentes críticos']
-      ]},
-      {t:'Plano de implementação (4 dias)', rows:[
-        ['1️⃣','Dia 1 — Kickoff & Preparação: escopo, pré-requisitos, acessos e conectividade outbound'],
-        ['2️⃣','Dia 2 — Provisionamento da Infra: VM, recursos, conectividade e acesso remoto'],
-        ['3️⃣','Dia 3 — Implementação do Firewall: substituição, FortiOS e Security Profiles (IPS, AV, Web Filter, App Control, SSL)'],
-        ['4️⃣','Dia 4 — Roteamento, Testes & Go-live: migração para OSPF, testes de failover e estabilização']
-      ]},
-      {t:'Squad de implementação', rows:[
-        ['🔵','Binario: Project Manager · Líder Técnico · Arquiteto de Soluções · Engenheiro de Infra'],
-        ['🟢','Grupo Raízes: Sponsor · Product Owner · TI/Infraestrutura · Operações/SecOps']
-      ]},
-      {t:'Investimento (12 meses · OPEX mensal)', rows:[
-        ['☁️','Nuvem Pública — Binario Cloud IaaS: R$ 456,17/mês'],
-        ['🛡️','Segurança — FGT-90G UTP (comodato): R$ 6.505,93/mês'],
-        ['⚙️','Serviços Gerenciados — 3x Firewalls: R$ 1.723,00/mês'],
-        ['💰','Total OPEX: R$ 8.685,10/mês · com desconto parceria 10%: R$ 7.816,59/mês']
-      ]},
-      {t:'Condições comerciais', rows:[
-        ['📅','Contrato mínimo 12 meses · renovação automática · encerramento com 90 dias de aviso'],
-        ['🚀','Kickoff em até 7 dias após assinatura · ativação condicionada à colaboração do cliente'],
-        ['🚚','1 movimentação do equipamento (FGT-90G) inclusa sem custo, limitada a São Paulo'],
-        ['📈','Reajuste anual por IGPM/IPCA · cobrança por consumo, faturamento mensal']
-      ]},
-      {t:'Aceite / contatos', rows:[
-        ['✍️','Cecília Savastano (Grupo Raízes) · Lucas Oliveira (Resp. Técnico Cliente) · Márcio Borges (Binario.cloud)']
-      ]},
-      {t:'Status atual', rows:[
-        ['✅','Kick-off realizado'],
-        ['🔁','Troca do Firewall realizada — conforme definição do cliente (servidor virtual)'],
-        ['🚚','Providenciando a entrega da máquina ao cliente'],
-        ['📝','TEP sendo enviado hoje'],
-        ['🔄','Projeto em andamento — 95% concluído']
-      ]},
+      {t:'Checklist do Projeto', rows:[
+        ['🤝','Aceite de transferência via Meet: ⏳ Pendência'],
+        ['📝','Assinatura do TAP: ⏳ Pendência'],
+        ['💰','Faturamento de implantação: ⏳ Pendência'],
+        ['🚀','Kick-off com cliente: ✅ Check'],
+        ['📅','Implantação estimada: ✅ 4 dias (plano de implementação)'],
+        ['📄','Fechamento do TEP: ✅ Check (enviado hoje)'],
+        ['📤','Encaminhamento do faturamento: ⏳ Pendência'],
+        ['🏁','Projeto finalizado: ❌ Não']
+      ]}
     ],
   },
   neugebauer:{
     eye:'Projeto de Cliente', title:'Neugebauer – Nuvem Pública & Serviços Gerenciados', pct:19,
     fc:'fill-green', grad:'linear-gradient(90deg,#2e7d32,#43a047)',
     pill:'<span class="pill pill-prog">● Em progresso</span>',
-    tags:[['Cliente','green'],['Nuvem Pública','green'],['Cloud+','green'],['Em progresso','green'],['19%','green'],['Travado','orange']],
+    tags:[],
     completed:null,
     secs:[
-      {t:'Contexto', rows:[
-        ['🎯','Neugebauer busca fortalecer a governança de TI, aumentar a disponibilidade e garantir previsibilidade de custos para suportar seu crescimento'],
-        ['🔄','Hoje: infraestrutura própria operada pela Neugebauer → Migração para a Binário Cloud (moderna e gerenciada)'],
-        ['🚀','Resultado: time livre da operação, focado no que gera valor ao negócio']
-      ]},
-      {t:'Cenário atual (inventário validado)', rows:[
-        ['🖥️','38 VMs · 284 vCPU · 812 GB RAM'],
-        ['🐧','Linux: 15 VMs · Windows: 14 VMs'],
-        ['🗄️','Workloads: SAP (5) · Oracle (4) · Outros (29)'],
-        ['💾','~40 TB de armazenamento + 40 TB de redundância'],
-        ['📜','Licenciamento SuSE Linux SLES for SAP (produtivo) e Standard (dev/qa) · Appliances HANA certificados SAP']
-      ]},
-      {t:'Serviços contratados', rows:[
-        ['☁️','Infra: 38 VMs · 284 vCPU · 812 GB RAM na Binário Cloud'],
-        ['💾','Backup: Veeam gerenciado, padrão 3-2-1-1-0'],
-        ['🔗','Rede: conectividade segura entre ambientes'],
-        ['🛡️','Segurança: Virtual Firewall Fortinet, políticas geridas'],
-        ['⚙️','Gerenciamento: Cloud+ com monitoramento e operação contínua'],
-        ['🕐','Suporte: CCOE 24×7 (SLA Gold)']
-      ]},
-      {t:'Backup e proteção de dados', rows:[
-        ['📀','Full: 1x/semana · Domingo 02h00 · retenção 90 dias'],
-        ['🔁','Incremental: 2x/dia (Seg-Sáb, 02h00 e 14h00) · retenção 90 dias'],
-        ['🩺','Health Check: 1x/semana após o Full · integridade dos pontos de restauração'],
-        ['♻️','Teste de restauração: 1x/mês em janela acordada · valida recuperação real'],
-        ['🔒','Fluxo: Cliente → Veeam → Repositório Local → Cloud Binário (cópia imutável 3-2-1-1-0), monitorado 24×7']
-      ]},
-      {t:'Fases do projeto', rows:[
-        ['1️⃣','Condução: Kickoff · Apresentação do escopo · Refinamento do escopo'],
-        ['2️⃣','Execução: Implementação · Validação · Migração'],
-        ['3️⃣','Encerramento: Testes · Virada de chave (go-live) · Termo de aceite']
-      ]},
-      {t:'Refinamento — o que a Binário precisa conhecer', rows:[
-        ['📋','Inventário de aplicações e dependências · criticidade por sistema (RPO/RTO)'],
-        ['🛠️','Janelas de manutenção · políticas de segurança e compliance'],
-        ['🔌','Integrações externas, IPs e domínios · contatos técnicos por frente'],
-        ['📜','Particularidades de licenciamento (SAP, Oracle, Windows)']
-      ]},
-      {t:'Partes interessadas', rows:[
-        ['🟢','Neugebauer: Norton Soares (Gerente de TI) · Cassiano Morin (Segurança e Redes) · Francis Picoli (Infraestrutura)'],
-        ['🔵','Binário: Wagner Felix (PMO) · Diogo Lerison (Projetos) · Bruno Queiroz (Gerente CSE) · Brunno Lopes (TI Sênior CSE)']
-      ]},
-      {t:'Próximos passos', rows:[
-        ['✅','Confirmação do escopo detalhado e início do provisionamento'],
-        ['📅','Reuniões semanais de status e checkpoint ao fim de cada fase'],
-        ['📞','Canal dedicado + e-mail para formalizações · escalonamento CCOE 24×7'],
-        ['🚀','Fase 4 (Implementação) inicia em até 7 dias úteis após confirmação do escopo']
-      ]},
-      {t:'Status atual', rows:[
-        ['✅','Kick-off realizado'],
-        ['🤝','Reunião presencial realizada'],
-        ['⛔','Projeto travado — resolvendo pendências de acesso entre Binário e Kosmo'],
-        ['🔄','Projeto em andamento — 19% concluído']
-      ]},
+      {t:'Checklist do Projeto', rows:[
+        ['🤝','Aceite de transferência via Meet: ✅ Check (reunião presencial realizada)'],
+        ['📝','Assinatura do TAP: ⏳ Pendência'],
+        ['💰','Faturamento de implantação: ⏳ Pendência'],
+        ['🚀','Kick-off com cliente: ✅ Check'],
+        ['📅','Implantação estimada: ⏳ Pendência (projeto travado)'],
+        ['📄','Fechamento do TEP: ❌ Não'],
+        ['📤','Encaminhamento do faturamento: ❌ Não'],
+        ['🏁','Projeto finalizado: ❌ Não']
+      ]}
     ],
   },
   psdovidro:{
     eye:'Projeto de Cliente', title:'PS do Vidro – Nuvem Pública & Backup Veeam', pct:95,
     fc:'fill-green', grad:'linear-gradient(90deg,#2e7d32,#43a047)',
     pill:'<span class="pill pill-prog">● Em progresso</span>',
-    tags:[['Cliente','green'],['Nuvem Pública','green'],['Backup Veeam','green'],['Em progresso','green'],['95%','green']],
+    tags:[],
     completed:null,
     secs:[
-      {t:'Sobre o cliente', rows:[
-        ['🪟','PS do Vidro — empresa brasileira especializada em soluções de vidro e espelhos, com fabricação própria e equipes de medição, beneficiamento e instalação'],
-        ['📍','Fundada em 1980 · 40+ anos de atuação · São Paulo – SP'],
-        ['🏗️','Segmento: vidros, espelhos, boxes e fachadas · +80 mil obras entregues · arquitetos e construtoras']
-      ]},
-      {t:'Contexto e objetivo', rows:[
-        ['🎯','Modernização do ambiente de TI, migrando sistemas corporativos, banco de dados e aplicações de gestão para a nuvem pública da Binário Cloud'],
-        ['⚠️','Cenário atual: ambiente on-premises, necessidade de modernização e proteção de dados'],
-        ['☁️','Objetivo: infraestrutura em nuvem (IaaS) segura, escalável e gerenciada, com backup Veeam e custos previsíveis em Reais']
-      ]},
-      {t:'Escopo contratado', rows:[
-        ['🖥️','1 VM App (bc1-standard-8-32) — Windows Server 2022 · 8 vCPU + 32 GB RAM · 300 GB Armazenamento Platinum'],
-        ['🗄️','1 VM DB (bc1-highmem-4-32) — Windows Server 2022 com SQL Server · 4 vCPU + 32 GB RAM · 700 GB Armazenamento Platinum'],
-        ['🛡️','1 Virtual Firewall pfSense (bc1-firewall-2-4) + 1 IP público'],
-        ['💾','Backup gerenciado Veeam Backup & Replication — 2 licenças Enterprise Plus · repositório 1,5 TB · padrão 3-2-1-1-0 com cópia imutável']
-      ]},
-      {t:'Resumo comercial', rows:[
-        ['📄','Solução: Nuvem Pública IaaS + Backup Veeam'],
-        ['📅','Vigência: 18 meses'],
-        ['📑','Documento base: Proposta IaaS PV v2.1']
-      ]},
-      {t:'Plano de implementação', rows:[
-        ['1️⃣','Semana 1 — Kickoff & Planejamento: alinhamento técnico, escopo, pré-requisitos, acessos e elaboração do TAP'],
-        ['2️⃣','Semana 1 — Execução e Controle: provisionamento das 2 VMs, storage 1 TB Platinum, firewall pfSense + IP público e Veeam Backup & Replication'],
-        ['3️⃣','Semana 1 — Testes e validação: conectividade, desempenho, segurança e backup'],
-        ['4️⃣','Semana 1 — Go Live: cutover para produção, handover ao suporte e elaboração do TEP']
-      ]},
-      {t:'Fora do escopo', rows:[
-        ['🚫','Migração de dados (salvo se expressamente contratada)'],
-        ['🚫','Gerenciamento e suporte das VMs, aplicações e bancos de dados (salvo se contratado)'],
-        ['🚫','Gerenciamento de Active Directory (usuários, grupos, senhas)']
-      ]},
-      {t:'Contato do cliente', rows:[
-        ['👤','André Nascimento — Gerente de TI'],
-        ['✉️','andre@psdovidro.com.br'],
-        ['📞','(11) 97069-9790']
-      ]},
-      {t:'Status atual', rows:[
-        ['✅','Kick-off realizado'],
-        ['🖥️','Máquinas já configuradas'],
-        ['🔧','Em ajuste o BC BKP (Backup)'],
-        ['🔄','Projeto em andamento — 95% concluído']
-      ]},
+      {t:'Checklist do Projeto', rows:[
+        ['🤝','Aceite de transferência via Meet: ⏳ Pendência'],
+        ['📝','Assinatura do TAP: ⏳ Pendência'],
+        ['💰','Faturamento de implantação: ⏳ Pendência'],
+        ['🚀','Kick-off com cliente: ✅ Check'],
+        ['📅','Implantação estimada: ✅ 1 semana (plano de implementação)'],
+        ['📄','Fechamento do TEP: ⏳ Pendência'],
+        ['📤','Encaminhamento do faturamento: ⏳ Pendência'],
+        ['🏁','Projeto finalizado: ❌ Não']
+      ]}
     ],
   },
   spsp:{
