@@ -1001,13 +1001,13 @@ body.role-comercial #drawer-trigger {
       <div class="card anim">
         <div class="card-accent accent-green"></div>
         <div class="card-header">
-          <span class="pill pill-prog">● Em progresso</span>
-          <span class="card-pct">99%</span>
+          <span class="pill pill-done">✓ Finalizado — Ago/2026</span>
+          <span class="card-pct">100%</span>
         </div>
         <div class="card-title">BC – Metalúrgica Schioppa Ltda</div>
         <div class="card-footer">
           
-          <div class="bar-track"><div class="bar-fill fill-green" data-pct="99"></div></div>
+          <div class="bar-track"><div class="bar-fill fill-green" data-pct="100"></div></div>
           <button class="btn-det" onclick="openModal('schioppa')">Ver detalhes <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 6.5h9M7 2l4.5 4.5L7 11" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
         </div>
       </div>
@@ -3859,11 +3859,11 @@ const P = {
     ]
   },
   schioppa:{
-    eye:'Projeto de Cliente', title:'BC – Metalúrgica Schioppa Ltda', pct:99,
+    eye:'Projeto de Cliente', title:'BC – Metalúrgica Schioppa Ltda', pct:100,
     fc:'fill-green', grad:'linear-gradient(90deg,#2e7d32,#43a047)',
-    pill:'<span class="pill pill-prog">● Em progresso</span>',
-    tags:[],
-    completed:null,
+    pill:'<span class="pill pill-done">✓ Finalizado — Ago/2026</span>',
+    tags:[['Cliente','green'],['Finalizado','green'],['100%','green']],
+    completed:'2026-08-12',
     secs:[
       {t:'Checklist do Projeto', rows:[
         ['🤝','Aceite pelo escritório de projetos: ✅ Sim'],
@@ -3871,10 +3871,10 @@ const P = {
         ['💰','Faturamento de implantação: N/A'],
         ['🚀','Kick-off com cliente: ✅ Sim'],
         ['📅','Implantação estimada em: 30 dias'],
-        ['📍','Status atual: Teste de restore, elaboração da documentação técnica'],
-        ['📄','Fechamento do TEP: ⏳ Pendente — Aguardando devolutiva da assinatura do cliente'],
-        ['📤','Encaminhamento do faturamento: ⏳ Pendente'],
-        ['🏁','Projeto finalizado: ❌ Não'],
+        ['📍','Status atual: Projeto finalizado — TEP assinado e faturamento encaminhado'],
+        ['📄','Fechamento do TEP: ✅ Sim — TEP Assinada'],
+        ['📤','Encaminhamento do faturamento: ✅ Sim'],
+        ['🏁','Projeto finalizado: ✅ Sim'],
       ]}
     ],
   },
