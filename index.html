@@ -1072,6 +1072,36 @@ body.role-comercial #drawer-trigger {
         </div>
       </div>
 
+      <!-- SOPREMA LTDA -->
+      <div class="card anim">
+        <div class="card-accent accent-green"></div>
+        <div class="card-header">
+          <span class="pill pill-prog">○ Não iniciado</span>
+          <span class="card-pct">0%</span>
+        </div>
+        <div class="card-title">SOPREMA LTDA</div>
+        <div class="card-footer">
+          
+          <div class="bar-track"><div class="bar-fill fill-green" data-pct="0"></div></div>
+          <button class="btn-det" onclick="openModal('soprema')">Ver detalhes <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 6.5h9M7 2l4.5 4.5L7 11" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        </div>
+      </div>
+
+      <!-- PLEION INDUSTRIA E COMERCIO DE PLASTICOS -->
+      <div class="card anim">
+        <div class="card-accent accent-green"></div>
+        <div class="card-header">
+          <span class="pill pill-prog">○ Não iniciado</span>
+          <span class="card-pct">0%</span>
+        </div>
+        <div class="card-title">Pleion Indústria e Comércio de Plásticos LTDA.</div>
+        <div class="card-footer">
+          
+          <div class="bar-track"><div class="bar-fill fill-green" data-pct="0"></div></div>
+          <button class="btn-det" onclick="openModal('pleion')">Ver detalhes <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 6.5h9M7 2l4.5 4.5L7 11" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        </div>
+      </div>
+
     </div>
 
 
@@ -3949,6 +3979,46 @@ const P = {
         ['📍','Status atual: Instalação do BC-Backups sendo ajustada'],
         ['📄','Fechamento do TEP: ⏳ Pendente — Aguardando devolutiva da assinatura do cliente'],
         ['📤','Encaminhamento do faturamento: ⏳ Pendente'],
+        ['🏁','Projeto finalizado: ❌ Não'],
+      ]}
+    ],
+  },
+  soprema:{
+    eye:'Projeto de Cliente', title:'SOPREMA LTDA', pct:0,
+    fc:'fill-green', grad:'linear-gradient(90deg,#2e7d32,#43a047)',
+    pill:'<span class="pill pill-prog">○ Não iniciado</span>',
+    tags:[],
+    completed:null,
+    secs:[
+      {t:'Checklist do Projeto', rows:[
+        ['🤝','Aceite pelo escritório de projetos: ⏳ Pendência'],
+        ['📝','Assinatura do TAP: ⏳ Pendência'],
+        ['💰','Faturamento de implantação: ⏳ Pendência'],
+        ['🚀','Kick-off com cliente: ⏳ Pendência'],
+        ['📅','Implantação estimada em: —'],
+        ['📍','Status atual: Projeto ainda não iniciado'],
+        ['📄','Fechamento do TEP: ⏳ Pendência'],
+        ['📤','Encaminhamento do faturamento: ⏳ Pendência'],
+        ['🏁','Projeto finalizado: ❌ Não'],
+      ]}
+    ],
+  },
+  pleion:{
+    eye:'Projeto de Cliente', title:'Pleion Indústria e Comércio de Plásticos LTDA.', pct:0,
+    fc:'fill-green', grad:'linear-gradient(90deg,#2e7d32,#43a047)',
+    pill:'<span class="pill pill-prog">○ Não iniciado</span>',
+    tags:[],
+    completed:null,
+    secs:[
+      {t:'Checklist do Projeto', rows:[
+        ['🤝','Aceite pelo escritório de projetos: ⏳ Pendência'],
+        ['📝','Assinatura do TAP: ⏳ Pendência'],
+        ['💰','Faturamento de implantação: ⏳ Pendência'],
+        ['🚀','Kick-off com cliente: ⏳ Pendência'],
+        ['📅','Implantação estimada em: —'],
+        ['📍','Status atual: Projeto ainda não iniciado'],
+        ['📄','Fechamento do TEP: ⏳ Pendência'],
+        ['📤','Encaminhamento do faturamento: ⏳ Pendência'],
         ['🏁','Projeto finalizado: ❌ Não'],
       ]}
     ],
