@@ -1201,26 +1201,26 @@ body.role-comercial #drawer-trigger {
           <div style="font-size:13px;font-weight:700;color:#fff;margin-top:6px;">VMs Mapeadas</div>
         </div>
         <div style="background:#22c55e;border-radius:10px;padding:20px 16px;text-align:center;">
-          <div style="font-size:42px;font-weight:900;color:#fff;line-height:1;">406</div>
+          <div style="font-size:42px;font-weight:900;color:#fff;line-height:1;">407</div>
           <div style="font-size:13px;font-weight:700;color:#fff;margin-top:6px;">VMs Migradas</div>
         </div>
         <div style="background:#94a3b8;border-radius:10px;padding:20px 16px;text-align:center;">
-          <div style="font-size:42px;font-weight:900;color:#fff;line-height:1;">83</div>
+          <div style="font-size:42px;font-weight:900;color:#fff;line-height:1;">82</div>
           <div style="font-size:13px;font-weight:700;color:#fff;margin-top:6px;">VMs em Andamento</div>
         </div>
       </div>
       <!-- Barra VMs -->
       <div style="display:flex;border-radius:99px;overflow:hidden;height:28px;margin-bottom:8px;">
-        <div style="background:#22c55e;width:83.0%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#fff;">83.0%</div>
-        <div style="background:#e2e8f0;flex:1;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#64748b;">17.0%</div>
+        <div style="background:#22c55e;width:83.2%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#fff;">83.2%</div>
+        <div style="background:#e2e8f0;flex:1;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#64748b;">16.8%</div>
       </div>
       <!-- Legenda VMs -->
       <div style="display:flex;gap:16px;margin-top:6px;">
         <div style="display:flex;align-items:center;gap:6px;font-size:12px;font-weight:600;color:#1a2a3a;">
-          <div style="width:12px;height:12px;border-radius:2px;background:#22c55e;"></div>Concluídas (406)
+          <div style="width:12px;height:12px;border-radius:2px;background:#22c55e;"></div>Concluídas (407)
         </div>
         <div style="display:flex;align-items:center;gap:6px;font-size:12px;font-weight:600;color:#1a2a3a;">
-          <div style="width:12px;height:12px;border-radius:2px;background:#94a3b8;"></div>Em Andamento (83)
+          <div style="width:12px;height:12px;border-radius:2px;background:#94a3b8;"></div>Em Andamento (82)
         </div>
       </div>
     </div>
@@ -1256,7 +1256,7 @@ body.role-comercial #drawer-trigger {
       <div style="display:flex;align-items:center;gap:12px;margin-bottom:6px;">
         <div>
           <h1 style="font-size:22px;font-weight:800;color:#1a2a3a;letter-spacing:-.5px;margin:0;">Gestão Cloud de Domínios</h1>
-          <p style="font-size:12px;color:#5a6a7a;margin:2px 0 0;">Ambiente 2.0 — Inventário OpenStack · 176 VMs · 16 Domínios · 165 ligadas · 11 desligadas<span id="san20-timestamp"></span></p>
+          <p style="font-size:12px;color:#5a6a7a;margin:2px 0 0;">Ambiente 2.0 — Inventário OpenStack · 142 VMs · 13 Domínios · 131 ligadas · 11 desligadas<span id="san20-timestamp"></span></p>
         </div>
       </div>
     </div>
@@ -1673,7 +1673,7 @@ function san20Delete(id) {
 
 async function san20SaveStorage() {
   try {
-    const payload = JSON.stringify({ san20Data, san20NextId, seed_version: '2026-08-11-v3' });
+    const payload = JSON.stringify({ san20Data, san20NextId, seed_version: '2026-08-11-v4' });
     if (window.storage) {
       await window.storage.set('san20_data', payload);
     } else {
@@ -1691,23 +1691,20 @@ async function san20SaveStorage() {
 
 
 const SAN20_SEED = [
-  // ── Inventário OpenStack (aba Inventário VMs) — 11/08/2026 | 176 VMs | 16 Domínios ──
+  // ── Inventário OpenStack (aba Inventário VMs) — 11/08/2026 | 142 VMs | 13 Domínios ──
   { id: 1, dominio:'binario.cloud', cliente:'Binario Cloud — Ambiente Principal', tipo:'Cloud Foundation', vms:44, ligadas:44, desligadas:0, pctDeslig:0.0 },
   { id: 2, dominio:'refrio.com.br', cliente:'Refrio', tipo:'Aplicação Web', vms:24, ligadas:24, desligadas:0, pctDeslig:0.0 },
   { id: 3, dominio:'bmchyundai.com.br', cliente:'BMC Hyundai', tipo:'Aplicação Web', vms:20, ligadas:20, desligadas:0, pctDeslig:0.0 },
-  { id: 4, dominio:'enesa.com.br', cliente:'ENESA Engenharia S.A.', tipo:'Aplicação Web', vms:15, ligadas:15, desligadas:0, pctDeslig:0.0 },
-  { id: 5, dominio:'zanthus.com.br', cliente:'Zanthus - Comércio e Serviços', tipo:'Aplicação Web', vms:15, ligadas:15, desligadas:0, pctDeslig:0.0 },
-  { id: 6, dominio:'gruporaizes.com', cliente:'Grupo Raízes', tipo:'Aplicação Web', vms:13, ligadas:13, desligadas:0, pctDeslig:0.0 },
-  { id: 7, dominio:'waits.com.br', cliente:'Piramidal', tipo:'Aplicação Web', vms:11, ligadas:0, desligadas:11, pctDeslig:100.0 },
-  { id: 8, dominio:'luizalabs.com', cliente:'Magazine Luiza', tipo:'Aplicação Web', vms:10, ligadas:10, desligadas:0, pctDeslig:0.0 },
-  { id: 9, dominio:'radiojb.fm', cliente:'Rádio JB', tipo:'Aplicação Web', vms:6, ligadas:6, desligadas:0, pctDeslig:0.0 },
-  { id: 10, dominio:'sre.binario.cloud', cliente:'Binario Cloud SRE', tipo:'Cloud Foundation', vms:5, ligadas:5, desligadas:0, pctDeslig:0.0 },
-  { id: 11, dominio:'netza.com.br', cliente:'Netza - Promoções e Eventos', tipo:'Aplicação Web', vms:4, ligadas:4, desligadas:0, pctDeslig:0.0 },
-  { id: 12, dominio:'prumoengenharia.com.br', cliente:'Prumo Engenharia', tipo:'Aplicação Web', vms:3, ligadas:3, desligadas:0, pctDeslig:0.0 },
-  { id: 13, dominio:'geofix.com.br', cliente:'Geofix', tipo:'Aplicação Web', vms:2, ligadas:2, desligadas:0, pctDeslig:0.0 },
-  { id: 14, dominio:'sattelecomip.com', cliente:'SAT Telecom IP', tipo:'Aplicação Web', vms:2, ligadas:2, desligadas:0, pctDeslig:0.0 },
-  { id: 15, dominio:'1team.cloud', cliente:'1TeamCloud', tipo:'Aplicação Web', vms:1, ligadas:1, desligadas:0, pctDeslig:0.0 },
-  { id: 16, dominio:'sattelecom.com', cliente:'SAT Telecom', tipo:'Aplicação Web', vms:1, ligadas:1, desligadas:0, pctDeslig:0.0 },
+  { id: 4, dominio:'gruporaizes.com', cliente:'Grupo Raízes', tipo:'Aplicação Web', vms:13, ligadas:13, desligadas:0, pctDeslig:0.0 },
+  { id: 5, dominio:'waits.com.br', cliente:'Piramidal', tipo:'Aplicação Web', vms:11, ligadas:0, desligadas:11, pctDeslig:100.0 },
+  { id: 6, dominio:'luizalabs.com', cliente:'Magazine Luiza', tipo:'Aplicação Web', vms:10, ligadas:10, desligadas:0, pctDeslig:0.0 },
+  { id: 7, dominio:'radiojb.fm', cliente:'Rádio JB', tipo:'Aplicação Web', vms:6, ligadas:6, desligadas:0, pctDeslig:0.0 },
+  { id: 8, dominio:'sre.binario.cloud', cliente:'Binario Cloud SRE', tipo:'Cloud Foundation', vms:5, ligadas:5, desligadas:0, pctDeslig:0.0 },
+  { id: 9, dominio:'prumoengenharia.com.br', cliente:'Prumo Engenharia', tipo:'Aplicação Web', vms:3, ligadas:3, desligadas:0, pctDeslig:0.0 },
+  { id: 10, dominio:'geofix.com.br', cliente:'Geofix', tipo:'Aplicação Web', vms:2, ligadas:2, desligadas:0, pctDeslig:0.0 },
+  { id: 11, dominio:'sattelecomip.com', cliente:'SAT Telecom IP', tipo:'Aplicação Web', vms:2, ligadas:2, desligadas:0, pctDeslig:0.0 },
+  { id: 12, dominio:'1team.cloud', cliente:'1TeamCloud', tipo:'Aplicação Web', vms:1, ligadas:1, desligadas:0, pctDeslig:0.0 },
+  { id: 13, dominio:'sattelecom.com', cliente:'SAT Telecom', tipo:'Aplicação Web', vms:1, ligadas:1, desligadas:0, pctDeslig:0.0 },
 ];
 
 const SAN20_VMS = {
@@ -1782,23 +1779,6 @@ const SAN20_VMS = {
     {n:'prx-bmchyundai',id:'4c6aa053-00c9-4e09-864c-90a3144e2455',s:'ACTIVE',p:'project-bmc',pid:'704f5dd0fa754789a5bea1623c476748'},
     {n:'SRV-VBR',id:'8b63f814-99f7-4c69-8f08-0b09b04968e9',s:'ACTIVE',p:'project-bmc',pid:'704f5dd0fa754789a5bea1623c476748'},
   ],
-  'enesa.com.br': [
-    {n:'ENSP-000SEVMBKP',id:'7cfb65f2-37a4-4e04-adae-9320001561f8',s:'ACTIVE',p:'project-backup-enesa',pid:'da35d2f76e3d43f4ac237f02c92a9765'},
-    {n:'ENSP-000SEVMPRI',id:'f6d0dcb4-2681-4d9c-a089-fe1777053be9',s:'ACTIVE',p:'project-backup-enesa',pid:'da35d2f76e3d43f4ac237f02c92a9765'},
-    {n:'ENSP-00FWPF',id:'62e681f7-cada-42e4-a5b0-60f0617b6e04',s:'ACTIVE',p:'project-backup-enesa',pid:'da35d2f76e3d43f4ac237f02c92a9765'},
-    {n:'ENSP-SEVMBD',id:'77dc63cf-7496-4f1f-9806-5ed59dbae5fc',s:'ACTIVE',p:'project-backup-enesa',pid:'da35d2f76e3d43f4ac237f02c92a9765'},
-    {n:'SVAPP03',id:'2b38a14b-8c75-422a-bfcc-de41fb38c9ca',s:'ACTIVE',p:'project-backup-enesa',pid:'da35d2f76e3d43f4ac237f02c92a9765'},
-    {n:'SVDB02',id:'4aa994c8-8022-4c2f-8962-66d264b7e781',s:'ACTIVE',p:'project-backup-enesa',pid:'da35d2f76e3d43f4ac237f02c92a9765'},
-    {n:'SVDC01',id:'93f191b1-276f-4da4-8c0f-50bf785273b3',s:'ACTIVE',p:'project-backup-enesa',pid:'da35d2f76e3d43f4ac237f02c92a9765'},
-    {n:'SVFASTVUE',id:'5f3f42b8-8707-46da-b4ff-97394a18c995',s:'ACTIVE',p:'project-backup-enesa',pid:'da35d2f76e3d43f4ac237f02c92a9765'},
-    {n:'SVFS01',id:'cd679b6e-589b-445d-810b-9a9d32a15223',s:'ACTIVE',p:'project-backup-enesa',pid:'da35d2f76e3d43f4ac237f02c92a9765'},
-    {n:'SVHOMOLOG',id:'adbc6aea-bd58-4459-b747-681e6541a297',s:'ACTIVE',p:'project-backup-enesa',pid:'da35d2f76e3d43f4ac237f02c92a9765'},
-    {n:'SVRDP',id:'45f8bf43-ee51-4d59-aed5-4c5d2fea999d',s:'ACTIVE',p:'project-backup-enesa',pid:'da35d2f76e3d43f4ac237f02c92a9765'},
-    {n:'SVRPA',id:'83af6ff0-e8dc-4175-964a-4aa224ac2550',s:'ACTIVE',p:'project-backup-enesa',pid:'da35d2f76e3d43f4ac237f02c92a9765'},
-    {n:'SVRS01',id:'e12fd6de-63e5-4ff2-9718-c1c5002eda3e',s:'ACTIVE',p:'project-backup-enesa',pid:'da35d2f76e3d43f4ac237f02c92a9765'},
-    {n:'SVWEB01',id:'bd71073e-8498-43f2-aff4-5b6d04b4fc4a',s:'ACTIVE',p:'project-backup-enesa',pid:'da35d2f76e3d43f4ac237f02c92a9765'},
-    {n:'VBR-MIGRACA',id:'efd1c729-b7fb-47ee-8871-5081e5a6f720',s:'ACTIVE',p:'project-backup-enesa',pid:'da35d2f76e3d43f4ac237f02c92a9765'},
-  ],
   'geofix.com.br': [
     {n:'CLOUD-BOXFWGFX',id:'c9d9c201-db4d-43dd-91df-66408b9500f8',s:'ACTIVE',p:'GEOFIX FUNDACOES LTDA',pid:'d517dc981849497f9347f283c30e8a81'},
     {n:'CLOUD-SRVADGFX',id:'87266230-d405-4a49-b3f2-39dda9eaea24',s:'ACTIVE',p:'GEOFIX FUNDACOES LTDA',pid:'d517dc981849497f9347f283c30e8a81'},
@@ -1829,12 +1809,6 @@ const SAN20_VMS = {
     {n:'pfsense-firewall',id:'3123d4f3-0858-4cb7-a68e-ac5dc0d9df70',s:'ACTIVE',p:'project-mgc',pid:'f461f142d06846b69a8177060514d4eb'},
     {n:'vm01_labs',id:'8f8f643a-bdc3-43d0-8ca8-4baa36fbdda0',s:'ACTIVE',p:'project-mgc',pid:'f461f142d06846b69a8177060514d4eb'},
     {n:'vm03_labs',id:'04d66569-0cd9-4ba5-8c95-749cf167bc59',s:'ACTIVE',p:'project-mgc',pid:'f461f142d06846b69a8177060514d4eb'},
-  ],
-  'netza.com.br': [
-    {n:'NETZA-FW01',id:'ca30a4f2-2661-44b5-90e0-48edd3f61e5f',s:'ACTIVE',p:'NETZA',pid:'88e39ab425be42c2864d36c8e199c10f'},
-    {n:'prx-netza',id:'447a9f8e-2a8b-4a08-912e-dc43e64a69c4',s:'ACTIVE',p:'NETZA',pid:'88e39ab425be42c2864d36c8e199c10f'},
-    {n:'VBR-Migracao-Netza',id:'7fe277ec-8e6e-4832-b5b2-4668e078de0a',s:'ACTIVE',p:'NETZA',pid:'88e39ab425be42c2864d36c8e199c10f'},
-    {n:'vm-netza',id:'c6606820-804a-4b6c-a3ec-860c6f3f2079',s:'ACTIVE',p:'NETZA',pid:'88e39ab425be42c2864d36c8e199c10f'},
   ],
   'prumoengenharia.com.br': [
     {n:'Bluepex_UTM_Atualizado',id:'169f28fa-94a7-4961-a65f-230856b836d2',s:'ACTIVE',p:'project-provedor-de-email-zimbra',pid:'a545170c94ad471086c7ffc494365b6f'},
@@ -1902,27 +1876,10 @@ const SAN20_VMS = {
     {n:'PIRA-BC-TS',id:'779b40a9-899e-47fe-bf16-771daa6e549f',s:'SHUTOFF',p:'project-piramidal',pid:'7318a9bcacaf4dffb707aa108d0d41aa'},
     {n:'PIRA-BC-VPN01',id:'fd377c83-f30c-47ed-9d03-d21299dda1d2',s:'SHUTOFF',p:'project-piramidal',pid:'7318a9bcacaf4dffb707aa108d0d41aa'},
   ],
-  'zanthus.com.br': [
-    {n:'BC-ADMIN',id:'92ba45d1-21c3-4027-86aa-fa3b17c3ce80',s:'ACTIVE',p:'ZCLOUD-ZANTHUS-TI-BC',pid:'a74e1b339de544e79b9ca202805bd16c'},
-    {n:'BC-CLAZ',id:'ccba83f0-b91d-4449-9754-3036972cab96',s:'ACTIVE',p:'ZCLOUD-ZANTHUS-TI-BC',pid:'a74e1b339de544e79b9ca202805bd16c'},
-    {n:'BC-DOCKER',id:'3b44e68c-0c17-4909-bce7-e87945f998ed',s:'ACTIVE',p:'ZCLOUD-ZANTHUS-TI-BC',pid:'a74e1b339de544e79b9ca202805bd16c'},
-    {n:'BC-DOCKER-RESTORE',id:'9da60652-0a71-4a85-8429-1217845a3c0d',s:'ACTIVE',p:'ZCLOUD-ZANTHUS-TI-BC',pid:'a74e1b339de544e79b9ca202805bd16c'},
-    {n:'BC-ECOMM',id:'d02a6999-7428-43f5-9471-d35523689bbe',s:'ACTIVE',p:'ZCLOUD-ZANTHUS-TI-BC',pid:'a74e1b339de544e79b9ca202805bd16c'},
-    {n:'BC-GITLAB',id:'9607c8e9-6ef8-4197-978a-1a3b884afa0c',s:'ACTIVE',p:'ZCLOUD-ZANTHUS-TI-BC',pid:'a74e1b339de544e79b9ca202805bd16c'},
-    {n:'BC-IT-FW-ZANTHUS',id:'3498f643-fc08-4f7e-acae-a58b62361082',s:'ACTIVE',p:'ZCLOUD-ZANTHUS-TI-BC',pid:'a74e1b339de544e79b9ca202805bd16c'},
-    {n:'BC-MSSQL',id:'286efaa8-37af-428c-90e7-5b3ce90ef3d9',s:'ACTIVE',p:'ZCLOUD-ZANTHUS-TI-BC',pid:'a74e1b339de544e79b9ca202805bd16c'},
-    {n:'BC-PGSQL',id:'9592a510-0591-4810-9222-00331b0b59b5',s:'ACTIVE',p:'ZCLOUD-ZANTHUS-TI-BC',pid:'a74e1b339de544e79b9ca202805bd16c'},
-    {n:'BC-PINCODE',id:'d57584d8-f517-4c6e-88e0-0829dfb7b6c2',s:'ACTIVE',p:'ZCLOUD-ZANTHUS-TI-BC',pid:'a74e1b339de544e79b9ca202805bd16c'},
-    {n:'BC-POC-ZRETAIL',id:'00fdda9d-7607-4f49-a8fe-afdc21707285',s:'ACTIVE',p:'ZCLOUD-ZANTHUS-TI-BC',pid:'a74e1b339de544e79b9ca202805bd16c'},
-    {n:'BC-PROTHEUS',id:'e13b4724-041e-4297-8f4d-02ec108a7881',s:'ACTIVE',p:'ZCLOUD-ZANTHUS-TI-BC',pid:'a74e1b339de544e79b9ca202805bd16c'},
-    {n:'BC-SCAVENGER',id:'8f33188b-fd13-4c9f-a0e8-b041b0ab3f58',s:'ACTIVE',p:'ZCLOUD-ZANTHUS-TI-BC',pid:'a74e1b339de544e79b9ca202805bd16c'},
-    {n:'Recovery-Volume',id:'6df98970-b698-4cb9-bba7-da42e9677fde',s:'ACTIVE',p:'ZCLOUD-ZANTHUS-TI-BC',pid:'a74e1b339de544e79b9ca202805bd16c'},
-    {n:'SRVMIGRACAO-SHARE',id:'c34f123c-ed79-4fb3-b764-d577cff996f8',s:'ACTIVE',p:'ZCLOUD-ZANTHUS-TI-BC',pid:'a74e1b339de544e79b9ca202805bd16c'},
-  ],
 };
 
 async function san20LoadStorage() {
-  const SEED_VERSION = '2026-08-11-v3';
+  const SEED_VERSION = '2026-08-11-v4';
   try {
     let saved = null;
     if (window.storage) {
