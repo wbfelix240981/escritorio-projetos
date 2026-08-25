@@ -1,4 +1,19 @@
-steps:
+name: Sync ClickUp → Painel
+
+on:
+  schedule:
+    # A cada 30 minutos
+    - cron: '*/30 * * * *'
+  workflow_dispatch:
+    # Permite rodar manualmente pela aba Actions do GitHub
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
       - name: Checkout
         uses: actions/checkout@v4
 
