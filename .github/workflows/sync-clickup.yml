@@ -1,0 +1,21 @@
+steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Sincronizar % dos projetos com o ClickUp
+        env:
+          CLICKUP_TOKEN: ${{ secrets.CLICKUP_TOKEN }}
+        run: python3 scripts/sync_clickup.py --file index.html
+
+      - name: Commit e push se algo mudou
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add index.html
+          git diff --cached --quiet && echo "Nada para commitar" || git commit -m "sync: atualização automática ClickUp $(date -u '+%Y-%m-%d %H:%M UTC')"
+          git push
