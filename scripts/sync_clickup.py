@@ -45,13 +45,22 @@ def fetch_list_tasks(list_id, token):
     page = 0
     while True:
         url = f"{CLICKUP_API}/list/{list_id}/task?include_closed=true&subtasks=true&page={page}"
-        req = urllib.request.Request(url, headers={"Authorization": token})
+        req = urllib.request.Request(
+            url,
+            headers={
+                "Authorization": token,
+                "User-Agent": "escritorio-projetos-sync/1.0",
+                "Accept": "application/json",
+            },
+        )
         try:
             with urllib.request.urlopen(req, timeout=30) as r:
                 data = json.loads(r.read().decode())
         except urllib.error.HTTPError as e:
             body = e.read().decode(errors="replace")
-            raise RuntimeError(f"Erro ClickUp API (lista {list_id}, page {page}): {e.code} {body}")
+            raise RuntimeError(f"HTTP {e.code} na lista {list_id} (page {page}): {body[:300]}")
+        except urllib.error.URLError as e:
+            raise RuntimeError(f"Erro de rede na lista {list_id} (page {page}): {e.reason}")
         page_tasks = data.get("tasks", [])
         tasks.extend(page_tasks)
         if not page_tasks or len(page_tasks) < 100:
@@ -179,6 +188,7 @@ def main():
         html = f.read()
 
     any_change = False
+    any_error = False
     report = []
 
     for key, list_id in PROJECTS.items():
@@ -186,6 +196,7 @@ def main():
             tasks = fetch_list_tasks(list_id, token)
         except Exception as e:
             print(f"  ❌ {key} (lista {list_id}): falha ao buscar tarefas — {e}")
+            any_error = True
             continue
 
         pct, fechado, total = calc_pct(tasks)
@@ -212,6 +223,10 @@ def main():
 
     # saída em JSON pra facilitar debug/logs do Actions
     print("\n" + json.dumps(report, ensure_ascii=False))
+
+    if any_error:
+        print("\n⚠️  Uma ou mais listas falharam ao buscar dados do ClickUp — verifique o CLICKUP_TOKEN e a conectividade.")
+        sys.exit(1)
 
     sys.exit(0)
 
