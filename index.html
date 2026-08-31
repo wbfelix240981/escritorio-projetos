@@ -1061,13 +1061,13 @@ body.role-comercial #drawer-trigger {
       <div class="card anim">
         <div class="card-accent accent-green"></div>
         <div class="card-header">
-          <span class="pill pill-prog">● Em progresso</span>
-          <span class="card-pct">92%</span>
+          <span class="pill pill-done">✓ Finalizado — Ago/2026</span>
+          <span class="card-pct">100%</span>
         </div>
         <div class="card-title">PS do Vidro – Nuvem Pública &amp; Backup Veeam</div>
         <div class="card-footer">
           
-          <div class="bar-track"><div class="bar-fill fill-green" data-pct="92"></div></div>
+          <div class="bar-track"><div class="bar-fill fill-green" data-pct="100"></div></div>
           <button class="btn-det" onclick="openModal('psdovidro')">Ver detalhes <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 6.5h9M7 2l4.5 4.5L7 11" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
         </div>
       </div>
@@ -3868,15 +3868,15 @@ const P = {
     ],
   },
   psdovidro:{
-    eye:'Projeto de Cliente', title:'PS do Vidro – Nuvem Pública & Backup Veeam', pct:92,
+    eye:'Projeto de Cliente', title:'PS do Vidro – Nuvem Pública & Backup Veeam', pct:100,
     fc:'fill-green', grad:'linear-gradient(90deg,#2e7d32,#43a047)',
-    pill:'<span class="pill pill-prog">● Em progresso</span>',
-    tags:[],
-    completed:null,
+    pill:'<span class="pill pill-done">✓ Finalizado — Ago/2026</span>',
+    tags:[['Cliente','green'],['Finalizado','green'],['100%','green']],
+    completed:'2026-08-31',
     link:'https://app.clickup.com/3080406/v/li/901327996026',
     secs:[
       {t:'Progresso (ClickUp)', rows:[
-        ['📊','92% — 24 de 26 tarefas concluídas'],
+        ['📊','93% — 25 de 27 tarefas concluídas'],
         ['🔗','<a href="https://app.clickup.com/3080406/v/li/901327996026" target="_blank" style="color:#2e7d32;font-weight:700;">Abrir lista no ClickUp ↗</a>']
       ]},
       {t:'Checklist do Projeto', rows:[
@@ -3885,10 +3885,10 @@ const P = {
         ['💰','Faturamento de implantação: N/A'],
         ['🚀','Kick-off com cliente: ✅ Sim'],
         ['📅','Implantação estimada em: 15 dias'],
-        ['📍','Status atual: Faltam 2 tarefas de encerramento — Realizar contato de encerramento e Fase 5 (ClickUp)'],
+        ['📍','Status atual: Projeto encerrado pelo escritório de projetos'],
         ['📄','Fechamento do TEP: ⏳ Pendente — Aguardando devolutiva da assinatura do cliente'],
         ['📤','Encaminhamento do faturamento: ⏳ Pendente'],
-        ['🏁','Projeto finalizado: ❌ Não'],
+        ['🏁','Projeto finalizado: ✅ Sim'],
       ]}
     ],
   },
