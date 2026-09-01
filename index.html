@@ -902,7 +902,7 @@ body.role-comercial #drawer-trigger {
       <div class="dr-item dr-submenu-toggle" onclick="toggleSubmenu('status-menu')">
         <div style="display:flex;align-items:center;gap:10px;flex:1;">
           <div class="dr-item-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 1l4 4-4 4"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><path d="M7 23l-4-4 4-4"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg></div>
-          <div><div class="dr-item-label">Status da Migração</div><div class="dr-item-sub">2 itens</div></div>
+          <div><div class="dr-item-label">Status da Migração</div><div class="dr-item-sub">3 itens</div></div>
         </div>
         <span class="toggle-icon">▼</span>
       </div>
@@ -914,6 +914,10 @@ body.role-comercial #drawer-trigger {
         <div class="dr-submenu-item" id="nav-controle-migracao" onclick="navTo('controle-migracao','active-purple')">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
           Controle de Migração
+        </div>
+        <div class="dr-submenu-item" id="nav-controle-migracao-storware" onclick="navTo('controle-migracao-storware','active-purple')">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+          Controle de Migração Storware
         </div>
       </div>
     </div>
@@ -3580,7 +3584,76 @@ document.addEventListener('page-changed', function(e) {
   </div>
 </div>
 
-<!-- MODAL: Novo cliente migração -->
+<div id="controle-migracao-storware" class="page">
+  <div class="topbar" role="banner"><div class="tb-heading">Controle de Migração Storware <span>| Binario Cloud</span></div></div>
+  <div class="page-content">
+
+    <!-- Hero -->
+    <div class="page-hero anim" style="background:linear-gradient(135deg,#1a237e 0%,#283593 60%,#3949ab 100%);">
+      <div>
+        <div class="hero-title">Migração de Licenças — Storware</div>
+        <div class="hero-sub">Acompanhamento das ondas de migração de licenças Storware</div>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat"><div class="sv" id="sw-metOndas">0</div><div class="sl">Ondas</div></div>
+        <div class="hero-stat"><div class="sv" id="sw-metLicencas">0</div><div class="sl">Licenças a migrar</div></div>
+        <div class="hero-stat"><div class="sv" id="sw-metImpedimento" style="color:#ffab91;">0</div><div class="sl">Impeditivo</div></div>
+        <div class="hero-stat"><div class="sv" id="sw-metNaoIniciada" style="color:#e0e0e0;">0</div><div class="sl">Não iniciadas</div></div>
+      </div>
+    </div>
+
+    <!-- Controls -->
+    <div style="display:flex;gap:10px;margin-bottom:20px;flex-wrap:wrap;align-items:center;">
+      <select id="sw-filtroStatus" onchange="swRender()" style="padding:9px 14px;background:var(--card-bg);border:1.5px solid #d0d7e8;border-radius:10px;color:var(--text-dark);font-size:12px;font-family:'Sora',sans-serif;font-weight:600;cursor:pointer;">
+        <option value="">Todos os status</option>
+        <option value="Andamento">🟢 Andamento</option>
+        <option value="Impeditivo">🟠 Impeditivo</option>
+        <option value="Não iniciada">⚪ Não iniciada</option>
+      </select>
+      <input type="text" id="sw-filtroNome" placeholder="🔍  Buscar cliente..." oninput="swRender()" style="padding:9px 14px;background:var(--card-bg);border:1.5px solid #d0d7e8;border-radius:10px;color:var(--text-dark);font-size:12px;font-family:'Sora',sans-serif;flex:1;min-width:200px;outline:none;">
+    </div>
+
+    <!-- Table: Ondas de migração -->
+    <div class="sec-label">Ondas de migração — licenças Storware</div>
+    <div style="background:var(--card-bg);border-radius:var(--radius);border:1px solid rgba(0,0,0,.05);box-shadow:var(--shadow);overflow:hidden;margin-bottom:28px;">
+      <table style="width:100%;border-collapse:collapse;font-size:12px;font-family:'Sora',sans-serif;">
+        <thead>
+          <tr style="background:linear-gradient(135deg,#f5f7fa,#eef1f7);border-bottom:2px solid #d0d7e8;">
+            <th style="padding:12px 16px;font-weight:800;color:var(--text-dark);text-transform:uppercase;font-size:10px;letter-spacing:1.5px;text-align:left;">Onda</th>
+            <th style="padding:12px 16px;font-weight:800;color:var(--text-dark);text-transform:uppercase;font-size:10px;letter-spacing:1.5px;text-align:left;">Cliente</th>
+            <th style="padding:12px 16px;font-weight:800;color:var(--text-dark);text-transform:uppercase;font-size:10px;letter-spacing:1.5px;text-align:center;">Gerenciados</th>
+            <th style="padding:12px 16px;font-weight:800;color:var(--text-dark);text-transform:uppercase;font-size:10px;letter-spacing:1.5px;text-align:center;">Licenças</th>
+            <th style="padding:12px 16px;font-weight:800;color:var(--text-dark);text-transform:uppercase;font-size:10px;letter-spacing:1.5px;text-align:center;">Início</th>
+            <th style="padding:12px 16px;font-weight:800;color:var(--text-dark);text-transform:uppercase;font-size:10px;letter-spacing:1.5px;text-align:center;">Fim previsto</th>
+            <th style="padding:12px 16px;font-weight:800;color:var(--text-dark);text-transform:uppercase;font-size:10px;letter-spacing:1.5px;text-align:center;">Status</th>
+            <th style="padding:12px 16px;font-weight:800;color:var(--text-dark);text-transform:uppercase;font-size:10px;letter-spacing:1.5px;text-align:left;">Observação</th>
+          </tr>
+        </thead>
+        <tbody id="sw-tbody"></tbody>
+      </table>
+      <div id="sw-emptyState" style="display:none;text-align:center;padding:3rem 2rem;color:var(--text-light);">
+        <p style="font-size:13px;font-weight:600;">Nenhuma onda encontrada</p>
+      </div>
+    </div>
+
+    <!-- Table: Clientes que não serão migrados -->
+    <div class="sec-label">Clientes que não serão migrados</div>
+    <div style="background:var(--card-bg);border-radius:var(--radius);border:1px solid rgba(0,0,0,.05);box-shadow:var(--shadow);overflow:hidden;">
+      <table style="width:100%;border-collapse:collapse;font-size:12px;font-family:'Sora',sans-serif;">
+        <thead>
+          <tr style="background:linear-gradient(135deg,#f5f7fa,#eef1f7);border-bottom:2px solid #d0d7e8;">
+            <th style="padding:12px 16px;font-weight:800;color:var(--text-dark);text-transform:uppercase;font-size:10px;letter-spacing:1.5px;text-align:left;">Cliente</th>
+            <th style="padding:12px 16px;font-weight:800;color:var(--text-dark);text-transform:uppercase;font-size:10px;letter-spacing:1.5px;text-align:center;">Gerenciados</th>
+            <th style="padding:12px 16px;font-weight:800;color:var(--text-dark);text-transform:uppercase;font-size:10px;letter-spacing:1.5px;text-align:center;">Licenças</th>
+            <th style="padding:12px 16px;font-weight:800;color:var(--text-dark);text-transform:uppercase;font-size:10px;letter-spacing:1.5px;text-align:left;">Motivo</th>
+          </tr>
+        </thead>
+        <tbody id="sw-tbody-naomigrar"></tbody>
+      </table>
+    </div>
+
+  </div>
+</div>
 <div id="mg-modalNovo" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);backdrop-filter:blur(5px);z-index:700;align-items:center;justify-content:center;">
   <div style="background:linear-gradient(135deg,rgba(30,41,59,.97),rgba(15,23,42,.97));border:1px solid rgba(96,165,250,.2);border-radius:12px;padding:2.5rem;width:90%;max-width:440px;box-shadow:0 20px 60px rgba(0,0,0,.4);">
     <h2 style="font-size:18px;font-weight:700;color:#f1f5f9;margin-bottom:1.5rem;">Adicionar novo cliente</h2>
@@ -4263,6 +4336,96 @@ let mgClienteAtivo = null;
 function mgHoje() { return new Date().toISOString().split('T')[0]; }
 function mgAgora() { const d=new Date(),p=n=>String(n).padStart(2,'0'); return `${p(d.getDate())}/${p(d.getMonth()+1)}/${d.getFullYear()} ${p(d.getHours())}:${p(d.getMinutes())}`; }
 function mgFmtData(iso) { if(!iso) return '—'; const [y,m,d]=iso.split('-'); return `${d}/${m}/${y}`; }
+
+/* ===== Controle de Migração Storware ===== */
+const SW_ONDAS = [
+  { onda:1,  cliente:'Grupo Binário',             gerenciados:'Backup + Servidor', licencas:42, inicio:'2026-09-11', fim:'2026-09-18', status:'Impeditivo',   obs:'Pendente a aquisição de licenças' },
+  { onda:2,  cliente:'Binário Cloud',              gerenciados:'Backup + Servidor', licencas:48, inicio:'2026-09-18', fim:'2026-09-25', status:'Não iniciada', obs:'' },
+  { onda:3,  cliente:'binarionet.com.br + (QoS)',  gerenciados:'Backup + Servidor', licencas:44, inicio:'2026-09-25', fim:'2026-10-02', status:'Não iniciada', obs:'' },
+  { onda:4,  cliente:'Navirai',                    gerenciados:'Backup + Servidor', licencas:1,  inicio:'2026-10-02', fim:'2026-10-09', status:'Não iniciada', obs:'' },
+  { onda:5,  cliente:'pedreiraumvalemix.com.br',   gerenciados:'Backup',            licencas:2,  inicio:'2026-10-09', fim:'2026-10-16', status:'Não iniciada', obs:'' },
+  { onda:6,  cliente:'acaoengenharia',             gerenciados:'Backup + Servidor', licencas:3,  inicio:'2026-10-16', fim:'2026-10-23', status:'Não iniciada', obs:'' },
+  { onda:7,  cliente:'lemar',                      gerenciados:'Backup + Servidor', licencas:3,  inicio:'2026-10-23', fim:'2026-10-30', status:'Não iniciada', obs:'' },
+  { onda:8,  cliente:'netza.com.br',               gerenciados:'Backup + Servidor', licencas:4,  inicio:'2026-11-06', fim:'2026-11-13', status:'Não iniciada', obs:'' },
+  { onda:9,  cliente:'fipe.org.br',                gerenciados:'Backup + Servidor', licencas:4,  inicio:'2026-11-13', fim:'2026-11-20', status:'Não iniciada', obs:'' },
+  { onda:10, cliente:'gimba.com.br',                gerenciados:'Backup + Servidor', licencas:90, inicio:'2026-11-20', fim:'2026-11-27', status:'Não iniciada', obs:'' },
+];
+const SW_NAO_MIGRAR = [
+  { cliente:'gruporaizes.com',   gerenciados:'Backup + Servidor', licencas:5,  motivo:'Clientes na 2.0 — Não será migrado' },
+  { cliente:'luizalabs.com.br',  gerenciados:'Backup + Servidor', licencas:2,  motivo:'Clientes na 2.0 — Não será migrado' },
+  { cliente:'bmchyundai.com.br', gerenciados:'Backup + Servidor', licencas:17, motivo:'Clientes na 3.0 — Não será migrado' },
+];
+
+function swFormatDate(iso) {
+  if (!iso) return '—';
+  const [y,m,d] = iso.split('-');
+  return `${d}/${m}/${y}`;
+}
+
+function swRender() {
+  const fStatus = document.getElementById('sw-filtroStatus')?.value || '';
+  const fNome   = (document.getElementById('sw-filtroNome')?.value || '').toLowerCase();
+  const rank    = s => s === 'Andamento' ? 0 : s === 'Impeditivo' ? 1 : 2;
+  const esc     = s => String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+
+  const lista = SW_ONDAS
+    .filter(c => (!fStatus || c.status === fStatus) && c.cliente.toLowerCase().includes(fNome))
+    .slice()
+    .sort((a,b) => (rank(a.status)-rank(b.status)) || a.onda - b.onda);
+
+  const tbody = document.getElementById('sw-tbody');
+  const empty = document.getElementById('sw-emptyState');
+  if (tbody) {
+    if (!lista.length) { tbody.innerHTML=''; if(empty) empty.style.display='block'; }
+    else {
+      if(empty) empty.style.display='none';
+      tbody.innerHTML = lista.map(c => {
+        const stBg = c.status==='Andamento' ? '#4e7f36' : c.status==='Impeditivo' ? '#d9702a' : '#8f8f8f';
+        return `<tr style="border-bottom:1px solid #eef0f6;border-left:3px solid ${stBg};">
+          <td style="padding:11px 16px;font-weight:700;color:var(--text-dark);">Onda ${c.onda}</td>
+          <td style="padding:11px 16px;"><strong style="font-size:12px;color:var(--text-dark);">${esc(c.cliente)}</strong></td>
+          <td style="padding:11px 12px;text-align:center;color:var(--text-light);font-size:11px;">${esc(c.gerenciados)}</td>
+          <td style="padding:11px 12px;text-align:center;font-weight:700;color:var(--text-dark);">${c.licencas}</td>
+          <td style="padding:11px 12px;text-align:center;font-size:11px;color:var(--text-light);">${swFormatDate(c.inicio)}</td>
+          <td style="padding:11px 12px;text-align:center;font-size:11px;color:var(--text-light);">${swFormatDate(c.fim)}</td>
+          <td style="padding:11px 12px;text-align:center;"><span style="padding:5px 10px;border-radius:7px;font-size:11px;font-weight:700;background:${stBg};color:#fff;">${esc(c.status)}</span></td>
+          <td style="padding:11px 16px;font-size:11.5px;color:var(--text-dark);">${esc(c.obs) || '—'}</td>
+        </tr>`;
+      }).join('');
+    }
+  }
+
+  const tbody2 = document.getElementById('sw-tbody-naomigrar');
+  if (tbody2) {
+    tbody2.innerHTML = SW_NAO_MIGRAR.map(c => `<tr style="border-bottom:1px solid #eef0f6;">
+      <td style="padding:11px 16px;"><strong style="font-size:12px;color:var(--text-dark);">${esc(c.cliente)}</strong></td>
+      <td style="padding:11px 12px;text-align:center;color:var(--text-light);font-size:11px;">${esc(c.gerenciados)}</td>
+      <td style="padding:11px 12px;text-align:center;font-weight:700;color:var(--text-dark);">${c.licencas}</td>
+      <td style="padding:11px 16px;font-size:11.5px;color:var(--text-light);">${esc(c.motivo)}</td>
+    </tr>`).join('');
+  }
+
+  swUpdateMetrics();
+}
+
+function swUpdateMetrics() {
+  const totalOndas   = SW_ONDAS.length;
+  const totalLic      = SW_ONDAS.reduce((s,c)=>s+c.licencas,0);
+  const impeditivo    = SW_ONDAS.filter(c=>c.status==='Impeditivo').length;
+  const naoIniciada   = SW_ONDAS.filter(c=>c.status==='Não iniciada').length;
+  const el = id => document.getElementById(id);
+  if(el('sw-metOndas'))       el('sw-metOndas').textContent       = totalOndas;
+  if(el('sw-metLicencas'))    el('sw-metLicencas').textContent    = totalLic;
+  if(el('sw-metImpedimento')) el('sw-metImpedimento').textContent = impeditivo;
+  if(el('sw-metNaoIniciada')) el('sw-metNaoIniciada').textContent = naoIniciada;
+}
+
+document.addEventListener('page-changed', function(e) {
+  if (e.detail === 'controle-migracao-storware') { setTimeout(swRender, 50); }
+});
+document.addEventListener('DOMContentLoaded', function() {
+  setTimeout(swRender, 100);
+});
 
 function mgRender() {
   const fStatus = document.getElementById('mg-filtroStatus')?.value || '';
