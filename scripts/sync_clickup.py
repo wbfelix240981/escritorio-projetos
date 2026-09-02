@@ -35,6 +35,7 @@ PROJECTS = {
     "soprema":         "901328281164",
     "senai":           "901328281738",
     "pleion":          "901328281869",
+    "insper":          "901328340803",
     # "psdovidro" removido intencionalmente: projeto foi finalizado manualmente
     # em 2026-08-31 por decisão do escritório de projetos, mesmo com 2 tarefas
     # ainda abertas no ClickUp. Não deve ser sobrescrito pela sincronização.
