@@ -37,9 +37,15 @@ PROJECTS = {
     "pleion":          "901328281869",
     "insper":          "901328340803",
     "neugebauer":      "901328018187",
+    "btechcloud":      "901328972420",
+    "neoviasolution":  "901328971347",
+    "sopremafirewal":  "901328361858",
+    "apm":             "901328972028",
     # "psdovidro" removido intencionalmente: projeto foi finalizado manualmente
     # em 2026-08-31 por decisão do escritório de projetos, mesmo com 2 tarefas
     # ainda abertas no ClickUp. Não deve ser sobrescrito pela sincronização.
+    # "desmob20": não vinculado — o link fornecido (app.clickup.com/t/86afcpfhb) é uma
+    # TAREFA individual, não uma lista. Precisa do link da lista pra entrar na automação.
 }
 
 
@@ -79,16 +85,19 @@ def calc_pct(tasks):
     """
     % = (fechadas * 1.0 + em_andamento * 0.5) / total, arredondado.
     Tarefas 'em andamento' contam como progresso parcial (peso 0.5), não só as fechadas.
+    Regra do piso: nenhum projeto vinculado ao ClickUp fica em 0% — o mínimo exibido é 2%
+    (representa que o projeto já foi iniciado/cadastrado), e só cresce a partir daí.
     Retorna (pct, fechado, em_andamento, total).
     """
     total = len(tasks)
     if total == 0:
-        return 0, 0, 0, 0
+        return 2, 0, 0, 0
     def status_of(t):
         return (t.get("status", {}).get("status") or "").strip().lower()
     fechado = sum(1 for t in tasks if status_of(t) in ("fechado", "closed", "complete", "concluído", "concluido", "concluida", "concluída", "done"))
     em_andamento = sum(1 for t in tasks if status_of(t) in ("em andamento", "in progress", "andamento"))
     pct = round(100 * (fechado * 1.0 + em_andamento * 0.5) / total)
+    pct = max(pct, 2)  # piso: nunca mostrar 0%
     return pct, fechado, em_andamento, total
 
 
