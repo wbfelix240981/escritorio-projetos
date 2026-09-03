@@ -979,6 +979,7 @@ body.role-comercial #drawer-trigger {
         <div class="hero-stat"><div class="sv">53.9%</div><div class="sl">Média ativos</div></div>
         <div class="hero-stat"><div class="sv">5</div><div class="sl">Em andamento</div></div>
       </div>
+      <button onclick="showFinalizadosFiltro('Cliente')" style="margin-top:14px;padding:9px 18px;background:rgba(255,255,255,.15);border:1.5px solid rgba(255,255,255,.4);color:#fff;border-radius:10px;font-size:12px;font-weight:700;font-family:'Sora',sans-serif;letter-spacing:.3px;cursor:pointer;display:inline-flex;align-items:center;gap:6px;">✅ Ver Projetos Finalizados</button>
     </div>
     <div class="sec-label" style="display:flex;align-items:center;gap:10px;">
       <span>Em andamento</span>
@@ -1220,6 +1221,7 @@ body.role-comercial #drawer-trigger {
         <div class="hero-stat"><div class="sv">61.7%</div><div class="sl">Média geral</div></div>
         <div class="hero-stat"><div class="sv">0</div><div class="sl">Com atraso</div></div>
       </div>
+      <button onclick="showFinalizadosFiltro('Estruturante')" style="margin-top:14px;padding:9px 18px;background:rgba(255,255,255,.15);border:1.5px solid rgba(255,255,255,.4);color:#fff;border-radius:10px;font-size:12px;font-weight:700;font-family:'Sora',sans-serif;letter-spacing:.3px;cursor:pointer;display:inline-flex;align-items:center;gap:6px;">✅ Ver Projetos Finalizados</button>
 
     </div>
     <div class="sec-label">Estruturante</div>
@@ -3737,6 +3739,18 @@ document.addEventListener('page-changed', function(e) {
 </div>
 
 
+<div class="overlay" id="finFilterOverlay" onclick="if(event.target===this) closeFinFilterModal()">
+  <div class="modal" id="finFilterModal">
+    <div class="modal-hd">
+      <div class="modal-header-content">
+        <div class="modal-ttl" id="finFilterTitle">Projetos Finalizados</div>
+      </div>
+      <button class="modal-x" onclick="closeFinFilterModal()">✕</button>
+    </div>
+    <div class="modal-bd" id="finFilterBody" style="padding:20px;"></div>
+  </div>
+</div>
+
 <div class="overlay" id="overlay" onclick="closeOuter(event)">
   <div class="modal" id="modal">
     <div class="modal-hd">
@@ -4300,6 +4314,82 @@ function closeModal() { if(editMode) cancelEdits(); document.getElementById('ove
 function closeOuter(e) { if(e.target===document.getElementById('overlay')) closeModal(); }
 
 /* FINALIZADOS */
+function showFinalizadosFiltro(tipo) {
+  const isFinalizado = (p) => {
+    if (p.completed) return true;
+    const pillFin = p.pill && (/Finalizado/i.test(p.pill) || /pill-done/i.test(p.pill));
+    const tagFin  = Array.isArray(p.tags) && p.tags.some(t => /Finalizado/i.test(t[0]||''));
+    return (p.pct === 100) && (pillFin || tagFin);
+  };
+  const lista = Object.entries(P)
+    .filter(([_,p]) => isFinalizado(p) && p.eye && p.eye.includes(tipo))
+    .map(([key,p]) => {
+      const dataStr = p.completed || new Date().toISOString().slice(0,10);
+      const d = new Date(dataStr);
+      return { key, ...p, completed: dataStr, date: d, year: d.getFullYear(), month: d.getMonth() };
+    })
+    .sort((a,b) => b.date - a.date);
+
+  const titleEl = document.getElementById('finFilterTitle');
+  if (titleEl) titleEl.textContent = tipo === 'Cliente'
+    ? `Projetos de Clientes Finalizados (${lista.length})`
+    : `Projetos Estruturantes Finalizados (${lista.length})`;
+
+  const body = document.getElementById('finFilterBody');
+  if (body) {
+    if (!lista.length) {
+      body.innerHTML = '<p style="color:#888;padding:20px;text-align:center;">Nenhum projeto finalizado nesta categoria ainda.</p>';
+    } else {
+      // agrupar por ano > mês
+      const byYear = {};
+      lista.forEach(p => { (byYear[p.year] ??= []).push(p); });
+
+      let html = '';
+      Object.keys(byYear).sort((a,b)=>b-a).forEach(year => {
+        const byMonth = {};
+        byYear[year].forEach(p => { (byMonth[p.month] ??= []).push(p); });
+
+        Object.keys(byMonth).sort((a,b)=>b-a).forEach(m => {
+          const ps = byMonth[m];
+          const mName = new Date(year, m, 1).toLocaleString('pt-BR',{month:'long'});
+          const mLabel = mName.charAt(0).toUpperCase() + mName.slice(1);
+
+          html += `<div style="margin-bottom:22px;">
+            <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
+              <span style="font-size:13px;font-weight:800;color:var(--text-dark);">${mLabel} de ${year}</span>
+              <span style="font-size:11px;font-weight:700;color:#2e7d32;background:#e8f5e9;padding:3px 10px;border-radius:99px;">${ps.length} projeto${ps.length>1?'s':''}</span>
+              <div style="flex:1;height:1px;background:#e5e8ef;"></div>
+            </div>
+            <div class="grid grid-2">` +
+            ps.map(p => `
+              <div class="card anim">
+                <div class="card-accent accent-green"></div>
+                <div class="card-header">
+                  <span class="pill pill-done">✓ Finalizado</span>
+                  <span class="card-pct">100%</span>
+                </div>
+                <div class="card-title">${p.title}</div>
+                <div class="card-footer">
+                  <div class="bar-track"><div class="bar-fill fill-green" data-pct="100"></div></div>
+                  <button class="btn-det" onclick="closeFinFilterModal();openModal('${p.key}')">Ver detalhes <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 6.5h9M7 2l4.5 4.5L7 11" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+                </div>
+              </div>`).join('') +
+            `</div>
+          </div>`;
+        });
+      });
+      body.innerHTML = html;
+    }
+  }
+
+  document.getElementById('finFilterOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeFinFilterModal() {
+  document.getElementById('finFilterOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
 function renderFinalizados() {
   const container = document.getElementById('finalizadosContainer');
   const summary   = document.getElementById('finSummary');

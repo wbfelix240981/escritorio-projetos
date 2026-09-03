@@ -75,13 +75,20 @@ def fetch_list_tasks(list_id, token):
 
 
 def calc_pct(tasks):
-    """% = tarefas com status 'closed' (fechado) / total. Retorna (pct, fechado, total)."""
+    """
+    % = (fechadas * 1.0 + em_andamento * 0.5) / total, arredondado.
+    Tarefas 'em andamento' contam como progresso parcial (peso 0.5), não só as fechadas.
+    Retorna (pct, fechado, em_andamento, total).
+    """
     total = len(tasks)
     if total == 0:
-        return 0, 0, 0
-    fechado = sum(1 for t in tasks if (t.get("status", {}).get("status") or "").strip().lower() in ("fechado", "closed", "complete"))
-    pct = round(100 * fechado / total)
-    return pct, fechado, total
+        return 0, 0, 0, 0
+    def status_of(t):
+        return (t.get("status", {}).get("status") or "").strip().lower()
+    fechado = sum(1 for t in tasks if status_of(t) in ("fechado", "closed", "complete"))
+    em_andamento = sum(1 for t in tasks if status_of(t) in ("em andamento", "in progress", "andamento"))
+    pct = round(100 * (fechado * 1.0 + em_andamento * 0.5) / total)
+    return pct, fechado, em_andamento, total
 
 
 def update_card_pct(html, key, new_pct):
@@ -126,7 +133,7 @@ def update_card_pct(html, key, new_pct):
     return html, changed
 
 
-def update_modal_pct(html, key, new_pct, fechado, total):
+def update_modal_pct(html, key, new_pct, fechado, em_andamento, total):
     """Atualiza pct:, a tag de % e a linha 'Progresso (ClickUp)' no objeto de dados do modal."""
     marker = f"  {key}:{{"
     idx = html.find(marker)
@@ -156,10 +163,12 @@ def update_modal_pct(html, key, new_pct, fechado, total):
         changed = True
         block = new_block2
 
-    # linha "Progresso (ClickUp)": ['📊','NN% — A de B tarefas concluídas']
+    # linha "Progresso (ClickUp)": ['📊', '...'] — regex resiliente a qualquer formato de texto anterior
+    andamento_txt = f" + {em_andamento} em andamento" if em_andamento else ""
+    novo_texto = f"{new_pct}% — {fechado} fechadas{andamento_txt} de {total} tarefas"
     new_block3, n3 = re.subn(
-        r"\['📊','\d+% — \d+ de \d+ tarefas concluídas'\]",
-        f"['📊','{new_pct}% — {fechado} de {total} tarefas concluídas']",
+        r"\['📊','[^']*'\]",
+        f"['📊','{novo_texto}']",
         block, count=1
     )
     if n3 and new_block3 != block:
@@ -202,15 +211,15 @@ def main():
             any_error = True
             continue
 
-        pct, fechado, total = calc_pct(tasks)
+        pct, fechado, em_andamento, total = calc_pct(tasks)
 
         html, changed_card = update_card_pct(html, key, pct)
-        html, changed_modal = update_modal_pct(html, key, pct, fechado, total)
+        html, changed_modal = update_modal_pct(html, key, pct, fechado, em_andamento, total)
         changed = changed_card or changed_modal
 
         status = "ATUALIZADO" if changed else "sem mudança"
-        print(f"  {key}: {pct}% ({fechado}/{total}) — {status}")
-        report.append({"key": key, "list_id": list_id, "pct": pct, "fechado": fechado, "total": total, "changed": changed})
+        print(f"  {key}: {pct}% ({fechado} fechadas + {em_andamento} em andamento de {total}) — {status}")
+        report.append({"key": key, "list_id": list_id, "pct": pct, "fechado": fechado, "em_andamento": em_andamento, "total": total, "changed": changed})
 
         if changed:
             any_change = True
