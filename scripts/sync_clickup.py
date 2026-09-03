@@ -36,6 +36,7 @@ PROJECTS = {
     "senai":           "901328281738",
     "pleion":          "901328281869",
     "insper":          "901328340803",
+    "neugebauer":      "901328018187",
     # "psdovidro" removido intencionalmente: projeto foi finalizado manualmente
     # em 2026-08-31 por decisão do escritório de projetos, mesmo com 2 tarefas
     # ainda abertas no ClickUp. Não deve ser sobrescrito pela sincronização.
@@ -85,7 +86,7 @@ def calc_pct(tasks):
         return 0, 0, 0, 0
     def status_of(t):
         return (t.get("status", {}).get("status") or "").strip().lower()
-    fechado = sum(1 for t in tasks if status_of(t) in ("fechado", "closed", "complete"))
+    fechado = sum(1 for t in tasks if status_of(t) in ("fechado", "closed", "complete", "concluído", "concluido", "concluida", "concluída", "done"))
     em_andamento = sum(1 for t in tasks if status_of(t) in ("em andamento", "in progress", "andamento"))
     pct = round(100 * (fechado * 1.0 + em_andamento * 0.5) / total)
     return pct, fechado, em_andamento, total
