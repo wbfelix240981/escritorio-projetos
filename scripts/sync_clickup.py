@@ -40,7 +40,9 @@ PROJECTS = {
     "btechcloud":      "901328972420",
     "neoviasolution":  "901328971347",
     "sopremafirewal":  "901328361858",
-    "apm":             "901328972028",
+    "apm":             "901329011062",
+    "amigoconnecting": "901329011044",
+    "brainlaw":         "901329011091",
     # "psdovidro" removido intencionalmente: projeto foi finalizado manualmente
     # em 2026-08-31 por decisão do escritório de projetos, mesmo com 2 tarefas
     # ainda abertas no ClickUp. Não deve ser sobrescrito pela sincronização.
