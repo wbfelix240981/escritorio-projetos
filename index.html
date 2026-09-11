@@ -980,7 +980,10 @@ body.role-comercial #drawer-trigger {
         <div class="hero-stat"><div class="sv">5</div><div class="sl">Em andamento</div></div>
       </div>
       <button onclick="showFinalizadosFiltro('Cliente')" style="margin-top:14px;padding:9px 18px;background:rgba(255,255,255,.15);border:1.5px solid rgba(255,255,255,.4);color:#fff;border-radius:10px;font-size:12px;font-weight:700;font-family:'Sora',sans-serif;letter-spacing:.3px;cursor:pointer;display:inline-flex;align-items:center;gap:6px;">✅ Ver Projetos Finalizados</button>
-      <div id="syncStatusClientes" style="margin-top:12px;font-family:'JetBrains Mono',monospace;font-size:11.5px;color:rgba(255,255,255,.85);line-height:1.6;"></div>
+      <div id="syncStatusClientes" style="margin-top:12px;font-family:'JetBrains Mono',monospace;font-size:11.5px;color:rgba(255,255,255,.85);line-height:1.6;">
+        <div style="display:flex;align-items:center;gap:6px;"><span style="width:7px;height:7px;border-radius:50%;background:#4ade80;display:inline-block;"></span><strong>Sincronizado com ClickUp</strong></div>
+        <div style="opacity:.75;" id="syncTimestampClientes">Atualizado em —</div>
+      </div>
     </div>
     <div class="sec-label" style="display:flex;align-items:center;gap:10px;">
       <span>Em andamento</span>
@@ -1223,7 +1226,10 @@ body.role-comercial #drawer-trigger {
         <div class="hero-stat"><div class="sv">0</div><div class="sl">Com atraso</div></div>
       </div>
       <button onclick="showFinalizadosFiltro('Estruturante')" style="margin-top:14px;padding:9px 18px;background:rgba(255,255,255,.15);border:1.5px solid rgba(255,255,255,.4);color:#fff;border-radius:10px;font-size:12px;font-weight:700;font-family:'Sora',sans-serif;letter-spacing:.3px;cursor:pointer;display:inline-flex;align-items:center;gap:6px;">✅ Ver Projetos Finalizados</button>
-      <div id="syncStatusEstruturante" style="margin-top:12px;font-family:'JetBrains Mono',monospace;font-size:11.5px;color:rgba(255,255,255,.85);line-height:1.6;"></div>
+      <div id="syncStatusEstruturante" style="margin-top:12px;font-family:'JetBrains Mono',monospace;font-size:11.5px;color:rgba(255,255,255,.85);line-height:1.6;">
+        <div style="display:flex;align-items:center;gap:6px;"><span style="width:7px;height:7px;border-radius:50%;background:#4ade80;display:inline-block;"></span><strong>Sincronizado com ClickUp</strong></div>
+        <div style="opacity:.75;" id="syncTimestampEstruturante">Atualizado em —</div>
+      </div>
 
     </div>
     <div class="sec-label">Estruturante</div>
@@ -4347,42 +4353,6 @@ function closeModal() { if(editMode) cancelEdits(); document.getElementById('ove
 function closeOuter(e) { if(e.target===document.getElementById('overlay')) closeModal(); }
 
 /* FINALIZADOS */
-async function loadSyncStatus() {
-  const elClientes = document.getElementById('syncStatusClientes');
-  const elEstrut = document.getElementById('syncStatusEstruturante');
-  if (!elClientes && !elEstrut) return;
-
-  const loadingHtml = '<span style="opacity:.7;">⏳ Verificando sincronização…</span>';
-  if (elClientes) elClientes.innerHTML = loadingHtml;
-  if (elEstrut) elEstrut.innerHTML = loadingHtml;
-
-  try {
-    const resp = await fetch('https://api.github.com/repos/wbfelix240981/escritorio-projetos/commits?path=index.html&per_page=1');
-    if (!resp.ok) throw new Error('HTTP ' + resp.status);
-    const data = await resp.json();
-    const iso = data?.[0]?.commit?.committer?.date;
-    if (!iso) throw new Error('sem data');
-
-    const d = new Date(iso);
-    const dataFmt = d.toLocaleDateString('pt-BR', { day:'2-digit', month:'short', year:'numeric', timeZone:'America/Sao_Paulo' }).replace('.', '');
-    const horaFmt = d.toLocaleTimeString('pt-BR', { hour:'2-digit', minute:'2-digit', timeZone:'America/Sao_Paulo' });
-    const dataCurta = d.toLocaleDateString('pt-BR', { day:'2-digit', month:'2-digit', year:'numeric', timeZone:'America/Sao_Paulo' });
-
-    const html = `<div style="display:flex;align-items:center;gap:6px;">
-        <span style="width:7px;height:7px;border-radius:50%;background:#4ade80;display:inline-block;"></span>
-        <strong>Sincronizado com ClickUp</strong>&nbsp;·&nbsp;${dataFmt}
-      </div>
-      <div style="opacity:.75;">Atualizado em ${dataCurta}, ${horaFmt} (horário de Brasília)</div>`;
-
-    if (elClientes) elClientes.innerHTML = html;
-    if (elEstrut) elEstrut.innerHTML = html;
-  } catch (e) {
-    const errHtml = '<span style="opacity:.7;">⚠️ Não foi possível verificar a sincronização agora</span>';
-    if (elClientes) elClientes.innerHTML = errHtml;
-    if (elEstrut) elEstrut.innerHTML = errHtml;
-  }
-}
-document.addEventListener('DOMContentLoaded', loadSyncStatus);
 
 function showFinalizadosFiltro(tipo) {
   const isFinalizado = (p) => {

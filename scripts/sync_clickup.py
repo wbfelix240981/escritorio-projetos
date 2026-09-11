@@ -22,6 +22,7 @@ import json
 import argparse
 import urllib.request
 import urllib.error
+from datetime import datetime, timezone, timedelta
 
 CLICKUP_API = "https://api.clickup.com/api/v2"
 
@@ -193,6 +194,33 @@ def update_modal_pct(html, key, new_pct, fechado, em_andamento, total):
     return html, changed
 
 
+def update_sync_timestamp(html):
+    """
+    Atualiza os spans #syncTimestampClientes e #syncTimestampEstruturante com a
+    data/hora atual no horário de Brasília. Roda sempre, mesmo sem mudança de %,
+    pra o indicador nunca ficar desatualizado. Não depende de nenhuma chamada de
+    rede no navegador do visitante — o valor já vem pronto no HTML.
+    """
+    br_tz = timezone(timedelta(hours=-3))  # horário de Brasília (sem horário de verão)
+    now = datetime.now(br_tz)
+
+    meses = ["jan", "fev", "mar", "abr", "mai", "jun", "jul", "ago", "set", "out", "nov", "dez"]
+    data_curta = now.strftime("%d/%m/%Y")
+    hora = now.strftime("%H:%M")
+    texto = f"Atualizado em {data_curta}, {hora} (horário de Brasília)"
+
+    changed = False
+    for span_id in ("syncTimestampClientes", "syncTimestampEstruturante"):
+        pattern = re.compile(r'(<div style="opacity:.75;" id="' + span_id + r'">)[^<]*(</div>)')
+        new_html, n = pattern.subn(rf"\g<1>{texto}\g<2>", html, count=1)
+        if n:
+            html = new_html
+            changed = True
+        else:
+            print(f"  ⚠️  Placeholder #{span_id} não encontrado — pulando.")
+    return html, changed
+
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--file", default="index.html")
@@ -235,6 +263,10 @@ def main():
 
         if changed:
             any_change = True
+
+    html, ts_changed = update_sync_timestamp(html)
+    if ts_changed:
+        any_change = True
 
     if args.dry_run:
         print("\n[DRY-RUN] Nenhum arquivo foi escrito.")
