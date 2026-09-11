@@ -51,8 +51,13 @@ PROJECTS = {
 
 # key = chave do objeto de dados no index.html
 # task_id = ID da tarefa no ClickUp cujo checklist define o % (resolved/total)
+# OBS: "ceph30" (Migração Ceph) foi removido daqui em 2026-09-11 — o checklist da
+# tarefa (0/5) não bate com o % real mostrado no Painel de Metas de Diretoria (63%),
+# que aparentemente usa outra fonte/cálculo não exposta pela API. O mesmo vale para
+# "desmob20" (Desmobilização da Cloud 2.0, 61% no Painel de Metas, sem checklist).
+# Os dois ficam com valor fixo, sincronizado manualmente sempre que o Painel de
+# Metas for consultado — não devem ser adicionados de volta sem confirmar a fonte.
 TASK_CHECKLISTS = {
-    "ceph30": "86afcpgzp",
 }
 
 
