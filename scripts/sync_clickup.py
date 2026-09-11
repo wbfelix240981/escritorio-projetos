@@ -30,7 +30,6 @@ CLICKUP_API = "https://api.clickup.com/api/v2"
 # list_id = ID da lista no ClickUp
 PROJECTS = {
     "migstorware":     "901328225370",
-    "ceph30":          "901328082201",
     "claudiamelhoria": "901328225252",
     "obsmelhoria":     "901328225263",
     "soprema":         "901328281164",
@@ -47,8 +46,13 @@ PROJECTS = {
     # "psdovidro" removido intencionalmente: projeto foi finalizado manualmente
     # em 2026-08-31 por decisão do escritório de projetos, mesmo com 2 tarefas
     # ainda abertas no ClickUp. Não deve ser sobrescrito pela sincronização.
-    # "desmob20": não vinculado — o link fornecido (app.clickup.com/t/86afcpfhb) é uma
-    # TAREFA individual, não uma lista. Precisa do link da lista pra entrar na automação.
+    # "ceph30" (Migração Ceph) agora usa TASK_CHECKLISTS abaixo, não uma lista.
+}
+
+# key = chave do objeto de dados no index.html
+# task_id = ID da tarefa no ClickUp cujo checklist define o % (resolved/total)
+TASK_CHECKLISTS = {
+    "ceph30": "86afcpgzp",
 }
 
 
@@ -82,6 +86,75 @@ def fetch_list_tasks(list_id, token):
         if page > 20:  # trava de segurança
             break
     return tasks
+
+
+def fetch_task_checklist(task_id, token):
+    """Busca uma tarefa do ClickUp e retorna a lista de itens do(s) checklist(s)."""
+    url = f"{CLICKUP_API}/task/{task_id}"
+    req = urllib.request.Request(
+        url,
+        headers={
+            "Authorization": token,
+            "User-Agent": "escritorio-projetos-sync/1.0",
+            "Accept": "application/json",
+        },
+    )
+    try:
+        with urllib.request.urlopen(req, timeout=30) as r:
+            data = json.loads(r.read().decode())
+    except urllib.error.HTTPError as e:
+        body = e.read().decode(errors="replace")
+        raise RuntimeError(f"HTTP {e.code} na tarefa {task_id}: {body[:300]}")
+    except urllib.error.URLError as e:
+        raise RuntimeError(f"Erro de rede na tarefa {task_id}: {e.reason}")
+
+    items = []
+    for checklist in data.get("checklists", []):
+        items.extend(checklist.get("items", []))
+    return items
+
+
+def calc_pct_checklist(items):
+    """% = itens resolvidos / total de itens do checklist. Piso de 2% (nunca 0%)."""
+    total = len(items)
+    if total == 0:
+        return 2, 0, total
+    resolvidos = sum(1 for it in items if it.get("resolved"))
+    pct = round(100 * resolvidos / total)
+    pct = max(pct, 2)
+    return pct, resolvidos, total
+
+
+def update_modal_pct_checklist(html, key, new_pct, resolvidos, total):
+    """Mesma lógica do update_modal_pct, mas com texto de checklist (resolvidos/total)."""
+    marker = f"  {key}:{{"
+    idx = html.find(marker)
+    if idx == -1:
+        return html, False
+    next_key_match = re.search(r"\n  [a-zA-Z0-9_]+:\{", html[idx + len(marker):])
+    window_end = idx + len(marker) + next_key_match.start() if next_key_match else min(len(html), idx + 4000)
+    block = html[idx:window_end]
+    changed = False
+
+    new_block, n = re.subn(r"(title:'[^']*',pct:)(\d+)", rf"\g<1>{new_pct}", block, count=1)
+    if n and new_block != block:
+        changed = True
+        block = new_block
+
+    new_block2, n2 = re.subn(r"\['(\d+)%','(blue|green|orange)'\]", lambda m: f"['{new_pct}%','{m.group(2)}']", block, count=1)
+    if n2 and new_block2 != block:
+        changed = True
+        block = new_block2
+
+    novo_texto = f"{new_pct}% — {resolvidos} de {total} itens do checklist concluídos"
+    new_block3, n3 = re.subn(r"\['📊','[^']*'\]", f"['📊','{novo_texto}']", block, count=1)
+    if n3 and new_block3 != block:
+        changed = True
+        block = new_block3
+
+    if changed:
+        html = html[:idx] + block + html[window_end:]
+    return html, changed
 
 
 def calc_pct(tasks):
@@ -260,6 +333,27 @@ def main():
         status = "ATUALIZADO" if changed else "sem mudança"
         print(f"  {key}: {pct}% ({fechado} fechadas + {em_andamento} em andamento de {total}) — {status}")
         report.append({"key": key, "list_id": list_id, "pct": pct, "fechado": fechado, "em_andamento": em_andamento, "total": total, "changed": changed})
+
+        if changed:
+            any_change = True
+
+    for key, task_id in TASK_CHECKLISTS.items():
+        try:
+            items = fetch_task_checklist(task_id, token)
+        except Exception as e:
+            print(f"  ❌ {key} (tarefa {task_id}): falha ao buscar checklist — {e}")
+            any_error = True
+            continue
+
+        pct, resolvidos, total = calc_pct_checklist(items)
+
+        html, changed_card = update_card_pct(html, key, pct)
+        html, changed_modal = update_modal_pct_checklist(html, key, pct, resolvidos, total)
+        changed = changed_card or changed_modal
+
+        status = "ATUALIZADO" if changed else "sem mudança"
+        print(f"  {key}: {pct}% ({resolvidos}/{total} itens do checklist) — {status}")
+        report.append({"key": key, "task_id": task_id, "pct": pct, "resolvidos": resolvidos, "total": total, "changed": changed})
 
         if changed:
             any_change = True
