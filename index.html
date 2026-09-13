@@ -4315,18 +4315,23 @@ function openModal(id) {
   document.getElementById('mEye').textContent=p.eye;
   document.getElementById('mTitle').textContent=p.title;
   let h=`<div class="m-summary"><div class="m-big-pct">${p.pct}%</div><div class="m-pct-right"><div class="m-pct-label">Progresso geral</div><div class="m-bar-track"><div class="m-bar-fill ${p.fc}" data-w="${p.pct}"></div></div><div style="margin-top:8px">${p.pill}</div></div></div>`;
-  if(p.tags.length) h+=`<div class="m-tags">${p.tags.map(([l,c])=>`<span class="m-tag ${c}">${l}</span>`).join('')}</div>`;
-  p.secs.forEach((s,si)=>{
-    h+=`<div class="m-sec" data-sec="${si}"><div class="m-sec-t">${s.t}</div><div class="m-rows">`;
-    s.rows.forEach(([ic,tx],ri)=>{ h+=`<div class="m-row" data-row="${ri}"><span class="m-icon">${ic}</span><span class="m-text">${tx}</span></div>`; });
-    h+=`</div></div>`;
-  });
+  if(p.link) {
+    h+=`<div style="margin-top:16px;padding:16px;background:rgba(0,0,0,.03);border-radius:12px;text-align:center;font-family:'Sora',sans-serif;font-size:12px;color:var(--text-light);">Os detalhes deste projeto são acompanhados diretamente no ClickUp.</div>`;
+  } else {
+    if(p.tags.length) h+=`<div class="m-tags">${p.tags.map(([l,c])=>`<span class="m-tag ${c}">${l}</span>`).join('')}</div>`;
+    p.secs.forEach((s,si)=>{
+      h+=`<div class="m-sec" data-sec="${si}"><div class="m-sec-t">${s.t}</div><div class="m-rows">`;
+      s.rows.forEach(([ic,tx],ri)=>{ h+=`<div class="m-row" data-row="${ri}"><span class="m-icon">${ic}</span><span class="m-text">${tx}</span></div>`; });
+      h+=`</div></div>`;
+    });
+  }
   if(p.link) h+=`<div style="margin-top:16px"><a href="${p.link}" target="_blank" style="display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:12px 0;border-radius:12px;background:linear-gradient(135deg,#1565c0,#2979ff);color:#fff;font-family:'Sora',sans-serif;font-size:11px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;text-decoration:none;box-shadow:0 4px 14px rgba(41,121,255,.35);transition:opacity .2s;" onmouseover="this.style.opacity='.85'" onmouseout="this.style.opacity='1'"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M7 2l5 5-5 5" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Ver andamento das atividades</a></div>`;
   document.getElementById('mBody').innerHTML=h;
   document.getElementById('overlay').classList.add('open');
   document.body.style.overflow='hidden';
   editMode=false; document.getElementById('modal').classList.remove('edit-mode');
   const btn=document.getElementById('btnEditModal'); btn.textContent='✎ Editar'; btn.classList.remove('save','cancel');
+  btn.style.display = p.link ? 'none' : '';
   const cancel=document.querySelector('.btn-edit-modal.cancel'); if(cancel) cancel.remove();
   setTimeout(()=>{ const f=document.querySelector('.m-bar-fill'); if(f) f.style.width=f.dataset.w+'%'; },80);
 }
