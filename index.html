@@ -4563,7 +4563,6 @@ renderFinalizados();
    CONTROLE DE MIGRAÇÃO
 ═══════════════════════════════════════ */
 let mgClientes = [
-  { id:2, nome:"PRUMO ENGENHARIA", status:"Andamento", dataMigracao:"2026-09-11", prevConclusao:"15/09", prevAlerta:false, impedimento:"Aguardando OK para data 11/09", qtdMaquinas:3, historico:[{"data": "2026-06-03", "acao": "Progresso: 30% — Aguardando retorno do acesso para criação das cópias no ambiente 3.0"}, {"data": "2026-06-03", "acao": "Data prevista de conclusão: 12/06/2026"}, {"data": "2026-06-07", "acao": "Aguardando liberação de acesso para que o time de Delivery realize as cópias e disponibilize para validação na versão 3.0"}, {"data": "2026-06-07", "acao": "Em andamento com parceiro responsável pela sustentação do Zimbra para obtenção dos dados de acesso"}, {"data": "2026-08-31", "acao": "Atualizado: aguardando OK para data 11/09, prev. conclusão 15/09"}] },
   { id:6, nome:"GRUPO RAIZES", status:"Andamento", dataMigracao:"2026-09-30", prevConclusao:"Não definido", prevAlerta:false, impedimento:"Cliente postergando Migração", qtdMaquinas:13, historico:[{"data": "2026-08-31", "acao": "Atualizado: cliente postergando migração, nova data 30/09"}] },
   { id:7, nome:"MAGAZINE LUIZA S/A", status:"Impeditivo", dataMigracao:"2026-09-30", prevConclusao:"Não definido", prevAlerta:false, impedimento:"Sinalizou possível cancelamento.", qtdMaquinas:10, historico:[{"data": "2026-06-07", "acao": "Reunião realizada com a cliente (Manuella), com apresentação do plano"}, {"data": "2026-06-07", "acao": "Pendente definição da janela de cópia até 15/06"}, {"data": "2026-08-31", "acao": "Atualizado: cliente sinalizou possível cancelamento"}] },
   { id:8, nome:"SAT CONSULTORIA", status:"Andamento", dataMigracao:"2026-10-02", prevConclusao:"Não definido", prevAlerta:false, impedimento:"Aguardando OK para data 02/10", qtdMaquinas:3, historico:[{"data": "2026-08-31", "acao": "Atualizado: aguardando OK para data 02/10"}] },
@@ -4908,7 +4907,6 @@ async function mgSalvarDados() {
 
 // Seed de referência — usado para sincronizar dados atualizados
 const MG_SEED = [
-  { id:2, nome:"PRUMO ENGENHARIA", status:"Andamento", dataMigracao:"2026-09-11", prevConclusao:"15/09", prevAlerta:false, impedimento:"Aguardando OK para data 11/09", qtdMaquinas:3, historico:[{"data": "2026-06-03", "acao": "Progresso: 30% — Aguardando retorno do acesso para criação das cópias no ambiente 3.0"}, {"data": "2026-06-03", "acao": "Data prevista de conclusão: 12/06/2026"}, {"data": "2026-06-07", "acao": "Aguardando liberação de acesso para que o time de Delivery realize as cópias e disponibilize para validação na versão 3.0"}, {"data": "2026-06-07", "acao": "Em andamento com parceiro responsável pela sustentação do Zimbra para obtenção dos dados de acesso"}, {"data": "2026-08-31", "acao": "Atualizado: aguardando OK para data 11/09, prev. conclusão 15/09"}] },
   { id:6, nome:"GRUPO RAIZES", status:"Andamento", dataMigracao:"2026-09-30", prevConclusao:"Não definido", prevAlerta:false, impedimento:"Cliente postergando Migração", qtdMaquinas:13, historico:[{"data": "2026-08-31", "acao": "Atualizado: cliente postergando migração, nova data 30/09"}] },
   { id:7, nome:"MAGAZINE LUIZA S/A", status:"Impeditivo", dataMigracao:"2026-09-30", prevConclusao:"Não definido", prevAlerta:false, impedimento:"Sinalizou possível cancelamento.", qtdMaquinas:10, historico:[{"data": "2026-06-07", "acao": "Reunião realizada com a cliente (Manuella), com apresentação do plano"}, {"data": "2026-06-07", "acao": "Pendente definição da janela de cópia até 15/06"}, {"data": "2026-08-31", "acao": "Atualizado: cliente sinalizou possível cancelamento"}] },
   { id:8, nome:"SAT CONSULTORIA", status:"Andamento", dataMigracao:"2026-10-02", prevConclusao:"Não definido", prevAlerta:false, impedimento:"Aguardando OK para data 02/10", qtdMaquinas:3, historico:[{"data": "2026-08-31", "acao": "Atualizado: aguardando OK para data 02/10"}] },
@@ -4918,7 +4916,7 @@ const MG_SEED = [
   { id:12, nome:"REFRIO ARMAZENS GERAIS LTDA", status:"Impeditivo", dataMigracao:"2026-09-30", prevConclusao:"Não definido", prevAlerta:false, impedimento:"Sinalizou possível cancelamento.", qtdMaquinas:24, historico:[{"data": "2026-08-31", "acao": "Atualizado: cliente sinalizou possível cancelamento"}] },
   { id:13, nome:"1TEAMCLOUD SOLUCOES", status:"Impeditivo", dataMigracao:"2026-09-30", prevConclusao:"Não definido", prevAlerta:false, impedimento:"Sinalizou possível cancelamento.", qtdMaquinas:1, historico:[{"data": "2026-08-31", "acao": "Atualizado: cliente sinalizou possível cancelamento"}] },
 ];
-const MG_SEED_VERSION = "2026-07-08-v32"; // incrementar ao alterar o seed
+const MG_SEED_VERSION = "2026-09-11-v33"; // incrementar ao alterar o seed
 
 async function mgCarregarDados() {
   // SEED é a ÚNICA fonte da verdade — storage é ignorado para status/progresso/datas
