@@ -30,6 +30,7 @@ CLICKUP_API = "https://api.clickup.com/api/v2"
 # list_id = ID da lista no ClickUp
 PROJECTS = {
     "migstorware":     "901328225370",
+    "ceph30":          "901328082201",
     "claudiamelhoria": "901328225252",
     "obsmelhoria":     "901328225263",
     "soprema":         "901328281164",
