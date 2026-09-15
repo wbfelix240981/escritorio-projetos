@@ -31,8 +31,9 @@ CLICKUP_API = "https://api.clickup.com/api/v2"
 PROJECTS = {
     "migstorware":     "901328225370",
     "ceph30":          "901328082201",
-    "claudiamelhoria": "901328225252",
-    "obsmelhoria":     "901328225263",
+    # "claudiamelhoria" e "obsmelhoria" removidos em 2026-09-15: projetos colocados
+    # em HOLD manualmente (pausados). Não devem ser sobrescritos pela sincronização
+    # automática enquanto estiverem em Hold — reativar aqui quando saírem do Hold.
     "soprema":         "901328281164",
     "senai":           "901328281738",
     "pleion":          "901328281869",
