@@ -295,6 +295,88 @@ def update_modal_pct(html, key, new_pct, fechado, em_andamento, total):
     return html, changed
 
 
+def sync_finalized_state(html, key, new_pct):
+    """
+    Projeto (Cliente ou Estruturante) que chega a 100% deve:
+      - ganhar pill "✓ Finalizado" (no card do grid E no modal)
+      - ganhar completed:'YYYY-MM-DD' (data de hoje, só na primeira vez que bate 100%)
+    Isso faz o card DESAPARECER automaticamente do grid ativo (enforceFinalizedRule,
+    no JS do próprio site, já esconde qualquer card com pill-done) e aparecer nas
+    visões de "Projetos Finalizados" (que filtram por completed / pill Finalizado).
+
+    Se o projeto reabrir depois (pct cai de volta pra <100), desfaz o Finalizado
+    automaticamente: volta o pill pra "Em progresso" e limpa o completed.
+    """
+    changed = False
+    br_tz = timezone(timedelta(hours=-3))
+    hoje = datetime.now(br_tz).strftime("%Y-%m-%d")
+
+    # --- CARD no grid (localizado via openModal('key')) ---
+    anchor = f"openModal('{key}')"
+    idx = html.find(anchor)
+    if idx != -1:
+        window_start = max(0, idx - 500)
+        window = html[window_start:idx]
+        if new_pct == 100:
+            new_window, n = re.subn(
+                r'<span class="pill pill-prog">[^<]*</span>',
+                '<span class="pill pill-done">✓ Finalizado</span>',
+                window, count=1
+            )
+        else:
+            new_window, n = re.subn(
+                r'<span class="pill pill-done">✓ Finalizado</span>',
+                '<span class="pill pill-prog">● Em progresso</span>',
+                window, count=1
+            )
+        if n and new_window != window:
+            html = html[:window_start] + new_window + html[idx:]
+            changed = True
+
+    # --- MODAL (objeto de dados) ---
+    marker = f"  {key}:{{"
+    midx = html.find(marker)
+    if midx != -1:
+        next_key_match = re.search(r"\n  [a-zA-Z0-9_]+:\{", html[midx + len(marker):])
+        window_end = midx + len(marker) + next_key_match.start() if next_key_match else min(len(html), midx + 4000)
+        block = html[midx:window_end]
+        block_changed = False
+
+        if new_pct == 100:
+            new_block, n1 = re.subn(
+                r"pill:'<span class=\"pill pill-prog\">[^<]*</span>'",
+                "pill:'<span class=\"pill pill-done\">✓ Finalizado</span>'",
+                block, count=1
+            )
+            if n1 and new_block != block:
+                block = new_block
+                block_changed = True
+            # só grava a data na PRIMEIRA vez que chega em 100% (completed:null,)
+            new_block2, n2 = re.subn(r"completed:null,", f"completed:'{hoje}',", block, count=1)
+            if n2 and new_block2 != block:
+                block = new_block2
+                block_changed = True
+        else:
+            new_block, n1 = re.subn(
+                r"pill:'<span class=\"pill pill-done\">✓ Finalizado</span>'",
+                "pill:'<span class=\"pill pill-prog\">● Em progresso</span>'",
+                block, count=1
+            )
+            if n1 and new_block != block:
+                block = new_block
+                block_changed = True
+            new_block2, n2 = re.subn(r"completed:'\d{4}-\d{2}-\d{2}',", "completed:null,", block, count=1)
+            if n2 and new_block2 != block:
+                block = new_block2
+                block_changed = True
+
+        if block_changed:
+            html = html[:midx] + block + html[window_end:]
+            changed = True
+
+    return html, changed
+
+
 def update_sync_timestamp(html):
     """
     Atualiza os spans #syncTimestampClientes e #syncTimestampEstruturante com a
@@ -356,7 +438,8 @@ def main():
 
         html, changed_card = update_card_pct(html, key, pct)
         html, changed_modal = update_modal_pct(html, key, pct, fechado, em_andamento, total)
-        changed = changed_card or changed_modal
+        html, changed_fin = sync_finalized_state(html, key, pct)
+        changed = changed_card or changed_modal or changed_fin
 
         status = "ATUALIZADO" if changed else "sem mudança"
         print(f"  {key}: {pct}% ({fechado} fechadas + {em_andamento} em andamento de {total}) — {status}")
@@ -377,7 +460,8 @@ def main():
 
         html, changed_card = update_card_pct(html, key, pct)
         html, changed_modal = update_modal_pct_checklist(html, key, pct, resolvidos, total)
-        changed = changed_card or changed_modal
+        html, changed_fin = sync_finalized_state(html, key, pct)
+        changed = changed_card or changed_modal or changed_fin
 
         status = "ATUALIZADO" if changed else "sem mudança"
         print(f"  {key}: {pct}% ({resolvidos}/{total} itens do checklist) — {status}")
