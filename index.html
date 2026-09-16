@@ -4407,6 +4407,9 @@ function sortHoldCardsLast() {
   });
 }
 document.addEventListener('DOMContentLoaded', sortHoldCardsLast);
+document.addEventListener('page-changed', function(e) {
+  if (e.detail === 'clientes' || e.detail === 'estruturantes') sortHoldCardsLast();
+});
 
 function showFinalizadosFiltro(tipo) {
   const isFinalizado = (p) => {
