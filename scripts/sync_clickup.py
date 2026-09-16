@@ -318,19 +318,15 @@ def sync_finalized_state(html, key, new_pct):
         window_start = max(0, idx - 500)
         window = html[window_start:idx]
         if new_pct == 100:
-            new_window, n = re.subn(
-                r'<span class="pill pill-prog">[^<]*</span>',
-                '<span class="pill pill-done">✓ Finalizado</span>',
-                window, count=1
-            )
+            matches = list(re.finditer(r'<span class="pill pill-prog">[^<]*</span>', window))
         else:
-            new_window, n = re.subn(
-                r'<span class="pill pill-done">✓ Finalizado</span>',
-                '<span class="pill pill-prog">● Em progresso</span>',
-                window, count=1
-            )
-        if n and new_window != window:
-            html = html[:window_start] + new_window + html[idx:]
+            matches = list(re.finditer(r'<span class="pill pill-done">✓ Finalizado</span>', window))
+        if matches:
+            m = matches[-1]  # a ÚLTIMA ocorrência antes do anchor é a do card certo
+            novo = '<span class="pill pill-done">✓ Finalizado</span>' if new_pct == 100 else '<span class="pill pill-prog">● Em progresso</span>'
+            abs_start = window_start + m.start()
+            abs_end = window_start + m.end()
+            html = html[:abs_start] + novo + html[abs_end:]
             changed = True
 
     # --- MODAL (objeto de dados) ---
