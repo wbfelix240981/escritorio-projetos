@@ -8020,12 +8020,15 @@ function syncBcp3CardPct() {
   if (cardBar) { cardBar.dataset.pct = pct; cardBar.style.width = pct + '%'; }
 }
 
-// Ordena os cards de uma grid por % decrescente (maior % primeiro)
+// Ordena os cards de uma grid por % decrescente (maior % primeiro) — cards em Hold sempre vão pro final, independente do %
 function sortCardsByPct(containerSelector) {
   const container = document.querySelector(containerSelector);
   if (!container) return;
   const cards = Array.from(container.querySelectorAll(':scope > .card'));
   cards.sort((a, b) => {
+    const holdA = a.classList.contains('is-hold');
+    const holdB = b.classList.contains('is-hold');
+    if (holdA !== holdB) return holdA ? 1 : -1; // Hold sempre por último
     const pctA = parseFloat((a.querySelector('.card-pct')?.textContent || '0').replace(',', '.')) || 0;
     const pctB = parseFloat((b.querySelector('.card-pct')?.textContent || '0').replace(',', '.')) || 0;
     return pctB - pctA;
