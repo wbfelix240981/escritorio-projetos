@@ -223,6 +223,16 @@ def update_card_pct(html, key, new_pct):
             html = html[:abs_start] + f'data-pct="{new_pct}"' + html[abs_end:]
             changed = True
 
+    # regra: se % > 1, o card nunca pode ficar com pill "Não iniciado"
+    if new_pct > 1:
+        matches3 = list(re.finditer(r'<span class="pill pill-prog">○ Não iniciado</span>', window))
+        if matches3:
+            m = matches3[-1]
+            abs_start = window_start + m.start()
+            abs_end = window_start + m.end()
+            html = html[:abs_start] + '<span class="pill pill-prog">● Em progresso</span>' + html[abs_end:]
+            changed = True
+
     return html, changed
 
 
@@ -267,6 +277,17 @@ def update_modal_pct(html, key, new_pct, fechado, em_andamento, total):
     if n3 and new_block3 != block:
         changed = True
         block = new_block3
+
+    # regra: se % > 1, o modal nunca pode ficar com pill "Não iniciado"
+    if new_pct > 1:
+        new_block4, n4 = re.subn(
+            r'pill:\'<span class="pill pill-prog">○ Não iniciado</span>\'',
+            'pill:\'<span class="pill pill-prog">● Em progresso</span>\'',
+            block, count=1
+        )
+        if n4 and new_block4 != block:
+            changed = True
+            block = new_block4
 
     if changed:
         html = html[:idx] + block + html[window_end:]
