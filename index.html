@@ -4396,6 +4396,14 @@ function closeOuter(e) { if(e.target===document.getElementById('overlay')) close
 
 /* FINALIZADOS */
 
+function sortHoldCardsLast() {
+  document.querySelectorAll('#clientes .grid-2, #estruturantes .grid-2').forEach(grid => {
+    const holdCards = Array.from(grid.children).filter(c => c.classList.contains('is-hold'));
+    holdCards.forEach(c => grid.appendChild(c)); // appendChild move o nó existente pro final, preservando ordem entre eles
+  });
+}
+document.addEventListener('DOMContentLoaded', sortHoldCardsLast);
+
 function showFinalizadosFiltro(tipo) {
   const isFinalizado = (p) => {
     if (p.completed) return true;
