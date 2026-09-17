@@ -46,6 +46,7 @@ PROJECTS = {
     "amigoconnecting": "901329011044",
     "brainlaw":         "901329011091",
     "senaishield":      "901329087162",
+    "desmob20":         "901329094841",
     # "psdovidro" removido intencionalmente: projeto foi finalizado manualmente
     # em 2026-08-31 por decisão do escritório de projetos, mesmo com 2 tarefas
     # ainda abertas no ClickUp. Não deve ser sobrescrito pela sincronização.
@@ -54,12 +55,10 @@ PROJECTS = {
 
 # key = chave do objeto de dados no index.html
 # task_id = ID da tarefa no ClickUp cujo checklist define o % (resolved/total)
-# OBS: "ceph30" (Migração Ceph) foi removido daqui em 2026-09-11 — o checklist da
-# tarefa (0/5) não bate com o % real mostrado no Painel de Metas de Diretoria (63%),
-# que aparentemente usa outra fonte/cálculo não exposta pela API. O mesmo vale para
-# "desmob20" (Desmobilização da Cloud 2.0, 61% no Painel de Metas, sem checklist).
-# Os dois ficam com valor fixo, sincronizado manualmente sempre que o Painel de
-# Metas for consultado — não devem ser adicionados de volta sem confirmar a fonte.
+# OBS: "ceph30" (Otimização Ceph) voltou a usar lista completa (ver PROJECTS acima).
+# "desmob20" (Desmobilização física 2.0) ganhou lista dedicada em 2026-09-16
+# ("Migração Técnica da Cloud 2 para 3", 901329094841) e também foi movido pra
+# PROJECTS acima — não precisa mais de checklist manual.
 TASK_CHECKLISTS = {
 }
 
