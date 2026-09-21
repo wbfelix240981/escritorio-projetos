@@ -1220,6 +1220,21 @@ body.role-comercial #drawer-trigger {
         </div>
       </div>
 
+      <!-- GIMBA - MFA VPN -->
+      <div class="card anim">
+        <div class="card-accent accent-green"></div>
+        <div class="card-header">
+          <span class="pill pill-prog">○ Não iniciado</span>
+          <span class="card-pct">0%</span>
+        </div>
+        <div class="card-title">Gimba - MFA na conexão VPN de forma padrão</div>
+        <div class="card-footer">
+          
+          <div class="bar-track"><div class="bar-fill fill-green" data-pct="0"></div></div>
+          <button class="btn-det" onclick="openModal('mfavpn')">Ver detalhes <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 6.5h9M7 2l4.5 4.5L7 11" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        </div>
+      </div>
+
     </div>
 
 
@@ -1259,8 +1274,6 @@ body.role-comercial #drawer-trigger {
       <!-- SENAI - SOLUÇÕES SHIELD -->
       <div class="card anim"><div class="card-accent accent-blue"></div><div class="card-header"><span class="pill pill-prog">● Em progresso</span><span class="card-pct">7%</span></div><div class="card-title">Senai - Soluções Shield</div><div class="card-footer"><div class="bar-track"><div class="bar-fill fill-blue" data-pct="7"></div></div><button class="btn-det" onclick="openModal('senaishield')">Ver detalhes <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 6.5h9M7 2l4.5 4.5L7 11" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div></div>
 
-      <!-- MFA NA CONEXÃO VPN DE FORMA PADRÃO -->
-      <div class="card anim"><div class="card-accent accent-blue"></div><div class="card-header"><span class="pill pill-prog">○ Não iniciado</span><span class="card-pct">0%</span></div><div class="card-title">MFA na conexão VPN de forma padrão</div><div class="card-footer"><div class="bar-track"><div class="bar-fill fill-blue" data-pct="0"></div></div><button class="btn-det" onclick="openModal('mfavpn')">Ver detalhes <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 6.5h9M7 2l4.5 4.5L7 11" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div></div>
       <div class="card anim"><div class="card-accent accent-blue"></div><div class="card-header"><span class="pill pill-done">✓ Finalizado — Ago/2026</span><span class="card-pct">100%</span></div><div class="card-title">Painel de Metas de Diretoria</div><div class="card-footer"><div class="bar-track"><div class="bar-fill fill-blue" data-pct="100"></div></div><button class="btn-det" onclick="openModal('metasdiretoria')">Ver detalhes <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 6.5h9M7 2l4.5 4.5L7 11" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div></div>
       <div class="card anim"><div class="card-accent accent-blue"></div><div class="card-header"><span class="pill pill-prog">● Em progresso</span><span class="card-pct">43%</span></div><div class="card-title">Migração Storware</div><div class="card-footer"><div class="bar-track"><div class="bar-fill fill-blue" data-pct="43"></div></div><button class="btn-det" onclick="openModal('migstorware')">Ver detalhes <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 6.5h9M7 2l4.5 4.5L7 11" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div></div>
       <div class="card anim"><div class="card-accent accent-blue"></div><div class="card-header"><span class="pill pill-prog">● Em progresso</span><span class="card-pct">36%</span></div><div class="card-title">BCP 2.0 Off</div><div class="card-footer"><div class="bar-track"><div class="bar-fill fill-blue" data-pct="36"></div></div><button class="btn-det" onclick="openModal('ceph30')">Ver detalhes <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 6.5h9M7 2l4.5 4.5L7 11" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div></div>
@@ -3951,7 +3964,6 @@ const P = {
   storware:{eye:'Projeto Estruturante',title:'Implementação – Storware',pct:100,fc:'fill-blue',grad:'linear-gradient(90deg,#1565c0,#2979ff)',pill:'<span class="pill pill-done">✓ Finalizado — Julho/2026</span>',completed:'2026-07-31',tags:[['Backup','blue'],['Storware','blue'],['Finalizado','blue'],['100%','blue']],secs:[{t:'Status atual',rows:[['✅','Implementação concluída com sucesso — 100%'],['🧪','Testes e validações realizados em 5 máquinas, confirmando o funcionamento da solução']]},{t:'Próximos passos',rows:[['🚀','Início da implantação do Storware nos clientes gerenciados']]}]},
   desmob20:{eye:'Projeto Estruturante',title:'Desmobilização física 2.0',pct:67,fc:'fill-blue',grad:'linear-gradient(90deg,#1565c0,#2979ff)',pill:'<span class="pill pill-prog">● Em progresso</span>',completed:null,link:'https://app.clickup.com/3080406/v/l/6-901329094841-1',tags:[['Desmobilização','blue'],['Cloud 2.0','blue'],['Em progresso','blue'],['67%','blue']],secs:[{t:'Progresso (ClickUp)',rows:[['📊','67% — 27 fechadas + 2 em andamento de 42 tarefas'],['🔗','<a href="https://app.clickup.com/3080406/v/l/6-901329094841-1" target="_blank" style="color:#2979ff;font-weight:700;">Abrir lista no ClickUp ↗</a>']]},{t:'Escopo',rows:[['☁️','Desmobilização do ambiente Cloud 2.0 após migração para a 3.0 — meta: ≤100 VMs na Cloud 2.0']]},{t:'Status atual',rows:[['✅','Concluída a migração da quantidade prevista de VMs da Cloud 2.0'],['🔄','Migração técnica dos nodes iniciando — 2% concluído'],['🖧','Fase atual: migração dos nodes (br-sp-02, servidores Oracle e Windows) e blocos de IPs']]},{t:'Inventário OpenStack — Cloud 2.0 (11/08/2026)',rows:[['📊','279 VMs restantes · 237 domínios · 32 projetos'],['🟢','260 VMs ligadas (ACTIVE) · 17 desligadas (SHUTOFF, 6.1%) · 2 em erro'],['📉','Desde 03/08: −1 VM · −56 domínios · +1 projeto'],['💾','Recursos adicionais (volumes, snapshots, DBaaS, buckets S3) ainda não relevados neste corte'],['⚠️','2 domínios com mais de 50% das VMs desligadas — domain-cloud2 (80%, 4 de 5 VMs) e sattelecom.com (50%, 1 de 2 VMs)'],['❗','2 VMs em ERRO sem domínio/projeto associado, ainda não resolvidas desde o corte anterior — IIS2 e ORACLEPROD02']]},{t:'Recomendações de sanitização',rows:[['🔴','Alta prioridade: investigar as 2 VMs em erro (órfãs) — verificar se podem ser removidas ou recuperadas'],['🟡','Média prioridade: revisar os domínios domain-cloud2 e sattelecom.com (>50% desligados) e validar com os clientes'],['🟡','Média prioridade: avaliar as 17 VMs SHUTOFF há mais de 30 dias para possível remoção'],['🔵','Nenhum domínio 100% desligado no momento — sem candidatos imediatos à remoção'],['📅','Próxima coleta de inventário recomendada em 30 dias, para comparação de evolução']]},{t:'Próximos passos',rows:[['📋','Concluir migração dos nodes e dos blocos de IPs'],['🧹','Tratar as pendências de sanitização levantadas no inventário (VMs em erro e domínios domain-cloud2 / sattelecom.com)']]}]},
   senaishield:{eye:'Projeto Estruturante',title:'Senai - Soluções Shield',pct:7,fc:'fill-blue',grad:'linear-gradient(90deg,#1565c0,#2979ff)',pill:'<span class="pill pill-prog">● Em progresso</span>',completed:null,link:'https://app.clickup.com/3080406/v/l/6-901329087162-1',tags:[['Em progresso','blue'],['7%','blue']],secs:[{t:'Progresso (ClickUp)',rows:[['📊','7% — 0 fechadas + 4 em andamento de 28 tarefas'],['🔗','<a href="https://app.clickup.com/3080406/v/l/6-901329087162-1" target="_blank" style="color:#2979ff;font-weight:700;">Abrir lista no ClickUp ↗</a>']]},{t:'Escopo',rows:[['📋','Projeto SENAI - Soluções Integráveis ao Shield']]}]},
-  mfavpn:{eye:'Projeto Estruturante',title:'MFA na conexão VPN de forma padrão',pct:0,fc:'fill-blue',grad:'linear-gradient(90deg,#1565c0,#2979ff)',pill:'<span class="pill pill-prog">○ Não iniciado</span>',completed:null,tags:[['Segurança','blue'],['Não iniciado','blue'],['0%','blue']],secs:[{t:'Escopo',rows:[['🔐','Implementação de MFA (autenticação multifator) como padrão nas conexões VPN']]},{t:'Status atual',rows:[['⏳','Projeto ainda não iniciado — 0%']]},{t:'Próximos passos',rows:[['📋','Definir escopo, cronograma e plano de implementação']]}]},
   metasdiretoria:{eye:'Projeto Estruturante',title:'Painel de Metas de Diretoria',pct:100,fc:'fill-blue',grad:'linear-gradient(90deg,#1565c0,#2979ff)',pill:'<span class="pill pill-done">✓ Finalizado — Agosto/2026</span>',completed:'2026-08-19',link:'https://binario-cloud-metas-de-diretorias.pages.dev/#',tags:[['Metas 2026','blue'],['Diretoria','blue'],['Finalizado','blue'],['100%','blue']],secs:[{t:'Painel do Projeto',rows:[['🔗','<a href="https://binario-cloud-metas-de-diretorias.pages.dev/#" target="_blank" style="color:#2979ff;font-weight:700;">Metas 2026 · Binário Cloud ↗</a>']]},{t:'Escopo',rows:[['🎯','Painel de acompanhamento das metas da diretoria para 2026']]},{t:'Status atual',rows:[['✅','Projeto concluído e entregue — 100%'],['📋','Ajustes da lista do ClickUp finalizados']]}]},
   migstorware:{eye:'Projeto Estruturante',title:'Migração Storware',pct:43,fc:'fill-blue',grad:'linear-gradient(90deg,#1565c0,#2979ff)',pill:'<span class="pill pill-prog">● Em progresso</span>',completed:null,link:'https://app.clickup.com/3080406/v/l/6-901328225370-1',tags:[['Backup','blue'],['Storware','blue'],['Em progresso','blue'],['43%','blue']],secs:[{t:'Progresso (ClickUp)',rows:[['📊','43% — 17 fechadas + 3 em andamento de 43 tarefas'],['🔗','<a href="https://app.clickup.com/3080406/v/l/6-901328225370-1" target="_blank" style="color:#2979ff;font-weight:700;">Abrir lista no ClickUp ↗</a>']]},{t:'Escopo',rows:[['🔄','Migração da solução de backup para o Storware']]}]},
   ceph30:{eye:'Projeto Estruturante',title:'BCP 2.0 Off',pct:36,fc:'fill-blue',grad:'linear-gradient(90deg,#1565c0,#2979ff)',pill:'<span class="pill pill-prog">● Em progresso</span>',completed:null,link:'https://app.clickup.com/3080406/v/l/6-901328082201-1',tags:[['Storage','blue'],['Ceph','blue'],['Em progresso','blue'],['36%','blue']],secs:[{t:'Progresso (ClickUp)',rows:[['📊','36% — 21 fechadas + 14 em andamento de 78 tarefas'],['🔗','<a href="https://app.clickup.com/3080406/v/l/6-901328082201-1" target="_blank" style="color:#2979ff;font-weight:700;">Abrir lista no ClickUp ↗</a>']]},{t:'Escopo',rows:[['💾','Otimização e sanitização do ambiente Ceph']]}]},
@@ -4312,6 +4324,29 @@ const P = {
     tags:[],
     completed:null,
     secs:[
+      {t:'Checklist do Projeto', rows:[
+        ['🤝','Aceite pelo escritório de projetos: ⏳ Pendência'],
+        ['📝','Assinatura do TAP: ⏳ Pendência'],
+        ['💰','Faturamento de implantação: ⏳ Pendência'],
+        ['🚀','Kick-off com cliente: ⏳ Pendência'],
+        ['📅','Implantação estimada em: —'],
+        ['📍','Status atual: Projeto ainda não iniciado — 0%'],
+        ['📄','Fechamento do TEP: ⏳ Pendência'],
+        ['📤','Encaminhamento do faturamento: ⏳ Pendência'],
+        ['🏁','Projeto finalizado: ❌ Não'],
+      ]}
+    ],
+  },
+  mfavpn:{
+    eye:'Projeto de Cliente', title:'Gimba - MFA na conexão VPN de forma padrão', pct:0,
+    fc:'fill-green', grad:'linear-gradient(90deg,#2e7d32,#43a047)',
+    pill:'<span class="pill pill-prog">○ Não iniciado</span>',
+    tags:[],
+    completed:null,
+    secs:[
+      {t:'Escopo', rows:[
+        ['🔐','Implementação de MFA (autenticação multifator) como padrão nas conexões VPN do cliente Gimba'],
+      ]},
       {t:'Checklist do Projeto', rows:[
         ['🤝','Aceite pelo escritório de projetos: ⏳ Pendência'],
         ['📝','Assinatura do TAP: ⏳ Pendência'],
