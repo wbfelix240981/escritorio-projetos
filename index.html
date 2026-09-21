@@ -999,13 +999,13 @@ body.role-comercial #drawer-trigger {
       <div class="card anim">
         <div class="card-accent accent-green"></div>
         <div class="card-header">
-          <span class="pill pill-prog">● Em progresso</span>
-          <span class="card-pct" id="uol-pct-display" onclick="uolEditPct()" title="Clique para atualizar o %" style="cursor:pointer;">99%</span>
+          <span class="pill pill-done">✓ Finalizado — Set/2026</span>
+          <span class="card-pct" id="uol-pct-display" onclick="uolEditPct()" title="Clique para atualizar o %" style="cursor:pointer;">100%</span>
         </div>
         <div class="card-title">UOL – Modernização<br>de Nuvem Privada</div>
         <div class="card-footer">
           
-          <div class="bar-track"><div class="bar-fill fill-green" id="uol-bar-fill" data-pct="99"></div></div>
+          <div class="bar-track"><div class="bar-fill fill-green" id="uol-bar-fill" data-pct="100"></div></div>
           <button class="btn-det" onclick="openModal('uol')">Ver detalhes <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 6.5h9M7 2l4.5 4.5L7 11" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
         </div>
       </div>
@@ -3972,11 +3972,11 @@ const P = {
   claudiamelhoria:{eye:'Projeto Estruturante',title:'ClaudIA - Melhoria',pct:21,fc:'fill-hold',grad:'linear-gradient(90deg,#94a3b8,#cbd5e1)',pill:'<span class="pill pill-hold">⏸ Hold</span>',completed:null,link:'https://app.clickup.com/3080406/v/l/6-901328225252-1',tags:[['IA','blue'],['Automação','blue'],['Hold','blue'],['21%','blue']],secs:[{t:'Progresso (ClickUp)',rows:[['📊','21% — 5 fechadas + 7 em andamento de 40 tarefas (congelado, projeto em Hold)'],['⏸','Projeto em Hold — atualização automática pausada'],['🔗','<a href="https://app.clickup.com/3080406/v/l/6-901328225252-1" target="_blank" style="color:#2979ff;font-weight:700;">Abrir lista no ClickUp ↗</a>']]},{t:'Escopo',rows:[['🤖','Melhorias e evolução da automação ClaudIA']]}]},
   obsmelhoria:{eye:'Projeto Estruturante',title:'Observabilidade - Melhoria',pct:58,fc:'fill-hold',grad:'linear-gradient(90deg,#94a3b8,#cbd5e1)',pill:'<span class="pill pill-hold">⏸ Hold</span>',completed:null,link:'https://app.clickup.com/3080406/v/l/6-901328225263-1',tags:[['Monitoramento','blue'],['Dashboards','blue'],['Hold','blue'],['58%','blue']],secs:[{t:'Progresso (ClickUp)',rows:[['📊','58% — 26 fechadas + 6 em andamento de 50 tarefas (congelado, projeto em Hold)'],['⏸','Projeto em Hold — atualização automática pausada'],['🔗','<a href="https://app.clickup.com/3080406/v/l/6-901328225263-1" target="_blank" style="color:#2979ff;font-weight:700;">Abrir lista no ClickUp ↗</a>']]},{t:'Escopo',rows:[['📊','Melhorias no painel e no escopo de Observabilidade (ex: inclusão de redes)']]}]},
   uol:{
-    eye:'Projeto de Cliente', title:'UOL – Modernização de Nuvem Privada', pct:99,
-    fc:'fill-blue', grad:'linear-gradient(90deg,#1565c0,#2979ff)',
-    pill:'<span class="pill pill-prog">● Em progresso</span>',
-    tags:[],
-    completed:null,
+    eye:'Projeto de Cliente', title:'UOL – Modernização de Nuvem Privada', pct:100,
+    fc:'fill-green', grad:'linear-gradient(90deg,#2e7d32,#43a047)',
+    pill:'<span class="pill pill-done">✓ Finalizado — Set/2026</span>',
+    tags:[['Finalizado','blue']],
+    completed:'2026-09-17',
     link:'https://projeto-binario-uol-modernizacao-de-nuvem.pages.dev/painel',
     secs:[
       {t:'Checklist do Projeto', rows:[
@@ -3985,10 +3985,10 @@ const P = {
         ['💰','Faturamento de implantação: N/A'],
         ['🚀','Kick-off com cliente: ✅ Sim'],
         ['📅','Implantação estimada em: 60 dias'],
-        ['📍','Status atual: Ajustes de serviços no ambiente implantado / aguardando migração piloto para dia 17/08'],
-        ['📄','Fechamento do TEP: ⏳ Pendente'],
-        ['📤','Encaminhamento do faturamento: ⏳ Pendente'],
-        ['🏁','Projeto finalizado: ❌ Não'],
+        ['📍','Status atual: Projeto concluído — 100%'],
+        ['📄','Fechamento do TEP: ✅ Sim'],
+        ['📤','Encaminhamento do faturamento: N/A'],
+        ['🏁','Projeto finalizado: ✅ Sim'],
       ]}
     ]
   },
@@ -7975,13 +7975,13 @@ function uolSetPct(pct) {
 // Carregar % salvo no localStorage ao abrir a página
 document.addEventListener('page-changed', function(e) {
   if (e.detail === 'clientes') {
-    uolSetPct(99.5);
+    uolSetPct(100);
   }
 });
 document.addEventListener('DOMContentLoaded', function() {
-  // Sempre usar o valor do HTML (92.8%), ignorar localStorage
+  // Sempre usar o valor do HTML (100%), ignorar localStorage
   localStorage.removeItem('uol_pct');
-  uolSetPct(99.5);
+  uolSetPct(100);
 });
 </script>
 
