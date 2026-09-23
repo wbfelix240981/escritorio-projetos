@@ -47,6 +47,7 @@ PROJECTS = {
     "brainlaw":         "901329011091",
     "senaishield":      "901329087162",
     "desmob20":         "901329094841",
+    "grupoabl":         "901329133092",
     # "psdovidro" removido intencionalmente: projeto foi finalizado manualmente
     # em 2026-08-31 por decisão do escritório de projetos, mesmo com 2 tarefas
     # ainda abertas no ClickUp. Não deve ser sobrescrito pela sincronização.

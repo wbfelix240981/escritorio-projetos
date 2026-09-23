@@ -1209,13 +1209,13 @@ body.role-comercial #drawer-trigger {
       <div class="card anim">
         <div class="card-accent accent-green"></div>
         <div class="card-header">
-          <span class="pill pill-prog">○ Não iniciado</span>
-          <span class="card-pct">0%</span>
+          <span class="pill pill-prog">● Em progresso</span>
+          <span class="card-pct">8%</span>
         </div>
         <div class="card-title">Grupo Abl</div>
         <div class="card-footer">
           
-          <div class="bar-track"><div class="bar-fill fill-green" data-pct="0"></div></div>
+          <div class="bar-track"><div class="bar-fill fill-green" data-pct="8"></div></div>
           <button class="btn-det" onclick="openModal('grupoabl')">Ver detalhes <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 6.5h9M7 2l4.5 4.5L7 11" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
         </div>
       </div>
@@ -4318,19 +4318,24 @@ const P = {
     ],
   },
   grupoabl:{
-    eye:'Projeto de Cliente', title:'Grupo Abl', pct:0,
+    eye:'Projeto de Cliente', title:'Grupo Abl', pct:8,
     fc:'fill-green', grad:'linear-gradient(90deg,#2e7d32,#43a047)',
-    pill:'<span class="pill pill-prog">○ Não iniciado</span>',
+    pill:'<span class="pill pill-prog">● Em progresso</span>',
     tags:[],
     completed:null,
+    link:'https://app.clickup.com/3080406/v/li/901329133092',
     secs:[
+      {t:'Progresso (ClickUp)', rows:[
+        ['📊','8% — 3 fechadas + 2 em andamento de 49 tarefas'],
+        ['🔗','<a href="https://app.clickup.com/3080406/v/li/901329133092" target="_blank" style="color:#2e7d32;font-weight:700;">Abrir lista no ClickUp ↗</a>']
+      ]},
       {t:'Checklist do Projeto', rows:[
         ['🤝','Aceite pelo escritório de projetos: ⏳ Pendência'],
         ['📝','Assinatura do TAP: ⏳ Pendência'],
         ['💰','Faturamento de implantação: ⏳ Pendência'],
         ['🚀','Kick-off com cliente: ⏳ Pendência'],
         ['📅','Implantação estimada em: —'],
-        ['📍','Status atual: Projeto ainda não iniciado — 0%'],
+        ['📍','Status atual: Projeto iniciado — 8%'],
         ['📄','Fechamento do TEP: ⏳ Pendência'],
         ['📤','Encaminhamento do faturamento: ⏳ Pendência'],
         ['🏁','Projeto finalizado: ❌ Não'],
