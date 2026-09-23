@@ -165,6 +165,71 @@ def update_modal_pct_checklist(html, key, new_pct, resolvidos, total):
     return html, changed
 
 
+def calc_previsao_termino(tasks):
+    """
+    'Previsão término' = maior due_date (data de vencimento) entre as tarefas da lista.
+    Retorna string 'YYYY-MM-DD' ou None se nenhuma tarefa tiver due_date preenchido
+    (comum — a maioria das listas do ClickUp não usa esse campo).
+    """
+    br_tz = timezone(timedelta(hours=-3))
+    datas = []
+    for t in tasks:
+        due = t.get("due_date")
+        if due:
+            try:
+                dt = datetime.fromtimestamp(int(due) / 1000, tz=br_tz)
+                datas.append(dt)
+            except (ValueError, TypeError):
+                continue
+    if not datas:
+        return None
+    return max(datas).strftime("%Y-%m-%d")
+
+
+def update_previsao(html, key, previsao):
+    """
+    Atualiza a 'Previsão término' no card (span.prazo-valor mais próximo do anchor
+    openModal('key')) e no modal (campo previsao: na definição do projeto).
+    Se previsao for None, mantém '—' / null (não sobrescreve com vazio à toa, só
+    grava quando há um valor real vindo do ClickUp).
+    """
+    if not previsao:
+        return html, False
+    changed = False
+    previsao_fmt = previsao.split('-')[::-1]
+    previsao_fmt = '/'.join(previsao_fmt)
+
+    # --- CARD no grid ---
+    anchor = f"openModal('{key}')"
+    idx = html.find(anchor)
+    if idx != -1:
+        window_start = max(0, idx - 600)
+        window = html[window_start:idx]
+        matches = list(re.finditer(r'<span class="prazo-valor">[^<]*</span>', window))
+        if matches:
+            m = matches[-1]
+            abs_start = window_start + m.start()
+            abs_end = window_start + m.end()
+            novo = f'<span class="prazo-valor">{previsao_fmt}</span>'
+            if html[abs_start:abs_end] != novo:
+                html = html[:abs_start] + novo + html[abs_end:]
+                changed = True
+
+    # --- MODAL ---
+    marker = f"  {key}:{{"
+    midx = html.find(marker)
+    if midx != -1:
+        next_key_match = re.search(r"\n  [a-zA-Z0-9_]+:\{", html[midx + len(marker):])
+        window_end = midx + len(marker) + next_key_match.start() if next_key_match else min(len(html), midx + 4000)
+        block = html[midx:window_end]
+        new_block, n = re.subn(r"previsao:(?:null|'[0-9-]*'),", f"previsao:'{previsao}',", block, count=1)
+        if n and new_block != block:
+            html = html[:midx] + new_block + html[window_end:]
+            changed = True
+
+    return html, changed
+
+
 def calc_pct(tasks):
     """
     % = (fechadas * 1.0 + em_andamento * 0.5) / total, arredondado.
@@ -432,11 +497,13 @@ def main():
             continue
 
         pct, fechado, em_andamento, total = calc_pct(tasks)
+        previsao = calc_previsao_termino(tasks)
 
         html, changed_card = update_card_pct(html, key, pct)
         html, changed_modal = update_modal_pct(html, key, pct, fechado, em_andamento, total)
         html, changed_fin = sync_finalized_state(html, key, pct)
-        changed = changed_card or changed_modal or changed_fin
+        html, changed_prev = update_previsao(html, key, previsao)
+        changed = changed_card or changed_modal or changed_fin or changed_prev
 
         status = "ATUALIZADO" if changed else "sem mudança"
         print(f"  {key}: {pct}% ({fechado} fechadas + {em_andamento} em andamento de {total}) — {status}")
