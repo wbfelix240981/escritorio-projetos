@@ -4807,9 +4807,10 @@ let mgClientes = [
   { id:11, nome:"GEOFIX ENGENHARIA FUNDACOES", status:"Impeditivo", dataMigracao:"", prevConclusao:"Não definido", prevAlerta:false, impedimento:"Sinalizou possível cancelamento.", qtdMaquinas:2, historico:[{"data": "2026-08-31", "acao": "Atualizado: cliente sinalizou possível cancelamento"}, {"data": "2026-09-29", "acao": "Atualizado: sem data de migração"}] },
   { id:12, nome:"REFRIO ARMAZENS GERAIS LTDA", status:"Impeditivo", dataMigracao:"", prevConclusao:"Não definido", prevAlerta:false, impedimento:"Sinalizou possível cancelamento.", qtdMaquinas:24, historico:[{"data": "2026-08-31", "acao": "Atualizado: cliente sinalizou possível cancelamento"}, {"data": "2026-09-29", "acao": "Atualizado: sem data de migração"}] },
   { id:13, nome:"1TEAMCLOUD SOLUCOES", status:"Impeditivo", dataMigracao:"", prevConclusao:"Não definido", prevAlerta:false, impedimento:"Sinalizou possível cancelamento.", qtdMaquinas:1, historico:[{"data": "2026-08-31", "acao": "Atualizado: cliente sinalizou possível cancelamento"}, {"data": "2026-09-29", "acao": "Atualizado: sem data de migração"}] },
+  { id:14, nome:"SMARAPD", status:"Impeditivo", dataMigracao:"", prevConclusao:"Não definido", prevAlerta:false, impedimento:"Sinalizou possível cancelamento.", qtdMaquinas:6, historico:[{"data": "2026-09-29", "acao": "Criado — mesma situação de Magazine Luiza"}] },
 ];
 
-let mgNextId = 18;
+let mgNextId = 19;
 let mgClienteAtivo = null;
 
 function mgHoje() { return new Date().toISOString().split('T')[0]; }
@@ -5151,8 +5152,9 @@ const MG_SEED = [
   { id:11, nome:"GEOFIX ENGENHARIA FUNDACOES", status:"Impeditivo", dataMigracao:"", prevConclusao:"Não definido", prevAlerta:false, impedimento:"Sinalizou possível cancelamento.", qtdMaquinas:2, historico:[{"data": "2026-08-31", "acao": "Atualizado: cliente sinalizou possível cancelamento"}, {"data": "2026-09-29", "acao": "Atualizado: sem data de migração"}] },
   { id:12, nome:"REFRIO ARMAZENS GERAIS LTDA", status:"Impeditivo", dataMigracao:"", prevConclusao:"Não definido", prevAlerta:false, impedimento:"Sinalizou possível cancelamento.", qtdMaquinas:24, historico:[{"data": "2026-08-31", "acao": "Atualizado: cliente sinalizou possível cancelamento"}, {"data": "2026-09-29", "acao": "Atualizado: sem data de migração"}] },
   { id:13, nome:"1TEAMCLOUD SOLUCOES", status:"Impeditivo", dataMigracao:"", prevConclusao:"Não definido", prevAlerta:false, impedimento:"Sinalizou possível cancelamento.", qtdMaquinas:1, historico:[{"data": "2026-08-31", "acao": "Atualizado: cliente sinalizou possível cancelamento"}, {"data": "2026-09-29", "acao": "Atualizado: sem data de migração"}] },
+  { id:14, nome:"SMARAPD", status:"Impeditivo", dataMigracao:"", prevConclusao:"Não definido", prevAlerta:false, impedimento:"Sinalizou possível cancelamento.", qtdMaquinas:6, historico:[{"data": "2026-09-29", "acao": "Criado — mesma situação de Magazine Luiza"}] },
 ];
-const MG_SEED_VERSION = "2026-09-29-v35"; // incrementar ao alterar o seed
+const MG_SEED_VERSION = "2026-09-29-v36"; // incrementar ao alterar o seed
 
 async function mgCarregarDados() {
   // SEED é a ÚNICA fonte da verdade — storage é ignorado para status/progresso/datas
