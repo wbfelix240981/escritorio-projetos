@@ -44,9 +44,7 @@ PROJECTS = {
     "sopremafirewal":  "901328361858",
     "apm":             "901329011062",
     "amigoconnecting": "901329011044",
-    # "brainlaw" removido em 2026-09-28: projeto colocado em HOLD manualmente
-    # (pausado). Não deve ser sobrescrito pela sincronização automática enquanto
-    # estiver em Hold — reativar aqui quando sair do Hold.
+    # "brainlaw" removido do painel em 2026-10-01 (frente retirada a pedido).
     "senaishield":      "901329087162",
     "desmob20":         "901329094841",
     "grupoabl":         "901329133092",
