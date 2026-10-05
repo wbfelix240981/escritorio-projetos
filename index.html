@@ -1435,7 +1435,7 @@ body.role-comercial #drawer-trigger {
       <div style="display:flex;align-items:center;gap:12px;margin-bottom:6px;">
         <div>
           <h1 style="font-size:22px;font-weight:800;color:#1a2a3a;letter-spacing:-.5px;margin:0;">Gestão Cloud de Domínios</h1>
-          <p style="font-size:12px;color:#5a6a7a;margin:2px 0 0;">Ambiente 2.0 — Inventário OpenStack · 134 VMs · 10 Domínios · 114 ligadas · 20 desligadas<span id="san20-timestamp"></span></p>
+          <p style="font-size:12px;color:#5a6a7a;margin:2px 0 0;">Ambiente 2.0 — Inventário OpenStack · 192 VMs · 11 Domínios · 172 ligadas · 20 desligadas<span id="san20-timestamp"></span></p>
         </div>
       </div>
     </div>
@@ -1852,7 +1852,7 @@ function san20Delete(id) {
 
 async function san20SaveStorage() {
   try {
-    const payload = JSON.stringify({ san20Data, san20NextId, seed_version: '2026-10-05-v7' });
+    const payload = JSON.stringify({ san20Data, san20NextId, seed_version: '2026-10-05-v8' });
     if (window.storage) {
       await window.storage.set('san20_data', payload);
     } else {
@@ -1871,19 +1871,80 @@ async function san20SaveStorage() {
 
 const SAN20_SEED = [
   // ── Inventário OpenStack (aba Inventário VMs) — 05/10/2026 | planilha reconciliada 1:1 ──
-  { id: 1, dominio:'binario.cloud', cliente:'Binario Cloud — Ambiente Principal', tipo:'Cloud Foundation', vms:27, ligadas:27, desligadas:0, pctDeslig:0.0 },
-  { id: 2, dominio:'refrio.com.br', cliente:'Refrio', tipo:'Aplicação Web', vms:26, ligadas:12, desligadas:14, pctDeslig:53.8 },
-  { id: 3, dominio:'bmchyundai.com.br', cliente:'BMC Hyundai', tipo:'Aplicação Web', vms:23, ligadas:19, desligadas:4, pctDeslig:17.4 },
-  { id: 4, dominio:'enesa.com.br', cliente:'Enesa', tipo:'Aplicação Web', vms:15, ligadas:15, desligadas:0, pctDeslig:0.0 },
-  { id: 5, dominio:'gruporaizes.com', cliente:'Grupo Raízes', tipo:'Aplicação Web', vms:15, ligadas:15, desligadas:0, pctDeslig:0.0 },
-  { id: 6, dominio:'luizalabs.com', cliente:'Magazine Luiza', tipo:'Aplicação Web', vms:10, ligadas:10, desligadas:0, pctDeslig:0.0 },
-  { id: 7, dominio:'radiojb.fm', cliente:'Rádio JB', tipo:'Aplicação Web', vms:7, ligadas:7, desligadas:0, pctDeslig:0.0 },
-  { id: 8, dominio:'sre.binario.cloud', cliente:'Binario Cloud SRE', tipo:'Cloud Foundation', vms:6, ligadas:6, desligadas:0, pctDeslig:0.0 },
-  { id: 9, dominio:'sattelecomip.com', cliente:'SAT Telecom IP', tipo:'Aplicação Web', vms:3, ligadas:2, desligadas:1, pctDeslig:33.3 },
-  { id: 10, dominio:'sattelecom.com', cliente:'SAT Telecom', tipo:'Aplicação Web', vms:2, ligadas:1, desligadas:1, pctDeslig:50.0 },
+  { id: 1, dominio:'Default', cliente:'Binario Cloud — Domínio Default (Service)', tipo:'Cloud Foundation', vms:58, ligadas:58, desligadas:0, pctDeslig:0.0 },
+  { id: 2, dominio:'binario.cloud', cliente:'Binario Cloud — Ambiente Principal', tipo:'Cloud Foundation', vms:27, ligadas:27, desligadas:0, pctDeslig:0.0 },
+  { id: 3, dominio:'refrio.com.br', cliente:'Refrio', tipo:'Aplicação Web', vms:26, ligadas:12, desligadas:14, pctDeslig:53.8 },
+  { id: 4, dominio:'bmchyundai.com.br', cliente:'BMC Hyundai', tipo:'Aplicação Web', vms:23, ligadas:19, desligadas:4, pctDeslig:17.4 },
+  { id: 5, dominio:'enesa.com.br', cliente:'Enesa', tipo:'Aplicação Web', vms:15, ligadas:15, desligadas:0, pctDeslig:0.0 },
+  { id: 6, dominio:'gruporaizes.com', cliente:'Grupo Raízes', tipo:'Aplicação Web', vms:15, ligadas:15, desligadas:0, pctDeslig:0.0 },
+  { id: 7, dominio:'luizalabs.com', cliente:'Magazine Luiza', tipo:'Aplicação Web', vms:10, ligadas:10, desligadas:0, pctDeslig:0.0 },
+  { id: 8, dominio:'radiojb.fm', cliente:'Rádio JB', tipo:'Aplicação Web', vms:7, ligadas:7, desligadas:0, pctDeslig:0.0 },
+  { id: 9, dominio:'sre.binario.cloud', cliente:'Binario Cloud SRE', tipo:'Cloud Foundation', vms:6, ligadas:6, desligadas:0, pctDeslig:0.0 },
+  { id: 10, dominio:'sattelecomip.com', cliente:'SAT Telecom IP', tipo:'Aplicação Web', vms:3, ligadas:2, desligadas:1, pctDeslig:33.3 },
+  { id: 11, dominio:'sattelecom.com', cliente:'SAT Telecom', tipo:'Aplicação Web', vms:2, ligadas:1, desligadas:1, pctDeslig:50.0 },
 ];
 
 const SAN20_VMS = {
+  'Default': [
+    {n:'01c9fa73-8ab4-4745-ae2f-100704bb9e47',id:'28c58fdc-b143-4d74-a21c-3f87e8edeb5d',s:'ACTIVE',p:'service',pid:'798d029731cf47779549467e79ff6c0e'},
+    {n:'11137414-b68e-4f1b-9931-ebf0b20f467d',id:'2184d17c-4e90-4950-ac35-b2a2c0545764',s:'ACTIVE',p:'service',pid:'798d029731cf47779549467e79ff6c0e'},
+    {n:'330da416-861e-4d5c-9e60-4bcc1bd7c202',id:'4435e156-d4f7-4dcc-8475-402c01f868c6',s:'ACTIVE',p:'service',pid:'798d029731cf47779549467e79ff6c0e'},
+    {n:'4b9fb4c0-4bc7-4c9e-bad1-11a5196c4256',id:'b127555e-c0ce-4fbb-a0ab-5df3369fd057',s:'ACTIVE',p:'service',pid:'798d029731cf47779549467e79ff6c0e'},
+    {n:'5915afc7-4c91-4309-952d-c6cd0a384e4b',id:'a600cdce-8de3-4710-aa08-304c6e077753',s:'ACTIVE',p:'service',pid:'798d029731cf47779549467e79ff6c0e'},
+    {n:'5d8e4dcf-18a2-4f8e-912c-80e724cba119',id:'57d5c988-5c7e-4c6e-ae69-86265ae53576',s:'ACTIVE',p:'service',pid:'798d029731cf47779549467e79ff6c0e'},
+    {n:'6c7117a8-4c9b-449e-9098-20357f7887e2',id:'35cbbc61-ebb9-4178-a07b-828496883d56',s:'ACTIVE',p:'service',pid:'798d029731cf47779549467e79ff6c0e'},
+    {n:'70fc7ddc-7bb8-43d2-a868-ad153973fb50',id:'539ca76d-2898-46c9-8c49-c2e069cc1edf',s:'ACTIVE',p:'service',pid:'798d029731cf47779549467e79ff6c0e'},
+    {n:'91832dcb-020e-4f1f-9d49-a6e2c2fda759',id:'d5aa020d-0392-4aeb-9602-3ff99e5849a2',s:'ACTIVE',p:'service',pid:'798d029731cf47779549467e79ff6c0e'},
+    {n:'a00YO48ZAS',id:'e64fe08e-2636-4545-966d-6bc43f94f74c',s:'ACTIVE',p:'service',pid:'798d029731cf47779549467e79ff6c0e'},
+    {n:'a01fe7c3-564a-4e86-97ba-1cb100c88ac0',id:'7056c43b-66a3-4905-9963-9b77b40a60e4',s:'ACTIVE',p:'service',pid:'798d029731cf47779549467e79ff6c0e'},
+    {n:'a15YHU2NQU',id:'146bf9d9-5756-443b-8598-341b296109b4',s:'ACTIVE',p:'service',pid:'798d029731cf47779549467e79ff6c0e'},
+    {n:'a1TRHR9GOD',id:'508041a0-da6e-4dba-81ff-a0f5d17e355a',s:'ACTIVE',p:'service',pid:'798d029731cf47779549467e79ff6c0e'},
+    {n:'a643CYBW7Y',id:'ff1a0b96-adbe-4f69-8950-3561bd5afa9a',s:'ACTIVE',p:'service',pid:'798d029731cf47779549467e79ff6c0e'},
+    {n:'a70WXMGW6X',id:'580a4aee-cc0d-4204-b8c0-7bd1571c196b',s:'ACTIVE',p:'service',pid:'798d029731cf47779549467e79ff6c0e'},
+    {n:'aA46FCAUXY',id:'b15d435f-0975-4aa7-8036-361408a46047',s:'ACTIVE',p:'service',pid:'798d029731cf47779549467e79ff6c0e'},
+    {n:'aAF6MUD2TM',id:'a926f572-4ccc-4ca6-a80c-1e291005fff1',s:'ACTIVE',p:'service',pid:'798d029731cf47779549467e79ff6c0e'},
+    {n:'aCCUS6B1X1',id:'62bda246-98b6-4019-bca8-6a1c0980cc99',s:'ACTIVE',p:'service',pid:'798d029731cf47779549467e79ff6c0e'},
+    {n:'aCJ1ZY0IZ1',id:'db7127ca-4701-43f6-bc63-77c46fabed5e',s:'ACTIVE',p:'service',pid:'798d029731cf47779549467e79ff6c0e'},
+    {n:'aDPBP2IWFT',id:'79429920-f9c9-406c-bbd9-ec1ad052ac1b',s:'ACTIVE',p:'service',pid:'798d029731cf47779549467e79ff6c0e'},
+    {n:'aDPJ39QYH4',id:'a8cbe707-0c94-4b50-86c9-1736986814c6',s:'ACTIVE',p:'service',pid:'798d029731cf47779549467e79ff6c0e'},
+    {n:'afdd5cf9-c72b-4ea9-9626-bc9819e2848e',id:'de332a8b-9f30-442e-8948-c084f1c4918f',s:'ACTIVE',p:'service',pid:'798d029731cf47779549467e79ff6c0e'},
+    {n:'aFPGOHBDZJ',id:'2597f46f-257e-41d0-a334-3cd3cdc7d541',s:'ACTIVE',p:'service',pid:'798d029731cf47779549467e79ff6c0e'},
+    {n:'aHIUH4DIJ0',id:'e68b38a5-248e-4407-aef9-65eb55db100b',s:'ACTIVE',p:'service',pid:'798d029731cf47779549467e79ff6c0e'},
+    {n:'aIAI9ZZP0F',id:'f1992c20-18e9-40f6-8041-dd90981eb130',s:'ACTIVE',p:'service',pid:'798d029731cf47779549467e79ff6c0e'},
+    {n:'aIXLHUPQBN',id:'f5fc92a6-e540-4f1b-b3aa-8b37f3c1a925',s:'ACTIVE',p:'service',pid:'798d029731cf47779549467e79ff6c0e'},
+    {n:'aJSE6RFHEP',id:'066b6f89-d12a-4603-9da6-882523ff648d',s:'ACTIVE',p:'service',pid:'798d029731cf47779549467e79ff6c0e'},
+    {n:'aL9MSBTZMG',id:'49b73f54-9b94-4aa3-943c-b057c0aebe4a',s:'ACTIVE',p:'service',pid:'798d029731cf47779549467e79ff6c0e'},
+    {n:'aM5HDURG09',id:'4df13fa2-981f-4c04-9d4e-08824cd1535f',s:'ACTIVE',p:'service',pid:'798d029731cf47779549467e79ff6c0e'},
+    {n:'aN9W4FW7H2',id:'fd699d63-f061-48fa-b284-c1cfe57f5015',s:'ACTIVE',p:'service',pid:'798d029731cf47779549467e79ff6c0e'},
+    {n:'aO7JAV5LKF',id:'f3958164-1a1c-4663-87b9-63d97dee5722',s:'ACTIVE',p:'service',pid:'798d029731cf47779549467e79ff6c0e'},
+    {n:'aPIPU59AIJ',id:'fc959a12-ab93-49af-8eb1-ec4181e7a531',s:'ACTIVE',p:'service',pid:'798d029731cf47779549467e79ff6c0e'},
+    {n:'aPXSSKL4N4',id:'bece753d-5307-4937-bd95-c5d42a17cba3',s:'ACTIVE',p:'service',pid:'798d029731cf47779549467e79ff6c0e'},
+    {n:'aRVY07LHEX',id:'9217e6e3-5881-4921-883a-86b311130ff4',s:'ACTIVE',p:'service',pid:'798d029731cf47779549467e79ff6c0e'},
+    {n:'aUTYW6TRUC',id:'a1aee06f-e4d3-48a2-b8b3-eec3d6f5530b',s:'ACTIVE',p:'service',pid:'798d029731cf47779549467e79ff6c0e'},
+    {n:'aV656QKONF',id:'b21114bf-cb4f-491f-be3c-4a2c937758a5',s:'ACTIVE',p:'service',pid:'798d029731cf47779549467e79ff6c0e'},
+    {n:'aVBDH35K80',id:'66ae52e4-8571-49ef-9ccc-b4d1d1cddf75',s:'ACTIVE',p:'service',pid:'798d029731cf47779549467e79ff6c0e'},
+    {n:'aWVO0YF70C',id:'617518a7-8457-4609-b0ba-691dfc192458',s:'ACTIVE',p:'service',pid:'798d029731cf47779549467e79ff6c0e'},
+    {n:'aXFQ266YX0',id:'ac0c2cb8-b922-48bc-8f00-7020356421a1',s:'ACTIVE',p:'service',pid:'798d029731cf47779549467e79ff6c0e'},
+    {n:'aZ0610P8GU',id:'ba4d8ec2-017b-4448-b92e-80aa12655f31',s:'ACTIVE',p:'service',pid:'798d029731cf47779549467e79ff6c0e'},
+    {n:'bastion-BD',id:'697d590e-4115-4a73-89dc-91ac8775f5e7',s:'ACTIVE',p:'service',pid:'798d029731cf47779549467e79ff6c0e'},
+    {n:'BD-01',id:'20d8aca5-03c7-4b13-b442-3b5ca726e033',s:'ACTIVE',p:'service',pid:'798d029731cf47779549467e79ff6c0e'},
+    {n:'cdcaf14b-0df0-476f-9629-edf12f39c422',id:'90b8cf7a-bb84-40a0-87b0-1d400ec2372f',s:'ACTIVE',p:'service',pid:'798d029731cf47779549467e79ff6c0e'},
+    {n:'cluster-dba-member-1657817189',id:'9ee62897-304e-4895-a89b-62aa28c076fd',s:'ACTIVE',p:'service',pid:'798d029731cf47779549467e79ff6c0e'},
+    {n:'cluster-mariadb-member-1618771444',id:'8c8c7af9-ceb7-4074-8ec3-3dfc35029cb7',s:'ACTIVE',p:'service',pid:'798d029731cf47779549467e79ff6c0e'},
+    {n:'cluster-mariadb-member-1618771445',id:'10ab69a7-ec4a-49a8-8906-edba3730b1ed',s:'ACTIVE',p:'service',pid:'798d029731cf47779549467e79ff6c0e'},
+    {n:'cluster-mariadb-member-1618771446',id:'266bb753-6f9e-45c2-ae97-70943383e341',s:'ACTIVE',p:'service',pid:'798d029731cf47779549467e79ff6c0e'},
+    {n:'DB01',id:'d00d62e7-8e83-4300-90f4-717227751d90',s:'ACTIVE',p:'service',pid:'798d029731cf47779549467e79ff6c0e'},
+    {n:'e090f9de-c6ca-443f-b239-4e9e829298df',id:'d48cd215-bf2d-4034-afd8-beb1fc90d7b7',s:'ACTIVE',p:'service',pid:'798d029731cf47779549467e79ff6c0e'},
+    {n:'eaeb898d-e69a-4de1-bdd5-c18186cef3bc',id:'519fab72-ed43-44ee-9826-8a91c8d49b57',s:'ACTIVE',p:'service',pid:'798d029731cf47779549467e79ff6c0e'},
+    {n:'f3856329-5961-43ed-8dfc-72f13f3cd624',id:'b977a525-7bd8-4881-9694-c1edae682a73',s:'ACTIVE',p:'service',pid:'798d029731cf47779549467e79ff6c0e'},
+    {n:'MARIADB',id:'cd43f8c4-b648-4c32-9e46-e21db59075b4',s:'ACTIVE',p:'service',pid:'798d029731cf47779549467e79ff6c0e'},
+    {n:'MARIADB-01',id:'74c50560-969f-4876-b19f-676d4393f242',s:'ACTIVE',p:'service',pid:'798d029731cf47779549467e79ff6c0e'},
+    {n:'Orbium',id:'957e8ffb-ef4f-4396-9253-cf10a4a808c4',s:'ACTIVE',p:'service',pid:'798d029731cf47779549467e79ff6c0e'},
+    {n:'teste',id:'4ac19a17-baa9-4062-af96-e61e9f4a6926',s:'ACTIVE',p:'service',pid:'798d029731cf47779549467e79ff6c0e'},
+    {n:'teste-maria1',id:'13de95a8-d503-4990-825c-6bc6be8c15c7',s:'ACTIVE',p:'service',pid:'798d029731cf47779549467e79ff6c0e'},
+    {n:'vm-bcdata-dev',id:'f91c56b5-02b7-4ed0-bd31-e4fcca6b344f',s:'ACTIVE',p:'service',pid:'798d029731cf47779549467e79ff6c0e'},
+    {n:'vm_db01',id:'a67fb6b2-03b0-4c0d-93fc-c6b1489f5aa6',s:'ACTIVE',p:'service',pid:'798d029731cf47779549467e79ff6c0e'},
+  ],
   'binario.cloud': [
     {n:'bc-assistet-new',id:'2e66b116-2ae0-4388-a466-828762c19e76',s:'ACTIVE',p:'project-bc-ia',pid:'3265e0dfd7844f74911ea243c7d21413'},
     {n:'bc-data-v3',id:'94198dbf-0fac-4a50-8852-589311fdaa3d',s:'ACTIVE',p:'project-bc-ia',pid:'3265e0dfd7844f74911ea243c7d21413'},
@@ -2042,8 +2103,9 @@ const SAN20_VMS = {
 
 
 
+
 async function san20LoadStorage() {
-  const SEED_VERSION = '2026-10-05-v7';
+  const SEED_VERSION = '2026-10-05-v8';
   try {
     let saved = null;
     if (window.storage) {
