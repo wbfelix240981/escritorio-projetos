@@ -1435,7 +1435,7 @@ body.role-comercial #drawer-trigger {
       <div style="display:flex;align-items:center;gap:12px;margin-bottom:6px;">
         <div>
           <h1 style="font-size:22px;font-weight:800;color:#1a2a3a;letter-spacing:-.5px;margin:0;">Gestão Cloud de Domínios</h1>
-          <p style="font-size:12px;color:#5a6a7a;margin:2px 0 0;">Ambiente 2.0 — Inventário OpenStack · 138 VMs · 13 Domínios · 114 ligadas · 24 desligadas<span id="san20-timestamp"></span></p>
+          <p style="font-size:12px;color:#5a6a7a;margin:2px 0 0;">Ambiente 2.0 — Inventário OpenStack · 146 VMs · 17 Domínios · 119 ligadas · 27 desligadas<span id="san20-timestamp"></span></p>
         </div>
       </div>
     </div>
@@ -1852,7 +1852,7 @@ function san20Delete(id) {
 
 async function san20SaveStorage() {
   try {
-    const payload = JSON.stringify({ san20Data, san20NextId, seed_version: '2026-09-01-v5' });
+    const payload = JSON.stringify({ san20Data, san20NextId, seed_version: '2026-10-02-v6' });
     if (window.storage) {
       await window.storage.set('san20_data', payload);
     } else {
@@ -1870,25 +1870,29 @@ async function san20SaveStorage() {
 
 
 const SAN20_SEED = [
-  // ── Inventário OpenStack (aba Inventário VMs) — 01/09/2026 | 138 VMs | 13 Domínios ──
+  // ── Inventário OpenStack (aba Domínios / Inventário VMs) — 02/10/2026 | 146 VMs | 17 Domínios ──
   { id: 1, dominio:'binario.cloud', cliente:'Binario Cloud — Ambiente Principal', tipo:'Cloud Foundation', vms:27, ligadas:27, desligadas:0, pctDeslig:0.0 },
-  { id: 2, dominio:'refrio.com.br', cliente:'Refrio', tipo:'Aplicação Web', vms:26, ligadas:24, desligadas:2, pctDeslig:7.7 },
-  { id: 3, dominio:'bmchyundai.com.br', cliente:'BMC Hyundai', tipo:'Aplicação Web', vms:23, ligadas:20, desligadas:3, pctDeslig:13.0 },
-  { id: 4, dominio:'gruporaizes.com', cliente:'Grupo Raízes', tipo:'Aplicação Web', vms:14, ligadas:14, desligadas:0, pctDeslig:0.0 },
-  { id: 5, dominio:'luizalabs.com', cliente:'Magazine Luiza', tipo:'Aplicação Web', vms:10, ligadas:10, desligadas:0, pctDeslig:0.0 },
-  { id: 6, dominio:'waits.com.br', cliente:'Piramidal', tipo:'Aplicação Web', vms:10, ligadas:0, desligadas:10, pctDeslig:100.0 },
-  { id: 7, dominio:'sre.binario.cloud', cliente:'Binario Cloud SRE', tipo:'Cloud Foundation', vms:9, ligadas:7, desligadas:2, pctDeslig:22.2 },
-  { id: 8, dominio:'radiojb.fm', cliente:'Rádio JB', tipo:'Aplicação Web', vms:6, ligadas:6, desligadas:0, pctDeslig:0.0 },
-  { id: 9, dominio:'prumoengenharia.com.br', cliente:'Prumo Engenharia', tipo:'Aplicação Web', vms:5, ligadas:0, desligadas:5, pctDeslig:100.0 },
+  { id: 2, dominio:'refrio.com.br', cliente:'Refrio', tipo:'Aplicação Web', vms:26, ligadas:12, desligadas:14, pctDeslig:53.8 },
+  { id: 3, dominio:'bmchyundai.com.br', cliente:'BMC Hyundai', tipo:'Aplicação Web', vms:23, ligadas:19, desligadas:4, pctDeslig:17.4 },
+  { id: 4, dominio:'enesa.com.br', cliente:'Enesa', tipo:'Aplicação Web', vms:15, ligadas:15, desligadas:0, pctDeslig:0.0 },
+  { id: 5, dominio:'gruporaizes.com', cliente:'Grupo Raízes', tipo:'Aplicação Web', vms:15, ligadas:15, desligadas:0, pctDeslig:0.0 },
+  { id: 6, dominio:'luizalabs.com', cliente:'Magazine Luiza', tipo:'Aplicação Web', vms:10, ligadas:10, desligadas:0, pctDeslig:0.0 },
+  { id: 7, dominio:'radiojb.fm', cliente:'Rádio JB', tipo:'Aplicação Web', vms:7, ligadas:7, desligadas:0, pctDeslig:0.0 },
+  { id: 8, dominio:'sre.binario.cloud', cliente:'Binario Cloud SRE', tipo:'Cloud Foundation', vms:6, ligadas:6, desligadas:0, pctDeslig:0.0 },
+  { id: 9, dominio:'domain-cloud2', cliente:'Binario Cloud — Templates/Testes', tipo:'Cloud Foundation', vms:5, ligadas:1, desligadas:4, pctDeslig:80.0 },
   { id: 10, dominio:'sattelecomip.com', cliente:'SAT Telecom IP', tipo:'Aplicação Web', vms:3, ligadas:2, desligadas:1, pctDeslig:33.3 },
-  { id: 11, dominio:'geofix.com.br', cliente:'Geofix', tipo:'Aplicação Web', vms:2, ligadas:2, desligadas:0, pctDeslig:0.0 },
-  { id: 12, dominio:'sattelecom.com', cliente:'SAT Telecom', tipo:'Aplicação Web', vms:2, ligadas:1, desligadas:1, pctDeslig:50.0 },
-  { id: 13, dominio:'1team.cloud', cliente:'1TeamCloud', tipo:'Aplicação Web', vms:1, ligadas:1, desligadas:0, pctDeslig:0.0 },
+  { id: 11, dominio:'sattelecom.com', cliente:'SAT Telecom', tipo:'Aplicação Web', vms:2, ligadas:1, desligadas:1, pctDeslig:50.0 },
+  { id: 12, dominio:'geofix.com.br', cliente:'Geofix', tipo:'Aplicação Web', vms:2, ligadas:1, desligadas:1, pctDeslig:50.0 },
+  { id: 13, dominio:'automalogica.com.br', cliente:'Automalógica', tipo:'Aplicação Web', vms:1, ligadas:1, desligadas:0, pctDeslig:0.0 },
+  { id: 14, dominio:'qos.com.br', cliente:'Algar Telecom (POC)', tipo:'Aplicação Web', vms:1, ligadas:1, desligadas:0, pctDeslig:0.0 },
+  { id: 15, dominio:'zanthus.com.br', cliente:'Zanthus', tipo:'Aplicação Web', vms:1, ligadas:0, desligadas:1, pctDeslig:100.0 },
+  { id: 16, dominio:'1team.cloud', cliente:'1TeamCloud', tipo:'Aplicação Web', vms:1, ligadas:0, desligadas:1, pctDeslig:100.0 },
+  { id: 17, dominio:'repositoriosbackup.com.br', cliente:'Binario Cloud — Backup', tipo:'Cloud Foundation', vms:1, ligadas:1, desligadas:0, pctDeslig:0.0 },
 ];
 
 const SAN20_VMS = {
   '1team.cloud': [
-    {n:'UNICOBA_NEW',id:'30f77518-6fd1-4ab2-965a-c88abe74007b',s:'ACTIVE',p:'project-1teamcloud',pid:'0493aacd6302490aa6cd599e7ecb3b65'},
+    {n:'UNICOBA_NEW',id:'30f77518-6fd1-4ab2-965a-c88abe74007b',s:'SHUTOFF',p:'project-1teamcloud',pid:'0493aacd6302490aa6cd599e7ecb3b65'},
   ],
   'binario.cloud': [
     {n:'bc-assistet-new',id:'2e66b116-2ae0-4388-a466-828762c19e76',s:'ACTIVE',p:'project-bc-ia',pid:'3265e0dfd7844f74911ea243c7d21413'},
@@ -1933,9 +1937,9 @@ const SAN20_VMS = {
     {n:'BMCEMS01',id:'0f3e9052-595f-4115-b781-5b73fd691ac5',s:'ACTIVE',p:'project-bmc',pid:'704f5dd0fa754789a5bea1623c476748'},
     {n:'BMCERP002',id:'14a44cf3-e75b-4892-8d14-27c62f504a7d',s:'ACTIVE',p:'project-bmc',pid:'704f5dd0fa754789a5bea1623c476748'},
     {n:'BMCFS01',id:'33cdf980-0cc6-42e8-b7d1-5f50df9434db',s:'ACTIVE',p:'project-bmc',pid:'704f5dd0fa754789a5bea1623c476748'},
-    {n:'BMCHUBSPOT',id:'2948c904-7d2d-4faf-98db-074837a0c499',s:'ACTIVE',p:'project-bmc',pid:'704f5dd0fa754789a5bea1623c476748'},
+    {n:'BMCHUBSPOT',id:'2948c904-7d2d-4faf-98db-074837a0c499',s:'SHUTOFF',p:'project-bmc',pid:'704f5dd0fa754789a5bea1623c476748'},
     {n:'BMCHUBSPOT2',id:'ed7c7f92-9145-43af-8a0d-8750686348fb',s:'ACTIVE',p:'project-bmc',pid:'704f5dd0fa754789a5bea1623c476748'},
-    {n:'BMCHUBSPOT-OLD',id:'c6653ad5-981b-472b-b4dc-939084a88dc5',s:'SHUTOFF',p:'project-bmc',pid:'704f5dd0fa754789a5bea1623c476748'},
+    {n:'BMCHUBSPOT-OLD',id:'c6653ad5-981b-472b-b4dc-939084a88dc5',s:'ERROR',p:'project-bmc',pid:'704f5dd0fa754789a5bea1623c476748'},
     {n:'BMCINTEGRACAO',id:'c161a6d6-66e6-457a-88d5-7542215a14c9',s:'ACTIVE',p:'project-bmc',pid:'704f5dd0fa754789a5bea1623c476748'},
     {n:'BMCSINC01',id:'552c2eaa-b669-4f75-ad51-60a12e5dfd8e',s:'ACTIVE',p:'project-bmc',pid:'704f5dd0fa754789a5bea1623c476748'},
     {n:'BMCWEB01_',id:'777ee1aa-8183-4330-b5dd-cb18676df8b0',s:'ACTIVE',p:'project-bmc',pid:'704f5dd0fa754789a5bea1623c476748'},
@@ -1944,24 +1948,49 @@ const SAN20_VMS = {
     {n:'prx-bmchyundai',id:'4c6aa053-00c9-4e09-864c-90a3144e2455',s:'ACTIVE',p:'project-bmc',pid:'704f5dd0fa754789a5bea1623c476748'},
     {n:'SRV-VBR',id:'8b63f814-99f7-4c69-8f08-0b09b04968e9',s:'ACTIVE',p:'project-bmc',pid:'704f5dd0fa754789a5bea1623c476748'},
   ],
+  'domain-cloud2': [
+    {n:'vm-centos',id:'ad7d1a97-f6cf-4c25-8bce-5b4d35f8d4da',s:'SHUTOFF',p:'project-cloud2',pid:'ee050909d57d4e73ba3ed444ba184409'},
+    {n:'vm-debian',id:'866f33d2-9cf7-4de7-a90b-550fa0f00160',s:'SHUTOFF',p:'project-cloud2',pid:'ee050909d57d4e73ba3ed444ba184409'},
+    {n:'vm-fedora',id:'49eb6598-cdea-4d30-a83c-6e02bd636dd9',s:'SHUTOFF',p:'project-cloud2',pid:'ee050909d57d4e73ba3ed444ba184409'},
+    {n:'vm-ubuntu',id:'e56c2b35-639c-4bf1-ab95-965bd140a743',s:'ACTIVE',p:'project-cloud2',pid:'ee050909d57d4e73ba3ed444ba184409'},
+    {n:'win-vm',id:'5a5ee2df-0642-4a3c-a4fb-02d6455aaf8d',s:'SHUTOFF',p:'project-cloud2',pid:'ee050909d57d4e73ba3ed444ba184409'},
+  ],
+  'enesa.com.br': [
+    {n:'ENSP-000SEVMBKP',id:'7cfb65f2-37a4-4e04-adae-9320001561f8',s:'ACTIVE',p:'project-backup-enesa',pid:'da35d2f76e3d43f4ac237f02c92a9765'},
+    {n:'ENSP-000SEVMPRI',id:'f6d0dcb4-2681-4d9c-a089-fe1777053be9',s:'ACTIVE',p:'project-backup-enesa',pid:'da35d2f76e3d43f4ac237f02c92a9765'},
+    {n:'ENSP-00FWPF',id:'62e681f7-cada-42e4-a5b0-60f0617b6e04',s:'ACTIVE',p:'project-backup-enesa',pid:'da35d2f76e3d43f4ac237f02c92a9765'},
+    {n:'ENSP-SEVMBD',id:'77dc63cf-7496-4f1f-9806-5ed59dbae5fc',s:'ACTIVE',p:'project-backup-enesa',pid:'da35d2f76e3d43f4ac237f02c92a9765'},
+    {n:'SVAPP03',id:'2b38a14b-8c75-422a-bfcc-de41fb38c9ca',s:'ACTIVE',p:'project-backup-enesa',pid:'da35d2f76e3d43f4ac237f02c92a9765'},
+    {n:'SVDB02',id:'4aa994c8-8022-4c2f-8962-66d264b7e781',s:'ACTIVE',p:'project-backup-enesa',pid:'da35d2f76e3d43f4ac237f02c92a9765'},
+    {n:'SVDC01',id:'93f191b1-276f-4da4-8c0f-50bf785273b3',s:'ACTIVE',p:'project-backup-enesa',pid:'da35d2f76e3d43f4ac237f02c92a9765'},
+    {n:'SVFASTVUE',id:'5f3f42b8-8707-46da-b4ff-97394a18c995',s:'ACTIVE',p:'project-backup-enesa',pid:'da35d2f76e3d43f4ac237f02c92a9765'},
+    {n:'SVFS01',id:'cd679b6e-589b-445d-810b-9a9d32a15223',s:'ACTIVE',p:'project-backup-enesa',pid:'da35d2f76e3d43f4ac237f02c92a9765'},
+    {n:'SVHOMOLOG',id:'adbc6aea-bd58-4459-b747-681e6541a297',s:'ACTIVE',p:'project-backup-enesa',pid:'da35d2f76e3d43f4ac237f02c92a9765'},
+    {n:'SVRDP',id:'45f8bf43-ee51-4d59-aed5-4c5d2fea999d',s:'ACTIVE',p:'project-backup-enesa',pid:'da35d2f76e3d43f4ac237f02c92a9765'},
+    {n:'SVRPA',id:'83af6ff0-e8dc-4175-964a-4aa224ac2550',s:'ACTIVE',p:'project-backup-enesa',pid:'da35d2f76e3d43f4ac237f02c92a9765'},
+    {n:'SVRS01',id:'e12fd6de-63e5-4ff2-9718-c1c5002eda3e',s:'ACTIVE',p:'project-backup-enesa',pid:'da35d2f76e3d43f4ac237f02c92a9765'},
+    {n:'SVWEB01',id:'bd71073e-8498-43f2-aff4-5b6d04b4fc4a',s:'ACTIVE',p:'project-backup-enesa',pid:'da35d2f76e3d43f4ac237f02c92a9765'},
+    {n:'VBR-MIGRACA',id:'efd1c729-b7fb-47ee-8871-5081e5a6f720',s:'ACTIVE',p:'project-backup-enesa',pid:'da35d2f76e3d43f4ac237f02c92a9765'},
+  ],
   'geofix.com.br': [
     {n:'CLOUD-BOXFWGFX',id:'c9d9c201-db4d-43dd-91df-66408b9500f8',s:'ACTIVE',p:'GEOFIX FUNDACOES LTDA',pid:'d517dc981849497f9347f283c30e8a81'},
-    {n:'CLOUD-SRVADGFX',id:'87266230-d405-4a49-b3f2-39dda9eaea24',s:'ACTIVE',p:'GEOFIX FUNDACOES LTDA',pid:'d517dc981849497f9347f283c30e8a81'},
+    {n:'CLOUD-SRVADGFX',id:'87266230-d405-4a49-b3f2-39dda9eaea24',s:'SHUTOFF',p:'GEOFIX FUNDACOES LTDA',pid:'d517dc981849497f9347f283c30e8a81'},
   ],
   'gruporaizes.com': [
-    {n:'BC-GRRAIZES',id:'4188f9c6-7fdb-41ec-9fde-ed36847d5279',s:'ACTIVE',p:'project-grupo-raizes',pid:'44c245cd1ace4dfea935b451ccea7699'},
     {n:'BC-GRRAIZESAD',id:'15f1547a-26ca-4aeb-a51a-70d151f7e30a',s:'ACTIVE',p:'project-grupo-raizes',pid:'44c245cd1ace4dfea935b451ccea7699'},
     {n:'BC-GRRAIZESAD02',id:'b1f136c9-fd35-411c-bde1-a80494adb2f0',s:'ACTIVE',p:'project-grupo-raizes',pid:'44c245cd1ace4dfea935b451ccea7699'},
     {n:'BC-GRRAIZESBD',id:'d04aad2b-1c17-437d-9dcf-da09fa83cb13',s:'ACTIVE',p:'project-grupo-raizes',pid:'44c245cd1ace4dfea935b451ccea7699'},
     {n:'BC-GRRAIZES-FS',id:'5b530df6-5920-48dc-a7bb-b418f431a49d',s:'ACTIVE',p:'project-grupo-raizes',pid:'44c245cd1ace4dfea935b451ccea7699'},
     {n:'BC-GRRAIZESFW',id:'38a7640a-50dd-4adb-9c91-8111e865ee06',s:'ACTIVE',p:'project-grupo-raizes',pid:'44c245cd1ace4dfea935b451ccea7699'},
+    {n:'BC-GRRAIZES-OCs',id:'cbd293dd-3713-4d2e-9f4d-e34c5b23636f',s:'ACTIVE',p:'project-grupo-raizes',pid:'44c245cd1ace4dfea935b451ccea7699'},
     {n:'BC-GRRAIZESOD',id:'43d17568-cba9-425e-90d9-ebf3fa7317e1',s:'ACTIVE',p:'project-grupo-raizes',pid:'44c245cd1ace4dfea935b451ccea7699'},
-    {n:'BC-GRRAIZES-RPA-01',id:'1ad282b3-270d-4f12-94ae-211ed5e169ec',s:'ACTIVE',p:'project-grupo-raizes',pid:'44c245cd1ace4dfea935b451ccea7699'},
-    {n:'BC-GRRAIZES-RPA-02',id:'24d97b13-95f7-41aa-a6e8-bd83defd6c13',s:'ACTIVE',p:'project-grupo-raizes',pid:'44c245cd1ace4dfea935b451ccea7699'},
+    {n:'BC-GRRAIZES-PS',id:'4188f9c6-7fdb-41ec-9fde-ed36847d5279',s:'ACTIVE',p:'project-grupo-raizes',pid:'44c245cd1ace4dfea935b451ccea7699'},
     {n:'BC-GRRAIZES-RPA-03',id:'d7ed68ea-969b-4f47-bd65-6f1a820c5840',s:'ACTIVE',p:'project-grupo-raizes',pid:'44c245cd1ace4dfea935b451ccea7699'},
-    {n:'BC-GRRAIZES-RPA-04',id:'c056b064-47b4-435e-8293-9d1a245700b6',s:'ACTIVE',p:'project-grupo-raizes',pid:'44c245cd1ace4dfea935b451ccea7699'},
     {n:'BC-GRRAIZESTK-NEW',id:'003f4661-90b8-45af-98b9-16fee7e978c4',s:'ACTIVE',p:'project-grupo-raizes',pid:'44c245cd1ace4dfea935b451ccea7699'},
     {n:'BC-GRRAIZESVBR',id:'404e9392-c6ee-43d9-bed0-a7c5ed5108f9',s:'ACTIVE',p:'project-grupo-raizes',pid:'44c245cd1ace4dfea935b451ccea7699'},
+    {n:'NEW-GRRAIZES-RPA-01',id:'b6a45936-46f7-4d84-b7be-c77ccc5f2927',s:'ACTIVE',p:'project-grupo-raizes',pid:'44c245cd1ace4dfea935b451ccea7699'},
+    {n:'NEW-GRRAIZES-RPA-02',id:'44c2fe8e-8438-4287-b53d-586050fcb89e',s:'ACTIVE',p:'project-grupo-raizes',pid:'44c245cd1ace4dfea935b451ccea7699'},
+    {n:'NEW-GRRAIZES-RPA-04',id:'337c2a63-8b24-496c-88bc-c3195732af3f',s:'ACTIVE',p:'project-grupo-raizes',pid:'44c245cd1ace4dfea935b451ccea7699'},
     {n:'prx-gpraizes',id:'ed55a962-5f61-4064-b6f0-2ccf1470a8a6',s:'ACTIVE',p:'project-grupo-raizes',pid:'44c245cd1ace4dfea935b451ccea7699'},
   ],
   'luizalabs.com': [
@@ -1976,13 +2005,6 @@ const SAN20_VMS = {
     {n:'vm01_labs',id:'8f8f643a-bdc3-43d0-8ca8-4baa36fbdda0',s:'ACTIVE',p:'project-mgc',pid:'f461f142d06846b69a8177060514d4eb'},
     {n:'vm03_labs',id:'04d66569-0cd9-4ba5-8c95-749cf167bc59',s:'ACTIVE',p:'project-mgc',pid:'f461f142d06846b69a8177060514d4eb'},
   ],
-  'prumoengenharia.com.br': [
-    {n:'Bluepex_UTM_Atualizado',id:'169f28fa-94a7-4961-a65f-230856b836d2',s:'SHUTOFF',p:'project-provedor-de-email-zimbra',pid:'a545170c94ad471086c7ffc494365b6f'},
-    {n:'SRVAD-BC01',id:'b638659f-a08d-4418-b37a-6d1c10513b25',s:'SHUTOFF',p:'project-provedor-de-email-zimbra',pid:'a545170c94ad471086c7ffc494365b6f'},
-    {n:'SRV-Zimbra',id:'f16a87b7-4b6d-4968-8e4d-8b5f33bb15fc',s:'SHUTOFF',p:'project-provedor-de-email-zimbra',pid:'a545170c94ad471086c7ffc494365b6f'},
-    {n:'test-windows',id:'2255394e-66eb-408c-9a7f-3198d57e4e9e',s:'SHUTOFF',p:'project-provedor-de-email-zimbra',pid:'a545170c94ad471086c7ffc494365b6f'},
-    {n:'VBR-Migracao',id:'b2e93827-6316-437f-a48f-5c57e4a8be39',s:'SHUTOFF',p:'project-provedor-de-email-zimbra',pid:'a545170c94ad471086c7ffc494365b6f'},
-  ],
   'radiojb.fm': [
     {n:'GRUPOJB-DB',id:'aea7062f-5e38-4f1a-8e7d-916bf0a071a8',s:'ACTIVE',p:'project-grupo-jbfm',pid:'832241eee849490e9c889872c3a6ba53'},
     {n:'JBFM-FWPF01',id:'da7562b6-3704-46d7-a84c-cd4cd014dfbf',s:'ACTIVE',p:'project-grupo-jbfm',pid:'832241eee849490e9c889872c3a6ba53'},
@@ -1990,6 +2012,7 @@ const SAN20_VMS = {
     {n:'RADIOCIDADE-2023',id:'87ba8362-45ad-4db2-86e8-36254d58b7dc',s:'ACTIVE',p:'project-grupo-jbfm',pid:'832241eee849490e9c889872c3a6ba53'},
     {n:'RTMP/n8n Server',id:'19fc3f18-b2b4-4cb1-857f-b84cca97e0bb',s:'ACTIVE',p:'project-grupo-jbfm',pid:'832241eee849490e9c889872c3a6ba53'},
     {n:'TOTVS',id:'af784b5b-64eb-4342-b435-6acd92d830f7',s:'ACTIVE',p:'project-grupo-jbfm',pid:'832241eee849490e9c889872c3a6ba53'},
+    {n:'VBR-Radio',id:'46fa01f8-bd15-4d36-b359-21b864b8aaaa',s:'ACTIVE',p:'project-grupo-jbfm',pid:'832241eee849490e9c889872c3a6ba53'},
   ],
   'refrio.com.br': [
     {n:'Check-ip',id:'b4e5f160-4423-41d7-a3ec-c86481ac2153',s:'ACTIVE',p:'project-backbone',pid:'01692b59595242cb91d722cf83c5ddc0'},
@@ -2001,23 +2024,23 @@ const SAN20_VMS = {
     {n:'binario-pfSense',id:'34a599b9-b956-407b-b92a-ca9d15f9fa9b',s:'ACTIVE',p:'project-itapecerica',pid:'66e5631cb40f4e29aedbfa16eb4a74a8'},
     {n:'DCITAPECERICA',id:'5a5bc974-642d-4d2b-a486-53c27a4f80d4',s:'ACTIVE',p:'project-itapecerica',pid:'66e5631cb40f4e29aedbfa16eb4a74a8'},
     {n:'FSITAPECERICA',id:'25f2682f-8086-47be-9da9-b7ac78dc502f',s:'ACTIVE',p:'project-itapecerica',pid:'66e5631cb40f4e29aedbfa16eb4a74a8'},
-    {n:'ABNET',id:'251ddae6-4eee-4230-9774-2dd2e757326f',s:'ACTIVE',p:'project-refrio-taboao',pid:'d21b4398a1e14ec68ae73fdec69cfb47'},
+    {n:'ABNET',id:'251ddae6-4eee-4230-9774-2dd2e757326f',s:'SHUTOFF',p:'project-refrio-taboao',pid:'d21b4398a1e14ec68ae73fdec69cfb47'},
     {n:'AD',id:'1e9b7fb8-5c9f-4678-b9e1-06277cf0ce91',s:'ACTIVE',p:'project-refrio-taboao',pid:'d21b4398a1e14ec68ae73fdec69cfb47'},
     {n:'COLETOR-WMS',id:'2bef76b3-5a9c-4986-8724-641dc2f8cee5',s:'SHUTOFF',p:'project-refrio-taboao',pid:'d21b4398a1e14ec68ae73fdec69cfb47'},
     {n:'FILE-SERVER',id:'f48c22c3-1074-4f78-9d06-9803db680fe0',s:'ACTIVE',p:'project-refrio-taboao',pid:'d21b4398a1e14ec68ae73fdec69cfb47'},
-    {n:'ORACLE-DB - New',id:'5022bc28-7fea-457b-87f3-84a4fe69113b',s:'ACTIVE',p:'project-refrio-taboao',pid:'d21b4398a1e14ec68ae73fdec69cfb47'},
-    {n:'ORACLE-WMS',id:'e273bb60-99c0-408c-a226-da55f10edc30',s:'ACTIVE',p:'project-refrio-taboao',pid:'d21b4398a1e14ec68ae73fdec69cfb47'},
-    {n:'ServerCSM',id:'5664767b-6114-4cd1-98ef-e00d40f1b687',s:'ACTIVE',p:'project-refrio-taboao',pid:'d21b4398a1e14ec68ae73fdec69cfb47'},
-    {n:'SERVER-ERP',id:'ae120e2f-e97e-4202-baf9-f58581d4fe74',s:'ACTIVE',p:'project-refrio-taboao',pid:'d21b4398a1e14ec68ae73fdec69cfb47'},
-    {n:'Servererpnewhom',id:'b5090d02-c4dd-4ec0-ad7c-e56e23f4b9a4',s:'ACTIVE',p:'project-refrio-taboao',pid:'d21b4398a1e14ec68ae73fdec69cfb47'},
-    {n:'ServerMID',id:'e5f9e32d-497c-45b3-a794-4a24e9d392ff',s:'ACTIVE',p:'project-refrio-taboao',pid:'d21b4398a1e14ec68ae73fdec69cfb47'},
-    {n:'servermid01',id:'9c8770b7-4518-43de-9f87-bde6c871d33d',s:'ACTIVE',p:'project-refrio-taboao',pid:'d21b4398a1e14ec68ae73fdec69cfb47'},
-    {n:'ServerSVS',id:'4e528611-e797-461a-93ae-360388a4fcef',s:'ACTIVE',p:'project-refrio-taboao',pid:'d21b4398a1e14ec68ae73fdec69cfb47'},
-    {n:'ServerSVShomol',id:'d39d4478-a557-4446-a1c3-f8a711dd793c',s:'ACTIVE',p:'project-refrio-taboao',pid:'d21b4398a1e14ec68ae73fdec69cfb47'},
-    {n:'srvbierphml',id:'79e3cd2e-3a0f-4668-9e2b-e409f5a42d0b',s:'ACTIVE',p:'project-refrio-taboao',pid:'d21b4398a1e14ec68ae73fdec69cfb47'},
+    {n:'ORACLE-DB - New',id:'5022bc28-7fea-457b-87f3-84a4fe69113b',s:'SHUTOFF',p:'project-refrio-taboao',pid:'d21b4398a1e14ec68ae73fdec69cfb47'},
+    {n:'ORACLE-WMS',id:'e273bb60-99c0-408c-a226-da55f10edc30',s:'SHUTOFF',p:'project-refrio-taboao',pid:'d21b4398a1e14ec68ae73fdec69cfb47'},
+    {n:'ServerCSM',id:'5664767b-6114-4cd1-98ef-e00d40f1b687',s:'SHUTOFF',p:'project-refrio-taboao',pid:'d21b4398a1e14ec68ae73fdec69cfb47'},
+    {n:'SERVER-ERP',id:'ae120e2f-e97e-4202-baf9-f58581d4fe74',s:'SHUTOFF',p:'project-refrio-taboao',pid:'d21b4398a1e14ec68ae73fdec69cfb47'},
+    {n:'Servererpnewhom',id:'b5090d02-c4dd-4ec0-ad7c-e56e23f4b9a4',s:'SHUTOFF',p:'project-refrio-taboao',pid:'d21b4398a1e14ec68ae73fdec69cfb47'},
+    {n:'ServerMID',id:'e5f9e32d-497c-45b3-a794-4a24e9d392ff',s:'SHUTOFF',p:'project-refrio-taboao',pid:'d21b4398a1e14ec68ae73fdec69cfb47'},
+    {n:'servermid01',id:'9c8770b7-4518-43de-9f87-bde6c871d33d',s:'SHUTOFF',p:'project-refrio-taboao',pid:'d21b4398a1e14ec68ae73fdec69cfb47'},
+    {n:'ServerSVS',id:'4e528611-e797-461a-93ae-360388a4fcef',s:'SHUTOFF',p:'project-refrio-taboao',pid:'d21b4398a1e14ec68ae73fdec69cfb47'},
+    {n:'ServerSVShomol',id:'d39d4478-a557-4446-a1c3-f8a711dd793c',s:'SHUTOFF',p:'project-refrio-taboao',pid:'d21b4398a1e14ec68ae73fdec69cfb47'},
+    {n:'srvbierphml',id:'79e3cd2e-3a0f-4668-9e2b-e409f5a42d0b',s:'SHUTOFF',p:'project-refrio-taboao',pid:'d21b4398a1e14ec68ae73fdec69cfb47'},
     {n:'VPN-PFSENSE',id:'49a985fd-dc14-4a76-8a0c-85b530f9f816',s:'ACTIVE',p:'project-refrio-taboao',pid:'d21b4398a1e14ec68ae73fdec69cfb47'},
     {n:'WMS-RECOVERY',id:'94c89d73-f071-4265-b3a9-5a781412079d',s:'ACTIVE',p:'project-refrio-taboao',pid:'d21b4398a1e14ec68ae73fdec69cfb47'},
-    {n:'ZABBIX-SERVER',id:'dc9d8ff1-09e4-4e55-baea-047e2586a38e',s:'ACTIVE',p:'project-refrio-taboao',pid:'d21b4398a1e14ec68ae73fdec69cfb47'},
+    {n:'ZABBIX-SERVER',id:'dc9d8ff1-09e4-4e55-baea-047e2586a38e',s:'SHUTOFF',p:'project-refrio-taboao',pid:'d21b4398a1e14ec68ae73fdec69cfb47'},
   ],
   'sattelecom.com': [
     {n:'satc4cloud',id:'448a2754-0a1c-44cf-a5dd-b6784d9ebdd1',s:'ACTIVE',p:'Project-Sat-Telecom',pid:'638aac27d55648b4bf6c7f636d7d9b62'},
@@ -2035,26 +2058,12 @@ const SAN20_VMS = {
     {n:'fw-pfcoriolis',id:'570ada4a-5dd9-4d93-98a9-066e62ae6c63',s:'ACTIVE',p:'coriolis-projects',pid:'f54ca7db48244d07a1e637e588f40bb0'},
     {n:'Teste-DashCoriolis',id:'41683d2b-dcde-43c5-b8e4-4104e050b13d',s:'ACTIVE',p:'coriolis-projects',pid:'f54ca7db48244d07a1e637e588f40bb0'},
     {n:'zabbixproxy-5',id:'9bdaafba-b32e-4a19-a07d-a52efcec77ca',s:'ACTIVE',p:'coriolis-projects',pid:'f54ca7db48244d07a1e637e588f40bb0'},
-    {n:'src-cross-stack-host',id:'bb915383-270a-43a0-baec-4ea4a4729f64',s:'ACTIVE',p:'project-veeam',pid:'80ba920abc0449fca7ec328028a7d235'},
-    {n:'teste-migracao-1',id:'f261a9aa-7be6-43e4-a24e-0d1646739add',s:'SHUTOFF',p:'project-veeam',pid:'80ba920abc0449fca7ec328028a7d235'},
-    {n:'teste-migracao-2',id:'c9fd82ad-51f4-4005-9af1-1c6495b643b5',s:'SHUTOFF',p:'project-veeam',pid:'80ba920abc0449fca7ec328028a7d235'},
-  ],
-  'waits.com.br': [
-    {n:'PIRA-BC-APP01',id:'b932a81c-0590-4c3a-aca0-594290b14e63',s:'SHUTOFF',p:'project-piramidal',pid:'7318a9bcacaf4dffb707aa108d0d41aa'},
-    {n:'PIRA-BC-APP02',id:'13918b32-78c3-4e2f-8f0a-f85b3529e5a2',s:'SHUTOFF',p:'project-piramidal',pid:'7318a9bcacaf4dffb707aa108d0d41aa'},
-    {n:'PIRA-BC-BFW01',id:'c83f8f9d-9af2-4dab-aa7f-3f36dfa0c069',s:'SHUTOFF',p:'project-piramidal',pid:'7318a9bcacaf4dffb707aa108d0d41aa'},
-    {n:'PIRA-BC-BKP01',id:'da419780-1e87-403b-80a7-b3490e2e5b0d',s:'SHUTOFF',p:'project-piramidal',pid:'7318a9bcacaf4dffb707aa108d0d41aa'},
-    {n:'PIRA-BC-DC01',id:'97f76f53-265f-432c-8f2c-73b2cb2d0e4a',s:'SHUTOFF',p:'project-piramidal',pid:'7318a9bcacaf4dffb707aa108d0d41aa'},
-    {n:'PIRA-BC-SAP01',id:'864d0ac1-340b-4034-bf84-02556e3aa07d',s:'SHUTOFF',p:'project-piramidal',pid:'7318a9bcacaf4dffb707aa108d0d41aa'},
-    {n:'PIRA-BC-SAP02',id:'dd93198e-ef81-4459-960c-e5979204fbc5',s:'SHUTOFF',p:'project-piramidal',pid:'7318a9bcacaf4dffb707aa108d0d41aa'},
-    {n:'PIRA-BC-SAP03',id:'4576c999-b4d1-4a2f-b1cc-ceca4255ee12',s:'SHUTOFF',p:'project-piramidal',pid:'7318a9bcacaf4dffb707aa108d0d41aa'},
-    {n:'PIRA-BC-TS',id:'779b40a9-899e-47fe-bf16-771daa6e549f',s:'SHUTOFF',p:'project-piramidal',pid:'7318a9bcacaf4dffb707aa108d0d41aa'},
-    {n:'PIRA-BC-VPN01',id:'fd377c83-f30c-47ed-9d03-d21299dda1d2',s:'SHUTOFF',p:'project-piramidal',pid:'7318a9bcacaf4dffb707aa108d0d41aa'},
   ],
 };
 
+
 async function san20LoadStorage() {
-  const SEED_VERSION = '2026-09-01-v5';
+  const SEED_VERSION = '2026-10-02-v6';
   try {
     let saved = null;
     if (window.storage) {
