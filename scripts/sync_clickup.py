@@ -50,6 +50,7 @@ PROJECTS = {
     "grupoabl":         "901329133092",
     "mfavpn":           "901329173422",
     "algartelecom":     "901329196221",
+    "bestsmart":        "901329181833",
     # "psdovidro" removido intencionalmente: projeto foi finalizado manualmente
     # em 2026-08-31 por decisão do escritório de projetos, mesmo com 2 tarefas
     # ainda abertas no ClickUp. Não deve ser sobrescrito pela sincronização.
