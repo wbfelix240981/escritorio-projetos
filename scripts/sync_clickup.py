@@ -206,7 +206,7 @@ def update_previsao(html, key, previsao):
     anchor = f"openModal('{key}')"
     idx = html.find(anchor)
     if idx != -1:
-        window_start = max(0, idx - 600)
+        window_start = max(0, idx - 1800)
         window = html[window_start:idx]
         matches = list(re.finditer(r'<span class="prazo-valor">[^<]*</span>', window))
         if matches:
@@ -261,7 +261,7 @@ def update_card_pct(html, key, new_pct):
         print(f"  ⚠️  Card de '{key}' não encontrado (openModal não existe) — pulando card.")
         return html, False
 
-    window_start = max(0, idx - 800)
+    window_start = max(0, idx - 1800)
     window = html[window_start:idx]
 
     changed = False
@@ -278,7 +278,7 @@ def update_card_pct(html, key, new_pct):
             changed = True
             # reconstroi window/idx pois o html mudou de tamanho
             idx = html.find(anchor)
-            window_start = max(0, idx - 800)
+            window_start = max(0, idx - 1800)
             window = html[window_start:idx]
 
     # data-pct="NN" (bar-fill, última ocorrência antes do anchor)
@@ -384,7 +384,7 @@ def sync_finalized_state(html, key, new_pct):
     anchor = f"openModal('{key}')"
     idx = html.find(anchor)
     if idx != -1:
-        window_start = max(0, idx - 800)
+        window_start = max(0, idx - 1800)
         window = html[window_start:idx]
         if new_pct == 100:
             matches = list(re.finditer(r'<span class="pill pill-prog">[^<]*</span>', window))
