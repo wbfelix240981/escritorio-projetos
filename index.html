@@ -166,11 +166,8 @@ body.page-internal #drawer-trigger:hover { background: #f4f6fb; border-color: #c
 .card-prazo.prazo-atrasado,
 .card-prazo .prazo-valor.prazo-atrasado { color:#c0392b; font-weight:800; }
 /* Alarme discreto de prazo: amarelo = vence hoje / sem data; vermelho = vencido */
-.card.alarm-yellow { border-color:rgba(230,167,0,.55); }
-.card.alarm-red { border-color:rgba(192,57,43,.5); }
 /* Crítico: mais de 30 dias de atraso */
-.card.alarm-critical, .card.alarm-tempo { position:relative; border:1px solid rgba(229,72,77,.28); background:linear-gradient(135deg,#ffffff 55%,#fff4f4 100%); box-shadow:inset 4px 0 0 0 #e5484d, 0 10px 30px -12px rgba(229,72,77,.45), 0 1px 2px rgba(15,23,42,.04); }
-.card.alarm-critical > .card-accent, .card.alarm-tempo > .card-accent { background:linear-gradient(90deg,#e5484d,#ff8a8f) !important; }
+/* sem contorno/destaque no card: o alarme fica só na faixa de atenção */
 .alarm-row { display:flex; align-items:center; gap:10px; margin:2px 0 8px; padding:7px 10px; border-radius:10px; background:rgba(229,72,77,.07); border:1px solid rgba(229,72,77,.16); backdrop-filter:blur(6px); }
 .alarm-badge { display:inline-flex; align-items:center; gap:6px; font-size:9.5px; font-weight:800; letter-spacing:.9px; text-transform:uppercase; color:#fff; padding:4px 10px; border-radius:99px; background:linear-gradient(135deg,#e5484d,#c92a35); box-shadow:0 4px 12px -3px rgba(201,42,53,.55); white-space:nowrap; }
 .alarm-badge i { width:6px; height:6px; border-radius:50%; background:#fff; box-shadow:0 0 0 0 rgba(255,255,255,.7); animation:alarmPulse 2s infinite; }
