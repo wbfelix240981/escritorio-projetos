@@ -206,7 +206,7 @@ def update_previsao(html, key, previsao):
     anchor = f"openModal('{key}')"
     idx = html.find(anchor)
     if idx != -1:
-        window_start = max(0, idx - 1800)
+        window_start = max(0, idx - 2600)
         window = html[window_start:idx]
         matches = list(re.finditer(r'<span class="prazo-valor">[^<]*</span>', window))
         if matches:
@@ -231,6 +231,40 @@ def update_previsao(html, key, previsao):
             changed = True
 
     return html, changed
+
+
+def calc_inicio(tasks):
+    """Data de início = data de criação da tarefa mais antiga da lista (America/Sao_Paulo), 'YYYY-MM-DD'."""
+    from datetime import datetime, timezone, timedelta
+    vals = []
+    for t in tasks:
+        try:
+            vals.append(int(t.get("date_created")))
+        except (TypeError, ValueError):
+            pass
+    if not vals:
+        return None
+    dt = datetime.fromtimestamp(min(vals) / 1000, tz=timezone(timedelta(hours=-3)))
+    return dt.strftime("%Y-%m-%d")
+
+
+def update_inicio(html, key, inicio):
+    """Atualiza <span class="inicio-valor"> do card (se o card tiver o campo)."""
+    if not inicio:
+        return html, False
+    idx = html.find(f"openModal('{key}')")
+    if idx == -1:
+        return html, False
+    ws = max(0, idx - 2600)
+    ms = list(re.finditer(r'<span class="inicio-valor">[^<]*</span>', html[ws:idx]))
+    if not ms:
+        return html, False
+    m = ms[-1]
+    novo = '<span class="inicio-valor">' + '/'.join(inicio.split('-')[::-1]) + '</span>'
+    a, b = ws + m.start(), ws + m.end()
+    if html[a:b] == novo:
+        return html, False
+    return html[:a] + novo + html[b:], True
 
 
 def calc_pct(tasks):
@@ -261,7 +295,7 @@ def update_card_pct(html, key, new_pct):
         print(f"  ⚠️  Card de '{key}' não encontrado (openModal não existe) — pulando card.")
         return html, False
 
-    window_start = max(0, idx - 1800)
+    window_start = max(0, idx - 2600)
     window = html[window_start:idx]
 
     changed = False
@@ -278,7 +312,7 @@ def update_card_pct(html, key, new_pct):
             changed = True
             # reconstroi window/idx pois o html mudou de tamanho
             idx = html.find(anchor)
-            window_start = max(0, idx - 1800)
+            window_start = max(0, idx - 2600)
             window = html[window_start:idx]
 
     # data-pct="NN" (bar-fill, última ocorrência antes do anchor)
@@ -384,7 +418,7 @@ def sync_finalized_state(html, key, new_pct):
     anchor = f"openModal('{key}')"
     idx = html.find(anchor)
     if idx != -1:
-        window_start = max(0, idx - 1800)
+        window_start = max(0, idx - 2600)
         window = html[window_start:idx]
         if new_pct == 100:
             matches = list(re.finditer(r'<span class="pill pill-prog">[^<]*</span>', window))
@@ -501,12 +535,14 @@ def main():
 
         pct, fechado, em_andamento, total = calc_pct(tasks)
         previsao = calc_previsao_termino(tasks)
+        inicio = calc_inicio(tasks)
 
         html, changed_card = update_card_pct(html, key, pct)
         html, changed_modal = update_modal_pct(html, key, pct, fechado, em_andamento, total)
         html, changed_fin = sync_finalized_state(html, key, pct)
         html, changed_prev = update_previsao(html, key, previsao)
-        changed = changed_card or changed_modal or changed_fin or changed_prev
+        html, changed_ini = update_inicio(html, key, inicio)
+        changed = changed_card or changed_modal or changed_fin or changed_prev or changed_ini
 
         status = "ATUALIZADO" if changed else "sem mudança"
         print(f"  {key}: {pct}% ({fechado} fechadas + {em_andamento} em andamento de {total}) — {status}")
