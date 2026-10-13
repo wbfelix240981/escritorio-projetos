@@ -8142,6 +8142,7 @@ function doLogin() {
   var match = USERS.find(function(x){ return x.u === u && x.p === p; });
 
   if (match) {
+    sessionStorage.setItem('bc-auth', '1');
     sessionStorage.setItem('bc-role', match.role || 'admin');
     applyRoleRestrictions(match.role);
     var sc = document.getElementById('login-screen');
@@ -8173,14 +8174,19 @@ function showCover() {
   if (c) c.classList.add('active');
 }
 
-/* Autenticação a cada carregamento: qualquer refresh (F5/Ctrl+F5/reabrir) volta para o login */
+/* Checar ao carregar */
 (function(){
-  try { sessionStorage.removeItem('bc-auth'); sessionStorage.removeItem('bc-role'); } catch(e) {}
-  applyRoleRestrictions(null);
-  var sc = document.getElementById('login-screen');
-  if (sc) { sc.classList.remove('gone'); sc.style.opacity = ''; }
-  // voltar/avançar do navegador (cache de página) também exige novo login
-  window.addEventListener('pageshow', function(ev){ if (ev.persisted) location.reload(); });
+  var role = sessionStorage.getItem('bc-role');
+  applyRoleRestrictions(role);
+  if (sessionStorage.getItem('bc-auth') === '1') {
+    var sc = document.getElementById('login-screen');
+    if (sc) sc.classList.add('gone');
+    if (role === 'comercial') {
+      navTo('clientes', 'active-blue');
+    } else {
+      showCover();
+    }
+  }
 })();
 </script>
 
