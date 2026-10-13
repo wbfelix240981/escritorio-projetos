@@ -158,6 +158,11 @@ body.page-internal #drawer-trigger:hover { background: #f4f6fb; border-color: #c
 .pill-delay { background:#ffe8d1; color:#e67e22; }
 .pill-wait  { background:#fff3e0; color:#e67e22; }
 .pill-hold  { background:#e2e8f0; color:#64748b; }
+/* MANUTENÇÃO 2.0 / 3.0: oculta todos os dados e deixa só o cabeçalho + aviso. Para reativar, apague este bloco. */
+#capacity-20 > div:not(.topbar) > *:not(:first-child),
+#capacity-30 > div:not(.topbar) > *:not(:first-child),
+#capacity-20 h1 + p, #capacity-30 h1 + p { display:none !important; }
+#san20-manut, #san30-manut { font-size:14px !important; padding:18px 22px !important; margin-top:18px !important; }
 .card-prazo.prazo-atrasado,
 .card-prazo .prazo-valor.prazo-atrasado { color:#c0392b; font-weight:800; }
 /* Alarme discreto de prazo: amarelo = vence hoje / sem data; vermelho = vencido */
@@ -1501,7 +1506,7 @@ body.role-comercial #drawer-trigger {
       </div>
     <div id="san20-manut" style="display:flex;align-items:center;gap:10px;background:rgba(251,191,36,.14);border:1px solid rgba(217,119,6,.35);border-left:4px solid #d97706;border-radius:10px;padding:10px 14px;margin:0 0 20px;font-size:12px;font-weight:600;color:#92400e;">
       <span style="font-size:16px;">🛠️</span>
-      <span>Página em manutenção — dados em atualização. Os números podem não refletir o inventário mais recente.</span>
+      <span>Página em manutenção — dados em atualização. Em breve disponível novamente.</span>
     </div>
     </div>
 
@@ -2232,7 +2237,7 @@ document.addEventListener('page-changed', function(e) {
       </div>
     <div id="san30-manut" style="display:flex;align-items:center;gap:10px;background:rgba(251,191,36,.14);border:1px solid rgba(217,119,6,.35);border-left:4px solid #d97706;border-radius:10px;padding:10px 14px;margin:0 0 20px;font-size:12px;font-weight:600;color:#92400e;">
       <span style="font-size:16px;">🛠️</span>
-      <span>Página em manutenção — dados em atualização. Os números podem não refletir o inventário mais recente.</span>
+      <span>Página em manutenção — dados em atualização. Em breve disponível novamente.</span>
     </div>
     </div>
 
