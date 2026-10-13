@@ -169,10 +169,22 @@ body.page-internal #drawer-trigger:hover { background: #f4f6fb; border-color: #c
 .card.alarm-yellow { border-color:rgba(230,167,0,.55); }
 .card.alarm-red { border-color:rgba(192,57,43,.5); }
 /* Crítico: mais de 30 dias de atraso */
-.card.alarm-critical, .card.alarm-tempo { border:2px solid #c0392b; box-shadow:0 0 0 3px rgba(192,57,43,.14), 0 6px 18px rgba(192,57,43,.25); }
-.card-prazo.prazo-critico { background:#c0392b !important; border-radius:6px; padding:2px 9px !important; }
-.card-prazo.prazo-critico, .card-prazo.prazo-critico .prazo-valor { color:#fff !important; font-weight:800; }
-.card-prazo .critico-tag { margin-left:6px; font-size:10px; font-weight:800; letter-spacing:.2px; }
+.card.alarm-critical, .card.alarm-tempo { position:relative; border:1px solid rgba(229,72,77,.28); background:linear-gradient(135deg,#ffffff 55%,#fff4f4 100%); box-shadow:inset 4px 0 0 0 #e5484d, 0 10px 30px -12px rgba(229,72,77,.45), 0 1px 2px rgba(15,23,42,.04); }
+.card.alarm-critical > .card-accent, .card.alarm-tempo > .card-accent { background:linear-gradient(90deg,#e5484d,#ff8a8f) !important; }
+.alarm-row { display:flex; align-items:center; gap:10px; margin:2px 0 8px; padding:7px 10px; border-radius:10px; background:rgba(229,72,77,.07); border:1px solid rgba(229,72,77,.16); backdrop-filter:blur(6px); }
+.alarm-badge { display:inline-flex; align-items:center; gap:6px; font-size:9.5px; font-weight:800; letter-spacing:.9px; text-transform:uppercase; color:#fff; padding:4px 10px; border-radius:99px; background:linear-gradient(135deg,#e5484d,#c92a35); box-shadow:0 4px 12px -3px rgba(201,42,53,.55); white-space:nowrap; }
+.alarm-badge i { width:6px; height:6px; border-radius:50%; background:#fff; box-shadow:0 0 0 0 rgba(255,255,255,.7); animation:alarmPulse 2s infinite; }
+@keyframes alarmPulse { 0%{box-shadow:0 0 0 0 rgba(255,255,255,.65);} 70%{box-shadow:0 0 0 6px rgba(255,255,255,0);} 100%{box-shadow:0 0 0 0 rgba(255,255,255,0);} }
+.alarm-meter { flex:1; min-width:0; }
+.alarm-meter b { display:block; font-size:11px; font-weight:700; color:#7f1d1d; letter-spacing:-.1px; }
+.alarm-meter b em { font-style:normal; color:#b4535a; font-weight:600; }
+.alarm-meter .trk { height:4px; border-radius:99px; background:rgba(229,72,77,.15); margin-top:5px; overflow:hidden; }
+.alarm-meter .trk u { display:block; height:100%; border-radius:99px; background:linear-gradient(90deg,#f59e9e,#e5484d); }
+.card-prazo.prazo-critico { background:rgba(229,72,77,.10) !important; border-radius:6px; padding:1px 8px !important; }
+.card-prazo.prazo-critico, .card-prazo.prazo-critico .prazo-valor { color:#b42332 !important; font-weight:800; }
+.card-prazo .critico-tag { margin-left:6px; font-size:10px; font-weight:800; }
+#clientes .card-title{flex:0 0 auto;}
+@media (prefers-reduced-motion:reduce){ .alarm-badge i{animation:none;} }
 .card-prazo.prazo-alerta-amarelo { display:inline-block; align-self:flex-start; background:rgba(255,193,7,.16); color:#8a6100; border-radius:6px; padding:1px 7px; }
 .card-prazo.prazo-alerta-amarelo .prazo-valor { color:#8a6100; font-weight:800; }
 .card-prazo.prazo-atrasado { display:inline-block; align-self:flex-start; background:rgba(231,76,60,.10); border-radius:6px; padding:1px 7px; }
@@ -8355,8 +8367,17 @@ function calcTempoProjeto(){
     const card=el.closest('.card');
     const ativo=card && !card.querySelector('.pill-done') && !card.classList.contains('is-hold') && !/Finaliza/i.test((card.querySelector('.pill')||{}).textContent||'');
     const crit=ativo && d>30;
-    if(card) card.classList.toggle('alarm-tempo',!!crit);
-    t.innerHTML='⏱️ Tempo de projeto: <span style="color:'+(crit?'#c0392b':'#1a2a3a')+';font-weight:800;">'+(crit?'🚨 ':'')+d+(d===1?' dia':' dias')+'</span>';
+    if(card){
+      card.classList.toggle('alarm-tempo',!!crit);
+      const old=card.querySelector('.alarm-row'); if(old) old.remove();
+      if(crit){
+        const ex=d-30, pctBar=Math.min(100,Math.round(d/60*100));
+        const row=document.createElement('div'); row.className='alarm-row';
+        row.innerHTML='<span class="alarm-badge"><i></i>Atenção</span><div class="alarm-meter"><b>'+d+' dias em andamento <em>· '+ex+' acima do limite de 30</em></b><div class="trk"><u style="width:'+pctBar+'%"></u></div></div>';
+        const title=card.querySelector('.card-title'); if(title) title.before(row);
+      }
+    }
+    t.innerHTML='⏱️ Tempo de projeto: <span style="color:'+(crit?'#b42332':'#1a2a3a')+';font-weight:800;">'+d+(d===1?' dia':' dias')+'</span>';
   });
 }
 document.addEventListener('DOMContentLoaded',calcTempoProjeto);
