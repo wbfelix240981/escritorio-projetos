@@ -163,6 +163,11 @@ body.page-internal #drawer-trigger:hover { background: #f4f6fb; border-color: #c
 /* Alarme discreto de prazo: amarelo = vence hoje / sem data; vermelho = vencido */
 .card.alarm-yellow { border-color:rgba(230,167,0,.55); }
 .card.alarm-red { border-color:rgba(192,57,43,.5); }
+/* Crítico: mais de 30 dias de atraso */
+.card.alarm-critical { border:2px solid #c0392b; box-shadow:0 0 0 3px rgba(192,57,43,.14), 0 6px 18px rgba(192,57,43,.25); }
+.card-prazo.prazo-critico { background:#c0392b !important; border-radius:6px; padding:2px 9px !important; }
+.card-prazo.prazo-critico, .card-prazo.prazo-critico .prazo-valor { color:#fff !important; font-weight:800; }
+.card-prazo .critico-tag { margin-left:6px; font-size:10px; font-weight:800; letter-spacing:.2px; }
 .card-prazo.prazo-alerta-amarelo { display:inline-block; align-self:flex-start; background:rgba(255,193,7,.16); color:#8a6100; border-radius:6px; padding:1px 7px; }
 .card-prazo.prazo-alerta-amarelo .prazo-valor { color:#8a6100; font-weight:800; }
 .card-prazo.prazo-atrasado { display:inline-block; align-self:flex-start; background:rgba(231,76,60,.10); border-radius:6px; padding:1px 7px; }
@@ -4633,8 +4638,9 @@ function checkPrazosAtrasados() {
     if (!prazoEl) return;
     const parentPrazo = prazoEl.closest('.card-prazo');
     prazoEl.classList.remove('prazo-atrasado');
-    card.classList.remove('alarm-red','alarm-yellow');
-    if (parentPrazo) { parentPrazo.classList.remove('prazo-atrasado','prazo-alerta-amarelo'); parentPrazo.removeAttribute('title'); }
+    card.classList.remove('alarm-red','alarm-yellow','alarm-critical');
+    card.querySelectorAll('.critico-tag').forEach(x => x.remove());
+    if (parentPrazo) { parentPrazo.classList.remove('prazo-atrasado','prazo-alerta-amarelo','prazo-critico'); parentPrazo.removeAttribute('title'); }
     const pctEl = card.querySelector('.card-pct');
     const pct = pctEl ? parseFloat((pctEl.textContent||'0').replace('%','').replace(',','.')) : 0;
     const finalizado = !!card.querySelector('.pill-done') || /Finaliza/i.test((card.querySelector('.pill')||{}).textContent||'');
@@ -4650,6 +4656,13 @@ function checkPrazosAtrasados() {
       const dias = Math.round((hoje - data) / 86400000);
       prazoEl.classList.add('prazo-atrasado'); card.classList.add('alarm-red');
       if (parentPrazo) { parentPrazo.classList.add('prazo-atrasado'); parentPrazo.title = 'Vencido há ' + dias + (dias===1?' dia':' dias'); }
+      if (dias > 30 && parentPrazo) { // crítico: mais de 30 dias de atraso
+        card.classList.add('alarm-critical');
+        parentPrazo.classList.add('prazo-critico');
+        const tag = document.createElement('span'); tag.className = 'critico-tag';
+        tag.textContent = '🚨 ' + dias + ' dias de atraso';
+        parentPrazo.appendChild(tag);
+      }
     } else if (data.getTime() === hoje.getTime()) { // vence hoje -> amarelo
       card.classList.add('alarm-yellow');
       if (parentPrazo) { parentPrazo.classList.add('prazo-alerta-amarelo'); parentPrazo.title = 'Vence hoje'; }
