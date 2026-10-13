@@ -8401,11 +8401,12 @@ setTimeout(calcTempoProjeto,300);
 #clientes .btn-det { margin-top:8px !important; padding:7px 0 !important; font-size:10px !important; }
 /* alarme compacto: chip no cabeçalho em vez de faixa */
 #clientes .alarm-row { display:none !important; }
-#clientes .alarm-chip { display:none !important; align-items:center; gap:5px; font-size:9px; font-weight:800; letter-spacing:.6px; text-transform:uppercase; color:#fff; padding:3px 8px; border-radius:99px; background:linear-gradient(135deg,#e5484d,#c92a35); box-shadow:0 3px 10px -3px rgba(201,42,53,.6); margin-left:6px; }
+#clientes .alarm-chip { display:inline-flex !important; align-items:center; gap:5px; font-size:9px; font-weight:800; letter-spacing:.6px; text-transform:uppercase; color:#fff; padding:3px 8px; border-radius:99px; background:linear-gradient(135deg,#e5484d,#c92a35); box-shadow:0 3px 10px -3px rgba(201,42,53,.6); margin-left:6px; }
 #clientes .alarm-chip i { width:5px; height:5px; border-radius:50%; background:#fff; animation:alarmPulse 2s infinite; }
 @media (max-width:1100px){ #clientes .grid-2 { grid-template-columns:repeat(2,1fr) !important; } }
 @media (max-width:640px){ #clientes .grid-2 { grid-template-columns:1fr !important; } }
 </style>
+<style id="edge-amarelo">#clientes .alarm-chip{ color:#6b4a00 !important; background:linear-gradient(135deg,#ffe08a,#ffc933) !important; box-shadow:0 3px 10px -3px rgba(217,150,0,.55) !important; margin-left:8px; white-space:nowrap; } #clientes .alarm-chip i{ background:#b36b00 !important; animation:none !important; }</style>
 <script>
 /* Compacta: agrupa as linhas de informação em grade 2 colunas e troca a faixa de alarme por um chip */
 function compactarCards(){
@@ -8428,7 +8429,7 @@ function compactarCards(){
     card.querySelectorAll('.alarm-chip').forEach(x=>x.remove());
     if(card.classList.contains('alarm-tempo')){
       const t=card.querySelector('.card-tempo span'); const d=t?parseInt(t.textContent.replace(/\D/g,'')):0;
-      const chip=document.createElement('span'); chip.className='alarm-chip'; chip.innerHTML='<i></i>Atenção';
+      const chip=document.createElement('span'); chip.className='alarm-chip'; const atraso=d-30; chip.title='Projeto com '+d+' dias — '+atraso+(atraso===1?' dia':' dias')+' acima do limite de 30'; chip.innerHTML='<i></i>'+atraso+(atraso===1?' dia':' dias')+' de atraso';
       const pill=card.querySelector('.card-header .pill'); if(pill) pill.after(chip);
     }
   });
