@@ -169,7 +169,7 @@ body.page-internal #drawer-trigger:hover { background: #f4f6fb; border-color: #c
 .card.alarm-yellow { border-color:rgba(230,167,0,.55); }
 .card.alarm-red { border-color:rgba(192,57,43,.5); }
 /* Crítico: mais de 30 dias de atraso */
-.card.alarm-critical { border:2px solid #c0392b; box-shadow:0 0 0 3px rgba(192,57,43,.14), 0 6px 18px rgba(192,57,43,.25); }
+.card.alarm-critical, .card.alarm-tempo { border:2px solid #c0392b; box-shadow:0 0 0 3px rgba(192,57,43,.14), 0 6px 18px rgba(192,57,43,.25); }
 .card-prazo.prazo-critico { background:#c0392b !important; border-radius:6px; padding:2px 9px !important; }
 .card-prazo.prazo-critico, .card-prazo.prazo-critico .prazo-valor { color:#fff !important; font-weight:800; }
 .card-prazo .critico-tag { margin-left:6px; font-size:10px; font-weight:800; letter-spacing:.2px; }
@@ -8352,7 +8352,11 @@ function calcTempoProjeto(){
       t.style.cssText='font-size:11px;color:#8a94a6;margin:-2px 0 2px;font-weight:600;';
       el.after(t);
     }
-    t.innerHTML='⏱️ Tempo de projeto: <span style="color:#1a2a3a;font-weight:800;">'+d+(d===1?' dia':' dias')+'</span>';
+    const card=el.closest('.card');
+    const ativo=card && !card.querySelector('.pill-done') && !card.classList.contains('is-hold') && !/Finaliza/i.test((card.querySelector('.pill')||{}).textContent||'');
+    const crit=ativo && d>30;
+    if(card) card.classList.toggle('alarm-tempo',!!crit);
+    t.innerHTML='⏱️ Tempo de projeto: <span style="color:'+(crit?'#c0392b':'#1a2a3a')+';font-weight:800;">'+(crit?'🚨 ':'')+d+(d===1?' dia':' dias')+'</span>';
   });
 }
 document.addEventListener('DOMContentLoaded',calcTempoProjeto);
