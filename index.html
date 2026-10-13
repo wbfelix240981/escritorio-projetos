@@ -8332,5 +8332,27 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script>
 
+<script>
+/* Tempo de projeto = dias corridos entre Início (criação no ClickUp) e hoje */
+function calcTempoProjeto(){
+  const hoje=new Date();hoje.setHours(0,0,0,0);
+  document.querySelectorAll('#clientes .card-inicio').forEach(el=>{
+    const v=el.querySelector('.inicio-valor');if(!v)return;
+    let t=el.nextElementSibling;
+    const m=v.textContent.trim().match(/^(\d{2})\/(\d{2})\/(\d{4})$/);
+    if(!m){if(t&&t.classList.contains('card-tempo'))t.remove();return;}
+    const d=Math.max(0,Math.round((hoje-new Date(+m[3],+m[2]-1,+m[1]))/864e5));
+    if(!t||!t.classList.contains('card-tempo')){
+      t=document.createElement('div');t.className='card-tempo';
+      t.style.cssText='font-size:11px;color:#8a94a6;margin:-2px 0 2px;font-weight:600;';
+      el.after(t);
+    }
+    t.innerHTML='⏱️ Tempo de projeto: <span style="color:#1a2a3a;font-weight:800;">'+d+(d===1?' dia':' dias')+'</span>';
+  });
+}
+document.addEventListener('DOMContentLoaded',calcTempoProjeto);
+document.addEventListener('page-changed',calcTempoProjeto);
+setTimeout(calcTempoProjeto,300);
+</script>
 </body>
 </html>
