@@ -2,8 +2,11 @@ name: Sync ClickUp → Painel
 
 on:
   schedule:
-    # A cada 30 minutos
-    - cron: '*/30 * * * *'
+    # A cada 30 minutos, das 06:00 às 22:00 (horário de Brasília, UTC-3).
+    # O GitHub Actions usa UTC: 06:00 BRT = 09:00 UTC ... 22:00 BRT = 01:00 UTC.
+    - cron: '*/30 9-23 * * *'   # 06:00–20:30 BRT
+    - cron: '*/30 0 * * *'      # 21:00 e 21:30 BRT
+    - cron: '0 1 * * *'         # 22:00 BRT
   workflow_dispatch:
     # Permite rodar manualmente pela aba Actions do GitHub
 
