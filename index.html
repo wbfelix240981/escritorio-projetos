@@ -8155,6 +8155,7 @@ function doLogin() {
       } else {
         showCover();
       }
+      if (typeof openDrawer === 'function') openDrawer(); // menu já aberto ao entrar
     }, 300);
     err.classList.remove('on');
   } else {
@@ -8186,6 +8187,7 @@ function showCover() {
     } else {
       showCover();
     }
+    if (typeof openDrawer === 'function') openDrawer(); // menu já aberto ao abrir a página
   }
 })();
 </script>
