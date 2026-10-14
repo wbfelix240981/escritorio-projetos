@@ -8429,7 +8429,7 @@ function compactarCards(){
     card.querySelectorAll('.alarm-chip').forEach(x=>x.remove());
     if(card.classList.contains('alarm-tempo')){
       const t=card.querySelector('.card-tempo span'); const d=t?parseInt(t.textContent.replace(/\D/g,'')):0;
-      const chip=document.createElement('span'); chip.className='alarm-chip'; const atraso=d-30; chip.title='Aging > 30d — projeto com '+d+' dias ('+atraso+(atraso===1?' dia':' dias')+' acima do limite de 30)'; chip.innerHTML='<i></i>Aging +'+atraso+(atraso===1?' dia':' dias');
+      const chip=document.createElement('span'); chip.className='alarm-chip'; const atraso=d-30; chip.title='Aging > 30d — projeto com '+d+' dias ('+atraso+(atraso===1?' dia':' dias')+' acima do limite de 30)'; chip.innerHTML='<i></i>Aging 30d · +'+atraso+(atraso===1?' dia':' dias');
       const pill=card.querySelector('.card-header .pill'); if(pill) pill.after(chip);
     }
   });
