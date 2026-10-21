@@ -57,6 +57,11 @@ PROJECTS = {
     # "ceph30" (Migração Ceph) agora usa TASK_CHECKLISTS abaixo, não uma lista.
 }
 
+# Piso de % por projeto (nunca exibe menos que isso; só sobe). Remover a chave para voltar ao cálculo puro.
+PCT_PISO = {
+    "soprema": 42,   # 2026-10-21: 4 tarefas novas derrubaram de 42% para 38%; mantido 42% a pedido
+}
+
 # key = chave do objeto de dados no index.html
 # task_id = ID da tarefa no ClickUp cujo checklist define o % (resolved/total)
 # OBS: "ceph30" (Otimização Ceph) voltou a usar lista completa (ver PROJECTS acima).
@@ -540,6 +545,12 @@ def main():
             continue
 
         pct, fechado, em_andamento, total = calc_pct(tasks)
+        # Piso manual (pedido em 2026-10-21): o % não cai abaixo do valor fixado, mesmo que
+        # entrem tarefas novas na lista. Só sobe quando o cálculo real ultrapassar o piso.
+        piso = PCT_PISO.get(key)
+        if piso and pct < piso:
+            print(f"  {key}: cálculo real {pct}% < piso {piso}% — mantendo {piso}%")
+            pct = piso
         previsao = calc_previsao_termino(tasks)
         inicio = calc_inicio(tasks)
 
