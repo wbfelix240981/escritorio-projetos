@@ -8405,6 +8405,10 @@ setTimeout(calcTempoProjeto,300);
 #clientes .alarm-row { display:none !important; }
 #clientes .alarm-chip { display:inline-flex !important; align-items:center; gap:5px; font-size:9px; font-weight:800; letter-spacing:.6px; text-transform:uppercase; color:#fff; padding:3px 8px; border-radius:99px; background:linear-gradient(135deg,#e5484d,#c92a35); box-shadow:0 3px 10px -3px rgba(201,42,53,.6); margin-left:6px; }
 #clientes .alarm-chip i { width:5px; height:5px; border-radius:50%; background:#fff; animation:alarmPulse 2s infinite; }
+/* Implantação/Consumo em linha própria (largura total) para o texto "Liberado para Faturamento" caber inteiro */
+#clientes .card-info > .card-impl, #clientes .card-info > .card-cons { grid-column:1 / -1 !important; white-space:normal !important; overflow:visible !important; text-overflow:clip !important; }
+#clientes .card-info .impl-status, #clientes .card-info .cons-status { white-space:nowrap !important; display:inline-block; overflow:visible !important; }
+#clientes .card-info > .card-prazo, #clientes .card-info > .card-inicio, #clientes .card-info > .card-tempo { white-space:normal !important; overflow:visible !important; text-overflow:clip !important; }
 @media (max-width:1100px){ #clientes .grid-2 { grid-template-columns:repeat(2,1fr) !important; } }
 @media (max-width:640px){ #clientes .grid-2 { grid-template-columns:1fr !important; } }
 </style>
