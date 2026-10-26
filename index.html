@@ -1328,6 +1328,51 @@ body.role-comercial #drawer-trigger {
         </div>
       </div>
 
+      <!-- NOVO CLIENTE: PREFEITURA DE NAVIRAÍ -->
+      <div class="card anim card-novo">
+        <div class="card-accent accent-novo"></div>
+        <div class="card-header">
+          <span class="pill pill-novo">⏳ Não iniciado</span>
+          <span class="card-pct">—</span>
+        </div>
+        <div class="card-title">PREFEITURA DE NAVIRAÍ</div>
+        <div class="novo-info">📋 Aguardando entrega de pré-vendas</div>
+        <div class="card-footer">
+          <div class="bar-track"><div class="bar-fill fill-novo" data-pct="0"></div></div>
+          <button class="btn-det btn-det-off" type="button" disabled>Sem dados ainda</button>
+        </div>
+      </div>
+
+      <!-- NOVO CLIENTE: RAREYU LTDA -->
+      <div class="card anim card-novo">
+        <div class="card-accent accent-novo"></div>
+        <div class="card-header">
+          <span class="pill pill-novo">⏳ Não iniciado</span>
+          <span class="card-pct">—</span>
+        </div>
+        <div class="card-title">RAREYU LTDA</div>
+        <div class="novo-info">📋 Aguardando entrega de pré-vendas</div>
+        <div class="card-footer">
+          <div class="bar-track"><div class="bar-fill fill-novo" data-pct="0"></div></div>
+          <button class="btn-det btn-det-off" type="button" disabled>Sem dados ainda</button>
+        </div>
+      </div>
+
+      <!-- NOVO CLIENTE: BC_MBM SOLUTIONS ERP -->
+      <div class="card anim card-novo">
+        <div class="card-accent accent-novo"></div>
+        <div class="card-header">
+          <span class="pill pill-novo">⏳ Não iniciado</span>
+          <span class="card-pct">—</span>
+        </div>
+        <div class="card-title">BC_MBM SOLUTIONS ERP</div>
+        <div class="novo-info">📋 Aguardando entrega de pré-vendas</div>
+        <div class="card-footer">
+          <div class="bar-track"><div class="bar-fill fill-novo" data-pct="0"></div></div>
+          <button class="btn-det btn-det-off" type="button" disabled>Sem dados ainda</button>
+        </div>
+      </div>
+
     </div>
 
 
@@ -8256,6 +8301,7 @@ function enforceFinalizedRule() {
       const isFin = (pill && pill.classList.contains('pill-done')) || /Finaliza/i.test(pillTxt);
       if (isFin) { card.style.display = 'none'; return; }
       card.style.display = '';
+      if (card.classList.contains('card-novo')) return; // não iniciado: não entra nos índices
       visiveis++;
       const pctEl = card.querySelector('.card-pct');
       if (pctEl) {
@@ -8443,5 +8489,14 @@ function compactarCards(){
 document.addEventListener('page-changed',()=>setTimeout(compactarCards,400));
 setTimeout(compactarCards,600); setTimeout(compactarCards,1500);
 </script>
+<style id="novos-clientes-css">
+#clientes .card-novo{ background:linear-gradient(180deg,#fff,#f6f8fb); }
+#clientes .accent-novo{ background:linear-gradient(90deg,#94a3b8,#cbd5e1) !important; }
+#clientes .pill-novo{ background:#e8edf4; color:#5b6b80; }
+#clientes .card-novo .card-pct{ color:#a3afbf !important; }
+#clientes .novo-info{ font-size:11px; font-weight:700; color:#5b6b80; background:rgba(15,23,42,.04); border:1px dashed #cbd5e1; border-radius:10px; padding:9px 10px; margin-bottom:8px; }
+#clientes .fill-novo{ background:#cbd5e1 !important; width:0 !important; }
+#clientes .btn-det-off{ opacity:.55; cursor:default !important; pointer-events:none; }
+</style>
 </body>
 </html>
