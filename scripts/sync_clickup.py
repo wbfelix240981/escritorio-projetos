@@ -36,7 +36,7 @@ PROJECTS = {
     # automática enquanto estiverem em Hold — reativar aqui quando saírem do Hold.
     "soprema":         "901328281164",
     "senai":           "901328281738",
-    "pleion":          "901328281869",
+    # "pleion" removido em 2026-10-27: finalizado manualmente a pedido (não sobrescrever na sincronização).
     "insper":          "901328340803",
     "neugebauer":      "901328018187",
     "btechcloud":      "901329035922",
@@ -47,7 +47,7 @@ PROJECTS = {
     # "brainlaw" removido do painel em 2026-10-01 (frente retirada a pedido).
     "senaishield":      "901329087162",
     "desmob20":         "901329094841",
-    "grupoabl":         "901329133092",
+    # "grupoabl" removido em 2026-10-27: finalizado manualmente a pedido (não sobrescrever na sincronização).
     "mfavpn":           "901329173422",
     "algartelecom":     "901329196221",
     "bestsmart":        "901329181833",
