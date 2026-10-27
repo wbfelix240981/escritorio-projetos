@@ -8498,5 +8498,129 @@ setTimeout(compactarCards,600); setTimeout(compactarCards,1500);
 #clientes .fill-novo{ background:#cbd5e1 !important; width:0 !important; }
 #clientes .btn-det-off{ opacity:.55; cursor:default !important; pointer-events:none; }
 </style>
+<style id="fin2-css">
+.fin2{ --g:#1f9d55; --gl:#e7f6ee; --b:#1565c0; --bl:#e8f1fb; --ink:#14202e; --mut:#6b7a8d; --line:#e6ebf2; }
+.fin2-kpis{ display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:14px; margin:4px 0 18px; }
+.fin2-kpi{ background:#fff; border:1px solid var(--line); border-radius:16px; padding:16px 18px; box-shadow:0 6px 18px -12px rgba(20,32,46,.25); position:relative; overflow:hidden; }
+.fin2-kpi::after{ content:""; position:absolute; right:-18px; top:-18px; width:72px; height:72px; border-radius:50%; background:var(--tint,#e7f6ee); opacity:.9; }
+.fin2-kpi .v{ font-size:30px; font-weight:900; letter-spacing:-1px; color:var(--ink); line-height:1; position:relative; z-index:1; }
+.fin2-kpi .v small{ font-size:14px; font-weight:800; color:var(--mut); letter-spacing:0; margin-left:2px; }
+.fin2-kpi .l{ margin-top:7px; font-size:10.5px; font-weight:800; letter-spacing:1.1px; text-transform:uppercase; color:var(--mut); position:relative; z-index:1; }
+.fin2-kpi .s{ margin-top:3px; font-size:11px; color:var(--mut); position:relative; z-index:1; }
+.fin2-panel{ background:#fff; border:1px solid var(--line); border-radius:18px; padding:18px 20px; margin-bottom:18px; box-shadow:0 6px 18px -12px rgba(20,32,46,.25); }
+.fin2-ph{ display:flex; justify-content:space-between; align-items:baseline; margin-bottom:14px; }
+.fin2-ph b{ font-size:13px; color:var(--ink); }
+.fin2-ph span{ font-size:11px; color:var(--mut); }
+.fin2-chart{ display:flex; align-items:flex-end; gap:12px; height:132px; padding-top:22px; box-sizing:border-box; }
+.fin2-col{ flex:1; display:flex; flex-direction:column; align-items:center; justify-content:flex-end; height:100%; min-width:0; cursor:pointer; }
+.fin2-bar{ width:100%; max-width:56px; border-radius:10px 10px 4px 4px; background:linear-gradient(180deg,#43c47a,#1f9d55); position:relative; transition:transform .15s, filter .15s; }
+.fin2-col:hover .fin2-bar{ transform:translateY(-2px); filter:brightness(1.05); }
+.fin2-col.on .fin2-bar{ background:linear-gradient(180deg,#2b7be4,#1565c0); }
+.fin2-bar i{ position:absolute; top:-18px; left:0; right:0; text-align:center; font-style:normal; font-size:11px; font-weight:800; color:var(--ink); }
+.fin2-mlab{ margin-top:7px; font-size:10.5px; font-weight:700; color:var(--mut); text-transform:uppercase; letter-spacing:.6px; }
+.fin2-tools{ display:flex; gap:10px; align-items:center; flex-wrap:wrap; margin-bottom:14px; }
+.fin2-seg{ display:inline-flex; background:#eef2f7; border-radius:12px; padding:3px; }
+.fin2-seg button{ border:0; background:transparent; padding:7px 14px; border-radius:9px; font-size:12px; font-weight:800; color:var(--mut); cursor:pointer; font-family:inherit; }
+.fin2-seg button.on{ background:#fff; color:var(--ink); box-shadow:0 2px 8px -3px rgba(20,32,46,.3); }
+.fin2-search{ flex:1; min-width:180px; border:1px solid var(--line); background:#fff; border-radius:12px; padding:9px 13px; font-size:12.5px; font-family:inherit; outline:none; }
+.fin2-search:focus{ border-color:#43c47a; box-shadow:0 0 0 3px rgba(67,196,122,.18); }
+.fin2-mh{ display:flex; align-items:center; gap:10px; margin:22px 0 10px; }
+.fin2-mh b{ font-size:13px; color:var(--ink); text-transform:capitalize; }
+.fin2-mh em{ font-style:normal; font-size:10.5px; font-weight:800; background:var(--gl); color:var(--g); padding:2px 9px; border-radius:99px; }
+.fin2-mh hr{ flex:1; border:0; height:1px; background:var(--line); margin:0; }
+.fin2-grid{ display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:12px; }
+.fin2-card{ background:#fff; border:1px solid var(--line); border-radius:15px; padding:14px 15px 13px; cursor:pointer; position:relative; transition:transform .15s, box-shadow .15s, border-color .15s; box-shadow:0 4px 14px -10px rgba(20,32,46,.3); }
+.fin2-card:hover{ transform:translateY(-2px); box-shadow:0 12px 24px -14px rgba(20,32,46,.35); border-color:#cfe9db; }
+.fin2-card::before{ content:""; position:absolute; left:0; top:14px; bottom:14px; width:3px; border-radius:0 3px 3px 0; background:var(--g); }
+.fin2-card.est::before{ background:var(--b); }
+.fin2-top{ display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; }
+.fin2-tipo{ font-size:9.5px; font-weight:800; letter-spacing:.8px; text-transform:uppercase; padding:3px 8px; border-radius:99px; background:var(--gl); color:var(--g); }
+.fin2-card.est .fin2-tipo{ background:var(--bl); color:var(--b); }
+.fin2-ok{ width:20px; height:20px; border-radius:50%; background:var(--g); color:#fff; font-size:11px; display:flex; align-items:center; justify-content:center; font-weight:900; }
+.fin2-card.est .fin2-ok{ background:var(--b); }
+.fin2-name{ font-size:13px; font-weight:800; color:var(--ink); line-height:1.3; min-height:34px; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
+.fin2-meta{ display:flex; justify-content:space-between; align-items:center; margin-top:10px; font-size:11px; color:var(--mut); font-weight:600; }
+.fin2-prazo{ font-size:10px; font-weight:800; padding:2px 8px; border-radius:99px; }
+.fin2-prazo.ok{ background:#e7f6ee; color:#1a7f47; }
+.fin2-prazo.late{ background:#fff1e0; color:#b45f06; }
+.fin2-prazo.na{ background:#eef2f7; color:#7b8a9d; }
+.fin2-empty{ text-align:center; color:var(--mut); padding:40px 0; font-size:13px; }
+.fin2.compact .fin2-grid{ grid-template-columns:repeat(2,minmax(0,1fr)); }
+@media (max-width:1100px){ .fin2-grid{ grid-template-columns:repeat(2,minmax(0,1fr)); } }
+@media (max-width:640px){ .fin2-grid{ grid-template-columns:1fr; } }
+</style>
+<script id="fin2-js">
+(function(){
+  const MES=['janeiro','fevereiro','março','abril','maio','junho','julho','agosto','setembro','outubro','novembro','dezembro'];
+  const MABR=['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'];
+  const ST={page:{filtro:'todos',busca:'',mes:null,tipo:null},modal:{filtro:'todos',busca:'',mes:null,tipo:null}};
+  const dia=s=>new Date(s+'T12:00:00');
+  function lista(){
+    const isFin=p=>{ if(p.completed) return true; const pf=p.pill&&(/Finalizado/i.test(p.pill)||/pill-done/i.test(p.pill)); return p.pct===100&&pf; };
+    return Object.entries(P).filter(([_,p])=>isFin(p)).map(([key,p])=>{
+      const c=p.completed||new Date().toISOString().slice(0,10); const d=dia(c);
+      const est=/estrutur/i.test(p.eye||'');
+      let prazo=null; if(p.previsao){ prazo=Math.round((d-dia(p.previsao))/86400000); }
+      return {key,title:p.title,eye:p.eye,est,c,d,y:d.getFullYear(),m:d.getMonth(),prazo};
+    }).sort((a,b)=>b.d-a.d);
+  }
+  window.finSet=function(w,k,v){
+    const s=ST[w];
+    if(k==='f') s.filtro=v; if(k==='q') s.busca=v; if(k==='m') s.mes=(s.mes===v?null:v);
+    draw(w);
+    if(k==='q'){const i=document.getElementById('fin2q-'+w); if(i){i.focus(); i.setSelectionRange(v.length,v.length);}}
+  };
+  function draw(w){
+    const s=ST[w];
+    const box=document.getElementById(w==='page'?'finalizadosContainer':'finFilterBody'); if(!box) return;
+    let all=lista();
+    if(s.tipo) all=all.filter(p=>s.tipo==='Estruturante'?p.est:!p.est);
+    const cli=all.filter(p=>!p.est).length, est=all.length-cli;
+    const now=new Date(), mesAtual=all.filter(p=>p.y===now.getFullYear()&&p.m===now.getMonth()).length;
+    const mm={}; all.forEach(p=>{const k=p.y+'-'+p.m; mm[k]=(mm[k]||0)+1;});
+    const ord=(a,b)=>{const [ya,ma]=a.split('-').map(Number),[yb,mb]=b.split('-').map(Number);return ya-yb||ma-mb;};
+    const ks=Object.keys(mm).sort(ord).slice(-8);
+    const max=Math.max(...ks.map(k=>mm[k]),1);
+    const chart=ks.map(k=>{const [y,m]=k.split('-').map(Number); const h=Math.max(10,Math.round(100*mm[k]/max)*0.9);
+      return `<div class="fin2-col${s.mes===k?' on':''}" onclick="finSet('${w}','m','${k}')" title="${MES[m]} ${y}: ${mm[k]} entrega(s)"><div class="fin2-bar" style="height:${h}%"><i>${mm[k]}</i></div><div class="fin2-mlab">${MABR[m]}</div></div>`;}).join('');
+    let v=all.filter(p=>s.tipo||s.filtro==='todos'||(s.filtro==='cli'&&!p.est)||(s.filtro==='est'&&p.est));
+    if(s.busca) v=v.filter(p=>p.title.toLowerCase().includes(s.busca.toLowerCase()));
+    if(s.mes) v=v.filter(p=>(p.y+'-'+p.m)===s.mes);
+    const grupos={}; v.forEach(p=>{const k=p.y+'-'+p.m;(grupos[k]=grupos[k]||[]).push(p);});
+    const gk=Object.keys(grupos).sort((a,b)=>ord(b,a));
+    const secs=gk.map(k=>{const [y,m]=k.split('-').map(Number);
+      const cards=grupos[k].map(p=>{
+        const pz=p.prazo===null?'<span class="fin2-prazo na">Sem previsão</span>':(p.prazo<=0?'<span class="fin2-prazo ok">No prazo</span>':`<span class="fin2-prazo late">+${p.prazo} dia${p.prazo>1?'s':''}</span>`);
+        const open=w==='modal'?`closeFinFilterModal();setTimeout(()=>openModal('${p.key}'),150)`:`openModal('${p.key}')`;
+        return `<div class="fin2-card${p.est?' est':''}" onclick="${open}"><div class="fin2-top"><span class="fin2-tipo">${p.est?'Estruturante':'Cliente'}</span><span class="fin2-ok">✓</span></div><div class="fin2-name">${p.title}</div><div class="fin2-meta"><span>📅 ${p.d.toLocaleDateString('pt-BR')}</span>${pz}</div></div>`;}).join('');
+      return `<div class="fin2-mh"><b>${MES[m]} ${y}</b><em>${grupos[k].length}</em><hr></div><div class="fin2-grid">${cards}</div>`;}).join('');
+    const sub=s.tipo?(s.tipo==='Estruturante'?'projetos estruturantes':'projetos de clientes'):`${cli} clientes · ${est} estruturantes`;
+    const seg=s.tipo?'':`<div class="fin2-seg"><button class="${s.filtro==='todos'?'on':''}" onclick="finSet('${w}','f','todos')">Todos · ${all.length}</button><button class="${s.filtro==='cli'?'on':''}" onclick="finSet('${w}','f','cli')">Clientes · ${cli}</button><button class="${s.filtro==='est'?'on':''}" onclick="finSet('${w}','f','est')">Estruturantes · ${est}</button></div>`;
+    box.innerHTML=`<div class="fin2${w==='modal'?' compact':''}">
+      <div class="fin2-kpis">
+        <div class="fin2-kpi" style="--tint:#e7f6ee"><div class="v">${all.length}</div><div class="l">Entregues</div><div class="s">${sub}</div></div>
+        <div class="fin2-kpi" style="--tint:#e8f1fb"><div class="v">${mesAtual}</div><div class="l">Neste mês</div><div class="s">${MES[now.getMonth()]} de ${now.getFullYear()}</div></div>
+      </div>
+      <div class="fin2-panel"><div class="fin2-ph"><b>Entregas por mês</b><span>${s.mes?'Filtrando um mês — clique na barra para limpar':'Clique em uma barra para filtrar'}</span></div><div class="fin2-chart">${chart}</div></div>
+      <div class="fin2-tools">${seg}<input id="fin2q-${w}" class="fin2-search" placeholder="Buscar projeto…" value="${s.busca.replace(/"/g,'&quot;')}" oninput="finSet('${w}','q',this.value)"></div>
+      ${secs||'<div class="fin2-empty">Nenhum projeto encontrado.</div>'}
+    </div>`;
+  }
+  window.renderFinalizados=function(){
+    const sm=document.getElementById('finSummary'); if(sm) sm.style.display='none';
+    document.querySelectorAll('#finalizados .sec-label').forEach(e=>e.style.display='none');
+    const hs=document.querySelectorAll('#finalizados .hero-stats .sv'); if(hs[0]) hs[0].textContent=lista().length;
+    draw('page');
+  };
+  window.showFinalizadosFiltro=function(tipo){
+    ST.modal={filtro:'todos',busca:'',mes:null,tipo:tipo};
+    const n=lista().filter(p=>tipo==='Estruturante'?p.est:!p.est).length;
+    const t=document.getElementById('finFilterTitle');
+    if(t) t.textContent=(tipo==='Cliente'?'Projetos de Clientes Finalizados':'Projetos Estruturantes Finalizados')+' ('+n+')';
+    draw('modal');
+    const ov=document.getElementById('finFilterOverlay'); if(ov) ov.classList.add('open'); document.body.style.overflow='hidden';
+  };
+})();
+</script>
 </body>
 </html>
