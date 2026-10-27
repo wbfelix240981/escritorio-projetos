@@ -8544,6 +8544,15 @@ setTimeout(compactarCards,600); setTimeout(compactarCards,1500);
 .fin2-prazo.ok{ background:#e7f6ee; color:#1a7f47; }
 .fin2-prazo.late{ background:#fff1e0; color:#b45f06; }
 .fin2-prazo.na{ background:#eef2f7; color:#7b8a9d; }
+#finFilterModal{ width:min(1240px,calc(100vw - 48px)) !important; max-height:92vh !important; border-radius:24px; }
+#finFilterModal .modal-bd{ padding:22px 30px 30px !important; }
+#finFilterModal .fin2-kpi .v{ font-size:34px; }
+#finFilterModal .fin2-chart{ height:170px; }
+#finFilterModal .fin2-bar{ max-width:72px; }
+#finFilterModal .fin2.compact .fin2-grid{ grid-template-columns:repeat(3,minmax(0,1fr)); }
+#finFilterModal .fin2-name{ font-size:13.5px; }
+@media (max-width:1000px){ #finFilterModal .fin2.compact .fin2-grid{ grid-template-columns:repeat(2,minmax(0,1fr)); } }
+@media (max-width:640px){ #finFilterModal{ width:calc(100vw - 6px) !important; } #finFilterModal .fin2.compact .fin2-grid{ grid-template-columns:1fr; } }
 .fin2-empty{ text-align:center; color:var(--mut); padding:40px 0; font-size:13px; }
 .fin2.compact .fin2-grid{ grid-template-columns:repeat(2,minmax(0,1fr)); }
 @media (max-width:1100px){ .fin2-grid{ grid-template-columns:repeat(2,minmax(0,1fr)); } }
