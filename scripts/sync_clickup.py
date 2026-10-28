@@ -43,7 +43,7 @@ PROJECTS = {
     "neoviasolution":  "901328971347",
     "sopremafirewal":  "901328361858",
     "apm":             "901329011062",
-    "amigoconnecting": "901329011044",
+    # "amigoconnecting" removido em 2026-10-28: finalizado manualmente a pedido (não sobrescrever na sincronização).
     # "brainlaw" removido do painel em 2026-10-01 (frente retirada a pedido).
     "senaishield":      "901329087162",
     "desmob20":         "901329094841",
