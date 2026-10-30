@@ -42,7 +42,7 @@ PROJECTS = {
     "btechcloud":      "901329035922",
     "neoviasolution":  "901328971347",
     "sopremafirewal":  "901328361858",
-    "apm":             "901329011062",
+    # "apm" removido em 2026-10-30: finalizado manualmente a pedido (não sobrescrever na sincronização).
     # "amigoconnecting" removido em 2026-10-28: finalizado manualmente a pedido (não sobrescrever na sincronização).
     # "brainlaw" removido do painel em 2026-10-01 (frente retirada a pedido).
     "senaishield":      "901329087162",
