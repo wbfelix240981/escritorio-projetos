@@ -45,12 +45,13 @@ PROJECTS = {
     # "apm" removido em 2026-10-30: finalizado manualmente a pedido (não sobrescrever na sincronização).
     # "amigoconnecting" removido em 2026-10-28: finalizado manualmente a pedido (não sobrescrever na sincronização).
     # "brainlaw" removido do painel em 2026-10-01 (frente retirada a pedido).
-    "senaishield":      "901329087162",
+    # "senaishield" colocado em HOLD manualmente em 2026-10-30 (pausado). Reativar aqui ao sair do Hold: "senaishield": "901329087162",
     "desmob20":         "901329094841",
     # "grupoabl" removido em 2026-10-27: finalizado manualmente a pedido (não sobrescrever na sincronização).
     "mfavpn":           "901329173422",
     "algartelecom":     "901329196221",
     "bestsmart":        "901329181833",
+    "rareyu":           "1400550000003133",
     # "psdovidro" removido intencionalmente: projeto foi finalizado manualmente
     # em 2026-08-31 por decisão do escritório de projetos, mesmo com 2 tarefas
     # ainda abertas no ClickUp. Não deve ser sobrescrito pela sincronização.
