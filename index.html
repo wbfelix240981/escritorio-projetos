@@ -1009,6 +1009,7 @@ body.role-comercial #drawer-trigger {
         <div class="hero-stat"><div class="sv">5</div><div class="sl">Projetos</div></div>
         <div class="hero-stat"><div class="sv">53.9%</div><div class="sl">Média ativos</div></div>
         <div class="hero-stat"><div class="sv">5</div><div class="sl">Em andamento</div></div>
+        <div class="hero-stat"><div class="sv">2</div><div class="sl">Aguardando TM</div></div>
       </div>
       <button onclick="showFinalizadosFiltro('Cliente')" style="margin-top:14px;padding:9px 18px;background:rgba(255,255,255,.15);border:1.5px solid rgba(255,255,255,.4);color:#fff;border-radius:10px;font-size:12px;font-weight:700;font-family:'Sora',sans-serif;letter-spacing:.3px;cursor:pointer;display:inline-flex;align-items:center;gap:6px;">✅ Ver Projetos Finalizados</button>
       <div id="syncStatusClientes" style="margin-top:12px;font-family:'JetBrains Mono',monospace;font-size:11.5px;color:rgba(255,255,255,.85);line-height:1.6;">
@@ -8386,14 +8387,14 @@ function enforceFinalizedRule() {
   ['clientes','estruturantes'].forEach(pageId => {
     const page = document.getElementById(pageId);
     if (!page) return;
-    let visiveis = 0, somaPct = 0, ativos = 0, somaAtivos = 0;
+    let visiveis = 0, somaPct = 0, ativos = 0, somaAtivos = 0, novos = 0;
     page.querySelectorAll('.card.anim').forEach(card => {
       const pill = card.querySelector('.pill');
       const pillTxt = pill ? pill.textContent : '';
       const isFin = (pill && pill.classList.contains('pill-done')) || /Finaliza/i.test(pillTxt);
       if (isFin) { card.style.display = 'none'; return; }
       card.style.display = '';
-      if (card.classList.contains('card-novo')) return; // não iniciado: não entra nos índices
+      if (card.classList.contains('card-novo')) { novos++; return; } // não iniciado: conta no total, mas fora da média/andamento
       visiveis++;
       const pctEl = card.querySelector('.card-pct');
       if (pctEl) {
@@ -8404,15 +8405,16 @@ function enforceFinalizedRule() {
     // Atualiza índices do topo
     const heroVals = page.querySelectorAll('.hero-stats .hero-stat .sv');
     if (heroVals.length >= 2) {
-      heroVals[0].textContent = visiveis;
+      heroVals[0].textContent = visiveis + novos;
       const media = ativos ? (somaAtivos/ativos) : 0;
       heroVals[1].textContent = media.toFixed(1).replace(/\.0$/,'') + '%';
       if (heroVals.length >= 3 && pageId==='clientes') heroVals[2].textContent = visiveis;
+      if (heroVals.length >= 4 && pageId==='clientes') heroVals[3].textContent = novos;
     }
     // Atualiza badge "N projetos" se existir
     const badge = page.querySelector('.sec-label span:last-child');
     if (badge && /projeto/i.test(badge.textContent)) {
-      badge.textContent = '● ' + visiveis + ' projeto' + (visiveis>1?'s':'');
+      badge.textContent = '● ' + (visiveis+novos) + ' projeto' + ((visiveis+novos)>1?'s':'');
     }
   });
 }
