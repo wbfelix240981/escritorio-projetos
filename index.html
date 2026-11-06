@@ -8606,6 +8606,12 @@ setTimeout(compactarCards,600); setTimeout(compactarCards,1500);
 #clientes .novo-info{ font-size:11px; font-weight:700; color:#5b6b80; background:rgba(15,23,42,.04); border:1px dashed #cbd5e1; border-radius:10px; padding:9px 10px; margin-bottom:8px; }
 #clientes .fill-novo{ background:#cbd5e1 !important; width:0 !important; }
 #clientes .btn-det-off{ opacity:.55; cursor:default !important; pointer-events:none; }
+/* Cards aguardando TM: pulsam para chamar atenção */
+@keyframes aguardaPulso{ 0%,100%{ box-shadow:0 0 0 0 rgba(245,158,11,0), 0 2px 10px rgba(15,23,42,.06); border-color:#e6ebf2; } 50%{ box-shadow:0 0 0 4px rgba(245,158,11,.38), 0 6px 22px rgba(245,158,11,.28); border-color:#f59e0b; } }
+@keyframes aguardaPill{ 0%,100%{ background:#e8edf4; color:#5b6b80; } 50%{ background:#fde68a; color:#92400e; } }
+#clientes .card-novo{ border:1.5px solid #e6ebf2; animation:aguardaPulso 1.6s ease-in-out infinite; }
+#clientes .card-novo .pill-novo{ animation:aguardaPill 1.6s ease-in-out infinite; }
+@media (prefers-reduced-motion: reduce){ #clientes .card-novo, #clientes .card-novo .pill-novo{ animation:none; } }
 </style>
 <style id="fin2-css">
 .fin2{ --g:#1f9d55; --gl:#e7f6ee; --b:#1565c0; --bl:#e8f1fb; --ink:#14202e; --mut:#6b7a8d; --line:#e6ebf2; }
