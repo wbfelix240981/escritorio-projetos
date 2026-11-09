@@ -298,6 +298,50 @@ def calc_pct(tasks):
     pct = max(pct, 2)  # piso: nunca mostrar 0%
     return pct, fechado, em_andamento, total
 
+# ── Régua do painel da Algar (binario-cloud-algar.pages.dev) ─────────────────────────────
+# Pedido 2026-11-09: o card da Algar tem que bater com o % do painel dedicado dela.
+# Regras do painel: (1) só as atividades dos marcos entram — os próprios marcos ("Fase N") não contam;
+# (2) subtarefas de atividades não contam (só filhas diretas dos marcos); (3) as Fases 5 e 6
+# (Relatório de utilização de VMs / Alarmística de coleta + Jira) ficam fora (Fase 2 do projeto);
+# (4) peso por status: concluída 100, revisão 75, em andamento 50, aguardando retorno 25, planejamento 10,
+# aberta/bloqueada 0; rejeitadas ignoradas.
+ALGAR_FORA_IDS = {"86aktjpk4", "86aktjpr4"}
+ALGAR_FORA_NOME = re.compile(r"relat[óo]rio de utiliza[çc][ãa]o de vms|alarm[íi]stica de coleta", re.I)
+_PESO_ALGAR = {"waiting": 0.25, "planejamento": 0.1, "em andamento": 0.5, "in progress": 0.5,
+               "revisando": 0.75, "em revisão": 0.75, "em revisao": 0.75, "in review": 0.75}
+_FECHADOS = ("fechado", "closed", "complete", "concluído", "concluido", "concluida", "concluída", "done")
+
+
+def calc_pct_algar(tasks):
+    """Retorna (pct, fechado, em_andamento, total) pela régua do painel da Algar."""
+    def st(t):
+        return (t.get("status", {}).get("status") or "").strip().lower()
+    by = {t["id"]: t for t in tasks}
+    def pai(t):
+        pid = t.get("parent")
+        return by.get(pid) if pid else None
+    fases = {t["id"] for t in tasks if not pai(t)}                      # marcos (topo)
+    fora = {t["id"] for t in tasks if t["id"] in ALGAR_FORA_IDS or ALGAR_FORA_NOME.search(t.get("name", ""))}
+    principais = []
+    for t in tasks:
+        p = pai(t)
+        if not p or p["id"] not in fases or p["id"] in fora:             # só filhas diretas de um marco que conta
+            continue
+        if st(t) in ("rejeitada", "rejected"):
+            continue
+        principais.append(t)
+    total = len(principais)
+    if total == 0:
+        return 2, 0, 0, 0
+    fechado = sum(1 for t in principais if st(t) in _FECHADOS)
+    em_andamento = sum(1 for t in principais if st(t) in ("em andamento", "in progress", "revisando", "em revisão", "em revisao", "in review"))
+    pontos = sum(1.0 if st(t) in _FECHADOS else _PESO_ALGAR.get(st(t), 0.0) for t in principais)
+    pct = max(round(100 * pontos / total), 2)
+    return pct, fechado, em_andamento, total
+
+
+PCT_CUSTOM = {"algartelecom": calc_pct_algar}
+
 
 def update_card_pct(html, key, new_pct):
     """Atualiza card-pct e data-pct do card na grade, localizado via openModal('key')."""
@@ -545,7 +589,7 @@ def main():
             any_error = True
             continue
 
-        pct, fechado, em_andamento, total = calc_pct(tasks)
+        pct, fechado, em_andamento, total = PCT_CUSTOM.get(key, calc_pct)(tasks)
         # Piso manual (pedido em 2026-10-21): o % não cai abaixo do valor fixado, mesmo que
         # entrem tarefas novas na lista. Só sobe quando o cálculo real ultrapassar o piso.
         piso = PCT_PISO.get(key)
