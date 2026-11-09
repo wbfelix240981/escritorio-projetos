@@ -1389,7 +1389,7 @@ body.role-comercial #drawer-trigger {
           <span class="card-pct">—</span>
         </div>
         <div class="card-title">Gslopes Comercio Importacao e Exportacao LTD</div>
-        <div class="novo-info">📋 Aguardando TM</div>
+        <div class="novo-info" data-desde="2026-11-04">📋 Aguardando TM</div>
         <div class="card-footer">
           <div class="bar-track"><div class="bar-fill fill-novo" data-pct="0"></div></div>
           <button class="btn-det btn-det-off" type="button" disabled>Sem dados ainda</button>
@@ -1404,7 +1404,7 @@ body.role-comercial #drawer-trigger {
           <span class="card-pct">—</span>
         </div>
         <div class="card-title">DIGICON S A CONTROLE ELETRONICO PARA MECANICA</div>
-        <div class="novo-info">📋 Aguardando TM</div>
+        <div class="novo-info" data-desde="2026-11-04">📋 Aguardando TM</div>
         <div class="card-footer">
           <div class="bar-track"><div class="bar-fill fill-novo" data-pct="0"></div></div>
           <button class="btn-det btn-det-off" type="button" disabled>Sem dados ainda</button>
@@ -1419,7 +1419,7 @@ body.role-comercial #drawer-trigger {
           <span class="card-pct">—</span>
         </div>
         <div class="card-title">Fundacao de Saude Publica Sao Camilo de Esteio - Fspsce</div>
-        <div class="novo-info">📋 Aguardando TM</div>
+        <div class="novo-info" data-desde="2026-11-06">📋 Aguardando TM</div>
         <div class="card-footer">
           <div class="bar-track"><div class="bar-fill fill-novo" data-pct="0"></div></div>
           <button class="btn-det btn-det-off" type="button" disabled>Sem dados ainda</button>
@@ -8866,6 +8866,38 @@ setTimeout(compactarCards,600); setTimeout(compactarCards,1500);
   document.addEventListener('DOMContentLoaded',()=>{ monta(); visivel(); });
   if(document.readyState!=='loading'){ monta(); visivel(); }
   setInterval(visivel,800);
+})();
+</script>
+<style id="aguarda-dias-css">
+#clientes .novo-info .dias-uteis{ display:block; margin-top:4px; font-size:11px; font-weight:800; color:#92400e; }
+</style>
+<script id="aguarda-dias-js">
+/* Cards "Aguardando TM": mostra há quantos DIAS ÚTEIS o card está aberto (não conta sábado, domingo nem feriado nacional).
+   A data de abertura fica em data-desde (AAAA-MM-DD) no .novo-info de cada card. Conta do dia de abertura (inclusive) até hoje (exclusive). */
+(function(){
+  // Feriados nacionais (AAAA-MM-DD). Para incluir feriado estadual/municipal, basta acrescentar a data aqui.
+  var FERIADOS = ['2026-01-01','2026-02-16','2026-02-17','2026-04-03','2026-04-21','2026-05-01','2026-06-04','2026-09-07','2026-10-12','2026-11-02','2026-11-15','2026-11-20','2026-12-25',
+                  '2027-01-01','2027-02-08','2027-02-09','2027-03-26','2027-04-21','2027-05-01','2027-05-27','2027-09-07','2027-10-12','2027-11-02','2027-11-15','2027-11-20','2027-12-25'];
+  function iso(d){ var p=function(n){return String(n).padStart(2,'0');}; return d.getFullYear()+'-'+p(d.getMonth()+1)+'-'+p(d.getDate()); }
+  function diasUteis(desde, hoje){
+    var d = new Date(desde+'T12:00:00'), fim = new Date(iso(hoje||new Date())+'T12:00:00'), n = 0;
+    while (d < fim){ var w=d.getDay(); if (w!==0 && w!==6 && FERIADOS.indexOf(iso(d))<0) n++; d.setDate(d.getDate()+1); }
+    return n;
+  }
+  function atualizar(){
+    document.querySelectorAll('#clientes .novo-info[data-desde]').forEach(function(el){
+      var n = diasUteis(el.getAttribute('data-desde'));
+      var txt = n===0 ? 'aberto hoje' : 'há '+n+(n===1?' dia útil':' dias úteis');
+      var sp = el.querySelector('.dias-uteis');
+      if(!sp){ sp=document.createElement('span'); sp.className='dias-uteis'; el.appendChild(sp); }
+      sp.textContent = '⏱ Aguardando '+txt;
+      var p=el.getAttribute('data-desde').split('-');
+      el.title='Aberto em '+p[2]+'/'+p[1]+'/'+p[0]+' · não conta sábados, domingos e feriados';
+    });
+  }
+  window.diasUteisAguardando = diasUteis;
+  document.addEventListener('page-changed', function(){ setTimeout(atualizar,100); });
+  setTimeout(atualizar,300); setTimeout(atualizar,1500);
 })();
 </script>
 </body>
