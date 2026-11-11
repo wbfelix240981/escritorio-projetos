@@ -8902,10 +8902,10 @@ setTimeout(compactarCards,600); setTimeout(compactarCards,1500);
   function atualizar(){
     document.querySelectorAll('#clientes .novo-info[data-desde]').forEach(function(el){
       var n = diasUteis(el.getAttribute('data-desde'));
-      var txt = n===0 ? 'aberto hoje' : 'há '+n+(n===1?' dia útil':' dias úteis');
+      var txt = n===0 ? 'Aberto hoje' : 'Aguardando há '+n+(n===1?' dia útil':' dias úteis');
       var sp = el.querySelector('.dias-uteis');
       if(!sp){ sp=document.createElement('span'); sp.className='dias-uteis'; el.appendChild(sp); }
-      sp.textContent = '⏱ Aguardando '+txt;
+      sp.textContent = '⏱ '+txt;
       var p=el.getAttribute('data-desde').split('-');
       el.title='Aberto em '+p[2]+'/'+p[1]+'/'+p[0]+' · não conta sábados, domingos e feriados';
     });
