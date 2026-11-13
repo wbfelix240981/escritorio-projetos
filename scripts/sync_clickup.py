@@ -52,6 +52,8 @@ PROJECTS = {
     "algartelecom":     "901329196221",
     "bestsmart":        "901329181833",
     "rareyu":           "1400550000003133",
+    "gslopes":          "1400550000004296",
+    "digicon":          "1400550000004258",
     # "psdovidro" removido intencionalmente: projeto foi finalizado manualmente
     # em 2026-08-31 por decisão do escritório de projetos, mesmo com 2 tarefas
     # ainda abertas no ClickUp. Não deve ser sobrescrito pela sincronização.

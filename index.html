@@ -1009,7 +1009,7 @@ body.role-comercial #drawer-trigger {
         <div class="hero-stat"><div class="sv">5</div><div class="sl">Projetos</div></div>
         <div class="hero-stat"><div class="sv">53.9%</div><div class="sl">Média ativos</div></div>
         <div class="hero-stat"><div class="sv">5</div><div class="sl">Em andamento</div></div>
-        <div class="hero-stat"><div class="sv">4</div><div class="sl">Aguardando TM</div></div>
+        <div class="hero-stat"><div class="sv">2</div><div class="sl">Aguardando TM</div></div>
       </div>
       <button onclick="showFinalizadosFiltro('Cliente')" style="margin-top:14px;padding:9px 18px;background:rgba(255,255,255,.15);border:1.5px solid rgba(255,255,255,.4);color:#fff;border-radius:10px;font-size:12px;font-weight:700;font-family:'Sora',sans-serif;letter-spacing:.3px;cursor:pointer;display:inline-flex;align-items:center;gap:6px;">✅ Ver Projetos Finalizados</button>
       <div id="syncStatusClientes" style="margin-top:12px;font-family:'JetBrains Mono',monospace;font-size:11.5px;color:rgba(255,255,255,.85);line-height:1.6;">
@@ -1381,33 +1381,39 @@ body.role-comercial #drawer-trigger {
         </div>
       </div>
 
-      <!-- NOVO CLIENTE: GSLOPES COMERCIO IMPORTACAO E EXPORTACAO LTD -->
-      <div class="card anim card-novo">
-        <div class="card-accent accent-novo"></div>
+      <!-- GSLOPES COMERCIO IMPORTACAO E EXPORTACAO LTD -->
+      <div class="card anim">
+        <div class="card-accent accent-green"></div>
         <div class="card-header">
-          <span class="pill pill-novo">⏳ Aguardando TM</span>
-          <span class="card-pct">—</span>
+          <span class="pill pill-prog">● Em progresso</span>
+          <span class="card-pct">7%</span>
         </div>
         <div class="card-title">Gslopes Comercio Importacao e Exportacao LTD</div>
-        <div class="novo-info" data-desde="2026-11-04">📋 Aguardando TM</div>
+        <div class="card-inicio" style="font-size:11px;color:#8a94a6;margin:-2px 0 2px;font-weight:600;">🚀 Início: <span class="inicio-valor">13/11/2026</span></div><div class="card-prazo" style="font-size:11px;color:#8a94a6;margin:-2px 0 6px;font-weight:600;">📅 Previsão término: <span class="prazo-valor">31/12/2026</span></div>
+        <div class="card-impl" style="font-size:11px;color:#8a94a6;margin:-2px 0 2px;font-weight:600;">🛠️ Implantação:<span class="impl-status" style="margin-left:6px;padding:1px 7px;border-radius:99px;font-size:10px;font-weight:800;background:#fff4e0;color:#b26a00;">Não Faturado</span></div><div class="card-cons" style="font-size:11px;color:#8a94a6;margin:-2px 0 2px;font-weight:600;">📈 Consumo:<span class="cons-status" style="margin-left:6px;padding:1px 7px;border-radius:99px;font-size:10px;font-weight:800;background:#fff4e0;color:#b26a00;">Não Faturado</span></div>
+        <div class="card-resp" style="font-size:11px;color:#8a94a6;margin:-2px 0 6px;font-weight:600;">👤 Responsável: <span class="resp-valor" style="color:#1a2a3a;font-weight:800;">Diogo Lerison</span></div>
+
         <div class="card-footer">
-          <div class="bar-track"><div class="bar-fill fill-novo" data-pct="0"></div></div>
-          <button class="btn-det btn-det-off" type="button" disabled>Sem dados ainda</button>
+          <div class="bar-track"><div class="bar-fill fill-green" data-pct="7"></div></div>
+          <button class="btn-det" onclick="openModal('gslopes')">Ver detalhes <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 6.5h9M7 2l4.5 4.5L7 11" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
         </div>
       </div>
 
-      <!-- NOVO CLIENTE: DIGICON S A CONTROLE ELETRONICO PARA MECANICA -->
-      <div class="card anim card-novo">
-        <div class="card-accent accent-novo"></div>
+      <!-- DIGICON S A CONTROLE ELETRONICO PARA MECANICA -->
+      <div class="card anim">
+        <div class="card-accent accent-green"></div>
         <div class="card-header">
-          <span class="pill pill-novo">⏳ Aguardando TM</span>
-          <span class="card-pct">—</span>
+          <span class="pill pill-prog">● Em progresso</span>
+          <span class="card-pct">22%</span>
         </div>
         <div class="card-title">DIGICON S A CONTROLE ELETRONICO PARA MECANICA</div>
-        <div class="novo-info" data-desde="2026-11-04">📋 Aguardando TM</div>
+        <div class="card-inicio" style="font-size:11px;color:#8a94a6;margin:-2px 0 2px;font-weight:600;">🚀 Início: <span class="inicio-valor">13/11/2026</span></div><div class="card-prazo" style="font-size:11px;color:#8a94a6;margin:-2px 0 6px;font-weight:600;">📅 Previsão término: <span class="prazo-valor">31/12/2026</span></div>
+        <div class="card-impl" style="font-size:11px;color:#8a94a6;margin:-2px 0 2px;font-weight:600;">🛠️ Implantação:<span class="impl-status" style="margin-left:6px;padding:1px 7px;border-radius:99px;font-size:10px;font-weight:800;background:#fff4e0;color:#b26a00;">Não Faturado</span></div><div class="card-cons" style="font-size:11px;color:#8a94a6;margin:-2px 0 2px;font-weight:600;">📈 Consumo:<span class="cons-status" style="margin-left:6px;padding:1px 7px;border-radius:99px;font-size:10px;font-weight:800;background:#fff4e0;color:#b26a00;">Não Faturado</span></div>
+        <div class="card-resp" style="font-size:11px;color:#8a94a6;margin:-2px 0 6px;font-weight:600;">👤 Responsável: <span class="resp-valor" style="color:#1a2a3a;font-weight:800;">Diogo Lerison</span></div>
+
         <div class="card-footer">
-          <div class="bar-track"><div class="bar-fill fill-novo" data-pct="0"></div></div>
-          <button class="btn-det btn-det-off" type="button" disabled>Sem dados ainda</button>
+          <div class="bar-track"><div class="bar-fill fill-green" data-pct="22"></div></div>
+          <button class="btn-det" onclick="openModal('digicon')">Ver detalhes <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 6.5h9M7 2l4.5 4.5L7 11" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
         </div>
       </div>
 
@@ -4364,6 +4370,48 @@ const P = {
         ['📅','Previsão de término: 13/11/2026'],
         ['👤','Responsável: Diogo Lerison'],
         ['🛠️','Implantação: Não aplicável'],
+        ['📈','Consumo: Não Faturado'],
+      ]}
+    ],
+  },
+  gslopes:{
+    eye:'Projeto de Cliente', title:'Gslopes Comercio Importacao e Exportacao LTD', pct:7,
+    fc:'fill-green', grad:'linear-gradient(90deg,#2e7d32,#43a047)',
+    pill:'<span class="pill pill-prog">● Em progresso</span>',
+    tags:[['Cliente','green'],['Em progresso','green'],['7%','green']],
+    completed:null,previsao:'2026-12-31',
+    link:'https://app.clickup.com/3080406/v/li/1400550000004296',
+    secs:[
+      {t:'Progresso (ClickUp)', rows:[
+        ['📊','7% — 1 fechadas + 4 em andamento de 46 tarefas'],
+        ['🔗','<a href="https://app.clickup.com/3080406/v/li/1400550000004296" target="_blank" style="color:#2e7d32;font-weight:700;">Abrir lista no ClickUp ↗</a>']
+      ]},
+      {t:'Resumo do Projeto', rows:[
+        ['🚀','Início: 13/11/2026'],
+        ['📅','Previsão de término: 31/12/2026'],
+        ['👤','Responsável: Diogo Lerison'],
+        ['🛠️','Implantação: Não Faturado'],
+        ['📈','Consumo: Não Faturado'],
+      ]}
+    ],
+  },
+  digicon:{
+    eye:'Projeto de Cliente', title:'DIGICON S A CONTROLE ELETRONICO PARA MECANICA', pct:22,
+    fc:'fill-green', grad:'linear-gradient(90deg,#2e7d32,#43a047)',
+    pill:'<span class="pill pill-prog">● Em progresso</span>',
+    tags:[['Cliente','green'],['Em progresso','green'],['22%','green']],
+    completed:null,previsao:'2026-12-31',
+    link:'https://app.clickup.com/3080406/v/li/1400550000004258',
+    secs:[
+      {t:'Progresso (ClickUp)', rows:[
+        ['📊','22% — 2 fechadas + 5 em andamento de 20 tarefas'],
+        ['🔗','<a href="https://app.clickup.com/3080406/v/li/1400550000004258" target="_blank" style="color:#2e7d32;font-weight:700;">Abrir lista no ClickUp ↗</a>']
+      ]},
+      {t:'Resumo do Projeto', rows:[
+        ['🚀','Início: 13/11/2026'],
+        ['📅','Previsão de término: 31/12/2026'],
+        ['👤','Responsável: Diogo Lerison'],
+        ['🛠️','Implantação: Não Faturado'],
         ['📈','Consumo: Não Faturado'],
       ]}
     ],
