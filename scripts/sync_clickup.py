@@ -55,7 +55,7 @@ PROJECTS = {
     "gslopes":          "1400550000004296",
     "digicon":          "1400550000004258",
     "r4digital":        "1400550000004767",
-    # São Camilo (1400550000004298): lista associada no card (botão), mas o card segue em Aguardando TM — entra aqui quando virar projeto.
+    "fspsce":           "1400550000004298",
     # "psdovidro" removido intencionalmente: projeto foi finalizado manualmente
     # em 2026-08-31 por decisão do escritório de projetos, mesmo com 2 tarefas
     # ainda abertas no ClickUp. Não deve ser sobrescrito pela sincronização.
