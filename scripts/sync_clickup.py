@@ -63,6 +63,12 @@ PROJECTS = {
 }
 
 # Piso de % por projeto (nunca exibe menos que isso; só sobe). Remover a chave para voltar ao cálculo puro.
+# Início fixado manualmente (AAAA-MM-DD): prevalece sobre a data de criação das tarefas no ClickUp.
+# Pedido 2026-11-19: Fspsce começa em 19/11 (a lista foi criada em 11/11, antes do início real).
+INICIO_FIXO = {
+    "fspsce": "2026-11-19",
+}
+
 PCT_PISO = {
     "soprema": 42,   # 2026-10-21: 4 tarefas novas derrubaram de 42% para 38%; mantido 42% a pedido
 }
@@ -602,6 +608,7 @@ def main():
             pct = piso
         previsao = calc_previsao_termino(tasks)
         inicio = calc_inicio(tasks)
+        inicio = INICIO_FIXO.get(key, inicio)
 
         html, changed_card = update_card_pct(html, key, pct)
         html, changed_modal = update_modal_pct(html, key, pct, fechado, em_andamento, total)
