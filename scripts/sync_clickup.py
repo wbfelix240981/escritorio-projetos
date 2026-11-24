@@ -55,7 +55,7 @@ PROJECTS = {
     "gslopes":          "1400550000004296",
     "digicon":          "1400550000004258",
     "r4digital":        "1400550000004767",
-    "fspsce":           "1400550000004298",
+    # "fspsce" removido em 2026-11-24: colocado em HOLD (aguardando assinatura de contrato). Reativar aqui quando sair do Hold.
     # "psdovidro" removido intencionalmente: projeto foi finalizado manualmente
     # em 2026-08-31 por decisão do escritório de projetos, mesmo com 2 tarefas
     # ainda abertas no ClickUp. Não deve ser sobrescrito pela sincronização.

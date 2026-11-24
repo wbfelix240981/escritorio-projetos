@@ -1434,10 +1434,10 @@ body.role-comercial #drawer-trigger {
       </div>
 
       <!-- FUNDACAO DE SAUDE PUBLICA SAO CAMILO DE ESTEIO - FSPSCE -->
-      <div class="card anim">
-        <div class="card-accent accent-green"></div>
+      <div class="card anim is-hold">
+        <div class="card-accent accent-hold"></div>
         <div class="card-header">
-          <span class="pill pill-prog">● Em progresso</span>
+          <span class="pill pill-hold">⏸ Hold</span>
           <span class="card-pct">12%</span>
         </div>
         <div class="card-title">Fundacao de Saude Publica Sao Camilo de Esteio - Fspsce</div>
@@ -1445,8 +1445,9 @@ body.role-comercial #drawer-trigger {
         <div class="card-impl" style="font-size:11px;color:#8a94a6;margin:-2px 0 2px;font-weight:600;">🛠️ Implantação:<span class="impl-status" style="margin-left:6px;padding:1px 7px;border-radius:99px;font-size:10px;font-weight:800;background:#fff4e0;color:#b26a00;">Não Faturado</span></div><div class="card-cons" style="font-size:11px;color:#8a94a6;margin:-2px 0 2px;font-weight:600;">📈 Consumo:<span class="cons-status" style="margin-left:6px;padding:1px 7px;border-radius:99px;font-size:10px;font-weight:800;background:#fff4e0;color:#b26a00;">Não Faturado</span></div>
         <div class="card-resp" style="font-size:11px;color:#8a94a6;margin:-2px 0 6px;font-weight:600;">👤 Responsável: <span class="resp-valor" style="color:#1a2a3a;font-weight:800;">—</span></div>
 
+        <div class="card-hold-motivo" style="font-size:11px;color:#64748b;margin:-2px 0 6px;font-weight:700;">⏸ Aguardando assinatura de contrato</div>
         <div class="card-footer">
-          <div class="bar-track"><div class="bar-fill fill-green" data-pct="12"></div></div>
+          <div class="bar-track"><div class="bar-fill fill-hold" data-pct="12"></div></div>
           <button class="btn-det" onclick="openModal('fspsce')">Ver detalhes <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 6.5h9M7 2l4.5 4.5L7 11" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
         </div>
       </div>
@@ -4478,15 +4479,18 @@ const P = {
   },
   fspsce:{
     eye:'Projeto de Cliente', title:'Fundacao de Saude Publica Sao Camilo de Esteio - Fspsce', pct:12,
-    fc:'fill-green', grad:'linear-gradient(90deg,#2e7d32,#43a047)',
-    pill:'<span class="pill pill-prog">● Em progresso</span>',
-    tags:[['Cliente','green'],['Em progresso','green'],['12%','green']],
+    fc:'fill-hold', grad:'linear-gradient(90deg,#94a3b8,#cbd5e1)',
+    pill:'<span class="pill pill-hold">⏸ Hold</span>',
+    tags:[['Cliente','green'],['Hold','dark'],['12%','green']],
     completed:null,previsao:'2026-11-30',
     link:'https://app.clickup.com/3080406/v/li/1400550000004298',
     secs:[
       {t:'Progresso (ClickUp)', rows:[
         ['📊','12% — 3 fechadas + 3 em andamento de 39 tarefas'],
         ['🔗','<a href="https://app.clickup.com/3080406/v/li/1400550000004298" target="_blank" style="color:#2e7d32;font-weight:700;">Abrir lista no ClickUp ↗</a>']
+      ]},
+      {t:'Status', rows:[
+        ['⏸','Hold — aguardando assinatura de contrato']
       ]},
       {t:'Resumo do Projeto', rows:[
         ['🚀','Início: 19/11/2026'],
@@ -8555,7 +8559,7 @@ function enforceFinalizedRule() {
   ['clientes','estruturantes'].forEach(pageId => {
     const page = document.getElementById(pageId);
     if (!page) return;
-    let visiveis = 0, somaPct = 0, ativos = 0, somaAtivos = 0, novos = 0;
+    let visiveis = 0, somaPct = 0, ativos = 0, somaAtivos = 0, novos = 0, holds = 0;
     page.querySelectorAll('.card.anim').forEach(card => {
       const pill = card.querySelector('.pill');
       const pillTxt = pill ? pill.textContent : '';
@@ -8563,6 +8567,7 @@ function enforceFinalizedRule() {
       if (isFin) { card.style.display = 'none'; return; }
       card.style.display = '';
       if (card.classList.contains('card-novo')) { novos++; return; } // não iniciado: conta no total, mas fora da média/andamento
+      if (card.classList.contains('is-hold')) { holds++; return; } // Hold: conta no total, mas fora da média/andamento
       visiveis++;
       const pctEl = card.querySelector('.card-pct');
       if (pctEl) {
@@ -8573,7 +8578,7 @@ function enforceFinalizedRule() {
     // Atualiza índices do topo
     const heroVals = page.querySelectorAll('.hero-stats .hero-stat .sv');
     if (heroVals.length >= 2) {
-      heroVals[0].textContent = visiveis + novos;
+      heroVals[0].textContent = visiveis + novos + holds;
       const media = ativos ? (somaAtivos/ativos) : 0;
       heroVals[1].textContent = media.toFixed(1).replace(/\.0$/,'') + '%';
       if (heroVals.length >= 3 && pageId==='clientes') heroVals[2].textContent = visiveis;
@@ -8582,7 +8587,7 @@ function enforceFinalizedRule() {
     // Atualiza badge "N projetos" se existir
     const badge = page.querySelector('.sec-label span:last-child');
     if (badge && /projeto/i.test(badge.textContent)) {
-      badge.textContent = '● ' + (visiveis+novos) + ' projeto' + ((visiveis+novos)>1?'s':'');
+      badge.textContent = '● ' + (visiveis+novos+holds) + ' projeto' + ((visiveis+novos+holds)>1?'s':'');
     }
   });
 }
