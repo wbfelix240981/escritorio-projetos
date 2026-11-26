@@ -350,7 +350,20 @@ def calc_pct_algar(tasks):
     return pct, fechado, em_andamento, total
 
 
-PCT_CUSTOM = {"algartelecom": calc_pct_algar}
+# BCP 2.0 Off (ceph30): % pelo Grafana (Portal Executivo de Inventário), definido em 26/11/2026:
+# 445 recursos no início, 123 restantes -> (445-123)/445 = 72%. Atualizar GRAFANA_CEPH30_RESTANTES
+# a cada atualização completa (o sync do ClickUp não enxerga o Grafana).
+GRAFANA_CEPH30_TOTAL = 445
+GRAFANA_CEPH30_RESTANTES = 123
+
+
+def calc_pct_ceph30(tasks):
+    pct, fechado, em_andamento, total = calc_pct(tasks)
+    pct = round(100 * (GRAFANA_CEPH30_TOTAL - GRAFANA_CEPH30_RESTANTES) / GRAFANA_CEPH30_TOTAL)
+    return pct, fechado, em_andamento, total
+
+
+PCT_CUSTOM = {"algartelecom": calc_pct_algar, "ceph30": calc_pct_ceph30}
 
 
 def update_card_pct(html, key, new_pct):
