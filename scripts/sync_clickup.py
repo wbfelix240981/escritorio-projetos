@@ -29,7 +29,7 @@ CLICKUP_API = "https://api.clickup.com/api/v2"
 # key = chave do objeto de dados no index.html (ex: migstorware:{...})
 # list_id = ID da lista no ClickUp
 PROJECTS = {
-    "migstorware":     "901328225370",
+    # "migstorware" removido em 2026-11-26: colocado em HOLD (0%). Reativar aqui quando sair do Hold. Lista 901328225370.
     "ceph30":          "901328082201",
     # "claudiamelhoria" e "obsmelhoria" removidos em 2026-09-15: projetos colocados
     # em HOLD manualmente (pausados). Não devem ser sobrescritos pela sincronização
