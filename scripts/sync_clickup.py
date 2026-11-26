@@ -363,7 +363,32 @@ def calc_pct_ceph30(tasks):
     return pct, fechado, em_andamento, total
 
 
-PCT_CUSTOM = {"algartelecom": calc_pct_algar, "ceph30": calc_pct_ceph30}
+# Desmobilização física 2.0 (desmob20): % igual ao do Painel de Metas (meta 07 do Rafael),
+# lido do repositório público do painel. Mesma regra do painel: média do % das fases; % da fase =
+# atividades concluídas / atividades (exceto as marcadas fora_pct, ex. Atendimento Magalu).
+METAS_RAFAEL_URL = "https://raw.githubusercontent.com/wbfelix240981/Binario_Cloud_Metas_de_Diretorias/main/automation/rafael.json"
+
+
+def calc_pct_desmob20(tasks):
+    pct, fechado, em_andamento, total = calc_pct(tasks)
+    try:
+        with urllib.request.urlopen(METAS_RAFAEL_URL, timeout=30) as r:
+            metas = json.load(r)
+        meta = next(m for m in metas if m.get("num") == 7)
+        soma = 0.0
+        for f in meta["fases"]:
+            base = [a for a in f.get("ativ", []) if not a.get("fora_pct")]
+            if f.get("status") == "shipped":
+                soma += 1
+            elif base:
+                soma += sum(1 for a in base if a["status"] == "shipped") / len(base)
+        pct = round(100 * soma / len(meta["fases"]))
+    except Exception as e:
+        print(f"  ⚠️ desmob20: não consegui ler o Painel de Metas ({e}) — usando % do ClickUp ({pct}%)")
+    return pct, fechado, em_andamento, total
+
+
+PCT_CUSTOM = {"algartelecom": calc_pct_algar, "ceph30": calc_pct_ceph30, "desmob20": calc_pct_desmob20}
 
 
 def update_card_pct(html, key, new_pct):
