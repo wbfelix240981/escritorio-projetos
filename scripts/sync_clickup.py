@@ -388,7 +388,14 @@ def calc_pct_desmob20(tasks):
     return pct, fechado, em_andamento, total
 
 
-PCT_CUSTOM = {"algartelecom": calc_pct_algar, "ceph30": calc_pct_ceph30, "desmob20": calc_pct_desmob20}
+# Soprema: considerado CONCLUÍDO (100%) a pedido em 2026-11-27, mesmo com a tarefa "Assinatura da TEP"
+# ainda em andamento no ClickUp. Remover esta linha de PCT_CUSTOM se for preciso voltar ao cálculo real.
+def calc_pct_soprema(tasks):
+    pct, fechado, em_andamento, total = calc_pct(tasks)
+    return 100, fechado, em_andamento, total
+
+
+PCT_CUSTOM = {"soprema": calc_pct_soprema, "algartelecom": calc_pct_algar, "ceph30": calc_pct_ceph30, "desmob20": calc_pct_desmob20}
 
 
 def update_card_pct(html, key, new_pct):
