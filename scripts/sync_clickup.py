@@ -66,7 +66,7 @@ PROJECTS = {
 # Início fixado manualmente (AAAA-MM-DD): prevalece sobre a data de criação das tarefas no ClickUp.
 # Pedido 2026-11-19: Fspsce começa em 19/11 (a lista foi criada em 11/11, antes do início real).
 INICIO_FIXO = {
-    "fspsce": "2026-11-24",
+    # "fspsce": início removido em 2026-11-27 (Não iniciado)
 }
 
 PCT_PISO = {
